@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+char x[20],*p,t;
+int i,j,l=0;
+clrscr();
+p=x;
+printf("Enter the string:-");
+scanf("%s",p);
+for(i=0;*(p+i)!=NULL;i++)
+l++;
+for(i=0,j=l-1;i<j;i++,j--)
+ {
+  t=*(p+i);
+  *(p+i)=*(p+j);
+  *(p+j)=t;
+ }
+ printf("%s",p);
+ getch();
+}

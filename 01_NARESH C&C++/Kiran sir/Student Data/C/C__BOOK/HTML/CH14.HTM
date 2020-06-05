@@ -1,0 +1,1325 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+<!-- This document was created from RTF source by rtftohtml version 3.0.1 -->
+
+	<META NAME="GENERATOR" Content="Symantec Visual Page 1.0">
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+	<TITLE>Teach Yourself C++ in 21 Days</TITLE>
+</HEAD>
+
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF">
+
+<H1 ALIGN="CENTER"><A HREF="ch13.htm"><IMG SRC="../buttons/BLANPREV.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch14rv2.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A></H1>
+<H1></H1>
+
+<UL>
+	<LI><A HREF="#Heading1">Day 14</A>
+	<UL>
+		<LI><A HREF="#Heading2">Special Classes and Functions</A>
+		<UL>
+			<LI><A HREF="#Heading3">Static Member Data</A>
+			<LI><A HREF="#Heading4">Listing 14.1. Static member data.</A>
+			<LI><A HREF="#Heading5">Listing 14.2. Accessing static members without an object</A><A
+			HREF="#Heading6">.</A>
+			<LI><A HREF="#Heading7">Listing 14.3. Accessing static members using non-static member
+			functions</A><A HREF="#Heading8">.</A>
+			<LI><A HREF="#Heading9">Static Member Functions</A>
+			<LI><A HREF="#Heading10">Listing 14.4. Static member functions</A><A HREF="#Heading11">.</A>
+			<LI><A HREF="#Heading12">Static Member Functions</A>
+			<LI><A HREF="#Heading13">Pointers to Functions</A>
+			<LI><A HREF="#Heading14">Listing 14.5. Pointers to functions</A><A HREF="#Heading15">.</A>
+			<LI><A HREF="#Heading16">Pointer to Function</A>
+			<UL>
+				<LI><A HREF="#Heading17">Why Use Function Pointers?</A>
+			</UL>
+			<LI><A HREF="#Heading18">Listing 14.6. Rewriting Listing 14.5 without the pointer
+			to function</A><A HREF="#Heading19">.</A>
+			<LI><A HREF="#Heading20">Shorthand Invocation</A>
+			<UL>
+				<LI><A HREF="#Heading21">Arrays of Pointers to Functions</A>
+			</UL>
+			<LI><A HREF="#Heading22">Listing 14.7. Demonstrates use of an array of pointers to
+			functions</A><A HREF="#Heading23">.</A>
+			<UL>
+				<LI><A HREF="#Heading24">Passing Pointers to Functions to Other Functions</A>
+			</UL>
+			<LI><A HREF="#Heading25">Listing 14.8. Passing pointers to functions</A>
+			<LI><A HREF="#Heading26">as function arguments.</A>
+			<UL>
+				<LI><A HREF="#Heading27">Using typedef with Pointers to Functions</A>
+			</UL>
+			<LI><A HREF="#Heading28">Listing 14.9. Using typedef to make pointers to functions
+			more readable</A><A HREF="#Heading29">.</A>
+			<LI><A HREF="#Heading30">Pointers to Member Functions</A>
+			<LI><A HREF="#Heading31">Listing 14.10. Pointers to member functions</A><A HREF="#Heading32">.</A>
+			<UL>
+				<LI><A HREF="#Heading33">Arrays of Pointers to Member Functions</A>
+			</UL>
+			<LI><A HREF="#Heading34">Listing 14.11. Array of pointers to member functions</A><A
+			HREF="#Heading35">.</A>
+			<LI><A HREF="#Heading36">Summary</A>
+			<LI><A HREF="#Heading37">Q&amp;A</A>
+			<LI><A HREF="#Heading38">Workshop</A>
+			<UL>
+				<LI><A HREF="#Heading39">Quiz</A>
+				<LI><A HREF="#Heading40">Exercises</A>
+			</UL>
+		</UL>
+	</UL>
+</UL>
+
+<P>
+<HR SIZE="4">
+
+<H2 ALIGN="CENTER"><BR>
+<A NAME="Heading1"></A><FONT COLOR="#000077">Day 14</FONT></H2>
+
+<H2 ALIGN="CENTER"><A NAME="Heading2"></A><FONT COLOR="#000077">Special Classes and
+Functions</FONT></H2>
+<P>C++ offers a number of ways to limit the scope and impact of variables and pointers.
+So far you've seen how to create global variables, local function variables, pointers
+to variables, and class member variables. Today you learn
+
+<UL>
+	<LI>What static member variables and static member functions are.
+	<P>
+	<LI>How to use static member variables and static member functions.
+	<P>
+	<LI>How to create and manipulate pointers to functions and pointers to member functions.
+	<P>
+	<LI>How to work with arrays of pointers to functions.
+</UL>
+
+<H3 ALIGN="CENTER"><A NAME="Heading3"></A><FONT COLOR="#000077">Static Member Data</FONT></H3>
+<P>Until now, you have probably thought of the data in each object as unique to that
+object and not shared among objects in a class. For example, if you have five <TT>Cat</TT>
+objects, each has its own age, weight, and other data. The age of one does not affect
+the age of another.</P>
+<P>There are times, however, when you'll want to keep track of a pool of data. For
+example, you might want to know how many objects for a specific class have been created
+in your program, and how many are still in existence. Static member variables are
+shared among all instances of a class. They are a compromise between global data,
+which is available to all parts of your program, and member data, which is usually
+available only to each object.</P>
+<P>You can think of a static member as belonging to the class rather than to the
+object. Normal member data is one per object, but static members are one per class.
+Listing 14.1 declares a <TT>Cat</TT> object with a static data member, <TT>HowManyCats</TT>.
+This variable keeps track of how many <TT>Cat</TT> objects have been created. This
+is done by incrementing the static variable, <TT>HowManyCats</TT>, with each construction
+and decrementing it with each destruction.</P>
+
+<P><A NAME="Heading4"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 14.1. Static
+member data.</B></FONT>
+<PRE><FONT COLOR="#0066FF">1:     //Listing 14.1 static data members
+2:
+3:     #include &lt;iostream.h&gt;
+4:
+5:     class Cat
+6:     {
+7:     public:
+8:        Cat(int age):itsAge(age){HowManyCats++; }
+9:        virtual ~Cat() { HowManyCats--; }
+10:       virtual int GetAge() { return itsAge; }
+11:       virtual void SetAge(int age) { itsAge = age; }
+12:       static int HowManyCats;
+13:
+14:    private:
+15:       int itsAge;
+16:
+17:    };
+18:
+19:    int Cat::HowManyCats = 0;
+20:
+21:    int main()
+22:    {
+23:       const int MaxCats = 5; int i;
+24:       Cat *CatHouse[MaxCats];
+25:       for (i = 0; i&lt;MaxCats; i++)
+26:          CatHouse[i] = new Cat(i);
+27:
+28:       for (i = 0; i&lt;MaxCats; i++)
+29:       {
+30:          cout &lt;&lt; &quot;There are &quot;;
+31:          cout &lt;&lt; Cat::HowManyCats;
+32:          cout &lt;&lt; &quot; cats left!\n&quot;;
+33:          cout &lt;&lt; &quot;Deleting the one which is &quot;;
+34:          cout &lt;&lt; CatHouse[i]-&gt;GetAge();
+35:          cout &lt;&lt; &quot; years old\n&quot;;
+36:          delete CatHouse[i];
+37:          CatHouse[i] = 0;
+38:       }
+39:     return 0;
+<TT>40: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: There are 5 cats left!
+Deleting the one which is 0 years old
+There are 4 cats left!
+Deleting the one which is 1 years old
+There are 3 cats left!
+Deleting the one which is 2 years old
+There are 2 cats left!
+Deleting the one which is 3 years old
+There are 1 cats left!
+Deleting the one which is 4 years old
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On lines 5 to 17 the simplified
+class <TT>Cat</TT> is declared. On line 12, <TT>HowManyCats</TT> is declared to be
+a static member variable of type <TT>int</TT>.</P>
+<P>The declaration of <TT>HowManyCats</TT> does not define an integer; no storage
+space is set aside. Unlike the non-static member variables, no storage space is set
+aside by instantiating a <TT>Cat</TT> object, because the <TT>HowManyCats</TT> member
+variable is not in the object. Thus, on line 19 the variable is defined and initialized.</P>
+<P>It is a common mistake to forget to define the static member variables of classes.
+Don't let this happen to you! Of course, if it does, the linker will catch it with
+a pithy error message such as the following:</P>
+<PRE><FONT COLOR="#0066FF">undefined symbol Cat::HowManyCats
+</FONT></PRE>
+<P>You don't need to do this for <TT>itsAge</TT>, because it is a non-static member
+variable and is defined each time you make a <TT>Cat</TT> object, which you do here
+on line 26.</P>
+<P>The constructor for <TT>Cat</TT> increments the static member variable on line
+8. The destructor decrements it on line 9. Thus, at any moment, <TT>HowManyCats</TT>
+has an accurate measure of how many <TT>Cat</TT> objects were created but not yet
+destroyed.</P>
+<P>The driver program on lines 21-40 instantiates five <TT>Cat</TT>s and puts them
+in an array. This calls five <TT>Cat</TT> constructors, and thus <TT>HowManyCats</TT>
+is incremented five times from its initial value of <TT>0</TT>.</P>
+<P>The program then loops through each of the five positions in the array and prints
+out the value of <TT>HowManyCats</TT> before deleting the current <TT>Cat</TT> pointer.
+The printout reflects that the starting value is <TT>5</TT> (after all, 5 are constructed),
+and that each time the loop is run, one fewer <TT>Cat</TT> remains.</P>
+<P>Note that <TT>HowManyCats</TT> is public and is accessed directly by <TT>main()</TT>.
+There is no reason to expose this member variable in this way. It is preferable to
+make it private along with the other member variables and provide a public accessor
+method, as long as you will always access the data through an instance of <TT>Cat</TT>.
+On the other hand, if you'd like to access this data directly without necessarily
+having a <TT>Cat</TT> object available, you have two options: keep it public, as
+shown in Listing 14.2, or provide a static member function, as discussed later in
+this chapter.</P>
+
+<P><A NAME="Heading5"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 14.2. Accessing
+static members without an object.</B></FONT>
+<PRE><FONT COLOR="#0066FF">1:     //Listing 14.2 static data members
+2:
+3:     #include &lt;iostream.h&gt;
+4:
+5:     class Cat
+6:     {
+7:     public:
+8:        Cat(int age):itsAge(age){HowManyCats++; }
+9:        virtual ~Cat() { HowManyCats--; }
+10:       virtual int GetAge() { return itsAge; }
+11:       virtual void SetAge(int age) { itsAge = age; }
+12:       static int HowManyCats;
+13:
+14:    private:
+15:       int itsAge;
+16:
+17:    };
+18:
+19:    int Cat::HowManyCats = 0;
+20:
+21:    void TelepathicFunction();
+22:
+23:    int main()
+24:    {
+25:       const int MaxCats = 5; int i;
+26:       Cat *CatHouse[MaxCats];
+27:       for (i = 0; i&lt;MaxCats; i++)
+28:       {
+29:          CatHouse[i] = new Cat(i);
+30:          TelepathicFunction();
+31:       }
+32:
+33:       for ( i = 0; i&lt;MaxCats; i++)
+34:       {
+35:          delete CatHouse[i];
+36:          TelepathicFunction();
+37:       }
+38:       return 0;
+39:    }
+40:
+41:    void TelepathicFunction()
+42:    {
+43:       cout &lt;&lt; &quot;There are &quot;;
+44:       cout &lt;&lt; Cat::HowManyCats &lt;&lt; &quot; cats alive!\n&quot;;
+<TT>45: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: There are 1 cats alive!
+There are 2 cats alive!
+There are 3 cats alive!
+There are 4 cats alive!
+There are 5 cats alive!
+There are 4 cats alive!
+There are 3 cats alive!
+There are 2 cats alive!
+There are 1 cats alive!
+There are 0 cats alive! 
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>Listing 14.2 is much like
+Listing 14.1 except for the addition of a new function, <TT>TelepathicFunction()</TT>.
+This function does not create a <TT>Cat</TT> object, nor does it take a <TT>Cat</TT>
+object as a parameter, yet it can access the <TT>HowManyCats</TT> member variable.
+Again, it is worth reemphasizing that this member variable is not in any particular
+object; it is in the class as a whole, and, if public, can be accessed by any function
+in the program.</P>
+<P>The alternative to making this member variable public is to make it private. If
+you do, you can access it through a member function, but then you must have an object
+of that class available. Listing 14.3 shows this approach. The alternative, static
+member functions, is discussed immediately after the analysis of Listing 14.3.</P>
+
+<P><A NAME="Heading7"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 14.3. Accessing
+static members using non-static member functions.</B></FONT>
+<PRE><FONT COLOR="#0066FF">1:     //Listing 14.3 private static data members
+2:
+3:     #include &lt;iostream.h&gt;
+4:
+5:     class Cat
+6:     {
+7:     public:
+8:        Cat(int age):itsAge(age){HowManyCats++; }
+9:        virtual ~Cat() { HowManyCats--; }
+10:       virtual int GetAge() { return itsAge; }
+11:       virtual void SetAge(int age) { itsAge = age; }
+12:       virtual int GetHowMany() { return HowManyCats; }
+13:
+14:
+15:    private:
+16:       int itsAge;
+17:       static int HowManyCats;
+18:    };
+19:
+20:    int Cat::HowManyCats = 0;
+21:
+22:    int main()
+23:    {
+24:       const int MaxCats = 5; int i;
+25:       Cat *CatHouse[MaxCats];
+26:       for (i = 0; i&lt;MaxCats; i++)
+27:          CatHouse[i] = new Cat(i);
+28:
+29:       for (i = 0; i&lt;MaxCats; i++)
+30:       {
+31:          cout &lt;&lt; &quot;There are &quot;;
+32:          cout &lt;&lt; CatHouse[i]-&gt;GetHowMany();
+33:          cout &lt;&lt; &quot; cats left!\n&quot;;
+34:          cout &lt;&lt; &quot;Deleting the one which is &quot;;
+35:          cout &lt;&lt; CatHouse[i]-&gt;GetAge()+2;
+36:          cout &lt;&lt; &quot; years old\n&quot;;
+37:          delete CatHouse[i];
+38:          CatHouse[i] = 0;
+39:       }
+40:     return 0;
+<TT>41: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: There are 5 cats left!
+Deleting the one which is 2 years old
+There are 4 cats left!
+Deleting the one which is 3 years old
+There are 3 cats left!
+Deleting the one which is 4 years old
+There are 2 cats left!
+Deleting the one which is 5 years old
+There are 1 cats left!
+Deleting the one which is 6 years old
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On line 17, the static member
+variable <TT>HowManyCats</TT> is declared to have private access. Now you cannot
+access this variable from non-member functions, such as <TT>TelepathicFunction</TT>
+from the previous listing.</P>
+<P>Even though <TT>HowManyCats</TT> is static, it is still within the scope of the
+class. Any class function, such as <TT>GetHowMany()</TT>, can access it, just as
+member functions can access any member data. However, for a function to call <TT>GetHowMany()</TT>,
+it must have an object on which to call the function.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<B>DO</B> use static member variables to share data among all instances of a class.
+	<B>DO</B> make static member variables protected or private if you wish to restrict
+	access to them. <B>DON'T </B>use static member variables to store data for one object.
+	Static member data is shared among all objects of its class. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H3 ALIGN="CENTER"><A NAME="Heading9"></A><FONT COLOR="#000077">Static Member Functions</FONT></H3>
+<P>Static member functions are like static member variables: they exist not in an
+object but in the scope of the class. Thus, they can be called without having an
+object of that class, as illustrated in Listing 14.4.</P>
+
+<P><A NAME="Heading10"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 14.4. Static
+member functions.</B></FONT>
+<PRE><FONT COLOR="#0066FF">1:     //Listing 14.4 static data members
+2:
+3:     #include &lt;iostream.h&gt;
+4:
+5:     class Cat
+6:     {
+7:     public:
+8:        Cat(int age):itsAge(age){HowManyCats++; }
+9:        virtual ~Cat() { HowManyCats--; }
+10:       virtual int GetAge() { return itsAge; }
+11:       virtual void SetAge(int age) { itsAge = age; }
+12:       static int GetHowMany() { return HowManyCats; }
+13:    private:
+14:       int itsAge;
+15:       static int HowManyCats;
+16:    };
+17:
+18:    int Cat::HowManyCats = 0;
+19:
+20:    void TelepathicFunction();
+21:
+22:    int main()
+23:    {
+24:       const int MaxCats = 5;
+25:       Cat *CatHouse[MaxCats]; int i;
+26:       for (i = 0; i&lt;MaxCats; i++)
+27:       {
+28:          CatHouse[i] = new Cat(i);
+29:          TelepathicFunction();
+30:       }
+31:
+32:       for ( i = 0; i&lt;MaxCats; i++)
+33:       {
+34:          delete CatHouse[i];
+35:          TelepathicFunction();
+36:       }
+37:       return 0;
+38:    }
+39:
+40:    void TelepathicFunction()
+41:    {
+42:       cout &lt;&lt; &quot;There are &quot; &lt;&lt; Cat::GetHowMany() &lt;&lt; &quot; cats alive!\n&quot;;
+<TT>43: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: There are 1 cats alive!
+There are 2 cats alive!
+There are 3 cats alive!
+There are 4 cats alive!
+There are 5 cats alive!
+There are 4 cats alive!
+There are 3 cats alive!
+There are 2 cats alive!
+There are 1 cats alive!
+There are 0 cats alive! 
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>The static member variable
+<TT>HowManyCats</TT> is declared to have private access on line 15 of the <TT>Cat</TT>
+declaration. The public accessor function, <TT>GetHowMany()</TT>, is declared to
+be both public and static on line 12.</P>
+<P>Since <TT>GetHowMany()</TT> is public, it can be accessed by any function, and
+since it is static there is no need to have an object of type <TT>Cat</TT> on which
+to call it. Thus, on line 42, the function <TT>TelepathicFunction()</TT> is able
+to access the public static accessor, even though it has no access to a <TT>Cat</TT>
+object. Of course, you could have called <TT>GetHowMany()</TT> on the <TT>Cat</TT>
+objects available in <TT>main()</TT>, just as with any other accessor functions.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>Static member functions do not have
+	a <TT>this</TT> pointer. Therefore, they cannot be declared <TT>const</TT>. Also,
+	because member data variables are accessed in member functions using the <TT>this</TT>
+	pointer, static member functions cannot access any non-static member variables! 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H3 ALIGN="CENTER"><A NAME="Heading12"></A><FONT COLOR="#000077">Static Member Functions</FONT></H3>
+<P>You can access static member functions by calling them on an object of the class
+just as you do any other member function, or you can call them without an object
+by fully qualifying the class and object name. Example</P>
+<PRE><FONT COLOR="#0066FF">class Cat
+{
+public:
+static int GetHowMany() { return HowManyCats; }
+private:
+static int HowManyCats;
+};
+int Cat::HowManyCats = 0;
+int main()
+{
+int howMany;
+Cat theCat;                       // define a cat
+howMany = theCat.GetHowMany();   // access through an object
+howMany = Cat::GetHowMany();     // access without an object
+}
+</FONT></PRE>
+<H3 ALIGN="CENTER"><A NAME="Heading13"></A><FONT COLOR="#000077">Pointers to Functions</FONT></H3>
+<P>Just as an array name is a constant pointer to the first element of the array,
+a function name is a constant pointer to the function. It is possible to declare
+a pointer variable that points to a function, and to invoke the function by using
+that pointer. This can be very useful; it allows you to create programs that decide
+which functions to invoke based on user input.</P>
+<P>The only tricky part about function pointers is understanding the type of the
+object being pointed to. A pointer to <TT>int</TT> points to an integer variable,
+and a pointer to a function must point to a function of the appropriate return type
+and signature.</P>
+<P>In the declaration</P>
+<PRE><FONT COLOR="#0066FF">long (* funcPtr) (int);
+</FONT></PRE>
+<P><TT>funcPtr</TT> is declared to be a pointer (note the <TT>*</TT> in front of
+the name) that points to a function that takes an integer parameter and returns a
+<TT>long</TT>. The parentheses around <TT>* funcPtr</TT> are necessary because the
+parentheses around <TT>int</TT> bind more tightly, that is they have higher precedence
+than the indirection operator (<TT>*</TT>). Without the first parentheses this would
+declare a function that takes an integer and returns a pointer to a <TT>long</TT>.
+(Remember that spaces are meaningless here.)</P>
+<P>Examine these two declarations:</P>
+<PRE><FONT COLOR="#0066FF">long * Function (int);
+long (* funcPtr) (int);
+</FONT></PRE>
+<P>The first, <TT>Function</TT> <TT>()</TT>, is a function taking an integer and
+returning a pointer to a variable of type <TT>long</TT>. The second, <TT>funcPtr</TT>,
+is a pointer to a function taking an integer and returning a variable of type <TT>long</TT>.</P>
+<P>The declaration of a function pointer will always include the return type and
+the parentheses indicating the type of the parameters, if any. Listing 14.5 illustrates
+the declaration and use of function pointers.</P>
+
+<P><A NAME="Heading14"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 14.5. Pointers
+to functions.</B></FONT>
+<PRE><FONT COLOR="#0066FF">1:     // Listing 14.5 Using function pointers
+2:
+3:     #include &lt;iostream.h&gt;
+4:
+5:     void Square (int&amp;,int&amp;);
+6:     void Cube (int&amp;, int&amp;);
+7:     void Swap (int&amp;, int &amp;);
+8:     void GetVals(int&amp;, int&amp;);
+9:     void PrintVals(int, int);
+10:    enum BOOL { FALSE, TRUE };
+11:
+12:    int main()
+13:    {
+14:       void (* pFunc) (int &amp;, int &amp;);
+15:       BOOL fQuit = FALSE;
+16:
+17:       int valOne=1, valTwo=2;
+18:       int choice;
+19:       while (fQuit == FALSE)
+20:       {
+21:          cout &lt;&lt; &quot;(0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: &quot;;
+22:          cin &gt;&gt; choice;
+23:          switch (choice)
+24:          {
+25:             case 1: pFunc = GetVals; break;
+26:             case 2: pFunc = Square; break;
+27:             case 3: pFunc = Cube; break;
+28:             case 4: pFunc = Swap; break;
+29:             default : fQuit = TRUE; break;
+30:          }
+31:
+32:          if (fQuit)
+33:             break;
+34:
+35:          PrintVals(valOne, valTwo);
+36:          pFunc(valOne, valTwo);
+37:          PrintVals(valOne, valTwo);
+38:       }
+39:     return 0;
+40:    }
+41:
+42:    void PrintVals(int x, int y)
+43:    {
+44:       cout &lt;&lt; &quot;x: &quot; &lt;&lt; x &lt;&lt; &quot; y: &quot; &lt;&lt; y &lt;&lt; endl;
+45:    }
+46:
+47:    void Square (int &amp; rX, int &amp; rY)
+48:    {
+49:       rX *= rX;
+50:       rY *= rY;
+51:    }
+52: 
+53:    void Cube (int &amp; rX, int &amp; rY)
+54:    {
+55:       int tmp;
+56: 
+57:       tmp = rX;
+58:       rX *= rX;
+59:       rX = rX * tmp;
+60:
+61:       tmp = rY;
+62:       rY *= rY;
+63:       rY = rY * tmp;
+64:    }
+65:
+66:    void Swap(int &amp; rX, int &amp; rY)
+67:    {
+68:       int temp;
+69:       temp = rX;
+70:       rX = rY;
+71:       rY = temp;
+72:    }
+73:
+74:    void GetVals (int &amp; rValOne, int &amp; rValTwo)
+75:    {
+76:       cout &lt;&lt; &quot;New value for ValOne: &quot;;
+77:       cin &gt;&gt; rValOne;
+78:       cout &lt;&lt; &quot;New value for ValTwo: &quot;;
+79:       cin &gt;&gt; rValTwo;
+<TT>80: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: (0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: 1
+x: 1 y: 2
+New value for ValOne: 2
+New value for ValTwo: 3
+x: 2 y: 3
+(0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: 3
+x: 2 y: 3
+x: 8 y: 27
+(0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: 2
+x: 8 y: 27
+x: 64 y: 729
+(0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: 4
+x: 64 y: 729
+x: 729 y: 64
+(0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: 0
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On lines 5-8, four functions
+are declared, each with the same return type and signature, returning <TT>void</TT>
+and taking two references to integers.</P>
+<P>On line 14, <TT>pFunc</TT> is declared to be a pointer to a function that returns
+<TT>void</TT> and takes two integer reference parameters. Any of the previous functions
+can be pointed to by <TT>pFunc</TT>. The user is repeatedly offered the choice of
+which functions to invoke, and <TT>pFunc</TT> is assigned accordingly. On lines 35-36,
+the current value of the two integers is printed, the currently assigned function
+is invoked, and then the values are printed again.
+<H3 ALIGN="CENTER"><A NAME="Heading16"></A><FONT COLOR="#000077">Pointer to Function</FONT></H3>
+<P>A pointer to function is invoked exactly like the functions it points to, except
+that the function pointer name is used instead of the function name. Assign a pointer
+to function to a specific function by assigning to the function name without the
+parentheses. The function name is a constant pointer to the function itself. Use
+the pointer to function just as you would the function name. The pointer to function
+must agree in return value and signature with the function to which you assign it.
+Example</P>
+<PRE><FONT COLOR="#0066FF">long (*pFuncOne) (int, int);
+long SomeFunction (int, int);
+pFuncOne = SomeFunction;
+pFuncOne(5,7); 
+</FONT></PRE>
+<H4 ALIGN="CENTER"><A NAME="Heading17"></A><FONT COLOR="#000077">Why Use Function
+Pointers?</FONT></H4>
+<P>You certainly could write the program in Listing 14.5 without function pointers,
+but the use of these pointers makes the intent and use of the program explicit: pick
+a function from a list, and then invoke it.</P>
+<P>Listing 14.6 uses the function prototypes and definitions from Listing 14.5, but
+the body of the program does not use a function pointer. Examine the differences
+between these two listings.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>To compile this program, place lines
+	41-80 from Listing 14.5 immediately after line 56. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P><A NAME="Heading18"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 14.6. Rewriting
+Listing 14.5 without the pointer to function.</B></FONT>
+<PRE><FONT COLOR="#0066FF">1:     // Listing 14.6 Without function pointers
+2:
+3:     #include &lt;iostream.h&gt;
+4:
+5:     void Square (int&amp;,int&amp;);
+6:     void Cube (int&amp;, int&amp;);
+7:     void Swap (int&amp;, int &amp;);
+8:     void GetVals(int&amp;, int&amp;);
+9:     void PrintVals(int, int);
+10:    enum BOOL { FALSE, TRUE };
+11:
+12:    int main()
+13:    {
+14:       BOOL fQuit = FALSE;
+15:       int valOne=1, valTwo=2;
+16:       int choice;
+17:       while (fQuit == FALSE)
+18:       {
+19:          cout &lt;&lt; &quot;(0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: &quot;;
+20:          cin &gt;&gt; choice;
+21:          switch (choice)
+22:          {
+23:             case 1:
+24:                PrintVals(valOne, valTwo);
+25:                GetVals(valOne, valTwo);
+26:                PrintVals(valOne, valTwo);
+27:                break;
+28:
+29:             case 2:
+30:                PrintVals(valOne, valTwo);
+31:                Square(valOne,valTwo);
+32:                PrintVals(valOne, valTwo);
+33:                break;
+34:
+35:             case 3:
+36:                PrintVals(valOne, valTwo);
+37:                Cube(valOne, valTwo);
+38:                PrintVals(valOne, valTwo);
+39:                break;
+40:
+41:             case 4:
+42:                PrintVals(valOne, valTwo);
+43:                Swap(valOne, valTwo);
+44:                PrintVals(valOne, valTwo);
+45:                break;
+46:
+47:                default :
+48:                fQuit = TRUE;
+49:                break;
+50:          }
+51: 
+52:          if (fQuit)
+53:             break;
+54:       }
+55:     return 0;
+<TT>56: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: (0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: 1
+x: 1 y: 2
+New value for ValOne: 2
+New value for ValTwo: 3
+(0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: 3
+x: 2 y: 3
+x: 8 y: 27
+(0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: 2
+x: 8 y: 27
+x: 64 y: 729
+(0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: 4
+x: 64 y: 729
+x: 729 y: 64
+(0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: 0
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>The implementation of the
+functions has been left out, because it is identical to that provided in Listing
+14.5. As you can see, the output is unchanged, but the body of the program has expanded
+from 27 lines to 38. The calls to <TT>PrintVals()</TT> must be repeated for each
+case.</P>
+<P>It was tempting to put <TT>PrintVals()</TT> at the top of the <TT>while</TT> loop
+and again at the bottom, rather than in each case statement. This would have called
+<TT>PrintVals()</TT> even for the exit case, however, and that was not part of the
+specification.</P>
+<P>Setting aside the increased size of the code and the repeated calls to do the
+same thing, the overall clarity is somewhat diminished. This is an artificial case,
+however, created to show how pointers to functions work. In real-world conditions
+the advantages are even clearer: pointers to functions can eliminate duplicate code,
+clarify your program, and allow you to make tables of functions to call based on
+runtime conditions.
+<H3 ALIGN="CENTER"><A NAME="Heading20"></A><FONT COLOR="#000077">Shorthand Invocation</FONT></H3>
+<P>The pointer to function does not need to be dereferenced, though you are free
+to do so. Therefore, if <TT>pFunc</TT> is a pointer to a function taking an integer
+and returning a variable of type <TT>long</TT>, and you assign <TT>pFunc</TT> to
+a matching function, you can invoke that function with either</P>
+<PRE><FONT COLOR="#0066FF">pFunc(x);
+</FONT></PRE>
+<P>or</P>
+<PRE><FONT COLOR="#0066FF">(*pFunc)(x);
+</FONT></PRE>
+<P>The two forms are identical. The former is just a shorthand version of the latter.
+<H4 ALIGN="CENTER"><A NAME="Heading21"></A><FONT COLOR="#000077">Arrays of Pointers
+to Functions</FONT></H4>
+<P>Just as you can declare an array of pointers to integers, you can declare an array
+of pointers to functions returning a specific value type and with a specific signature.
+Listing 14.7 again rewrites Listing 14.5, this time using an array to invoke all
+the choices at once.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>To compile this program, place lines
+	41-80 of Listing 14.5 immediately after line 39. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P><A NAME="Heading22"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 14.7. Demonstrates
+use of an array of pointers to functions.</B></FONT>
+<PRE><FONT COLOR="#0066FF">1:     // Listing 14.7 demonstrates use of an array of pointers to functions
+2:
+3:     #include &lt;iostream.h&gt;
+4:
+5:     void Square (int&amp;,int&amp;);
+6:     void Cube (int&amp;, int&amp;);
+7:     void Swap (int&amp;, int &amp;);
+8:     void GetVals(int&amp;, int&amp;);
+9:     void PrintVals(int, int);
+10:    enum BOOL { FALSE, TRUE };
+11:
+12:    int main()
+13:    {
+14:       int valOne=1, valTwo=2;
+15:       int choice, i;
+16:       const MaxArray = 5;
+17:       void (*pFuncArray[MaxArray])(int&amp;, int&amp;);
+18:
+19:       for (i=0;i&lt;MaxArray;i++)
+20:       {
+21:          cout &lt;&lt; &quot;(1)Change Values (2)Square (3)Cube (4)Swap: &quot;;
+22:          cin &gt;&gt; choice;
+23:          switch (choice)
+24:          {
+25:             case 1:pFuncArray[i] = GetVals; break;
+26:             case 2:pFuncArray[i] = Square; break;
+27:             case 3:pFuncArray[i] = Cube; break;
+28:             case 4:pFuncArray[i] = Swap; break;
+29:             default:pFuncArray[i] = 0;
+30:          }
+31:       }
+32:
+33:       for (i=0;i&lt;MaxArray; i++)
+34:       {
+35:          pFuncArray[i](valOne,valTwo);
+36:          PrintVals(valOne,valTwo);
+37:       }
+38:     return 0;
+<TT>39: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: (1)Change Values (2)Square (3)Cube (4)Swap: 1
+(1)Change Values (2)Square (3)Cube (4)Swap: 2
+(1)Change Values (2)Square (3)Cube (4)Swap: 3
+(1)Change Values (2)Square (3)Cube (4)Swap: 4
+(1)Change Values (2)Square (3)Cube (4)Swap: 2
+New Value for ValOne: 2
+New Value for ValTwo: 3
+x: 2 y: 3
+x: 4 y: 9
+x: 64 y: 729
+x: 729 y: 64
+x: 7153 y:4096
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>Once again the implementation
+of the functions has been left out to save space, but it is the same as in Listing
+14.5. On line 17, the array <TT>pFuncArray</TT> is de- clared to be an array of 5
+pointers to functions that return <TT>void</TT> and that take two integer references.</P>
+<P>On lines 19-31, the user is asked to pick the functions to invoke, and each member
+of the array is assigned the address of the appropriate function. On lines 33-37,
+each function is invoked in turn. The result is printed after each invocation.
+<H4 ALIGN="CENTER"><A NAME="Heading24"></A><FONT COLOR="#000077">Passing Pointers
+to Functions to Other Functions</FONT></H4>
+<P>The pointers to functions (and arrays of pointers to functions, for that matter)
+can be passed to other functions, which may take action and then call the right function
+using the pointer.</P>
+<P>For example, you might improve Listing 14.5 by passing the chosen function pointer
+to another function (outside of <TT>main()</TT>), which prints the values, invokes
+the function, and then prints the values again. Listing 14.8 illustrates this variation.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>WARNING:</B></FONT><B> </B>To compile this program, place
+	lines 46-80 of Listing 14.5 immediately after line 45. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P><A NAME="Heading25"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 14.8. Passing
+pointers to functions as function arguments.</B></FONT>
+<PRE><FONT COLOR="#0066FF">1:     // Listing 14.8 Without function pointers
+2:
+3:     #include &lt;iostream.h&gt;
+4:
+5:     void Square (int&amp;,int&amp;);
+6:     void Cube (int&amp;, int&amp;);
+7:     void Swap (int&amp;, int &amp;);
+8:     void GetVals(int&amp;, int&amp;);
+9:     void PrintVals(void (*)(int&amp;, int&amp;),int&amp;, int&amp;);
+10:    enum BOOL { FALSE, TRUE };
+11:
+12:    int main()
+13:    {
+14:       int valOne=1, valTwo=2;
+15:       int choice;
+16:       BOOL fQuit = FALSE;
+17:
+18:       void (*pFunc)(int&amp;, int&amp;);
+19:
+20:       while (fQuit == FALSE)
+21:       {
+22:          cout &lt;&lt; &quot;(0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: &quot;;
+23:          cin &gt;&gt; choice;
+24:          switch (choice)
+25:          {
+26:             case 1:pFunc = GetVals; break;
+27:             case 2:pFunc = Square; break;
+28:             case 3:pFunc = Cube; break;
+29:             case 4:pFunc = Swap; break;
+30:             default:fQuit = TRUE; break;
+31:          }
+32:          if (fQuit == TRUE)
+33:             break;
+34:          PrintVals ( pFunc, valOne, valTwo);
+35:       }
+36:
+37:     return 0;
+38:    }
+39:
+40:    void PrintVals( void (*pFunc)(int&amp;, int&amp;),int&amp; x, int&amp; y)
+41:    {
+42:       cout &lt;&lt; &quot;x: &quot; &lt;&lt; x &lt;&lt; &quot; y: &quot; &lt;&lt; y &lt;&lt; endl;
+43:       pFunc(x,y);
+44:       cout &lt;&lt; &quot;x: &quot; &lt;&lt; x &lt;&lt; &quot; y: &quot; &lt;&lt; y &lt;&lt; endl;
+<TT>45: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: (0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: 1
+x: 1 y: 2
+New value for ValOne: 2
+New value for ValTwo: 3
+x: 2 y: 3
+(0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: 3
+x: 2 y: 3
+x: 8 y: 27
+(0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: 2
+x: 8 y: 27
+x: 64 y: 729
+(0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: 4
+x: 64 y: 729
+x: 729 y:64
+(0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: 0
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On line 18, <TT>pFunc</TT>
+is declared to be a pointer to a function returning <TT>void</TT> and taking two
+parameters, both integer references. On line 9, <TT>PrintVals</TT> is declared to
+be a function taking three parameters. The first is a pointer to a function that
+returns <TT>void</TT> but takes two integer reference parameters, and the second
+and third arguments to <TT>PrintVals</TT> are integer references. The user is again
+prompted for which functions to call, and then on line 34 <TT>PrintVals</TT> is called.</P>
+<P>Go find a C++ programmer and ask him what this declaration means:</P>
+<PRE><FONT COLOR="#0066FF">void PrintVals(void (*)(int&amp;, int&amp;),int&amp;, int&amp;);
+</FONT></PRE>
+<P>This is the kind of declaration that you use infrequently and probably look up
+in the book each time you need it, but it will save your program on those rare occasions
+when it is exactly the required construct.
+<H4 ALIGN="CENTER"><A NAME="Heading27"></A><FONT COLOR="#000077">Using typedef with
+Pointers to Functions</FONT></H4>
+<P>The construct <TT>void (*)(int&amp;, int&amp;)</TT> is cumbersome, at best. You
+can use <TT>typedef</TT> to simplify this, by declaring a type <TT>VPF</TT> as a
+pointer to a function returning void and taking two integer references. Listing 14.9
+rewrites Listing 14.8 using this <TT>typedef</TT> statement.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE: </B></FONT>To compile this program, place lines 46-80
+	of Listing 14.5 immediately after line 45. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P><A NAME="Heading28"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 14.9. Using
+typedef to make pointers to functions more readable.</B></FONT>
+<PRE><FONT COLOR="#0066FF">1:   // Listing 14.9. Using typedef to make pointers to functions more _readable
+2:
+3:   #include &lt;iostream.h&gt;
+4:
+5:   void Square (int&amp;,int&amp;);
+6:   void Cube (int&amp;, int&amp;);
+7:   void Swap (int&amp;, int &amp;);
+8:   void GetVals(int&amp;, int&amp;);
+9:   typedef  void (*VPF) (int&amp;, int&amp;) ;
+10:   void PrintVals(VPF,int&amp;, int&amp;);
+11:   enum BOOL { FALSE, TRUE };
+12:
+13:   int main()
+14:   {
+15:   int valOne=1, valTwo=2;
+16:   int choice;
+17:   BOOL fQuit = FALSE;
+18:
+19:   VPF pFunc;
+20:
+21:   while (fQuit == FALSE)
+22:   {
+23:   cout &lt;&lt; &quot;(0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: &quot;;
+24:   cin &gt;&gt; choice;
+25:   switch (choice)
+26:   {
+27:   case 1:pFunc = GetVals; break;
+28:   case 2:pFunc = Square; break;
+29:   case 3:pFunc = Cube; break;
+30:   case 4:pFunc = Swap; break;
+31:   default:fQuit = TRUE; break;
+32:   }
+33:   if (fQuit == TRUE)
+34:   break;
+35:   PrintVals ( pFunc, valOne, valTwo);
+36:   }
+37:   return 0;
+38:   }
+39:
+40:   void PrintVals( VPF pFunc,int&amp; x, int&amp; y)
+41:   {
+42:   cout &lt;&lt; &quot;x: &quot; &lt;&lt; x &lt;&lt; &quot; y: &quot; &lt;&lt; y &lt;&lt; endl;
+43:   pFunc(x,y);
+44:   cout &lt;&lt; &quot;x: &quot; &lt;&lt; x &lt;&lt; &quot; y: &quot; &lt;&lt; y &lt;&lt; endl;
+<TT>45: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: (0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: 1
+x: 1 y: 2
+New value for ValOne: 2
+New value for ValTwo: 3
+x: 2 y: 3
+(0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: 3
+x: 2 y: 3
+x: 8 y: 27
+(0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: 2
+x: 8 y: 27
+x: 64 y: 729
+(0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: 4
+x: 64 y: 729
+x: 729 y: 64
+(0)Quit (1)Change Values (2)Square (3)Cube (4)Swap: 0
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On line 9, <TT>typedef</TT>
+is used to declare <TT>VPF</TT> to be of the type &quot;function that returns <TT>void</TT>
+and takes two parameters, both integer references.&quot;</P>
+<P>On line 10, the function <TT>PrintVals()</TT> is declared to take three parameters:
+a <TT>VPF</TT> and two integer references. On line 19, <TT>pFunc</TT> is now declared
+to be of type <TT>VPF</TT>.</P>
+<P>Once the type <TT>VPF</TT> is defined, all subsequent uses to declare <TT>pFunc</TT>
+and <TT>PrintVals()</TT> are much cleaner. As you can see, the output is identical.
+<H3 ALIGN="CENTER"><A NAME="Heading30"></A><FONT COLOR="#000077">Pointers to Member
+Functions</FONT></H3>
+<P>Up until this point, all of the function pointers you've created have been for
+general, non-class functions. It is also possible to create pointers to functions
+that are members of classes.</P>
+<P>To create a pointer to member function, use the same syntax as with a pointer
+to function, but include the class name and the scoping operator (<TT>::</TT>). Thus,
+if <TT>pFunc</TT> points to a member function of the class <TT>Shape</TT>, which
+takes two integers and returns <TT>void</TT>, the declaration for <TT>pFunc</TT>
+is the following:</P>
+<PRE><FONT COLOR="#0066FF">void (Shape::*pFunc) (int, int);
+</FONT></PRE>
+<P>Pointers to member functions are used in exactly the same way as pointers to functions,
+except that they require an object of the correct class on which to invoke them.
+Listing 14.10 illustrates the use of pointers to member functions.</P>
+
+<P><A NAME="Heading31"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 14.10. Pointers
+to member functions.</B></FONT>
+<PRE><FONT COLOR="#0066FF">1:      //Listing 14.10 Pointers to member functions using virtual methods
+2:
+3:      #include &lt;iostream.h&gt;
+4:
+5:     enum BOOL {FALSE, TRUE};
+6:     class Mammal
+7:     {
+8:     public:
+9:        Mammal():itsAge(1) {  }
+10:       ~Mammal() { }
+11:       virtual void Speak() const = 0;
+12:       virtual void Move() const = 0;
+13:    protected:
+14:       int itsAge;
+15:    };
+16:
+17:    class Dog : public Mammal
+18:    {
+19:    public:
+20:       void Speak()const { cout &lt;&lt; &quot;Woof!\n&quot;; }
+21:       void Move() const { cout &lt;&lt; &quot;Walking to heel...\n&quot;; }
+22:    };
+23:
+24:
+25:    class Cat : public Mammal
+26:    {
+27:    public:
+28:       void Speak()const { cout &lt;&lt; &quot;Meow!\n&quot;; }
+29:       void Move() const { cout &lt;&lt; &quot;slinking...\n&quot;; }
+30:    };
+31:
+32:
+33:    class Horse : public Mammal
+34:    {
+35:    public:
+36:       void Speak()const { cout &lt;&lt; &quot;Winnie!\n&quot;; }
+37:       void Move() const { cout &lt;&lt; &quot;Galloping...\n&quot;; }
+38:    };
+39:
+40: 
+41:    int main()
+42:    {
+43:       void (Mammal::*pFunc)() const =0;
+44:       Mammal* ptr =0;
+45:       int Animal;
+46:       int Method;
+47:       BOOL fQuit = FALSE;
+48:
+49:       while (fQuit == FALSE)
+50:       {
+51:          cout &lt;&lt; &quot;(0)Quit (1)dog (2)cat (3)horse: &quot;;
+52:          cin &gt;&gt; Animal;
+53:          switch (Animal)
+54:          {
+55:             case 1: ptr = new Dog; break;
+56:             case 2: ptr = new Cat; break;
+57:             case 3: ptr = new Horse; break;
+58:             default: fQuit = TRUE; break;
+59:          }
+60:          if (fQuit)
+61:             break;
+62:
+63:          cout &lt;&lt; &quot;(1)Speak  (2)Move: &quot;;
+64:          cin &gt;&gt; Method;
+65:          switch (Method)
+66:          {
+67:             case 1: pFunc = Mammal::Speak; break;
+68:             default: pFunc = Mammal::Move; break;
+69:          }
+70:
+71:          (ptr-&gt;*pFunc)();
+72:          delete ptr;
+73:       }
+74:     return 0;
+<TT>75: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: (0)Quit (1)dog (2)cat (3)horse: 1
+(1)Speak (2)Move: 1
+Woof!
+(0)Quit (1)dog (2)cat (3)horse: 2
+(1)Speak (2)Move: 1
+Meow!
+(0)Quit (1)dog (2)cat (3)horse: 3
+(1)Speak (2)Move: 2
+Galloping
+(0)Quit (1)dog (2)cat (3)horse: 0
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On lines 6-15, the abstract
+data type <TT>Mammal</TT> is declared with two pure virtual methods, <TT>Speak()</TT>
+and <TT>Move()</TT>. <TT>Mammal</TT> is subclassed into <TT>Dog</TT>, <TT>Cat</TT>,
+and <TT>Horse</TT>, each of which overrides <TT>Speak()</TT> and <TT>Move()</TT>.</P>
+<P>The driver program in <TT>main()</TT> asks the user to choose which type of animal
+to create, and then a new subclass of <TT>Animal</TT> is created on the free store
+and assigned to <TT>ptr</TT> on lines 55-57.</P>
+<P>The user is then prompted for which method to invoke, and that method is assigned
+to the pointer <TT>pFunc</TT>. On line 71, the method chosen is invoked by the object
+created, by using the pointer <TT>ptr</TT> to access the object and <TT>pFunc</TT>
+to access the function.</P>
+<P>Finally, on line 72, <TT>delete</TT> is called on the pointer <TT>ptr</TT> to
+return the memory set aside for the object to the free store. Note that there is
+no reason to call <TT>delete</TT> on <TT>pFunc</TT> because this is a pointer to
+code, not to an object on the free store. In fact, attempting to do so will generate
+a compile-time error.
+<H4 ALIGN="CENTER"><A NAME="Heading33"></A><FONT COLOR="#000077">Arrays of Pointers
+to Member Functions</FONT></H4>
+<P>As with pointers to functions, pointers to member functions can be stored in an
+array. The array can be initialized with the addresses of various member functions,
+and these can be invoked by offsets into the array. Listing 14.11 illustrates this
+technique.</P>
+
+<P><A NAME="Heading34"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 14.11. Array
+of pointers to member functions.</B></FONT>
+<PRE><FONT COLOR="#0066FF">1:      //Listing 14.11 Array of pointers to member functions
+2:
+3:      #include &lt;iostream.h&gt;
+4:
+5:     enum BOOL {FALSE, TRUE};
+6:
+7:     class Dog
+8:     {
+9:     public:
+10:       void Speak()const { cout &lt;&lt; &quot;Woof!\n&quot;; }
+11:       void Move() const { cout &lt;&lt; &quot;Walking to heel...\n&quot;; }
+12:       void Eat() const { cout &lt;&lt; &quot;Gobbling food...\n&quot;; }
+13:       void Growl() const { cout &lt;&lt; &quot;Grrrrr\n&quot;; }
+14:       void Whimper() const { cout &lt;&lt; &quot;Whining noises...\n&quot;; }
+15:       void RollOver() const { cout &lt;&lt; &quot;Rolling over...\n&quot;; }
+16:       void PlayDead() const { cout &lt;&lt; &quot;Is this the end of Little Caeser?\n&quot;; }
+17:    };
+18:
+19:    typedef void (Dog::*PDF)()const ;
+20:    int main()
+21:    {
+22:       const int MaxFuncs = 7;
+23:       PDF DogFunctions[MaxFuncs] =
+24:          {  Dog::Speak,
+25:             Dog::Move,
+26:             Dog::Eat,
+27:             Dog::Growl,
+28:             Dog::Whimper,
+29:             Dog::RollOver,
+30:             Dog::PlayDead };
+31:
+32:       Dog* pDog =0;
+33:       int Method;
+34:       BOOL fQuit = FALSE;
+35: 
+36:       while (!fQuit)
+37:       {
+38:          cout &lt;&lt;    &quot;(0)Quit (1)Speak (2)Move (3)Eat (4)Growl&quot;;
+39:          cout &lt;&lt; &quot; (5)Whimper (6)Roll Over (7)Play Dead: &quot;;
+40:          cin &gt;&gt; Method;
+41:          if (Method == 0)
+42:          {
+43:             fQuit = TRUE;
+44:             break;
+45:          }
+46:          else
+47:          {
+48:             pDog = new Dog;
+49:             (pDog-&gt;*DogFunctions[Method-1])();
+50:             delete pDog;
+51:          }
+52:       }
+53:     return 0;
+<TT>54: }</TT></FONT>
+<FONT COLOR="#0066FF">
+ Output: (0)Quit (1)Speak (2)Move (3)Eat (4)Growl (5)Whimper (6)Roll Over (7)Play Dead: 1
+Woof!
+ (0)Quit (1)Speak (2)Move (3)Eat (4)Growl (5)Whimper (6)Roll Over (7)Play Dead: 4
+Grrr
+ (0)Quit (1)Speak (2)Move (3)Eat (4)Growl (5)Whimper (6)Roll Over (7)Play Dead: 7
+Is this the end of Little Caeser?
+ (0)Quit (1)Speak (2)Move (3)Eat (4)Growl (5)Whimper (6)Roll Over (7)Play Dead: 0
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis: </B></FONT>On lines 7-17, the class <TT>Dog</TT>
+is created, with 7 member functions all sharing the same return type and signature.
+On line 19, a <TT>typedef</TT> declares <TT>PDF</TT> to be a pointer to a member
+function of <TT>Dog</TT> that takes no parameters and returns no values, and that
+is <TT>const</TT>: the signature of the 7 member functions of <TT>Dog</TT>.</P>
+<P>On lines 23-30, the array <TT>DogFunctions</TT> is declared to hold 7 such member
+functions, and it is initialized with the addresses of these functions.</P>
+<P>On lines 38 and 39, the user is prompted to pick a method. Unless they pick <TT>Quit</TT>,
+a new <TT>Dog</TT> is created on the heap, and then the correct method is invoked
+on the array on line 49. Here's another good line to show to the hotshot C++ programmers
+in your company; ask them what this does:</P>
+<PRE><FONT COLOR="#0066FF">(pDog-&gt;*DogFunctions[Method-1])();
+</FONT></PRE>
+<P>Once again, this is a bit esoteric, but when you need a table built from member
+functions, it can make your program far easier to read and understand.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<B>DO</B> invoke pointers to member functions on a specific object of a class.<B>
+	DO </B>use <TT>typedef</TT> to make pointer to member function declarations easier
+	to read. <B>DON'T </B>use pointer to member functions when there are simpler solutions.
+	
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H3 ALIGN="CENTER"><A NAME="Heading36"></A><FONT COLOR="#000077">Summary</FONT></H3>
+<P>Today you learned how to create static member variables in your class. Each class,
+rather than each object, has one instance of the static member variable. It is possible
+to access this member variable without an object of the class type by fully qualifying
+the name, assuming you've declared the static member to have public access.</P>
+<P>Static member variables can be used as counters across instances of the class.
+Because they are not part of the object, the declaration of static member variables
+does not allocate memory, and static member variables must be defined and initialized
+outside the declaration of the class.</P>
+<P>Static member functions are part of the class in the same way that static member
+variables are. They can be accessed without a particular object of the class, and
+can be used to access static member data. Static member functions cannot be used
+to access non-static member data because they do not have a this pointer.</P>
+<P>Because static member functions do not have a <TT>this</TT> pointer, they also
+cannot be made <TT>const</TT>. <TT>const</TT> in a member function indicates that
+the <TT>this</TT> pointer is <TT>const</TT>.</P>
+<P>You also learned how to declare and use pointers to functions and pointers to
+member functions. You saw how to create arrays of these pointers and how to pass
+them to functions.</P>
+<P>Pointers to functions and pointers to member functions can be used to create tables
+of functions that can be selected from at runtime. This can give your program flexibility
+that is not easily achieved without these pointers.
+<H3 ALIGN="CENTER"><A NAME="Heading37"></A><FONT COLOR="#000077">Q&amp;A</FONT></H3>
+
+<DL>
+	<DD><B>Q. Why use static data when you can use global data?<BR>
+	</B><BR>
+	<B>A</B>. Static data is scoped to the class. In this manner, static data are available
+	only through an object of the class, through an explicit call using the class name
+	if they are public, or by using a static member function. Static data are typed to
+	the class type, however, and the restricted access and strong typing makes static
+	data safer than global data.<BR>
+	<BR>
+	<B>Q. Why use static member functions when you can use global functions?<BR>
+	</B><BR>
+	<B>A.</B> Static member functions are scoped to the class, and can be called only
+	by using an object of the class or an explicit full specification (such as <TT>ClassName::FunctionName()</TT>).<BR>
+	<BR>
+	<B>Q. Is it common to use many pointers to functions and pointers to member functions?<BR>
+	</B><BR>
+	<B>A.</B> No, these have their special uses, but are not common constructs. Many
+	complex and powerful programs have neither.
+</DL>
+
+<H3 ALIGN="CENTER"><A NAME="Heading38"></A><FONT COLOR="#000077">Workshop</FONT></H3>
+<P>The Workshop contains quiz questions to help solidify your understanding of the
+material covered and exercises to provide you with experience in using what you've
+learned. Try to answer the quiz and exercise questions before checking the answers
+in Appendix D, and make sure you understand the answers before going to the next
+chapter.
+<H4 ALIGN="CENTER"><A NAME="Heading39"></A><FONT COLOR="#000077">Quiz</FONT></H4>
+
+<DL>
+	<DD><B>1.</B> Can static member variables be private?<BR>
+	<B><BR>
+	2.</B> Show the declaration for a static member variable.<BR>
+	<B><BR>
+	3.</B> Show the declaration for a static function pointer.<BR>
+	<B><BR>
+	4.</B> Show the declaration for a pointer to function returning <TT>long</TT> and
+	taking an integer parameter.<BR>
+	<B><BR>
+	5.</B> Modify the pointer in Question 4 so it's a pointer to member function of class
+	<TT>Car</TT>.<BR>
+	<B><BR>
+	6.</B> Show the declaration for an array of 10 pointers as defined in Question 5.
+</DL>
+
+<H4 ALIGN="CENTER"><A NAME="Heading40"></A><FONT COLOR="#000077">Exercises</FONT></H4>
+
+<DL>
+	<DD><B>1.</B> Write a short program declaring a class with one member variable and
+	one static member variable. Have the constructor initialize the member variable and
+	increment the static member variable. Have the destructor decrement the member variable.<BR>
+	<B><BR>
+	2.</B> Using the program from Exercise 1, write a short driver program that makes
+	three objects and then displays their member variables and the static member variable.
+	Then <BR>
+	destroy each object and show the effect on the static member variable.<BR>
+	<B><BR>
+	3.</B> Modify the program from Exercise 2 to use a static member function to access
+	the static member variable. Make the static member variable private.<BR>
+	<B><BR>
+	4.</B> Write a pointer to member function to access the non-static member data in
+	the program in Exercise 3, and use that pointer to print the value of that data.<BR>
+	<B><BR>
+	5.</B> Add two more member variables to the class from the previous questions. Add
+	accessor functions that get the value of these values, and give all the member functions
+	the same return values and signatures. Use the pointer to member function to access
+	these functions.
+</DL>
+
+<P ALIGN="CENTER"><A HREF="ch13.htm"><IMG SRC="../buttons/BLANPREV.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch14rv2.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="#heading1"><IMG SRC="../buttons/BLANTOP.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A>
+
+
+</BODY>
+
+</HTML>

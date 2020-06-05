@@ -1,0 +1,1142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+<!-- This document was created from RTF source by rtftohtml version 3.0.1 -->
+
+	<META NAME="GENERATOR" Content="Symantec Visual Page 1.0">
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+	<TITLE>Teach Yourself C++ in 21 Days</TITLE>
+</HEAD>
+
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF">
+
+<H1 ALIGN="CENTER"><A HREF="ch02.htm"><IMG SRC="../buttons/BLANPREV.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch04.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A></H1>
+<H1></H1>
+
+<UL>
+	<LI><A HREF="#Heading1">Day 3</A>
+	<UL>
+		<LI><A HREF="#Heading2">Variables and Constants</A>
+		<UL>
+			<LI><A HREF="#Heading3">What Is a Variable?</A>
+			<UL>
+				<LI><A HREF="#Heading4">Figure 3.1.</A>
+			</UL>
+			<LI><A HREF="#Heading5">Setting Aside Memory</A>
+			<UL>
+				<LI><A HREF="#Heading6">Size of Integers</A>
+			</UL>
+			<LI><A HREF="#Heading7">Listing 3.1. Determining the size of variable types</A>
+			<LI><A HREF="#Heading8">on your computer.</A>
+			<UL>
+				<LI><A HREF="#Heading9">signed and unsigned</A>
+				<LI><A HREF="#Heading10">Fundamental Variable Types</A>
+			</UL>
+			<LI><A HREF="#Heading11">Defining a Variable</A>
+			<UL>
+				<LI><A HREF="#Heading12">Case Sensitivity</A>
+				<LI><A HREF="#Heading13">Keywords</A>
+			</UL>
+			<LI><A HREF="#Heading14">Creating More Than One Variable at a Time</A>
+			<LI><A HREF="#Heading16">Assigning Values to Your Variables</A>
+			<LI><A HREF="#Heading17">Listing 3.2. A demonstration of the use of variables</A><A
+			HREF="#Heading18">.</A>
+			<LI><A HREF="#Heading19">typedef</A>
+			<LI><A HREF="#Heading20">Listing 3.3. A demonstration of typedef</A><A HREF="#Heading21">.</A>
+			<LI><A HREF="#Heading22">When to Use short and When to Use long</A>
+			<UL>
+				<LI><A HREF="#Heading23">Wrapping Around an unsigned Integer</A>
+			</UL>
+			<LI><A HREF="#Heading24">Listing 3.4.</A>
+			<LI><A HREF="#Heading25">A demonstration of putting too large a value in an unsigned
+			integer.</A>
+			<UL>
+				<LI><A HREF="#Heading26">Wrapping Around a signed Integer</A>
+			</UL>
+			<LI><A HREF="#Heading27">Listing 3.5.</A>
+			<LI><A HREF="#Heading28">A demonstration of adding too large a number to a signed
+			integer.</A>
+			<LI><A HREF="#Heading29">Characters</A>
+			<UL>
+				<LI><A HREF="#Heading30">Characters and Numbers</A>
+			</UL>
+			<LI><A HREF="#Heading31">Listing 3.6. Printing characters based on numbers</A><A
+			HREF="#Heading32">.</A>
+			<UL>
+				<LI><A HREF="#Heading33">Special Printing Characters</A>
+			</UL>
+			<LI><A HREF="#Heading34">Constants</A>
+			<UL>
+				<LI><A HREF="#Heading35">Literal Constants</A>
+				<LI><A HREF="#Heading36">Symbolic Constants</A>
+			</UL>
+			<LI><A HREF="#Heading37">Enumerated Constants</A>
+			<LI><A HREF="#Heading38">Listing 3.7. A demonstration of enumerated constants</A>
+			<LI><A HREF="#Heading39">.</A>
+			<LI><A HREF="#Heading40">Summary</A>
+			<LI><A HREF="#Heading41">Q&amp;A</A>
+			<LI><A HREF="#Heading42">Workshop</A>
+			<UL>
+				<LI><A HREF="#Heading43">Quiz</A>
+				<LI><A HREF="#Heading44">Exercises</A>
+			</UL>
+		</UL>
+	</UL>
+</UL>
+
+<P>
+<HR SIZE="4">
+
+<H2 ALIGN="CENTER"><A NAME="Heading1"></A><FONT COLOR="#000077">Day 3</FONT></H2>
+<H2 ALIGN="CENTER"><A NAME="Heading2"></A><FONT COLOR="#000077">Variables and Constants</FONT></H2>
+<P>Programs need a way to store the data they use. Variables and constants offer
+various ways to represent and manipulate that data.</P>
+<P>Today you will learn
+
+<UL>
+	<LI>How to declare and define variables and constants.
+	<P>
+	<LI>How to assign values to variables and manipulate those values.
+	<P>
+	<LI>How to write the value of a variable to the screen.
+</UL>
+
+<H3 ALIGN="CENTER"><A NAME="Heading3"></A><FONT COLOR="#000077">What Is a Variable?</FONT></H3>
+<P>In C++ a variable is a place to store information. A variable is a location in
+your computer's memory in which you can store a value and from which you can later
+retrieve that value.</P>
+<P>Your computer's memory can be viewed as a series of cubbyholes. Each cubbyhole
+is one of many, many such holes all lined up. Each cubbyhole--or memory location--is
+numbered sequentially. These numbers are known as memory addresses. A variable reserves
+one or more cubbyholes in which you may store a value.</P>
+<P>Your variable's name (for example, <TT>myVariable</TT>) is a label on one of these
+cubbyholes, so that you can find it easily without knowing its actual memory address.
+Figure 3.1 is a schematic representation of this idea. As you can see from the figure,
+<TT>myVariable</TT> starts at memory address <TT>103</TT>. Depending on the size
+of <TT>myVariable</TT>, it can take up one or more memory addresses.<BR>
+<BR>
+<A NAME="Heading4"></A><A HREF="../art/ch03/032cp01.jpg"><FONT COLOR="#000077">Figure
+3.1.</FONT></A><FONT COLOR="#000077"> </FONT><I>A schematic representation of memory.</I>
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>RAM is random access memory. When
+	you run your program, it is loaded into RAM from the disk file. All variables are
+	also created in RAM. When programmers talk of memory, it is usually RAM to which
+	they are referring. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H4 ALIGN="CENTER"><A NAME="Heading5"></A><FONT COLOR="#000077">Setting Aside Memory</FONT></H4>
+<P>When you define a variable in C++, you must tell the compiler what kind of variable
+it is: an integer, a character, and so forth. This information tells the compiler
+how much room to set aside and what kind of value you want to store in your variable.</P>
+<P>Each cubbyhole is one byte large. If the type of variable you create is two bytes
+in size, it needs two bytes of memory, or two cubbyholes. The type of the variable
+(for example, integer) tells the compiler how much memory (how many cubbyholes) to
+set aside for the variable.</P>
+<P>Because computers use bits and bytes to represent values, and because memory is
+measured in bytes, it is important that you understand and are comfortable with these
+concepts. For a full review of this topic, please read Appendix B, &quot;C++ Keywords.&quot;
+<H4 ALIGN="CENTER"><A NAME="Heading6"></A><FONT COLOR="#000077">Size of Integers</FONT></H4>
+<P>On any one computer, each variable type takes up a single, unchanging amount of
+room. That is, an integer might be two bytes on one machine, and four on another,
+but on either computer it is always the same, day in and day out.</P>
+<P>A <TT>char</TT> variable (used to hold characters) is most often one byte long.
+A <TT>short</TT> integer is two bytes on most computers, a <TT>long</TT> integer
+is usually four bytes, and an integer (without the keyword <TT>short</TT> or <TT>long</TT>)
+can be two or four bytes. Listing 3.1 should help you determine the exact size of
+these types on your computer.</P>
+
+<DL>
+	<DD>
+<HR>
+<FONT COLOR="#000077"><B>New Term:</B></FONT><B> </B>A <I>character</I> is a single
+	letter, number, or symbol that takes up one byte of memory. 
+<HR>
+
+</DL>
+
+<P><A NAME="Heading7"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 3.1. Determining
+the size of variable types on your computer.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:   #include &lt;iostream.h&gt;
+2:
+3:   int main()
+4:   {
+5:     cout &lt;&lt; &quot;The size of an int is:\t\t&quot;    &lt;&lt; sizeof(int)    &lt;&lt; &quot; bytes.\n&quot;;
+6:     cout &lt;&lt; &quot;The size of a short int is:\t&quot; &lt;&lt; sizeof(short)  &lt;&lt; &quot; bytes.\n&quot;;
+7:     cout &lt;&lt; &quot;The size of a long int is:\t&quot;  &lt;&lt; sizeof(long)   &lt;&lt; &quot; bytes.\n&quot;;
+8:     cout &lt;&lt; &quot;The size of a char is:\t\t&quot;    &lt;&lt; sizeof(char)   &lt;&lt; &quot; bytes.\n&quot;;
+9:     cout &lt;&lt; &quot;The size of a float is:\t\t&quot;   &lt;&lt; sizeof(float)  &lt;&lt; &quot; bytes.\n&quot;;
+10:    cout &lt;&lt; &quot;The size of a double is:\t&quot;    &lt;&lt; sizeof(double) &lt;&lt; &quot; bytes.\n&quot;;
+11:
+12:        return 0;
+<TT>13: }</TT>
+Output: The size of an int is:          2 bytes.
+The size of a short int is:     2 bytes.
+The size of a long int is:      4 bytes.
+The size of a char is:          1 bytes.
+The size of a float is:         4 bytes.
+The size of a double is:        8 bytes.
+</FONT></PRE>
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>On your computer, the number of
+	bytes presented might be different. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+
+<DL>
+	<DD>
+<HR>
+<FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>Most of Listing 3.1 should be
+	pretty familiar. The one new feature is the use of the <TT>sizeof()</TT> function
+	in lines 5 through 10. <TT>sizeof()</TT> is provided by your compiler, and it tells
+	you the size of the object you pass in as a parameter. For example, on line 5 the
+	keyword <TT>int</TT> is passed into <TT>sizeof()</TT>. Using <TT>sizeof()</TT>, I
+	was able to determine that on my computer an <TT>int</TT> is equal to a <TT>short</TT>
+	<TT>int</TT>, which is 2 bytes. 
+<HR>
+
+</DL>
+
+<H4 ALIGN="CENTER"><A NAME="Heading9"></A><FONT COLOR="#000077">signed and unsigned</FONT></H4>
+<P>In addition, all integer types come in two varieties: <TT>signed</TT> and <TT>unsigned</TT>.
+The idea here is that sometimes you need negative numbers, and sometimes you don't.
+Integers (<TT>short</TT> and <TT>long</TT>) without the word &quot;unsigned&quot;
+are assumed to be <TT>signed</TT>. <TT>Signed</TT> integers are either negative or
+positive. <TT>Unsigned</TT> integers are always positive.</P>
+<P>Because you have the same number of bytes for both <TT>signed</TT> and <TT>unsigned</TT>
+integers, the largest number you can store in an <TT>unsigned</TT> integer is twice
+as big as the largest positive number you can store in a <TT>signed</TT> integer.
+An <TT>unsigned</TT> <TT>short</TT> integer can handle numbers from 0 to 65,535.
+Half the numbers represented by a <TT>signed</TT> <TT>short</TT> are negative, thus
+a <TT>signed</TT> <TT>short</TT> can only represent numbers from -32,768 to 32,767.
+If this is confusing, be sure to read Appendix A, &quot;Operator Precedence.&quot;
+<H4 ALIGN="CENTER"><A NAME="Heading10"></A><FONT COLOR="#000077">Fundamental Variable
+Types</FONT></H4>
+<P>Several other variable types are built into C++. They can be conveniently divided
+into integer variables (the type discussed so far), floating-point variables, and
+character variables.</P>
+<P>Floating-point variables have values that can be expressed as fractions--that
+is, they are real numbers. Character variables hold a single byte and are used for
+holding the 256 characters and symbols of the ASCII and extended ASCII character
+sets.</P>
+
+<DL>
+	<DD>
+<HR>
+<FONT COLOR="#000077"><B>New Term: </B></FONT><I>The ASCII character set</I> is the
+	set of characters standardized for use on computers. ASCII is an acronym for American
+	Standard Code for Information Interchange. Nearly every computer operating system
+	supports ASCII, though many support other international character sets as well. 
+<HR>
+
+</DL>
+
+<P>The types of variables used in C++ programs are described in Table 3.1. This table
+shows the variable type, how much room this book assumes it takes in memory, and
+what kinds of values can be stored in these variables. The values that can be stored
+are determined by the size of the variable types, so check your output from Listing
+3.1. <BR>
+<BR>
+<FONT SIZE="4"><B>Table 3.1. Variable Types. </B></FONT>
+<TABLE BORDER="0">
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD WIDTH="139" ALIGN="LEFT"><B><I>Type</I></B></TD>
+		<TD WIDTH="67" ALIGN="LEFT"><B><I>Size</I></B></TD>
+		<TD ALIGN="LEFT"><B><I>Values</I></B></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD WIDTH="139" ALIGN="LEFT"><TT>unsigned short int</TT></TD>
+		<TD WIDTH="67" ALIGN="LEFT">2 bytes</TD>
+		<TD ALIGN="LEFT">0 to 65,535</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD WIDTH="139" ALIGN="LEFT"><TT>short int</TT></TD>
+		<TD WIDTH="67" ALIGN="LEFT">2 bytes</TD>
+		<TD ALIGN="LEFT">-32,768 to 32,767</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD WIDTH="139" ALIGN="LEFT"><TT>unsigned long int</TT></TD>
+		<TD WIDTH="67" ALIGN="LEFT">4 bytes</TD>
+		<TD ALIGN="LEFT">0 to 4,294,967,295</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD WIDTH="139" ALIGN="LEFT"><TT>long int</TT></TD>
+		<TD WIDTH="67" ALIGN="LEFT">4 bytes</TD>
+		<TD ALIGN="LEFT">-2,147,483,648 to 2,147,483,647</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD WIDTH="139" ALIGN="LEFT"><TT>int (16 bit)</TT></TD>
+		<TD WIDTH="67" ALIGN="LEFT">2 bytes</TD>
+		<TD ALIGN="LEFT">-32,768 to 32,767</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD WIDTH="139" ALIGN="LEFT"><TT>int (32 bit)</TT></TD>
+		<TD WIDTH="67" ALIGN="LEFT">4 bytes</TD>
+		<TD ALIGN="LEFT">-2,147,483,648 to 2,147,483,647</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD WIDTH="139" ALIGN="LEFT"><TT>unsigned int (16 bit)</TT></TD>
+		<TD WIDTH="67" ALIGN="LEFT">2 bytes</TD>
+		<TD ALIGN="LEFT">0 to 65,535</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD WIDTH="139" ALIGN="LEFT"><TT>unsigned int (32 bit)</TT></TD>
+		<TD WIDTH="67" ALIGN="LEFT">2 bytes</TD>
+		<TD ALIGN="LEFT">0 to 4,294,967,295</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD WIDTH="139" ALIGN="LEFT"><TT>char</TT></TD>
+		<TD WIDTH="67" ALIGN="LEFT">1 byte</TD>
+		<TD ALIGN="LEFT">256 character values</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD WIDTH="139" ALIGN="LEFT"><TT>float</TT></TD>
+		<TD WIDTH="67" ALIGN="LEFT">4 bytes</TD>
+		<TD ALIGN="LEFT">1.2e-38 to 3.4e38</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD WIDTH="139" ALIGN="LEFT"><TT>double</TT></TD>
+		<TD WIDTH="67" ALIGN="LEFT">8 bytes</TD>
+		<TD ALIGN="LEFT">2.2e-308 to 1.8e308</TD>
+	</TR>
+</TABLE>
+
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>The sizes of variables might be
+	different from those shown in Table 3.1, depending on the compiler and the computer
+	you are using. If your computer had the same output as was presented in Listing 3.1,
+	Table 3.1 should apply to your compiler. If your output from Listing 3.1 was different,
+	you should consult your compiler's manual for the values that your variable types
+	can hold. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<CENTER>
+<H3><A NAME="Heading11"></A><FONT COLOR="#000077">Defining a Variable</FONT></H3>
+</CENTER>
+<P>You create or define a variable by stating its type, followed by one or more spaces,
+followed by the variable name and a semicolon. The variable name can be virtually
+any combination of letters, but cannot contain spaces. Legal variable names include
+<TT>x</TT>, <TT>J23qrsnf</TT>, and <TT>myAge</TT>. Good variable names tell you what
+the variables are for; using good names makes it easier to understand the flow of
+your program. The following statement defines an integer variable called <TT>myAge</TT>:</P>
+<PRE><FONT COLOR="#0066FF">int myAge;
+</FONT></PRE>
+<P>As a general programming practice, avoid such horrific names as <TT>J23qrsnf</TT>,
+and restrict single-letter variable names (such as <TT>x</TT> or <TT>i</TT>) to variables
+that are used only very briefly. Try to use expressive names such as <TT>myAge</TT>
+or <TT>howMany</TT>. Such names are easier to understand three weeks later when you
+are scratching your head trying to figure out what you meant when you wrote that
+line of code.</P>
+<P>Try this experiment: Guess what these pieces of programs do, based on the first
+few lines of code:</P>
+<P>Example 1</P>
+<PRE><FONT COLOR="#0066FF">main()
+{
+     unsigned short x;
+     unsigned short y;
+     ULONG z;
+     z = x * y;
+}
+</FONT></PRE>
+<P>Example 2</P>
+<PRE><FONT COLOR="#0066FF">main ()
+{
+     unsigned short Width;
+     unsigned short Length;
+     unsigned short Area;
+     Area = Width * Length;
+}
+</FONT></PRE>
+<P>Clearly, the second program is easier to understand, and the inconvenience of
+having to type the longer variable names is more than made up for by how much easier
+it is to maintain the second program.
+<CENTER>
+<H4><A NAME="Heading12"></A><FONT COLOR="#000077">Case Sensitivity</FONT></H4>
+</CENTER>
+<P>C++ is case-sensitive. In other words, uppercase and lowercase letters are considered
+to be different. A variable named <TT>age</TT> is different from <TT>Age</TT>, which
+is different from <TT>AGE</TT>.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>Some compilers allow you to turn
+	case sensitivity off. Don't be tempted to do this; your programs won't work with
+	other compilers, and other C++ programmers will be very confused by your code. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P>There are various conventions for how to name variables, and although it doesn't
+much matter which method you adopt, it is important to be consistent throughout your
+program.</P>
+<P>Many programmers prefer to use all lowercase letters for their variable names.
+If the name requires two words (for example, my car), there are two popular conventions:
+<TT>my_car</TT> or <TT>myCar</TT>. The latter form is called camel-notation, because
+the capitalization looks something like a camel's hump.</P>
+<P>Some people find the underscore character (<TT>my_car</TT>) to be easier to read,
+while others prefer to avoid the underscore, because it is more difficult to type.
+This book uses camel-notation, in which the second and all subsequent words are capitalized:
+<TT>myCar</TT>, <TT>theQuickBrownFox</TT>, and so forth.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>Many advanced programmers employ
+	a notation style that is often referred to as Hungarian notation. The idea behind
+	Hungarian notation is to prefix every variable with a set of characters that describes
+	its type. Integer variables might begin with a lowercase letter i, longs might begin
+	with a lowercase l. Other notations indicate constants, globals, pointers, and so
+	forth. Most of this is much more important in C programming, because C++ supports
+	the creation of user-defined types (see Day 6, &quot;Basic Classes&quot;) and because
+	C++ is strongly typed. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<CENTER>
+<H4><A NAME="Heading13"></A><FONT COLOR="#000077">Keywords</FONT></H4>
+</CENTER>
+<P>Some words are reserved by C++, and you may not use them as variable names. These
+are keywords used by the compiler to control your program. Keywords include <TT>if</TT>,
+<TT>while</TT>, <TT>for</TT>, and <TT>main</TT>. Your compiler manual should provide
+a complete list, but generally, any reasonable name for a variable is almost certainly
+not a keyword.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<B>DO</B> define a variable by writing the type, then the variable name. <B>DO</B>
+	use meaningful variable names. DO remember that C++ is case sensitive. <B>DON'T</B>
+	use C++ keywords as variable names. DO understand the number of bytes each variable
+	type consumes in memory, and what values can be stored in variables of that type.
+	<B>DON'T</B> use <TT>unsigned</TT> variables for negative numbers. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<CENTER>
+<H3><A NAME="Heading14"></A><FONT COLOR="#000077">Creating More Than One Variable
+at a Time</FONT></H3>
+</CENTER>
+<CENTER>
+<H3><FONT COLOR="#000077"></FONT></H3>
+</CENTER>
+<P>You can create more than one variable of the same type in one statement by writing
+the type and then the variable names, separated by commas. For example:</P>
+<PRE><FONT COLOR="#0066FF">unsigned int myAge, myWeight;   // two unsigned int variables
+long area, width, length;       // three longs
+</FONT></PRE>
+<P>As you can see, <TT>myAge</TT> and <TT>myWeight</TT> are each declared as <TT>unsigned</TT>
+integer variables. The second line declares three individual <TT>long</TT> variables
+named <TT>area</TT>, <TT>width</TT>, and <TT>length</TT>. The type (<TT>long</TT>)
+is assigned to all the variables, so you cannot mix types in one definition statement.
+<CENTER>
+<H3><A NAME="Heading16"></A><FONT COLOR="#000077">Assigning Values to Your Variables</FONT></H3>
+</CENTER>
+<P>You assign a value to a variable by using the assignment operator (<TT>=</TT>).
+Thus, you would assign <TT>5</TT> to <TT>Width</TT> by writing</P>
+<PRE><FONT COLOR="#0066FF">unsigned short Width;
+Width = 5;
+</FONT></PRE>
+<P>You can combine these steps and initialize <TT>Width</TT> when you define it by
+writing</P>
+<PRE><FONT COLOR="#0066FF">unsigned short Width = 5;
+</FONT></PRE>
+<P>Initialization looks very much like assignment, and with integer variables, the
+difference is minor. Later, when constants are covered, you will see that some values
+must be initialized because they cannot be assigned to. The essential difference
+is that initialization takes place at the moment you create the variable.</P>
+<P>Just as you can define more than one variable at a time, you can initialize more
+than one variable at creation. For example:</P>
+<PRE><FONT COLOR="#0066FF">// create two long variables and initialize them
+&#194;long width = 5, length = 7;  
+</FONT></PRE>
+<P>This example initializes the <TT>long</TT> integer variable <TT>width</TT> to
+the value <TT>5</TT> and the <TT>long</TT> integer variable <TT>length</TT> to the
+value <TT>7</TT>. You can even mix definitions and initializations:</P>
+<PRE><FONT COLOR="#0066FF">int myAge = 39, yourAge, hisAge = 40;
+</FONT></PRE>
+<P>This example creates three type <TT>int</TT> variables, and it initializes the
+first and third.</P>
+<P>Listing 3.2 shows a complete program, ready to compile, that computes the area
+of a rectangle and writes the answer to the screen.</P>
+<P><A NAME="Heading17"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 3.2. A demonstration
+of the use of variables.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:   // Demonstration of variables
+2:   #include &lt;iostream.h&gt;
+3:
+4:   int main()
+5:   {
+6:     unsigned short int Width = 5, Length;
+7:     Length = 10;
+8:
+9:     // create  an unsigned short and initialize with result
+10:       // of multiplying Width by Length
+11:     unsigned short int Area  = Width * Length;
+12:
+13:     cout &lt;&lt; &quot;Width:&quot; &lt;&lt; Width &lt;&lt; &quot;\n&quot;;
+14:     cout &lt;&lt; &quot;Length: &quot;  &lt;&lt; Length &lt;&lt; endl;
+15:     cout &lt;&lt; &quot;Area: &quot; &lt;&lt; Area &lt;&lt; endl;
+16:        return 0;
+<TT>17: }</TT></FONT></PRE>
+<PRE><FONT COLOR="#0066FF">Output: Width:5
+Length: 10
+Area: 50
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>Line 2 includes the required
+<TT>include</TT> statement for the <TT>iostream</TT>'s library so that <TT>cout</TT>
+will work. Line 4 begins the program. <BR>
+<BR>
+On line 6, <TT>Width</TT> is defined as an <TT>unsigned</TT> <TT>short</TT> integer,
+and its value is initialized to <TT>5</TT>. Another <TT>unsigned short</TT> integer,
+<TT>Length</TT>, is also defined, but it is not initialized. On line 7, the value
+<TT>10</TT> is assigned to <TT>Length</TT>.</P>
+<P>On line 11, an <TT>unsigned short</TT> integer, <TT>Area</TT>, is defined, and
+it is initialized with the value obtained by multiplying <TT>Width</TT> times <TT>Length</TT>.
+On lines 13-15, the values of the variables are printed to the screen. Note that
+the special word <TT>endl</TT> creates a new line.
+<CENTER>
+<H3><A NAME="Heading19"></A><FONT COLOR="#000077">typedef</FONT></H3>
+</CENTER>
+<P>It can become tedious, repetitious, and, most important, error-prone to keep writing
+<TT>unsigned short int</TT>. C++ enables you to create an alias for this phrase by
+using the keyword <TT>typedef</TT>, which stands for type definition.</P>
+<P>In effect, you are creating a synonym, and it is important to distinguish this
+from creating a new type (which you will do on Day 6). <TT>typedef</TT> is used by
+writing the keyword <TT>typedef</TT>, followed by the existing type and then the
+new name. For example</P>
+<PRE><FONT COLOR="#0066FF">typedef unsigned short int USHORT
+</FONT></PRE>
+<P>creates the new name <TT>USHORT</TT> that you can use anywhere you might have
+written <TT>unsigned short int</TT>. Listing 3.3 is a replay of Listing 3.2, using
+the type definition <TT>USHORT</TT> rather than <TT>unsigned short int</TT>.</P>
+<P><A NAME="Heading20"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 3.3. A demonstration
+of typedef</B></FONT><FONT SIZE="2" COLOR="#000077"><B>.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:   // *****************
+2:   // Demonstrates typedef keyword
+3:   #include &lt;iostream.h&gt;
+4:
+5:   typedef unsigned short int USHORT;       //typedef defined
+6:
+7:   void main()
+8:   {
+9:     USHORT  Width = 5;
+10:    USHORT Length;
+11:    Length = 10;
+12:    USHORT Area  = Width * Length;
+13:    cout &lt;&lt; &quot;Width:&quot; &lt;&lt; Width &lt;&lt; &quot;\n&quot;;
+14:    cout &lt;&lt; &quot;Length: &quot;  &lt;&lt; Length &lt;&lt; endl;
+15:    cout &lt;&lt; &quot;Area: &quot; &lt;&lt; Area &lt;&lt;endl;
+<TT>16: }</TT>
+Output: Width:5
+Length: 10
+Area: 50
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis: </B></FONT>On line 5, <TT>USHORT</TT> is typedefined
+as a synonym for <TT>unsigned short int</TT>. The program is very much like Listing
+3.2, and the output is the same.
+<CENTER>
+<H3><A NAME="Heading22"></A><FONT COLOR="#000077">When to Use short and When to Use
+long</FONT></H3>
+</CENTER>
+<P>One source of confusion for new C++ programmers is when to declare a variable
+to be type <TT>long</TT> and when to declare it to be type <TT>short</TT>. The rule,
+when understood, is fairly straightforward: If there is any chance that the value
+you'll want to put into your variable will be too big for its type, use a larger
+type.</P>
+<P>As seen in Table 3.1, <TT>unsigned short</TT> integers, assuming that they are
+two bytes, can hold a value only up to 65,535. <TT>Signed</TT> <TT>short</TT> integers
+can hold only half that. Although <TT>unsigned long</TT> integers can hold an extremely
+large number (4,294,967,295) that is still quite finite. If you need a larger number,
+you'll have to go to <TT>float</TT> or <TT>double</TT>, and then you lose some precision.
+Floats and doubles can hold extremely large numbers, but only the first 7 or 19 digits
+are significant on most computers. That means that the number is rounded off after
+that many digits.
+<CENTER>
+<H4><A NAME="Heading23"></A><FONT COLOR="#000077">Wrapping Around an unsigned Integer</FONT></H4>
+</CENTER>
+<P>The fact that <TT>unsigned long</TT> integers have a limit to the values they
+can hold is only rarely a problem, but what happens if you do run out of room?</P>
+<P>When an <TT>unsigned</TT> integer reaches its maximum value, it wraps around and
+starts over, much as a car odometer might. Listing 3.4 shows what happens if you
+try to put too large a value into a <TT>short</TT> integer.</P>
+<P><A NAME="Heading24"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 3.4.A demonstration
+of putting too large a value in an unsigned integer.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1: #include &lt;iostream.h&gt;
+2:  int main()
+3:  {
+4:     unsigned short int smallNumber;
+5:     smallNumber = 65535;
+6:     cout &lt;&lt; &quot;small number:&quot; &lt;&lt; smallNumber &lt;&lt; endl;
+7:     smallNumber++;
+8:     cout &lt;&lt; &quot;small number:&quot; &lt;&lt; smallNumber &lt;&lt; endl;
+9:     smallNumber++;
+10:    cout &lt;&lt; &quot;small number:&quot; &lt;&lt; smallNumber &lt;&lt; endl;
+11:        return 0;
+<TT>12: }</TT>
+Output: small number:65535
+small number:0
+small number:1
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On line 4, <TT>smallNumber</TT>
+is declared to be an <TT>unsigned short int</TT>, which on my computer is a two-byte
+variable, able to hold a value between 0 and 65,535. On line 5, the maximum value
+is assigned to <TT>smallNumber</TT>, and it is printed on line 6. <BR>
+<BR>
+On line 7, <TT>smallNumber</TT> is incremented; that is, 1 is added to it. The symbol
+for incrementing is <TT>++</TT> (as in the name C++--an incremental increase from
+C). Thus, the value in <TT>smallNumber</TT> would be <TT>65,536</TT>. However, <TT>unsigned</TT>
+<TT>short</TT> integers can't hold a number larger than 65,535, so the value is wrapped
+around to <TT>0</TT>, which is printed on line 8.</P>
+<P>On line 9 <TT>smallNumber</TT> is incremented again, and then its new value, <TT>1</TT>,
+is printed.
+<CENTER>
+<H4><A NAME="Heading26"></A><FONT COLOR="#000077">Wrapping Around a signed Integer</FONT></H4>
+</CENTER>
+<P>A <TT>signed</TT> integer is different from an <TT>unsigned</TT> integer, in that
+half of the values you can represent are negative. Instead of picturing a traditional
+car odometer, you might picture one that rotates up for positive numbers and down
+for negative numbers. One mile from 0 is either 1 or -1. When you run out of positive
+numbers, you run right into the largest negative numbers and then count back down
+to 0. Listing 3.5 shows what happens when you add 1 to the maximum positive number
+in an <TT>unsigned short</TT> integer.</P>
+<P><A NAME="Heading27"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 3.5. A demonstration
+of adding too large a number to a signed integer.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:  #include &lt;iostream.h&gt;
+2:  int main()
+3:  {
+4:     short int smallNumber;
+5:     smallNumber = 32767;
+6:     cout &lt;&lt; &quot;small number:&quot; &lt;&lt; smallNumber &lt;&lt; endl;
+7:     smallNumber++;
+8:     cout &lt;&lt; &quot;small number:&quot; &lt;&lt; smallNumber &lt;&lt; endl;
+9:     smallNumber++;
+10:    cout &lt;&lt; &quot;small number:&quot; &lt;&lt; smallNumber &lt;&lt; endl;
+11:        return 0;
+<TT>12: }</TT>
+Output: small number:32767
+small number:-32768
+small number:-32767
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis: </B></FONT>On line 4, <TT>smallNumber</TT>
+is declared this time to be a <TT>signed</TT> <TT>short</TT> integer (if you don't
+explicitly say that it is <TT>unsigned</TT>, it is assumed to be <TT>signed</TT>).
+The program proceeds much as the preceding one, but the output is quite different.
+To fully understand this output, you must be comfortable with how <TT>signed</TT>
+numbers are represented as bits in a two-byte integer. For details, check Appendix
+C, &quot;Binary and Hexadecimal.&quot; <BR>
+<BR>
+The bottom line, however, is that just like an <TT>unsigned</TT> integer, the <TT>signed</TT>
+integer wraps around from its highest positive value to its highest negative value.
+<CENTER>
+<H3><A NAME="Heading29"></A><FONT COLOR="#000077">Characters</FONT></H3>
+</CENTER>
+<P>Character variables (<TT>type char</TT>) are typically 1 byte, enough to hold
+256 values (see Appendix C). A <TT>char</TT> can be interpreted as a small number
+(0-255) or as a member of the ASCII set. ASCII stands for the American Standard Code
+for Information Interchange. The ASCII character set and its ISO (International Standards
+Organization) equivalent are a way to encode all the letters, numerals, and punctuation
+marks.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+Computers do not know about letters, punctuation, or sentences. All they understand
+	are numbers. In fact, all they really know about is whether or not a sufficient amount
+	of electricity is at a particular junction of wires. If so, it is represented internally
+	as a <TT>1</TT>; if not, it is represented as a <TT>0</TT>. By grouping ones and
+	zeros, the computer is able to generate patterns that can be interpreted as numbers,
+	and these in turn can be assigned to letters and punctuation. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P>In the ASCII code, the lowercase letter &quot;a&quot; is assigned the value <TT>97</TT>.
+All the lower- and uppercase letters, all the numerals, and all the punctuation marks
+are assigned values between 1 and 128. Another 128 marks and symbols are reserved
+for use by the computer maker, although the IBM extended character set has become
+something of a standard.
+<CENTER>
+<H4><A NAME="Heading30"></A><FONT COLOR="#000077">Characters and Numbers</FONT></H4>
+</CENTER>
+<P>When you put a character, for example, <TT>`a'</TT>, into a <TT>char</TT> variable,
+what is really there is just a number between 0 and 255. The compiler knows, however,
+how to translate back and forth between characters (represented by a single quotation
+mark and then a letter, numeral, or punctuation mark, followed by a closing single
+quotation mark) and one of the ASCII values.</P>
+<P>The value/letter relationship is arbitrary; there is no particular reason that
+the lowercase &quot;a&quot; is assigned the value <TT>97</TT>. As long as everyone
+(your keyboard, compiler, and screen) agrees, there is no problem. It is important
+to realize, however, that there is a big difference between the value <TT>5</TT>
+and the character <TT>`5'</TT>. The latter is actually valued at <TT>53</TT>, much
+as the letter <TT>`a'</TT> is valued at <TT>97</TT>.</P>
+<P><A NAME="Heading31"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 3.6. Printing
+characters based on numbers</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:   #include &lt;iostream.h&gt;
+2:   int main()
+3:   {
+4:   for (int i = 32; i&lt;128; i++)
+5:         cout &lt;&lt; (char) i;
+6:         return 0;
+<TT>7: }</TT>
+ Output: !&quot;#$%G'()*+,./0123456789:;&lt;&gt;?@ABCDEFGHIJKLMNOP
+_QRSTUVWXYZ[\]^'abcdefghijklmnopqrstuvwxyz&lt;|&gt;~s
+</FONT></PRE>
+<P>This simple program prints the character values for the integers 32 through 127.
+<CENTER>
+<H4><A NAME="Heading33"></A><FONT COLOR="#000077">Special Printing Characters</FONT></H4>
+</CENTER>
+<P>The C++ compiler recognizes some special characters for formatting. Table 3.2
+shows the most common ones. You put these into your code by typing the backslash
+(called the escape character), followed by the character. Thus, to put a tab character
+into your code, you would enter a single quotation mark, the slash, the letter t,
+and then a closing single quotation mark:</P>
+<PRE><FONT COLOR="#0066FF">char tabCharacter = `\t';
+</FONT></PRE>
+<P>This example declares a <TT>char</TT> variable (<TT>tabCharacter</TT>) and initializes
+it with the character value <TT>\t</TT>, which is recognized as a tab. The special
+printing characters are used when printing either to the screen or to a file or other
+output device.</P>
+
+<DL>
+	<DD>
+<HR>
+<FONT COLOR="#000077"><B>New Term:</B></FONT><B> </B>An <I>escape character</I> changes
+	the meaning of the character that follows it. For example, normally the character
+	<TT>n</TT> means the letter n, but when it is preceded by the escape character (<TT>\</TT>)
+	it means new line. 
+<HR>
+
+</DL>
+
+<P><FONT SIZE="4"><B>Table 3.2. The Escape Characters</B></FONT>. 
+<TABLE BORDER="0">
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT"><B><I>Character</I></B></TD>
+		<TD ALIGN="LEFT"><B><I>What it means</I></B></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT"><TT>\n</TT></TD>
+		<TD ALIGN="LEFT">new line</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT"><TT>\t</TT></TD>
+		<TD ALIGN="LEFT">tab</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT"><TT>\b</TT></TD>
+		<TD ALIGN="LEFT">backspace</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT"><TT>\&quot;</TT></TD>
+		<TD ALIGN="LEFT">double quote</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT"><TT>\'</TT></TD>
+		<TD ALIGN="LEFT">single quote</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT"><TT>\?</TT></TD>
+		<TD ALIGN="LEFT">question mark</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT"><TT>\\</TT></TD>
+		<TD ALIGN="LEFT">backslash</TD>
+	</TR>
+</TABLE>
+
+<CENTER>
+<H3><A NAME="Heading34"></A><FONT COLOR="#000077">Constants</FONT></H3>
+</CENTER>
+<P>Like variables, constants are data storage locations. Unlike variables, and as
+the name implies, constants don't change. You must initialize a constant when you
+create it, and you cannot assign a new value later.
+<CENTER>
+<H4><A NAME="Heading35"></A><FONT COLOR="#000077">Literal Constants</FONT></H4>
+</CENTER>
+<P>C++ has two types of constants: literal and symbolic.</P>
+<P>A literal constant is a value typed directly into your program wherever it is
+needed. For example</P>
+<PRE><FONT COLOR="#0066FF">int myAge = 39;
+</FONT></PRE>
+<P><TT>myAge</TT> is a variable of type <TT>int</TT>; <TT>39</TT> is a literal constant.
+You can't assign a value to <TT>39</TT>, and its value can't be changed.
+<CENTER>
+<H4><A NAME="Heading36"></A><FONT COLOR="#000077">Symbolic Constants</FONT></H4>
+</CENTER>
+<P>A symbolic constant is a constant that is represented by a name, just as a variable
+is represented. Unlike a variable, however, after a constant is initialized, its
+value can't be changed.</P>
+<P>If your program has one integer variable named <TT>students</TT> and another named
+<TT>classes</TT>, you could compute how many students you have, given a known number
+of classes, if you knew there were 15 students per class:</P>
+<PRE><FONT COLOR="#0066FF">students = classes * 15;
+</FONT></PRE>
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><TT><B> </B>*</TT> indicates multiplication.
+	
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P>In this example, <TT>15</TT> is a literal constant. Your code would be easier
+to read, and easier to maintain, if you substituted a symbolic constant for this
+value:</P>
+<PRE><FONT COLOR="#0066FF">students = classes * studentsPerClass
+</FONT></PRE>
+<P>If you later decided to change the number of students in each class, you could
+do so where you define the constant <TT>studentsPerClass</TT> without having to make
+a change every place you used that value.</P>
+<P>There are two ways to declare a symbolic constant in C++. The old, traditional,
+and now obsolete way is with a preprocessor directive, <TT>#define</TT>. Defining
+Constants with #define To define a constant the traditional way, you would enter
+this:</P>
+<PRE><FONT COLOR="#0066FF">#define studentsPerClass 15
+</FONT></PRE>
+<P>Note that <TT>studentsPerClass</TT> is of no particular type (<TT>int</TT>, <TT>char</TT>,
+and so on). <TT>#define</TT> does a simple text substitution. Every time the preprocessor
+sees the word <TT>studentsPerClass</TT>, it puts in the text <TT>15</TT>.</P>
+<P>Because the preprocessor runs before the compiler, your compiler never sees your
+constant; it sees the number <TT>15</TT>. Defining Constants with const Although
+<TT>#define</TT> works, there is a new, much better way to define constants in C++:</P>
+<PRE><FONT COLOR="#0066FF">const unsigned short int studentsPerClass = 15;
+</FONT></PRE>
+<P>This example also declares a symbolic constant named <TT>studentsPerClass</TT>,
+but this time <TT>studentsPerClass</TT> is typed as an <TT>unsigned short int</TT>.
+This method has several advantages in making your code easier to maintain and in
+preventing bugs. The biggest difference is that this constant has a type, and the
+compiler can enforce that it is used according to its type.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>Constants cannot be changed while
+	the program is running. If you need to change <TT>studentsPerClass</TT>, for example,
+	you need to change the code and recompile. 
+<HR>
+</P>
+	<P>
+<HR>
+<B>DON'T </B>use the term <TT>int</TT>. Use <TT>short</TT> and <TT>long</TT> to make
+	it clear which size number you intended. <B>DO</B> watch for numbers overrunning
+	the size of the integer and wrapping around incorrect values. <B>DO</B> give your
+	variables meaningful names that reflect their use. <B>DON'T </B>use keywords as variable
+	names. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<CENTER>
+<H3><A NAME="Heading37"></A><FONT COLOR="#000077">Enumerated Constants</FONT></H3>
+</CENTER>
+<P>Enumerated constants enable you to create new types and then to define variables
+of those types whose values are restricted to a set of possible values. For example,
+you can declare <TT>COLOR</TT> to be an enumeration, and you can define that there
+are five values for <TT>COLOR</TT>: <TT>RED</TT>, <TT>BLUE</TT>, <TT>GREEN</TT>,
+<TT>WHITE</TT>, and <TT>BLACK</TT>.</P>
+<P>The syntax for enumerated constants is to write the keyword <TT>enum</TT>, followed
+by the type name, an open brace, each of the legal values separated by a comma, and
+finally a closing brace and a semicolon. Here's an example:</P>
+<PRE><FONT COLOR="#0066FF">enum COLOR { RED, BLUE, GREEN, WHITE, BLACK };
+</FONT></PRE>
+<P>This statement performs two tasks:
+
+<DL>
+	<DD><B>1.</B> It makes <TT>COLOR</TT> the name of an enumeration, that is, a new
+	type.<BR>
+	<BR>
+	<B>2.</B> It makes <TT>RED</TT> a symbolic constant with the value <TT>0</TT>, <TT>BLUE</TT>
+	a symbolic constant with the value <TT>1</TT>, <TT>GREEN</TT> a symbolic constant
+	with the value <TT>2</TT>, and so forth.
+</DL>
+
+<P>Every enumerated constant has an integer value. If you don't specify otherwise,
+the first constant will have the value <TT>0</TT>, and the rest will count up from
+there. Any one of the constants can be initialized with a particular value, however,
+and those that are not initialized will count upward from the ones before them. Thus,
+if you write</P>
+<PRE><FONT COLOR="#0066FF">enum Color { RED=100, BLUE, GREEN=500, WHITE, BLACK=700 };
+</FONT></PRE>
+<P>then <TT>RED</TT> will have the value <TT>100</TT>; <TT>BLUE</TT>, the value <TT>101</TT>;
+<TT>GREEN</TT>, the value <TT>500</TT>; <TT>WHITE</TT>, the value <TT>501</TT>; and
+<TT>BLACK</TT>, the value <TT>700</TT>.</P>
+<P>You can define variables of type <TT>COLOR</TT>, but they can be assigned only
+one of the enumerated values (in this case, <TT>RED</TT>, <TT>BLUE</TT>, <TT>GREEN</TT>,
+<TT>WHITE</TT>, or <TT>BLACK</TT>, or else <TT>100</TT>, <TT>101</TT>, <TT>500</TT>,
+<TT>501</TT>, or <TT>700</TT>). You can assign any color value to your <TT>COLOR</TT>
+variable. In fact, you can assign any integer value, even if it is not a legal color,
+although a good compiler will issue a warning if you do. It is important to realize
+that enumerator variables actually are of type <TT>unsigned int</TT>, and that the
+enumerated constants equate to integer variables. It is, however, very convenient
+to be able to name these values when working with colors, days of the week, or similar
+sets of values. Listing 3.7 presents a program that uses an enumerated type.</P>
+<P><A NAME="Heading38"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 3.7. A demonstration
+of enumerated constants</B></FONT><FONT SIZE="2" COLOR="#000077"><B>.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:  #include &lt;iostream.h&gt;
+2:  int main()
+3:  {
+4:       enum Days { Sunday, Monday, Tuesday, Wednesday, Thursday, Friday,                     &#194;_Saturday };
+5:
+6:       Days DayOff;
+7:       int x;
+8:
+9:       cout &lt;&lt; &quot;What day would you like off (0-6)? &quot;;
+10:      cin  &gt;&gt; x;
+11:      DayOff = Days(x);
+12:
+13:      if (DayOff == Sunday || DayOff == Saturday)
+14:            cout &lt;&lt; &quot;\nYou're already off on weekends!\n&quot;;
+15:      else
+16:            cout &lt;&lt; &quot;\nOkay, I'll put in the vacation day.\n&quot;;
+17:       return 0;
+<TT>18: }</TT>
+Output: What day would you like off (0-6)?  1
+
+Okay, I'll put in the vacation day.
+
+What day would you like off (0-6)?  0
+
+You're already off on weekends!
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On line 4, the enumerated
+constant <TT>DAYS</TT> is defined, with seven values counting upward from 0. The
+user is prompted for a day on line 9. The chosen value, a number between 0 and 6,
+is compared on line 13 to the enumerated values for Sunday and Saturday, and action
+is taken accordingly. <BR>
+<BR>
+The <TT>if</TT> statement will be covered in more detail on Day 4, &quot;Expressions
+and Statements.&quot;</P>
+<P>You cannot type the word &quot;Sunday&quot; when prompted for a day; the program
+does not know how to translate the characters in <TT>Sunday</TT> into one of the
+enumerated values.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>For this and all the small programs
+	in this book, I've left out all the code you would normally write to deal with what
+	happens when the user types inappropriate data. For example, this program doesn't
+	check, as it would in a real program, to make sure that the user types a number between
+	0 and 6. This detail has been left out to keep these programs small and simple, and
+	to focus on the issue at hand. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<CENTER>
+<H3><A NAME="Heading40"></A><FONT COLOR="#000077">Summary</FONT></H3>
+</CENTER>
+<P>This chapter has discussed numeric and character variables and constants, which
+are used by C++ to store data during the execution of your program. Numeric variables
+are either integral (<TT>char</TT>, <TT>short</TT>, and <TT>long int</TT>) or they
+are floating point (<TT>float</TT> and <TT>double</TT>). Numeric variables can also
+be <TT>signed</TT> or <TT>unsigned</TT>. Although all the types can be of various
+sizes among different computers, the type specifies an exact size on any given computer.</P>
+<P>You must declare a variable before it can be used, and then you must store the
+type of data that you've declared as correct for that variable. If you put too large
+a number into an integral variable, it wraps around and produces an incorrect result.</P>
+<P>This chapter also reviewed literal and symbolic constants, as well as enumerated
+constants, and showed two ways to declare a symbolic constant: using <TT>#define</TT>
+and using the keyword <TT>const</TT>.
+<CENTER>
+<H3><A NAME="Heading41"></A><FONT COLOR="#000077">Q&amp;A</FONT></H3>
+</CENTER>
+
+<DL>
+	<DD><B>Q. If a short int can run out of room and wrap around, why not always use
+	long integers?<BR>
+	</B><BR>
+	<B>A .</B>Both <TT>short</TT> integers and <TT>long</TT> integers will run out of
+	room and wrap around, but a <TT>long</TT> integer will do so with a much larger number.
+	For example, an <TT>unsigned short int</TT> will wrap around after 65,535, whereas
+	an <TT>unsigned long int</TT> will not wrap around until 4,294,967,295. However,
+	on most machines, a <TT>long</TT> integer takes up twice as much memory every time
+	you declare one (4 bytes versus 2 bytes), and a program with 100 such variables will
+	consume an extra 200 bytes of RAM. Frankly, this is less of a problem than it used
+	to be, because most personal computers now come with many thousands (if not millions)
+	of bytes of memory.<BR>
+	<BR>
+	<B>Q. What happens if I assign a number with a decimal point to an integer rather
+	than to a float? Consider the following line of code:</B>
+</DL>
+
+<PRE><FONT COLOR="#0066FF">int aNumber = 5.4;
+</FONT></PRE>
+
+<DL>
+	<DD><B>A.</B> A good compiler will issue a warning, but the assignment is completely
+	legal. The number you've assigned will be truncated into an integer. Thus, if you
+	assign <TT>5.4</TT> to an integer variable, that variable will have the value <TT>5</TT>.
+	Information will be lost, however, and if you then try to assign the value in that
+	integer variable to a <TT>float</TT> variable, the <TT>float</TT> variable will have
+	only <TT>5</TT>.<BR>
+	<BR>
+	<B>Q. Why not use literal constants; why go to the bother of using symbolic constants?<BR>
+	</B><BR>
+	<B>A.</B> If you use the value in many places throughout your program, a symbolic
+	constant allows all the values to change just by changing the one definition of the
+	constant. Symbolic constants also speak for themselves. It might be hard to understand
+	why a number is being multiplied by 360, but it's much easier to understand what's
+	going on if the number is being multiplied by <TT>degreesInACircle</TT>.<BR>
+	<BR>
+	<B>Q. What happens if I assign a negative number to an unsigned variable? Consider
+	the following line of code:</B>
+</DL>
+
+<PRE><FONT COLOR="#0066FF">unsigned int aPositiveNumber = -1;
+</FONT></PRE>
+
+<DL>
+	<DD><B>A.</B> A good compiler will warn, but the assignment is legal. The negative
+	number will be assessed as a bit pattern and assigned to the variable. The value
+	of that variable will then be interpreted as an <TT>unsigned</TT> number. Thus, -1,
+	whose bit pattern is <TT>11111111 11111111</TT> (<TT>0xFF</TT> in hex), will be assessed
+	as the <TT>unsigned</TT> value <TT>65,535</TT>. If this information confuses you,
+	refer to Appendix C.<BR>
+	<BR>
+	<B>Q. Can I work with C++ without understanding bit patterns, binary arithmetic,
+	and hexadecimal?</B><BR>
+	<BR>
+	<B>A.</B> Yes, but not as effectively as if you do understand these topics. C++ does
+	not do as good a job as some languages at &quot;protecting&quot; you from what the
+	computer is really doing. This is actually a benefit, because it provides you with
+	tremendous power that other languages don't. As with any power tool, however, to
+	get the most out of C++ you must understand how it works. Programmers who try to
+	program in C++ without understanding the fundamentals of the binary system often
+	are confused by their results.
+</DL>
+
+<CENTER>
+<H3><A NAME="Heading42"></A><FONT COLOR="#000077">Workshop</FONT></H3>
+</CENTER>
+<P>The Workshop provides quiz questions to help you solidify your understanding of
+the material covered, and exercises to provide you with experience in using what
+you've learned. Try to answer the quiz and exercise questions before checking the
+answers in Appendix D, and make sure that you understand the answers before continuing
+to the next chapter.
+<CENTER>
+<H4><A NAME="Heading43"></A><FONT COLOR="#000077">Quiz</FONT></H4>
+</CENTER>
+
+<DL>
+	<DD><B>1.</B> What is the difference between an integral variable and a floating-point
+	variable?<BR>
+	<BR>
+	<B>2.</B> What are the differences between an <TT>unsigned short int</TT> and a <TT>long
+	int</TT>?<BR>
+	<BR>
+	<B>3.</B> What are the advantages of using a symbolic constant rather than a literal
+	constant?<BR>
+	<BR>
+	<B>4.</B> What are the advantages of using the <TT>const</TT> keyword rather than
+	<TT>#define</TT>?<BR>
+	<BR>
+	<B>5.</B> What makes for a good or bad variable name?<BR>
+	<BR>
+	<B>6.</B> Given this <TT>enum</TT>, what is the value of <TT>BLUE</TT>?
+</DL>
+
+<PRE><FONT COLOR="#0066FF">
+enum COLOR { WHITE, BLACK = 100, RED, BLUE, GREEN = 300 };
+</FONT></PRE>
+
+<DL>
+	<DD><B>7.</B> Which of the following variable names are good, which are bad, and
+	which are invalid?
+	<DL>
+		<DD><B><BR>
+		a.</B> <TT>Age</TT><BR>
+		<B><BR>
+		b.</B> <TT>!ex</TT><BR>
+		<B><BR>
+		c.</B><TT> R79J</TT><BR>
+		<B><BR>
+		d.</B><TT> TotalIncome<BR>
+		</TT><B><BR>
+		e.</B> <TT>__Invalid</TT>
+	</DL>
+</DL>
+
+<CENTER>
+<H4><A NAME="Heading44"></A><FONT COLOR="#000077">Exercises</FONT></H4>
+</CENTER>
+
+<DL>
+	<DD><B>1.</B> What would be the correct variable type in which to store the following
+	information?
+	<DL>
+		<DD><BR>
+		<B>a.</B> Your age.<BR>
+		<BR>
+		<B>b.</B> The area of your backyard.<BR>
+		<BR>
+		<B>c.</B> The number of stars in the galaxy.<BR>
+		<BR>
+		<B>d.</B> The average rainfall for the month of January.
+	</DL>
+	<DD><BR>
+	<B>2.</B> Create good variable names for this information.<BR>
+	<BR>
+	<B>3.</B> Declare a constant for pi as 3.14159.<BR>
+	<BR>
+	<B>4.</B> Declare a <TT>float</TT> variable and initialize it using your pi constant.<BR>
+	
+	<CENTER>
+	<DD><A HREF="ch02.htm"><IMG SRC="../buttons/BLANPREV.GIF" WIDTH="37"
+	HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+	SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+	BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+	WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch04.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+	WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="#heading1"><IMG SRC="../buttons/BLANTOP.GIF"
+	WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A></CENTER>
+</DL>
+
+
+
+</BODY>
+
+</HTML>

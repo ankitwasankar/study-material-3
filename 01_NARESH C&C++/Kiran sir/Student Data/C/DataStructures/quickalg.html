@@ -1,0 +1,24 @@
+<html>
+<body>
+Algorithm :<br>
+	Procedure Quicksort(A,Lowbound, Upbound)<br>
+1.If(Lowbound &#060;Upbound) then<br>
+begin<br>
+2.i &#060; Lowbound<br>
+3.j &#060; Upbound<br>
+4.pivot &#060; lowbound<br>
+5.while(i&#060;j) do<br>
+6.while ((A[i] &#060;= A[pivot]) and (i&#060;Upbound) do<br>
+i &#060;&#045; i+1<br>
+7.while(A[j] >A[pivot]) do<br>
+j&#060;&#045; j-1<br>
+8.if (i&#060;j) then<br>
+swap(A[i],A[j])<br>
+end<br>
+9.swap(A[pivot] ,A[j])<br>
+end<br>
+10.call Quicksort(A, Lowbound, j-1)<br>
+11.call Quicksort (A,j+1,Upbound)<br>
+end<br>
+12. Return.<br>
+</body></html>

@@ -1,0 +1,137 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<tr><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></tr><br>
+
+</table></TD>
+<TD align="left"><pre>
+                                      <strong>Basic Pointers</strong>
+
+<strong>Pointer Definition:</strong> Pointer is a variable which contains the address of another variable.
+
+Reasons for using pointer:
+1.A pointer enables us to access a variable that is defined outside the function.
+2.Pointers are more efficient in handling the data tables.
+3.Pointers reduce the length and complexity of a program.
+4.They increase the execution speed
+5.The use of pointer array to character strings results in saving of data storage space in memory.
+Representation of a variable:
+         Consider the following statement 
+	       int *p;
+	       int quantity=179;
+	       p=&quantity;
+         Here p is a pointer variable of type integer,which holds the address of the
+	 variable quantity.
+	
+<strong>Declaring and initializing pointers:</strong>
+   In c,every variable must be declared for its type since pointer variable contain address 
+that belong to a seperate data type, they must be declared as pointers before we use them.
+The declaration of a pointer variable takes the following form.
+             data type *pt-name;
+This tells the compiler three things about the variable pt-name
+1.The asterick(*) tells that the variable pt-name is a pointer variable.
+2.pt-name needs a memory location.
+3.pt-name points to a variable of type data type.
+
+for example,
+   int *p;
+   declares the variable p as apointer variable that points to an integer data type.
+Remember that the type int refers to the data type of the variable being pointed to 
+by p and not the type of the value of the pointer.
+     
+Program to print the address of a variable along with its value.
+
+main()
+{
+   char a;
+   int x;
+   float p,q;
+   a='A';
+   x=125;
+   p=10.25,q=18.76;
+   printf("%c is stored at addr %u \n",a,&a);
+   printf("%d is stored at addr %u \n",x,&x);
+   printf("%f is stored at addr %u \n",p,&p);
+   printf("%f is stored at addr %u \n",q,&q);
+}
+Output:
+A is stored at addr 4436
+125 is stored at addr 4434
+10.250000 is stored at addr 4442
+18.760000 is stored at addr 4438.
+
+Accessing variables using pointers
+
+main( )
+{
+   int x,y;
+   int *ptr;
+   x=10;
+   ptr=&x;
+   y=*ptr;
+   printf("value of x is %d\n\n",x);
+   printf("%d is stored at addr %u\n",x,&x);
+   printf("%d is stored at addr %u\n",*&x,&x);
+   printf("%d is stored at addr %u\n",*ptr,ptr);
+   printf("%d is stored at addr %u\n",y,&*ptr);
+   printf("%d is stored at addr %u\n",ptr,&ptr);
+   printf("%d is stored at addr %u\n",y,&y);
+   *ptr=25;
+   printf("\n Now x=%d\n",x);
+}
+Ouput:
+value of x is 10
+10 is stored at addr 4104
+10 is stored at addr 4104
+10 is stored at addr 4104
+10 is stored at addr 4104
+4104 is stored at addr 4106
+10 is stored at addr 408.     Now x=25.
+<a href="pointer.html" target="_self"><strong>Back</strong></a>
+</pre></TD>
+</TR>
+
+</table>
+
+
+</html>
+
+
+
+    	  

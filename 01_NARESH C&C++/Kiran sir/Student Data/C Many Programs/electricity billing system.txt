@@ -1,0 +1,510 @@
+#include<stdio.h>
+#include<conio.h>
+#include<process.h>
+#include<string.h>
+#include<graphics.h>
+struct ele
+{
+int code;
+char cname[30],cfname[30],cadd[50];
+long int pno,mno;
+}ele;
+struct ele1
+{
+int code;
+int dd,mm,yy,dd1,mm1,yy1;
+long oldunit,curunit,units;
+float echarge,etax,mcharge,scharge,amtuptodd,surcharge,amtafterdd;
+}ele1;
+void customer();
+void display();
+int menu();
+void trans();
+void bill();
+int count;
+int i,n,cho,no,code;
+static int k=0;
+static int k1=0;
+void main()
+{
+int gd=0,gm,c=1,x=130,y=420,count=0,count1=0;
+initgraph(&gd,&gm,"c:\\tc\\bgi");
+  setfillstyle(SOLID_FILL,1);
+  bar(0,0,5,480);
+  bar(0,0,640,5);
+  bar(0,475,640,480);
+  bar(635,0,640,480);
+settextstyle(8,0,3);
+setcolor(10);
+outtextxy(155,60,"     Project Report");
+outtextxy(275,90,         " ON ");
+outtextxy(140,120, "Electricity Billing System");
+setcolor(12);
+outtextxy(210,160,      "Year 2005-06");
+setcolor(14);
+outtextxy(20,200,"Submitted to:-");
+outtextxy(440,200, "Guided by:-");
+setcolor(13);
+outtextxy(430,230, "Naveen Sir");
+setcolor(14);
+outtextxy(400,315,"Submitted by:-");
+setcolor(13);
+outtextxy(55,230, "Amit Sir");
+outtextxy(25,260, "Veena madam");
+outtextxy(375,350, "Prakash Menaria");
+outtextxy(350,380, " Ashish Vijayvargiya");
+outtextxy(390,410, "Shival Tiwari");
+outtextxy(380,440, "B.C.A II Sem (B)");
+settextstyle(4,0,3);
+outtextxy(20,400,"Loading");
+while(count1<=5)
+{
+settextstyle(4,0,4);
+setcolor(c);
+outtextxy(30,20,"Aishwarya College Of Education Sanathan");
+delay(200);
+setcolor(15);
+circle(x,y,5);
+if(count>5)
+{
+  count=0;
+  x=130;
+  setfillstyle(SOLID_FILL,0);
+  bar(120,410,270,430);
+  count1++;
+}
+x=x+20;
+count++;
+c++;
+}
+cleardevice();
+do
+{
+cho=menu();
+switch(cho)
+{
+case 1:
+cleardevice();
+customer();
+getch();
+cleardevice();
+fflush(stdin);
+break;
+case 2:
+cleardevice();
+display();
+getch();
+cleardevice();
+fflush(stdin);
+break;
+case 3:
+cleardevice();
+trans();
+getch();
+cleardevice();
+fflush(stdin);
+break;
+case 4:
+cleardevice();
+//bill();
+getch();
+cleardevice();
+fflush(stdin);
+break;
+case 5:
+exit(0);
+}
+}while(cho!=5);
+closegraph();
+getch();
+}
+
+void customer()
+{
+char ans;
+FILE *fp;
+fp=fopen("ele.dat","r+");
+if(fp==NULL)
+  fp=fopen("ele.dat","w+");
+fseek(fp,0,SEEK_SET);
+while(fread(&ele,sizeof(ele),1,fp))
+  count=ele.code;
+if(count==0)
+  count=101;
+else
+  count=count+1;
+do
+{
+ele.code=count;
+cleardevice();
+fflush(stdin);
+setfillstyle(SOLID_FILL,1);
+bar(0,0,5,480);
+bar(0,0,640,5);
+bar(0,475,640,480);
+bar(635,0,640,480);
+settextstyle(4,0,3);
+setcolor(14);
+outtextxy(220,25,"New Customer Entry");
+setcolor(12);
+line(440,62,210,62);
+setcolor(2);
+line(440,60,210,60);
+gotoxy(30,6);
+setcolor(10);
+rectangle(220,75,430,100);
+printf("Customer Code   -   %d",ele.code);
+setcolor(9);
+rectangle(35,120,605,320);
+setcolor(13);
+rectangle(30,115,610,325);
+setcolor(4);
+outtextxy(50,120,"Customer Name   -");
+outtextxy(50,160,"Customer Father Name  -");
+outtextxy(50,200,"Customer Address    -");
+outtextxy(50,240,"Phone Number   -");
+outtextxy(50,275,"Meter Number   -");
+gotoxy(45,9);
+fflush(stdin);
+gets(ele.cname);
+gotoxy(45,12);
+fflush(stdin);
+gets(ele.cfname);
+fflush(stdin);
+gotoxy(45,14);
+gets(ele.cadd);
+gotoxy(45,17);
+scanf("%ld",&ele.pno);
+gotoxy(45,19);
+scanf("%ld",&ele.mno);
+fseek(fp,0,SEEK_END);
+fwrite(&ele,sizeof(ele),1,fp);
+fflush(stdin);
+setcolor(12);
+outtextxy(70,370,"Do you want more entry (y/n)-");
+gotoxy(55,25);
+scanf("%c",&ans);
+count++;
+}while(ans!='n');
+fclose(fp);
+}
+
+void display()
+{
+FILE *fp;
+int num,flag=0;
+fp=fopen("ele.dat","r");
+if(fp==NULL)
+{
+  cleardevice();
+  outtextxy(200,200,"File not found");
+}
+else
+{
+cleardevice();
+setfillstyle(SOLID_FILL,1);
+bar(0,0,5,480);
+bar(0,0,640,5);
+bar(0,475,640,480);
+bar(635,0,640,480);
+setcolor(13);
+rectangle(35,70,605,130);
+setcolor(14);
+rectangle(30,65,610,135);
+setcolor(4);
+outtextxy(55,88,"Enter the Customer Code to print the bill -");
+gotoxy(57,7);
+scanf("%d",&num);
+cleardevice();
+while(fread(&ele,sizeof(ele),1,fp))
+{
+if(num==ele.code)
+{
+setfillstyle(SOLID_FILL,1);
+bar(0,0,5,480);
+bar(0,0,640,5);
+bar(0,475,640,480);
+bar(635,0,640,480);
+setcolor(9);
+rectangle(35,95,605,350);
+setcolor(13);
+rectangle(40,100,600,345);
+setcolor(2);
+line(400,72,250,72);
+setcolor(12);
+line(400,70,250,70);
+setcolor(14);
+outtextxy(260,40,"Display Record");
+setcolor(4);
+outtextxy(55,100,"Customer Code -");
+outtextxy(55,140,"Customer Name -");
+outtextxy(55,180,"Father Name -");
+outtextxy(55,220,"Address -");
+outtextxy(55,260,"Phone no. -");
+outtextxy(55,310,"Meter No. -");
+gotoxy(40,8);
+printf("%d",ele.code);
+gotoxy(40,10);
+printf("%s",ele.cname);
+gotoxy(40,13);
+printf("%s",ele.cfname);
+gotoxy(40,15);
+printf("%s",ele.cadd);
+gotoxy(40,18);
+printf("%ld",ele.pno);
+gotoxy(40,21);
+printf("%ld",ele.mno);
+flag=1;
+break;
+}
+}
+fclose(fp);
+if(flag==0)
+{
+  setfillstyle(SOLID_FILL,1);
+  bar(0,0,5,480);
+  bar(0,0,640,5);
+  bar(0,475,640,480);
+  bar(635,0,640,480);
+  setcolor(2);
+  rectangle(200,200,400,230);
+  setcolor(12);
+  rectangle(195,195,405,235);
+  setcolor(4);
+  outtextxy(220,200,"Record Not Found");
+}
+}
+}
+
+void trans()
+{
+FILE *fp;
+int num,flag=0;
+char ans;
+fp=fopen("ele.dat","r");
+if(fp==NULL)
+{
+  cleardevice();
+  outtextxy(200,200,"File not found");
+}
+else
+do
+{
+cleardevice();
+setfillstyle(SOLID_FILL,1);
+bar(0,0,5,480);
+bar(0,0,640,5);
+bar(0,475,640,480);
+bar(635,0,640,480);
+setcolor(13);
+rectangle(35,70,605,130);
+setcolor(14);
+rectangle(30,65,610,135);
+cleardevice();
+setfillstyle(SOLID_FILL,1);
+bar(0,0,5,480);
+bar(0,0,640,5);
+bar(0,475,640,480);
+bar(635,0,640,480);
+setcolor(9);
+rectangle(35,110,605,330);
+setcolor(13);
+rectangle(30,105,610,335);
+fflush(stdin);
+//x=fgetc(fp);
+setcolor(14);
+outtextxy(220,50,"Transaction Entry ");
+setcolor(2);
+line(390,82,205,82);
+setcolor(12);
+line(390,80,205,80);
+setcolor(4);
+outtextxy(50,105,"Customer Code  :-");
+outtextxy(50,135,"Customer Name  :-");
+outtextxy(50,166,"Meter Number  :-");
+outtextxy(50,196,"Previous Month Reading  :-");
+outtextxy(50,226,"Current Month Reading  :-");
+outtextxy(50,256,"Due Date      :-");
+outtextxy(50,286,"After Due Date  :-");
+gotoxy(45,8);
+fflush(stdin);
+scanf("%d",&num);
+for(i=0;i<k;i++)
+{
+if(num==ele.code)
+  {
+   flag=1;
+   break;
+  }
+}
+if(flag==0)
+{
+setcolor(12);
+rectangle(225,370,422,340);
+setcolor(14);
+outtextxy(250,340,"Wrong Code No.");
+}
+else
+{
+ele1.code=num;
+gotoxy(45,10);
+printf("%s",ele.cname);
+gotoxy(45,12);
+printf("%ld",ele.mno);
+gotoxy(45,14);
+scanf("%ld",&ele1.oldunit);
+gotoxy(45,16);
+scanf("%ld",&ele1.curunit);
+gotoxy(45,18);
+scanf("%d-%d-%d",&ele1.dd,&ele1.mm,&ele1.yy);
+gotoxy(45,20);
+scanf("%d-%d-%d",&ele1.dd1,&ele1.mm1,&ele1.yy1);
+ele1.units=ele1.curunit-ele1.oldunit;
+ele1.echarge=(float)ele1.units*3.25;
+ele1.etax=ele1.echarge*4/100;
+ele1.mcharge=35;
+ele1.scharge=25;
+ele1.amtuptodd=ele1.echarge+ele1.etax+ele1.mcharge+ele1.scharge;
+ele1.surcharge=ele1.amtuptodd*8/100;
+ele1.amtafterdd=ele1.amtuptodd+ele1.surcharge;
+}
+fflush(stdin);
+setcolor(2);
+outtextxy(90,375,"Do you want more entry (y/n)-");
+gotoxy(50,25);
+scanf("%c",&ans);
+//h=k1;
+k1++;
+ele1.code=ele.code+1;
+}while(ans!='n');
+}
+/*void bill()
+{
+int num,j;
+cleardevice();
+setfillstyle(SOLID_FILL,1);
+bar(0,0,5,480);
+bar(0,0,640,5);
+bar(0,475,640,480);
+bar(635,0,640,480);
+setcolor(13);
+rectangle(35,70,605,130);
+setcolor(14);
+rectangle(30,65,610,135);
+setcolor(4);
+outtextxy(55,88,"Enter the Customer Code to print the bill -");
+gotoxy(57,7);
+scanf("%d",&num);
+cleardevice();
+for(i=0;i<k;i++)
+{
+if(num==ele[i].code)
+{
+setfillstyle(SOLID_FILL,1);
+bar(0,0,5,480);
+bar(0,0,640,5);
+bar(0,475,640,480);
+bar(635,0,640,480);
+settextstyle(4,0,4);
+setcolor(14);
+outtextxy(15,5,"Electricity Board Of Ajmer,RAJASTHAN");
+setcolor(8);
+line(610,45,12,45);
+setcolor(1);
+line(610,43,12,43);
+gotoxy(16,6);
+printf("Customer Code->%d\t\tMeter No.->%ld",ele[i].code,ele[i].mno);
+setcolor(4);
+rectangle(90,110,560,210);
+setcolor(2);
+rectangle(85,105,565,215);
+setcolor(11);
+settextstyle(4,0,2);
+outtextxy(250,110,"Personal Detail");
+setcolor(2);
+line(385,142,245,142);
+setcolor(12);
+line(385,140,245,140);
+gotoxy(14,11);
+printf("%s/%s",ele[i].cname,ele[i].cfname);
+gotoxy(14,12);
+printf("%s",ele[i].cadd);
+gotoxy(14,13);
+printf("Phone no.- %ld",ele[i].pno);
+for(j=0;j<k1;j++)
+{
+if(num==ele[j].code)
+{
+setfillstyle(SOLID_FILL,1);
+bar(0,0,5,480);
+bar(0,0,640,5);
+bar(0,475,640,480);
+bar(635,0,640,480);
+setcolor(12);
+rectangle(90,230,560,350);
+setcolor(2);
+rectangle(85,225,565,355);
+gotoxy(13,16);
+printf(" Previous Reading    - %ld",ele1[j].oldunit);
+gotoxy(47,17);
+printf("Current Reading - %ld",ele1[j].curunit);
+gotoxy(13,17);
+printf(" Unit Consumed       - %ld",ele1[j].units);
+gotoxy(13,18);
+printf(" Electric Charge     - %.2f",ele1[j].echarge);
+gotoxy(47,17);
+printf("Electric Tax    - %.2f",ele1[j].etax);
+gotoxy(13,19);
+printf(" Meter Charge        - %.2f",ele1[j].mcharge);
+gotoxy(47,18);
+printf("Service Charge  - %.2f",ele1[j].scharge);
+gotoxy(13,20);
+printf(" Amt. Upto Due Date  - %.2f",ele1[j].amtuptodd);
+gotoxy(46,19);
+printf(" Surcharge       - %.2f",ele1[j].surcharge);
+gotoxy(13,21);
+printf(" Amt. After Due Date - %.2f",ele1[j].amtafterdd);
+settextstyle(4,0,2);
+setcolor(5);
+outtextxy(140,400," Enter any key to cont....");
+getch();
+break;
+}
+}
+}
+break;
+}
+}*/
+int menu()
+{
+setfillstyle(SOLID_FILL,1);
+bar(0,0,5,480);
+bar(0,0,640,5);
+bar(0,475,640,480);
+bar(635,0,640,480);
+settextstyle(4,0,4);
+setcolor(14);
+outtextxy(230,50,"Main Menu");
+setcolor(2);
+line(400,100,210,100);
+setcolor(12);
+line(400,98,210,98);
+setcolor(13);
+rectangle(175,120,430,295);
+setcolor(9);
+rectangle(170,115,435,300);
+setcolor(4);
+settextstyle(4,0,2);
+outtextxy(200,130,"1. Customer Entry");
+outtextxy(200,160,"2. Display the Record");
+outtextxy(200,190,"3. Transaction");
+outtextxy(200,220,"4. Bill Print");
+outtextxy(200,250,"5. Exit");
+setcolor(13);
+outtextxy(200,345,"Your Choice -");
+setcolor(2);
+rectangle(340,345,390,375);
+gotoxy(46,23);
+scanf("%d",&cho);
+return(cho);
+}

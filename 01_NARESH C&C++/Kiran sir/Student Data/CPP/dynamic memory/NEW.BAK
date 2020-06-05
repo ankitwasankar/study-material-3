@@ -1,0 +1,17 @@
+#include<iostream.h>
+#include<conio.h>
+void main()
+{
+int *ptr=new int(25);
+float *pt1=new float(12.98);
+char *ptr2=new char('f');
+clrscr();
+cout<<"Integer value is "<<*ptr<<endl;
+cout<<"Float value is "<<*pt1<<endl;
+cout<<"Char value is  "<<*ptr2;
+getch();
+delete ptr;
+cout<<*ptr;
+getch();
+}
+Arrays

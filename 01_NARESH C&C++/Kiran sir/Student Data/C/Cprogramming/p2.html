@@ -1,0 +1,562 @@
+﻿<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>PreProcessor Directives</h2></center>
+
+<pre>
+<font size="2">
+   There  are four types of preprocessor directives,these 
+are shown below.
+
+Preprocessor directives are:
+1. Macro expansion
+2. File inclusion
+3. Conditional Compilation
+4. Miscellaneous directives
+
+
+EXPLANATION FOR PREPROCESSOR DIRECTIVES:
+
+1.<u><strong>MACRO EXPANSION:<strong></strong></strong><u></u></u>
+      consider the example given below
+  #define UPPER 25
+  main()
+  {
+         int i;
+         for(i=1;i<=UPPER;i++)
+         printf("\n%d",i);
+  }
+  from the above example it is known that instead of writing 
+25 in the for loop we are writing it in the form of UPPER,
+which is already defined before main() through the statement,
+   #define UPPER 25
+  The above statement is called ‘macro definition' or ‘macro'.
+The purpose of this macro in the program is it replaces every
+occurrence of UPPER in the program with 25 during the time of
+preprocessing.
+        Example for macro definition:
+                  #define PI 3.1415
+                  main()
+                 {
+                    float r=6.25;
+                    float area;
+                    area=PI*r*r;
+                    printf("\n Area of Circle=%f",area);
+                 }
+     from the above program  UPPER and PI are called ‘macro 
+templates', and the 25 and 3.1415 are called their 
+corresponding ‘macro expansions'.
+
+       Explanation:
+    At the time of compilation of program, before the source 
+code passes to the compiler  is examined by the C preprocessor
+for any macro definitions. When it sees the #define directive,
+it goes through the entire program in search of the macro 
+templates. Where ever it finds one, it replaces the macro 
+template with the appropriate macro expansion. Only after the 
+completion of this procedure the program handed over to the 
+compiler.
+  
+Note:
+   it needs space between macro template and its macro 
+expansion that is separated by blanks or tabs. A space 
+between # and define is optional. A macro definition never 
+terminated by semicolon.
+
+ Use:
+     use of  #define in the program makes easy to read. 
+That is it makes easy to recognize constants. For example 
+substituting PI for 3.1415 makes the program to read easier.
+Here it is easy to recognize the constant 3.1415. but there
+are many instances where a constant doesn't reveal its 
+purpose. For example the phrase "\x1B[2J" causes the screen
+to clear. But it is easier to understand this in the middle
+of program when we use "CLEARSCREEN" as the macro template &
+"\x1B[2J" as the macro expansion. therefore the macro 
+definition for this is
+
+                     #define CLEARSCREEN "\x1B[2J"
+  it shows that where ever  CLEARSCREEN appears in the 
+program it would automatically be replaced by "\x1B[2J" 
+before compilation begins.In short, it is nice to know that
+it is able to change values of a constant at all places in 
+the program by just making a change in the #define directive.
+
+Conclusion:
+     thus using #define can produce more efficient and more 
+easily understandable programs. It is used extensively by C 
+programmers.
+
+<strong>Some examples of using #define directive:</strong>
+1.A #define directive is mainly a times used to define 
+operators as shown below.
+            #define AND &&
+           #define OR ||
+           main()
+         {
+             int f=1,x=4,y=90;
+              if((f<5) AND (x<=20 OR y<=45))
+              printf("\n Your PC will always work fine");
+              else
+              printf("\n In front of the maintenance man");
+         }
+
+2. A #define directive could be used even to replace a 
+condition, as shown below.
+        #define AND &&
+        #define ARANGE(a>25 AND a<50)
+        main()
+      {
+        int a=30;
+       if(ARANGE)
+              printf("within range");
+       else
+             printf("out of range");
+      }
+
+3. A #define directive could be used to replace even an 
+entire C statement. This is as shown below.
+
+        #define  FOUND printf("The Yankee diode virus");
+        main()
+        {
+             char signature;
+               if(signature=='Y')
+                   FOUND
+               else
+                    printf("safe");
+        }
+
+Macros also consists of arguments.
+
+<strong>Macros with arguments:</strong>
+
+   Macros can have arguments same as functions. example below
+shows how the arguments are used within macros.
+
+                #define AREA(x) (3.14*x*x)
+                main()
+               {
+                    float r1=6.25, r2=2.5,a;
+                    a=AREA(r1);
+                     printf("\n area of circle is=%f",a);
+                   a=AREA(r2);
+                   printf("\n area of circle=%f",a);
+               }
+   In this program wherever the preprocessor finds phrase 
+AREA(x) it expands it into the  statement (3.14*x*x). here 
+the x in the macro template AREA(x) is an argument this one
+matches the x in the macro expansion (3.14*x*x). The 
+statement AREA(r1) in the program causes the variable r1 to
+be substituted for x. Thus the statement AREA(r1) is 
+equivalent to 
+             (3.14*r1*r1)
+    After the passing of source code through the preprocessor,
+compiler works on
+
+                   main()
+                   { 
+                    float r1=6.25,r2=2.5,a;
+                    a=3.14*6.25*6.25;
+                    printf("Area of circle=%f\n",a);
+                    a=3.14*2.5*2.5;
+                    printf("Area of circle=%f",a);
+                   }
+The output of this  program after the completion of whole 
+process is as shown below.. 
+    Area of circle is=122.656250
+    Area of circle=19.625000
+
+  example 2:
+                     #define ISDIGIT(y) (y>=48 && y<=57)
+                     main()
+                    {
+                     char ch;
+                     printf("Enter any digit");
+                     scanf("%c",&ch);
+                     if(ISDIGIT(ch))
+                           printf("\n digit is entered");
+                     else
+                         printf("\n illegal input");
+                    }
+   macros with arguments should consider the following 
+conditions.
+
+1.At the time of defining the macro there should not be blank
+ between macro template and its argument. for example in the 
+above program there  should not be blank between AREA and (x)
+in the definition.
+            i.e #define AREA(x) (3.14*x*x)
+  if  AREA  (x)  is written instead of AREA(x) it causes to 
+some problems. i.e (x) becomes the part of macro expansion 
+this leads to expand macro as shown below. This statement 
+won't run.
+        (6.25) (3.14*6.25*6.25)
+
+2. The entire macro expansion should enclosed within 
+parentheses. Here is an example for enclosing the macro 
+within parentheses.  This shows the problems occurred if 
+macro is not enclosed within the parentheses.
+
+           #define SQUARE(n) (n*n)
+           main()
+         {
+            int j;
+            j=64/SQUARE(4);
+            printf("j=%d",j);
+         }
+         
+ The output for this program we will get as j=64  instead of
+j=4 because in the above program as the macro is not enclosed 
+within the parentheses it is expanded as 
+                j=64/4*4;
+       which gives output as 64.
+
+The second preprocessor 
+directive is File Inclusion    .
+
+2. <u><strong>FILE INCLUSION:<strong></strong></strong></u>
+  
+ This directive causes one file to be included in another. 
+The preprocessor command for File Inclusion is
+                #include "filename"
+
+ this command inserts the entire contents of filename into
+the source code at that point in the program. This File 
+Inclusion preprocessor is used in two cases they are
+
+1. If the program is very large the code is divided into 
+several different files,each containing a set of related 
+functions these File Inclusion preprocessor is used. 
+These files are included at the beginning of  main program 
+file.
+
+2.functions or macro definitions are needed in many programs 
+commonly. 
+   In such situations these commonly used functions and macro 
+definitions are stored in a file, and that file can be 
+included in every program. This will add all the statements 
+in this file to program which is written.
+  In programs generally files are included with the extension
+.h, this extension stands for 'header file'. It contains 
+statements which when included go to the head of program.
+
+<strong>There are two ways to write #include statement</strong>.
+ They are:
+        #include "filename"
+        #include <filename>
+ The difference between these two statements is as shown 
+below.
+#include "goto.c" :
+        This command look for the file goto.c in the current 
+directory as well as the specified list of directories as 
+mentioned in the include search path which have been setup.
+
+#include <goto.c>:
+        This command would look for the file goto.c in the 
+specified list of directories only.
+
+The third type of preprocessor directive is  Conditional 
+Compilation.
+
+3.<u><strong>CONDITIONAL COMPILATION:</strong></u>
+
+    This Conditional Compilation is used when the compiler 
+skip over part of a source code by inserting the processing
+commands. These processing commands are  #ifdef and #endif.
+ The general form of these processing commands is as shown 
+below.
+
+       #ifdef macro name
+              statement 1;
+             statement 2;
+            statement 3;
+      #endif
+                          
+    If the macro name has been #defined, the block of code 
+will be processed as usual otherwise the block of code will
+not processed as usual.
+
+ ifdef processing command can be used in two cases. They are:
+
+1.To "comment out" obsolete lines of code. This often occurs
+ that a program is changed at the last minute to satisfy a 
+client. This involves rewriting some part of source code to 
+the client's satisfaction and delete the old code. But if the
+client again needs the old code it is difficult to rewrite the
+old code in the place of new code.
+      To overcome this problem the old code can be kept in 
+comments i.e /*        */ combination. But if we have already
+written a comment in the code that about to "comment out".
+This would mean to end up with nested comments. i.e in C we 
+can't nest comments. Therefore solution for this is to use 
+conditional compilation as shown below.
+   main()
+  {
+   #ifdef OKAY
+         statement 1;
+         statement 2;             /* detects virus*/
+        statement 3;
+       statement 4;            /* specific to stone virus */
+  #endif
+            statement 5;
+            statement 6;
+           statement 7;
+       }
+                  
+   In the above program the statements 1,2,3&4 can be compiled
+only if the macro OKAY has been defined. If all these 
+statements have to get compiled it needs to delete the #ifdef 
+and #endif statements.
+
+2.#ifdef can be used mostly to make the programs portable. 
+i.e. to make work on two totally different computers so that 
+it needs to write a program that works on both machines. For 
+this it needs to isolate the lines of code that must be 
+different for each machine by marking them off with #ifdef.
+      Example for this is
+        main()
+       {
+         #ifdef PCAT
+               code suitable for a PC/AT
+        #else
+              code suitable for a PC/XT
+       #endif
+      code common to both the computers
+    }
+            
+ After the compilation of this program it would compile only 
+the code suitable for a PC?XT  and the common code. This 
+occurs because the macro PCAT has not been defined. Working 
+of #ifdef - #else - #endif is similar to the ordinary if-else
+control instruction of C.
+
+  In this program if the program wants to un on PC/AT, it is
+needed to add the statement    
+             #define PCAT   in the program.
+
+             #ifndef directive can be used in the place of 
+#ifdef in some situations.
+ The #ifndef  i.e'if not defined' 
+works exactly opposite to #ifdef.
+
+        Example for this is as shown below.
+
+       main()
+      {
+            #ifndef PCAT
+                code suitable for a PC/XT
+           #else
+               code suitable for a PC/AT
+          #endif
+              code common to both computers
+   }
+
+   After compilation of this program it gives the output as
+code suitable for a PC/AT and the common code. i.e exactly
+opposite to the #ifdef statement.
+
+         #if  and #elif  Directives:
+
+ The #if directive can be used to test whether an expression
+evaluates to a nonzero value or not. If the result of the
+expression is nonzero, then subsequent lines upto a #else, 
+#elif or #endif are compiled, otherwise they are skipped.
+         A simple example of #if directive is as shown below.
+                   Main()
+                 {
+                   #if TEST<=5
+                          statement 1;
+                         statement 2;
+                        statement 3;
+                  #else
+                      statement 4;
+                     statement 5;
+                     statement 6;
+               #endif
+            }
+                   
+ In the above program if the expression, TEST<=5 evaluates to
+true then statements 1,2,and 2 are compiled otherwise 
+statements 4,5 and 6 are compiled. In place of the  expression
+TEST<=5 other expression like (LEVEL==HIGH || LEVEL==LOW) or 
+ADAPTER==CGA can also be used.
+
+    Nested conditional compilation is also possible. The 
+example below shows such directives.
+              #if ADAPTER==MA
+                   code for monochrome adapter
+             #else
+                   #if ADAPTER==CGA
+                     code for colour graphics adapter
+           #else
+                  #if ADAPTER==EGA
+                    code for enhanced graphics adapter
+                #else
+                #if ADAPTER=VGA
+                     code for video graphics array
+               #else
+                     code for super graphics array
+              #endif
+             #endif
+           #endif
+        #endif
+
+    This program also can be made more compact by using 
+another conditional compilation directive called #elif. The 
+same program using this directive can be written as shown 
+below. Use of #elif in this program reduces the no of end ifs.
+
+                #if ADAPTER==MA
+                       code for monochrome adapter
+              #elif ADAPTER==CGA
+                      code for colour graphics adapter
+             #elif ADAPTER==EGA
+                     code for enhanced graphics adapter
+           #elif ADAPTER==VGA
+               code for video graphics array
+          #else
+                   code for super video graphics array
+         #endif
+
+       The fourth one preprocessor Directives is Miscellaneous
+ Directives.
+
+4) <u><strong>MISCELLANEOUS IRECTIVES:</strong></u>
+
+There are two more preprocessor directives are used . They are 
+
+1.#undef
+2.#pragma
+
+#undef Directive:
+    This directive is used to undefine the directive if it is 
+already defined. i.e if the statement is already used the 
+directive #define to define the directive to undefine this 
+#undef is used.
+
+   The #undef command id
+          #undef macro template
+   statement for this is
+        #undef PCAT
+  
+this statement causes the definition of PCAT to be removed 
+from the system. All subsequent #ifdef PCAT statements would
+evaluate to false.
+
+#pragma Directive:
+    This directive is one special directive that is used to 
+turn on or off certain features. programs vary from one 
+compiler to another. There are certain programs available 
+with Microsoft C compiler which deal with formatting source 
+listings and placing comments in the object file generated by
+the compiler. Turbo C compiler has the pragma which allows to
+write assembly language statements in C program.
+
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+
+<a href="preprocessor.html" target="_self"><strong>BACK</strong></a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<conio.h>
+struct stud
+{
+char sname[10];
+long int rno;
+};
+struct stud s;
+void main()
+{
+FILE *fp;
+int i;
+clrscr();
+fp=fopen("stud.c","w");
+for(i=0;i<2;i++)
+{
+flushall();
+printf("Enter the student name -");
+gets(s.sname);
+printf("Enter the Roll no. -");
+scanf("%ld",&s.rno);
+fprintf(fp,"\n%s %ld",s.sname,s.rno);
+}
+fclose(fp);
+fp=fopen("stud.c","r");
+for(i=0;i<2;i++)
+{
+fscanf(fp,"\n%s %ld",s.sname,&s.rno);
+printf("%s %ld",s.sname,s.rno);
+}
+fclose(fp);
+getch();
+}

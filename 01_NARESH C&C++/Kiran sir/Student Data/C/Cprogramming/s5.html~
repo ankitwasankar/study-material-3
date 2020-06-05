@@ -1,0 +1,121 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left"><pre>
+
+<u>Array of Pointers to Strings:</u>
+
+As we know , a pointer variable always contains an address . Therefore , 
+if we construct an array of pointers it would contain a number of addresses. 
+Let us see how the names in the earlier example can be stored in the array of pointers.
+ 
+char *names[] = { "akshay", "parag", "raman", "srinivas", "gopal", "rajesh"};
+      In this declaration names[] is an array of pointers. It contains base addresses of respective names. 
+That is. base address of "akshay" is stored in names[0], base address of "parag" is stored in names[1] 
+and so on. In the two-dimensional array of characters, the strings occupied 60 bytes.As against this , 
+in array of pointers, the strings occupy only 41 bytes.
+         Note that in two-dimensional array of characters , the last name ended at location number 1060, 
+whereas in array of pointers to strings , it ends at 1041.A substantial saving, you would agree. But 
+realise that actually 19 bytes are not saved, since 10 bytes are sacrificed for storing the address in 
+array names . Thus , one reason to store strings in an array of pointers is to make a more efficient use 
+of available memory.
+      Another reason to use an array of pointers to store strings is to obtain greater ease in 
+manipulation of the strings. This is shown by the following programs.
+     The first one uses a two-dimensional array of characters to store the names, whereas the second 
+uses an array of pointers to strings .
+
+The purpose of both the programs is very simple. 
+
+We want to exchange the position of the names "raman" and "srinivas".
+
+<strong>Exchange names using 2-D array of characters</strong>
+
+main()
+{
+char names[][10] = { "akshay", "parag", "raman", "srinivas", "gopal", "rajesh"};
+int i;
+char t;
+printf("\n original: %s%s",&names[2][0], &names[3][0]);
+for(i = 0; i<= 9; i++)
+{
+t = names[2][i];
+names[2][i] = names[3][i];
+names[3][i] = t;
+}
+printf("\n New:%s%S", &names[2][0], &names[3][0]);
+}
+output:
+Original: raman srinivas
+New: srinivas raman
+
+Note that in this program to exchange the names we are required to exchange
+ corresponding characters of the two names. In effect , 10 exchanges are
+needed to interchange two names
+Let us see if the number of exchanges can be reduced by using an 
+array of pointers to strings. Here is the program...
+
+main()
+{
+char *names[] = { "akshay", "parag", "raman", "srinivas", "gopal", "rajesh"};
+char *temp;
+ printf("original: %s %s", names[2], names[3]);
+temp = names[2];
+names[2] = names[3];
+names[3] = temp;
+printf("\n New: %s %s", names[2], names[3]);
+}
+output:
+original: raman srinivas
+New: srinivas raman
+
+<a href="strings.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</TR>
+
+</table>
+
+
+</html>

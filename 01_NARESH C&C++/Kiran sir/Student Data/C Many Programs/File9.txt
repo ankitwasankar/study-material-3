@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+  FILE *fp;
+  struct address
+  {
+  int num;
+  char name[20],add[30];
+  }a;
+  char ch;
+  clrscr();
+  fp=fopen("add.dat","a");
+  do
+  {
+  printf("Enter the number - ");
+  scanf("%d",&a.num);
+  flushall();
+  printf("Enter the name - ");
+  scanf("%s",a.name);
+  printf("Enter the address - ");
+  scanf("%s",a.add);
+  fprintf(fp,"%d \t %s \t %s\n",a.num,a.name,a.add);
+  flushall();
+  printf("Do you want to continue - ");
+  scanf("%c",&ch);
+  }while(ch=='y' || ch=='Y');
+  fclose(fp);
+  getch();
+}

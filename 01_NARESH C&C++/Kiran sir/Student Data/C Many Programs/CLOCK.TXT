@@ -1,0 +1,18 @@
+#include<stdio.h>
+#include<conio.h>
+#include<dos.h>
+#include<graphics.h>
+void main()
+{
+   struct time t;
+   int gd=DETECT,gm;
+   initgraph(&gd,&gm,"c:\\tc\\bgi");
+   while(!kbhit())
+   {
+   cleardevice();
+   gettime(&t);
+   gotoxy(35,12);
+   printf("%2d:%02d:%02d.%02d\n",t.ti_hour, t.ti_min, t.ti_sec, t.ti_hund);
+   delay(100);
+   }
+}

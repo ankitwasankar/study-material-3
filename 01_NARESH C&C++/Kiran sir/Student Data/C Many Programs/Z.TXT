@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+  FILE *fp;
+  char a,fname[13];
+  clrscr();
+  printf("Enter the file name - ");
+  scanf("%s",fname);
+  fp=fopen(fname,"r");
+  if(fp==NULL)
+    printf("File not found");
+  else
+  {
+  while((a=getc(fp))!=EOF)
+  {
+  printf("%c",a);
+  }
+  fclose(fp);
+  }
+  getch();
+}

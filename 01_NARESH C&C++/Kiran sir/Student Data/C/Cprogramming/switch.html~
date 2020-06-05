@@ -1,0 +1,364 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<tr>
+<TR><a href="files.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left"><pre>
+
+                              <strong>DECISION MAKING AND BRANCHING </strong>
+
+<strong><u>THE CASE CONTROL STRUCTURE(SWITCH) </u></strong> 
+ 
+ 
+<strong><u>Introduction:</u></strong>In real life we are often faced with 
+situations where we are required to make a choice between a number of 
+alternatives rather than only one or two. Serious C programming is same, 
+the choice  we are asked to make is more complicated than merely selecting 
+between two alternatives. C provides a special control statement that allows
+us to handle such cases effectively; rather than using a series of IF statements. 
+  
+<strong>Decisions Using Switch: </strong>
+The control statement that allows us to make a decision from the numbers 
+of choices is called a SWITCH, or more correctly a Switch-Case-Default, Since 
+these 3 keywords go together to make up the control statement. 
+ 
+They most often appear as Follows :     
+<strong>switch</strong>(inter expression) 
+{ 
+         <strong>case</strong> constant 1: 
+                              do this; 
+         <strong>case</strong> constant 2: 
+                              do this; 
+         <strong>case</strong> constant 3: 
+                              do this; 
+         <strong>default:</strong> 
+                              do this; 
+} 
+
+
+   The integer expression following the keyword SWITCH is any C expression that
+will yield an integer constant like 1,2 or 3, or an expression that  evaluates to
+an integer.
+The keyword case is followed by an integer or a character constant.
+<strong>Process of Execution:</strong>
+When we run the program containing the switch, first the integer expression 
+following the keyword switch is evaluated. The value it gives is then matched ,
+one by one, against the constant values that follow the case statements. When
+a match is found, the program executes the statements following that case, and 
+all subsequent case and default statements. If no match is found with any of the 
+case statements, default is executed.
+
+<strong>Example:47</strong>
+   
+             main()
+             {
+                int i=1; 
+                switch(i)
+                {
+                     case 1:
+                               printf("I am in case1");
+
+                     case 2:
+                               printf("This is second one");
+                     case 3:
+                               printf("This is third case");
+                     default :
+                               printf("your are in default");
+                }
+           }
+OUTPUT:
+             The output of this program would be:
+                                                       
+                                     I am in case1
+                                    This is second one
+                                    This is third case
+                                    your are in default
+The output is definitely not what we expected. We didn't expect 2nd,
+3rd and default cases print output.
+If you want only case 2 should get executed, it is up to you to get out of 
+the switch then and there by using a Break statement. Note that there is no
+need for a break statement after the default, since the control comes out of 
+the switch anyway.
+
+<strong>Example:48</strong>
+               
+          main()
+          {
+               int i=2;
+               switch(i)
+               {
+                     case 1:
+                                 printf("I am in case1");
+                                 break;
+                     case 2:
+                                 printf("This is second one");
+                                 break;
+                     case 3:
+                                 printf("This is third case");
+                                 break;
+                     default :
+                                 printf("your are in default");
+               }                                          
+          }
+OUTPUT:       This is second one
+
+
+<strong>Example:53</strong>
+                      
+            main()
+            {
+                  char suite=3;
+                  switch(suite)
+                  {
+                      case 1:
+                                 printf("\n Diamond");
+                      case 2:
+                                 printf("\n Spade");
+                      default:
+                                 printf("\n Heart");
+                  }
+                  printf("\n I thought one wears a suite");
+            }
+ 
+OUTPUT:                                                    
+                                   Heart
+                               I thought one wears a suite
+
+<strong>Example:54</strong>
+                     
+            main()
+            {
+                  int c=3;
+                  switch(c)
+                  {
+                        case 'v' :
+                                     printf("This is v case");
+                                     break;
+                        case 3:
+                                     printf(" Iam in a Third case");
+                                     break;
+                        case 12:
+                                     printf("This is 12 th case");
+                                     break;
+                        default:
+                                     printf("Default case?");
+                                     break;
+                   }
+              }
+OUTPUT:
+                                Iam in a Third case.
+ 
+                 
+<strong>Example:55</strong>
+                     
+            main()            
+            {
+                 int k,j=2;
+                 switch(k=j+1)
+                 {
+                     case 0: 
+                                printf("\n Hai");
+                     case 1:
+                                printf("\n Hello");
+                     case 2:
+                                printf("\n Hai 1");
+                     default:
+                                printf("\n Bye");
+                 }
+           }
+
+OUTPUT:
+                 Bye
+               
+<strong>Example:56</strong>
+                  
+          main()
+          {
+               int i=0;
+               switch(i)
+               {
+                    case 0:        printf("\n Customers are dicey");
+
+                    case 1:        printf("\n Markets are priery");
+                                      
+                    case 2:        printf("\n Investors are moody");
+                                        
+                    case 3:        printf("\n Employees are lazy");
+                }
+         }
+
+OUTPUT:
+                                       Customers are dicey
+                                       Markets are priery
+                                       Investors are moody
+                                       Employees are lazy
+
+Explanation:         Here case is not having break that's why all the
+statements preceded by required cases are also executed.
+
+<strong>Example:57</strong>
+                     
+              main()
+              {
+                 int k;
+                 float j=2.0;
+                 switch(k=j+1)
+                 {
+                     case 3:
+                                 printf("\n Trapped");  
+                                 break;
+                     default:
+                                 printf("\n Caught!");
+                  }
+                                   
+             }
+
+OUTPUT:  
+                   Caught!
+
+<strong>Example:58</strong>
+                    
+             main()
+             {
+                  int i=4;
+                  switch(i)
+                  {           
+                       default:
+                                   printf("\n A mouse is an Alphabet built by Japaneese");
+                                                        
+                       case 1:
+                                   printf("\n Breeding rabbits is a raising experience");
+                                   break;
+                       case 2:
+                                   printf("Friction is a drag");
+                                   break;
+                       case 3:
+                                  printf("\n If pratice makes perfect, then noboby's perfect");    
+                  }
+            }
+
+OUTPUT:
+                     A mouse is an Alphabet built by Japanese
+                     Breeding rabbits is a raising experience
+
+<strong>Example:59</strong>
+               
+             main()
+             {
+                  int i=4,j=2;
+                  switch(i)
+                  {
+                        case 1:
+                                  printf("\n To err is human,to forgive is 
+				  against company policy");
+                                  break;
+                        case j:
+                                  printf("\n If you have nothing to do, don't do it here");
+                                  break;
+                  }
+             }
+
+OUTPUT:         constant expression required in the second case, we can not use j.
+ .                 
+<strong>Example:60</strong>
+
+.
+         main()                                      
+         {
+              int i=1;
+              switch(i)
+              {
+                  case 1:
+                           printf("\n Radio Active cats have 18 half-lives");
+                           break;
+                  case 1*2+4:
+                           printf("Bottle for rent-inquire within");
+                           break;
+               }
+         }  
+
+OUTPUT:      Radio Active cats have 18 half-lives
+
+Explanation:     No error in this program. Constant expression like 
+1*2+4 are acceptable in cases of a switch.
+<strong>Example:61</strong>            
+       main() 
+       {
+           int a =10;
+           switch(a)
+           {
+           }
+           printf("\n Programmers   never die, They just get lost in the  processing");                                    
+       }
+
+Explanation:
+             Though never required, there can exist a switch which has no cases.
+
+OUTPUT:
+           Programmers   never die, They just get lost in the   processing
+
+
+<strong>Example:62</strong>
+          main()
+           {
+                 int i=1;
+                 switch(i)
+                 {
+                      printf("hello");
+                      case 1:
+                                printf(" \n Individualists unite!");
+
+                                break;
+                      case 2:
+                                printf("\n Money is the root of all wealth");l
+                                break;
+                 }
+            }
+
+Explanation:
+        Though   there is no error, irrespective of the value of   i  the first
+printf() can never    get executed . In other words, all statements in a switch 
+have to belong to same case or the other.
+
+<a href="branching.html">Back</a>
+ </pre><td></tr></table>
+</html>

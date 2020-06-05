@@ -1,0 +1,161 @@
+#include<stdio.h>
+#include<conio.h>
+#include<dos.h>
+void create();
+void view();
+void copy();
+void add();
+void search();
+void mainm();
+FILE *f1,*f2,*f3,*f4,*f5,*f6;
+char ch1[500],ch2[500];
+char aa[10],bb[10],cc[10],dd[10],ee[10],ff[10];
+
+void main()
+{
+clrscr();
+mainm();
+getch();
+}
+
+void mainm()
+{
+int ans1;
+clrscr();
+gotoxy(5,2);
+ab:
+clrscr();
+printf("Main Menu");
+printf("\n\n1. To Create a new file  ");
+printf("\n2. To View a file  ");
+printf("\n3. To Copy a file  ");
+printf("\n4. To Add contents in a old file ");
+printf("\n5. To Search a word in a given file  ");
+printf("\n6. Exit ");
+printf("Enter Your Choice :-");
+scanf("%d",&ans1);
+if(ans1>6)
+{
+printf("\nEnter a valid choice by pressing ENTER key again");
+getch();
+goto ab;
+}
+switch(ans1)
+{
+case 1: create();
+break;
+case 2: view();
+break;
+case 3: copy();
+break;
+case 4: add();
+break;
+case 5: search();
+break;
+case 6: exit();
+break;
+}
+getch();
+}
+void create()
+{
+flushall();
+clrscr();
+printf("\nEnter the file name  ");
+gets(aa);
+f1=fopen(aa,"w");
+printf("\n Enter the contents ");
+gets(ch1);
+fprintf(f1,"%s",ch1);
+fclose(f1);
+getch();
+mainm();
+}
+void view()
+{
+char ch;
+clrscr();
+flushall();
+printf("\n Enter the file name ");
+gets(bb);
+f2=fopen(bb,"r");
+while(1)
+{
+ch=fgetc(f2);
+if(ch==EOF)
+break;
+else
+printf("%c",ch);
+}
+fclose(f2);
+getch();
+mainm();
+}
+void copy()
+{
+char ch;
+clrscr();
+flushall();
+printf("\nEnter the file name to be copied  ");
+gets(cc);
+flushall();
+printf("\nEnter the file name in which it is copied ");
+gets(dd);
+f3=fopen(cc,"r");
+f4=fopen(dd,"w");
+while(1)
+{
+ch=fgetc(f3);
+if(ch==EOF)
+break;
+fputc(ch,f4);
+}
+fclose(f3);
+fclose(f4);
+getch();
+mainm();
+}
+
+void add()
+{
+char ch;
+flushall();
+printf("\n Enter the file in which you have to add more contents ");
+gets(ee);
+f5=fopen(ee,"a+");
+flushall();
+printf("\nEnter the contents ");
+gets(ch2);
+fprintf(f5,"%s",ch2);
+fclose(f5);
+getch();
+mainm();
+}
+
+void search()
+{
+char ch,ss,no=0;
+clrscr();
+flushall();
+printf("\nEnter the file to be searched ");
+gets(ff);
+flushall();
+printf("\nEnter the character to be searched ");
+scanf("%c",&ss);
+f6=fopen(ff,"r+");
+while(1)
+{
+ch=fgetc(f6);
+if(ch==EOF)
+break;
+else if(ch==ss)
+no++;
+}
+printf("\nNo of characters in this file is %d",no);
+fclose(f6);
+getch();
+mainm();
+}
+
+
+

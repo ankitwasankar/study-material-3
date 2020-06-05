@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<conio.h>
+struct stud
+{
+  char in[20];
+  int ic,qu;
+  int pr;
+};
+void main()
+{
+  struct stud *s;
+  FILE *fp;
+  char ans;
+  clrscr();
+  fp=fopen("stud.dat","w");
+  do
+  {
+  flushall();
+  printf("Enter the item name - ");
+  gets(s->in);
+  printf("Enter the item code - ");
+  scanf("%d",&s->ic);
+  printf("Enter the quantity - ");
+  scanf("%d",&s->qu);
+  printf("Enter the price:-");
+  scanf("%d",&s->pr);
+  printf("%s %d %d %d",(*s).in,(*s).ic,s->qu,s->pr);
+  fprintf(fp,"%s %d %d %d",s->in,s->ic,s->qu,s->pr);
+  flushall();
+  printf("\nDo you want to continue (y/n) - ");
+  scanf("%c",&ans);
+  if(ans=='n' || ans=='N')
+    break;
+  }while(1);
+  fclose(fp);
+  getch();
+}

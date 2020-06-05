@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+int arms(int);
+int s,a;
+clrscr();
+printf("Enter the no.:-");
+scanf("%d",&a);
+s=arms(a);
+if(s==a)
+printf("armstrong");
+else
+printf("not armstrong");
+getch();
+}
+int arms(int x)
+{
+int s=0,r;
+while(x!=0)
+{
+r=x%10;
+s=s+r*r*r;
+x=x/10;
+}
+return s;
+}

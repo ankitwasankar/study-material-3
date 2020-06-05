@@ -1,0 +1,99 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table>
+<font size="4">
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<td align=left><pre><strong><u>Random Access Files</u></strong><br>
+Random access to files are required when we want to access only	 
+	<br>particular part of a file instead of reading and writing data sequentially.
+<br>This can be achieved by using the functions like : fseek,ftell,rewind.
+
+<strong><u>Ftell:</u></strong>
+1.This function is used to find the current position of a file.
+2.It takes file pointer as an argument.
+3.It returns a number of type long.
+           	n=ftell(fp);
+      where fp is a file pointer
+4.This ftell is used to save the current position of a file which can be used for later use.
+5.Here  n returns the relative position of a file in bytes i.e., relative offset.
+This means that n bytes have already been read or written.
+
+<strong><u>Rewind:</u></strong>
+1.It takes the file pointer as an argument and resets the position to the start of a file.
+2.   rewind(fp) 
+        n=ftell(fp)
+   The above two statements result the value of n to be zero, since the rewind function
+ has set the filepointer to start of the file,where first byte is set to 0.
+3.rewind(fp) function is used to reading and writing afile more than once without having 
+to open and close a file.
+4.When a file is opened for reading and writing rewind is done implicitly.
+
+<strong><u>Fseek:</u></strong>
+1.This function is used to move the file position to a desired location within the file.
+     	 fseek(fileptr,offset,position)
+	fileptr  is pointer to the file concerned
+	offset is a number or variable of type long .It specifies the no.of positions 	
+	(bytes) to be moved from the location specified by position.   
+	Position is an integer number.It takes one of the three values.
+    Vlaue            Meaning      	
+     0		   beginning of the file.
+     1		   current postion.
+     2		   end of file. 					
+3.The offset may be positive or negative .If positive move forwards else move backwards.
+4.Examples on Fseek: 	
+	fseek(fp,0L,0) --->  Go to the beginning.
+	fseek(fp,0L,1) ---> Stay at the current position.
+	fseek(fp,0L,2) ---> Goto the end of the file,past last character of file.
+	fseek(fp,m,0) --->  Move to the (m+1)th byte in the file.
+	fseek(fp,m,1) ---> Go forward by m bytes.
+	fseek(fp,m,-1) ---> Go backwards by m bytes from current position.
+	fseek(fp,-m,2) ---> Go backwards by m bytes from end of file.
+
+Opening a file under Random access:
+
+    fp=fopen("Random","w")
+<a href="files1.html" target="_self"><strong>Back</strong></a></font>
+ 
+
+
+
+				
+</pre></td></table>

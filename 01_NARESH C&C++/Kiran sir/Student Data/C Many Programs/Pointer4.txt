@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+int arr[][2]={{1222,56},{1223,57},{1224,58},{1225,59},{1226,60},{1227,61}};
+void display(int (*)[2]);
+clrscr();
+display(arr);
+getch();
+}
+void display(int (*p)[2])
+{
+int i,j;
+for(i=0;i<6;i++)
+{
+for(j=0;j<2;j++)
+printf(" %d",*(*(p+i)+j));
+printf("\n");
+}
+}

@@ -1,0 +1,32 @@
+//EXAMPLE PROGRAM FOR TEMPLATE FUNCTION
+# include <iostream.h>
+# include <conio.h>
+template <class A>
+A add(A x,A y)
+{
+ return x+y;
+}
+void main()
+{
+ int m,n;
+ float f,p;
+ long l,r;
+ clrscr();
+ cout<<"ENTER TWO INTEGERS  "<<endl;
+ cin>>m>>n;
+ cout<<"ENTER TWO FLOATS  "<<endl;
+ cin>>f>>p;
+ cout<<"ENTER TWO LONGS  "<<endl;
+ cin>>l>>r;
+ clrscr();
+ cout<<"FIRST INTEGER  "<<m<<endl;
+ cout<<"SECOND INTEGER  "<<n<<endl;
+ cout<<"FIRST FLOAT  "<<f<<endl;
+ cout<<"SECOND FLOAT  "<<p<<endl;
+ cout<<"FIRST LONG  "<<l<<endl;
+ cout<<"SECOND LONG  "<<r<<endl;
+ cout<<"SUM OF INTEGERS  "<<add(m,n)<<endl;
+ cout<<"SUM OF FLOATS   "<<add(f,p)<<endl;
+ cout<<"SUM OF LONGS  "<<add(l,r)<<endl;
+ getch();
+}

@@ -1,0 +1,225 @@
+﻿<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="635" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>selection Sort</h2></center>
+
+<pre>
+<font size="2">
+<strong> Explanation</strong> 
+
+     The selection sort searches all of the elements in a list 
+until it finds the smallest element. It "swaps" this with the
+first element in the list. Next it finds the smallest of the 
+remaining elements, and "swaps" it with the second element.
+     Repeat this process until only the last two elements in the 
+list are compared.
+
+<b>Explanation with an example:</b>
+
+Consider the data elements  5      2      1      3      6      4.
+  Swap the smallest element with the first element.
+      1      2      5      3      6      4
+  After the smallest element is in the first position, we continue 
+the process by taking second element and looking for the next 
+smallest element in the remaining unsorted array.
+
+  In this special case, the next smallest element is in the second 
+position already. Swapping the element with itself keeps it in the 
+same position.
+         1      2      5      3      6      4
+  After the next smallest element is in the second position, we 
+continue as above for the next smallest element.
+swap this smallest element with the third element.
+swap this element with the fourth element
+ 1      2      3      4      6      5
+Continue in the same way for the next smallest element we have
+1      2      3      4      5      6
+It can be noted that the largest of all the elements is in the last 
+position after completion of all passes. That means the maximum number
+of passes required to sort N elements is N-1. 
+
+
+<b>Algorithm: </b>
+<code><font size=2>
+Procedure SelectionSort (A,N)
+
+1.For index=1 to N-1 do
+begin
+2.MinPosition <-- index
+3.For j=index+1 to N do
+begin
+4.If A[j] MinPosition <-- j
+end
+5.swap(A[index],A[MinPosition])
+end
+6.Return.
+</font></code>
+
+<b>Analysis</b>
+
+      In step 5 we are swapping the smallest element with current 
+index element. However when array is almost sorted,this swapping is
+unnecessary and step can be modified by providing a simple condition 
+whether the smallest element position is same as current index element.
+      
+      The number of comparisons is N-1 in the first pass,N-2 in the 
+second pass,N-3 passes in the third pass , and so on, and N-i in the 
+ith pass. Hence there are at most 
+(N-1)+(N-2)+(N-3)+...............+1= N(N-1)/2 comparisons
+Time Complexity is [O(N)]²
+<font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="selectionsort.html"><b>Top</b></a></font>
+
+      Selection sort is efficient than Bubble sort and Insertion sort
+in the sense that there are no more than N-1 actual exchanges. Thus 
+the selection is very much suitable in the application in which 
+excessive swapping is a problem.
+      
+      Since the number of comparisons cannot be limited in a 
+particular pass , there is no significance if the input data is 
+completely sorted or unsorted. That is, performance for both Best 
+case and Worst case is same in selection sort. 
+
+
+<b>C Program using Selection Sort :</b>
+<code><font size=2>
+#include <stdio.h>
+main()
+{ 
+int a[20],n,i;
+printf(" How many numbers");
+scanf(" %d",&n);
+printf("Enter %d numbers",n);
+for(i=0;i < n;++i)
+scanf("%d",%a[i]);
+printf(" Numbers before sort :");
+for(i=0;i < n;++i)
+printf("%d",a[i]);
+SelectionSort(a,n);
+printf("Numbers after sort:");
+for(i=0;i < n;++i)
+printf("%d",a[i]);
+}
+SelectionSort(int a[],int n)
+{
+int index, minposition,t,j;
+for(index=0;index < n-1;index++)
+{
+minposition=index;
+for(j=index+1;j < n;index++)
+{
+if(a[j] < a[minposition])
+minposition=j;
+}
+t=a[index];
+a[index]=a[minposition];
+a[minposition]=t;
+}
+}
+</font></code>
+
+
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="sorting.html">Back</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="selectionsort.html">Top</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+

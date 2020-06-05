@@ -1,0 +1,202 @@
+﻿<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="620" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Insertion Sort</h2></center>
+
+<pre>
+<font size="2">
+<strong> Explanation</strong> 
+
+       One of the simplest sorting algorithms is the Insertion sort.
+It consists of n-1 passes. For pass p=2 through n, insertion sort
+ensures that the elements in position 1 through p are in sorted 
+order. It makes use of the fact that elements in positions 1 through 
+p-1 are already known to be in sorted order.
+
+<b>Example:</b>
+
+Original 34 8 64 51 32 21 positions moved 
+Afterp=2 8 34 64 51 32 21 1 
+After p=3 8 34 64 51 32 21 0 
+After p=4 8 34 64 51 32 21 1 
+After p=5 8 32 34 51 64 21 3 
+After p=2 8 21 32 34 51 64 4 
+
+In pass p, we move the pth element left until its correct place is
+found among the first p elements.           
+
+<b>Algorithm for Insertion sort:</b>
+<code><font size=2>
+  1.  For index=2 to N do
+       begin
+  2.  temp <- A[index]
+  3.  position<-index
+  4.  while(position>1) and (A[position-1]>temp) do
+       begin
+  5.  A[position]<- A[position-1]
+  6.  position<-position-1
+      end
+  7.  A[position]<- temp
+      end
+  8.  Return 
+</font></code>
+
+<b>Analysis of Insertion sort :</b>
+       Because of the nested loops, each of which can take n 
+iterations, insertion sort is O(n2). Furthermore , this bound is
+tight because input in reverse order can actually achieve this bound.
+The inner loop can be executed at most p times for each value of p.
+Summing over all 'p' gives a total of 
+& n
+∑p=2+3+4+...............n = O(n2)
+p=2
+ 
+       On the other hand, if the input is presorted, the running
+time is O(n) because the test at the top of the inner loop is always
+fails immediately. Indeed, if the input is almost sorted, insertion 
+sort will run quickly. Because of this wide variation, it is worth 
+analyzing the average case behavior of this algorithm. It turns out 
+that the average case is O(n2) for insertion sort as well as for a 
+variety of other sorting algorithms. 
+<font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="insertionsort.html"><b>Top</b></a></font>
+
+<b>Program :</b>
+<code><font size=2>
+#include<stdio.h>
+main()
+{
+  int a[20],n,i;
+  printf("\n How many numbers");
+  scanf("%d",&n);
+  printf("\n Enter %d numbers",n);
+  for(i=0;i < n ;++i)
+  scanf("%d",&a[i]);
+  printf("\n Numbers before sort:\n");
+  for(i=0;i < n;++i)
+  printf("%d",a[i]);
+  insertionsort(a,n);
+  printf("\n Numbers after sort :\n");
+  for(i=0;i < n;++i)
+  printf("%d",a[i]);
+}
+insertionsort(int a[],int n)
+ {
+   int index,temp,position;
+   for(index1;index < n;++index)
+    {
+        temp=a[index];
+        position=index;
+        while(position>0&& a[position-1]>temp)
+         {
+           a[position]=a[position-1]; --position;
+         }
+        a[position]=temp;
+     }
+ }
+
+</font></code>
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="sorting.html">Back</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="insertionsort.html">Top</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+

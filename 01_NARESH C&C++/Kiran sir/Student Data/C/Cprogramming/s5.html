@@ -1,0 +1,196 @@
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Array Of Pointers To Strings </h2></center>
+
+<pre>
+<font size="2">
+     As we know , a pointer variable always contains an 
+address. Therefore , if we construct an array of pointers
+it would contain a number of addresses.Let us see how the
+names in the earlier example can be stored in the array of
+pointers. 
+
+char *names[] = { "akshay", "parag", "raman",
+                  "srinivas", "gopal", "rajesh"};
+    In this declaration names[] is an array of pointers.It
+contains base addresses of respective names.That is. base
+address of "akshay" is stored in names[0], base address of
+"parag" is stored in names[1] and so on. In the 
+two-dimensional array of characters,the strings occupied 
+60 bytes.As against this ,in array of pointers,the strings
+occupy only 41 bytes.
+   Note that in two-dimensional array of characters ,the
+last name ended at location number 1060,whereas in array
+of pointers to strings , it ends at 1041.A substantial 
+saving, you would agree. But realise that actually 19 
+bytes are not saved, since 10 bytes are sacrificed for 
+storing the address in array names .Thus ,one reason to 
+store strings in an array of pointers is to make a more 
+efficient use of available memory.
+    Another reason to use an array of pointers to store 
+strings is to obtain greater ease in manipulation of the
+strings. This is shown by the following programs.
+   The first one uses a two-dimensional array of characters
+to store the names, whereas the second uses an array of 
+pointers to strings .
+   The purpose of both the programs is very simple. 
+We want to exchange the position of the names "raman" 
+and "srinivas".
+
+<strong>Exchange names using 2-D array of characters</strong>
+
+main()
+{
+char names[][10] = { "akshay", "parag", "raman",
+                     "srinivas", "gopal", "rajesh"};
+int i;
+char t;
+printf("\n original: %s%s",&names[2][0], &names[3][0]);
+for(i = 0; i<= 9; i++)
+{
+t = names[2][i];
+names[2][i] = names[3][i];
+names[3][i] = t;
+}
+printf("\n New:%s%S", &names[2][0], &names[3][0]);
+}
+output:
+Original: raman srinivas
+New: srinivas raman
+
+  Note that in this program to exchange the names we are 
+required to exchange corresponding characters of the two 
+names. In effect , 10 exchanges are needed to interchange
+two names Let us see if the number of exchanges can be 
+reduced by using an array of pointers to strings. Here is
+the program...
+
+main()
+{
+char *names[] = { "akshay", "parag", "raman",
+                  "srinivas", "gopal", "rajesh"};
+char *temp;
+printf("original: %s %s", names[2], names[3]);
+temp = names[2];
+names[2] = names[3];
+names[3] = temp;
+printf("\n New: %s %s", names[2], names[3]);
+}
+
+output:
+original: raman srinivas
+New: srinivas raman
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+
+<a href="strings.html" target="_self"><strong>BACK</strong></a>   
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

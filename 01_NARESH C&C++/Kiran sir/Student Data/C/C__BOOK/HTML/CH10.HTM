@@ -1,0 +1,1832 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+<!-- This document was created from RTF source by rtftohtml version 3.0.1 -->
+
+	<META NAME="GENERATOR" Content="Symantec Visual Page 1.0">
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+	<TITLE>Teach Yourself C++ in 21 Days</TITLE>
+</HEAD>
+
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF">
+
+<H1 ALIGN="CENTER"><A HREF="ch09.htm"><IMG SRC="../buttons/BLANPREV.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch11.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A></H1>
+<H1></H1>
+
+<UL>
+	<LI><A HREF="#Heading1">Day 10</A>
+	<UL>
+		<LI><A HREF="#Heading2">Advanced Functions</A>
+		<UL>
+			<LI><A HREF="#Heading3">Overloaded Member Functions</A>
+			<LI><A HREF="#Heading4">Listing 10.1. Overloading member functions</A><A HREF="#Heading5">.</A>
+			<LI><A HREF="#Heading6">Using Default Values</A>
+			<LI><A HREF="#Heading7">Listing 10.2. Using default values</A><A HREF="#Heading8">.</A>
+			<LI><A HREF="#Heading9">Choosing Between Default Values and Overloaded Functions</A>
+			<LI><A HREF="#Heading10">The Default Constructor</A>
+			<LI><A HREF="#Heading11">Overloading Constructors</A>
+			<LI><A HREF="#Heading12">Listing 10.3. Overloading the constructor</A><A HREF="#Heading13">.</A>
+			<LI><A HREF="#Heading14">Initializing Objects</A>
+			<LI><A HREF="#Heading15">Listing 10.4. A code snippet showing initialization of member
+			variables</A><A HREF="#Heading16">.</A>
+			<LI><A HREF="#Heading17">The Copy Constructor</A>
+			<UL>
+				<LI><A HREF="#Heading18">Figure 10.1.</A>
+				<LI><A HREF="#Heading19">Figure 10.2.</A>
+			</UL>
+			<LI><A HREF="#Heading20">Listing 10.5. Copy constructors</A><A HREF="#Heading21">.</A>
+			<UL>
+				<LI><A HREF="#Heading22">Figure 10.3.</A>
+			</UL>
+			<LI><A HREF="#Heading23">Operator Overloading</A>
+			<LI><A HREF="#Heading24">Listing 10.6. The Counter class</A><A HREF="#Heading25">.</A>
+			<UL>
+				<LI><A HREF="#Heading26">Writing an Increment Function</A>
+			</UL>
+			<LI><A HREF="#Heading27">Listing 10.7. Adding an increment operator</A><A HREF="#Heading28">.</A>
+			<UL>
+				<LI><A HREF="#Heading29">Overloading the Prefix Operator</A>
+			</UL>
+			<LI><A HREF="#Heading30">Listing 10.8. Overloading operator</A><A HREF="#Heading31">++.</A>
+			<UL>
+				<LI><A HREF="#Heading32">Returning Types in Overloaded Operator Functions</A>
+			</UL>
+			<LI><A HREF="#Heading33">Listing 10.9. Returning a temporary object</A><A HREF="#Heading34">.</A>
+			<UL>
+				<LI><A HREF="#Heading35">Returning Nameless Temporaries</A>
+			</UL>
+			<LI><A HREF="#Heading36">Listing 10.10. Returning a nameless temporary object</A><A
+			HREF="#Heading37">.</A>
+			<UL>
+				<LI><A HREF="#Heading38">Using the this Pointer</A>
+			</UL>
+			<LI><A HREF="#Heading39">Listing 10.11. Returning the this pointer</A><A HREF="#Heading40">.</A>
+			<UL>
+				<LI><A HREF="#Heading41">Overloading the Postfix Operator</A>
+				<LI><A HREF="#Heading42">Difference Between Prefix and Postfix</A>
+			</UL>
+			<LI><A HREF="#Heading43">Listing 10.12. Prefix and postfix operators</A><A HREF="#Heading44">.</A>
+			<LI><A HREF="#Heading45">Operator Overloading Unary Operators</A>
+			<UL>
+				<LI><A HREF="#Heading46">The Addition Operator</A>
+			</UL>
+			<LI><A HREF="#Heading47">Listing 10.13. The Add() function</A><A HREF="#Heading48">.</A>
+			<UL>
+				<LI><A HREF="#Heading49">Overloading operator+</A>
+			</UL>
+			<LI><A HREF="#Heading50">Listing 10.14. operator</A><A HREF="#Heading51">+.</A>
+			<LI><A HREF="#Heading52">Operator Overloading: Binary Operators</A>
+			<UL>
+				<LI><A HREF="#Heading53">Issues in Operator Overloading</A>
+				<LI><A HREF="#Heading54">Limitations on Operator Overloading</A>
+				<LI><A HREF="#Heading55">What to Overload</A>
+				<LI><A HREF="#Heading56">The Assignment Operator</A>
+			</UL>
+			<LI><A HREF="#Heading57">Listing 10.15. An assignment operator</A><A HREF="#Heading58">.</A>
+			<LI><A HREF="#Heading59">Conversion Operators</A>
+			<LI><A HREF="#Heading60">Listing 10.16. Attempting to assign a Counter to a USHORT</A><A
+			HREF="#Heading61">.</A>
+			<LI><A HREF="#Heading62">Listing 10.17. Converting USHORT to Counter</A><A HREF="#Heading63">.</A>
+			<UL>
+				<LI><A HREF="#Heading64">Conversion Operators</A>
+			</UL>
+			<LI><A HREF="#Heading65">Listing 10.18. Converting from Counter to unsigned short().</A>
+			<LI><A HREF="#Heading66">Summary</A>
+			<LI><A HREF="#Heading67">Q&amp;A</A>
+			<LI><A HREF="#Heading68">Workshop</A>
+			<UL>
+				<LI><A HREF="#Heading69">Quiz</A>
+				<LI><A HREF="#Heading70">Exercises</A>
+			</UL>
+		</UL>
+	</UL>
+</UL>
+
+<P>
+<HR SIZE="4">
+
+<H2 ALIGN="CENTER"><A NAME="Heading1"></A><FONT COLOR="#000077">Day 10</FONT></H2>
+<H2 ALIGN="CENTER"><A NAME="Heading2"></A><FONT COLOR="#000077">Advanced Functions</FONT></H2>
+<P>On Day 5, &quot;Functions,&quot; you learned the fundamentals of working with
+functions. Now that you know how pointers and references work, there is more you
+can do with functions. Today you learn
+
+<UL>
+	<LI>How to overload member functions.
+	<P>
+	<LI>How to overload operators.
+	<P>
+	<LI>How to write functions to support classes with dynamically allocated variables.
+</UL>
+
+<H3 ALIGN="CENTER"><A NAME="Heading3"></A><FONT COLOR="#000077">Overloaded Member
+Functions</FONT></H3>
+<P>On Day 5, you learned how to implement function polymorphism, or function overloading,
+by writing two or more functions with the same name but with different parameters.
+Class member functions can be overloaded as well, in much the same way.</P>
+<P>The <TT>Rectangle</TT> class, demonstrated in Listing 10.1, has two <TT>DrawShape()</TT>
+functions. One, which takes no parameters, draws the <TT>Rectangle</TT> based on
+the class's current values. The other takes two values, <TT>width</TT> and <TT>length</TT>,
+and draws the rectangle based on those values, ignoring the current class values.</P>
+<P><A NAME="Heading4"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 10.1. Overloading
+member functions.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">
+1:     //Listing 10.1 Overloading class member functions
+2:     #include &lt;iostream.h&gt;
+3:
+4:     typedef unsigned short int USHORT;
+5:     enum BOOL { FALSE, TRUE};
+6:
+7:     // Rectangle class declaration
+8:     class Rectangle
+9:     {
+10:    public:
+11:       // constructors
+12:       Rectangle(USHORT width, USHORT height);
+13:       ~Rectangle(){}
+14:
+15:       // overloaded class function DrawShape
+16:       void DrawShape() const;
+17:       void DrawShape(USHORT aWidth, USHORT aHeight) const;
+18:
+19:    private:
+20:       USHORT itsWidth;
+21:       USHORT itsHeight;
+22:    };
+23:
+24:    //Constructor implementation
+25:    Rectangle::Rectangle(USHORT width, USHORT height)
+26:    {
+27:       itsWidth = width;
+28:       itsHeight = height;
+29:    }
+30:
+31:
+32:    // Overloaded DrawShape - takes no values
+33:    // Draws based on current class member values
+34:    void Rectangle::DrawShape() const
+35:    {
+36:        DrawShape( itsWidth, itsHeight);
+37:    }
+38:
+39:
+40:    // overloaded DrawShape - takes two values
+41:    // draws shape based on the parameters
+42:    void Rectangle::DrawShape(USHORT width, USHORT height) const
+43:    {
+44:       for (USHORT i = 0; i&lt;height; i++)
+45:       {
+46:          for (USHORT j = 0; j&lt; width; j++)
+47:          {
+48:             cout &lt;&lt; &quot;*&quot;;
+49:          }
+50:          cout &lt;&lt; &quot;\n&quot;;
+51:       }
+52:    }
+53:
+54:    // Driver program to demonstrate overloaded functions
+55:    int main()
+56:    {
+57:       // initialize a rectangle to 30,5
+58:       Rectangle theRect(30,5);
+59:       cout &lt;&lt; &quot;DrawShape(): \n&quot;;
+60:       theRect.DrawShape();
+61:       cout &lt;&lt; &quot;\nDrawShape(40,2): \n&quot;;
+62:       theRect.DrawShape(40,2);
+63:     return 0;
+<TT>64: }</TT></FONT></PRE>
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>This listing passes <TT>width</TT>
+	and <TT>height</TT> values to several functions. You should note that sometimes <TT>width</TT>
+	is passed first and at other times <TT>height</TT> is passed first. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<PRE><FONT COLOR="#0066FF">Output: DrawShape():
+******************************
+******************************
+******************************
+******************************
+******************************
+
+DrawShape(40,2):
+************************************************************
+************************************************************
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>Listing 10.1 represents a
+stripped-down version of the Week in Review project from Week 1. The test for illegal
+values has been taken out to save room, as have some of the accessor functions. The
+main program has been stripped down to a simple driver program, rather than a menu.<BR>
+<BR>
+The important code, however, is on lines 16 and 17, where <TT>DrawShape()</TT> is
+overloaded. The implementation for these overloaded class methods is on lines 32-52.
+Note that the version of <TT>DrawShape()</TT> that takes no parameters simply calls
+the version that takes two parameters, passing in the current member variables. Try
+very hard to avoid duplicating code in two functions. Otherwise, keeping them in
+sync when changes are made to one or the other will be difficult and error-prone.</P>
+<P>The driver program, on lines 54-64, creates a rectangle object and then calls
+<TT>DrawShape()</TT>, first passing in no parameters, and then passing in two <TT>unsigned
+short</TT> integers.</P>
+<P>The compiler decides which method to call based on the number and type of parameters
+entered. One can imagine a third overloaded function named <TT>DrawShape()</TT> that
+takes one dimension and an enumeration for whether it is the width or height, at
+the user's choice.
+<H3 ALIGN="CENTER"><A NAME="Heading6"></A><FONT COLOR="#000077">Using Default Values</FONT></H3>
+<P>Just as non-class functions can have one or more default values, so can each member
+function of a class. The same rules apply for declaring the default values, as illustrated
+in Listing 10.2.
+<H3 ALIGN="CENTER"></H3>
+<P><A NAME="Heading7"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 10.2. Using default
+values.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">
+1:     //Listing 10.2 Default values in member functions
+2:     #include &lt;iostream.h&gt;
+3:
+4:     typedef unsigned short int USHORT;
+5:     enum BOOL { FALSE, TRUE};
+6:
+7:     // Rectangle class declaration
+8:     class Rectangle
+9:     {
+10:    public:
+11:       // constructors
+12:       Rectangle(USHORT width, USHORT height);
+13:       ~Rectangle(){}
+14:       void DrawShape(USHORT aWidth, USHORT aHeight, BOOL UseCurrentVals =  &#194;                  FALSE) const;
+15:
+16:    private:
+17:       USHORT itsWidth;
+18:       USHORT itsHeight;
+19:    };
+20:
+21:    //Constructor implementation
+22:    Rectangle::Rectangle(USHORT width, USHORT height):
+23:    itsWidth(width),       // initializations
+24:    itsHeight(height)
+25:    {}                     // empty body
+26:
+27:
+28:    // default values used for third parameter
+29:    void Rectangle::DrawShape(
+30:       USHORT width,
+31:       USHORT height,
+32:       BOOL UseCurrentValue
+33:       ) const
+34:    {
+35:       int printWidth;
+36:       int printHeight;
+37:
+38:       if (UseCurrentValue == TRUE)
+39:       {
+40:          printWidth = itsWidth;       // use current class values
+41:          printHeight = itsHeight;
+42:       }
+43:       else
+44:       {
+45:          printWidth = width;         // use parameter values
+46:          printHeight = height;
+47:       }
+48:
+49:
+50:       for (int i = 0; i&lt;printHeight; i++)
+51:       {
+52:          for (int j = 0; j&lt; printWidth; j++)
+53:          {
+54:             cout &lt;&lt; &quot;*&quot;;
+55:          }
+56:          cout &lt;&lt; &quot;\n&quot;;
+57:       }
+58:    }
+59:
+60:    // Driver program to demonstrate overloaded functions
+61:    int main()
+62:    {
+63:       // initialize a rectangle to 10,20
+64:       Rectangle theRect(30,5);
+65:       cout &lt;&lt; &quot;DrawShape(0,0,TRUE)...\n&quot;;
+66:       theRect.DrawShape(0,0,TRUE);
+67:       cout &lt;&lt;&quot;DrawShape(40,2)...\n&quot;;
+68:       theRect.DrawShape(40,2);
+69:     return 0;
+<TT>70: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: DrawShape(0,0,TRUE)...
+******************************
+******************************
+******************************
+******************************
+******************************
+DrawShape(40,2)...
+************************************************************
+************************************************************
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>Listing 10.2 replaces the
+overloaded <TT>DrawShape()</TT> function with a single function with default parameters.
+The function is declared on line 14 to take three parameters. The first two, <TT>aWidth</TT>
+and <TT>aHeight</TT>, are <TT>USHORT</TT>s, and the third, <TT>UseCurrentVals</TT>,
+is a <TT>BOOL</TT> (true or false) that defaults to <TT>FALSE</TT>.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>Boolean values are those that evaluate
+	to <TT>TRUE</TT> or <TT>FALSE</TT>. C++ considers 0 to be false and all other values
+	to be true. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P>The implementation for this somewhat awkward function begins on line 29. The third
+parameter, <TT>UseCurrentValue</TT>, is evaluated. If it is <TT>TRUE</TT>, the member
+variables <TT>itsWidth</TT> and <TT>itsHeight</TT> are used to set the local variables
+<TT>printWidth</TT> and <TT>printHeight</TT>, respectively.</P>
+<P>If <TT>UseCurrentValue</TT> is <TT>FALSE</TT>, either because it has defaulted
+<TT>FALSE</TT> or was set by the user, the first two parameters are used for setting
+<TT>printWidth</TT> and <TT>printHeight</TT>.</P>
+<P>Note that if <TT>UseCurrentValue</TT> is <TT>TRUE</TT>, the values of the other
+two parameters are completely ignored.
+<H3 ALIGN="CENTER"><A NAME="Heading9"></A><FONT COLOR="#000077">Choosing Between
+Default Values and Overloaded Functions</FONT></H3>
+<P>Listings 10.1 and 10.2 accomplish the same thing, but the overloaded functions
+in Listing 10.1 are easier to understand and more natural to use. Also, if a third
+variation is needed--perhaps the user wants to supply either the width or the height,
+but not both--it is easy to extend the overloaded functions. The default value, however,
+will quickly become unusably complex as new variations are added.</P>
+<P>How do you decide whether to use function overloading or default values? Here's
+a rule of thumb:</P>
+<P>Use function overloading when
+
+<UL>
+	<LI>There is no reasonable default value.
+	<P>
+	<LI>You need different algorithms.
+	<P>
+	<LI>You need to support variant types in your parameter list.
+</UL>
+
+<H3 ALIGN="CENTER"><A NAME="Heading10"></A><FONT COLOR="#000077">The Default Constructor</FONT></H3>
+<P>As discussed on Day 6, &quot;Basic Classes,&quot; if you do not explicitly declare
+a constructor for your class, a default constructor is created that takes no parameters
+and does nothing. You are free to make your own default constructor, however, that
+takes no arguments but that &quot;sets up&quot; your object as required.</P>
+<P>The constructor provided for you is called the &quot;default&quot; constructor,
+but by convention so is any constructor that takes no parameters. This can be a bit
+confusing, but it is usually clear from context which is meant.</P>
+<P>Take note that if you make any constructors at all, the default constructor is
+not made by the compiler. So if you want a constructor that takes no parameters and
+you've created any other constructors, you must make the default constructor yourself!
+<H3 ALIGN="CENTER"><A NAME="Heading11"></A><FONT COLOR="#000077">Overloading Constructors</FONT></H3>
+<P>The point of a constructor is to establish the object; for example, the point
+of a <TT>Rectangle</TT> constructor is to make a rectangle. Before the constructor
+runs, there is no rectangle, just an area of memory. After the constructor finishes,
+there is a complete, ready-to-use <TT>rectangle</TT> object.</P>
+<P>Constructors, like all member functions, can be overloaded. The ability to overload
+constructors is very powerful and very flexible.</P>
+<P>For example, you might have a <TT>rectangle</TT> object that has two constructors:
+The first takes a length and a width and makes a rectangle of that size. The second
+takes no values and makes a default-sized rectangle. Listing 10.3 implements this
+idea.</P>
+<P><A NAME="Heading12"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 10.3. Overloading
+the constructor.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">
+1:     // Listing 10.3
+2:      // Overloading constructors
+3:
+4:      #include &lt;iostream.h&gt;
+5:
+6:      class Rectangle
+7:      {
+8:      public:
+9:           Rectangle();
+10:           Rectangle(int width, int length);
+11:           ~Rectangle() {}
+12:           int GetWidth() const { return itsWidth; }
+13:           int GetLength() const { return itsLength; }
+14:      private:
+15:           int itsWidth;
+16:           int itsLength;
+17:      };
+18:
+19:      Rectangle::Rectangle()
+20:      {
+21:           itsWidth = 5;
+22:           itsLength = 10;
+23:      }
+24:
+25:      Rectangle::Rectangle (int width, int length)
+26:      {
+27:           itsWidth = width;
+28:           itsLength = length;
+29:      }
+30:
+31:      int main()
+32:      {
+33:           Rectangle Rect1;
+34:           cout &lt;&lt; &quot;Rect1 width: &quot; &lt;&lt; Rect1.GetWidth() &lt;&lt; endl;
+35:           cout &lt;&lt; &quot;Rect1 length: &quot; &lt;&lt; Rect1.GetLength() &lt;&lt; endl;
+36:
+37:           int aWidth, aLength;
+38:           cout &lt;&lt; &quot;Enter a width: &quot;;
+39:           cin &gt;&gt; aWidth;
+40:           cout &lt;&lt; &quot;\nEnter a length: &quot;;
+41:           cin &gt;&gt; aLength;
+42:
+43:           Rectangle Rect2(aWidth, aLength);
+44:           cout &lt;&lt; &quot;\nRect2 width: &quot; &lt;&lt; Rect2.GetWidth() &lt;&lt; endl;
+45:           cout &lt;&lt; &quot;Rect2 length: &quot; &lt;&lt; Rect2.GetLength() &lt;&lt; endl;
+46:     return 0;
+<TT>47: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: Rect1 width: 5
+Rect1 length: 10
+Enter a width: 20
+
+Enter a length: 50
+
+Rect2 width: 20
+Rect2 length: 50
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>The <TT>Rectangle</TT> class
+is declared on lines 6-17. Two constructors are declared: the &quot;default constructor&quot;
+on line 9 and a constructor taking two integer variables.<BR>
+<BR>
+On line 33, a rectangle is created using the default constructor, and its values
+are printed on lines 34-35. On lines 37-41, the user is prompted for a width and
+length, and the constructor taking two parameters is called on line 43. Finally,
+the width and height for this rectangle are printed on lines 44-45.</P>
+<P>Just as it does any overloaded function, the compiler chooses the right constructor,
+based on the number and type of the parameters.
+<H3 ALIGN="CENTER"><A NAME="Heading14"></A><FONT COLOR="#000077">Initializing Objects</FONT></H3>
+<P>Up to now, you've been setting the member variables of objects in the body of
+the constructor. Constructors, however, are invoked in two stages: the initialization
+stage and the body.</P>
+<P>Most variables can be set in either stage, either by initializing in the initialization
+stage or by assigning in the body of the constructor. It is cleaner, and often more
+efficient, to initialize member variables at the initialization stage. The following
+example shows how to initialize member variables:</P>
+<PRE><FONT COLOR="#0066FF">CAT():        // constructor name and parameters
+itsAge(5),    // initialization list
+itsWeight(8)
+{ }                // body of constructor
+</FONT></PRE>
+<P>After the closing parentheses on the constructor's parameter list, write a colon.
+Then write the name of the member variable and a pair of parentheses. Inside the
+parentheses, write the expression to be used to initialize that member variable.
+If there is more than one initialization, separate each one with a comma. Listing
+10.4 shows the definition of the constructors from Listing 10.3, with initialization
+of the member variables rather than assignment.</P>
+<P><A NAME="Heading15"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 10.4. A code
+snippet showing initialization of member variables.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">
+1:   Rectangle::Rectangle():
+2:       itsWidth(5),
+3:       itsLength(10)
+4:   {
+5:   };
+6:
+7:   Rectangle::Rectangle (int width, int length)
+8:       itsWidth(width),
+9:       itsLength(length)
+10:  
+<TT>11: };</TT> 
+
+</FONT><FONT COLOR="#000000"><B>Output: </B>No output</FONT><FONT COLOR="#0066FF">.</FONT></PRE>
+<P>There are some variables that must be initialized and cannot be assigned to: references
+and constants. It is common to have other assignments or action statements in the
+body of the constructor; however, it is best to use initialization as much as possible.
+<H3 ALIGN="CENTER"><A NAME="Heading17"></A><FONT COLOR="#000077">The Copy Constructor</FONT></H3>
+<P>In addition to providing a default constructor and destructor, the compiler provides
+a default copy constructor. The copy constructor is called every time a copy of an
+object is made.</P>
+<P>When you pass an object by value, either into a function or as a function's return
+value, a temporary copy of that object is made. If the object is a user-defined object,
+the class's copy constructor is called, as you saw yesterday in Listing 9.6.</P>
+<P>All copy constructors take one parameter, a reference to an object of the same
+class. It is a good idea to make it a constant reference, because the constructor
+will not have to alter the object passed in. For example:</P>
+<PRE><FONT COLOR="#0066FF">CAT(const CAT &amp; theCat);
+</FONT></PRE>
+<P>Here the <TT>CAT</TT> constructor takes a constant reference to an existing <TT>CAT</TT>
+object. The goal of the copy constructor is to make a copy of <TT>theCAT</TT>.</P>
+<P>The default copy constructor simply copies each member variable from the object
+passed as a parameter to the member variables of the new object. This is called a
+member-wise (or shallow) copy, and although this is fine for most member variables,
+it breaks pretty quickly for member variables that are pointers to objects on the
+free store.</P>
+
+<DL>
+	<DD>
+<HR>
+<FONT COLOR="#000077"><B>New Term:</B></FONT><B> </B>A <I>shallow</I> or <I>member-wise</I>
+	copy copies the exact values of one object's member variables into another object.
+	Pointers in both objects end up pointing to the same memory. A deep copy copies the
+	values allocated on the heap to newly allocated memory.
+	<P>If the <TT>CAT</TT> class includes a member variable, <TT>itsAge</TT>, that points
+	to an integer on the free store, the default copy constructor will copy the passed-in
+	<TT>CAT</TT>'s <TT>itsAge</TT> member variable to the new <TT>CAT</TT>'s <TT>itsAge</TT>
+	member variable. The two objects will now point to the same memory, as illustrated
+	in Figure 10.1. 
+<HR>
+
+</DL>
+
+<P><A NAME="Heading18"></A><A HREF="../art/ch10/102cp01.jpg"><FONT COLOR="#000077">Figure
+10.1.</FONT></A><I>Using the default copy constructor.</I><BR>
+<BR>
+This will lead to a disaster when either <TT>CAT</TT> goes out of scope. As mentioned
+on Day 8, &quot;Pointers,&quot; the job of the destructor is to clean up this memory.
+If the original <TT>CAT</TT>'s destructor frees this memory and the new <TT>CAT</TT>
+is still pointing to the memory, a stray pointer has been created, and the program
+is in mortal danger. Figure 10.2 illustrates this problem.<BR>
+<BR>
+<A NAME="Heading19"></A><A HREF="../art/ch10/102cp02.gif"><FONT COLOR="#000077">Figure
+10.2.</FONT></A><FONT COLOR="#000077"> </FONT><I>Creating a stray pointer.</I><BR>
+<BR>
+The solution to this is to create your own copy constructor and to allocate the memory
+as required. Once the memory is allocated, the old values can be copied into the
+new memory. This is called a deep copy. Listing 10.5 illustrates how to do this.</P>
+<P><A NAME="Heading20"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 10.5. Copy constructors.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">
+1:   // Listing 10.5
+2:   // Copy constructors
+3:
+4:   #include &lt;iostream.h&gt;
+5:
+6:   class CAT
+7:   {
+8:       public:
+9:            CAT();                         // default constructor
+10:            CAT (const CAT &amp;);     // copy constructor
+11:            ~CAT();                         // destructor
+12:            int GetAge() const { return *itsAge; }
+13:            int GetWeight() const { return *itsWeight; }
+14:            void SetAge(int age) { *itsAge = age; }
+15:
+16:       private:
+17:            int *itsAge;
+18:            int *itsWeight;
+19:  };
+20:
+21:  CAT::CAT()
+22:  {
+23:       itsAge = new int;
+24:       itsWeight = new int;
+25:       *itsAge = 5;
+26:       *itsWeight = 9;
+27:  }
+28:
+29:  CAT::CAT(const CAT &amp; rhs)
+30:  {
+31:       itsAge = new int;
+32:       itsWeight = new int;
+33:       *itsAge = rhs.GetAge();
+34:       *itsWeight = rhs.GetWeight();
+35:  }
+36:
+37:  CAT::~CAT()
+38:  {
+39:       delete itsAge;
+40:       itsAge = 0;
+41:       delete itsWeight;
+42:       itsWeight = 0;
+43:  }
+44:
+45:  int main()
+46:  {
+47:       CAT frisky;
+48:       cout &lt;&lt; &quot;frisky's age: &quot; &lt;&lt; frisky.GetAge() &lt;&lt; endl;
+49:       cout &lt;&lt; &quot;Setting frisky to 6...\n&quot;;
+50:       frisky.SetAge(6);
+51:       cout &lt;&lt; &quot;Creating boots from frisky\n&quot;;
+52:       CAT boots(frisky);
+53:       cout &lt;&lt; &quot;frisky's age: &quot; &lt;&lt;     frisky.GetAge() &lt;&lt; endl;
+54:       cout &lt;&lt; &quot;boots' age: &quot; &lt;&lt; boots.GetAge() &lt;&lt; endl;
+55:       cout &lt;&lt; &quot;setting frisky to 7...\n&quot;;
+56:       frisky.SetAge(7);
+57:       cout &lt;&lt; &quot;frisky's age: &quot; &lt;&lt;     frisky.GetAge() &lt;&lt; endl;
+58:       cout &lt;&lt; &quot;boot's age: &quot; &lt;&lt; boots.GetAge() &lt;&lt; endl;
+59:     return 0;
+<TT>60: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: frisky's age: 5
+Setting frisky to 6...
+Creating boots from frisky
+frisky's age: 6
+boots' age:  6
+setting frisky to 7...
+frisky's age: 7
+boots' age: 6
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On lines 6-19, the <TT>CAT</TT>
+class is declared. Note that on line 9 a default constructor is declared, and on
+line 10 a copy constructor is declared.<BR>
+On lines 17 and 18, two member variables are declared, each as a pointer to an integer.
+Typically there'd be little reason for a class to store <TT>int</TT> member variables
+as pointers, but this was done to illustrate how to manage member variables on the
+free store.</P>
+<P>The default constructor, on lines 21-27, allocates room on the free store for
+two <TT>int</TT> variables and then assigns values to them.</P>
+<P>The copy constructor begins on line 29. Note that the parameter is <TT>rhs</TT>.
+It is common to refer to the parameter to a copy constructor as <TT>rhs</TT>, which
+stands for right-hand side. When you look at the assignments in lines 33 and 34,
+you'll see that the object passed in as a parameter is on the right-hand side of
+the equals sign. Here's how it works.</P>
+<P>On lines 31 and 32, memory is allocated on the free store. Then, on lines 33 and
+34, the value at the new memory location is assigned the values from the existing
+<TT>CAT</TT>.</P>
+<P>The parameter <TT>rhs</TT> is a <TT>CAT</TT> that is passed into the copy constructor
+as a constant reference. The member function <TT>rhs.GetAge()</TT> returns the value
+stored in the memory pointed to by <TT>rhs</TT>'s member variable <TT>itsAge</TT>.
+As a <TT>CAT</TT> object, <TT>rhs</TT> has all the member variables of any other
+<TT>CAT</TT>.</P>
+<P>When the copy constructor is called to create a new <TT>CAT</TT>, an existing
+<TT>CAT</TT> is passed in as a parameter. The new <TT>CAT</TT> can refer to its own
+member variables directly; however, it must access <TT>rhs</TT>'s member variables
+using the public accessor methods.</P>
+<P>Figure 10.3 diagrams what is happening here. The values pointed to by the existing
+<TT>CAT</TT> are copied to the memory allocated for the new <TT>CAT</TT><BR>
+<BR>
+<A NAME="Heading22"></A><A HREF="../art/ch10/102cp03.jpg"><FONT COLOR="#000077">Figure
+10.3.</FONT></A><FONT COLOR="#000077"> </FONT><I>Deep copy illustrated.</I><BR>
+<BR>
+On line 47, a <TT>CAT</TT> called <TT>frisky</TT> is created. <TT>frisky</TT>'s age
+is printed, and then his age is set to 6 on line 50. On line 52, a new <TT>CAT</TT>
+<TT>boots</TT> is created, using the copy constructor and passing in <TT>frisky</TT>.
+Had <TT>frisky</TT> been passed as a parameter to a function, this same call to the
+copy constructor would have been made by the compiler.<BR>
+<BR>
+On lines 53 and 54, the ages of both <TT>CAT</TT>s are printed. Sure enough, <TT>boots</TT>
+has <TT>frisky</TT>'s age, <TT>6</TT>, not the default age of <TT>5</TT>. On line
+56, <TT>frisky</TT>'s age is set to <TT>7</TT>, and then the ages are printed again.
+This time <TT>frisky</TT>'s age is <TT>7</TT>, but <TT>boots</TT>' age is still <TT>6</TT>,
+demonstrating that they are stored in separate areas of memory.</P>
+<P>When the <TT>CAT</TT>s fall out of scope, their destructors are automatically
+invoked. The implementation of the <TT>CAT</TT> destructor is shown on lines 37-43.
+<TT>delete</TT> is called on both pointers, <TT>itsAge</TT> and <TT>itsWeight</TT>,
+returning the allocated memory to the free store. Also, for safety, the pointers
+are reassigned to <TT>NULL</TT>.
+<H4 ALIGN="CENTER"><A NAME="Heading23"></A><FONT COLOR="#000077">Operator Overloading</FONT></H4>
+<P>C++ has a number of built-in types, including <TT>int</TT>, <TT>real</TT>, <TT>char</TT>,
+and so forth. Each of these has a number of built-in operators, such as addition
+(<TT>+</TT>) and multiplication (<TT>*</TT>). C++ enables you to add these operators
+to your own classes as well.</P>
+<P>In order to explore operator overloading fully, Listing 10.6 creates a new class,
+<TT>Counter</TT>. A <TT>Counter</TT> object will be used in counting (surprise!)
+in loops and other applications where a number must be incremented, decremented,
+or otherwise tracked.</P>
+<P><A NAME="Heading24"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 10.6. The Counter
+class.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">
+1:     // Listing 10.6
+2:     // The Counter class
+3:
+4:     typedef unsigned short  USHORT;
+5:     #include &lt;iostream.h&gt;
+6:
+7:     class Counter
+8:     {
+9:        public:
+10:          Counter();
+11:          ~Counter(){}
+12:          USHORT GetItsVal()const { return itsVal; }
+13:          void SetItsVal(USHORT x) {itsVal = x; }
+14:
+15:       private:
+16:          USHORT itsVal;
+17:
+18:    };
+19:
+20:    Counter::Counter():
+21:    itsVal(0)
+22:    {};
+23:
+24:    int main()
+25:    {
+26:       Counter i;
+27:       cout &lt;&lt; &quot;The value of i is &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+28:     return 0;
+<TT>29: }</TT>
+Output: The value of i is 0
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>As it stands, this is a pretty
+useless class. It is defined on lines 7-18. Its only member variable is a <TT>USHORT</TT>.
+The default constructor, which is declared on line 10 and whose implementation is
+on line 20, initializes the one member variable, <TT>itsVal</TT>, to zero.<BR>
+<BR>
+Unlike an honest, red-blooded <TT>USHORT</TT>, the <TT>Counter</TT> object cannot
+be incremented, decremented, added, assigned, or otherwise manipulated. In exchange
+for this, it makes printing its value far more difficult!
+<H4 ALIGN="CENTER"><A NAME="Heading26"></A><FONT COLOR="#000077">Writing an Increment
+Function</FONT></H4>
+<P>Operator overloading restores much of the functionality that has been stripped
+out of this class. For example, there are two ways to add the ability to increment
+a <TT>Counter</TT> object. The first is to write an increment method, as shown in
+Listing 10.7.</P>
+<P><A NAME="Heading27"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 10.7. Adding
+an increment operator.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">
+1:     // Listing 10.7
+2:     // The Counter class
+3:
+4:     typedef unsigned short  USHORT;
+5:     #include &lt;iostream.h&gt;
+6:
+7:     class Counter
+8:     {
+9:        public:
+10:          Counter();
+11:          ~Counter(){}
+12:          USHORT GetItsVal()const { return itsVal; }
+13:          void SetItsVal(USHORT x) {itsVal = x; }
+14:          void Increment() { ++itsVal; }
+15:
+16:       private:
+17:          USHORT itsVal;
+18:
+19:    };
+20:
+21:    Counter::Counter():
+22:    itsVal(0)
+23:    {};
+24:
+25:    int main()
+26:    {
+27:       Counter i;
+28:       cout &lt;&lt; &quot;The value of i is &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+29:       i.Increment();
+30:       cout &lt;&lt; &quot;The value of i is &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+31:     return 0;
+<TT>32: }</TT></FONT></PRE>
+<PRE><FONT COLOR="#0066FF">
+Output: The value of i is 0
+The value of i is 1
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>Listing 10.7 adds an <TT>Increment</TT>
+function, defined on line 14. Although this works, it is cumbersome to use. The program
+cries out for the ability to add a <TT>++</TT> operator, and of course this can be
+done.
+<H4 ALIGN="CENTER"><A NAME="Heading29"></A><FONT COLOR="#000077">Overloading the
+Prefix Operator</FONT></H4>
+<P>Prefix operators can be overloaded by declaring functions with the form:</P>
+<PRE><FONT COLOR="#0066FF">returnType Operator op (parameters)
+</FONT></PRE>
+<P>Here, <TT>op</TT> is the operator to overload. Thus, the <TT>++</TT> operator
+can be overloaded with the following syntax:</P>
+<PRE><FONT COLOR="#0066FF">void operator++ ()
+</FONT></PRE>
+<P>Listing 10.8 demonstrates this alternative.</P>
+<P><A NAME="Heading30"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 10.8. Overloading
+operator++.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     // Listing 10.8
+2:     // The Counter class
+3:
+4:     typedef unsigned short  USHORT;
+5:     #include &lt;iostream.h&gt;
+6:
+7:     class Counter
+8:     {
+9:        public:
+10:          Counter();
+11:          ~Counter(){}
+12:          USHORT GetItsVal()const { return itsVal; }
+13:          void SetItsVal(USHORT x) {itsVal = x; }
+14:          void Increment() { ++itsVal; }
+15:          void operator++ () { ++itsVal; }
+16:
+17:       private:
+18:          USHORT itsVal;
+19:
+20:    };
+21:
+22:    Counter::Counter():
+23:    itsVal(0)
+24:    {};
+25:
+26:    int main()
+27:    {
+28:       Counter i;
+29:       cout &lt;&lt; &quot;The value of i is &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+30:       i.Increment();
+31:       cout &lt;&lt; &quot;The value of i is &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+32:       ++i;
+33:       cout &lt;&lt; &quot;The value of i is &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+34:     return 0;
+<TT>35: }</TT>
+Output: The value of i is 0
+The value of i is 1
+The value of i is 2
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On line 15, <TT>operator++</TT>
+is overloaded, and it's used on line 32. This is far closer to the syntax one would
+expect with the <TT>Counter</TT> object. At this point, you might consider putting
+in the extra abilities for which <TT>Counter</TT> was created in the first place,
+such as detecting when the <TT>Counter</TT> overruns its maximum size.<BR>
+There is a significant defect in the way the increment operator was written, however.
+If you want to put the <TT>Counter</TT> on the right side of an assignment, it will
+fail. For example:</P>
+<PRE><FONT COLOR="#0066FF">Counter a = ++i;</FONT></PRE>
+<P>This code intends to create a new <TT>Counter</TT>, <TT>a</TT>, and then assign
+to it the value in <TT>i</TT> after <TT>i</TT> is incremented. The built-in copy
+constructor will handle the assignment, but the current increment operator does not
+return a <TT>Counter</TT> object. It returns <TT>void</TT>. You can't assign a <TT>void</TT>
+object to a <TT>Counter</TT> object. (You can't make something from nothing!)
+<H4 ALIGN="CENTER"><A NAME="Heading32"></A><FONT COLOR="#000077">Returning Types
+in Overloaded Operator Functions</FONT></H4>
+<P>Clearly, what you want is to return a <TT>Counter</TT> object so that it can be
+assigned to another <TT>Counter</TT> object. Which object should be returned? One
+approach would be to create a temporary object and return that. Listing 10.9 illustrates
+this approach.</P>
+<P><A NAME="Heading33"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 10.9. Returning
+a temporary object.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">
+1:     // Listing 10.9
+2:     // operator++ returns a temporary object
+3:
+4:     typedef unsigned short  USHORT;
+5:     #include &lt;iostream.h&gt;
+6:
+7:     class Counter
+8:     {
+9:        public:
+10:          Counter();
+11:          ~Counter(){}
+12:          USHORT GetItsVal()const { return itsVal; }
+13:          void SetItsVal(USHORT x) {itsVal = x; }
+14:          void Increment() { ++itsVal; }
+15:          Counter operator++ ();
+16:
+17:       private:
+18:          USHORT itsVal;
+19:
+20:    };
+21:
+22:    Counter::Counter():
+23:    itsVal(0)
+24:    {};
+25:
+26:    Counter Counter::operator++()
+27:    {
+28:        ++itsVal;
+29:        Counter temp;
+30:        temp.SetItsVal(itsVal);
+31:        return temp;
+32:    }
+33:
+34:    int main()
+35:    {
+36:       Counter i;
+37:       cout &lt;&lt; &quot;The value of i is &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+38:       i.Increment();
+39:       cout &lt;&lt; &quot;The value of i is &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+40:       ++i;
+41:       cout &lt;&lt; &quot;The value of i is &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+42:       Counter a = ++i;
+43:       cout &lt;&lt; &quot;The value of a: &quot; &lt;&lt; a.GetItsVal();
+44:       cout &lt;&lt; &quot; and i: &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+45:     return 0;
+<TT>46: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: The value of i is 0
+The value of i is 1
+The value of i is 2
+The value of a: 3 and i: 3
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>In this version, <TT>operator++</TT>
+has been declared on line 15 to return a <TT>Counter</TT> object. On line 29, a temporary
+variable, <TT>temp</TT>, is created and its value is set to match that in the current
+object. That temporary variable is returned and immediately assigned to <TT>a</TT>
+on line 42.
+<H4 ALIGN="CENTER"><A NAME="Heading35"></A><FONT COLOR="#000077">Returning Nameless
+Temporaries</FONT></H4>
+<P>There is really no need to name the temporary object created on line 29. If <TT>Counter</TT>
+had a constructor that took a value, you could simply return the result of that constructor
+as the return value of the increment operator. Listing 10.10 illustrates this idea.</P>
+<P><A NAME="Heading36"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 10.10. Returning
+a nameless temporary object.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">
+1:     // Listing 10.10
+2:     // operator++ returns a nameless temporary object
+3:
+4:     typedef unsigned short  USHORT;
+5:     #include &lt;iostream.h&gt;
+6:
+7:     class Counter
+8:     {
+9:        public:
+10:          Counter();
+11:          Counter(USHORT val);
+12:          ~Counter(){}
+13:          USHORT GetItsVal()const { return itsVal; }
+14:          void SetItsVal(USHORT x) {itsVal = x; }
+15:          void Increment() { ++itsVal; }
+16:          Counter operator++ ();
+17:
+18:       private:
+19:          USHORT itsVal;
+20:
+21:    };
+22:
+23:    Counter::Counter():
+24:    itsVal(0)
+25:    {}
+26:
+27:    Counter::Counter(USHORT val):
+28:    itsVal(val)
+29:    {}
+30:
+31:    Counter Counter::operator++()
+32:    {
+33:       ++itsVal;
+34:       return Counter (itsVal);
+35:    }
+36:
+37:    int main()
+38:    {
+39:       Counter i;
+40:       cout &lt;&lt; &quot;The value of i is &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+41:       i.Increment();
+42:       cout &lt;&lt; &quot;The value of i is &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+43:       ++i;
+44:       cout &lt;&lt; &quot;The value of i is &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+45:       Counter a = ++i;
+46:       cout &lt;&lt; &quot;The value of a: &quot; &lt;&lt; a.GetItsVal();
+47:       cout &lt;&lt; &quot; and i: &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+48:     return 0;
+<TT>49: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: The value of i is 0
+The value of i is 1
+The value of i is 2
+The value of a: 3 and i: 3</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On line 11, a new constructor
+is declared that takes a <TT>USHORT</TT>. The implementation is on lines 27-29. It
+initializes <TT>itsVal</TT> with the passed-in value.<BR>
+The implementation of <TT>operator++</TT> is now simplified. On line 33, <TT>itsVal</TT>
+is incremented. Then on line 34, a temporary <TT>Counter</TT> object is created,
+initialized to the value in <TT>itsVal</TT>, and then returned as the result of the
+<TT>operator++</TT>.</P>
+<P>This is more elegant, but begs the question, &quot;Why create a temporary object
+at all?&quot; Remember that each temporary object must be constructed and later destroyed--each
+one potentially an expensive operation. Also, the object <TT>i</TT> already exists
+and already has the right value, so why not return it? We'll solve this problem by
+using the <TT>this</TT> pointer.
+<H4 ALIGN="CENTER"><A NAME="Heading38"></A><FONT COLOR="#000077">Using the this Pointer</FONT></H4>
+<P>The <TT>this</TT> pointer, as discussed yesterday, was passed to the <TT>operator++</TT>
+member function as to all member functions. The <TT>this</TT> pointer points to <TT>i</TT>,
+and if it's dereferenced it will return the object <TT>i</TT>, which already has
+the right value in its member variable <TT>itsVal</TT>. Listing 10.11 illustrates
+returning the dereferenced <TT>this</TT> pointer and avoiding the creation of an
+unneeded temporary object.</P>
+<P><A NAME="Heading39"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 10.11. Returning
+the this pointer.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">
+1:     // Listing 10.11
+2:     // Returning the dereferenced this pointer
+3:
+4:     typedef unsigned short  USHORT;
+5:     #include &lt;iostream.h&gt;
+6:
+7:     class Counter
+8:     {
+9:        public:
+10:          Counter();
+11:          ~Counter(){}
+12:          USHORT GetItsVal()const { return itsVal; }
+13:          void SetItsVal(USHORT x) {itsVal = x; }
+14:          void Increment() { ++itsVal; }
+15:          const Counter&amp; operator++ ();
+16:
+17:       private:
+18:          USHORT itsVal;
+19:
+20:    };
+21:
+22:    Counter::Counter():
+23:    itsVal(0)
+24:    {};
+25:
+26:    const Counter&amp; Counter::operator++()
+27:    {
+28:       ++itsVal;
+29:       return *this;
+30:    }
+31:
+32:    int main()
+33:    {
+34:       Counter i;
+35:       cout &lt;&lt; &quot;The value of i is &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+36:       i.Increment();
+37:       cout &lt;&lt; &quot;The value of i is &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+38:       ++i;
+39:       cout &lt;&lt; &quot;The value of i is &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+40:       Counter a = ++i;
+41:       cout &lt;&lt; &quot;The value of a: &quot; &lt;&lt; a.GetItsVal();
+42:       cout &lt;&lt; &quot; and i: &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+48:     return 0;
+<TT>49: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: The value of i is 0
+The value of i is 1
+The value of i is 2
+The value of a: 3 and i: 3
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>The implementation of <TT>operator++</TT>,
+on lines 26-30, has been changed to dereference the <TT>this</TT> pointer and to
+return the current object. This provides a <TT>Counter</TT> object to be assigned
+to <TT>a</TT>. As discussed above, if the <TT>Counter</TT> object allocated memory,
+it would be important to override the copy constructor. In this case, the default
+copy constructor works fine.<BR>
+<BR>
+Note that the value returned is a <TT>Counter</TT> reference, thereby avoiding the
+creation of an extra temporary object. It is a <TT>const</TT> reference because the
+value should not be changed by the function using this <TT>Counter</TT>.
+<H4 ALIGN="CENTER"><A NAME="Heading41"></A><FONT COLOR="#000077">Overloading the
+Postfix Operator</FONT></H4>
+<P>So far you've overloaded the prefix operator. What if you want to overload the
+postfix increment operator? Here the compiler has a problem: How is it to differentiate
+between prefix and postfix? By convention, an integer variable is supplied as a parameter
+to the operator declaration. The parameter's value is ignored; it is just a signal
+that this is the postfix operator.
+<H4 ALIGN="CENTER"><A NAME="Heading42"></A><FONT COLOR="#000077">Difference Between
+Prefix and Postfix</FONT></H4>
+<P>Before we can write the postfix operator, we must understand how it is different
+from the prefix operator. We reviewed this in detail on Day 4, &quot;Expressions
+and Statements&quot; (see Listing 4.3).</P>
+<P>To review, prefix says &quot;increment, and then fetch,&quot; while postfix says
+&quot;fetch, and then increment.&quot;</P>
+<P>Thus, while the prefix operator can simply increment the value and then return
+the object itself, the postfix must return the value that existed before it was incremented.
+To do this, we must create a temporary object that will hold the original value,
+then increment the value of the original object, and then return the temporary.</P>
+<P>Let's go over that again. Consider the following line of code:</P>
+<PRE><FONT COLOR="#0066FF">a = x++;
+</FONT></PRE>
+<P>If <TT>x</TT> was <TT>5</TT>, after this statement <TT>a</TT> is <TT>5</TT>, but
+<TT>x</TT> is <TT>6</TT>. Thus, we returned the value in <TT>x</TT> and assigned
+it to <TT>a</TT>, and then we increased the value of <TT>x</TT>. If <TT>x</TT> is
+an object, its postfix increment operator must stash away the original value (<TT>5</TT>)
+in a temporary object, increment <TT>x</TT>'s value to <TT>6</TT>, and then return
+that temporary to assign its value to <TT>a</TT>.</P>
+<P>Note that since we are returning the temporary, we must return it by value and
+not by reference, as the temporary will go out of scope as soon as the function returns.</P>
+<P>Listing 10.12 demonstrates the use of both the prefix and the postfix operators.</P>
+<P><A NAME="Heading43"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 10.12. Prefix
+and postfix operators.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">
+1:     // Listing 10.12
+2:     // Returning the dereferenced this pointer
+3:
+4:     typedef unsigned short  USHORT;
+5:     #include &lt;iostream.h&gt;
+6:
+7:     class Counter
+8:     {
+9:     public:
+10:       Counter();
+11:       ~Counter(){}
+12:       USHORT GetItsVal()const { return itsVal; }
+13:       void SetItsVal(USHORT x) {itsVal = x; }
+14:       const Counter&amp; operator++ ();      // prefix
+15:       const Counter operator++ (int); // postfix
+16:
+17:    private:
+18:       USHORT itsVal;
+19:    };
+20:
+21:    Counter::Counter():
+22:    itsVal(0)
+23:    {}
+24:
+25:    const Counter&amp; Counter::operator++()
+26:    {
+27:       ++itsVal;
+28:       return *this;
+29:    }
+30:
+31:    const Counter Counter::operator++(int)
+32:    {
+33:       Counter temp(*this);
+34:       ++itsVal;
+35:       return temp;
+36:    }
+37:
+38:    int main()
+39:    {
+40:       Counter i;
+41:       cout &lt;&lt; &quot;The value of i is &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+42:       i++;
+43:       cout &lt;&lt; &quot;The value of i is &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+44:       ++i;
+45:       cout &lt;&lt; &quot;The value of i is &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+46:       Counter a = ++i;
+47:       cout &lt;&lt; &quot;The value of a: &quot; &lt;&lt; a.GetItsVal();
+48:       cout &lt;&lt; &quot; and i: &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+49:       a = i++;
+50:       cout &lt;&lt; &quot;The value of a: &quot; &lt;&lt; a.GetItsVal();
+51:       cout &lt;&lt; &quot; and i: &quot; &lt;&lt; i.GetItsVal() &lt;&lt; endl;
+52:     return 0;
+<TT>53: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: The value of i is 0
+The value of i is 1
+The value of i is 2
+The value of a: 3 and i: 3
+The value of a: 3 and i: 4
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis: </B></FONT>The postfix operator is declared
+on line 15 and implemented on lines 31-36. Note that the call to the prefix operator
+on line 14 does not include the flag integer (<TT>x</TT>), but is used with its normal
+syntax. The postfix operator uses a flag value (<TT>x</TT>) to signal that it is
+the postfix and not the prefix. The flag value (<TT>x</TT>) is never used, however.
+<H3 ALIGN="CENTER"><A NAME="Heading45"></A><FONT COLOR="#000077">Operator Overloading
+Unary Operators</FONT></H3>
+<P>Declare an overloaded operator as you would a function. Use the keyword <TT>operator</TT>,
+followed by the operator to overload. Unary operator functions do not take parameters,
+with the exception of the postfix increment and decrement, which take an integer
+as a flag. Example 1</P>
+<PRE><FONT COLOR="#0066FF">const Counter&amp; Counter::operator++ ();
+</FONT></PRE>
+<P>Example 2</P>
+<PRE><FONT COLOR="#0066FF">Counter Counter::operator-(int);
+</FONT></PRE>
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<B>DO</B> use a parameter to <TT>operator++</TT> if you want the postfix operator.<B>
+	DO</B> return a <TT>const</TT> reference to the object from <TT>operator++</TT>.<B>
+	DON'T</B> create temporary objects as return values from <TT>operator++</TT>. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H4 ALIGN="CENTER"><A NAME="Heading46"></A><FONT COLOR="#000077">The Addition Operator</FONT></H4>
+<P>The increment operator is a unary operator. It operates on only one object. The
+addition operator (<TT>+</TT>) is a binary operator, where two objects are involved.
+How do you implement overloading the <TT>+</TT> operator for <TT>Count</TT>?</P>
+<P>The goal is to be able to declare two <TT>Counter</TT> variables and then add
+them, as in this example:</P>
+<PRE><FONT COLOR="#0066FF">Counter varOne, varTwo, varThree;
+VarThree = VarOne + VarTwo;
+</FONT></PRE>
+<P>Once again, you could start by writing a function, <TT>Add()</TT>, which would
+take a <TT>Counter</TT> as its argument, add the values, and then return a <TT>Counter</TT>
+with the result. Listing 10.13 illustrates this approach.</P>
+<P><A NAME="Heading47"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 10.13. The Add()
+function.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">
+1:     // Listing 10.13
+2:     // Add function
+3:
+4:     typedef unsigned short  USHORT;
+5:     #include &lt;iostream.h&gt;
+6:
+7:     class Counter
+8:     {
+9:     public:
+10:       Counter();
+11:       Counter(USHORT initialValue);
+12:       ~Counter(){}
+13:       USHORT GetItsVal()const { return itsVal; }
+14:       void SetItsVal(USHORT x) {itsVal = x; }
+15:       Counter Add(const Counter &amp;);
+16:
+17:    private:
+18:       USHORT itsVal;
+19:
+20:    };
+21:
+22:    Counter::Counter(USHORT initialValue):
+23:    itsVal(initialValue)
+24:    {}
+25:
+26:    Counter::Counter():
+27:    itsVal(0)
+28:    {}
+29:
+30:    Counter Counter::Add(const Counter &amp; rhs)
+31:    {
+32:       return Counter(itsVal+ rhs.GetItsVal());
+33:    }
+34:
+35:    int main()
+36:    {
+37:       Counter varOne(2), varTwo(4), varThree;
+38:       varThree = varOne.Add(varTwo);
+39:       cout &lt;&lt; &quot;varOne: &quot; &lt;&lt; varOne.GetItsVal()&lt;&lt; endl;
+40:       cout &lt;&lt; &quot;varTwo: &quot; &lt;&lt; varTwo.GetItsVal() &lt;&lt; endl;
+41:       cout &lt;&lt; &quot;varThree: &quot; &lt;&lt; varThree.GetItsVal() &lt;&lt; endl;
+42:
+43:     return 0;
+<TT>44: }</TT>
+Output: varOne: 2
+varTwo: 4
+varThree: 6
+</FONT></PRE>
+<P><FONT COLOR="#0066FF"><BR>
+</FONT><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>The <TT>Add()</TT>function
+is declared on line 15. It takes a constant <TT>Counter</TT> reference, which is
+the number to add to the current object. It returns a <TT>Counter</TT> object, which
+is the result to be assigned to the left side of the assignment statement, as shown
+on line 38. That is, <TT>VarOne</TT> is the object, <TT>varTwo</TT> is the parameter
+to the <TT>Add()</TT> function, and the result is assigned to <TT>VarThree</TT>.<BR>
+<BR>
+In order to create <TT>varThree</TT> without having to initialize a value for it,
+a default constructor is required. The default constructor initializes <TT>itsVal</TT>
+to <TT>0</TT>, as shown on lines 26-28. Since <TT>varOne</TT> and <TT>varTwo</TT>
+need to be initialized to a non-zero value, another constructor was created, as shown
+on lines 22-24. Another solution to this problem is to provide the default value
+<TT>0</TT> to the constructor declared on line 11.
+<H4 ALIGN="CENTER"><A NAME="Heading49"></A><FONT COLOR="#000077">Overloading operator+</FONT></H4>
+<P>The <TT>Add()</TT> function itself is shown on lines 30-33. It works, but its
+use is unnatural. Overloading the <TT>+</TT> operator would make for a more natural
+use of the <TT>Counter</TT> class. Listing 10.14 illustrates this.</P>
+<P><A NAME="Heading50"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 10.14. operator+.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">
+1:     // Listing 10.14
+2:     //Overload operator plus (+)
+3:
+4:     typedef unsigned short  USHORT;
+5:     #include &lt;iostream.h&gt;
+6:
+7:     class Counter
+8:     {
+9:     public:
+10:       Counter();
+11:       Counter(USHORT initialValue);
+12:       ~Counter(){}
+13:       USHORT GetItsVal()const { return itsVal; }
+14:       void SetItsVal(USHORT x) {itsVal = x; }
+15:       Counter operator+ (const Counter &amp;);
+16:    private:
+17:       USHORT itsVal;
+18:    };
+19:
+20:    Counter::Counter(USHORT initialValue):
+21:    itsVal(initialValue)
+22:    {}
+23:
+24:    Counter::Counter():
+25:    itsVal(0)
+26:    {}
+27:
+28:    Counter Counter::operator+ (const Counter &amp; rhs)
+29:    {
+30:       return Counter(itsVal + rhs.GetItsVal());
+31:    }
+32:
+33:    int main()
+34:    {
+35:       Counter varOne(2), varTwo(4), varThree;
+36:       varThree = varOne + varTwo;
+37:       cout &lt;&lt; &quot;varOne: &quot; &lt;&lt; varOne.GetItsVal()&lt;&lt; endl;
+38:       cout &lt;&lt; &quot;varTwo: &quot; &lt;&lt; varTwo.GetItsVal() &lt;&lt; endl;
+39:       cout &lt;&lt; &quot;varThree: &quot; &lt;&lt; varThree.GetItsVal() &lt;&lt; endl;
+40:
+41:     return 0;
+<TT>42: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: varOne: 2
+varTwo: 4
+varThree: 6
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B><TT>operator+</TT> is declared
+on line 15 and defined on lines 28-31. Compare these with the declaration and definition
+of the <TT>Add()</TT> function in the previous listing; they are nearly identical.
+The syntax of their use, however, is quite different. It is more natural to say this:</P>
+<PRE><FONT COLOR="#0066FF">varThree = varOne + varTwo;</FONT></PRE>
+<P>than to say:</P>
+<PRE><FONT COLOR="#0066FF">varThree = varOne.Add(varTwo);</FONT></PRE>
+<P>Not a big change, but enough to make the program easier to use and understand.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>The techniques used for overloading
+	<TT>operator++</TT> can be applied to the other unary operators, such as <TT>operator-</TT>.
+	
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H4 ALIGN="CENTER"><A NAME="Heading52"></A><FONT COLOR="#000077">Operator Overloading:
+Binary Operators</FONT></H4>
+<P>Binary operators are created like unary operators, except that they do take a
+parameter. The parameter is a constant reference to an object of the same type. Example
+1</P>
+<PRE><FONT COLOR="#0066FF">Counter Counter::operator+ (const Counter &amp; rhs);</FONT></PRE>
+<P>Example 2</P>
+<PRE><FONT COLOR="#0066FF">Counter Counter::operator-(const Counter &amp; rhs);
+</FONT></PRE>
+<H4 ALIGN="CENTER"><A NAME="Heading53"></A><FONT COLOR="#000077">Issues in Operator
+Overloading</FONT></H4>
+<P>Overloaded operators can be member functions, as described in this chapter, or
+non-member functions. The latter will be described on Day 14, &quot;Special Classes
+and Functions,&quot; when we discuss <TT>friend</TT> functions.</P>
+<P>The only operators that must be class members are the assignment (<TT>=</TT>),
+subscript(<TT>[]</TT>), function call (<TT>()</TT>), and indirection (<TT>-&gt;</TT>)
+operators.</P>
+<P><TT>operator[]</TT> will be discussed tomorrow, when arrays are covered. Overloading
+<TT>operator-&gt;</TT> will be discussed on Day 14, when smart pointers are discussed.
+<H4 ALIGN="CENTER"><A NAME="Heading54"></A><FONT COLOR="#000077">Limitations on Operator
+Overloading</FONT></H4>
+<P>Operators on built-in types (such as <TT>int</TT>) cannot be overloaded. The precedence
+order cannot be changed, and the arity of the operator, that is, whether it is unary
+or binary, cannot be changed. You cannot make up new operators, so you cannot declare
+<TT>**</TT> to be the &quot;power of&quot; operator.</P>
+
+<DL>
+	<DD>
+<HR>
+<FONT COLOR="#000077"><B>New Term:</B></FONT><B> </B><I>Arity</I> refers to how many
+	terms are used in the operator. Some C++ operators are unary and use only one term
+	(<TT>myValue++</TT>). Some operators are binary and use two terms (<TT>a+b</TT>).
+	Only one operator is ternary and uses three terms. The <TT>?</TT> operator is often
+	called the ternary operator, as it is the only ternary operator in C++ (<TT>a &gt;
+	b ? x : y</TT>). 
+<HR>
+
+</DL>
+
+<H4 ALIGN="CENTER"><A NAME="Heading55"></A><FONT COLOR="#000077">What to Overload</FONT></H4>
+<P>Operator overloading is one of the aspects of C++ most overused and abused by
+new programmers. It is tempting to create new and interesting uses for some of the
+more obscure operators, but these invariably lead to code that is confusing and difficult
+to read.</P>
+<P>Of course, making the <TT>+</TT> operator subtract and the <TT>*</TT> operator
+add can be fun, but no professional programmer would do that. The greater danger
+lies in the well-intentioned but idiosyncratic use of an operator--using <TT>+</TT>
+to mean concatenate a series of letters, or <TT>/</TT> to mean split a string. There
+is good reason to consider these uses, but there is even better reason to proceed
+with caution. Remember, the goal of overloading operators is to increase usability
+and understanding.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<B>DO</B> use operator overloading when it will clarify the program. <B>DON'T</B>
+	create counter-intuitive operators. <B>DO </B>return an object of the class from
+	overloaded operators. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H4 ALIGN="CENTER"><A NAME="Heading56"></A><FONT COLOR="#000077">The Assignment Operator</FONT></H4>
+<P>The fourth and final function that is supplied by the compiler, if you don't specify
+one, is the assignment operator (<TT>operator=()</TT>). This operator is called whenever
+you assign to an object. For example:</P>
+<PRE><FONT COLOR="#0066FF">CAT catOne(5,7);
+CAT catTwo(3,4);
+// ... other code here
+catTwo = catOne;
+</FONT></PRE>
+<P>Here, <TT>catOne</TT> is created and initialized with <TT>itsAge</TT> equal to
+5 and <TT>itsWeight</TT> equal to <TT>7</TT>. <TT>catTwo</TT> is then created and
+assigned the values <TT>3</TT> and <TT>4</TT>.</P>
+<P>After a while, <TT>catTwo</TT> is assigned the values in <TT>catOne</TT>. Two
+issues are raised here: What happens if <TT>itsAge</TT> is a pointer, and what happens
+to the original values in <TT>catTwo</TT>?</P>
+<P>Handling member variables that store their values on the free store was discussed
+earlier during the examination of the copy constructor. The same issues arise here,
+as you saw illustrated in Figures 10.1 and 10.2.</P>
+<P>C++ programmers differentiate between a shallow or member-wise copy on the one
+hand, and a deep copy on the other. A shallow copy just copies the members, and both
+objects end up pointing to the same area on the free store. A deep copy allocates
+the necessary memory. This is illustrated in Figure 10.3.</P>
+<P>There is an added wrinkle with the assignment operator, however. The object <TT>catTwo</TT>
+already exists and has memory already allocated. That memory must be deleted if there
+is to be no memory leak. But what happens if you assign <TT>catTwo</TT> to itself?</P>
+<PRE><FONT COLOR="#0066FF">catTwo = catTwo;
+</FONT></PRE>
+<P>No one is likely to do this on purpose, but the program must be able to handle
+it. More important, it is possible for this to happen by accident when references
+and dereferenced pointers hide the fact that the assignment is to itself.</P>
+<P>If you did not handle this problem carefully, <TT>catTwo</TT> would delete its
+memory allocation. Then, when it was ready to copy in the memory from the right-hand
+side of the assignment, it would have a very big problem: The memory would be gone.</P>
+<P>To protect against this, your assignment operator must check to see if the right-hand
+side of the assignment operator is the object itself. It does this by examining the
+<TT>this</TT> pointer. Listing 10.15 shows a class with an assignment operator.</P>
+<P><A NAME="Heading57"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 10.15. An assignment
+operator.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">
+1:      // Listing 10.15
+2:      // Copy constructors
+3:
+4:      #include &lt;iostream.h&gt;
+5:
+6:      class CAT
+7:      {
+8:          public:
+9:               CAT();                         // default constructor
+10:    // copy constructor and destructor elided!
+11:               int GetAge() const { return *itsAge; }
+12:               int GetWeight() const { return *itsWeight; }
+13:               void SetAge(int age) { *itsAge = age; }
+14:               CAT operator=(const CAT &amp;);
+15:
+16:          private:
+17:               int *itsAge;
+18:               int *itsWeight;
+19:     };
+20:
+21:     CAT::CAT()
+22:     {
+23:          itsAge = new int;
+24:       itsWeight = new int;
+25:       *itsAge = 5;
+26:       *itsWeight = 9;
+27:  }
+28:
+29:
+30: CAT CAT::operator=(const CAT &amp; rhs)
+31: {
+32:    if (this == &amp;rhs)
+33:       return *this;
+34:    delete itsAge;
+35:    delete itsWeight;
+36:    itsAge = new int;
+37:    itsWeight = new int;
+38:    *itsAge = rhs.GetAge();
+39:    *itsWeight = rhs.GetWeight();
+40:    return *this;
+41: }
+42:
+43:
+44:     int main()
+45:     {
+46:          CAT frisky;
+47:          cout &lt;&lt; &quot;frisky's age: &quot; &lt;&lt; frisky.GetAge() &lt;&lt; endl;
+48:          cout &lt;&lt; &quot;Setting frisky to 6...\n&quot;;
+49:          frisky.SetAge(6);
+50:          CAT whiskers;
+51:          cout &lt;&lt; &quot;whiskers' age: &quot; &lt;&lt; whiskers.GetAge() &lt;&lt; endl;
+52:          cout &lt;&lt; &quot;copying frisky to whiskers...\n&quot;;
+53:          whiskers = frisky;
+54:          cout &lt;&lt; &quot;whiskers' age: &quot; &lt;&lt; whiskers.GetAge() &lt;&lt; endl;
+55:     return 0;
+<TT>56: }</TT></FONT></PRE>
+<PRE><FONT COLOR="#0066FF">frisky's age: 5
+Setting frisky to 6...
+whiskers' age: 5
+copying frisky to whiskers...
+whiskers' age: 6
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Output:</B></FONT><B> </B>Listing 10.15 brings back the
+<TT>CAT</TT> class, and leaves out the copy constructor and destructor to save room.
+On line 14, the assignment operator is declared, and on lines 30-41 it is defined.
+<BR>
+<FONT COLOR="#000077"><B><BR>
+Analysis:</B></FONT><B> </B>On line 32, the current object (the <TT>CAT</TT> being
+assigned to) is tested to see whether it is the same as the <TT>CAT</TT> being assigned.
+This is done by checking whether or not the address of <TT>rhs</TT> is the same as
+the address stored in the <TT>this</TT> pointer.</P>
+<P>This works fine for single inheritance, but if you are using multiple inheritance,
+as discussed on Day 13, &quot;Polymorphism,&quot; this test will fail. An alternative
+test is to dereference the <TT>this</TT> pointer and see if the two objects are the
+same:</P>
+<PRE><FONT COLOR="#0066FF">if (*this == rhs)</FONT></PRE>
+<P>Of course, the equality operator (<TT>==</TT>) can be overloaded as well, allowing
+you to determine for yourself what it means for your objects to be equal.
+<H3 ALIGN="CENTER"><A NAME="Heading59"></A><FONT COLOR="#000077">Conversion Operators</FONT></H3>
+<P>What happens when you try to assign a variable of a built-in type, such as <TT>int</TT>
+or <TT>unsigned short</TT>, to an object of a user-defined class? Listing 10.16 brings
+back the <TT>Counter</TT> class, and attempts to assign a variable of type <TT>USHORT</TT>
+to a <TT>Counter</TT> object.
+
+<DL>
+	<DD>
+<HR>
+<FONT COLOR="#000077"><B>WARNING:</B></FONT><B> </B>Listing 10.16 will not compile!
+	
+<HR>
+
+</DL>
+
+<P><A NAME="Heading60"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 10.16. Attempting
+to assign a Counter to a USHORT</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">
+1:        // Listing 10.16
+2:        // This code won't compile!
+3:
+4:        typedef unsigned short  USHORT;
+5:        #include &lt;iostream.h&gt;
+6:
+7:        class Counter
+8:        {
+9:           public:
+10:             Counter();
+11:             ~Counter(){}
+12:             USHORT GetItsVal()const { return itsVal; }
+13:             void SetItsVal(USHORT x) {itsVal = x; }
+14:          private:
+15:             USHORT itsVal;
+16:
+17:       };
+18:
+19:       Counter::Counter():
+20:       itsVal(0)
+21:       {}
+22:
+23:    int main()
+24:    {
+25:       USHORT theShort = 5;
+26:       Counter theCtr = theShort;
+27:       cout &lt;&lt; &quot;theCtr: &quot; &lt;&lt; theCtr.GetItsVal() &lt;&lt; endl;
+28:     return ;0
+<TT>29: }</TT>
+Output: Compiler error! Unable to convert USHORT to Counter
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>The <TT>Counter</TT> class
+declared on lines 7-17 has only a default constructor. It declares no particular
+method for turning a <TT>USHORT</TT> into a <TT>Counter</TT> object, and so line
+26 causes a compile error. The compiler cannot figure out, unless you tell it, that,
+given a <TT>USHORT</TT>, it should assign that value to the member variable <TT>itsVal</TT>.<BR>
+<BR>
+Listing 10.17 corrects this by creating a conversion operator: a constructor that
+takes a <TT>USHORT</TT> and produces a <TT>Counter</TT> object.</P>
+<P><A NAME="Heading62"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 10.17. Converting
+USHORT to Counter.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">
+1:        // Listing 10.17
+2:        // Constructor as conversion operator
+3:
+4:        typedef unsigned short  USHORT;
+5:        #include &lt;iostream.h&gt;
+6:
+7:        class Counter
+8:        {
+9:           public:
+10:             Counter();
+11:             Counter(USHORT val);
+12:             ~Counter(){}
+13:             USHORT GetItsVal()const { return itsVal; }
+14:             void SetItsVal(USHORT x) {itsVal = x; }
+15:          private:
+16:             USHORT itsVal;
+17:
+18:       };
+19:
+20:       Counter::Counter():
+21:       itsVal(0)
+22:       {}
+23:
+24:    Counter::Counter(USHORT val):
+25:    itsVal(val)
+26:    {}
+27:
+28:
+29:    int main()
+30:    {
+31:       USHORT theShort = 5;
+32:       Counter theCtr = theShort;
+33:       cout &lt;&lt; &quot;theCtr: &quot; &lt;&lt; theCtr.GetItsVal() &lt;&lt; endl;
+34:     return 0;
+<TT>35: </TT>
+Output: theCtr: 5
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>The important change is on
+line 11, where the constructor is overloaded to take a <TT>USHORT</TT>, and on lines
+24-26, where the constructor is implemented. The effect of this constructor is to
+create a <TT>Counter</TT> out of a <TT>USHORT</TT>.<BR>
+Given this, the compiler is able to call the constructor that takes a <TT>USHORT</TT>
+as its argument. What happens, however, if you try to reverse the assignment with
+the following?</P>
+<PRE><FONT COLOR="#0066FF">1:  Counter theCtr(5);
+2:  USHORT theShort = theCtr;
+3:  cout &lt;&lt; &quot;theShort : &quot; &lt;&lt; theShort  &lt;&lt; endl;</FONT></PRE>
+<P>Once again, this will generate a compile error. Although the compiler now knows
+how to create a <TT>Counter</TT> out of a <TT>USHORT</TT>, it does not know how to
+reverse the process.
+<H4 ALIGN="CENTER"><A NAME="Heading64"></A><FONT COLOR="#000077">Conversion Operators</FONT></H4>
+<P>To solve this and similar problems, C++ provides conversion operators that can
+be added to your class. This allows your class to specify how to do implicit conversions
+to built-in types. Listing 10.18 illustrates this. One note, however: Conversion
+operators do not specify a return value, even though they do, in effect, return a
+converted value.</P>
+<P><A NAME="Heading65"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 10.18. Converting
+from Counter to unsigned short().</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">
+1:  // Listing 10.18
+2:  // conversion operator
+3:
+4:  typedef unsigned short  USHORT;
+5:  #include &lt;iostream.h&gt;
+6:
+7:  class Counter
+8:  {
+9:    public:
+10:      Counter();
+11:      Counter(USHORT val);
+12:      ~Counter(){}
+13:      USHORT GetItsVal()const { return itsVal; }
+14:      void SetItsVal(USHORT x) {itsVal = x; }
+15:      operator unsigned short();
+16:   private:
+17:      USHORT itsVal;
+18:
+19:  };
+20:
+21:  Counter::Counter():
+22:  itsVal(0)
+23:  {}
+24:
+25: Counter::Counter(USHORT val):
+26: itsVal(val)
+27: {}
+28:
+29: Counter::operator unsigned short ()
+30: {
+31:    return ( USHORT (itsVal) );
+32: }
+33:
+34: int main()
+35: {
+36:    Counter ctr(5);
+37:    USHORT theShort = ctr;
+38:    cout &lt;&lt; &quot;theShort: &quot; &lt;&lt; theShort &lt;&lt; endl;
+39:     return 0;
+<TT>40: </TT>
+Output: theShort: 5
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis: </B></FONT>On line 15, the conversion operator
+is declared. Note that it has no return value. The implementation of this function
+is on lines 29-32. Line 31 returns the value of <TT>itsVal</TT>, converted to a <TT>USHORT</TT>.<BR>
+<BR>
+Now the compiler knows how to turn <TT>USHORT</TT>s into <TT>Counter</TT> objects
+and vice versa, and they can be assigned to one another freely.
+<H3 ALIGN="CENTER"><A NAME="Heading66"></A><FONT COLOR="#000077">Summary</FONT></H3>
+<P>Today you learned how to overload member functions of your classes. You also learned
+how to supply default values to functions, and how to decide when to use default
+values and when to overload.</P>
+<P>Overloading class constructors allows you to create flexible classes that can
+be created from other objects. Initialization of objects happens at the initialization
+stage of construction, and is more efficient than assigning values in the body of
+the constructor.</P>
+<P>The copy constructor and the assignment operator are supplied by the compiler
+if you don't create your own, but they do a member-wise copy of the class. In classes
+in which member data includes pointers to the free store, these methods must be overridden
+so that you allocate memory for the target object.</P>
+<P>Almost all C++ operators can be overloaded, though you want to be cautious not
+to create operators whose use is counter-intuitive. You cannot change the arity of
+operators, nor can you invent new operators.</P>
+<P>The <TT>this</TT> pointer refers to the current object and is an invisible parameter
+to all member functions. The dereferenced <TT>this</TT> pointer is often returned
+by overloaded operators.</P>
+<P>Conversion operators allow you to create classes that can be used in expressions
+that expect a different type of object. They are exceptions to the rule that all
+functions return an explicit value; like constructors and destructors, they have
+no return type.
+<H3 ALIGN="CENTER"><A NAME="Heading67"></A><FONT COLOR="#000077">Q&amp;A</FONT></H3>
+
+<DL>
+	<DD><B>Q. Why would you ever use default values when you can overload a function?<BR>
+	</B><BR>
+	<B>A.</B> It is easier to maintain one function than two, and often easier to understand
+	a function with default parameters than to study the bodies of two functions. Furthermore,
+	updating one of the functions and neglecting to update the second is a common source
+	of bugs.<BR>
+	<BR>
+	<B>Q. Given the problems with overloaded functions, why not always use default values
+	instead?</B><BR>
+	<BR>
+	<B>A. </B>Overloaded functions supply capabilities not available with default variables,
+	such as varying the list of parameters by type rather than just by number.<BR>
+	<BR>
+	<B>Q. When writing a class constructor, how do you decide what to put in the initialization
+	and what to put in the body of the constructor?</B><BR>
+	<BR>
+	<B>A.</B> A simple rule of thumb is to do as much as possible in the initialization
+	phase--that is, initialize all member variables there. Some things, like computations
+	and print statements, must be in the body of the constructor.<BR>
+	<BR>
+	<B>Q. Can an overloaded function have a default parameter?<BR>
+	</B><BR>
+	<B>A.</B> Yes. There is no reason not to combine these powerful features. One or
+	more of the overloaded functions can have their own default values, following the
+	normal rules for default variables in any function.<BR>
+	<BR>
+	<B>Q. Why are some member functions defined within the class declaration and others
+	are not?<BR>
+	</B><BR>
+	<B>A.</B> Defining the implementation of a member function within the declaration
+	makes it inline. Generally, this is done only if the function is extremely simple.
+	Note that you can also make a member function inline by using the keyword <TT>inline</TT>,
+	even if the function is declared outside the class declaration.
+</DL>
+
+<H3 ALIGN="CENTER"><A NAME="Heading68"></A><FONT COLOR="#000077">Workshop</FONT></H3>
+<P>The Workshop provides quiz questions to help solidify your understanding of the
+material covered and exercises to provide you with experience in using what you've
+learned. Try to answer the quiz and exercise questions before checking the answers
+in Appendix D, and make sure you understand the answers before going to the next
+chapter.
+<H4 ALIGN="CENTER"><A NAME="Heading69"></A><FONT COLOR="#000077">Quiz</FONT></H4>
+
+<DL>
+	<DD><B>1. </B>When you overload member functions, in what ways must they differ?<BR>
+	<B><BR>
+	2.</B> What is the difference between a declaration and a definition?<BR>
+	<B><BR>
+	3.</B> When is the copy constructor called?<BR>
+	<B><BR>
+	4.</B> When is the destructor called?<BR>
+	<B><BR>
+	5.</B> How does the copy constructor differ from the assignment operator (<TT>=</TT>)?<BR>
+	<B><BR>
+	6.</B> What is the <TT>this</TT> pointer?<BR>
+	<B><BR>
+	7.</B> How do you differentiate between overloading the prefix and postfix increment
+	operators?<BR>
+	<B><BR>
+	8.</B> Can you overload the <TT>operator+</TT> for short integers?<BR>
+	<B><BR>
+	9.</B> Is it legal in C++ to overload the <TT>operator++</TT> so that it decrements
+	a value in your class?<BR>
+	<B><BR>
+	10.</B> What return value must conversion operators have in their declarations?
+</DL>
+
+<H4 ALIGN="CENTER"><A NAME="Heading70"></A><FONT COLOR="#000077">Exercises</FONT></H4>
+
+<DL>
+	<DD><B>1.</B> Write a <TT>SimpleCircle</TT> class declaration (only) with one member
+	variable: <TT>itsRadius</TT>. Include a default constructor, a destructor, and accessor
+	methods for radius.<BR>
+	<BR>
+	<B>2.</B> Using the class you created in Exercise 1, write the implementation of
+	the default constructor, initializing <TT>itsRadius</TT> with the value <TT>5</TT>.<BR>
+	<BR>
+	<B>3.</B> Using the same class, add a second constructor that takes a value as its
+	parameter and assigns that value to <TT>itsRadius</TT>.<BR>
+	<BR>
+	<B>4.</B> Create a prefix and postfix increment operator for your <TT>SimpleCircle</TT>
+	class that increments <TT>itsRadius</TT>.<BR>
+	<BR>
+	<B>5.</B> Change <TT>SimpleCircle</TT> to store <TT>itsRadius</TT> on the free store,
+	and fix the existing methods.<BR>
+	<BR>
+	<B>6.</B> Provide a copy constructor for <TT>SimpleCircle</TT>.<BR>
+	<BR>
+	<B>7.</B> Provide an assignment operator for <TT>SimpleCircle</TT>.<BR>
+	<BR>
+	<B>8.</B> Write a program that creates two <TT>SimpleCircle</TT> objects. Use the
+	default constructor on one and instantiate the other with the value <TT>9</TT>. Call
+	the increment operator on each and then print their values. Finally, assign the second
+	to the first and print its values.<BR>
+	<BR>
+	<B>9.</B> BUG BUSTERS: What is wrong with this implementation of the assignment operator?
+</DL>
+
+<PRE><FONT COLOR="#0066FF">
+SQUARE SQUARE ::operator=(const SQUARE &amp; rhs)
+{
+      itsSide = new int;
+      *itsSide = rhs.GetSide();
+      return *this;
+}
+</FONT></PRE>
+
+<DL>
+	<DD><B>10.</B> BUG BUSTERS: What is wrong with this implementation of the addition
+	operator?
+</DL>
+
+<PRE><FONT COLOR="#0066FF">
+VeryShort  VeryShort::operator+ (const VeryShort&amp; rhs)
+{
+   itsVal += rhs.GetItsVal();
+   return *this;
+}</FONT></PRE>
+<P ALIGN="CENTER"><A HREF="ch09.htm"><IMG SRC="../buttons/BLANPREV.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch11.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="#heading1"><IMG SRC="../buttons/BLANTOP.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A>
+
+
+</BODY>
+
+</HTML>

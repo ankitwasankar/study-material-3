@@ -1,0 +1,1583 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+<!-- This document was created from RTF source by rtftohtml version 3.0.1 -->
+
+	<META NAME="GENERATOR" Content="Symantec Visual Page 1.0">
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+	<TITLE>Teach Yourself C++ in 21 Days</TITLE>
+</HEAD>
+
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF">
+
+<H1 ALIGN="CENTER"><A HREF="ch06.htm"><IMG SRC="../buttons/BLANPREV.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch07rv1.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A></H1>
+<H1></H1>
+
+<UL>
+	<LI><A HREF="#Heading1">Day 7</A>
+	<UL>
+		<LI><A HREF="#Heading2">More Program Flow</A>
+		<UL>
+			<LI><A HREF="#Heading3">Looping</A>
+			<UL>
+				<LI><A HREF="#Heading4">The Roots of Looping goto</A>
+			</UL>
+			<LI><A HREF="#Heading5">Listing 7.1. Looping with the keyword goto</A><A HREF="#Heading6">.</A>
+			<UL>
+				<LI><A HREF="#Heading7">Why goto Is Shunned</A>
+			</UL>
+			<LI><A HREF="#Heading8">The goto Statement</A>
+			<LI><A HREF="#Heading9">while Loops</A>
+			<LI><A HREF="#Heading10">Listing 7.2. while loops</A><A HREF="#Heading11">.</A>
+			<LI><A HREF="#Heading12">The while Statement</A>
+			<UL>
+				<LI><A HREF="#Heading13">More Complicated while Statements</A>
+			</UL>
+			<LI><A HREF="#Heading14">Listing 7.3. Complex while loops</A><A HREF="#Heading15">.</A>
+			<UL>
+				<LI><A HREF="#Heading16">continue and break</A>
+			</UL>
+			<LI><A HREF="#Heading17">Listing 7.4. break and continue</A><A HREF="#Heading18">.</A>
+			<LI><A HREF="#Heading19">The continue Statement</A>
+			<LI><A HREF="#Heading20">The break Statement</A>
+			<UL>
+				<LI><A HREF="#Heading21">while (1) Loops</A>
+			</UL>
+			<LI><A HREF="#Heading22">Listing 7.5. while (1) loops</A><A HREF="#Heading23">.</A>
+			<LI><A HREF="#Heading24">do...while Loops</A>
+			<LI><A HREF="#Heading25">Listing 7.6. Skipping the body of the while Loop</A><A HREF="#Heading26">.</A>
+			<LI><A HREF="#Heading27">do...while</A>
+			<LI><A HREF="#Heading28">Listing 7.7. Demonstrates do...while loop</A><A HREF="#Heading29">.</A>
+			<LI><A HREF="#Heading30">The do...while Statement</A>
+			<LI><A HREF="#Heading31">for Loops</A>
+			<LI><A HREF="#Heading32">Listing 7.8. While reexamined</A><A HREF="#Heading33">.</A>
+			<LI><A HREF="#Heading34">Listing 7.9. Demonstrating the for loop</A><A HREF="#Heading35">.</A>
+			<LI><A HREF="#Heading36">The for Statement</A>
+			<UL>
+				<LI><A HREF="#Heading37">Advanced for Loops</A>
+			</UL>
+			<LI><A HREF="#Heading38">Listing 7.10. Demonstrating multiple statements in for loops</A><A
+			HREF="#Heading39">.</A>
+			<LI><A HREF="#Heading40">Listing 7.11. Null statements in for loops</A><A HREF="#Heading41">.</A>
+			<LI><A HREF="#Heading42">Listing 7.12. Illustrating empty for loop statement</A><A
+			HREF="#Heading43">.</A>
+			<UL>
+				<LI><A HREF="#Heading44">Empty for Loops</A>
+			</UL>
+			<LI><A HREF="#Heading45">Listing 7.13. Illustrates the null statement in a for loop</A><A
+			HREF="#Heading46">.</A>
+			<UL>
+				<LI><A HREF="#Heading47">Nested Loops</A>
+			</UL>
+			<LI><A HREF="#Heading48">Listing 7.14. Illustrates nested for loops</A><A HREF="#Heading49">.</A>
+			<UL>
+				<LI><A HREF="#Heading50">Scoping in for Loops</A>
+			</UL>
+			<LI><A HREF="#Heading51">Summing Up Loops</A>
+			<LI><A HREF="#Heading52">Listing 7.15. Solving the nth Fibonacci number</A>
+			<LI><A HREF="#Heading53">using iteration.</A>
+			<LI><A HREF="#Heading54">switch Statements</A>
+			<LI><A HREF="#Heading55">Listing 7.16. Demonstrating the switch statement</A><A HREF="#Heading56">.</A>
+			<LI><A HREF="#Heading57">The switch Statement</A>
+			<UL>
+				<LI><A HREF="#Heading58">Using a switch Statement with a Menu</A>
+			</UL>
+			<LI><A HREF="#Heading59">Listing 7.17. Demonstrating a forever loop</A><A HREF="#Heading60">.</A>
+			<LI><A HREF="#Heading61">Summary</A>
+			<LI><A HREF="#Heading62">Q&amp;A</A>
+			<LI><A HREF="#Heading63">Workshop</A>
+			<UL>
+				<LI><A HREF="#Heading64">Quiz</A>
+				<LI><A HREF="#Heading65">Exercises</A>
+			</UL>
+		</UL>
+	</UL>
+</UL>
+
+<P>
+<HR SIZE="4">
+
+<H2 ALIGN="CENTER"><BR>
+<A NAME="Heading1"></A><FONT COLOR="#000077">Day 7</FONT></H2>
+<H2 ALIGN="CENTER"><A NAME="Heading2"></A><FONT COLOR="#000077">More Program Flow</FONT></H2>
+<P>Programs accomplish most of their work by branching and looping. On Day 4, &quot;Expressions
+and Statements,&quot; you learned how to branch your program using the <TT>if</TT>
+statement. Today you learn
+
+<UL>
+	<LI>What loops are and how they are used.
+	<P>
+	<LI>How to build various loops.
+	<P>
+	<LI>An alternative to deeply-nested <TT>if/else</TT> statements.
+</UL>
+
+<H3 ALIGN="CENTER"><A NAME="Heading3"></A><FONT COLOR="#000077">Looping</FONT></H3>
+<P>Many programming problems are solved by repeatedly acting on the same data. There
+are two ways to do this: recursion (discussed yesterday) and iteration. Iteration
+means doing the same thing again and again. The principal method of iteration is
+the loop.
+<H4 ALIGN="CENTER"><A NAME="Heading4"></A><FONT COLOR="#000077">The Roots of Looping
+goto</FONT></H4>
+<P>In the primitive days of early computer science, programs were nasty, brutish,
+and short. Loops consisted of a label, some statements, and a jump.</P>
+<P>In C++, a label is just a name followed by a colon (<TT>:</TT>). The label is
+placed to the left of a legal C++ statement, and a jump is accomplished by writing
+<TT>goto</TT> followed by the label name. Listing 7.1 illustrates this.</P>
+<P><A NAME="Heading5"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 7.1. Looping
+with the keyword goto.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:    // Listing 7.1
+2:    // Looping with goto
+3:
+4:    #include &lt;iostream.h&gt;
+5:
+6:    int main()
+7:    {
+8:           int counter = 0;      // initialize counter
+9:    loop:  counter ++;           // top of the loop
+10:            cout &lt;&lt; &quot;counter: &quot; &lt;&lt; counter &lt;&lt; &quot;\n&quot;;
+11:           if (counter &lt; 5)            // test the value
+12:               goto loop;                 // jump to the top
+13:
+14:           cout &lt;&lt; &quot;Complete. Counter: &quot; &lt;&lt; counter &lt;&lt; &quot;.\n&quot;;
+15:       return 0;
+<TT>16: }</TT>
+Output: counter: 1
+counter: 2
+counter: 3
+counter: 4
+counter: 5
+Complete. Counter: 5.
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On line 8, <TT>counter</TT>
+is initialized to <TT>0</TT>. The label <TT>loop</TT> is on line 9, marking the top
+of the loop. <TT>Counter</TT> is incremented and its new value is printed. The value
+of <TT>counter</TT> is tested on line 11. If it is less than 5, the <TT>if</TT> statement
+is true and the <TT>goto</TT> statement is executed. This causes program execution
+to jump back to line 9. The program continues looping until <TT>counter</TT> is equal
+to 5, at which time it &quot;falls through&quot; the loop and the final output is
+printed.
+<H4 ALIGN="CENTER"><A NAME="Heading7"></A><FONT COLOR="#000077">Why goto Is Shunned</FONT></H4>
+<P><TT>goto</TT> has received some rotten press lately, and it's well deserved. <TT>goto</TT>
+statements can cause a jump to any location in your source code, backward or forward.
+The indiscriminate use of <TT>goto</TT> statements has caused tangled, miserable,
+impossible-to-read programs known as &quot;spaghetti code.&quot; Because of this,
+computer science teachers have spent the past 20 years drumming one lesson into the
+heads of their students: &quot;Never, ever, ever use <TT>goto</TT>! It is evil!&quot;</P>
+<P>To avoid the use of <TT>goto</TT>, more sophisticated, tightly controlled looping
+commands have been introduced: <TT>for</TT>, <TT>while</TT>, and <TT>do...while</TT>.
+Using these makes programs that are more easily understood, and <TT>goto</TT> is
+generally avoided, but one might argue that the case has been a bit overstated. Like
+any tool, carefully used and in the right hands, <TT>goto</TT> can be a useful construct,
+and the ANSI committee decided to keep it in the language because it has its legitimate
+uses. But as they say, kids, don't try this at home.
+<H3 ALIGN="CENTER"><A NAME="Heading8"></A><FONT COLOR="#000077">The goto Statement</FONT></H3>
+<P>To use the <TT>goto</TT> statement, you write <TT>goto</TT> followed by a label
+name. This causes an unconditioned jump to the label. Example</P>
+<PRE><FONT COLOR="#0066FF">if (value &gt; 10)     goto end;if (value &lt; 10)     goto end;cout &lt;&lt; &quot;value is &#194;10!&quot;;end:cout &lt;&lt; &quot;done&quot;;
+</FONT></PRE>
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>WARNING:</B></FONT><B> </B>Use of <TT>goto</TT> is almost
+	always a sign of bad design. The best advice is to avoid using it. In 10 years of
+	programming, I've needed it only once. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H3 ALIGN="CENTER"><A NAME="Heading9"></A><FONT COLOR="#000077">while Loops</FONT></H3>
+<P>A <TT>while</TT> loop causes your program to repeat a sequence of statements as
+long as the starting condition remains true. In the example of <TT>goto</TT>, in
+Listing 7.1, the counter was incremented until it was equal to 5. Listing 7.2 shows
+the same program rewritten to take advantage of a <TT>while</TT> loop.</P>
+<P><A NAME="Heading10"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 7.2. while loops.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:    // Listing 7.2
+2:    // Looping with while
+3:
+4:    #include &lt;iostream.h&gt;
+5:
+6:    int main()
+7:    {
+8:      int counter = 0;               // initialize the condition
+9:
+10:      while(counter &lt; 5)     // test condition still true
+11:       {
+12:          counter++;              // body of the loop
+13:          cout &lt;&lt; &quot;counter: &quot; &lt;&lt; counter &lt;&lt; &quot;\n&quot;;
+14:      }
+15:
+16:      cout &lt;&lt; &quot;Complete. Counter: &quot; &lt;&lt; counter &lt;&lt; &quot;.\n&quot;;
+17:       return 0;
+<TT>18: }</TT>
+Output: counter: 1
+counter: 2
+counter: 3
+counter: 4
+counter: 5
+Complete. Counter: 5.
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>This simple program demonstrates
+the fundamentals of the <TT>while</TT> loop. A condition is tested, and if it is
+true, the body of the <TT>while</TT> loop is executed. In this case, the condition
+tested on line 10 is whether <TT>counter</TT> is less than 5. If the condition is
+true, the body of the loop is executed; on line 12 the counter is incremented, and
+on line 13 the value is printed. When the conditional statement on line 10 fails
+(when <TT>counter</TT> is no longer less than 5), the entire body of the <TT>while</TT>
+loop (lines 11-14) is skipped. Program execution falls through to line 15.
+<H3 ALIGN="CENTER"><A NAME="Heading12"></A><FONT COLOR="#000077">The while Statement</FONT></H3>
+<P>The syntax for the <TT>while</TT> statement is as follows:</P>
+<PRE><FONT COLOR="#0066FF">while ( condition )
+statement;
+</FONT></PRE>
+<P>condition is any C++ expression, and statement is any valid C++ statement or block
+of statements. When condition evaluates to <TT>TRUE</TT> (<TT>1</TT>), statement
+is executed, and then condition is tested again. This continues until condition tests
+<TT>FALSE</TT>, at which time the <TT>while</TT> loop terminates and execution continues
+on the first line below statement.<BR>
+<BR>
+Example</P>
+<PRE><FONT COLOR="#0066FF">// count to 10
+int x = 0;
+while (x &lt; 10)
+cout &lt;&lt; &quot;X: &quot; &lt;&lt; x++;
+</FONT></PRE>
+<H4 ALIGN="CENTER"><A NAME="Heading13"></A><FONT COLOR="#000077">More Complicated
+while Statements</FONT></H4>
+<P>The condition tested by a <TT>while</TT> loop can be as complex as any legal C++
+expression. This can include expressions produced using the logical <TT>&amp;&amp;</TT>
+(AND), <TT>||</TT> (OR), and <TT>!</TT> (NOT) operators. Listing 7.3 is a somewhat
+more complicated <TT>while</TT> statement.</P>
+<P><A NAME="Heading14"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 7.3. Complex
+while loops.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:    // Listing 7.3
+2:    // Complex while statements
+3:
+4:    #include &lt;iostream.h&gt;
+5:
+6:    int main()
+7:    {
+8:      unsigned short small;
+9:      unsigned long  large;
+10:      const unsigned short MAXSMALL=65535;
+11:
+12:      cout &lt;&lt; &quot;Enter a small number: &quot;;
+13:      cin &gt;&gt; small;
+14:      cout &lt;&lt; &quot;Enter a large number: &quot;;
+15:      cin &gt;&gt; large;
+16:
+17:       cout &lt;&lt; &quot;small: &quot; &lt;&lt; small &lt;&lt; &quot;...&quot;;
+18:
+19:      // for each iteration, test three conditions
+20:      while (small &lt; large &amp;&amp; large &gt; 0 &amp;&amp; small &lt; MAXSMALL)
+21:
+22:      {
+23:         if (small % 5000 == 0)  // write a dot every 5k lines
+24:           cout &lt;&lt; &quot;.&quot;;
+25:
+26:         small++;
+27:
+28:         large-=2;
+29:      }
+30:
+31:      cout &lt;&lt; &quot;\nSmall: &quot; &lt;&lt; small &lt;&lt; &quot; Large: &quot; &lt;&lt; large &lt;&lt; endl;
+32:     return 0;
+<TT>33: }</TT>
+Output: Enter a small number: 2
+Enter a large number: 100000
+small: 2.........
+Small: 33335 Large: 33334
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>This program is a game. Enter
+two numbers, one small and one large. The smaller number will count up by ones, and
+the larger number will count down by twos. The goal of the game is to guess when
+they'll meet.<BR>
+On lines 12-15, the numbers are entered. Line 20 sets up a <TT>while</TT> loop, which
+will continue only as long as three conditions are met:<BR>
+<BR>
+<TT>small</TT> is not bigger than <TT>large</TT>.<BR>
+<BR>
+<TT>large</TT> isn't negative.<BR>
+<BR>
+<TT>small</TT> doesn't overrun the size of a small integer (<TT>MAXSMALL</TT>).<BR>
+<BR>
+On line 23, the value in <TT>small</TT> is calculated modulo 5,000. This does not
+change the value in <TT>small</TT>; however, it only returns the value <TT>0</TT>
+when <TT>small</TT> is an exact multiple of 5,000. Each time it is, a dot (<TT>.</TT>)
+is printed to the screen to show progress. On line 26, <TT>small</TT> is incremented,
+and on line 28, <TT>large</TT> is decremented by 2.<BR>
+When any of the three conditions in the <TT>while</TT> loop fails, the loop ends
+and execution of the program continues after the <TT>while</TT> loop's closing brace
+on line 29.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>The modulus operator (%) and compound
+	conditions are covered on Day 3, &quot;Variables and Constants.&quot; 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H4 ALIGN="CENTER"><A NAME="Heading16"></A><FONT COLOR="#000077">continue and break</FONT></H4>
+<P>At times you'll want to return to the top of a <TT>while</TT> loop before the
+entire set of statements in the <TT>while</TT> loop is executed. The <TT>continue</TT>
+statement jumps back to the top of the loop.</P>
+<P>At other times, you may want to exit the loop before the exit conditions are met.
+The <TT>break</TT> statement immediately exits the <TT>while</TT> loop, and program
+execution resumes after the closing brace.</P>
+<P>Listing 7.4 demonstrates the use of these statements. This time the game has become
+more complicated. The user is invited to enter a <TT>small</TT> number and a <TT>large</TT>
+number, a <TT>skip</TT> number, and a <TT>target</TT> number. The <TT>small</TT>
+number will be incremented by one, and the <TT>large</TT> number will be decremented
+by 2. The decrement will be skipped each time the <TT>small</TT> number is a multiple
+of the <TT>skip</TT>. The game ends if <TT>small</TT> becomes larger than <TT>large</TT>.
+If the <TT>large</TT> number reaches the <TT>target</TT> exactly, a statement is
+printed and the game stops.</P>
+<P>The user's goal is to put in a target number for the <TT>large</TT> number that
+will stop the game.</P>
+<P><A NAME="Heading17"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 7.4. break and
+continue.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:    // Listing 7.4
+2:    // Demonstrates break and continue
+3:
+4:    #include &lt;iostream.h&gt;
+5:
+6:    int main()
+7:    {
+8:      unsigned short small;
+9:      unsigned long  large;
+10:      unsigned long  skip;
+11:      unsigned long target;
+12:      const unsigned short MAXSMALL=65535;
+13:
+14:      cout &lt;&lt; &quot;Enter a small number: &quot;;
+15:      cin &gt;&gt; small;
+16:      cout &lt;&lt; &quot;Enter a large number: &quot;;
+17:      cin &gt;&gt; large;
+18:      cout &lt;&lt; &quot;Enter a skip number: &quot;;
+19:      cin &gt;&gt; skip;
+20:      cout &lt;&lt; &quot;Enter a target number: &quot;;
+21:      cin &gt;&gt; target;
+22:
+23:    cout &lt;&lt; &quot;\n&quot;;
+24:
+25:     // set up 3 stop conditions for the loop
+26:      while (small &lt; large &amp;&amp; large &gt; 0 &amp;&amp; small &lt; 65535)
+27:
+28:      {
+29:
+30:        small++;
+31:
+32:         if (small % skip == 0)  // skip the decrement?
+33:         {
+34:           cout &lt;&lt; &quot;skipping on &quot; &lt;&lt; small &lt;&lt; endl;
+35:           continue;
+36:         }
+37:
+38:         if (large == target)    // exact match for the target?
+39:         {
+40:           cout &lt;&lt; &quot;Target reached!&quot;;
+41:           break;
+42:         }
+43:
+44:         large-=2;
+45:      }                   // end of while loop
+46:
+47:      cout &lt;&lt; &quot;\nSmall: &quot; &lt;&lt; small &lt;&lt; &quot; Large: &quot; &lt;&lt; large &lt;&lt; endl;
+48:    return 0;
+<TT>49: }</TT>
+Output: Enter a small number: 2
+Enter a large number: 20
+Enter a skip number: 4
+Enter a target number: 6
+skipping on 4
+skipping on 8
+
+Small: 10 Large: 8
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis: </B></FONT>In this play, the user lost; <TT>small</TT>
+became larger than <TT>large</TT> before the <TT>target</TT> number of 6 was reached.<BR>
+On line 26, the <TT>while</TT> conditions are tested. If <TT>small</TT> continues
+to be smaller than <TT>large</TT>, <TT>large</TT> is larger than 0, and <TT>small</TT>
+hasn't overrun the maximum value for a small <TT>int</TT>, the body of the <TT>while</TT>
+loop is entered.</P>
+<P>On line 32, the <TT>small</TT> value is taken modulo the <TT>skip</TT> value.
+If <TT>small</TT> is a multiple of <TT>skip</TT>, the <TT>continue</TT> statement
+is reached and program execution jumps to the top of the loop at line 26. This effectively
+skips over the test for the <TT>target</TT> and the decrement of <TT>large</TT>.</P>
+<P>On line 38, <TT>target</TT> is tested against the value for <TT>large</TT>. If
+they are the same, the user has won. A message is printed and the <TT>break</TT>
+statement is reached. This causes an immediate break out of the <TT>while</TT> loop,
+and program execution resumes on line 46.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>Both <TT>continue</TT> and <TT>break</TT>
+	should be used with caution. They are the next most dangerous commands after <TT>goto</TT>,
+	for much the same reason. Programs that suddenly change direction are harder to understand,
+	and liberal use of <TT>continue</TT> and <TT>break</TT> can render even a small <TT>while</TT>
+	loop unreadable. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H3 ALIGN="CENTER"><A NAME="Heading19"></A><FONT COLOR="#000077">The continue Statement</FONT></H3>
+<P><TT>continue;</TT> causes a <TT>while</TT> or <TT>for</TT> loop to begin again
+at the top of the loop. Example</P>
+<PRE><FONT COLOR="#0066FF">if (value &gt; 10)
+     goto end;
+
+if (value &lt; 10)
+     goto end;
+
+cout &lt;&lt; &quot;value is 10!&quot;;
+
+end:
+
+cout &lt;&lt; &quot;done&quot;;
+</FONT></PRE>
+<H3 ALIGN="CENTER"><A NAME="Heading20"></A><FONT COLOR="#000077">The break Statement</FONT></H3>
+<P><TT>break;</TT> causes the immediate end of a <TT>while</TT> or <TT>for</TT> loop.
+Execution jumps to the closing brace. Example</P>
+<PRE><FONT COLOR="#0066FF">while (condition)
+{
+    if (condition2)
+        break;
+    // statements;
+}
+</FONT></PRE>
+<H4 ALIGN="CENTER"><A NAME="Heading21"></A><FONT COLOR="#000077">while (1) Loops</FONT></H4>
+<P>The condition tested in a <TT>while</TT> loop can be any valid C++ expression.
+As long as that condition remains true, the <TT>while</TT> loop will continue. You
+can create a loop that will never end by using the number 1 for the condition to
+be tested. Since 1 is always true, the loop will never end, unless a <TT>break</TT>
+statement is reached. Listing 7.5 demonstrates counting to 10 using this construct.</P>
+<P><A NAME="Heading22"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 7.5. while (1)
+loops.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:    // Listing 7.5
+2:    // Demonstrates a while true loop
+3:
+4:    #include &lt;iostream.h&gt;
+5:
+6:    int main()
+7:    {
+8:      int counter = 0;
+9:
+10:      while (1)
+11:      {
+12:         counter ++;
+13:         if (counter &gt; 10)
+14:             break;
+15:      }
+16:      cout &lt;&lt; &quot;Counter: &quot; &lt;&lt; counter &lt;&lt; &quot;\n&quot;;
+17:       return 0;
+<TT>18: </TT>
+Output: Counter: 11
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On line 10, a <TT>while</TT>
+loop is set up with a condition that can never be false. The loop increments the
+<TT>counter</TT> variable on line 12 and then on line 13 tests to see whether <TT>counter</TT>
+has gone past 10. If it hasn't, the <TT>while</TT> loop iterates. If <TT>counter</TT>
+is greater than 10, the <TT>break</TT> on line 14 ends the <TT>while</TT> loop, and
+program execution falls through to line 16, where the results are printed.<BR>
+This program works, but it isn't pretty. This is a good example of using the wrong
+tool for the job. The same thing can be accomplished by putting the test of <TT>counter</TT>'s
+value where it belongs--in the <TT>while</TT> condition.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>WARNING:</B></FONT><B> </B>Eternal loops such as <TT>while
+	(1)</TT> can cause your computer to hang if the exit condition is never reached.
+	Use these with caution and test them thoroughly. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P>C++ gives you many different ways to accomplish the same task. The real trick
+is picking the right tool for the particular job.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<B>DON'T</B> use the <TT>goto</TT> statement. <B>DO</B> use <TT>while</TT> loops
+	to iterate while a condition is true. <B>DO</B> exercise caution when using <TT>continue</TT>
+	and <TT>break </TT>statements. <B>DO</B> make sure your loop will eventually end.
+	
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H3 ALIGN="CENTER"><A NAME="Heading24"></A><FONT COLOR="#000077">do...while Loops</FONT></H3>
+<P>It is possible that the body of a <TT>while</TT> loop will never execute. The
+<TT>while</TT> statement checks its condition before executing any of its statements,
+and if the condition evaluates <TT>false</TT>, the entire body of the <TT>while</TT>
+loop is skipped. Listing 7.6 illustrates this.</P>
+<P><A NAME="Heading25"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 7.6. Skipping
+the body of the while Loop</B></FONT><FONT SIZE="2" COLOR="#000077"><B>.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     // Listing 7.6
+2:      // Demonstrates skipping the body of
+3:      // the while loop when the condition is false.
+4:
+5:      #include &lt;iostream.h&gt;
+6:
+7:      int main()
+8:      {
+9:         int counter;
+10:        cout &lt;&lt; &quot;How many hellos?: &quot;;
+11:        cin &gt;&gt; counter;
+12:        while (counter &gt; 0)
+13:        {
+14:           cout &lt;&lt; &quot;Hello!\n&quot;;
+15:           counter--;
+16:        }
+17:        cout &lt;&lt; &quot;Counter is OutPut: &quot; &lt;&lt; counter;
+18:         return 0;
+<TT>19: }</TT>
+Output: How many hellos?: 2
+Hello!
+Hello!
+Counter is OutPut: 0
+
+How many hellos?: 0
+Counter is OutPut: 0
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>The user is prompted for
+a starting value on line 10. This starting value is stored in the integer variable
+<TT>counter</TT>. The value of <TT>counter</TT> is tested on line 12, and decremented
+in the body of the <TT>while</TT> loop. The first time through <TT>counter</TT> was
+set to <TT>2</TT>, and so the body of the <TT>while</TT> loop ran twice. The second
+time through, however, the user typed in <TT>0</TT>. The value of <TT>counter</TT>
+was tested on line 12 and the condition was false; <TT>counter</TT> was not greater
+than <TT>0</TT>. The entire body of the <TT>while</TT> loop was skipped, and <TT>Hello</TT>
+was never printed.<BR>
+What if you want to ensure that <TT>Hello</TT> is always printed at least once? The
+<TT>while</TT> loop can't accomplish this, because the <TT>if</TT> condition is tested
+before any printing is done. You can force the issue with an <TT>if</TT> statement
+just before entering the <TT>while</TT>:</P>
+<PRE><FONT COLOR="#0066FF">if (counter &lt; 1)  // force a minimum value
+counter = 1;</FONT></PRE>
+<P>but that is what programmers call a &quot;kludge,&quot; an ugly and inelegant
+solution.
+<H3 ALIGN="CENTER"><A NAME="Heading27"></A><FONT COLOR="#000077">do...while</FONT></H3>
+<P>The <TT>do...while</TT> loop executes the body of the loop before its condition
+is tested and ensures that the body always executes at least one time. Listing 7.7
+rewrites Listing 7.6, this time using a <TT>do...while</TT> loop.</P>
+<P><A NAME="Heading28"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 7.7. Demonstrates
+do...while loop.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:      // Listing 7.7
+2:      // Demonstrates do while
+3:
+4:      #include &lt;iostream.h&gt;
+5:
+6:      int main()
+7:      {
+8:         int counter;
+9:         cout &lt;&lt; &quot;How many hellos? &quot;;
+10:        cin &gt;&gt; counter;
+11:        do
+12:        {
+13:           cout &lt;&lt; &quot;Hello\n&quot;;
+14:           counter--;
+15:        }  while (counter &gt;0 );
+16:        cout &lt;&lt; &quot;Counter is: &quot; &lt;&lt; counter &lt;&lt; endl;
+17:         return 0;
+<TT>18: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: How many hellos? 2
+Hello
+Hello
+Counter is: 0
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>The user is prompted for
+a starting value on line 9, which is stored in the integer variable <TT>counter</TT>.
+In the <TT>do...while</TT> loop, the body of the loop is entered before the condition
+is tested, and therefore the body of the loop is guaranteed to run at least once.
+On line 13 the message is printed, on line 14 the counter is decremented, and on
+line 15 the condition is tested. If the condition evaluates <TT>TRUE</TT>, execution
+jumps to the top of the loop on line 13; otherwise, it falls through to line 16.<BR>
+The <TT>continue</TT> and <TT>break</TT> statements work in the <TT>do...while</TT>
+loop exactly as they do in the <TT>while</TT> loop. The only difference between a
+<TT>while</TT> loop and a <TT>do...while</TT> loop is when the <TT>condition</TT>
+is tested.
+<H3 ALIGN="CENTER"><A NAME="Heading30"></A><FONT COLOR="#000077">The do...while Statement</FONT></H3>
+<P>The syntax for the <TT>do...while</TT> statement is as follows:</P>
+<PRE><FONT COLOR="#0066FF">do
+statement
+while (condition);
+</FONT></PRE>
+<P>statement is executed, and then condition is evaluated. If condition is <TT>TRUE</TT>,
+the loop is repeated; otherwise, the loop ends. The statements and conditions are
+otherwise identical to the <TT>while</TT> loop. Example 1</P>
+<PRE><FONT COLOR="#0066FF">// count to 10
+int x = 0;
+do
+cout &lt;&lt; &quot;X: &quot; &lt;&lt; x++;
+while (x &lt; 10)
+</FONT></PRE>
+<P>Example 2</P>
+<PRE><FONT COLOR="#0066FF">// print lowercase alphabet.
+char ch = `a';
+do
+{
+cout &lt;&lt; ch &lt;&lt; ` `;
+ch++;
+} while ( ch &lt;= `z' );
+</FONT></PRE>
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<B>DO</B> use <TT>do...while</TT> when you want to ensure the loop is executed at
+	least once. <B>DO </B>use <TT>while</TT> loops when you want to skip the loop if
+	the condition is false. <B>DO</B> test all loops to make sure they do what you expect.
+	
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H3 ALIGN="CENTER"><A NAME="Heading31"></A><FONT COLOR="#000077">for Loops</FONT></H3>
+<P>When programming <TT>while</TT> loops, you'll often find yourself setting up a
+starting condition, testing to see if the condition is true, and incrementing or
+otherwise changing a variable each time through the loop. Listing 7.8 demonstrates
+this.</P>
+<P><A NAME="Heading32"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 7.8. While reexamined</B></FONT><FONT
+SIZE="2" COLOR="#000077"><B>.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:    // Listing 7.8
+2:    // Looping with while
+3:
+4:    #include &lt;iostream.h&gt;
+5:
+6:    int main()
+7:    {
+8:      int counter = 0;
+9:
+10:      while(counter &lt; 5)
+11:      {
+12:           counter++;
+13:           cout &lt;&lt; &quot;Looping!  &quot;;
+14:      }
+15:
+16:      cout &lt;&lt; &quot;\nCounter: &quot; &lt;&lt; counter &lt;&lt; &quot;.\n&quot;;
+17:       return 0;
+<TT>18: }</TT>
+Output: Looping!  Looping!  Looping!  Looping!  Looping!
+Counter: 5.
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>The condition is set on line
+8: <TT>counter</TT> is initialized to <TT>0</TT>. On line 10, <TT>counter</TT> is
+tested to see whether it is less than 5. <TT>counter</TT> is incremented on line
+12. On line 16, a simple message is printed, but you can imagine that more important
+work could be done for each increment of the <TT>counter</TT>.<BR>
+A <TT>for</TT> loop combines three steps into one statement. The three steps are
+initialization, test, and increment. A <TT>for</TT> statement consists of the keyword
+<TT>for</TT> followed by a pair of parentheses. Within the parentheses are three
+statements separated by semicolons.</P>
+<P>The first statement is the initialization. Any legal C++ statement can be put
+here, but typically this is used to create and initialize a counting variable. Statement
+2 is the test, and any legal C++ expression can be used here. This serves the same
+role as the condition in the <TT>while</TT> loop. Statement 3 is the action. Typically
+a value is incremented or decremented, though any legal C++ statement can be put
+here. Note that statements 1 and 3 can be any legal C++ statement, but statement
+2 must be an expression--a C++ statement that returns a value. Listing 7.9 demonstrates
+a <TT>for</TT> loop.</P>
+<P><A NAME="Heading34"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 7.9. Demonstrating
+the for loop.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:      // Listing 7.9
+2:      // Looping with for
+3:
+4:      #include &lt;iostream.h&gt;
+5:
+6:      int main()
+7:      {
+8:        int counter;
+9:        for (counter = 0; counter &lt; 5; counter++)
+10:          cout &lt;&lt; &quot;Looping! &quot;;
+11:
+12:        cout &lt;&lt; &quot;\nCounter: &quot; &lt;&lt; counter &lt;&lt; &quot;.\n&quot;;
+13:         return 0;
+<TT>14: }</TT></FONT>
+<FONT COLOR="#0066FF">Output: Looping!  Looping!  Looping!  Looping!  Looping!
+Counter: 5.
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>The <TT>for</TT> statement
+on line 8 combines the initialization of <TT>counter</TT>, the test that <TT>counter</TT>
+is less than 5, and the increment of <TT>counter</TT> all into one line. The body
+of the <TT>for</TT> statement is on line 9. Of course, a block could be used here
+as well.
+<H3 ALIGN="CENTER"><A NAME="Heading36"></A><FONT COLOR="#000077">The for Statement</FONT></H3>
+<P>The syntax for the <TT>for</TT> statement is as follows:</P>
+<PRE><FONT COLOR="#0066FF">for (initialization; test; action )
+statement;
+</FONT></PRE>
+<P>The initialization statement is used to initialize the state of a <TT>counter</TT>,
+or to otherwise prepare for the loop. test is any C++ expression and is evaluated
+each time through the loop. If test is <TT>TRUE</TT>, the action in the header is
+executed (typically the counter is incremented) and then the body of the <TT>for</TT>
+loop is executed. Example 1</P>
+<PRE><FONT COLOR="#0066FF">// print Hello ten times
+for (int i = 0; i&lt;10; i++)
+cout &lt;&lt; &quot;Hello! &quot;;
+</FONT></PRE>
+<P>Example 2</P>
+<PRE><FONT COLOR="#0066FF">for (int i = 0; i &lt; 10; i++)
+{
+    cout &lt;&lt; &quot;Hello!&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;the value of i is: &quot; &lt;&lt; i &lt;&lt; endl;
+}
+</FONT></PRE>
+<H4 ALIGN="CENTER"><A NAME="Heading37"></A><FONT COLOR="#000077">Advanced for Loops</FONT></H4>
+<P><TT>for</TT> statements are powerful and flexible. The three independent statements
+(initialization, test, and action) lend themselves to a number of variations.</P>
+<P>A <TT>for</TT> loop works in the following sequence:
+
+<DL>
+	<DD><B>1.</B> Performs the operations in the initialization.<BR>
+	<BR>
+	<B>2.</B> Evaluates the condition.<BR>
+	<BR>
+	<B>3.</B> If the condition is <TT>TRUE</TT>, executes the action statement and the
+	loop.
+</DL>
+
+<P>After each time through, the loop repeats steps 2 and 3. Multiple Initialization
+and Increments It is not uncommon to initialize more than one variable, to test a
+compound logical expression, and to execute more than one statement. The initialization
+and the action may be replaced by multiple C++ statements, each separated by a comma.
+Listing 7.10 demonstrates the initialization and increment of two variables.</P>
+<P><A NAME="Heading38"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 7.10. Demonstrating
+multiple statements in for loops.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:  //listing 7.10
+2:  // demonstrates multiple statements in
+3:  // for loops
+4:
+5: #include &lt;iostream.h&gt;
+6:
+7:  int main()
+8:  {
+9:      for (int i=0, j=0; i&lt;3; i++, j++)
+10:          cout &lt;&lt; &quot;i: &quot; &lt;&lt; i &lt;&lt; &quot; j: &quot; &lt;&lt; j &lt;&lt; endl;
+11:     return 0;
+<TT>12: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: i: 0  j: 0
+i: 1  j: 1
+i: 2  j: 2
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis: </B></FONT>On line 9, two variables, <TT>i</TT>
+and <TT>j</TT>, are each initialized with the value <TT>0</TT>. The test (<TT>i&lt;3</TT>)
+is evaluated, and because it is true, the body of the <TT>for</TT> statement is executed,
+and the values are printed. Finally, the third clause in the <TT>for</TT> statement
+is executed, and <TT>i</TT> and <TT>j</TT> are incremented.<BR>
+Once line 10 completes, the condition is evaluated again, and if it remains true
+the actions are repeated (<TT>i</TT> and <TT>j</TT> are again incremented), and the
+body of loop is executed again. This continues until the test fails, in which case
+the action statement is not executed, and control falls out of the loop. Null Statements
+in for Loops Any or all of the statements in a <TT>for</TT> loop can be null. To
+accomplish this, use the semicolon to mark where the statement would have been. To
+create a <TT>for</TT> loop that acts exactly like a <TT>while</TT> loop, leave out
+the first and third statements. Listing 7.11 illustrates this idea.</P>
+<P><A NAME="Heading40"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 7.11. Null statements
+in for loops</B></FONT><FONT SIZE="2" COLOR="#000077"><B>.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:    // Listing 7.11
+2:    // For loops with null statements
+3:
+4:    #include &lt;iostream.h&gt;
+5:
+6:    int main()
+7:    {
+8:        int counter = 0;
+9:
+10:        for( ; counter &lt; 5; )
+11:        {
+12:           counter++;
+13:           cout &lt;&lt; &quot;Looping!  &quot;;
+14:        }
+15:
+16:        cout &lt;&lt; &quot;\nCounter: &quot; &lt;&lt; counter &lt;&lt; &quot;.\n&quot;;
+17:       return 0;
+<TT>18: }</TT></FONT>
+<FONT COLOR="#0066FF">
+output: Looping!  Looping!  Looping!  Looping!  Looping!
+Counter: 5.
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>You may recognize this as
+exactly like the <TT>while</TT> loop illustrated in Listing 7.8! On line 8, the counter
+variable is initialized. The <TT>for</TT> statement on line 10 does not initialize
+any values, but it does include a test for <TT>counter &lt; 5</TT>. There is no increment
+statement, so this loop behaves exactly as if it had been written:</P>
+<PRE><FONT COLOR="#0066FF">while (counter &lt; 5)</FONT></PRE>
+<P>Once again, C++ gives you a number of ways to accomplish the same thing. No experienced
+C++ programmer would use a <TT>for</TT> loop in this way, but it does illustrate
+the flexibility of the <TT>for</TT> statement. In fact, it is possible, using <TT>break</TT>
+and <TT>continue</TT>, to create a <TT>for</TT> loop with none of the three statements.
+Listing 7.12 illustrates how.</P>
+<P><A NAME="Heading42"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 7.12. Illustrating
+empty for loop statement.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     //Listing 7.12 illustrating
+2:     //empty for loop statement
+3:
+4:     #include &lt;iostream.h&gt;
+5:
+6:     int main()
+7:     {
+8:         int counter=0;       // initialization
+9:         int max;
+10:         cout &lt;&lt; &quot;How many hellos?&quot;;
+11:         cin &gt;&gt; max;
+12:         for (;;)          // a for loop that doesn't end
+13:         {
+14:            if (counter &lt; max)       // test
+15:            {
+16:              cout &lt;&lt; &quot;Hello!\n&quot;;
+17:              counter++;          // increment
+18:            }
+19:            else
+20:                break;
+21:         }
+22:        return 0;
+<TT>23: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: How many hellos?3
+Hello!
+Hello!
+Hello!
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>The <TT>for</TT> loop has
+now been pushed to its absolute limit. Initialization, test, and action have all
+been taken out of the <TT>for</TT> statement. The initialization is done on line
+8, before the <TT>for</TT> loop begins. The test is done in a separate <TT>if</TT>
+statement on line 14, and if the test succeeds, the action, an increment to <TT>counter</TT>,
+is performed on line 17. If the test fails, breaking out of the loop occurs on line
+20.<BR>
+While this particular program is somewhat absurd, there are times when a <TT>for(;;)</TT>
+loop or a <TT>while (1)</TT> loop is just what you'll want. You'll see an example
+of a more reasonable use of such loops when <TT>switch</TT> statements are discussed
+later today.
+<H4 ALIGN="CENTER"><A NAME="Heading44"></A><FONT COLOR="#000077">Empty for Loops</FONT></H4>
+<P>So much can be done in the header of a <TT>for</TT> statement, there are times
+you won't need the body to do anything at all. In that case, be sure to put a null
+statement (<TT>;</TT>) as the body of the loop. The semicolon can be on the same
+line as the header, but this is easy to overlook. Listing 7.13 illustrates how to
+use a null body in a <TT>for</TT> loop.</P>
+<P><A NAME="Heading45"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 7.13. Illustrates
+the null statement in a for loop.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     //Listing 7.13
+2:     //Demonstrates null statement
+3:     // as body of for loop
+4:
+5:     #include &lt;iostream.h&gt;
+6:     int main()
+7:     {
+8:        for (int i = 0; i&lt;5; cout &lt;&lt; &quot;i: &quot; &lt;&lt; i++ &lt;&lt; endl)
+9:        ;
+10:       return 0;
+<TT>11: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: i: 0
+i: 1
+i: 2
+i: 3
+i: 4
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>The <TT>for</TT> loop on
+line 8 includes three statements: the initialization statement establishes the counter
+<TT>i</TT> and initializes it to <TT>0</TT>. The condition statement tests for <TT>i&lt;5</TT>,
+and the action statement prints the value in <TT>i</TT> and increments it.<BR>
+There is nothing left to do in the body of the <TT>for</TT> loop, so the null statement
+(<TT>;</TT>) is used. Note that this is not a well-designed <TT>for</TT> loop: the
+action statement is doing far too much. This would be better rewritten as</P>
+<PRE><FONT COLOR="#0066FF">8:         for (int i = 0; i&lt;5; i++)</FONT></PRE>
+<PRE><FONT COLOR="#0066FF">
+9:              cout &lt;&lt; &quot;i: &quot; &lt;&lt; i &lt;&lt; endl;</FONT></PRE>
+<P><FONT COLOR="#0066FF"><BR>
+</FONT>While both do exactly the same thing, this example is easier to understand.
+<H4 ALIGN="CENTER"><A NAME="Heading47"></A><FONT COLOR="#000077">Nested Loops</FONT></H4>
+<P>Loops may be nested, with one loop sitting in the body of another. The inner loop
+will be executed in full for every execution of the outer loop. Listing 7.14 illustrates
+writing marks into a matrix using nested <TT>for</TT> loops.</P>
+<P><A NAME="Heading48"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 7.14. Illustrates
+nested for loops.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:   //Listing 7.14
+2:   //Illustrates nested for loops
+3:
+4:   #include &lt;iostream.h&gt;
+5:
+6:   int main()
+7:   {
+8:       int rows, columns;
+9:       char theChar;
+10:       cout &lt;&lt; &quot;How many rows? &quot;;
+11:       cin &gt;&gt; rows;
+12:       cout &lt;&lt; &quot;How many columns? &quot;;
+13:       cin &gt;&gt; columns;
+14:       cout &lt;&lt; &quot;What character? &quot;;
+15:       cin &gt;&gt; theChar;
+16:       for (int i = 0; i&lt;rows; i++)
+17:       {
+18:          for (int j = 0; j&lt;columns; j++)
+19:              cout &lt;&lt; theChar;
+20:          cout &lt;&lt; &quot;\n&quot;;
+21:       }
+22:      return 0;
+<TT>23: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: How many rows? 4
+How many columns? 12
+What character? x
+xxxxxxxxxxxx
+xxxxxxxxxxxx
+xxxxxxxxxxxx
+xxxxxxxxxxxx
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis: </B></FONT>The user is prompted for the number
+of <TT>rows</TT> and <TT>columns</TT> and for a character to print. The first <TT>for</TT>
+loop, on line 16, initializes a counter (<TT>i</TT>) to <TT>0</TT>, and then the
+body of the outer for loop is run.<BR>
+On line 18, the first line of the body of the outer <TT>for</TT> loop, another <TT>for</TT>
+loop is established. A second counter (<TT>j</TT>) is also initialized to <TT>0</TT>,
+and the body of the inner <TT>for</TT> loop is executed. On line 19, the chosen character
+is printed, and control returns to the header of the inner <TT>for</TT> loop. Note
+that the inner <TT>for</TT> loop is only one statement (the printing of the character).
+The condition is tested (<TT>j &lt; columns</TT>) and if it evaluates <TT>true</TT>,
+<TT>j</TT> is incremented and the next character is printed. This continues until
+<TT>j</TT> equals the number of columns.</P>
+<P>Once the inner <TT>for</TT> loop fails its test, in this case after 12 <TT>X</TT>s
+are printed, execution falls through to line 20, and a new line is printed. The outer
+<TT>for</TT> loop now returns to its header, where its condition (<TT>i &lt; rows</TT>)
+is tested. If this evaluates <TT>true</TT>, <TT>i</TT> is incremented and the body
+of the loop is executed.</P>
+<P>In the second iteration of the outer <TT>for</TT> loop, the inner <TT>for</TT>
+loop is started over. Thus, <TT>j</TT> is reinitialized to <TT>0</TT> and the entire
+inner loop is run again.</P>
+<P>The important idea here is that by using a nested loop, the inner loop is executed
+for each iteration of the outer loop. Thus the character is printed <TT>columns</TT>
+times for each row.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>As an aside, many C++ programmers
+	use the letters <TT>i</TT> and <TT>j</TT> as counting variables. This tradition goes
+	all the way back to FORTRAN, in which the letters <TT>i</TT>, <TT>j</TT>, <TT>k</TT>,
+	<TT>l</TT>, <TT>m</TT>, and <TT>n</TT> were the only legal counting variables. Other
+	programmers prefer to use more descriptive counter variable names, such as <TT>Ctrl</TT>
+	and <TT>Ctr2</TT>. Using <TT>i</TT> and <TT>j</TT> in <TT>for</TT> loop headers should
+	not cause much confusion, however. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H4 ALIGN="CENTER"><A NAME="Heading50"></A><FONT COLOR="#000077">Scoping in for Loops</FONT></H4>
+<P>You will remember that variables are scoped to the block in which they are created.
+That is, a local variable is visible only within the block in which it is created.
+It is important to note that counting variables created in the header of a <TT>for</TT>
+loop are scoped to the outer block, not the inner block. The implication of this
+is that if you have two <TT>for</TT> loops in the same function, you must give them
+different counter variables, or they may interfere with one another.
+<H3 ALIGN="CENTER"><A NAME="Heading51"></A><FONT COLOR="#000077">Summing Up Loops</FONT></H3>
+<P>On Day 5, &quot;Functions,&quot; you learned how to solve the Fibonacci series
+problem using recursion. To review briefly, a Fibonacci series starts with 1, 1,
+2, 3, and all subsequent numbers are the sum of the previous two:</P>
+<PRE><FONT COLOR="#0066FF">1,1,2,3,5,8,13,21,34...
+</FONT></PRE>
+<P>The nth Fibonacci number is the sum of the n-1 and the n-2 Fibonacci numbers.
+The problem solved on Day 5 was finding the value of the nth Fibonacci number. This
+was done with recursion. Listing 7.15 offers a solution using iteration.</P>
+<P><A NAME="Heading52"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 7.15. Solving
+the nth Fibonacci numberusing iteration.</B></FONT><FONT COLOR="#0066FF"></FONT>
+<PRE><FONT COLOR="#0066FF">1:  // Listing 7.15
+2:  // Demonstrates solving the nth
+3:  // Fibonacci number using iteration
+4:
+5:  #include &lt;iostream.h&gt;
+6:
+7:  typedef unsigned long int ULONG;
+8:
+9:  ULONG fib(ULONG position);
+10:  int main()
+11:  {
+12:      ULONG answer, position;
+13:      cout &lt;&lt; &quot;Which position? &quot;;
+14:      cin &gt;&gt; position;
+15:      cout &lt;&lt; &quot;\n&quot;;
+16:
+17:      answer = fib(position);
+18:      cout &lt;&lt; answer &lt;&lt; &quot; is the &quot;;
+19:      cout &lt;&lt; position &lt;&lt; &quot;th Fibonacci number.\n&quot;;
+20:     return 0;
+21:  }
+22:
+23:  ULONG fib(ULONG n)
+24:  {
+25:      ULONG minusTwo=1, minusOne=1, answer=2;
+26:
+27:      if (n &lt; 3)
+28:          return 1;
+29:
+30:      for (n -= 3; n; n--)
+31:      {
+32:          minusTwo = minusOne;
+33:          minusOne = answer;
+34:          answer = minusOne + minusTwo;
+35:      }
+36:
+37:      return answer;
+<TT>38: }</TT>
+Output: Which position? 4
+
+3 is the 4th Fibonacci number.
+
+Which position? 5
+
+5 is the 5th Fibonacci number.
+
+Which position? 20
+
+6765 is the 20th Fibonacci number.
+
+Which position? 100
+
+3314859971 is the 100th Fibonacci number.
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis</B></FONT><B>: </B>Listing 7.15 solves the Fibonacci
+series using iteration rather than recursion. This approach is faster and uses less
+memory than the recursive solution.<BR>
+On line 13, the user is asked for the position to check. The function <TT>fib()</TT>
+is called, which evaluates the position. If the position is less than 3, the function
+returns the value <TT>1</TT>. Starting with position 3, the function iterates using
+the following algorithm:<BR>
+<B><BR>
+1.</B> Establish the starting position: Fill variable <TT>answer</TT> with <TT>2</TT>,
+<TT>minusTwo</TT> with <TT>0</TT> (<TT>answer</TT>-2), and <TT>minusOne</TT> with
+<TT>1</TT> (<TT>answer</TT>-1). Decrement the position by 3, because the first two
+numbers are handled by the starting position.<BR>
+<BR>
+<B>2.</B> For every number, count up the Fibonacci series. This is done by<BR>
+<B>a.</B> Putting the value currently in <TT>minusOne</TT> into <TT>minusTwo</TT>.<BR>
+<BR>
+<B>b.</B> Putting the value currently in <TT>answer</TT> into <TT>minusOne</TT>.<BR>
+<BR>
+<B>c.</B> Adding <TT>minusOne</TT> and <TT>minusTwo</TT> and putting the sum in <TT>answer</TT>.<BR>
+<BR>
+<B>d.</B> Decrementing <TT>n</TT>.<BR>
+<BR>
+<B>3.</B> When <TT>n</TT> reaches <TT>0</TT>, return the answer.<BR>
+<BR>
+This is exactly how you would solve this problem with pencil and paper. If you were
+asked for the fifth Fibonacci number, you would write:</P>
+<PRE><FONT COLOR="#0066FF">1, 1, 2,</FONT></PRE>
+<P>and think, &quot;two more to do.&quot; You would then add <TT>2+1</TT> and write
+<TT>3</TT>, and think, &quot;one more to find.&quot; Finally you would write <TT>3+2</TT>
+and the answer would be <TT>5</TT>. In effect, you are shifting your attention right
+one number each time through, and decrementing the number remaining to be found.</P>
+<P>Note the condition tested on line 30 (<TT>n</TT>). This is a C++ idiom, and is
+exactly equivalent to <TT>n != 0</TT>. This <TT>for</TT> loop relies on the fact
+that when <TT>n</TT> reaches <TT>0</TT> it will evaluate <TT>false</TT>, because
+<TT>0</TT> is false in C++. The <TT>for</TT> loop header could have been written:</P>
+<PRE><FONT COLOR="#0066FF">for (n-=3; n&gt;0; n++)</FONT></PRE>
+<P>which might have been clearer. However, this idiom is so common in C++ that there
+is little sense in fighting it.</P>
+<P>Compile, link, and run this program, along with the recursive solution offered
+on Day 5. Try finding position 25 and compare the time it takes each program. Recursion
+is elegant, but because the function call brings a performance overhead, and because
+it is called so many times, its performance is noticeably slower than iteration.
+Microcomputers tend to be optimized for the arithmetic operations, so the iterative
+solution should be blazingly fast.</P>
+<P>Be careful how large a number you enter. <TT>fib</TT> grows quickly, and long
+integers will overflow after a while.
+<H3 ALIGN="CENTER"><A NAME="Heading54"></A><FONT COLOR="#000077">switch Statements</FONT></H3>
+<P>On Day 4, you saw how to write <TT>if</TT> and <TT>if/else</TT> statements. These
+can become quite confusing when nested too deeply, and C++ offers an alternative.
+Unlike <TT>if</TT>, which evaluates one value, <TT>switch</TT> statements allow you
+to branch on any of a number of different values. The general form of the <TT>switch</TT>
+statement is:</P>
+<PRE><FONT COLOR="#0066FF">switch (expression)
+{
+case valueOne: statement;
+                   break;
+case valueTwo: statement;
+                   break;
+....
+case valueN:   statement;
+                   break;
+default:       statement;
+}
+</FONT></PRE>
+<P>expression is any legal C++ expression, and the statements are any legal C++ statements
+or block of statements. <TT>switch</TT> evaluates <TT>expression</TT> and compares
+the result to each of the <TT>case</TT> values. Note, however, that the evaluation
+is only for equality; relational operators may not be used here, nor can Boolean
+operations.</P>
+<P>If one of the <TT>case</TT> values matches the expression, execution jumps to
+those statements and continues to the end of the <TT>switch</TT> block, unless a
+<TT>break</TT> statement is encountered. If nothing matches, execution branches to
+the optional <TT>default</TT> statement. If there is no default and there is no matching
+value, execution falls through the <TT>switch</TT> statement and the statement ends.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>It is almost always a good idea
+	to have a <TT>default</TT> <TT>case</TT> in <TT>switch</TT> statements. If you have
+	no other need for the <TT>default</TT>, use it to test for the supposedly impossible
+	case, and print out an error message; this can be a tremendous aid in debugging.
+	
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P>It is important to note that if there is no <TT>break</TT> statement at the end
+of a <TT>case</TT> statement, execution will fall through to the next <TT>case</TT>
+statement. This is sometimes necessary, but usually is an error. If you decide to
+let execution fall through, be sure to put a comment, indicating that you didn't
+just forget the <TT>break</TT>.</P>
+<P>Listing 7.16 illustrates use of the <TT>switch</TT> statement.</P>
+<P><A NAME="Heading55"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 7.16. Demonstrating
+the switch statement</B></FONT><FONT SIZE="2" COLOR="#000077"><B>.</B></FONT><FONT
+COLOR="#0066FF"></FONT>
+<PRE><FONT COLOR="#0066FF">1:  //Listing 7.16
+2:  // Demonstrates switch statement
+3:
+4:  #include &lt;iostream.h&gt;
+5:
+6:  int main()
+7:  {
+8:    unsigned short int number;
+9:    cout &lt;&lt; &quot;Enter a number between 1 and 5: &quot;;
+10:    cin &gt;&gt; number;
+11:    switch (number)
+12:    {
+13:       case 0:   cout &lt;&lt; &quot;Too small, sorry!&quot;;
+14:                 break;
+15:       case 5:  cout &lt;&lt; &quot;Good job!\n&quot;;  // fall through
+16:       case 4:  cout &lt;&lt; &quot;Nice Pick!\n&quot;; // fall through
+17:       case 3:  cout &lt;&lt; &quot;Excellent!\n&quot;; // fall through
+18:       case 2:  cout &lt;&lt; &quot;Masterful!\n&quot;; // fall through
+19:       case 1:  cout &lt;&lt; &quot;Incredible!\n&quot;;
+20:                break;
+21:       default: cout &lt;&lt; &quot;Too large!\n&quot;;
+22:                break;
+23:    }
+24:    cout &lt;&lt; &quot;\n\n&quot;;
+25:     return 0;
+<TT>26: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: Enter a number between 1 and 5: 3
+Excellent!
+Masterful!
+Incredible!
+
+Enter a number between 1 and 5: 8
+Too large!
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>The user is prompted for
+a number. That number is given to the <TT>switch</TT> statement. If the number is
+0, the <TT>case</TT> statement on line 13 matches, the message <TT>Too small, sorry!</TT>
+is printed, and the <TT>break</TT> statement ends the switch. If the value is <TT>5</TT>,
+execution switches to line 15 where a message is printed, and then falls through
+to line 16, another message is printed, and so forth until hitting the <TT>break</TT>
+on line 20.<BR>
+The net effect of these statements is that for a number between 1 and 5, that many
+messages are printed. If the value of number is not 0-5, it is assumed to be too
+large, and the <TT>default</TT> statement is invoked on line 21.
+<H3 ALIGN="CENTER"><A NAME="Heading57"></A><FONT COLOR="#000077">The switch Statement</FONT></H3>
+<P>The syntax for the <TT>switch</TT> statement is as follows:</P>
+<PRE><FONT COLOR="#0066FF">switch (expression)
+{
+case valueOne: statement;
+case valueTwo: statement;
+....
+case valueN: statement
+default: statement;
+}
+</FONT></PRE>
+<P>The <TT>switch</TT> statement allows for branching on multiple values of expression.
+The expression is evaluated, and if it matches any of the <TT>case</TT> values, execution
+jumps to that line. Execution continues until either the end of the <TT>switch</TT>
+statement or a <TT>break</TT> statement is encountered. If expression does not match
+any of the <TT>case</TT> statements, and if there is a <TT>default</TT> statement,
+execution switches to the <TT>default</TT> statement, otherwise the <TT>switch</TT>
+statement ends. Example 1</P>
+<PRE><FONT COLOR="#0066FF">switch (choice)
+{
+case 0:
+        cout &lt;&lt; &quot;Zero!&quot; &lt;&lt; endl;
+        break
+case 1:
+        cout &lt;&lt; &quot;One!&quot; &lt;&lt; endl;
+       break;
+case 2:
+       cout &lt;&lt; &quot;Two!&quot; &lt;&lt; endl;
+default:
+       cout &lt;&lt; &quot;Default!&quot; &lt;&lt; endl;
+}
+</FONT></PRE>
+<P>Example 2</P>
+<PRE><FONT COLOR="#0066FF">switch (choice)
+{
+choice 0:
+choice 1:
+choice 2:
+       cout &lt;&lt; &quot;Less than 3!&quot;;
+       break;
+choice 3:
+       cout &lt;&lt; &quot;Equals 3!&quot;;
+       break;
+default:
+       cout &lt;&lt; &quot;greater than 3!&quot;;
+}
+</FONT></PRE>
+<H4 ALIGN="CENTER"><A NAME="Heading58"></A><FONT COLOR="#000077">Using a switch Statement
+with a Menu</FONT></H4>
+<P>Listing 7.17 returns to the <TT>for(;;)</TT> loop discussed earlier. These loops
+are also called forever loops, as they will loop forever if a <TT>break</TT> is not
+encountered. The forever loop is used to put up a menu, solicit a choice from the
+user, act on the choice, and then return to the menu. This will continue until the
+user chooses to exit.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>Some programmers like to write 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<PRE><FONT COLOR="#0066FF">#define EVER ;;
+for (EVER)
+{
+    // statements...
+}
+</FONT></PRE>
+<P>Using <TT>#define</TT> is covered on Day 17, &quot;The Preprocessor.&quot;
+
+<DL>
+	<DD>
+<HR>
+<FONT COLOR="#000077"><B>New Term:</B></FONT><B> </B>A <I>forever loop</I> is a loop
+	that does not have an exit condition. In order to exit the loop, a <TT>break</TT>
+	statement must be used. Forever loops are also known as eternal loops. 
+<HR>
+
+</DL>
+
+<P><A NAME="Heading59"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 7.17. Demonstrating
+a forever loop.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:    //Listing 7.17
+2:    //Using a forever loop to manage
+3:    //user interaction
+4:    #include &lt;iostream.h&gt;
+5:
+6:    // types &amp; defines
+7:    enum BOOL { FALSE, TRUE };
+8:    typedef unsigned short int USHORT;
+9:
+10:    // prototypes
+11:    USHORT menu();
+12:    void DoTaskOne();
+13:    void DoTaskMany(USHORT);
+14:
+15:    int main()
+16:    {
+17:
+18:        BOOL exit = FALSE;
+19:        for (;;)
+20:        {
+21:             USHORT choice = menu();
+22:             switch(choice)
+23:             {
+24:                case (1):
+25:                     DoTaskOne();
+26:                     break;
+27:                case (2):
+28:                     DoTaskMany(2);
+29:                     break;
+30:                case (3):
+31:                     DoTaskMany(3);
+32:                     break;
+33:                case (4):
+34:                     continue;  // redundant!
+35:                     break;
+36:                case (5):
+37:                     exit=TRUE;
+38:                     break;
+39:                default:
+40:                     cout &lt;&lt; &quot;Please select again!\n&quot;;
+41:                     break;
+42:             }          // end switch
+43:
+44:             if (exit)
+45:                    break;
+46:        }                // end forever
+47:       return 0;
+48:    }                    // end main()
+49:
+50:    USHORT menu()
+51:    {
+52:        USHORT choice;
+53:
+54:        cout &lt;&lt; &quot; **** Menu ****\n\n&quot;;
+55:        cout &lt;&lt; &quot;(1) Choice one.\n&quot;;
+56:        cout &lt;&lt; &quot;(2) Choice two.\n&quot;;
+57:        cout &lt;&lt; &quot;(3) Choice three.\n&quot;;
+58:        cout &lt;&lt; &quot;(4) Redisplay menu.\n&quot;;
+59:        cout &lt;&lt; &quot;(5) Quit.\n\n&quot;;
+60:        cout &lt;&lt; &quot;: &quot;;
+61:        cin &gt;&gt; choice;
+62:        return choice;
+63:    }
+64:
+65:    void DoTaskOne()
+66:    {
+67:        cout &lt;&lt; &quot;Task One!\n&quot;;
+68:    }
+69:
+70:    void DoTaskMany(USHORT which)
+71:    {
+72:        if (which == 2)
+73:             cout &lt;&lt; &quot;Task Two!\n&quot;;
+74:        else
+75:             cout &lt;&lt; &quot;Task Three!\n&quot;;
+<TT>76: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: **** Menu ****
+
+(1) Choice one.
+(2) Choice two.
+(3) Choice three.
+(4) Redisplay menu.
+(5) Quit.
+
+: 1
+Task One!
+ **** Menu ****
+(1) Choice one.
+(2) Choice two.
+(3) Choice three.
+(4) Redisplay menu.
+(5) Quit.
+
+: 3
+Task Three!
+ **** Menu ****
+(1) Choice one.
+(2) Choice two.
+(3) Choice three.
+(4) Redisplay menu.
+(5) Quit.
+
+: 5
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>This program brings together
+a number of concepts from today and previous days. It also shows a common use of
+the <TT>switch</TT> statement. On line 7, an enumeration, <TT>BOOL</TT>, is created,
+with two possible values: <TT>FALSE</TT>, which equals <TT>0</TT>, as it should,
+and <TT>TRUE</TT>, which equals <TT>1</TT>. On line 8, <TT>typedef</TT> is used to
+create an alias, <TT>USHORT</TT>, for <TT>unsigned short int</TT>.<BR>
+The forever loop begins on 19. The <TT>menu()</TT> function is called, which prints
+the menu to the screen and returns the user's selection. The <TT>switch</TT> statement,
+which begins on line 22 and ends on line 42, switches on the user's choice.</P>
+<P>If the user enters <TT>1</TT>, execution jumps to the <TT>case 1:</TT> statement
+on line 24. Line 25 switches execution to the <TT>DoTaskOne()</TT> function, which
+prints a message and returns. On its return, execution resumes on line 26, where
+the <TT>break</TT> ends the <TT>switch</TT> statement, and execution falls through
+to line 43. On line 44, the variable <TT>exit</TT> is evaluated. If it evaluates
+<TT>true</TT>, the break on line 45 will be executed and the <TT>for(;;)</TT> loop
+will end, but if it evaluates <TT>false</TT>, execution resumes at the top of the
+loop on line 19.</P>
+<P>Note that the <TT>continue</TT> statement on line 34 is redundant. If it were
+left out and the <TT>break</TT> statement were encountered, the <TT>switch</TT> would
+end, <TT>exit</TT> would evaluate <TT>FALSE</TT>, the loop would reiterate, and the
+menu would be reprinted. The <TT>continue</TT> does, however, bypass the test of
+<TT>exit</TT>.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<B>DO</B> use <TT>switch</TT> statements to avoid deeply nested <TT>if</TT> statements.
+	<B>DON'T</B> forget <TT>break</TT> at the end of each <TT>case</TT> unless you wish
+	to fall through.<B> DO </B>carefully document all intentional fall-through <TT>cases</TT>.
+	<B>DO </B>put a default <TT>case</TT> in <TT>switch</TT> statements, if only to detect
+	seemingly impossible situations. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H3 ALIGN="CENTER"><A NAME="Heading61"></A><FONT COLOR="#000077">Summary</FONT></H3>
+<P>There are different ways to cause a C++ program to loop. <TT>While</TT> loops
+check a condition, and if it is true, execute the statements in the body of the loop.
+<TT>do...while</TT> loops execute the body of the loop and then test the condition.
+<TT>for</TT> loops initialize a value, then test an expression. If an expression
+is true, the final statement in the <TT>for</TT> header is executed, as is the body
+of the loop. Each subsequent time through the loop the expression is tested again.</P>
+<P>The <TT>goto</TT> statement is generally avoided, as it causes an unconditional
+jump to a seemingly arbitrary location in the code, and thus makes source code difficult
+to understand and maintain. <TT>continue</TT> causes <TT>while</TT>, <TT>do...while</TT>,
+and <TT>for</TT> loops to start over, and <TT>break</TT> causes <TT>while</TT>, <TT>do...while</TT>,
+<TT>for</TT>, and <TT>switch</TT> statements to end.
+<H3 ALIGN="CENTER"><A NAME="Heading62"></A><FONT COLOR="#000077">Q&amp;A</FONT></H3>
+
+<DL>
+	<DD><B>Q. How do you choose between if/else and switch?<BR>
+	</B><BR>
+	<B>A.</B> If there are more than just one or two <TT>else</TT> clauses, and all are
+	testing the same value, consider using a <TT>switch</TT> statement.<BR>
+	<BR>
+	<B>Q. How do you choose between while and do...while?<BR>
+	</B><BR>
+	<B>A.</B> If the body of the loop should always execute at least once, consider a
+	<TT>do...while</TT> loop; otherwise, try to use the <TT>while</TT> loop.<BR>
+	<BR>
+	<B>Q. How do you choose between while and for?<BR>
+	</B><BR>
+	<B>A</B> If you are initializing a counting variable, testing that variable, and
+	incrementing it each time through the loop, consider the <TT>for</TT> loop. If your
+	variable is already initialized and is not incremented on each loop, a <TT>while</TT>
+	loop may be the better choice.<BR>
+	<BR>
+	<B>Q. How do you choose between recursion and iteration?<BR>
+	</B><BR>
+	<B>A</B>. Some problems cry out for recursion, but most problems will yield to iteration
+	as well. Put recursion in your back pocket; it may come in handy someday.<BR>
+	<B><BR>
+	Q. Is it better to use while (1) or for (;;)?<BR>
+	</B><BR>
+	<B>A.</B> There is no significant difference.
+</DL>
+
+<H3 ALIGN="CENTER"><A NAME="Heading63"></A><FONT COLOR="#000077">Workshop</FONT></H3>
+<P>The Workshop provides quiz questions to help you solidify your understanding of
+the material covered, as well as exercises to provide you with experience in using
+what you've learned. Try to answer the quiz and exercise questions before checking
+the answers in Appendix D, and make sure you understand the answers before continuing
+to the next chapter.
+<H4 ALIGN="CENTER"><A NAME="Heading64"></A><FONT COLOR="#000077">Quiz</FONT></H4>
+
+<DL>
+	<DD><B>1.</B> How do I initialize more than one variable in a <TT>for</TT> loop?<BR>
+	<BR>
+	<B>2.</B> Why is <TT>goto</TT> avoided?<BR>
+	<BR>
+	<B>3.</B> Is it possible to write a <TT>for</TT> loop with a body that is never executed?<BR>
+	<BR>
+	<B>4.</B> Is it possible to nest <TT>while</TT> loops within <TT>for</TT> loops?<BR>
+	<BR>
+	<B>5</B>. Is it possible to create a loop that never ends? Give an example.<BR>
+	<BR>
+	<B>6.</B> What happens if you create a loop that never ends?
+</DL>
+
+<H4 ALIGN="CENTER"><A NAME="Heading65"></A><FONT COLOR="#000077">Exercises</FONT></H4>
+
+<DL>
+	<DD><B>1.</B> What is the value of <TT>x</TT> when the <TT>for</TT> loop completes?
+</DL>
+
+<PRE><FONT COLOR="#0066FF">for (int x = 0; x &lt; 100; x++)
+</FONT></PRE>
+
+<DL>
+	<DD><B>2.</B> Write a nested <TT>for</TT> loop that prints a 10x10 pattern of <TT>0</TT>s.<BR>
+	<BR>
+	<B>3.</B> Write a <TT>for</TT> statement to count from 100 to 200 by 2s.<BR>
+	<BR>
+	<B>4.</B> Write a <TT>while</TT> loop to count from 100 to 200 by 2s.<BR>
+	<BR>
+	<B>5.</B> Write a <TT>do...while</TT> loop to count from 100 to 200 by 2s.<BR>
+	<BR>
+	<B>6</B>. BUG BUSTERS: What is wrong with this code?
+</DL>
+
+<PRE><FONT COLOR="#0066FF">int counter = 0
+while (counter &lt; 10)
+{
+    cout &lt;&lt; &quot;counter: &quot; &lt;&lt; counter;
+}
+</FONT></PRE>
+
+<DL>
+	<DD><B>7.</B> BUG BUSTERS: What is wrong with this code?
+</DL>
+
+<PRE><FONT COLOR="#0066FF">for (int counter = 0; counter &lt; 10; counter++);
+    cout &lt;&lt; counter &lt;&lt; &quot; &quot;;
+</FONT></PRE>
+
+<DL>
+	<DD><B>8</B>. BUG BUSTERS: What is wrong with this code?
+</DL>
+
+<PRE><FONT COLOR="#0066FF">int counter = 100;
+while (counter &lt; 10)
+{
+    cout &lt;&lt; &quot;counter now: &quot; &lt;&lt; counter;
+    counter--;
+}
+</FONT></PRE>
+
+<DL>
+	<DD><B>9.</B> BUG BUSTERS: What is wrong with this code?
+</DL>
+
+<PRE><FONT COLOR="#0066FF">cout &lt;&lt; &quot;Enter a number between 0 and 5: &quot;;
+cin &gt;&gt; theNumber;
+switch (theNumber)
+{
+   case 0:
+         doZero();
+   case 1:              // fall through
+   case 2:              // fall through
+   case 3:              // fall through
+   case 4:              // fall through
+   case 5:
+         doOneToFive();
+         break;
+   default:
+         doDefault();
+         break;
+}
+
+</FONT></PRE>
+<PRE ALIGN="CENTER"><FONT COLOR="#0066FF"></FONT></PRE>
+<P ALIGN="CENTER"><A HREF="ch06.htm"><IMG SRC="../buttons/BLANPREV.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch07rv1.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="#heading1"><IMG SRC="../buttons/BLANTOP.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A>
+
+
+</BODY>
+
+</HTML>

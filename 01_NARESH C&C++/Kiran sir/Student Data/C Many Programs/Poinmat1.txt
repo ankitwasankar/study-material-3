@@ -1,0 +1,23 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+  char nm[10][10],(*p)[10];
+  int i,l=0,j;
+  clrscr();
+  p=nm;
+  for(i=0;i<5;i++)
+  {
+    printf("Enter the string - ");
+    scanf("%s",p+i);
+  }
+  for(i=0;i<5;i++)
+  {
+    printf("\n %s",(p+i));
+    for(j=0;*(*(p+i)+j)!=NULL;j++)
+      l++;
+    printf("\t - %d",l);
+    l=0;
+  }
+  getch();
+}

@@ -1,0 +1,94 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+
+<strong><u>Register:</u></strong>
+
+The value of the variables are stored in CPU registers.
+Its default initial value is garbage value.
+Its scope is local to the block in which variable is defined.
+Lifetime of the variable is till the control remains within the block in which the variable is defined.
+    If the variable is used at many places in a program, it is better to declare variable as register 
+as the value stored in CPU register can always be accessed faster than the one which is stored in memory.
+
+      As the value of variable is stored in CPU registers, accessing the value of that variable is 
+fast Hence generally loop variables are declared as registers to improve the execution( accessing) speed.
+
+Ex:   main()
+       {
+        register int i;
+        for(i=1;i<=10;i++)
+        printf("\n %d",i);
+       }
+
+Output:
+	1
+	2
+	3
+	4	
+	5
+	6	
+	7
+	8
+	9
+	10
+   Simetimes eventhough the variable is declared as register, if registers are not available
+(as the number of register are limited in CPU) the variable works as if its storage class is auto.
+       We cannot use register storage class for all types of variables.
+
+Ex: 
+       register float a;
+       register float b;
+       register float c;
+
+    All above declarations are wrong because the cpu registers in micro computers are  usually 
+16 bit registers and therefore cannot hold a float or double (8 bytes) or long (8 bytes). Though above
+declarations are wrong the compiler doesnot generate any error, it declares the variables a,b,c as auto 
+storage class.
+
+<a href="sto1.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

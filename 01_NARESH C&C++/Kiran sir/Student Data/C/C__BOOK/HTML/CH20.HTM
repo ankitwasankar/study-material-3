@@ -1,0 +1,1484 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+<!-- This document was created from RTF source by rtftohtml version 3.0.1 -->
+
+	<META NAME="GENERATOR" Content="Symantec Visual Page 1.0">
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+	<TITLE>Teach Yourself C++ in 21 Days</TITLE>
+</HEAD>
+
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF">
+
+<H1 ALIGN="CENTER"><A HREF="ch19.htm"><IMG SRC="../buttons/BLANPREV.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch21.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A></H1>
+<H1></H1>
+
+<UL>
+	<LI><A HREF="#Heading1">Day 20</A>
+	<UL>
+		<LI><A HREF="#Heading2">Exceptions and Error Handling</A>
+		<UL>
+			<LI><A HREF="#Heading3">Bugs, Errors, Mistakes, and Code Rot</A>
+			<UL>
+				<LI><A HREF="#Heading4">Exceptions</A>
+				<LI><A HREF="#Heading5">A Word About Code Rot</A>
+			</UL>
+			<LI><A HREF="#Heading6">Exceptions</A>
+			<UL>
+				<LI><A HREF="#Heading7">How Exceptions Are Used</A>
+			</UL>
+			<LI><A HREF="#Heading8">Listing 20.1. Raising an exception.</A>
+			<LI><A HREF="#Heading9">try Blocks</A>
+			<LI><A HREF="#Heading10">catch Blocks</A>
+			<LI><A HREF="#Heading11">Using try Blocks and catch Blocks</A>
+			<UL>
+				<LI><A HREF="#Heading12">Catching Exceptions</A>
+				<LI><A HREF="#Heading13">More Than One catch Specification</A>
+			</UL>
+			<LI><A HREF="#Heading14">Listing 20.2. Multiple exceptions.</A>
+			<UL>
+				<LI><A HREF="#Heading15">Exception Hierarchies</A>
+			</UL>
+			<LI><A HREF="#Heading16">Listing 20.3. Class hierarchies and exceptions</A><A HREF="#Heading17">.</A>
+			<LI><A HREF="#Heading18">Data in Exceptions and Naming Exception Objects</A>
+			<LI><A HREF="#Heading19">Listing 20.4. Getting data out of an exception object</A><A
+			HREF="#Heading20">.</A>
+			<LI><A HREF="#Heading21">Listing 20.5.</A>
+			<LI><A HREF="#Heading22">Passing by reference and using virtual functions in exceptions.</A>
+			<LI><A HREF="#Heading23">Exceptions and Templates</A>
+			<LI><A HREF="#Heading24">Listing 20.6. Using exceptions with templates.</A>
+			<LI><A HREF="#Heading25">Exceptions Without Errors</A>
+			<LI><A HREF="#Heading26">Bugs and Debugging</A>
+			<UL>
+				<LI><A HREF="#Heading27">Breakpoints</A>
+				<LI><A HREF="#Heading28">Watch Points</A>
+				<LI><A HREF="#Heading29">Examining Memory</A>
+				<LI><A HREF="#Heading30">Assembler</A>
+			</UL>
+			<LI><A HREF="#Heading31">Summary</A>
+			<LI><A HREF="#Heading32">Q&amp;A</A>
+			<LI><A HREF="#Heading33">Workshop</A>
+			<UL>
+				<LI><A HREF="#Heading34">Quiz</A>
+				<LI><A HREF="#Heading35">Exercises</A>
+			</UL>
+		</UL>
+	</UL>
+</UL>
+
+<P>
+<HR SIZE="4">
+
+<H2 ALIGN="CENTER"><A NAME="Heading1"></A><FONT COLOR="#000077">Day 20</FONT></H2>
+
+<H2 ALIGN="CENTER"><A NAME="Heading2"></A><FONT COLOR="#000077">Exceptions and Error
+Handling</FONT></H2>
+<P>The code you've seen in this book has been created for illustration purposes.
+It has not dealt with errors so that you would not be distracted from the central
+issues being presented. Real-world programs must take error conditions into consideration.</P>
+<P>Today you will learn
+
+<UL>
+	<LI>What exceptions are.
+	<P>
+	<LI>How exceptions are used, and what issues they raise.
+	<P>
+	<LI>How to build exception hierarchies.
+	<P>
+	<LI>How exceptions fit into an overall error-handling approach.
+	<P>
+	<LI>What a debugger is.
+</UL>
+
+<H3 ALIGN="CENTER"><A NAME="Heading3"></A><FONT COLOR="#000077">Bugs, Errors, Mistakes,
+and Code Rot</FONT></H3>
+<P>All programs have bugs. The bigger the program, the more bugs, and many of those
+bugs actually &quot;get out the door&quot; and into final, released software. That
+this is true does not make it okay, and making robust, bug-free programs is the number-one
+priority of anyone serious about programming.</P>
+<P>The single biggest problem in the software industry is buggy, unstable code. The
+biggest expense in many major programming efforts is testing and fixing. The person
+who solves the problem of producing good, solid, bulletproof programs at low cost
+and on time will revolutionize the software industry.</P>
+<P>There are a number of discrete kinds of bugs that can trouble a program. The first
+is poor logic: The program does just what you asked, but you haven't thought through
+the algorithms properly. The second is syntactic: You used the wrong idiom, function,
+or structure. These two are the most common, and they are the ones most programmers
+are on the lookout for.</P>
+<P>Research and real-world experience have shown beyond a doubt that the later in
+the development process you find a problem, the more it costs to fix it. The least
+expensive problems or bugs to fix are the ones you manage to avoid creating. The
+next cheapest are those the compiler spots. The C++ standards force compilers to
+put a lot of energy into making more and more bugs show up at compile time.</P>
+<P>Bugs that get compiled in but are caught at the first test--those that crash every
+time--are less expensive to find and fix than those that are flaky and only crash
+once in a while.</P>
+<P>A bigger problem than logic or syntactic bugs is unnecessary fragility: Your program
+works just fine if the user enters a number when you ask for one, but it crashes
+if the user enters letters. Other programs crash if they run out of memory, or if
+the floppy disk is left out of the drive, or if the modem drops the line.</P>
+<P>To combat this kind of fragility, programmers strive to make their programs bulletproof.
+A bulletproof program is one that can handle anything that comes up at runtime, from
+bizarre user input to running out of memory.</P>
+<P>It is important to distinguish between bugs, which arise because the programmer
+made a mistake in syntax; logic errors, which arise because the programmer misunderstood
+the problem or how to solve it; and exceptions, which arise because of unusual but
+predictable problems such as running out of resources (memory or disk space).
+<H4 ALIGN="CENTER"><A NAME="Heading4"></A><FONT COLOR="#000077">Exceptions</FONT></H4>
+<P>Programmers use powerful compilers and sprinkle their code with <TT>assert</TT>s,
+as discussed on Day 17, &quot;The Preprocessor,&quot; to catch programming errors.
+They use design reviews and exhaustive testing to find logic errors.</P>
+<P>Exceptions are different, however. You can't eliminate exceptional circumstances;
+you can only prepare for them. Your users will run out of memory from time to time,
+and the only question is what you will do. Your choices are limited to these:
+
+<UL>
+	<LI>Crash the program.
+	<P>
+	<LI>Inform the user and exit gracefully.
+	<P>
+	<LI>Inform the user and allow the user to try to recover and continue.
+	<P>
+	<LI>Take corrective action and continue without disturbing the user.
+</UL>
+
+<P>While it is not necessary or even desirable for every program you write to automatically
+and silently recover from all exceptional circumstances, it is clear that you must
+do better than crashing.</P>
+<P>C++ exception handling provides a type-safe, integrated method for coping with
+the predictable but unusual conditions that arise while running a program.
+<H4 ALIGN="CENTER"><A NAME="Heading5"></A><FONT COLOR="#000077">A Word About Code
+Rot</FONT></H4>
+<P>Code rot is a well-proven phenomenon. Code rot is when code deteriorates due to
+being neglected. Perfectly well-written, fully debugged code will develop new and
+bizarre behavior six months after you release it, and there isn't much you can do
+to stop it. What you can do, of course, is write your programs so that when you go
+back to fix the spoilage, you can quickly and easily identify where the problems
+are.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>Code rot is somewhat of a programmer's
+	joke used to explain how bug-free code suddenly becomes unreliable. It does, however,
+	teach an important lesson. Programs are enormously complex, and bugs, errors, and
+	mistakes can hide for a long time before turning up. Protect yourself by writing
+	easy-to-maintain code. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P>This means that your code must be commented even if you don't expect anyone else
+to ever look at it. Six months after you deliver your code, you will read it with
+the eyes of a total stranger, bewildered by how anyone could ever have written such
+convoluted and twisty code and expected anything but disaster.
+<H3 ALIGN="CENTER"><A NAME="Heading6"></A><FONT COLOR="#000077">Exceptions</FONT></H3>
+<P>In C++, an exception is an object that is passed from the area of code where a
+problem occurs to the part of the code that is going to handle the problem. The type
+of the exception determines which area of code will handle the problem, and the contents
+of the object thrown, if any, may be used to provide feedback to the user.</P>
+<P>The basic idea behind exceptions is fairly straightforward:
+
+<UL>
+	<LI>The actual allocation of resources (for example, the allocation of memory or
+	the locking of a file) is usually done at a very low level in the program.
+	<P>
+	<LI>The logic of what to do when an operation fails, memory cannot be allocated,
+	or a file cannot be locked is usually high in the program, with the code for interacting
+	with the user.
+	<P>
+	<LI>Exceptions provide an express path from the code that allocates resources to
+	the code that can handle the error condition. If there are intervening layers of
+	functions, they are given an opportunity to clean up memory allocations, but are
+	not required to include code whose only purpose is to pass along the error condition.
+</UL>
+
+<H4 ALIGN="CENTER"><A NAME="Heading7"></A><FONT COLOR="#000077">How Exceptions Are
+Used</FONT></H4>
+<P><TT>try</TT> blocks are created to surround areas of code that may have a problem.
+For example:</P>
+<PRE><FONT COLOR="#0066FF">try
+{
+SomeDangerousFunction();
+}
+</FONT></PRE>
+<P><TT>catch</TT> blocks handle the exceptions thrown in the <TT>try</TT> block.
+For example:</P>
+<PRE><FONT COLOR="#0066FF">try
+{
+SomeDangerousFunction();
+}
+catch(OutOfMemory)
+{
+// take some actions
+}
+catch(FileNotFound)
+{
+// take other action
+}
+</FONT></PRE>
+<P>The basic steps in using exceptions are
+
+<DL>
+	<DD><B>1.</B> Identify those areas of the program in which you begin an operation
+	that might raise an exception, and put them in <TT>try</TT> blocks.<BR>
+	<BR>
+	<B>2.</B> Create <TT>catch</TT> blocks to catch the exceptions if they are thrown,
+	to clean up allocated memory, and to inform the user as appropriate. Listing 20.1
+	illustrates the use of both <TT>try</TT> blocks and <TT>catch</TT> blocks.<BR>
+	<B><BR>
+	</B>
+<HR>
+<FONT COLOR="#000077"><B>New Term:</B></FONT><B> </B><I>Exceptions </I>are objects
+	used to transmit information about a problem. 
+<HR>
+
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>New Term:</B></FONT><B> </B>A <I>try block </I>is a block
+	surrounded by braces in which an exception may be thrown. 
+<HR>
+</P>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>New Term:</B></FONT><B> </B>A <I>catch block</I> is the
+	block immediately following a <TT>try</TT> block, in which exceptions are handled.</P>
+	<P>When an exception is thrown (or raised), control transfers to the <TT>catch</TT>
+	block immediately following the current <TT>try</TT> block. 
+<HR>
+
+</DL>
+
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>Some older compilers do not support
+	exceptions. Exceptions are, however, part of the emerging C++ standard. All major
+	compiler vendors have committed to supporting exceptions in their next releases,
+	if they have not already done so. If you have an older compiler, you won't be able
+	to compile and run the exercises in this chapter. It's still a good idea to read
+	through the entire chapter, however, and return to this material when you upgrade
+	your compiler. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P><A NAME="Heading8"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 20.1. Raising
+an exception.</B></FONT>
+<PRE><FONT COLOR="#0066FF">0:       #include &lt;iostream.h&gt;
+1:    
+2:       const int DefaultSize = 10;
+3:    
+4:       class Array
+5:       {
+6:       public:
+7:          // constructors
+8:          Array(int itsSize = DefaultSize);
+9:          Array(const Array &amp;rhs);
+10:          ~Array() { delete [] pType;}
+11:    
+12:          // operators
+13:          Array&amp; operator=(const Array&amp;);
+14:          int&amp; operator[](int offSet);
+15:          const int&amp; operator[](int offSet) const;
+16:    
+17:          // accessors
+18:          int GetitsSize() const { return itsSize; }
+19:    
+20:          // friend function
+21:         friend ostream&amp; operator&lt;&lt; (ostream&amp;, const Array&amp;);
+22:    
+23:          class xBoundary {};  // define the exception class
+24:       private:
+25:          int *pType;
+26:          int  itsSize;
+27:       };
+28:    
+29:    
+30:       Array::Array(int size):
+31:       itsSize(size)
+32:       {
+33:          pType = new int[size];
+34:          for (int i = 0; i&lt;size; i++)
+35:            pType[i] = 0;
+36:       }
+37:    
+38:    
+39:       Array&amp; Array::operator=(const Array &amp;rhs)
+40:       {
+41:          if (this == &amp;rhs)
+42:             return *this;
+43:          delete [] pType;
+44:          itsSize = rhs.GetitsSize();
+45:          pType = new int[itsSize];
+46:          for (int i = 0; i&lt;itsSize; i++)
+47:             pType[i] = rhs[i];
+48:          return *this;
+49:       }
+50:    
+51:       Array::Array(const Array &amp;rhs)
+52:       {
+53:          itsSize = rhs.GetitsSize();
+54:          pType = new int[itsSize];
+55:          for (int i = 0; i&lt;itsSize; i++)
+56:             pType[i] = rhs[i];
+57:       }
+58:    
+59:    
+60:       int&amp; Array::operator[](int offSet)
+61:       {
+62:          int size = GetitsSize();
+63:          if (offSet &gt;= 0 &amp;&amp; offSet &lt; GetitsSize())
+64:             return pType[offSet];
+65:          throw xBoundary();
+66:          return pType[0]; // appease MSC 
+67:       }
+68:    
+69: 
+70:       const int&amp; Array::operator[](int offSet) const
+71:       {
+72:          int mysize = GetitsSize();
+73:          if (offSet &gt;= 0 &amp;&amp; offSet &lt; GetitsSize())
+74:             return pType[offSet];
+75:          throw xBoundary();
+76:          return pType[0]; // appease MSC 
+77:       }
+78:    
+79:       ostream&amp; operator&lt;&lt; (ostream&amp; output, const Array&amp; theArray)
+80:       {
+81:          for (int i = 0; i&lt;theArray.GetitsSize(); i++)
+82:             output &lt;&lt; &quot;[&quot; &lt;&lt; i &lt;&lt; &quot;] &quot; &lt;&lt; theArray[i] &lt;&lt; endl;
+83:          return output;
+84:       }
+85:    
+86:       int main()
+87:       {
+88:          Array intArray(20);
+89:          try
+90:          {
+91:             for (int j = 0; j&lt; 100; j++)
+92:             {
+93:                intArray[j] = j;
+94:                cout &lt;&lt; &quot;intArray[&quot; &lt;&lt; j &lt;&lt; &quot;] okay...&quot; &lt;&lt; endl;
+95:             }
+96:          }
+97:          catch (Array::xBoundary)
+98:          {
+99:             cout &lt;&lt; &quot;Unable to process your input!\n&quot;;
+100:          }
+101:          cout &lt;&lt; &quot;Done.\n&quot;;
+102:         return 0;
+<TT>103: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: intArray[0] okay...
+intArray[1] okay...
+intArray[2] okay...
+intArray[3] okay...
+intArray[4] okay...
+intArray[5] okay...
+intArray[6] okay...
+intArray[7] okay...
+intArray[8] okay...
+intArray[9] okay...
+intArray[10] okay...
+intArray[11] okay...
+intArray[12] okay...
+intArray[13] okay...
+intArray[14] okay...
+intArray[15] okay...
+intArray[16] okay...
+intArray[17] okay...
+intArray[18] okay...
+intArray[19] okay...
+Unable to process your input!
+Done.
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>Listing 20.1 presents a somewhat
+stripped-down <TT>Array</TT> class, based on the template developed on Day 19, &quot;Templates.&quot;
+On line 23, a new class is contained within the declaration of the boundary.<BR>
+<BR>
+This new class is not in any way distinguished as an exception class. It is just
+a class like any other. This particular class is incredibly simple: It has no data
+and no methods. Nonetheless, it is a valid class in every way.</P>
+<P>In fact, it is incorrect to say it has no methods, because the compiler automatically
+assigns it a default constructor, destructor, copy constructor, and the copy operator
+(operator equals); so it actually has four class functions, but no data.</P>
+<P>Note that declaring it from within <TT>Array</TT> serves only to couple the two
+classes together. As discussed on Day 15, &quot;Advanced Inheritance,&quot; <TT>Array</TT>
+has no special access to <TT>xBoundary</TT>, nor does <TT>xBoundary</TT> have preferential
+access to the members of <TT>Array</TT>.</P>
+<P>On lines 60-66 and 69-75, the offset operators are modified to examine the offset
+requested and, if it is out of range, to throw the <TT>xBoundary</TT> class as an
+exception. The parentheses are required to distinguish between this call to the <TT>xBoundary</TT>
+constructor and the use of an enumerated constant. Note that Microsoft requires that
+you provide a <TT>return</TT> statement to match the declaration (in this case, returning
+an integer reference), even though if an exception is thrown on line 65 the code
+will never reach line 66. This is a compiler bug, proving only that even Microsoft
+finds this stuff difficult and confusing!</P>
+<P>On line 89, the keyword <TT>try</TT> begins a <TT>try</TT> block that ends on
+line 96. Within that <TT>try</TT> block, 100 integers are added to the array that
+was declared on line 88.</P>
+<P>On line 97, the <TT>catch</TT> block to catch <TT>xBoundary</TT> exceptions is
+declared.</P>
+<P>In the driver program on lines 86-103, a <TT>try</TT> block is created in which
+each member of the array is initialized. When <TT>j</TT> (line 91) is incremented
+to 20, the member at offset 20 is accessed. This causes the test on line 63 to fail,
+and <TT>operator[]</TT> raises an <TT>xBoundary</TT> exception on line 65.</P>
+<P>Program control switches to the <TT>catch</TT> block on line 97, and the exception
+is caught or handled by the <TT>catch</TT> on the same line, which prints an error
+message. Program flow drops through to the end of the <TT>catch</TT> block on line
+100.
+<H3 ALIGN="CENTER"><A NAME="Heading9"></A><FONT COLOR="#000077">try Blocks</FONT></H3>
+<P>A <TT>try</TT> block is a set of statements that begins with the word <TT>try</TT>,
+is followed by an opening brace, and ends with a closing brace. Example:</P>
+<PRE><FONT COLOR="#0066FF">try
+{
+Function();
+};
+</FONT></PRE>
+<H3 ALIGN="CENTER"><A NAME="Heading10"></A><FONT COLOR="#000077">catch Blocks</FONT></H3>
+<P>A <TT>catch</TT> block is a series of statements, each of which begins with the
+word <TT>catch</TT>, followed by an exception type in parentheses, followed by an
+opening brace, and ending with a closing brace. Example:</P>
+<PRE><FONT COLOR="#0066FF">try
+{
+Function();
+};
+catch (OutOfMemory)
+{
+// take action
+}
+</FONT></PRE>
+<H3 ALIGN="CENTER"><A NAME="Heading11"></A><FONT COLOR="#000077">Using try Blocks
+and catch Blocks</FONT></H3>
+<P>Figuring out where to put your <TT>try</TT> blocks is non-trivial: It is not always
+obvious which actions might raise an exception. The next question is where to catch
+the exception. It may be that you'll want to throw all memory exceptions where the
+memory is allocated, but you'll want to catch the exceptions high in the program,
+where you deal with the user interface.</P>
+<P>When trying to determine <TT>try</TT> block locations, look to where you allocate
+memory or use resources. Other things to look for are out-of-bounds errors, illegal
+input, and so forth.
+<H4 ALIGN="CENTER"><A NAME="Heading12"></A><FONT COLOR="#000077">Catching Exceptions</FONT></H4>
+<P>Here's how it works: when an exception is thrown, the call stack is examined.
+The call stack is the list of function calls created when one part of the program
+invokes another function.</P>
+<P>The call stack tracks the execution path. If <TT>main()</TT> calls the function
+<TT>Animal::GetFavoriteFood()</TT>, and <TT>GetFavoriteFood()</TT> calls <TT>Animal::LookupPreferences()</TT>,
+which in turn calls <TT>fstream::operator&gt;&gt;()</TT>, all these are on the call
+stack. A recursive function might be on the call stack many times.</P>
+<P>The exception is passed up the call stack to each enclosing block. As the stack
+is unwound, the destructors for local objects on the stack are invoked, and the objects
+are destroyed.</P>
+<P>After each <TT>try</TT> block there is one or more <TT>catch</TT> statements.
+If the exception matches one of the <TT>catch</TT> statements, it is considered to
+be handled by having that statement execute. If it doesn't match any, the unwinding
+of the stack continues.</P>
+<P>If the exception reaches all the way to the beginning of the program (<TT>main()</TT>)
+and is still not caught, a built-in handler is called that terminates the program.</P>
+<P>It is important to note that the exception unwinding of the stack is a one-way
+street. As it progresses, the stack is unwound and objects on the stack are destroyed.
+There is no going back: Once the exception is handled, the program continues after
+the <TT>try</TT> block of the <TT>catch</TT> statement that handled the exception.</P>
+<P>Thus, in Listing 20.1, execution will continue on line 101, the first line after
+the <TT>try</TT> block of the <TT>catch</TT> statement that handled the <TT>xBoundary</TT>
+exception. Remember that when an exception is raised, program flow continues after
+the <TT>catch</TT> block, not after the point where the exception was thrown.
+<H4 ALIGN="CENTER"><A NAME="Heading13"></A><FONT COLOR="#000077">More Than One catch
+Specification</FONT></H4>
+<P>It is possible for more than one condition to cause an exception. In this case,
+the <TT>catch</TT> statements can be lined up one after another, much like the conditions
+in a <TT>switch</TT> statement. The equivalent to the <TT>default</TT> statement
+is the &quot;catch everything&quot; statement, indicated by <TT>catch(...)</TT>.
+Listing 20.2 illustrates multiple exception conditions.</P>
+
+<P><A NAME="Heading14"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 20.2. Multiple
+exceptions.</B></FONT>
+<PRE><FONT COLOR="#0066FF">0:     #include &lt;iostream.h&gt;
+1:    
+2:     const int DefaultSize = 10;
+3:    
+4:     class Array
+5:     {
+6:     public:
+7:        // constructors
+8:        Array(int itsSize = DefaultSize);
+9:        Array(const Array &amp;rhs);
+10:        ~Array() { delete [] pType;}
+11:    
+12:        // operators
+13:        Array&amp; operator=(const Array&amp;);
+14:        int&amp; operator[](int offSet);
+15:        const int&amp; operator[](int offSet) const;
+16:    
+17:        // accessors
+18:        int GetitsSize() const { return itsSize; }
+19:    
+20:        // friend function
+21:       friend ostream&amp; operator&lt;&lt; (ostream&amp;, const Array&amp;);
+22:    
+23:      // define the exception classes
+24:        class xBoundary {};
+25:        class xTooBig {};
+26:        class xTooSmall{};
+27:        class xZero {};
+28:        class xNegative {};
+29:     private:
+30:        int *pType;
+31:        int  itsSize;
+32:     };
+33:    
+34:        int&amp; Array::operator[](int offSet)
+35:        {
+36:             int size = GetitsSize();
+37:             if (offSet &gt;= 0 &amp;&amp; offSet &lt; GetitsSize())
+38:                return pType[offSet];
+39:             throw xBoundary();
+40:             return pType[0];  // appease MFC
+41:        }
+42:    
+43:    
+44:        const int&amp; Array::operator[](int offSet) const
+45:        {
+46:             int mysize = GetitsSize();
+47:             if (offSet &gt;= 0 &amp;&amp; offSet &lt; GetitsSize())
+48:                return pType[offSet];
+49:             throw xBoundary();
+50:             return pType[0];
+51:             return pType[0];  // appease MFC
+52:        }
+53:    
+54:    
+55:     Array::Array(int size):
+56:     itsSize(size)
+57:     {
+58:        if (size == 0)
+59:           throw xZero();
+60:        if (size &lt; 10)
+61:           throw xTooSmall();
+62:        if (size &gt; 30000)
+63:           throw xTooBig();
+64:        if (size &lt; 1)
+65:           throw xNegative();
+66:    
+67:        pType = new int[size];
+68:        for (int i = 0; i&lt;size; i++)
+69:          pType[i] = 0;
+70:     }
+71: 
+72:    
+73:    
+74:     int main()
+75:     {
+76:    
+77:        try
+78:        {
+79:           Array intArray(0);
+80:           for (int j = 0; j&lt; 100; j++)
+81:           {
+82:              intArray[j] = j;
+83:              cout &lt;&lt; &quot;intArray[&quot; &lt;&lt; j &lt;&lt; &quot;] okay...\n&quot;;
+84:           }
+85:        }
+86:        catch (Array::xBoundary)
+87:        {
+88:           cout &lt;&lt; &quot;Unable to process your input!\n&quot;;
+89:        }
+90:        catch (Array::xTooBig)
+91:        {
+92:           cout &lt;&lt; &quot;This array is too big...\n&quot;;
+93:        }
+94:        catch (Array::xTooSmall)
+95:        {
+96:           cout &lt;&lt; &quot;This array is too small...\n&quot;;
+97:        }
+98:        catch (Array::xZero)
+99:        {
+100:           cout &lt;&lt; &quot;You asked for an array&quot;;
+101:           cout &lt;&lt; &quot; of zero objects!\n&quot;; 
+102:        }
+103:        catch (...)
+104:        {
+105:           cout &lt;&lt; &quot;Something went wrong!\n&quot;;
+106:         }
+107:          cout &lt;&lt; &quot;Done.\n&quot;;
+108:        return 0;
+<TT>109: }</TT></FONT>
+<FONT COLOR="#0066FF">Output: You asked for an array of zero objects!
+Done.</FONT></PRE>
+
+<DL>
+	<DD><FONT COLOR="#0066FF"></FONT>
+</DL>
+
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>Four new classes are created
+in lines 24-27: <TT>xTooBig</TT>,<TT> xTooSmall</TT>,<TT> xZero</TT>, and <TT>xNegative</TT>.
+In the constructor, on lines 55-70, the size passed to the constructor is examined.
+If it's too big, too small, negative, or zero, an exception is thrown.</P>
+<P>The <TT>try</TT> block is changed to include <TT>catch</TT> statements for each
+condition other than negative, which is caught by the &quot;catch everything&quot;
+statement <TT>catch(...)</TT>, shown on line 103.</P>
+<P>Try this with a number of values for the size of the array. Then try putting in
+<TT>-5</TT>. You might have expected <TT>xNegative</TT> to be called, but the order
+of the tests in the constructor prevented this: <TT>size &lt; 10</TT> was evaluated
+before <TT>size &lt; 1</TT>. To fix this, swap lines 60 and 61 with lines 64 and
+65 and recompile.
+<H4 ALIGN="CENTER"><A NAME="Heading15"></A><FONT COLOR="#000077">Exception Hierarchies</FONT></H4>
+<P>Exceptions are classes, and as such they can be derived from. It may be advantageous
+to create a class <TT>xSize</TT>, and to derive from it <TT>xZero</TT>,<TT> xTooSmall</TT>,<TT>
+xTooBig</TT>, and <TT>xNegative</TT>. Thus, some functions might just catch <TT>xSize</TT>
+errors, while other functions might catch the specific type of <TT>xSize</TT> error.
+Listing 20.3 illustrates this idea.</P>
+
+<P><A NAME="Heading16"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 20.3. Class
+hierarchies and exceptions.</B></FONT>
+<PRE><FONT COLOR="#0066FF">0:       #include &lt;iostream.h&gt;
+1:    
+2:       const int DefaultSize = 10;
+3:    
+4:       class Array
+5:       {
+6:       public:
+7:          // constructors
+8:          Array(int itsSize = DefaultSize);
+9:          Array(const Array &amp;rhs);
+10:          ~Array() { delete [] pType;}
+11:    
+12:          // operators
+13:          Array&amp; operator=(const Array&amp;);
+14:          int&amp; operator[](int offSet);
+15:          const int&amp; operator[](int offSet) const;
+16:    
+17:          // accessors
+18:          int GetitsSize() const { return itsSize; }
+19:    
+20:          // friend function
+21:         friend ostream&amp; operator&lt;&lt; (ostream&amp;, const Array&amp;);
+22:    
+23:        // define the exception classes
+24:          class xBoundary {};
+25:          class xSize {};
+26:          class xTooBig : public xSize {};
+27:          class xTooSmall : public xSize {};
+28:          class xZero  : public xTooSmall {};
+29:          class xNegative  : public xSize {};
+30:       private:
+31:          int *pType;
+32:          int  itsSize;
+33:       };
+34:    
+35:    
+36:       Array::Array(int size):
+37:       itsSize(size)
+38:       {
+39:          if (size == 0)
+40:             throw xZero();
+41:          if (size &gt; 30000)
+42:             throw xTooBig();
+43:          if (size &lt;1)
+44:             throw xNegative();
+45:          if (size &lt; 10)
+46:             throw xTooSmall();
+47: 
+48:          pType = new int[size];
+49:          for (int i = 0; i&lt;size; i++)
+50:            pType[i] = 0;
+51:       }
+52: 
+53:           int&amp; Array::operator[](int offSet)
+54:        {
+55:             int size = GetitsSize();
+56:             if (offSet &gt;= 0 &amp;&amp; offSet &lt; GetitsSize())
+57:                return pType[offSet];
+58:             throw xBoundary();
+59:             return pType[0];  // appease MFC
+60:        }
+61:    
+62:    
+63:        const int&amp; Array::operator[](int offSet) const
+64:        {
+65:             int mysize = GetitsSize();
+66:             if (offSet &gt;= 0 &amp;&amp; offSet &lt; GetitsSize())
+67:                return pType[offSet];
+68:             throw xBoundary();
+69:             return pType[0];
+70:             return pType[0];  // appease MFC
+71:        }
+72:    
+73:     int main()
+74:     {
+75:    
+76:        try
+77:        {
+78:           Array intArray(5);
+79:           for (int j = 0; j&lt; 100; j++)
+80:           {
+81:              intArray[j] = j;
+82:              cout &lt;&lt; &quot;intArray[&quot; &lt;&lt; j &lt;&lt; &quot;] okay...\n&quot;;
+83:           }
+84:        }
+85:        catch (Array::xBoundary)
+86:        {
+87:           cout &lt;&lt; &quot;Unable to process your input!\n&quot;;
+88:        }
+89:        catch (Array::xTooBig)
+90:        {
+91:           cout &lt;&lt; &quot;This array is too big...\n&quot;;
+92:        }
+93:    
+94:        catch (Array::xZero)
+95:        {
+96:           cout &lt;&lt; &quot;You asked for an array&quot;;
+97:           cout &lt;&lt; &quot; of zero objects!\n&quot;; 
+98:        }
+99:    
+100:        catch (Array::xTooSmall)
+101:        {
+102:           cout &lt;&lt; &quot;This array is too small...\n&quot;;
+103:        }
+104: 
+105:        catch (...)
+106:        {
+107:           cout &lt;&lt; &quot;Something went wrong!\n&quot;;
+108:         }
+109:          cout &lt;&lt; &quot;Done.\n&quot;;
+110:        return 0
+<TT>111: }</TT>
+
+Output: This array is too small...
+Done.
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>The significant change is
+on lines 26-29, where the class hierarchy is established. Classes <TT>xTooBig</TT>,<TT>
+xTooSmall</TT>, and <TT>xNegative</TT> are derived from <TT>xSize</TT>, and <TT>xZero</TT>
+is derived from <TT>xTooSmall</TT>.<BR>
+<BR>
+The <TT>Array</TT> is created with size zero, but what's this? The wrong exception
+appears to be caught! Examine the <TT>catch</TT> block carefully, however, and you
+will find that it looks for an exception of type <TT>xTooSmall</TT> before it looks
+for an exception of type <TT>xZero</TT>. Because an <TT>xZero</TT> object is thrown
+and an <TT>xZero</TT> object is an <TT>xTooSmall</TT> object, it is caught by the
+handler for <TT>xTooSmall</TT>. Once handled, the exception is not passed on to the
+other handlers, so the handler for <TT>xZero</TT> is never called.</P>
+<P>The solution to this problem is to carefully order the handlers so that the most
+specific handlers come first and the less specific handlers come later. In this particular
+example, switching the placement of the two handlers <TT>xZero</TT> and <TT>xTooSmall</TT>
+will fix the problem.
+<H3 ALIGN="CENTER"><A NAME="Heading18"></A><FONT COLOR="#000077">Data in Exceptions
+and Naming Exception Objects</FONT></H3>
+<P>Often you will want to know more than just what type of exception was thrown so
+you can respond properly to the error. Exception classes are like any other class.
+You are free to provide data, initialize that data in the constructor, and read that
+data at any time. Listing 20.4 illustrates how to do this.</P>
+
+<P><A NAME="Heading19"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 20.4. Getting
+data out of an exception object.</B></FONT>
+<PRE><FONT COLOR="#0066FF">0:      #include &lt;iostream.h&gt;
+1:    
+2:      const int DefaultSize = 10;
+3:    
+4:      class Array
+5:      {
+6:      public:
+7:         // constructors
+8:         Array(int itsSize = DefaultSize);
+9:         Array(const Array &amp;rhs);
+10:         ~Array() { delete [] pType;}
+11:    
+12:         // operators
+13:         Array&amp; operator=(const Array&amp;);
+14:         int&amp; operator[](int offSet);
+15:         const int&amp; operator[](int offSet) const;
+16:    
+17:         // accessors
+18:         int GetitsSize() const { return itsSize; }
+19:    
+20:         // friend function
+21:        friend ostream&amp; operator&lt;&lt; (ostream&amp;, const Array&amp;);
+22:    
+23:       // define the exception classes
+24:         class xBoundary {};
+25:         class xSize
+26:         {
+27:         public:
+28:            xSize(int size):itsSize(size) {}
+29:            ~xSize(){}
+30:            int GetSize() { return itsSize; }
+31:         private:
+32:            int itsSize;
+33:         };
+34:    
+35:         class xTooBig : public xSize
+36:         {
+37:         public:
+38:            xTooBig(int size):xSize(size){}
+39:         };
+40:    
+41:         class xTooSmall : public xSize
+42:         {
+43:         public:
+44:            xTooSmall(int size):xSize(size){}
+45:         };
+46:    
+47:         class xZero  : public xTooSmall
+48:         {
+49:         public:
+50:            xZero(int size):xTooSmall(size){}
+51:         };
+52:    
+53:         class xNegative : public xSize
+54:         {
+55:         public:
+56:            xNegative(int size):xSize(size){}
+57:         };
+58:    
+59:      private:
+60:         int *pType;
+61:         int  itsSize;
+62:      };
+63:    
+64: 
+65:      Array::Array(int size):
+66:      itsSize(size)
+67:      {
+68:         if (size == 0)
+69:            throw xZero(size);
+70:         if (size &gt; 30000)
+71:            throw xTooBig(size);
+72:         if (size &lt;1)
+73:            throw xNegative(size);
+74:         if (size &lt; 10)
+75:            throw xTooSmall(size);
+76:    
+77:         pType = new int[size];
+78:         for (int i = 0; i&lt;size; i++)
+79:           pType[i] = 0;
+80:      }
+81:    
+82:    
+83:      int&amp; Array::operator[] (int offSet)
+84:      {
+85:          int size = GetitsSize();
+86:          if (offSet &gt;= 0 &amp;&amp; offSet &lt; GetitsSize())
+87:            return pType[offSet];
+88:          throw xBoundary();
+89:          return pType[0];
+90:      }
+91:    
+92:      const int&amp; Array::operator[] (int offSet) const
+93:      {
+94:          int size = GetitsSize();
+95:          if (offSet &gt;= 0 &amp;&amp; offSet &lt; GetitsSize())
+96:            return pType[offSet];
+97:          throw xBoundary();
+98:          return pType[0];
+99:      }
+100:    
+101:       int main()
+102:       {
+103:    
+104:          try
+105:          {
+106:             Array intArray(9);
+107:             for (int j = 0; j&lt; 100; j++)
+108:             {
+109:                intArray[j] = j;
+110:                cout &lt;&lt; &quot;intArray[&quot; &lt;&lt; j &lt;&lt; &quot;] okay...&quot; &lt;&lt; endl;
+111:             }
+112:          }
+113:          catch (Array::xBoundary)
+114:          {
+115:             cout &lt;&lt; &quot;Unable to process your input!\n&quot;;
+116:          }
+117:         catch (Array::xZero theException)
+118:         {
+119:            cout &lt;&lt; &quot;You asked for an Array of zero objects!&quot; &lt;&lt; endl;
+120:            cout &lt;&lt; &quot;Received &quot; &lt;&lt; theException.GetSize() &lt;&lt; endl;
+121:         }
+122:         catch (Array::xTooBig theException)
+123:         {
+124:            cout &lt;&lt; &quot;This Array is too big...&quot; &lt;&lt; endl;
+125:            cout &lt;&lt; &quot;Received &quot; &lt;&lt; theException.GetSize() &lt;&lt; endl;
+126:         }
+127:         catch (Array::xTooSmall theException)
+128:         {
+129:            cout &lt;&lt; &quot;This Array is too small...&quot; &lt;&lt; endl;
+130:            cout &lt;&lt; &quot;Received &quot; &lt;&lt; theException.GetSize() &lt;&lt; endl;
+131:         }
+132:         catch (...)
+133:         {
+134:            cout &lt;&lt; &quot;Something went wrong, but I've no idea what!\n&quot;;
+135:         }
+136:         cout &lt;&lt; &quot;Done.\n&quot;;
+137:        return 0;
+<TT>138: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: This array is too small...
+Received 9
+Done.
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>The declaration of <TT>xSize</TT>
+has been modified to include a member variable, <TT>itsSize</TT>, on line 32 and
+a member function, <TT>GetSize()</TT>, on line 30. Additionally, a constructor has
+been added that takes an integer and initializes the member variable, as shown on
+line 28.<BR>
+The derived classes declare a constructor that does nothing but initialize the base
+class. No other functions were declared, in part to save space in the listing.</P>
+<P>The <TT>catch</TT> statements on lines 113 to 135 are modified to name the exception
+they catch, <TT>theException</TT>, and to use this object to access the data stored
+in <TT>itsSize</TT>.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE: </B></FONT>Keep in mind that if you are constructing
+	an exception, it is because an exception has been raised: Something has gone wrong,
+	and your exception should be careful not to kick off the same problem. Therefore,
+	if you are creating an <TT>OutOfMemory</TT> exception, you probably don't want to
+	allocate memory in its constructor. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P>It is tedious and error-prone to have each of these <TT>catch</TT> statements
+individually print the appropriate message. This job belongs to the object, which
+knows what type of object it is and what value it received. Listing 20.5 takes a
+more object-oriented approach to this problem, using virtual functions so that each
+exception &quot;does the right thing.&quot;</P>
+
+<P><A NAME="Heading21"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 20.5.Passing
+by reference and using virtual functions in exceptions.</B></FONT>
+<PRE><FONT COLOR="#0066FF">0:      #include &lt;iostream.h&gt;
+1:    
+2:      const int DefaultSize = 10;
+3:    
+4:      class Array
+5:      {
+6:      public:
+7:         // constructors
+8:         Array(int itsSize = DefaultSize);
+9:         Array(const Array &amp;rhs);
+10:         ~Array() { delete [] pType;}
+11:    
+12:         // operators
+13:         Array&amp; operator=(const Array&amp;);
+14:         int&amp; operator[](int offSet);
+15:         const int&amp; operator[](int offSet) const;
+16:    
+17:         // accessors
+18:         int GetitsSize() const { return itsSize; }
+19:    
+20:         // friend function
+21:        friend ostream&amp; operator&lt;&lt; 
+22:            (ostream&amp;, const Array&amp;);
+23:    
+24:       // define the exception classes
+25:         class xBoundary {};
+26:         class xSize
+27:         {
+28:         public:
+29:            xSize(int size):itsSize(size) {}
+30:            ~xSize(){}
+31:            virtual int GetSize() { return itsSize; }
+32:            virtual void PrintError() 
+33:            { 
+34:                cout &lt;&lt; &quot;Size error. Received: &quot;;
+35:                cout &lt;&lt; itsSize &lt;&lt; endl; 
+36:            }
+37:         protected:
+38:            int itsSize;
+39:         };
+40:    
+41:         class xTooBig : public xSize
+42:         {
+43:         public:
+44:            xTooBig(int size):xSize(size){}
+45:            virtual void PrintError() 
+46:            { 
+47:                cout &lt;&lt; &quot;Too big! Received: &quot;;
+48:                cout &lt;&lt; xSize::itsSize &lt;&lt; endl; 
+49:            }
+50:         };
+51:    
+52:         class xTooSmall : public xSize
+53:         {
+54:         public:
+55:            xTooSmall(int size):xSize(size){}
+56:            virtual void PrintError() 
+57:            { 
+58:                cout &lt;&lt; &quot;Too small! Received: &quot;;
+59:                cout &lt;&lt; xSize::itsSize &lt;&lt; endl; 
+60:            }
+61:         };
+62: 
+63:         class xZero  : public xTooSmall
+64:         {
+65:         public:
+66:            xZero(int size):xTooSmall(size){}
+67:            virtual void PrintError() 
+68:            { 
+69:                cout &lt;&lt; &quot;Zero!!. Received: &quot; ;
+70:                cout &lt;&lt; xSize::itsSize &lt;&lt; endl; 
+71:            }
+72:         };
+73:    
+74:         class xNegative : public xSize
+75:         {
+76:         public:
+77:            xNegative(int size):xSize(size){}
+78:            virtual void PrintError() 
+79:            { 
+80:                cout &lt;&lt; &quot;Negative! Received: &quot;;
+81:                cout &lt;&lt; xSize::itsSize &lt;&lt; endl; 
+82:            }
+83:         };
+84:    
+85:      private:
+86:         int *pType;
+87:         int  itsSize;
+88:      };
+89:    
+90:      Array::Array(int size):
+91:      itsSize(size)
+92:      {
+93:         if (size == 0)
+94:            throw xZero(size);
+95:         if (size &gt; 30000)
+96:            throw xTooBig(size);
+97:         if (size &lt;1)
+98:            throw xNegative(size);
+99:         if (size &lt; 10)
+100:            throw xTooSmall(size);
+101:    
+102:         pType = new int[size];
+103:         for (int i = 0; i&lt;size; i++)
+104:           pType[i] = 0;
+105:      }
+106:    
+107:      int&amp; Array::operator[] (int offSet)
+108:      {
+109:          int size = GetitsSize();
+110:          if (offSet &gt;= 0 &amp;&amp; offSet &lt; GetitsSize())
+111:            return pType[offSet];
+112:          throw xBoundary();
+113:          return pType[0];
+114:      }
+115:    
+116:      const int&amp; Array::operator[] (int offSet) const
+117:      {
+118:          int size = GetitsSize();
+119:          if (offSet &gt;= 0 &amp;&amp; offSet &lt; GetitsSize())
+120:            return pType[offSet];
+121:          throw xBoundary();
+122:          return pType[0];
+123:      }
+124:    
+125:       int main()
+126:       {
+127: 
+128:          try
+129:          {
+130:             Array intArray(9);
+131:             for (int j = 0; j&lt; 100; j++)
+132:             {
+133:                intArray[j] = j;
+134:                cout &lt;&lt; &quot;intArray[&quot; &lt;&lt; j &lt;&lt; &quot;] okay...\n&quot;;
+135:             }
+136:          }
+137:          catch (Array::xBoundary)
+138:         {
+139:            cout &lt;&lt; &quot;Unable to process your input!\n&quot;;
+140:         }
+141:         catch (Array::xSize&amp; theException)
+142:         {
+143:            theException.PrintError();
+144:         }
+145:         catch (...)
+146:         {
+147:            cout &lt;&lt; &quot;Something went wrong!\n&quot;;
+148:         }
+149:         cout &lt;&lt; &quot;Done.\n&quot;;
+150:        return 0;
+<TT>151: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: Too small! Received: 9
+Done.
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>Listing 20.5 declares a virtual
+method in the <TT>xSize</TT> class, <TT>PrintError()</TT>, that prints an error message
+and the actual size of the class. This is overridden in each of the derived classes.<BR>
+<BR>
+On line 141, the exception object is declared to be a reference. When <TT>PrintError()</TT>
+is called with a reference to an object, polymorphism causes the correct version
+of <TT>PrintError()</TT> to be invoked. The code is cleaner, easier to understand,
+and easier to maintain.
+<H3 ALIGN="CENTER"><A NAME="Heading23"></A><FONT COLOR="#000077">Exceptions and Templates</FONT></H3>
+<P>When creating exceptions to work with templates, you have a choice: you can create
+an exception for each instance of the template, or you can use exception classes
+declared outside the template declaration. Listing 20.6 illustrates both approaches.</P>
+
+<P><A NAME="Heading24"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 20.6. Using
+exceptions with templates.</B></FONT>
+<PRE><FONT COLOR="#0066FF">0:      #include &lt;iostream.h&gt;
+1:    
+2:      const int DefaultSize = 10;
+3:      class xBoundary {};
+4:    
+5:      template &lt;class T&gt;
+6:      class Array
+7:      {
+8:      public:
+9:         // constructors
+10:         Array(int itsSize = DefaultSize);
+11:         Array(const Array &amp;rhs);
+12:         ~Array() { delete [] pType;}
+13:    
+14:         // operators
+15:         Array&amp; operator=(const Array&lt;T&gt;&amp;);
+16:         T&amp; operator[](int offSet);
+17:         const T&amp; operator[](int offSet) const;
+18:    
+19:         // accessors
+20:         int GetitsSize() const { return itsSize; }
+21:    
+22:         // friend function
+23:        friend ostream&amp; operator&lt;&lt; (ostream&amp;, const Array&lt;T&gt;&amp;);
+24:    
+25:       // define the exception classes
+26:    
+27:         class xSize {};
+28:    
+29:      private:
+30:         int *pType;
+31:         int  itsSize;
+32:      };
+33:    
+34:      template &lt;class T&gt;
+35:      Array&lt;T&gt;::Array(int size):
+36:      itsSize(size)
+37:      {
+38:         if (size &lt;10 || size &gt; 30000)
+39:            throw xSize();
+40:         pType = new T[size];
+41:         for (int i = 0; i&lt;size; i++)
+42:           pType[i] = 0;
+43:      }
+44: 
+45:      template &lt;class T&gt;
+46:      Array&lt;T&gt;&amp; Array&lt;T&gt;::operator=(const Array&lt;T&gt; &amp;rhs)
+47:      {
+48:         if (this == &amp;rhs)
+49:            return *this;
+50:         delete [] pType;
+51:         itsSize = rhs.GetitsSize();
+52:         pType = new T[itsSize];
+53:         for (int i = 0; i&lt;itsSize; i++)
+54:            pType[i] = rhs[i];
+55:      }
+56:      template &lt;class T&gt;
+57:      Array&lt;T&gt;::Array(const Array&lt;T&gt; &amp;rhs)
+58:      {
+59:         itsSize = rhs.GetitsSize();
+60:         pType = new T[itsSize];
+61:         for (int i = 0; i&lt;itsSize; i++)
+62:            pType[i] = rhs[i];
+63:      }
+64:    
+65:      template &lt;class T&gt;
+66:      T&amp; Array&lt;T&gt;::operator[](int offSet)
+67:      {
+68:         int size = GetitsSize();
+69:         if (offSet &gt;= 0 &amp;&amp; offSet &lt; GetitsSize())
+70:            return pType[offSet];
+71:         throw xBoundary();
+72:         return pType[0];
+73:      }
+74:    
+75:      template &lt;class T&gt;
+76:      const T&amp; Array&lt;T&gt;::operator[](int offSet) const
+77:      {
+78:         int mysize = GetitsSize();
+79:         if (offSet &gt;= 0 &amp;&amp; offSet &lt; GetitsSize())
+80:            return pType[offSet];
+81:         throw xBoundary();
+82:      }
+83:    
+84:      template &lt;class T&gt;
+85:      ostream&amp; operator&lt;&lt; (ostream&amp; output, const Array&lt;T&gt;&amp; theArray)
+86:      {
+87:         for (int i = 0; i&lt;theArray.GetitsSize(); i++)
+88:            output &lt;&lt; &quot;[&quot; &lt;&lt; i &lt;&lt; &quot;] &quot; &lt;&lt; theArray[i] &lt;&lt; endl;
+89:         return output;
+90:      }
+91:    
+92:    
+93:      int main()
+94:      {
+95: 
+96:         try
+97:         {
+98:            Array&lt;int&gt; intArray(9);
+99:            for (int j = 0; j&lt; 100; j++)
+100:            {
+101:               intArray[j] = j;
+102:               cout &lt;&lt; &quot;intArray[&quot; &lt;&lt; j &lt;&lt; &quot;] okay...&quot; &lt;&lt; endl;
+103:            }
+104:         }
+105:         catch (xBoundary)
+106:         {
+107:            cout &lt;&lt; &quot;Unable to process your input!\n&quot;;
+108:         }
+109:         catch (Array&lt;int&gt;::xSize)
+110:         {
+111:            cout &lt;&lt; &quot;Bad Size!\n&quot;;
+112:         }
+113:    
+114:         cout &lt;&lt; &quot;Done.\n&quot;;
+115:        return 0;
+<TT>116: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: Bad Size!
+Done.
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>The first exception, <TT>xBoundary</TT>,
+is declared outside the template definition on line 3. The second exception, <TT>xSize</TT>,
+is declared from within the definition of the template, on line 27.<BR>
+<BR>
+The exception <TT>xBoundary</TT> is not tied to the <TT>template</TT> class, but
+can be used like any other class. <TT>xSize</TT> is tied to the template, and must
+be called based on the instantiated <TT>Array</TT>. You can see the difference in
+the syntax for the two <TT>catch</TT> statements. Line 105 shows <TT>catch (xBoundary)</TT>,
+but line 109 shows <TT>catch (Array&lt;int&gt;::xSize)</TT>. The latter is tied to
+the instantiation of an integer <TT>Array</TT>.
+<H3 ALIGN="CENTER"><A NAME="Heading25"></A><FONT COLOR="#000077">Exceptions Without
+Errors</FONT></H3>
+<P>When C++ programmers get together for a virtual beer in the cyberspace bar after
+work, talk often turns to whether exceptions should be used for routine conditions.
+Some maintain that by their nature, exceptions should be reserved for those predictable
+but exceptional circumstances (hence the name!) that a programmer must anticipate,
+but that are not part of the routine processing of the code.</P>
+<P>Others point out that exceptions offer a powerful and clean way to return through
+many layers of function calls without danger of memory leaks. A frequent example
+is this: The user requests an action in a GUI environment. The part of the code that
+catches the request must call a member function on a dialog manager, which in turn
+calls code that processes the request, which calls code that decides which dialog
+box to use, which in turn calls code to put up the dialog box, which finally calls
+code that processes the user's input. If the user presses Cancel, the code must return
+to the very first calling method, where the original request was handled.</P>
+<P>One approach to this problem is to put a <TT>try</TT> block around the original
+call and catch <TT>CancelDialog</TT> as an exception, which can be raised by the
+handler for the Cancel button. This is safe and effective, but pressing Cancel is
+a routine circumstance, not an exceptional one.</P>
+<P>This frequently becomes something of a religious argument, but there is a reasonable
+way to decide the question: Does use of exceptions in this way make the code easier
+or harder to understand? Are there fewer risks of errors and memory leaks, or more?
+Will it be harder or easier to maintain this code? These decisions, like so many
+others, will require an analysis of the trade-offs; there is no single, obvious right
+answer.
+<H3 ALIGN="CENTER"><A NAME="Heading26"></A><FONT COLOR="#000077">Bugs and Debugging</FONT></H3>
+<P>You saw on Day 17 how to use <TT>assert()</TT> to trap runtime bugs during the
+testing phase, and today you saw how to use exceptions to trap runtime problems.
+There is one more powerful weapon you'll want to add to your arsenal as you attack
+bugs: the debugger.</P>
+<P>Nearly all modern development environments include one or more high-powered debuggers.
+The essential idea of using a debugger is this: You run the debugger, which loads
+your source code, and then you run your program from within the debugger. This allows
+you to see each instruction in your program as it executes, and to examine your variables
+as they change during the life of your program.</P>
+<P>All compilers will let you compile with or without symbols. Compiling with symbols
+tells the compiler to create the necessary mapping between your source code and the
+generated program; the debugger uses this to point to the line of source code that
+corresponds to the next action in the program.</P>
+<P>Full-screen symbolic debuggers make this chore a delight. When you load your debugger,
+it will read through all your source code and show the code in a window. You can
+step over function calls or direct the debugger to step into the function, line by
+line.</P>
+<P>With most debuggers, you can switch between the source code and the output to
+see the results of each executed statement. More powerfully, you can examine the
+current state of each variable, look at complex data structures, examine the value
+of member data within classes, and look at the actual values in memory of various
+pointers and other memory locations. You can execute several types of control within
+a debugger that include setting breakpoints, setting watch points, examining memory,
+and looking at the assembler code.
+<H4 ALIGN="CENTER"><A NAME="Heading27"></A><FONT COLOR="#000077">Breakpoints</FONT></H4>
+<P>Breakpoints are instructions to the debugger that when a particular line of code
+is ready to be executed, the program should stop. This allows you to run your program
+unimpeded until the line in question is reached. Breakpoints help you analyze the
+current condition of variables just before and after a critical line of code.
+<H4 ALIGN="CENTER"><A NAME="Heading28"></A><FONT COLOR="#000077">Watch Points</FONT></H4>
+<P>It is possible to tell the debugger to show you the value of a particular variable
+or to break when a particular variable is read or written to. Watch points allow
+you to set these conditions, and at times even to modify the value of a variable
+while the program is running.
+<H4 ALIGN="CENTER"><A NAME="Heading29"></A><FONT COLOR="#000077">Examining Memory</FONT></H4>
+<P>At times it is important to see the actual values held in memory. Modern debuggers
+can show values in the form of the actual variable; that is, strings can be shown
+as characters, <TT>long</TT>s as numbers rather than as four bytes, and so forth.
+Sophisticated C++ debuggers can even show complete classes, providing the current
+value of all the member variables, including the <TT>this</TT> pointer.
+<H4 ALIGN="CENTER"><A NAME="Heading30"></A><FONT COLOR="#000077">Assembler</FONT></H4>
+<P>Although reading through the source can be all that is required to find a bug,
+when all else fails it is possible to instruct the debugger to show you the actual
+assembly code generated for each line of your source code. You can examine the memory
+registers and flags, and generally delve as deep into the inner workings of your
+program as required.</P>
+<P>Learn to use your debugger. It can be the most powerful weapon in your holy war
+against bugs. Runtime bugs are the hardest to find and squash, and a powerful debugger
+can make it possible, if not easy, to find nearly all of them.
+<H3 ALIGN="CENTER"><A NAME="Heading31"></A><FONT COLOR="#000077">Summary</FONT></H3>
+<P>Today you learned how to create and use exceptions. Exceptions are objects that
+can be created and thrown at points in the program where the executing code cannot
+handle the error or other exceptional condition that has arisen. Other parts of the
+program, higher in the call stack, implement <TT>catch</TT> blocks that catch the
+exception and take appropriate action.</P>
+<P>Exceptions are normal, user-created objects, and as such may be passed by value
+or by reference. They may contain data and methods, and the <TT>catch</TT> block
+may use that data to decide how to deal with the exception.</P>
+<P>It is possible to create multiple <TT>catch</TT> blocks, but once an exception
+matches a <TT>catch</TT> block's signature, it is considered to be handled and is
+not given to the subsequent <TT>catch</TT> blocks. It is important to order the <TT>catch</TT>
+blocks appropriately, so that more specific <TT>catch</TT> blocks have first chance
+and more general <TT>catch</TT> blocks handle those not otherwise handled.</P>
+<P>This chapter also examined some of the fundamentals of symbolic debuggers, including
+using watch points, breakpoints, and so forth. These tools can help you zero in on
+the part of your program that is causing the error, and let you see the value of
+variables as they change during the course of the execution of the program.
+<H3 ALIGN="CENTER"><A NAME="Heading32"></A><FONT COLOR="#000077">Q&amp;A</FONT></H3>
+
+<DL>
+	<DD><B>Q. Why bother with raising exceptions? Why not handle the error right where
+	it happens?<BR>
+	</B><BR>
+	<B>A.</B> Often, the same error can be generated in a number of different parts of
+	the code. Exceptions let you centralize the handling of errors. Additionally, the
+	part of the code that generates the error may not be the best place to determine
+	how to handle the error.<BR>
+	<BR>
+	<B>Q. Why generate an object? Why not just pass an error code?<BR>
+	</B><BR>
+	<B>A.</B> Objects are more flexible and powerful than error codes. They can convey
+	more information, and the constructor/destructor mechanisms can be used for the creation
+	and removal of resources that may be required to properly handle the exceptional
+	condition.<BR>
+	<BR>
+	<B>Q. Why not use exceptions for non-error conditions? Isn't it convenient to be
+	able to express-train back to previous areas of the code, even when non-exceptional
+	conditions exist?</B><BR>
+	<BR>
+	<B>A.</B> Yes, some C++ programmers use exceptions for just that purpose. The danger
+	is that exceptions might create memory leaks as the stack is unwound and some objects
+	are inadvertently left in the free store. With careful programming techniques and
+	a good compiler, this can usually be avoided. Otherwise, it is a matter of personal
+	aesthetic; some programmers feel that by their nature exceptions should not be used
+	for routine conditions.<BR>
+	<BR>
+	<B>Q. Does an exception have to be caught in the same place where the try block created
+	the exception?</B><BR>
+	<BR>
+	<B>A.</B> No, it is possible to catch an exception anywhere in the call stack. As
+	the stack is unwound, the exception is passed up the stack until it is handled.<BR>
+	<BR>
+	<B>Q. Why use a debugger when you can use cout with conditional (#ifdef debug) compiling?<BR>
+	</B><BR>
+	<B>A.</B> The debugger provides a much more powerful mechanism for stepping through
+	your code and watching values change without having to clutter your code with thousands
+	of debugging statements.
+</DL>
+
+<H3 ALIGN="CENTER"><A NAME="Heading33"></A><FONT COLOR="#000077">Workshop</FONT></H3>
+<P>The Workshop contains quiz questions to help solidify your understanding of the
+material covered and exercises to provide you with experience in using what you've
+learned. Try to answer the quiz and exercise questions before checking the answers
+in Appendix D, and make sure you understand the answers before going to the next
+chapter.
+<H4 ALIGN="CENTER"><A NAME="Heading34"></A><FONT COLOR="#000077">Quiz</FONT></H4>
+
+<DL>
+	<DD><B>1.</B> What is an exception?<BR>
+	<BR>
+	<B>2.</B> What is a <TT>try</TT> block?<BR>
+	<BR>
+	<B>3.</B> What is a <TT>catch</TT> statement?<BR>
+	<BR>
+	<B>4.</B> What information can an exception contain?<BR>
+	<BR>
+	<B>5.</B> When are exception objects created?<BR>
+	<BR>
+	<B>6.</B> Should you pass exceptions by value or by reference?<BR>
+	<BR>
+	<B>7.</B> Will a <TT>catch</TT> statement catch a derived exception if it is looking
+	for the base class?<BR>
+	<BR>
+	<B>8.</B> If there are two <TT>catch</TT> statements, one for base and one for derived,
+	which should come first?<BR>
+	<BR>
+	<B>9.</B> What does <TT>catch(...)</TT> mean?<BR>
+	<BR>
+	<B>10.</B> What is a breakpoint?
+</DL>
+
+<H4 ALIGN="CENTER"><A NAME="Heading35"></A><FONT COLOR="#000077">Exercises</FONT></H4>
+
+<DL>
+	<DD><B>1.</B> Create a <TT>try</TT> block, a <TT>catch</TT> statement, and a simple
+	exception.<BR>
+	<BR>
+	<B>2.</B> Modify the answer from Exercise 1, put data into the exception, along with
+	an accessor function, and use it in the <TT>catch</TT> block.<BR>
+	<BR>
+	<B>3.</B> Modify the class from Exercise 2 to be a hierarchy of exceptions. Modify
+	the <TT>catch</TT> block to use the derived objects and the base objects.<BR>
+	<BR>
+	<B>4.</B> Modify the program from Exercise 3 to have three levels of function calls.<BR>
+	<BR>
+	<B>5.</B> BUG BUSTERS: What is wrong with the following code?
+</DL>
+
+<PRE><FONT COLOR="#0066FF">class xOutOfMemory
+{
+public:
+     xOutOfMemory( const String&amp; message ) : itsMsg( message ){}
+     ~xOutOfMemory(){}
+     virtual const String&amp; Message(){ return itsMsg};
+private:
+     String itsMsg;          
+}
+
+main()
+{
+     try {
+          char *var = new char;
+          if ( var == 0 )
+               throw xOutOfMemory();
+     }
+     catch( xOutOfMemory&amp; theException )
+     {
+          cout &lt;&lt;  theException.Message() &lt;&lt; &quot;\n&quot;;
+     }
+}
+</FONT></PRE>
+<P ALIGN="CENTER"><A HREF="ch19.htm"><IMG SRC="../buttons/BLANPREV.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch21.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="#heading1"><IMG SRC="../buttons/BLANTOP.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A>
+
+
+</BODY>
+
+</HTML>

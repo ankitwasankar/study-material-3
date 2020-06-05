@@ -1,0 +1,104 @@
+<ProjectType name="GTK+ project" icon="gtk.bmp?0" type="CUI" ext="exe" tab="GUI toolkits" desc="Create basic GTK+ application." version="1.0">
+	<Pages count="2">
+		<Page title="Application Types#77004">
+			<RadioGroup name="AppTypes" title="Select the kind of Application type you want to create" value="0" width="290" height="100" enabled="1">
+				<Item>An &empty project.#77018</Item>
+				<Item>&Simple "Hello World" project</Item>
+			</RadioGroup>	
+		</Page>
+		<Page title="GTK+ Library Selection">
+			<BrowseFolder name="GtkDir" title="GTK's location (Base directory):" value="" width="290" height="20" enabled="1">
+			</BrowseFolder>
+			
+		</Page>
+	</Pages>
+
+	<Outputs>
+		<Directory name="\">
+		<File folder="Source Files" name="" external="" enabled="1"></File>
+		<File folder="Header Files" name="" external="" enabled="1"></File>
+		<File folder="Other Files" name="" external="" enabled="1"></File>
+	
+		<File folder="Source Files" name="$(ProjectName).c" external="" enabled="$(AppTypes)=1">
+#include &lt;gtk/gtk.h&gt;
+ 
+int main (int argc, char *argv[])
+{
+	GtkWidget *window;
+	GtkWidget *label;
+	
+	gtk_init (&argc, &argv);
+	
+	/* create the main, top level, window */
+	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+	
+	/* give it the title */
+	gtk_window_set_title (GTK_WINDOW (window), "Hello C-Free");
+	/* set default size */
+	gtk_window_set_default_size( GTK_WINDOW(window), 500, 400 );
+	/* Connect the destroy signal of the window to gtk_main_quit
+	 * When the window is about to be destroyed we get a notification and
+	 * stop the main GTK+ loop
+	 */
+	g_signal_connect (window, "destroy",
+	                  G_CALLBACK (gtk_main_quit), NULL);
+	
+	/* Create the "Hello, C-Free" label  */
+	label = gtk_label_new ("Hello, C-Free!");
+	
+	/* and insert it into the main window  */
+	gtk_container_add (GTK_CONTAINER (window), label);
+	
+	/* make sure that everything, window and label, are visible */
+	gtk_widget_show_all (window);
+	
+	/* start the main loop, and let it rest there until the application is closed */
+	gtk_main ();
+	
+	return 0;
+}
+
+
+		</File>
+		
+	
+		</Directory>
+	</Outputs>
+	<Options>
+		<Compiler bldr="*" type="">-mms-bitfields</Compiler>
+		
+		
+		
+		<Linker bldr="MinGW"></Linker>
+		<Linker bldr="Borland"></Linker>
+		
+		<Lib bldr="MinGW">gtk-win32-2.0</Lib>
+		<Lib bldr="MinGW">gobject-2.0</Lib>
+		<Lib bldr="MinGW">glib-2.0</Lib>
+		
+		<Lib bldr="CYGWIN">gtk-win32-2.0</Lib>
+		<Lib bldr="CYGWIN">gobject-2.0</Lib>
+		<Lib bldr="CYGWIN">glib-2.0</Lib>
+		
+		<Lib bldr="Borland">gtk-win32-2.0.lib</Lib>
+		<Lib bldr="Borland">gobject-2.0.lib</Lib>
+		<Lib bldr="Borland">glib-2.0.lib</Lib>
+		
+		<Lib bldr="Microsoft">gtk-win32-2.0.lib</Lib>
+		<Lib bldr="Microsoft">gobject-2.0.lib</Lib>
+		<Lib bldr="Microsoft">glib-2.0.lib</Lib>
+
+		
+		<IncPath bldr="*">$(GtkDir)\include</IncPath>
+		<IncPath bldr="*">$(GtkDir)\include\gtk-2.0</IncPath>
+		<IncPath bldr="*">$(GtkDir)\include\atk-1.0</IncPath>
+		<IncPath bldr="*">$(GtkDir)\include\cairo</IncPath>
+		<IncPath bldr="*">$(GtkDir)\include\glib-2.0</IncPath>
+		<IncPath bldr="*">$(GtkDir)\include\pango-1.0</IncPath>
+		<IncPath bldr="*">$(GtkDir)\lib\glib-2.0\include</IncPath>
+		<IncPath bldr="*">$(GtkDir)\lib\gtk-2.0\include</IncPath>
+		<LibPath bldr="*">$(GtkDir)\lib</LibPath>
+		
+
+	</Options>
+</ProjectType>

@@ -1,0 +1,268 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table>
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<td align=left><strong>QUESTION AND ANSWERS</strong><pre>
+1.In the code given below
+# include "stdio.h"
+main( )
+{  FILE *fp;
+    fp=fopen("trail", "r");
+}
+fp points to..
+a) The first character in the file
+b) A structure which contains a char pointer which points to first character in the file.
+c) The name of the file.
+d) None of the above.					Ans:B<br>
+2.Point out the error ,if any in the following program:
+# include "stdio.h"
+main( )
+{ unsigned char;  
+  FILE *fp;
+  fp=fopen("ieg",r);
+  while((ch=getc(fp))!=EOF)
+  printf("%c",ch);
+fclose(fp);
+}
+Solution:EOF has been defined as #define EOF -1 in the file "stdio.h" and an unsigned
+ char ranges from the file it cannot be accomodated in ch.Therefore solution is 
+to declare ch as int.<br>
+
+3.Point out the error,if any in the following program:
+# include "stdio.h"
+main( )
+{  unsigned char ;
+    FILE *fp;
+    fp=fopen("ieg",r);
+   if(!fp)
+  {  printf("unable to open file");
+      exit( );  }
+fclose(fp);
+}
+solution:	no error.<br>
+4.If a file contains the line "I am aboy\r\n" then on reading this line into the array 
+str using fgets( ).What would str contain?
+a) "I am a boy \r\n\o"
+b) "I am a boy \r\o"
+c) "I am a boy \n\o"
+d) "I am a boy "				Ans:C<br>
+5.point out the error in the following program:
+# include "stdio.h"
+main( )
+{FILE *fp;
+    fp=fopen("trial",r);
+   fseek(fp,20,SEEK_SET);
+   fclose(fp);
+}
+Solution:  Instead of using 20 using 20L since fseek( ) needs a long offset value.<br>
+6.To print out a and b given below ,which printf( ) statement would you use?
+float a=3.14
+double b=3.14
+a) printf("%f%f", a,b);
+b) printf("%lf%f", a,b);
+c)printf("%lf%lf", a,b);
+d)printf("%f%lf", a,b);	
+  Ans:A,It is possible to print double using %f.<br>
+
+7.To scan out a and b given below ,which scanf( ) statement would you use?
+float a=3.14
+double b=3.14
+a) printf("%f%f", &a,&b);
+b) printf("%lf%f", &a,&b);
+c)printf("%lf%lf", &a,&b);
+d)printf("%f%lf", &a,&b);	
+		Ans:C<br>
+
+8.Point out error if any in the in the following program:
+# include  "stdio.h"
+main( )
+{ FILE *fp;
+  char str[80];
+  fp= fopen("ieg","r");
+ while(!feof(fp))
+{  fgets(str,80,fp);
+   puts(str)
+   }
+fclose(fp)  }
+solution: The last line from the file "trail"  would be read twice .
+To avoid this use: while(fgets(str,80,fp)!=NULL)
+        puts(str);<br>
+
+9.point out the error in the following program:
+ # include "stdio.h"
+  main( )
+  {
+    char ch;
+    int i;
+    scanf("%c",&c);
+    scanf("%d",&ch);    
+    printf("%c%d",ch,i);   }
+solution: You would not get achance to supply a character for the second scanf( ) statement .
+solution is to preceede the second scanf( ) with the following statement
+   fflush(stdin);
+  This would flush out the enter hit for the previous scanf( ) to be flushed out from the 
+inputstream ,i.e., keyboard.<br>
+
+10.What would be the output of the following program?
+main( )
+{
+  printf("\n%%%");
+}						Ans:%%<br>
+11.point out the error if any ,in the following program ?
+# include "stdio.h"
+main( )
+{  unsigned char ;
+    FILE *fp;
+    fp=fopen("c:\tc\ieg","w");
+   if(!fp)
+        exit( );  
+fclose(fp);
+}	
+Ans: The path of filename should be written as c:\\tc\\ieg<br>
+12.What would be the output of the following program :
+main( )
+{ int n=5;
+  printf("\nn=%*d",n,n);
+}
+a) Runtime error
+b) compile time error
+c) 5
+d) some garbage value.		Ans:5
+The * in the printf( ) indicates the width .<br>
+13.Can we specify variable field width in scanf( ) format string ?
+Ans: No.A * in scanf( ) format string after a % sign is used for suppression of assignment .
+That is ,the current input field is scanned but not stored<br>
+14.To takle a double value we use %f in printf( ) .What is that we use in scanf( )
+a) %f
+b) %d
+c)%ld
+d)%lf					Ans:D<br>
+ 			
+14.According to Ansic specification which is the correct way of declaring main( ) 
+when it recieves command line arguments:
+a) main(int argc,char *argv[ ] )
+b) main(argc,argv)
+     int argc,char *argv[ ]
+c)main( )
+{  int argc;
+    char *argv[];
+}
+d) None				Ans:A<br>
+15.What would be the output of the following program?
+  /*sample.c*/
+ main( int argc, char * argv)
+  {  argc= argc-(argc-1);
+  printf("%s",argv[argc-1]);
+}				Ans:  c:\sample.exe<br>
+16.In the following program (myprog) is run from command line as
+    myprog 1 2 3
+  what would be the output ? /*consider lessthan sybolically*/
+    main( int argc,char *argv[ ])
+   {  int i;
+       for(i=0; i lessthan argc;i++)
+       printf("%s",argv[i]);  }
+Ans: c:\myprog.exe 1 2 3<br>
+
+17.In the following program (myprog) is run from command line as
+    myprog 1 2 3
+  what would be the output ?
+  main( int argc,char *argv[ ])
+   {  int i;
+      i= argv[1]+argv[2]+argv[3];
+      printf("%d",i);   }
+a) 123
+b) 6
+c)error    d) "123"			Ans: C<br>
+
+18.In the following program (myprog) is run from command line as
+    myprog 1 2 3
+  what would be the output ?
+  main( int argc,char *argv[ ])
+   {  int i,j=0;
+       for(i=0; i lessthan _argc;i++)
+       j=j+atoi(argv[i]);
+       printf("%d",j);
+}
+a) 123  b)6  c)error  d)"123"  	Ans:B<br>
+    
+19.If the following program is run under command line arguments as
+     myprog jan feb march
+What would be the output:
+ # include "dos.h"
+  main( )
+  {  fun( );
+}
+fun( )
+{  int i;
+    for(i=0;i lessthan _argc;i++)
+   printf("%s",_argv[i]);
+}					Ans:C:/MYPROG.EXE  jan feb mar<br>
+
+20..In the following program (myprog) is present in the directory
+ c:/bc/tucs then what would be its output?
+
+      main( int argc,char *argv[ ])
+     {
+             printf("%s",argv[0]);
+           }
+a) MYPROG
+b)  c:/bc/tucs/myprog
+c)error
+d)c:/bc/tucs 					Ans:B<br>
+21.Which of the following is true about argv?
+a) It is an array of character pointers
+b) It is an pointer to an array character pointers
+c)It is an array of strings
+d)None					Ans:A<br>
+22.f the following program is run under command line arguments as
+     myprog jan feb march
+What would be the output:
+
+ main( int argc,char *argv[ ])
+{
+ while(int argc,char *argv[ ])
+printf("%s",*++argv);
+}
+
+a) jan feb mar
+b) myprog jan feb mar 
+c)Both   d) none				Ans:B<br>
+<a href="files1.html" target="_self"><strong>Back</strong></a></pre></td></table>

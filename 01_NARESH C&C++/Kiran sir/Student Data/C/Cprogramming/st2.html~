@@ -1,0 +1,94 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+ <strong>STRUCTURES AND FUNCTIONS</strong>
+
+   The main philosophy of C language is the use of functions. C supports the passing of 
+structure values as arguments to function. In this ,the values of a structure can be 
+transferred from one function to another by using 3 methods.
+
+  The first method is to pass each member of the structure as an actual argument of 
+the function call. The actual argument s are then treated independently like ordinary variables.
+ This method is inefficient when the structure size is large.
+  The second method involves passing of copy of entire structure to the called function.
+ Here ,the function is working on a copy of the structure ,so any changes to structure member
+ within the function are not reflected in the original structure (in the calling function).
+ It is,therefore ,necessary for the function to return the entire structure back to the 
+calling function. But all compilers may not support this method of passing the entire
+ structure as a parameter.
+   The third method employs a concept called pointers to pass the structure as an argument. 
+In this case,the address location of the structure is passed to the called function. 
+This function can access the entire structure indirectly. This is smiler to the way ,
+arrays are passed to functions. This method is more efficient as compared to the second approach.
+    The general format of sending a copy of a structure to the called function is:
+         function name(structure variable name)
+The called function takes the following form:
+               data-type function name(st-name)
+               struct-type st-name
+           {
+                  - - - - -
+                  --------
+                     return (expression);
+                }
+ 
+ 1.   The called function must be declared for its type,appropriate to the data type 
+it is expected to  
+     For example , if it is returning a copy of the entire structure,then it must be
+declared as struct                        
+            with  an appropriate tag name.
+2.The structure variable used as the actual argument and the corresponding formal argument
+ in the called function must be of the same struct type.
+3.The return statement is necessary only if the function is returning some data .
+The expression may be any simple variable or structure variable or an expression using 
+simple variables.
+4.When a function returns a structure it must be assigned to a structure of identical 
+type in the calling function.
+5.The called function must be declared in the calling function for its type if it is
+ placed after the calling function.
+
+<a href="structures.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+int s1=20,s2=30,s3=40;clrscr();
+float total average;
+clrscr();
+total=s1+s2+s3;
+average=total/3;
+printf("-----------------\n");
+printf("naveen");
+printf("------------------\n");
+printf("sub1 \t:%d\n"s1);
+printf("sub2 \t:%d\n"s2);
+printf("sub3 \t:%d\n"s3);
+printf("-----------\n")
+printf("total=%f\n"total);
+printf("average=%f\n"average);
+printf("-------------------\n");
+getch();
+}

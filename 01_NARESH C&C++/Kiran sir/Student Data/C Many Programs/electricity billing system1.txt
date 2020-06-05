@@ -1,0 +1,293 @@
+#include<stdio.h>
+#include<conio.h>
+#include<process.h>
+#include<string.h>
+
+struct ele{
+char cname[100],cfname[100],cadd[100];
+long pno,mno;
+int code;
+}ele[40];
+
+struct ele1{
+int code;
+int dd,mm,yy,dd1,mm1,yy1;
+long oldunit,curunit,units;
+float echarge,etax,mcharge,scharge,amtuptodd,surcharge,amtafterdd;
+}ele1[40];
+
+void customer();
+void display();
+int menu();
+void trans();
+void cod();
+void bill();
+
+int i,n,h,cho,ch,no,code;
+static int k=0;
+static int k1=0;
+
+void main()
+{
+clrscr();
+printf("\n\n *******************************************************************************");
+printf(" *******************************************************************************");
+printf("      \n\t\t    * Aishwaraya College of Education Sansthan *");
+printf("      \n\n\t\t               * Project Report *");
+printf("      \n\n\t\t                     * ON *");
+printf("      \n\n\t\t         * Electricity Billing System *");
+printf("      \n\n\t\t                * Year 2004-05 *");
+printf("\n\n\n\n\n\n Submitted to:-                                         Submitted by:-       ");
+printf("   Veena Nagar Madam                                       Prakash Menaria");
+printf("                                                                 Shival Tiwari");
+printf("                                                                   Ashish Vijayvargiya");
+printf("     ********************************************************************************");
+printf("********************************************************************************");
+getch();
+clrscr();
+do
+{
+cho=menu();
+switch(cho)
+{
+case 1:
+  clrscr();
+  customer();
+  getch();
+  clrscr();
+  fflush(stdin);
+  break;
+case 2:
+  clrscr();
+  display();
+  getch();
+  clrscr();
+  fflush(stdin);
+  break;
+case 3:
+  clrscr();
+  trans();
+  getch();
+  clrscr();
+  fflush(stdin);
+  break;
+case 4:
+  clrscr();
+  bill();
+  getch();
+  clrscr();
+  fflush(stdin);
+  break;
+case 5:
+  exit(0);
+}
+}while(cho!=5);
+getch();
+}
+
+void customer()
+{
+char ans;
+ele[0].code=101;
+do
+{
+clrscr();
+fflush(stdin);
+gotoxy(30,4);
+printf("New Customer Entry");
+gotoxy(15,6);
+printf("Customer Code         -       %d",ele[k].code);
+gotoxy(15,7);
+printf("Customer Name         -  ");
+gotoxy(15,8);
+printf("Customer Father Name  -  ");
+gotoxy(15,9);
+printf("Customer Address      -  ");
+gotoxy(15,10);
+printf("Phone Number          -  ");
+gotoxy(15,11);
+printf("Meter Number          -  ");
+gotoxy(45,7);
+fflush(stdin);
+gets(ele[k].cname);
+gotoxy(45,8);
+fflush(stdin);
+gets(ele[k].cfname);
+gotoxy(45,9);
+gets(ele[k].cadd);
+gotoxy(45,10);
+scanf("%ld",&ele[k].pno);
+gotoxy(45,11);
+scanf("%ld",&ele[k].mno);
+fflush(stdin);
+gotoxy(20,13);
+printf("Do you want more entry (y/n) - ");
+scanf("%c",&ans);
+h=k;
+k++;
+ele[k].code=ele[h].code+1;
+}while(ans!='n');
+}
+
+void display()
+{
+int row=3;
+gotoxy(1,1);
+printf("Customer Code");
+gotoxy(16,1);
+printf("Customer Name");
+gotoxy(35,1);
+printf("Father Name");
+gotoxy(50,1);
+printf("Address");
+gotoxy(65,1);
+printf("Meter No.");
+gotoxy(1,2);
+for(i=1;i<=79;i++)
+  printf("-");
+for(i=0;i<k;i++)
+{
+gotoxy(1,row);
+printf("%d",ele[i].code);
+gotoxy(16,row);
+printf("%s",ele[i].cname);
+gotoxy(35,row);
+printf("%s",ele[i].cfname);
+gotoxy(50,row);
+printf("%s",ele[i].cadd);
+gotoxy(65,row);
+printf("%ld",ele[i].mno);
+row++;
+}
+getch();
+}
+
+void trans()
+{
+char ans;
+int num,flag=0;
+do
+{
+clrscr();
+fflush(stdin);
+gotoxy(30,4);
+printf("Transaction Entry");
+gotoxy(15,6);
+printf("Customer Code          -  ");
+gotoxy(15,7);
+printf("Customer Name          -  ");
+gotoxy(15,8);
+printf("Meter Number           -  ");
+gotoxy(15,9);
+printf("Previous Month Reading -  ");
+gotoxy(15,10);
+printf("Current Month Reading  -  ");
+gotoxy(15,11);
+printf("Due Date               -  ");
+gotoxy(15,12);
+printf("After Due Date         -  ");
+gotoxy(45,6);
+fflush(stdin);
+scanf("%d",&num);
+for(i=0;i<k;i++)
+{
+  if(num==ele[i].code)
+  {
+    flag=1;
+    break;
+  }
+}
+if(flag==0)
+{
+  gotoxy(20,15);
+  printf("Wrong Code No.");
+}
+else
+{
+  ele1[k1].code=num;
+  gotoxy(45,7);
+  printf("%s",ele[i].cname);
+  gotoxy(45,8);
+  printf("%ld",ele[i].mno);
+  gotoxy(45,9);
+  scanf("%ld",&ele1[k1].oldunit);
+  gotoxy(45,10);
+  scanf("%ld",&ele1[k1].curunit);
+  gotoxy(45,11);
+  scanf("%d-%d-%d",&ele1[k1].dd,&ele1[k1].mm,&ele1[k1].yy);
+  gotoxy(45,12);
+  scanf("%d-%d-%d",&ele1[k1].dd1,&ele1[k1].mm1,&ele1[k1].yy1);
+  ele1[k1].units=ele1[k1].curunit-ele1[k1].oldunit;
+  ele1[k1].echarge=(float)ele1[k1].units*3.25;
+  ele1[k1].etax=ele1[k1].echarge*4/100;
+  ele1[k1].mcharge=35;
+  ele1[k1].scharge=25;
+  ele1[k1].amtuptodd=ele1[k1].echarge+ele1[k1].etax+ele1[k1].mcharge+ele1[k1].scharge;
+  ele1[k1].surcharge=ele1[k1].amtuptodd*8/100;
+  ele1[k1].amtafterdd=ele1[k1].amtuptodd+ele1[k1].surcharge;
+}
+fflush(stdin);
+gotoxy(20,18);
+printf("Do you want more entry (y/n) - ");
+scanf("%c",&ans);
+h=k1;
+k1++;
+ele1[k1].code=ele[h].code+1;
+}while(ans!='n');
+}
+
+void bill()
+{
+clrscr();
+cod();
+for(i=0;i<k;i++)
+{
+if(ele[i].code==code)
+{
+printf("\n\n\t\t\      Electricity Board Of Ajmer,RAJASTHAN ");
+printf("\n\n\t****************************************************************");
+//printf("\t\t\Name--->%s                    Unit charged-->%d",ele[i].cname,ele[i].unit);
+printf("\n\n\t\Father's name------>%s",ele[i].cfname);
+printf("\n\n\t\Address------->%s",ele[i].cadd);
+printf("\n\n\t\Phone no.------->%ld",ele[i].pno);
+//printf("\n\n\t\Previous Reading------->%ld",ele[i].punit);
+//printf("\n\n\t\Current Reading------->%ld",ele[i].cunit);
+//printf("\n\n\t\Total unit------->%ld",ele[i].unit);
+//printf("\n\n\t\Bill amount------->%f",ele[i].amount);
+printf("\n\n\t****************************************************************");
+printf("\n\n\t\t      Enter any Key to Cont.........    ");
+getch();
+}
+clrscr();
+}
+menu();
+}
+
+int menu()
+{
+gotoxy(25,5);
+printf("* * * Main Menu * * *");
+gotoxy(20,6);
+printf("------------------------------");
+gotoxy(25,7);
+printf("1. Customer Entry");
+gotoxy(25,8);
+printf("2. Display the Record");
+gotoxy(25,9);
+printf("3. Transaction");
+gotoxy(25,10);
+printf("4. Bill Print");
+gotoxy(25,11);
+printf("5. Exit");
+gotoxy(20,12);
+printf("------------------------------");
+gotoxy(25,13);
+printf("Enter the choice - ");
+scanf("%d",&cho);
+return(cho);
+}
+void cod()
+{
+printf("enter the customer code for bill print");
+scanf("%d",&code);
+}

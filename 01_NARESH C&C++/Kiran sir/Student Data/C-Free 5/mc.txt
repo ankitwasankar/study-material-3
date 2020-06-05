@@ -1,0 +1,274 @@
+WM_COMPACTING
+void %s_OnCompacting(HWND hwnd, UINT compactRatio)
+WM_WININICHANGE
+void %s_OnWinIniChange(HWND hwnd, LPCTSTR lpszSectionName)
+WM_SYSCOLORCHANGE
+void %s_OnSysColorChange(HWND hwnd)
+WM_QUERYNEWPALETTE
+BOOL %s_OnQueryNewPalette(HWND hwnd)
+WM_PALETTEISCHANGING
+void %s_OnPaletteIsChanging(HWND hwnd, HWND hwndPaletteChange)
+WM_PALETTECHANGED
+void %s_OnPaletteChanged(HWND hwnd, HWND hwndPaletteChange)
+WM_FONTCHANGE
+void %s_OnFontChange(HWND hwnd)
+WM_SPOOLERSTATUS
+void %s_OnSpoolerStatus(HWND hwnd, UINT status, int cJobInQueue)
+WM_DEVMODECHANGE
+void %s_OnDevModeChange(HWND hwnd, LPCTSTR lpszDeviceName)
+WM_TIMECHANGE
+void %s_OnTimeChange(HWND hwnd)
+WM_POWER
+void %s_OnPower(HWND hwnd, int code)
+WM_QUERYENDSESSION
+BOOL %s_OnQueryEndSession(HWND hwnd)
+WM_ENDSESSION
+void %s_OnEndSession(HWND hwnd, BOOL fEnding)
+WM_QUIT
+void %s_OnQuit(HWND hwnd, int exitCode)
+WM_SYSTEMERROR
+void %s_OnSystemError(HWND hwnd, int errCode)
+WM_CREATE
+BOOL %s_OnCreate(HWND hwnd, LPCREATESTRUCT lpCreateStruct)
+WM_NCCREATE
+BOOL %s_OnNCCreate(HWND hwnd, LPCREATESTRUCT lpCreateStruct)
+WM_DESTROY
+void %s_OnDestroy(HWND hwnd)
+WM_NCDESTROY
+void %s_OnNCDestroy(HWND hwnd)
+WM_SHOWWINDOW
+void %s_OnShowWindow(HWND hwnd, BOOL fShow, UINT status)
+WM_SETREDRAW
+void %s_OnSetRedraw(HWND hwnd, BOOL fRedraw)
+WM_ENABLE
+void %s_OnEnable(HWND hwnd, BOOL fEnable)
+WM_SETTEXT
+void %s_OnSetText(HWND hwnd, LPCTSTR lpszText)
+WM_GETTEXT
+INT %s_OnGetText(HWND hwnd, int cchTextMax, LPTSTR lpszText)
+WM_GETTEXTLENGTH
+INT %s_OnGetTextLength(HWND hwnd)
+WM_WINDOWPOSCHANGING
+BOOL %s_OnWindowPosChanging(HWND hwnd, LPWINDOWPOS lpwpos)
+WM_WINDOWPOSCHANGED
+void %s_OnWindowPosChanged(HWND hwnd, const LPWINDOWPOS lpwpos)
+WM_MOVE
+void %s_OnMove(HWND hwnd, int x, int y)
+WM_SIZE
+void %s_OnSize(HWND hwnd, UINT state, int cx, int cy)
+WM_CLOSE
+void %s_OnClose(HWND hwnd)
+WM_QUERYOPEN
+BOOL %s_OnQueryOpen(HWND hwnd)
+WM_GETMINMAXINFO
+void %s_OnGetMinMaxInfo(HWND hwnd, LPMINMAXINFO lpMinMaxInfo)
+WM_PAINT
+void %s_OnPaint(HWND hwnd)
+WM_ERASEBKGND
+BOOL %s_OnEraseBkgnd(HWND hwnd, HDC hdc)
+WM_ICONERASEBKGND
+BOOL %s_OnIconEraseBkgnd(HWND hwnd, HDC hdc)
+WM_NCPAINT
+void %s_OnNCPaint(HWND hwnd, HRGN hrgn)
+WM_NCCALCSIZE
+UINT %s_OnNCCalcSize(HWND hwnd, BOOL fCalcValidRects, NCCALCSIZE_PARAMS * lpcsp)
+WM_NCHITTEST
+UINT %s_OnNCHitTest(HWND hwnd, int x, int y)
+WM_QUERYDRAGICON
+HICON %s_OnQueryDragIcon(HWND hwnd)
+WM_DROPFILES
+void %s_OnDropFiles(HWND hwnd, HDROP hdrop)
+WM_ACTIVATE
+void %s_OnActivate(HWND hwnd, UINT state, HWND hwndActDeact, BOOL fMinimized)
+WM_ACTIVATEAPP
+void %s_OnActivateApp(HWND hwnd, BOOL fActivate, DWORD dwThreadId)
+WM_NCACTIVATE
+BOOL %s_OnNCActivate(HWND hwnd, BOOL fActive, HWND hwndActDeact, BOOL fMinimized)
+WM_SETFOCUS
+void %s_OnSetFocus(HWND hwnd, HWND hwndOldFocus)
+WM_KILLFOCUS
+void %s_OnKillFocus(HWND hwnd, HWND hwndNewFocus)
+WM_KEYDOWN
+void %s_OnKey(HWND hwnd, UINT vk, BOOL fDown, int cRepeat, UINT flags)
+WM_KEYUP
+void %s_OnKey(HWND hwnd, UINT vk, BOOL fDown, int cRepeat, UINT flags)
+WM_CHAR
+void %s_OnChar(HWND hwnd, TCHAR ch, int cRepeat)
+WM_DEADCHAR
+void %s_OnDeadChar(HWND hwnd, TCHAR ch, int cRepeat)
+WM_SYSKEYDOWN
+void %s_OnSysKey(HWND hwnd, UINT vk, BOOL fDown, int cRepeat, UINT flags)
+WM_SYSKEYUP
+void %s_OnSysKey(HWND hwnd, UINT vk, BOOL fDown, int cRepeat, UINT flags)
+WM_SYSCHAR
+void %s_OnSysChar(HWND hwnd, TCHAR ch, int cRepeat)
+WM_SYSDEADCHAR
+void %s_OnSysDeadChar(HWND hwnd, TCHAR ch, int cRepeat)
+WM_MOUSEMOVE
+void %s_OnMouseMove(HWND hwnd, int x, int y, UINT keyFlags)
+WM_LBUTTONDOWN
+void %s_OnLButtonDown(HWND hwnd, BOOL fDoubleClick, int x, int y, UINT keyFlags)
+WM_LBUTTONDBLCLK
+void %s_OnLButtonDown(HWND hwnd, BOOL fDoubleClick, int x, int y, UINT keyFlags)
+WM_LBUTTONUP
+void %s_OnLButtonUp(HWND hwnd, int x, int y, UINT keyFlags)
+WM_RBUTTONDOWN
+void %s_OnRButtonDown(HWND hwnd, BOOL fDoubleClick, int x, int y, UINT keyFlags)
+WM_RBUTTONDBLCLK
+void %s_OnRButtonDown(HWND hwnd, BOOL fDoubleClick, int x, int y, UINT keyFlags)
+WM_RBUTTONUP
+void %s_OnRButtonUp(HWND hwnd, int x, int y, UINT flags)
+WM_MBUTTONDOWN
+void %s_OnMButtonDown(HWND hwnd, BOOL fDoubleClick, int x, int y, UINT keyFlags)
+WM_MBUTTONDBLCLK
+void %s_OnMButtonDown(HWND hwnd, BOOL fDoubleClick, int x, int y, UINT keyFlags)
+WM_MBUTTONUP
+void %s_OnMButtonUp(HWND hwnd, int x, int y, UINT flags)
+WM_NCMOUSEMOVE
+void %s_OnNCMouseMove(HWND hwnd, int x, int y, UINT codeHitTest)
+WM_NCLBUTTONDOWN
+void %s_OnNCLButtonDown(HWND hwnd, BOOL fDoubleClick, int x, int y, UINT codeHitTest)
+WM_NCLBUTTONDBLCLK
+void %s_OnNCLButtonDown(HWND hwnd, BOOL fDoubleClick, int x, int y, UINT codeHitTest)
+WM_NCLBUTTONUP
+void %s_OnNCLButtonUp(HWND hwnd, int x, int y, UINT codeHitTest)
+WM_NCRBUTTONDOWN
+void %s_OnNCRButtonDown(HWND hwnd, BOOL fDoubleClick, int x, int y, UINT codeHitTest)
+WM_NCRBUTTONDBLCLK
+void %s_OnNCRButtonDown(HWND hwnd, BOOL fDoubleClick, int x, int y, UINT codeHitTest)
+WM_NCRBUTTONUP
+void %s_OnNCRButtonUp(HWND hwnd, int x, int y, UINT codeHitTest)
+WM_NCMBUTTONDOWN
+void %s_OnNCMButtonDown(HWND hwnd, BOOL fDoubleClick, int x, int y, UINT codeHitTest)
+WM_NCMBUTTONDBLCLK
+void %s_OnNCMButtonDown(HWND hwnd, BOOL fDoubleClick, int x, int y, UINT codeHitTest)
+WM_NCMBUTTONUP
+void %s_OnNCMButtonUp(HWND hwnd, int x, int y, UINT codeHitTest)
+WM_MOUSEACTIVATE
+int %s_OnMouseActivate(HWND hwnd, HWND hwndTopLevel, UINT codeHitTest, UINT msg)
+WM_CANCELMODE
+void %s_OnCancelMode(HWND hwnd)
+WM_TIMER
+void %s_OnTimer(HWND hwnd, UINT id)
+WM_INITMENU
+void %s_OnInitMenu(HWND hwnd, HMENU hMenu)
+WM_INITMENUPOPUP
+void %s_OnInitMenuPopup(HWND hwnd, HMENU hMenu, UINT item, BOOL fSystemMenu)
+WM_MENUSELECT
+void %s_OnMenuSelect(HWND hwnd, HMENU hmenu, int item, HMENU hmenuPopup, UINT flags)
+WM_MENUCHAR
+DWORD %s_OnMenuChar(HWND hwnd, UINT ch, UINT flags, HMENU hmenu)
+WM_COMMAND
+void %s_OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
+WM_HSCROLL
+void %s_OnHScroll(HWND hwnd, HWND hwndCtl, UINT code, int pos)
+WM_VSCROLL
+void %s_OnVScroll(HWND hwnd, HWND hwndCtl, UINT code, int pos)
+WM_CUT
+void %s_OnCut(HWND hwnd)
+WM_COPY
+void %s_OnCopy(HWND hwnd)
+WM_PASTE
+void %s_OnPaste(HWND hwnd)
+WM_CLEAR
+void %s_OnClear(HWND hwnd)
+WM_UNDO
+void %s_OnUndo(HWND hwnd)
+WM_RENDERFORMAT
+HANDLE %s_OnRenderFormat(HWND hwnd, UINT fmt)
+WM_RENDERALLFORMATS
+void %s_OnRenderAllFormats(HWND hwnd)
+WM_DESTROYCLIPBOARD
+void %s_OnDestroyClipboard(HWND hwnd)
+WM_DRAWCLIPBOARD
+void %s_OnDrawClipboard(HWND hwnd)
+WM_PAINTCLIPBOARD
+void %s_OnPaintClipboard(HWND hwnd, HWND hwndCBViewer, const LPPAINTSTRUCT lpPaintStruct)
+WM_SIZECLIPBOARD
+void %s_OnSizeClipboard(HWND hwnd, HWND hwndCBViewer, const LPRECT lprc)
+WM_VSCROLLCLIPBOARD
+void %s_OnVScrollClipboard(HWND hwnd, HWND hwndCBViewer, UINT code, int pos)
+WM_HSCROLLCLIPBOARD
+void %s_OnHScrollClipboard(HWND hwnd, HWND hwndCBViewer, UINT code, int pos)
+WM_ASKCBFORMATNAME
+void %s_OnAskCBFormatName(HWND hwnd, int cchMax, LPTSTR rgchName)
+WM_CHANGECBCHAIN
+void %s_OnChangeCBChain(HWND hwnd, HWND hwndRemove, HWND hwndNext)
+WM_SETCURSOR
+BOOL %s_OnSetCursor(HWND hwnd, HWND hwndCursor, UINT codeHitTest, UINT msg)
+WM_SYSCOMMAND
+void %s_OnSysCommand(HWND hwnd, UINT cmd, int x, int y)
+WM_MDICREATE
+HWND %s_MDICreate(HWND hwnd, const LPMDICREATESTRUCT lpmcs)
+WM_MDIDESTROY
+void %s_MDIDestroy(HWND hwnd, HWND hwndDestroy)
+WM_MDIACTIVATE
+void %s_MDIActivate(HWND hwnd, BOOL fActive, HWND hwndActivate, HWND hwndDeactivate)
+WM_MDIRESTORE
+void %s_MDIRestore(HWND hwnd, HWND hwndRestore)
+WM_MDINEXT
+HWND %s_MDINext(HWND hwnd, HWND hwndCur, BOOL fPrev)
+WM_MDIMAXIMIZE
+void %s_MDIMaximize(HWND hwnd, HWND hwndMaximize)
+WM_MDITILE
+BOOL %s_MDITile(HWND hwnd, UINT cmd)
+WM_MDICASCADE
+BOOL %s_MDICascade(HWND hwnd, UINT cmd)
+WM_MDIICONARRANGE
+void %s_MDIIconArrange(HWND hwnd)
+WM_MDIGETACTIVE
+HWND %s_MDIGetActive(HWND hwnd)
+WM_MDISETMENU
+HMENU %s_MDISetMenu(HWND hwnd, BOOL fRefresh, HMENU hmenuFrame, HMENU hmenuWindow)
+WM_CHILDACTIVATE
+void %s_OnChildActivate(HWND hwnd)
+WM_INITDIALOG
+BOOL %s_OnInitDialog(HWND hwnd, HWND hwndFocus, LPARAM lParam)
+WM_NEXTDLGCTL
+HWND %s_OnNextDlgCtl(HWND hwnd, HWND hwndSetFocus, BOOL fNext)
+WM_PARENTNOTIFY
+void %s_OnParentNotify(HWND hwnd, UINT msg, HWND hwndChild, int idChild)
+WM_ENTERIDLE
+void %s_OnEnterIdle(HWND hwnd, UINT source, HWND hwndSource)
+WM_GETDLGCODE
+UINT %s_OnGetDlgCode(HWND hwnd, LPMSG lpmsg)
+WM_CTLCOLORMSGBOX
+HBRUSH %s_OnCtlColor(HWND hwnd, HDC hdc, HWND hwndChild, int type)
+WM_CTLCOLOREDIT
+HBRUSH %s_OnCtlColor(HWND hwnd, HDC hdc, HWND hwndChild, int type)
+WM_CTLCOLORLISTBOX
+HBRUSH %s_OnCtlColor(HWND hwnd, HDC hdc, HWND hwndChild, int type)
+WM_CTLCOLORBTN
+HBRUSH %s_OnCtlColor(HWND hwnd, HDC hdc, HWND hwndChild, int type)
+WM_CTLCOLORDLG
+HBRUSH %s_OnCtlColor(HWND hwnd, HDC hdc, HWND hwndChild, int type)
+WM_CTLCOLORSCROLLBAR
+HBRUSH %s_OnCtlColor(HWND hwnd, HDC hdc, HWND hwndChild, int type)
+WM_CTLCOLORSTATIC
+HBRUSH %s_OnCtlColor(HWND hwnd, HDC hdc, HWND hwndChild, int type)
+WM_SETFONT
+void %s_OnSetFont(HWND hwndCtl, HFONT hfont, BOOL fRedraw)
+WM_GETFONT
+HFONT %s_OnGetFont(HWND hwnd)
+WM_DRAWITEM
+void %s_OnDrawItem(HWND hwnd, const DRAWITEMSTRUCT * lpDrawItem)
+WM_MEASUREITEM
+void %s_OnMeasureItem(HWND hwnd, MEASUREITEMSTRUCT * lpMeasureItem)
+WM_DELETEITEM
+void %s_OnDeleteItem(HWND hwnd, const DELETEITEMSTRUCT * lpDeleteItem)
+WM_COMPAREITEM
+int %s_OnCompareItem(HWND hwnd, const COMPAREITEMSTRUCT * lpCompareItem)
+WM_VKEYTOITEM
+int %s_OnVkeyToItem(HWND hwnd, UINT vk, HWND hwndListbox, int iCaret)
+WM_CHARTOITEM
+int %s_OnCharToItem(HWND hwnd, UINT ch, HWND hwndListbox, int iCaret)
+WM_QUEUESYNC
+void %s_OnQueueSync(HWND hwnd)
+WM_COMMNOTIFY
+void %s_OnCommNotify(HWND hwnd, int cid, UINT flags)
+WM_DISPLAYCHANGE
+void %s_OnDisplayChange(HWND hwnd, UINT bitsPerPixel, UINT cxScreen, UINT cyScreen)
+WM_DEVICECHANGE
+BOOL %s_OnDeviceChange(HWND hwnd, UINT uEvent, DWORD dwEventData)
+WM_CONTEXTMENU
+void %s_OnContextMenu(HWND hwnd, HWND hwndContext, UINT xPos, UINT yPos)

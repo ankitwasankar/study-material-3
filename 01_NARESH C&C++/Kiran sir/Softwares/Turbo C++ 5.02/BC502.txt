@@ -1,0 +1,33 @@
+Borland C++ 5.02 Release Notes
+
+Compiler Enhancements
+---------------------
+New 32-bit compiler (BCC32.EXE) provided with this release
+A Make following a failed Build All rebuilds from the point of failure
+New compiler option under Options|Project|C++ Options|
+General called Zero-Length Empty Class Member Function (like -Vx)
+
+Editor Enhancements
+-------------------
+Read-only files identified by an "R" after the file name
+Search|Replace includes a Change All option
+IDE remembers the cursor position of the last 100 edit buffers that
+you closed
+IDE automatically loads the Tips script to display tool tips
+Cursor changes in left gutter to indicate that a click will drop
+a debugger breakpoint
+
+Debugging Enhancements
+----------------------
+New options in Options|Environment|Debugger|Debugger Behavior:
+Do not save files or prompt when debugging and Do not prompt
+when attempting to run 16 bit applications
+New option in Options|Project|Compiler|Debugging:
+Debugger status glyphs: Lightning bolt (if running) and Pause Process
+(if stepping or at breakpoint)
+Debug menu: View Locals command creates Local Inspector (to watch local
+variables) when the IDE Debugger has a process loaded
+The Watch window shows values in hex, decimal, or both formats
+CPU View stack pane indicates the current position
+While debugging, editor tooltips display the value of the symbol
+under the pointer

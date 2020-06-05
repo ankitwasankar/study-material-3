@@ -1,0 +1,70 @@
+<ProjectType name="Console Application#77002" icon="projecttype.bmp?0" type="CUI" ext="exe" tab="General#77001" desc="Create Win32 Console Application.#77003" version="1.0">
+	<Pages count="2">
+		<Page title="Application Types#77004">
+			<RadioGroup name="AppTypes" title="Select the kind of Console Application you want to create#77005" value="0" width="290" height="100" enabled="1">
+				<Item>An &empty project.#77006</Item>
+				<Item>A &simple application#77007</Item>
+				<Item>A "&Hello, World!" applicatoin#77008</Item>
+			</RadioGroup>	
+		</Page>
+		<Page title="Language Select#77009">
+			<RadioGroup name="SrcLang" title="#77010" value="0" width="290" height="100" enabled="$(AppTypes)=1|$(AppTypes)=2">
+				<Item>&C language (this will generate c source files(.c))#77011</Item>
+				<Item>C++ &language (this will generate c++ source files(.cpp))#77012</Item>
+			</RadioGroup>	
+			<CheckBox name="STL" value="0" width="290" height="15" enabled="$(SrcLang)=1">&Using STL#77013</CheckBox>
+		</Page>
+	</Pages>
+
+	<Outputs>
+		<Directory name="\">
+		<File folder="Source Files" name="" external="" enabled="1"></File>
+		<File folder="Header Files" name="" external="" enabled="1"></File>
+		<File folder="Other Files" name="" external="" enabled="1"></File>
+		<File folder="Source Files" name="main.c" external="" enabled="$(AppTypes)=1&$(SrcLang)=0">#include &lt;stdio.h&gt;
+
+int main(int argc, char *argv[])
+{
+	return 0;
+}</File>
+		<File folder="Source Files" name="main.c" external="" enabled="$(AppTypes)=2&$(SrcLang)=0">#include &lt;stdio.h&gt;
+
+int main(int argc, char *argv[])
+{
+	printf("Hello C-Free!\n");
+	return 0;
+}</File>		
+		<File folder="Source Files" name="main.cpp" external="" enabled="$(AppTypes)=1&$(SrcLang)=1&$(STL)=0">#include &lt;iostream.h&gt;
+
+int main(int argc, char *argv[])
+{
+	return 0;
+}</File>
+	<File folder="Source Files" name="main.cpp" external="" enabled="$(AppTypes)=2&$(SrcLang)=1&$(STL)=0">#include &lt;iostream.h&gt;
+
+int main(int argc, char *argv[])
+{
+	cout&lt;&lt;"Hello C-Free!"&lt;&lt;endl;
+	return 0;
+}</File>
+
+	<File folder="Source Files" name="main.cpp" external="" enabled="$(AppTypes)=1&$(SrcLang)=1&$(STL)=1">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+	return 0;
+}</File>
+	<File folder="Source Files" name="main.cpp" external="" enabled="$(AppTypes)=2&$(SrcLang)=1&$(STL)=1">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+	cout&lt;&lt;"Hello C-Free!"&lt;&lt;endl;
+	return 0;
+}</File>
+		</Directory>
+	</Outputs>
+</ProjectType>

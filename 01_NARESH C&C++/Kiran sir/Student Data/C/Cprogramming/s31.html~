@@ -1,0 +1,98 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+<strong>Strlen():</strong>
+
+  This function counts the number of characters present in a string. Its usage is 
+illustrated in the following program.
+
+main()
+{
+   char arr[] = "Bamboozled";
+   int len1, len2;
+   len1 = strlen (arr);
+   len2 = strlen ("Humpty Dumpty");
+   printf("\nstring = %s length = %d",arr,len1);
+   printf("\nstring = %s length = %d", "Humpty Dumpty", len2);
+}
+ output:
+ string = Bamboozled length = 10
+ string = Humpty Dumpty length = 13
+           
+    Note that in the first call to the function strlen(), we are passing the
+ base address of the string, and the function in turn returns the length of the string . 
+While calculating the length it doesn't count '\0'. Even in the second call,
+len2 = strlen("Humpty Dumpty");
+  What gets passed to strlen() is the address of the string and not the string itself. 
+
+<strong>User-defined function for strlen():</strong>
+
+main()
+{  
+  char arr[] = "Bamboozled";
+  int len1,len2;
+  len1 = xstrlen(arr);
+  len2 = xstrlen("Humpty Dumpty");
+  printf("\nstring = %s length = %d", arr, len1);
+  printf("\nstring = %s length = %d", "Humpty Dumpty", len2);
+}
+xstrlen(char *s)
+{
+   int length = 0;
+   while(*s! = '\0')
+{
+     length++;
+     s++;
+}
+return (length);
+}
+output:
+string = Bamboozled length = 10
+string Humpty Dumpty length = 13 
+
+<a href="s3.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

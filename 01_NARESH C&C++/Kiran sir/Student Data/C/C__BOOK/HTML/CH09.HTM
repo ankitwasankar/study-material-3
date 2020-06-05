@@ -1,0 +1,1595 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+<!-- This document was created from RTF source by rtftohtml version 3.0.1 -->
+
+	<META NAME="GENERATOR" Content="Symantec Visual Page 1.0">
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+	<TITLE>Teach Yourself C++ in 21 Days</TITLE>
+</HEAD>
+
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF">
+
+<H1 ALIGN="CENTER"><A HREF="ch08.htm"><IMG SRC="../buttons/BLANPREV.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch10.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A></H1>
+<H1></H1>
+
+<UL>
+	<LI><A HREF="#Heading1">Day 9</A>
+	<UL>
+		<LI><A HREF="#Heading2">References</A>
+		<UL>
+			<LI><A HREF="#Heading3">What Is a Reference?</A>
+			<LI><A HREF="#Heading4">Listing 9.1. Creating and using references.</A>
+			<LI><A HREF="#Heading5">Using the Address of Operator &amp; on References</A>
+			<LI><A HREF="#Heading6">Listing 9.2. Taking the address of a reference</A>
+			<LI><A HREF="#Heading8">Listing 9.3. Assigning to a reference</A>
+			<LI><A HREF="#Heading10">What Can Be Referenced?</A>
+			<LI><A HREF="#Heading11">Listing 9.4. References to objects</A>
+			<LI><A HREF="#Heading13">References</A>
+			<LI><A HREF="#Heading14">Null Pointers and Null References</A>
+			<LI><A HREF="#Heading15">Passing Function Arguments by Reference</A>
+			<LI><A HREF="#Heading16">Listing 9.5. Demonstrating passing by value</A>
+			<UL>
+				<LI><A HREF="#Heading18">Making swap() Work with Pointers</A>
+			</UL>
+			<LI><A HREF="#Heading19">Listing 9.6. Passing by reference using pointers</A>
+			<UL>
+				<LI><A HREF="#Heading21">Implementing swap() with References</A>
+			</UL>
+			<LI><A HREF="#Heading22">Listing 9.7. swap() rewritten with references</A>
+			<LI><A HREF="#Heading24">Understanding Function Headers and Prototypes</A>
+			<LI><A HREF="#Heading25">Returning Multiple Values</A>
+			<LI><A HREF="#Heading26">Listing 9.8. Returning values with pointers</A>
+			<UL>
+				<LI><A HREF="#Heading28">Returning Values by Reference</A>
+			</UL>
+			<LI><A HREF="#Heading29">Listing 9.9.</A>
+			<LI><A HREF="#Heading30">Listing 9.8 rewritten using references.</A>
+			<LI><A HREF="#Heading31">Passing by Reference for Efficiency</A>
+			<LI><A HREF="#Heading32">Listing 9.10. Passing objects by reference</A>
+			<UL>
+				<LI><A HREF="#Heading34">Passing a const Pointer</A>
+			</UL>
+			<LI><A HREF="#Heading35">Listing 9.11. Passing const pointers</A>
+			<UL>
+				<LI><A HREF="#Heading37">References as an Alternative</A>
+			</UL>
+			<LI><A HREF="#Heading38">Listing 9.12. Passing references to objects</A>
+			<LI><A HREF="#Heading40">const References</A>
+			<LI><A HREF="#Heading41">When to Use References and When to Use Pointers</A>
+			<LI><A HREF="#Heading42">Mixing References and Pointers</A>
+			<LI><A HREF="#Heading43">Dont Return a Reference to an Object that Isnt in Scope!</A>
+			<LI><A HREF="#Heading44">Listing 9.13. Returning a reference to a non-existent object</A>
+			<LI><A HREF="#Heading46">Returning a Reference to an Object on the Hea</A>
+			<LI><A HREF="#Heading48">Listing 9.14. Memory leaks</A>
+			<LI><A HREF="#Heading50">Pointer, Pointer, Who Has the Pointer?</A>
+			<LI><A HREF="#Heading51">Summary</A>
+			<LI><A HREF="#Heading52">Q&amp;A</A>
+			<LI><A HREF="#Heading53">Workshop</A>
+			<UL>
+				<LI><A HREF="#Heading54">Quiz</A>
+				<LI><A HREF="#Heading55">Exercises</A>
+			</UL>
+		</UL>
+	</UL>
+</UL>
+
+<P>
+<HR>
+<BR>
+
+<H2 ALIGN="CENTER"><A NAME="Heading1"></A><FONT COLOR="#000077">Day 9</FONT></H2>
+
+<H2 ALIGN="CENTER"><A NAME="Heading2"></A><FONT COLOR="#000077">References</FONT></H2>
+<P>Yesterday you learned how to use pointers to manipulate objects on the free store
+and how to refer to those objects indirectly. References, the topic of today's chapter,
+give you almost all the power of pointers but with a much easier syntax. Today you
+learn the following
+
+<UL>
+	<LI>What references are.
+	<P>
+	<LI>How references differ from pointers.
+	<P>
+	<LI>How to create references and use them.
+	<P>
+	<LI>What the limitations of references are.
+	<P>
+	<LI>How to pass values and objects into and out of functions by reference.
+</UL>
+
+<H3 ALIGN="CENTER"><A NAME="Heading3"></A><FONT COLOR="#000077">What Is a Reference?</FONT></H3>
+<P>A reference is an alias; when you create a reference, you initialize it with the
+name of another object, the target. From that moment on, the reference acts as an
+alternative name for the target, and anything you do to the reference is really done
+to the target.</P>
+<P>You create a reference by writing the type of the target object, followed by the
+reference operator (<TT>&amp;</TT>), followed by the name of the reference. References
+can use any legal variable name, but for this book we'll prefix all reference names
+with &quot;r.&quot; Thus, if you have an integer variable named <TT>someInt</TT>,
+you can make a reference to that variable by writing the following:</P>
+<PRE><FONT COLOR="#0066FF">int &amp;rSomeRef = someInt;
+</FONT></PRE>
+<P>This is read as &quot;<TT>rSomeRef</TT> is a reference to an integer that is initialized
+to refer to <TT>someInt</TT>.&quot; Listing 9.1 shows how references are created
+and used.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><FONT COLOR="#0000AA"><B> </B></FONT>Note
+	that the reference operator (<TT>&amp;</TT>) is the same symbol as the one used for
+	the address of the operator. These are not the same operators, however, though clearly
+	they are related. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P><A NAME="Heading4"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 9.1. Creating
+and using references.</B></FONT>
+<PRE><FONT COLOR="#0066FF">
+1:    //Listing 9.1
+2:    // Demonstrating the use of References
+3:
+4:    #include &lt;iostream.h&gt;
+5:
+6:    int main()
+7:    {
+8:         int  intOne;
+9:         int &amp;rSomeRef = intOne;
+10:
+11:        intOne = 5;
+12:        cout &lt;&lt; &quot;intOne: &quot; &lt;&lt; intOne &lt;&lt; endl;
+13:        cout &lt;&lt; &quot;rSomeRef: &quot; &lt;&lt; rSomeRef &lt;&lt; endl;
+14:
+15:        rSomeRef = 7;
+16:        cout &lt;&lt; &quot;intOne: &quot; &lt;&lt; intOne &lt;&lt; endl;
+17:        cout &lt;&lt; &quot;rSomeRef: &quot; &lt;&lt; rSomeRef &lt;&lt; endl;
+18:   return 0;
+<TT>19: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: intOne: 5
+rSomeRef: 5
+intOne: 7
+rSomeRef: 7
+</FONT></PRE>
+<P><FONT COLOR="#000077"><TT><B>Anaylsis: </B></TT></FONT>On line 8, a local <TT>int</TT>
+variable, <TT>intOne</TT>, is declared. On line 9, a reference to an <TT>int</TT>,
+<TT>rSomeRef</TT>, is declared and initialized to refer to <TT>intOne</TT>. If you
+declare a reference, but don't initialize it, you will get a compile-time error.
+References must be initialized.<BR>
+On line 11, <TT>intOne</TT> is assigned the value <TT>5</TT>. On lines 12 and 13,
+the values in <TT>intOne</TT> and <TT>rSomeRef</TT> are printed, and are, of course,
+the same.</P>
+<P>On line 15, <TT>7</TT> is assigned to <TT>rSomeRef</TT>. Since this is a reference,
+it is an alias for <TT>intOne</TT>, and thus the <TT>7</TT> is really assigned to
+<TT>intOne</TT>, as is shown by the printouts on lines 16 and 17.
+<H3 ALIGN="CENTER"><A NAME="Heading5"></A><FONT COLOR="#000077">Using the Address
+of Operator &amp; on References</FONT></H3>
+<P>If you ask a reference for its address, it returns the address of its target.
+That is the nature of references. They are aliases for the target. Listing 9.2 demonstrates
+this.</P>
+
+<P><A NAME="Heading6"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 9.2. Taking the
+address of a reference</B></FONT><FONT SIZE="2" COLOR="#000077"><B>.</B></FONT>
+<PRE><FONT COLOR="#0066FF">
+1:    //Listing 9.2
+2:    // Demonstrating the use of References
+3:
+4:    #include &lt;iostream.h&gt;
+5:
+6:    int main()
+7:    {
+8:        int  intOne;
+9:        int &amp;rSomeRef = intOne;
+10:
+11:       intOne = 5;
+12:       cout &lt;&lt; &quot;intOne: &quot; &lt;&lt; intOne &lt;&lt; endl;
+13:       cout &lt;&lt; &quot;rSomeRef: &quot; &lt;&lt; rSomeRef &lt;&lt; endl;
+14:
+15:       cout &lt;&lt; &quot;&amp;intOne: &quot;  &lt;&lt; &amp;intOne &lt;&lt; endl;
+16:       cout &lt;&lt; &quot;&amp;rSomeRef: &quot; &lt;&lt; &amp;rSomeRef &lt;&lt; endl;
+17:
+18:   return 0;
+<TT>19: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: intOne: 5
+rSomeRef: 5
+&amp;intOne:  0x3500
+&amp;rSomeRef: 0x3500
+</FONT></PRE>
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>Your output may differ on the last
+	two lines. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P>
+<HR>
+<FONT COLOR="#000077"><TT><B>Anaylsis:</B></TT></FONT><TT><B> </B></TT>Once again
+<TT>rSomeRef</TT> is initialized as a reference to <TT>intOne</TT>. This time the
+addresses of the two variables are printed, and they are identical. C++ gives you
+no way to access the address of the reference itself because it is not meaningful,
+as it would be if you were using a pointer or other variable. References are initialized
+when created, and always act as a synonym for their target, even when the address
+of operator is applied.<BR>
+For example, if you have a class called <TT>President</TT>, you might declare an
+instance of that class as follows:</P>
+<PRE><FONT COLOR="#0066FF">President  William_Jefferson_Clinton;</FONT></PRE>
+<P>You might then declare a reference to <TT>President</TT> and initialize it with
+this object:</P>
+<PRE><FONT COLOR="#0066FF">President &amp;Bill_Clinton = William_Jefferson_Clinton;</FONT></PRE>
+<P>There is only one <TT>President</TT>; both identifiers refer to the same object
+of the same class. Any action you take on <TT>Bill_Clinton</TT> will be taken on
+<TT>William_Jefferson_Clinton</TT> as well.</P>
+<P>Be careful to distinguish between the <TT>&amp;</TT> symbol on line 9 of Listing
+9.2, which declares a reference to <TT>int</TT> named <TT>rSomeRef</TT>, and the
+<TT>&amp;</TT> symbols on lines 15 and 16, which return the addresses of the integer
+variable <TT>intOne</TT> and the reference <TT>rSomeRef</TT>.</P>
+<P>Normally, when you use a reference, you do not use the address of operator. You
+simply use the reference as you would use the target variable. This is shown on line
+13.</P>
+<P>Even experienced C++ programmers, who know the rule that references cannot be
+reassigned and are always aliases for their target, can be confused by what happens
+when you try to reassign a reference. What appears to be a reassignment turns out
+to be the assignment of a new value to the target. Listing 9.3 illustrates this fact.</P>
+
+<P><A NAME="Heading8"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 9.3. Assigning
+to a reference.</B></FONT>
+<PRE><FONT COLOR="#0066FF">
+1:     //Listing 9.3
+2:      //Reassigning a reference
+3:
+4:      #include &lt;iostream.h&gt;
+5:
+6:      int main()
+7:      {
+8:           int  intOne;
+9:           int &amp;rSomeRef = intOne;
+10:
+11:           intOne = 5;
+12:           cout &lt;&lt; &quot;intOne:\t&quot; &lt;&lt; intOne &lt;&lt; endl;
+13:           cout &lt;&lt; &quot;rSomeRef:\t&quot; &lt;&lt; rSomeRef &lt;&lt; endl;
+14:           cout &lt;&lt; &quot;&amp;intOne:\t&quot;  &lt;&lt; &amp;intOne &lt;&lt; endl;
+15:           cout &lt;&lt; &quot;&amp;rSomeRef:\t&quot; &lt;&lt; &amp;rSomeRef &lt;&lt; endl;
+16:
+17:           int intTwo = 8;
+18:           rSomeRef = intTwo;  // not what you think!
+19:           cout &lt;&lt; &quot;\nintOne:\t&quot; &lt;&lt; intOne &lt;&lt; endl;
+20:           cout &lt;&lt; &quot;intTwo:\t&quot; &lt;&lt; intTwo &lt;&lt; endl;
+21:           cout &lt;&lt; &quot;rSomeRef:\t&quot; &lt;&lt; rSomeRef &lt;&lt; endl;
+22:           cout &lt;&lt; &quot;&amp;intOne:\t&quot;  &lt;&lt; &amp;intOne &lt;&lt; endl;
+23:           cout &lt;&lt; &quot;&amp;intTwo:\t&quot;  &lt;&lt; &amp;intTwo &lt;&lt; endl;
+24:           cout &lt;&lt; &quot;&amp;rSomeRef:\t&quot; &lt;&lt; &amp;rSomeRef &lt;&lt; endl;
+25:      return 0;
+<TT>26: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: intOne:                 5
+rSomeRef:         5
+&amp;intOne:              0x213e
+&amp;rSomeRef:      0x213e
+
+intOne:                 8
+intTwo:                8
+rSomeRef:         8
+&amp;intOne:              0x213e
+&amp;intTwo:              0x2130
+&amp;rSomeRef:      0x213e
+</FONT></PRE>
+<P><FONT COLOR="#000077"><TT><B>Anaylsis:</B></TT></FONT><TT><B> </B></TT>Once again,
+an integer variable and a reference to an integer are declared, on lines 8 and 9.
+The integer is assigned the value <TT>5</TT> on line 11, and the values and their
+addresses are printed on lines 12-15.<BR>
+On line 17, a new variable, <TT>intTwo</TT>, is created and initialized with the
+value <TT>8</TT>. On line 18, the programmer tries to reassign <TT>rSomeRef</TT>
+to now be an alias to the variable <TT>intTwo</TT>, but that is not what happens.
+What actually happens is that <TT>rSomeRef</TT> continues to act as an alias for
+<TT>intOne</TT>, so this assignment is exactly equivalent to the following:</P>
+<PRE><FONT COLOR="#0066FF">intOne = intTwo;</FONT></PRE>
+<P>Sure enough, when the values of <TT>intOne</TT> and <TT>rSomeRef</TT> are printed
+(lines 19-21) they are the same as <TT>intTwo</TT>. In fact, when the addresses are
+printed on lines 22-24, you see that <TT>rSomeRef</TT> continues to refer to <TT>intOne</TT>
+and not <TT>intTwo</TT>.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<B>DO </B>use references to create an alias to an object. <B>DO</B> initialize all
+	references. <B>DON'T</B> try to reassign a reference. <B>DON'T </B>confuse the address
+	of operator with the reference operator. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H3 ALIGN="CENTER"><A NAME="Heading10"></A><FONT COLOR="#000077">What Can Be Referenced?</FONT></H3>
+<P>Any object can be referenced, including user-defined objects. Note that you create
+a reference to an object, but not to a class. You do not write this:</P>
+<PRE><FONT COLOR="#0066FF">int &amp; rIntRef = int;    // wrong
+</FONT></PRE>
+<P>You must initialize <TT>rIntRef</TT> to a particular integer, such as this:</P>
+<PRE><FONT COLOR="#0066FF">int howBig = 200;
+int &amp; rIntRef = howBig;
+</FONT></PRE>
+<P>In the same way, you don't initialize a reference to a <TT>CAT</TT>:</P>
+<PRE><FONT COLOR="#0066FF">CAT &amp; rCatRef = CAT;   // wrong
+</FONT></PRE>
+<P>You must initialize <TT>rCatRef</TT> to a particular <TT>CAT</TT> object:</P>
+<PRE><FONT COLOR="#0066FF">CAT frisky;
+CAT &amp; rCatRef = frisky;
+</FONT></PRE>
+<P>References to objects are used just like the object itself. Member data and methods
+are accessed using the normal class member access operator (<TT>.</TT>), and just
+as with the built-in types, the reference acts as an alias to the object. Listing
+9.4 illustrates this.</P>
+
+<P><A NAME="Heading11"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 9.4. References
+to objects.</B></FONT>
+<PRE><FONT COLOR="#0066FF">
+1:    // Listing 9.4
+2:    // References to class objects
+3:
+4:    #include &lt;iostream.h&gt;
+5:
+6:    class SimpleCat
+7:    {
+8:       public:
+9:          SimpleCat (int age, int weight);
+10:         ~SimpleCat() {}
+11:         int GetAge() { return itsAge; }
+12:         int GetWeight() { return itsWeight; }
+13:      private:
+14:         int itsAge;
+15:         int itsWeight;
+16:   };
+17:
+18:   SimpleCat::SimpleCat(int age, int weight)
+19:   {
+20:        itsAge = age;
+21:        itsWeight = weight;
+22:   }
+23:
+24:   int main()
+25:   {
+26:        SimpleCat Frisky(5,8);
+27:        SimpleCat &amp; rCat = Frisky;
+28:
+29:        cout &lt;&lt; &quot;Frisky is: &quot;;
+30:        cout &lt;&lt; Frisky.GetAge() &lt;&lt; &quot; years old. \n&quot;;
+31:        cout &lt;&lt; &quot;And Frisky weighs: &quot;;
+32:        cout &lt;&lt; rCat.GetWeight() &lt;&lt; &quot; pounds. \n&quot;;
+33:   return 0;
+<TT>34: }</TT></FONT></PRE>
+<PRE><FONT COLOR="#0066FF">Output: Frisky is: 5 years old.
+And Frisky weighs 8 pounds.
+</FONT></PRE>
+<P><FONT COLOR="#000077"><TT><B>Anaylsis:</B></TT></FONT><TT><B> </B></TT>On line
+26, <TT>Frisky</TT> is declared to be a <TT>SimpleCat</TT> object. On line 27, a
+<TT>SimpleCat</TT> reference, <TT>rCat</TT>, is declared and initialized to refer
+to <TT>Frisky</TT>. On lines 30 and 32, the <TT>SimpleCat</TT> accessor methods are
+accessed by using first the <TT>SimpleCat</TT> object and then the <TT>SimpleCat</TT>
+reference. Note that the access is identical. Again, the reference is an alias for
+the actual object.
+<H3 ALIGN="CENTER"><A NAME="Heading13"></A><FONT COLOR="#000077">References</FONT></H3>
+<P>Declare a reference by writing the type, followed by the reference operator (<TT>&amp;</TT>),
+followed by the reference name. References must be initialized at the time of creation.
+Example 1</P>
+<PRE><FONT COLOR="#0066FF">int hisAge;
+int &amp;rAge = hisAge;
+</FONT></PRE>
+<P>Example 2</P>
+<PRE><FONT COLOR="#0066FF">CAT boots;
+CAT &amp;rCatRef = boots;
+</FONT></PRE>
+<H3 ALIGN="CENTER"><A NAME="Heading14"></A><FONT COLOR="#000077">Null Pointers and
+Null References</FONT></H3>
+<P>When pointers are not initialized, or when they are deleted, they ought to be
+assigned to <TT>null</TT> (<TT>0</TT>). This is not true for references. In fact,
+a reference cannot be null, and a program with a reference to a null object is considered
+an invalid program. When a program is invalid, just about anything can happen. It
+can appear to work, or it can erase all the files on your disk. Both are possible
+outcomes of an invalid program.</P>
+<P>Most compilers will support a null object without much complaint, crashing only
+if you try to use the object in some way. Taking advantage of this, however, is still
+not a good idea. When you move your program to another machine or compiler, mysterious
+bugs may develop if you have null objects.
+<H3 ALIGN="CENTER"><A NAME="Heading15"></A><FONT COLOR="#000077">Passing Function
+Arguments by Reference</FONT></H3>
+<P>On Day 5, &quot;Functions,&quot; you learned that functions have two limitations:
+Arguments are passed by value, and the return statement can return only one value.</P>
+<P>Passing values to a function by reference can overcome both of these limitations.
+In C++, passing by reference is accomplished in two ways: using pointers and using
+references. The syntax is different, but the net effect is the same. Rather than
+a copy being created within the scope of the function, the actual original object
+is passed into the function.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>If you read the extra credit section
+	after Day 5, you learned that functions are passed their parameters on the stack.
+	When a function is passed a value by reference (either using pointers or references),
+	the address of the object is put on the stack, not the entire object. In fact, on
+	some computers the address is actually held in a register and nothing is put on the
+	stack. In either case, the compiler now knows how to get to the original object,
+	and changes are made there and not in a copy. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P>Passing an object by reference allows the function to change the object being
+referred to.</P>
+<P>Recall that Listing 5.5 in Day 5 demonstrated that a call to the <TT>swap()</TT>
+function did not affect the values in the calling function. Listing 5.5 is reproduced
+here as Listing 9.5, for your convenience.
+<H3><A NAME="Heading16"></A><FONT COLOR="#000077">Listing 9.5. Demonstrating passing
+by value.</FONT></H3>
+<PRE><FONT COLOR="#0066FF">1:     //Listing 9.5 Demonstrates passing by value
+2:
+3:      #include &lt;iostream.h&gt;
+4:
+5:      void swap(int x, int y);
+6:
+7:      int main()
+8:      {
+9:        int x = 5, y = 10;
+10:
+11:        cout &lt;&lt; &quot;Main. Before swap, x: &quot; &lt;&lt; x &lt;&lt; &quot; y: &quot; &lt;&lt; y &lt;&lt; &quot;\n&quot;;
+12:        swap(x,y);
+13:        cout &lt;&lt; &quot;Main. After swap, x: &quot; &lt;&lt; x &lt;&lt; &quot; y: &quot; &lt;&lt; y &lt;&lt; &quot;\n&quot;;
+14:     return 0;
+15:     }
+16:
+17:      void swap (int x, int y)
+18:      {
+19:        int temp;
+20:
+21:        cout &lt;&lt; &quot;Swap. Before swap, x: &quot; &lt;&lt; x &lt;&lt; &quot; y: &quot; &lt;&lt; y &lt;&lt; &quot;\n&quot;;
+22:
+23:        temp = x;
+24:        x = y;
+25:        y = temp;
+26:
+27:        cout &lt;&lt; &quot;Swap. After swap, x: &quot; &lt;&lt; x &lt;&lt; &quot; y: &quot; &lt;&lt; y &lt;&lt; &quot;\n&quot;;
+28:
+<TT>29: }</TT></FONT></PRE>
+<PRE><FONT COLOR="#0066FF">Output: Main. Before swap, x: 5 y: 10
+Swap. Before swap, x: 5 y: 10
+Swap. After swap, x: 10 y: 5
+Main. After swap, x: 5 y: 10
+</FONT></PRE>
+<P><FONT COLOR="#000077"><TT><B>Anaylsis:</B></TT></FONT><TT><B> </B></TT>This program
+initializes two variables in <TT>main()</TT> and then passes them to the <TT>swap()</TT>
+function, which appears to swap them. When they are examined again in <TT>main()</TT>,
+they are unchanged!<BR>
+The problem here is that <TT>x</TT> and <TT>y</TT> are being passed to <TT>swap()</TT>
+by value. That is, local copies were made in the function. What you want is to pass
+<TT>x</TT> and <TT>y</TT> by reference.</P>
+<P>There are two ways to solve this problem in C++: You can make the parameters of
+<TT>swap()</TT> pointers to the original values, or you can pass in references to
+the original values.
+<H4 ALIGN="CENTER"><A NAME="Heading18"></A><FONT COLOR="#000077">Making swap() Work
+with Pointers</FONT></H4>
+<P>When you pass in a pointer, you pass in the address of the object, and thus the
+function can manipulate the value at that address. To make <TT>swap()</TT> change
+the actual values using pointers, the function, <TT>swap()</TT>, should be declared
+to accept two <TT>int</TT> pointers. Then, by dereferencing the pointers, the values
+of <TT>x</TT> and <TT>y</TT> will, in fact, be swapped. Listing 9.6 demonstrates
+this idea.</P>
+
+<P><A NAME="Heading19"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 9.6. Passing
+by reference using pointers.</B></FONT>
+<PRE><FONT COLOR="#0066FF">
+1:     //Listing 9.6 Demonstrates passing by reference
+2:
+3:      #include &lt;iostream.h&gt;
+4:
+5:      void swap(int *x, int *y);
+6:
+7:      int main()
+8:      {
+9:        int x = 5, y = 10;
+10:
+11:        cout &lt;&lt; &quot;Main. Before swap, x: &quot; &lt;&lt; x &lt;&lt; &quot; y: &quot; &lt;&lt; y &lt;&lt; &quot;\n&quot;;
+12:        swap(&amp;x,&amp;y);
+13:        cout &lt;&lt; &quot;Main. After swap, x: &quot; &lt;&lt; x &lt;&lt; &quot; y: &quot; &lt;&lt; y &lt;&lt; &quot;\n&quot;;
+14:     return 0;
+15:      }
+16
+17:      void swap (int *px, int *py)
+18:      {
+19:        int temp;
+20:
+21:        cout &lt;&lt; &quot;Swap. Before swap, *px: &quot; &lt;&lt; *px &lt;&lt; &quot; *py: &quot; &lt;&lt; *py &lt;&lt; &quot;\n&quot;;
+22:
+23:        temp = *px;
+24:        *px = *py;
+25:        *py = temp;
+26:
+27:        cout &lt;&lt; &quot;Swap. After swap, *px: &quot; &lt;&lt; *px &lt;&lt; &quot; *py: &quot; &lt;&lt; *py &lt;&lt; &quot;\n&quot;;
+28:
+<TT>29: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: Main. Before swap, x: 5 y: 10
+Swap. Before swap, *px: 5 *py: 10
+Swap. After swap, *px: 10 *py: 5
+Main. After swap, x: 10 y: 5
+</FONT></PRE>
+<P><FONT COLOR="#000077"><TT><B>Anaylsis:</B></TT></FONT><TT><B> </B></TT>Success!
+On line 5, the prototype of <TT>swap()</TT> is changed to indicate that its two parameters
+will be pointers to <TT>int</TT> rather than <TT>int</TT> variables. When <TT>swap()</TT>
+is called on line 12, the addresses of <TT>x</TT> and <TT>y</TT> are passed as the
+arguments.<BR>
+On line 19, a local variable, <TT>temp</TT>, is declared in the <TT>swap()</TT> function.
+<TT>Temp</TT> need not be a pointer; it will just hold the value of <TT>*px</TT>
+(that is, the value of <TT>x</TT> in the calling function) for the life of the function.
+After the function returns, <TT>temp</TT> will no longer be needed.</P>
+<P>On line 23, <TT>temp</TT> is assigned the value at <TT>px</TT>. On line 24, the
+value at <TT>px</TT> is assigned to the value at <TT>py</TT>. On line 25, the value
+stashed in <TT>temp</TT> (that is, the original value at <TT>px</TT>) is put into
+<TT>py</TT>.</P>
+<P>The net effect of this is that the values in the calling function, whose address
+was passed to <TT>swap()</TT>, are, in fact, swapped.
+<H4 ALIGN="CENTER"><A NAME="Heading21"></A><FONT COLOR="#000077">Implementing swap()
+with References</FONT></H4>
+<P>The preceding program works, but the syntax of the <TT>swap()</TT> function is
+cumbersome in two ways. First, the repeated need to dereference the pointers within
+the <TT>swap()</TT> function makes it error-prone and hard to read. Second, the need
+to pass the address of the variables in the calling function makes the inner workings
+of <TT>swap()</TT> overly apparent to its users.</P>
+<P>It is a goal of C++ to prevent the user of a function from worrying about how
+it works. Passing by pointers takes the burden off of the called function, and puts
+it where it belongs--on the calling function. Listing 9.7 rewrites the <TT>swap()</TT>
+function, using references.</P>
+
+<P><A NAME="Heading22"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 9.7. swap()
+rewritten with references.</B></FONT>
+<PRE><FONT COLOR="#0066FF">
+1:     //Listing 9.7 Demonstrates passing by reference
+2:      // using references!
+3:
+4:        #include &lt;iostream.h&gt;
+5:
+6:        void swap(int &amp;x, int &amp;y);
+7:
+8:        int main()
+9:        {
+10:            int x = 5, y = 10;
+11:
+12:            cout &lt;&lt; &quot;Main. Before swap, x: &quot; &lt;&lt; x &lt;&lt; &quot; y: &quot; &lt;&lt; y &lt;&lt; &quot;\n&quot;;
+13:             swap(x,y);
+14:             cout &lt;&lt; &quot;Main. After swap, x: &quot; &lt;&lt; x &lt;&lt; &quot; y: &quot; &lt;&lt; y &lt;&lt; &quot;\n&quot;;
+15:     return 0;
+16:           }
+17:
+18:           void swap (int &amp;rx, int &amp;ry)
+19:           {
+20:             int temp;
+21:
+22:                cout &lt;&lt; &quot;Swap. Before swap, rx: &quot; &lt;&lt; rx &lt;&lt; &quot; ry: &quot; &lt;&lt; ry &lt;&lt; &quot;\n&quot;;
+23:
+24:                temp = rx;
+25:                rx = ry;
+26:                ry = temp;
+27:
+28:                cout &lt;&lt; &quot;Swap. After swap, rx: &quot; &lt;&lt; rx &lt;&lt; &quot; ry: &quot; &lt;&lt; ry &lt;&lt; &quot;\n&quot;;
+29:
+<TT>30: }</TT>
+Output: Main. Before swap, x:5 y: 10
+Swap. Before swap, rx:5 ry:10
+Swap. After swap, rx:10 ry:5
+Main. After swap, x:10, y:5
+</FONT></PRE>
+<P><FONT COLOR="#000077"><TT><B>Anaylsis:</B></TT></FONT>Just as in the example with
+pointers, two variables are declared on line 10 and their values are printed on line
+12. On line 13, the function <TT>swap()</TT> is called, but note that <TT>x</TT>
+and <TT>y</TT>, not their addresses, are passed. The calling function simply passes
+the variables.<BR>
+When <TT>swap()</TT> is called, program execution jumps to line 18, where the variables
+are identified as references. Their values are printed on line 22, but note that
+no special operators are required. These are aliases for the original values, and
+can be used as such.</P>
+<P>On lines 24-26, the values are swapped, and then they're printed on line 28. Program
+execution jumps back to the calling function, and on line 14, the values are printed
+in <TT>main()</TT>. Because the parameters to <TT>swap()</TT> are declared to be
+references, the values from <TT>main()</TT> are passed by reference, and thus are
+changed in <TT>main()</TT> as well.</P>
+<P>References provide the convenience and ease of use of normal variables, with the
+power and pass-by-reference capability of pointers!
+<H3 ALIGN="CENTER"><A NAME="Heading24"></A><FONT COLOR="#000077">Understanding Function
+Headers and Prototypes</FONT></H3>
+<P>Listing 9.6 shows <TT>swap()</TT> using pointers, and Listing 9.7 shows it using
+references. Using the function that takes references is easier, and the code is easier
+to read, but how does the calling function know if the values are passed by reference
+or by value? As a client (or user) of <TT>swap()</TT>, the programmer must ensure
+that <TT>swap()</TT> will, in fact, change the parameters.</P>
+<P>This is another use for the function prototype. By examining the parameters declared
+in the prototype, which is typically in a header file along with all the other prototypes,
+the programmer knows that the values passed into <TT>swap()</TT> are passed by reference,
+and thus will be swapped properly.</P>
+<P>If <TT>swap()</TT> had been a member function of a class, the class declaration,
+also available in a header file, would have supplied this information.</P>
+<P>In C++, clients of classes and functions rely on the header file to tell all that
+is needed; it acts as the interface to the class or function. The actual implementation
+is hidden from the client. This allows the programmer to focus on the problem at
+hand and to use the class or function without concern for how it works.</P>
+<P>When Colonel John Roebling designed the Brooklyn Bridge, he worried in detail
+about how the concrete was poured and how the wire for the bridge was manufactured.
+He was intimately involved in the mechanical and chemical processes required to create
+his materials. Today, however, engineers make more efficient use of their time by
+using well-understood building materials, without regard to how their manufacturer
+produced them.</P>
+<P>It is the goal of C++ to allow programmers to rely on well-understood classes
+and functions without regard to their internal workings. These &quot;component parts&quot;
+can be assembled to produce a program, much the same way wires, pipes, clamps, and
+other parts are assembled to produce buildings and bridges.</P>
+<P>In much the same way that an engineer examines the spec sheet for a pipe to determine
+its load-bearing capacity, volume, fitting size, and so forth, a C++ programmer reads
+the interface of a function or class to determine what services it provides, what
+parameters it takes, and what values it returns.
+<H3 ALIGN="CENTER"><A NAME="Heading25"></A><FONT COLOR="#000077">Returning Multiple
+Values</FONT></H3>
+<P>As discussed, functions can only return one value. What if you need to get two
+values back from a function? One way to solve this problem is to pass two objects
+into the function, by reference. The function can then fill the objects with the
+correct values. Since passing by reference allows a function to change the original
+objects, this effectively lets the function return two pieces of information. This
+approach bypasses the return value of the function, which can then be reserved for
+reporting errors.</P>
+<P>Once again, this can be done with references or pointers. Listing 9.8 demonstrates
+a function that returns three values: two as pointer parameters and one as the return
+value of the function.</P>
+
+<P><A NAME="Heading26"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 9.8. Returning
+values with pointers.</B></FONT>
+<PRE><FONT COLOR="#0066FF">
+1:     //Listing 9.8
+2:     // Returning multiple values from a function
+3:
+4:     #include &lt;iostream.h&gt;
+5:
+6:     typedef unsigned short USHORT;
+7:
+8:     short Factor(USHORT, USHORT*, USHORT*);
+9:
+10:    int main()
+11:    {
+12:       USHORT number, squared, cubed;
+13:       short error;
+14:
+15:       cout &lt;&lt; &quot;Enter a number (0 - 20): &quot;;
+16:       cin &gt;&gt; number;
+17:
+18:       error = Factor(number, &amp;squared, &amp;cubed);
+19:
+20:       if (!error)
+21:       {
+22:           cout &lt;&lt; &quot;number: &quot; &lt;&lt; number &lt;&lt; &quot;\n&quot;;
+23:           cout &lt;&lt; &quot;square: &quot; &lt;&lt; squared &lt;&lt; &quot;\n&quot;;
+24:           cout &lt;&lt; &quot;cubed: &quot;  &lt;&lt; cubed   &lt;&lt; &quot;\n&quot;;
+25:       }
+26:       else
+27:       cout &lt;&lt; &quot;Error encountered!!\n&quot;;
+28:     return 0;
+29:    }
+30:
+31:    short Factor(USHORT n, USHORT *pSquared, USHORT *pCubed)
+32:    {
+33:    short Value = 0;
+34:       if (n &gt; 20)
+35:          Value = 1;
+36:       else
+37:       {
+38:           *pSquared = n*n;
+39:           *pCubed = n*n*n;
+40:           Value = 0;
+41:       }
+42:       return Value;
+<TT>43: }</TT>
+Output: Enter a number (0-20): 3
+number: 3
+square: 9
+cubed: 27
+</FONT></PRE>
+<P><FONT COLOR="#000077"><TT><B>Anaylsis:</B></TT></FONT><TT><B> </B></TT>On line
+12, <TT>number</TT>, <TT>squared</TT>, and <TT>cubed</TT> are defined as <TT>USHORT</TT>s.
+<TT>number</TT> is assigned a value based on user input. This number and the addresses
+of <TT>squared</TT> and <TT>cubed</TT> are passed to the function <TT>Factor()</TT>.<BR>
+<TT>Factor()</TT>examines the first parameter, which is passed by value. If it is
+greater than <TT>20</TT> (the maximum value this function can handle), it sets <TT>return
+Value</TT> to a simple error value. Note that the return value from <TT>Function()</TT>
+is reserved for either this error value or the value <TT>0</TT>, indicating all went
+well, and note that the function returns this value on line 42.</P>
+<P>The actual values needed, the square and cube of <TT>number</TT>, are returned
+not by using the return mechanism, but rather by changing the pointers that were
+passed into the function.</P>
+<P>On lines 38 and 39, the pointers are assigned their return values. On line 40,
+<TT>return Value</TT> is assigned a success value. On line 41, <TT>return Value</TT>
+is returned.</P>
+<P>One improvement to this program might be to declare the following:</P>
+<PRE><FONT COLOR="#0066FF">enum ERROR_VALUE { SUCCESS, FAILURE};</FONT></PRE>
+<P>Then, rather than returning 0 or 1, the program could return <TT>SUCCESS</TT>
+or <TT>FAILURE</TT>.
+<H4 ALIGN="CENTER"><A NAME="Heading28"></A><FONT COLOR="#000077">Returning Values
+by Reference</FONT></H4>
+<P>Although Listing 9.8 works, it can be made easier to read and maintain by using
+references rather than pointers. Listing 9.9 shows the same program rewritten to
+use references and to incorporate the <TT>ERROR</TT> enumeration.</P>
+
+<P><A NAME="Heading29"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 9.9.Listing
+9.8 rewritten using references.</B></FONT>
+<PRE><FONT COLOR="#0066FF">
+1:     //Listing 9.9
+2:      // Returning multiple values from a function
+3:      // using references
+4:
+5:      #include &lt;iostream.h&gt;
+6:
+7:      typedef unsigned short USHORT;
+8:      enum ERR_CODE { SUCCESS, ERROR };
+9:
+10:      ERR_CODE Factor(USHORT, USHORT&amp;, USHORT&amp;);
+11:
+12:      int main()
+13:      {
+14:           USHORT number, squared, cubed;
+15:           ERR_CODE result;
+16:
+17:           cout &lt;&lt; &quot;Enter a number (0 - 20): &quot;;
+18:           cin &gt;&gt; number;
+19:
+20:           result = Factor(number, squared, cubed);
+21:
+22:           if (result == SUCCESS)
+23:           {
+24:                 cout &lt;&lt; &quot;number: &quot; &lt;&lt; number &lt;&lt; &quot;\n&quot;;
+25:                 cout &lt;&lt; &quot;square: &quot; &lt;&lt; squared &lt;&lt; &quot;\n&quot;;
+26:                 cout &lt;&lt; &quot;cubed: &quot;  &lt;&lt; cubed   &lt;&lt; &quot;\n&quot;;
+27:           }
+28:           else
+29:           cout &lt;&lt; &quot;Error encountered!!\n&quot;;
+30:     return 0;
+31:      }
+32:
+33:      ERR_CODE Factor(USHORT n, USHORT &amp;rSquared, USHORT &amp;rCubed)
+34:      {
+35:           if (n &gt; 20)
+36:                return ERROR;   // simple error code
+37:           else
+38:           {
+39:                rSquared = n*n;
+40:                rCubed = n*n*n;
+41:                return SUCCESS;
+42:           }
+<TT>43: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: Enter a number (0 - 20): 3
+number: 3
+square: 9
+cubed: 27
+</FONT></PRE>
+<P><FONT COLOR="#000077"><TT><B>Anaylsis:</B></TT></FONT><TT><B> </B></TT>Listing
+9.9 is identical to 9.8, with two exceptions. The <TT>ERR_CODE</TT> enumeration makes
+the error reporting a bit more explicit on lines 36 and 41, as well as the error
+handling on line 22.<BR>
+<BR>
+The larger change, however, is that <TT>Factor()</TT> is now declared to take references
+to <TT>squared</TT> and <TT>cubed</TT> rather than to pointers. This makes the manipulation
+of these parameters far simpler and easier to understand.
+<H3 ALIGN="CENTER"><A NAME="Heading31"></A><FONT COLOR="#000077">Passing by Reference
+for Efficiency</FONT></H3>
+<P>Each time you pass an object into a function by value, a copy of the object is
+made. Each time you return an object from a function by value, another copy is made.</P>
+<P>In the &quot;Extra Credit&quot; section at the end of Day 5, you learned that
+these objects are copied onto the stack. Doing so takes time and memory. For small
+objects, such as the built-in integer values, this is a trivial cost.</P>
+<P>However, with larger, user-created objects, the cost is greater. The size of a
+user-created object on the stack is the sum of each of its member variables. These,
+in turn, can each be user-created objects, and passing such a massive structure by
+copying it onto the stack can be very expensive in performance and memory consumption.</P>
+<P>There is another cost as well. With the classes you create, each of these temporary
+copies is created when the compiler calls a special constructor: the copy constructor.
+Tomorrow you will learn how copy constructors work and how you can make your own,
+but for now it is enough to know that the copy constructor is called each time a
+temporary copy of the object is put on the stack.</P>
+<P>When the temporary object is destroyed, which happens when the function returns,
+the object's destructor is called. If an object is returned by the function by value,
+a copy of that object must be made and destroyed as well.</P>
+<P>With large objects, these constructor and destructor calls can be expensive in
+speed and use of memory. To illustrate this idea, Listing 9.9 creates a stripped-down
+user-created object: <TT>SimpleCat</TT>. A real object would be larger and more expensive,
+but this is sufficient to show how often the copy constructor and destructor are
+called.</P>
+<P>Listing 9.10 creates the <TT>SimpleCat</TT> object and then calls two functions.
+The first function receives the <TT>Cat</TT> by value and then returns it by value.
+The second one receives a pointer to the object, rather than the object itself, and
+returns a pointer to the object.</P>
+
+<P><A NAME="Heading32"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 9.10. Passing
+objects by reference.</B></FONT>
+<PRE><FONT COLOR="#0066FF">
+1:   //Listing 9.10
+2:   // Passing pointers to objects
+3:
+4:   #include &lt;iostream.h&gt;
+5:
+6:   class SimpleCat
+7:   {
+8:   public:
+9:           SimpleCat ();                    // constructor
+10:          SimpleCat(SimpleCat&amp;);     // copy constructor
+11:          ~SimpleCat();                    // destructor
+12:   };
+13:
+14:   SimpleCat::SimpleCat()
+15:   {
+16:          cout &lt;&lt; &quot;Simple Cat Constructor...\n&quot;;
+17:   }
+18:
+19:   SimpleCat::SimpleCat(SimpleCat&amp;)
+20:   {
+21:          cout &lt;&lt; &quot;Simple Cat Copy Constructor...\n&quot;;
+22:   }
+23:
+24:   SimpleCat::~SimpleCat()
+25:   {
+26:          cout &lt;&lt; &quot;Simple Cat Destructor...\n&quot;;
+27:   }
+28:
+29:   SimpleCat FunctionOne (SimpleCat theCat);
+30:   SimpleCat* FunctionTwo (SimpleCat *theCat);
+31:
+32:   int main()
+33:   {
+34:          cout &lt;&lt; &quot;Making a cat...\n&quot;;
+35:          SimpleCat Frisky;
+36:          cout &lt;&lt; &quot;Calling FunctionOne...\n&quot;;
+37:          FunctionOne(Frisky);
+38:          cout &lt;&lt; &quot;Calling FunctionTwo...\n&quot;;
+39:          FunctionTwo(&amp;Frisky);
+40:     return 0;
+41:   }
+42:
+43:   // FunctionOne, passes by value
+44:   SimpleCat FunctionOne(SimpleCat theCat)
+45:   {
+46:                   cout &lt;&lt; &quot;Function One. Returning...\n&quot;;
+47:                   return theCat;
+48:   }
+49:
+50:   // functionTwo, passes by reference
+51:   SimpleCat* FunctionTwo (SimpleCat  *theCat)
+52:   {
+53:                   cout &lt;&lt; &quot;Function Two. Returning...\n&quot;;
+54:                   return theCat;
+<TT>55: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: 1:  Making a cat...
+2:  Simple Cat Constructor...
+3:  Calling FunctionOne...
+4:  Simple Cat Copy Constructor...
+5:  Function One. Returning...
+6:  Simple Cat Copy Constructor...
+7:  Simple Cat Destructor...
+8:  Simple Cat Destructor...
+9:  Calling FunctionTwo...
+10: Function Two. Returning...
+11: Simple Cat Destructor...
+</FONT></PRE>
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>Line numbers will not print. They
+	were added to aid in the analysis. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P><FONT COLOR="#000077"><TT><B>Anaylsis:</B></TT></FONT><TT><B> </B></TT>A very
+simplified <TT>SimpleCat</TT> class is declared on lines 6-12. The constructor, copy
+constructor, and destructor all print an informative message so that you can tell
+when they've been called.<BR>
+On line 34, <TT>main()</TT> prints out a message, and that is seen on output line
+1. On line 35, a <TT>SimpleCat</TT> object is instantiated. This causes the constructor
+to be called, and the output from the constructor is seen on output line 2.</P>
+<P>On line 36, <TT>main()</TT> reports that it is calling <TT>FunctionOne</TT>, which
+creates output line 3. Because <TT>FunctionOne()</TT> is called passing the <TT>SimpleCat</TT>
+object by value, a copy of the <TT>SimpleCat</TT> object is made on the stack as
+an object local to the called function. This causes the copy constructor to be called,
+which creates output line 4.</P>
+<P>Program execution jumps to line 46 in the called function, which prints an informative
+message, output line 5. The function then returns, and returns the <TT>SimpleCat</TT>
+object by value. This creates yet another copy of the object, calling the copy constructor
+and producing line 6.</P>
+<P>The return value from <TT>FunctionOne()</TT> is not assigned to any object, and
+so the temporary created for the return is thrown away, calling the destructor, which
+produces output line 7. Since <TT>FunctionOne()</TT> has ended, its local copy goes
+out of scope and is destroyed, calling the destructor and producing line 8.</P>
+<P>Program execution returns to <TT>main()</TT>, and <TT>FunctionTwo()</TT> is called,
+but the parameter is passed by reference. No copy is produced, so there's no output.
+<TT>FunctionTwo()</TT> prints the message that appears as output line 10 and then
+returns the <TT>SimpleCat</TT> object, again by reference, and so again produces
+no calls to the constructor or destructor.</P>
+<P>Finally, the program ends and <TT>Frisky</TT> goes out of scope, causing one final
+call to the destructor and printing output line 11.</P>
+<P>The net effect of this is that the call to <TT>FunctionOne()</TT>, because it
+passed the cat by value, produced two calls to the copy constructor and two to the
+destructor, while the call to <TT>FunctionTwo()</TT> produced none.
+<H4 ALIGN="CENTER"><A NAME="Heading34"></A><FONT COLOR="#000077">Passing a const
+Pointer</FONT></H4>
+<P>Although passing a pointer to <TT>FunctionTwo()</TT> is more efficient, it is
+dangerous. <TT>FunctionTwo()</TT> is not allowed to change the <TT>SimpleCat</TT>
+object it is passed, yet it is given the address of the <TT>SimpleCat</TT>. This
+seriously exposes the object to change and defeats the protection offered in passing
+by value.</P>
+<P>Passing by value is like giving a museum a photograph of your masterpiece instead
+of the real thing. If vandals mark it up, there is no harm done to the original.
+Passing by reference is like sending your home address to the museum and inviting
+guests to come over and look at the real thing.</P>
+<P>The solution is to pass a <TT>const</TT> pointer to <TT>SimpleCat</TT>. Doing
+so prevents calling any non-<TT>const</TT> method on <TT>SimpleCat</TT>, and thus
+protects the object from change. Listing 9.11 demonstrates this idea.</P>
+
+<P><A NAME="Heading35"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 9.11. Passing
+const pointers.</B></FONT>
+<PRE><FONT COLOR="#0066FF">
+1:  //Listing 9.11
+2:       // Passing pointers to objects
+3:
+4:         #include &lt;iostream.h&gt;
+5:
+6:         class SimpleCat
+7:         {
+8:         public:
+9:                 SimpleCat();
+10:                 SimpleCat(SimpleCat&amp;);
+11:                 ~SimpleCat();
+12:
+13:                 int GetAge() const { return itsAge; }
+14:                 void SetAge(int age) { itsAge = age; }
+15:
+16:         private:
+17:                 int itsAge;
+18:            };
+19:
+20:            SimpleCat::SimpleCat()
+21:            {
+22:                   cout &lt;&lt; &quot;Simple Cat Constructor...\n&quot;;
+23:                   itsAge = 1;
+24:            }
+25:
+26:            SimpleCat::SimpleCat(SimpleCat&amp;)
+27:            {
+28:                   cout &lt;&lt; &quot;Simple Cat Copy Constructor...\n&quot;;
+29:            }
+30:
+31:            SimpleCat::~SimpleCat()
+32:            {
+33:                   cout &lt;&lt; &quot;Simple Cat Destructor...\n&quot;;
+34:            }
+35:
+36:const SimpleCat * const FunctionTwo (const SimpleCat * const theCat);
+37:
+38:            int main()
+39:            {
+40:                   cout &lt;&lt; &quot;Making a cat...\n&quot;;
+41:                   SimpleCat Frisky;
+42:                   cout &lt;&lt; &quot;Frisky is &quot; ;
+43                    cout &lt;&lt; Frisky.GetAge();
+44:                   cout &lt;&lt; &quot; years _old\n&quot;;
+45:                   int age = 5;
+46:                   Frisky.SetAge(age);
+47:                   cout &lt;&lt; &quot;Frisky is &quot; ;
+48                    cout &lt;&lt; Frisky.GetAge();
+49:                   cout &lt;&lt; &quot; years _old\n&quot;;
+50:                   cout &lt;&lt; &quot;Calling FunctionTwo...\n&quot;;
+51:                   FunctionTwo(&amp;Frisky);
+52:                   cout &lt;&lt; &quot;Frisky is &quot; ;
+53                    cout &lt;&lt; Frisky.GetAge();
+54:                   cout &lt;&lt; &quot; years _old\n&quot;;
+55:     return 0;
+56:            }
+57:
+58:    // functionTwo, passes a const pointer
+59:    const SimpleCat * const FunctionTwo (const SimpleCat * const theCat)
+60:    {
+61:             cout &lt;&lt; &quot;Function Two. Returning...\n&quot;;
+62:             cout &lt;&lt; &quot;Frisky is now &quot; &lt;&lt; theCat-&gt;GetAge();
+63:             cout &lt;&lt; &quot; years old \n&quot;;
+64:             // theCat-&gt;SetAge(8);   const!
+65:             return theCat;
+<TT>66: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: Making a cat...
+Simple Cat constructor...
+Frisky is 1 years old
+Frisky is 5 years old
+Calling FunctionTwo...
+FunctionTwo. Returning...
+Frisky is now 5 years old
+Frisky is 5 years old
+Simple Cat Destructor...
+</FONT></PRE>
+<P><FONT COLOR="#000077"><TT><B>Anaylsis:</B></TT></FONT><TT><B> </B>SimpleCat</TT>
+has added two accessor functions, <TT>GetAge()</TT> on line 13, which is a <TT>const</TT>
+function, and <TT>SetAge()</TT> on line 14, which is not a <TT>const</TT> function.
+It has also added the member variable <TT>itsAge</TT> on line 17.<BR>
+The constructor, copy constructor, and destructor are still defined to print their
+messages. The copy constructor is never called, however, because the object is passed
+by reference and so no copies are made. On line 41, an object is created, and its
+default age is printed, starting on line 42.</P>
+<P>On line 46, <TT>itsAge</TT> is set using the accessor <TT>SetAge</TT>, and the
+result is printed on line 47. <TT>FunctionOne</TT> is not used in this program, but
+<TT>FunctionTwo()</TT> is called. <TT>FunctionTwo()</TT> has changed slightly; the
+parameter and return value are now declared, on line 36, to take a constant pointer
+to a constant object and to return a constant pointer to a constant object.</P>
+<P>Because the parameter and return value are still passed by reference, no copies
+are made and the copy constructor is not called. The pointer in <TT>FunctionTwo()</TT>,
+however, is now constant, and thus cannot call the non-<TT>const</TT> method, <TT>SetAge()</TT>.
+If the call to <TT>SetAge()</TT> on line 64 was not commented out, the program would
+not compile.</P>
+<P>Note that the object created in <TT>main()</TT> is not constant, and <TT>Frisky</TT>
+can call <TT>SetAge()</TT>. The address of this non-constant object is passed to
+<TT>FunctionTwo()</TT>, but because <TT>FunctionTwo()</TT>'s declaration declares
+the pointer to be a constant pointer, the object is treated as if it were constant!
+<H4 ALIGN="CENTER"><A NAME="Heading37"></A><FONT COLOR="#000077">References as an
+Alternative</FONT></H4>
+<P>Listing 9.11 solves the problem of making extra copies, and thus saves the calls
+to the copy constructor and destructor. It uses constant pointers to constant objects,
+and thereby solves the problem of the function changing the object. It is still somewhat
+cumbersome, however, because the objects passed to the function are pointers.</P>
+<P>Since you know the object will never be null, it would be easier to work with
+in the function if a reference were passed in, rather than a pointer. Listing 9.12
+illustrates this.</P>
+
+<P><A NAME="Heading38"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 9.12. Passing
+references to objects.</B></FONT>
+<PRE><FONT COLOR="#0066FF">
+1: //Listing 9.12
+2: // Passing references to objects
+3:
+4:   #include &lt;iostream.h&gt;
+5:
+6:   class SimpleCat
+7:   {
+8:   public:
+9:           SimpleCat();
+10:           SimpleCat(SimpleCat&amp;);
+11:           ~SimpleCat();
+12:
+13:           int GetAge() const { return itsAge; }
+14:           void SetAge(int age) { itsAge = age; }
+15:
+16:   private:
+17:           int itsAge;
+18:      };
+19:
+20:      SimpleCat::SimpleCat()
+21:      {
+22:             cout &lt;&lt; &quot;Simple Cat Constructor...\n&quot;;
+23:             itsAge = 1;
+24:      }
+25:
+26:      SimpleCat::SimpleCat(SimpleCat&amp;)
+27:      {
+28:             cout &lt;&lt; &quot;Simple Cat Copy Constructor...\n&quot;;
+29:      }
+30:
+31:      SimpleCat::~SimpleCat()
+32:      {
+33:             cout &lt;&lt; &quot;Simple Cat Destructor...\n&quot;;
+34:      }
+35:
+36:      const     SimpleCat &amp; FunctionTwo (const SimpleCat &amp; theCat);
+37:
+38:      int main()
+39:      {
+40:             cout &lt;&lt; &quot;Making a cat...\n&quot;;
+41:             SimpleCat Frisky;
+42:             cout &lt;&lt; &quot;Frisky is &quot; &lt;&lt; Frisky.GetAge() &lt;&lt; &quot; years old\n&quot;;
+43:             int age = 5;
+44:             Frisky.SetAge(age);
+45:             cout &lt;&lt; &quot;Frisky is &quot; &lt;&lt; Frisky.GetAge() &lt;&lt; &quot; years old\n&quot;;
+46:             cout &lt;&lt; &quot;Calling FunctionTwo...\n&quot;;
+47:             FunctionTwo(Frisky);
+48:             cout &lt;&lt; &quot;Frisky is &quot; &lt;&lt; Frisky.GetAge() &lt;&lt; &quot; years old\n&quot;;
+49:     return 0;
+50:      }
+51:
+52:      // functionTwo, passes a ref to a const object
+53:      const SimpleCat &amp; FunctionTwo (const SimpleCat &amp; theCat)
+54:      {
+55:                      cout &lt;&lt; &quot;Function Two. Returning...\n&quot;;
+56:                      cout &lt;&lt; &quot;Frisky is now &quot; &lt;&lt; theCat.GetAge();
+57:                      cout &lt;&lt; &quot; years old \n&quot;;
+58:                      // theCat.SetAge(8);   const!
+59:                      return theCat;
+<TT>60: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: Making a cat...
+Simple Cat constructor...
+Frisky is 1 years old
+Frisky is 5 years old
+Calling FunctionTwo...
+FunctionTwo. Returning...
+Frisky is now 5 years old
+Frisky is 5 years old
+Simple Cat Destructor...</FONT></PRE>
+<P><FONT COLOR="#000077"><TT><B>Analysis:</B></TT></FONT><TT><B> </B></TT>The output
+is identical to that produced by Listing 9.11. The only significant change is that
+<TT>FunctionTwo()</TT> now takes and returns a reference to a constant object. Once
+again, working with references is somewhat simpler than working with pointers, and
+the same savings and efficiency are achieved, as well as the safety provided by using
+<TT>const</TT>.
+<H3 ALIGN="CENTER"><A NAME="Heading40"></A><FONT COLOR="#000077">const References</FONT></H3>
+<P>C++ programmers do not usually differentiate between &quot;constant reference
+to a <TT>SimpleCat</TT> object&quot; and &quot;reference to a constant <TT>SimpleCat</TT>
+object.&quot; References themselves can never be reassigned to refer to another object,
+and so are always constant. If the keyword <TT>const</TT> is applied to a reference,
+it is to make the object referred to constant.
+<H3 ALIGN="CENTER"><A NAME="Heading41"></A><FONT COLOR="#000077">When to Use References
+and When to Use Pointers</FONT></H3>
+<P>C++ programmers strongly prefer references to pointers. References are cleaner
+and easier to use, and they do a better job of hiding information, as we saw in the
+previous example.</P>
+<P>References cannot be reassigned, however. If you need to point first to one object
+and then another, you must use a pointer. References cannot be null, so if there
+is any chance that the object in question may be null, you must not use a reference.
+You must use a pointer.</P>
+<P>An example of the latter concern is the operator <TT>new</TT>. If <TT>new</TT>
+cannot allocate memory on the free store, it returns a null pointer. Since a reference
+can't be null, you must not initialize a reference to this memory until you've checked
+that it is not null. The following example shows how to handle this:</P>
+<PRE><FONT COLOR="#0066FF">int *pInt = new int;
+if (pInt != NULL)
+int &amp;rInt = *pInt;
+</FONT></PRE>
+<P>In this example a pointer to int, <TT>pInt</TT>, is declared and initialized with
+the memory returned by the operator <TT>new</TT>. The address in <TT>pInt</TT> is
+tested, and if it is not null, <TT>pInt</TT> is dereferenced. The result of dereferencing
+an <TT>int</TT> variable is an <TT>int</TT> object, and <TT>rInt</TT> is initialized
+to refer to that object. Thus, <TT>rInt</TT> becomes an alias to the <TT>int</TT>
+returned by the operator <TT>new</TT>.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<B>DO </B>pass parameters by reference whenever possible<B>. DO</B> return by reference
+	whenever possible. DON'T use pointers if references will work. <B>DO</B> use <TT>const</TT>
+	to protect references and pointers whenever possible.<B> DON'T </B>return a reference
+	to a local object. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H3 ALIGN="CENTER"><A NAME="Heading42"></A><FONT COLOR="#000077">Mixing References
+and Pointers</FONT></H3>
+<P>It is perfectly legal to declare both pointers and references in the same function
+parameter list, along with objects passed by value. Here's an example:</P>
+<PRE><FONT COLOR="#0066FF">CAT * SomeFunction (Person &amp;theOwner, House *theHouse, int age);
+</FONT></PRE>
+<P>This declaration says that <TT>SomeFunction</TT> takes three parameters. The first
+is a reference to a <TT>Person</TT> object, the second is a pointer to a <TT>house</TT>
+object, and the third is an integer. It returns a pointer to a <TT>CAT</TT> object.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>The question of where to put the
+	reference (<TT>&amp;</TT>) or indirection (<TT>*</TT>) operator when declaring these
+	variables is a great controversy. You may legally write any of the following: 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<PRE><FONT COLOR="#0066FF">1:  CAT&amp;  rFrisky;
+2:  CAT &amp; rFrisky;
+3:  CAT  &amp;rFrisky;
+</FONT></PRE>
+<P>White space is completely ignored, so anywhere you see a space here you may put
+as many spaces, tabs, and new lines as you like. Setting aside freedom of expression
+issues, which is best? Here are the arguments for all three: The argument for case
+1 is that <TT>rFrisky</TT> is a variable whose name is <TT>rFrisky</TT> and whose
+type can be thought of as &quot;reference to <TT>CAT</TT> object.&quot; Thus, this
+argument goes, the <TT>&amp;</TT> should be with the type. The counterargument is
+that the type is <TT>CAT</TT>. The <TT>&amp;</TT> is part of the &quot;declarator,&quot;
+which includes the variable name and the ampersand. More important, having the <TT>&amp;</TT>
+near the <TT>CAT</TT> can lead to the following bug:</P>
+<PRE><FONT COLOR="#0066FF">CAT&amp;  rFrisky, rBoots;
+</FONT></PRE>
+<P>Casual examination of this line would lead you to think that both <TT>rFrisky</TT>
+and <TT>rBoots</TT> are references to <TT>CAT</TT> objects, but you'd be wrong. This
+really says that <TT>rFrisky</TT> is a reference to a <TT>CAT</TT>, and <TT>rBoots</TT>
+(despite its name) is not a reference but a plain old <TT>CAT</TT> variable. This
+should be rewritten as follows:</P>
+<PRE><FONT COLOR="#0066FF">CAT    &amp;rFrisky, rBoots;
+</FONT></PRE>
+<P>The answer to this objection is that declarations of references and variables
+should never be combined like this. Here's the right answer:</P>
+<PRE><FONT COLOR="#0066FF">
+CAT&amp; rFrisky;
+CAT  boots;
+</FONT></PRE>
+<P>Finally, many programmers opt out of the argument and go with the middle position,
+that of putting the <TT>&amp;</TT> in the middle of the two, as illustrated in case
+2. Of course, everything said so far about the reference operator (<TT>&amp;</TT>)
+applies equally well to the indirection operator (<TT>*</TT>). The important thing
+is to recognize that reasonable people differ in their perceptions of the one true
+way. Choose a style that works for you, and be consistent within any one program;
+clarity is, and remains, the goal. This book will adopt two conventions when declaring
+references and pointers:
+
+<DL>
+	<DD><B>1.</B> Put the ampersand and asterisk in the middle, with a space on either
+	side.<BR>
+	<BR>
+	<B>2.</B> Never declare references, pointers, and variables all on the same line.
+</DL>
+
+<H3 ALIGN="CENTER"><A NAME="Heading43"></A><FONT COLOR="#000077">Dont Return a Reference
+to an Object that Isnt in Scope!</FONT></H3>
+<P>Once C++ programmers learn to pass by reference, they have a tendency to go hog-wild.
+It is possible, however, to overdo it. Remember that a reference is always an alias
+to some other object. If you pass a reference into or out of a function, be sure
+to ask yourself, &quot;What is the object I'm aliasing, and will it still exist every
+time it's used?&quot;</P>
+<P>Listing 9.13 illustrates the danger of returning a reference to an object that
+no longer exists.</P>
+
+<P><A NAME="Heading44"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 9.13. Returning
+a reference to a non-existent object.</B></FONT>
+<PRE><FONT COLOR="#0066FF">
+1:     // Listing 9.13
+2:      // Returning a reference to an object
+3:      // which no longer exists
+4:
+5:      #include &lt;iostream.h&gt;
+6:
+7:      class SimpleCat
+8:      {
+9:      public:
+10:            SimpleCat (int age, int weight);
+11:            ~SimpleCat() {}
+12:            int GetAge() { return itsAge; }
+13:            int GetWeight() { return itsWeight; }
+14:      private:
+15:           int itsAge;
+16:           int itsWeight;
+17:      };
+18:
+19:      SimpleCat::SimpleCat(int age, int weight):
+20:      itsAge(age), itsWeight(weight) {}
+21:
+22:      SimpleCat &amp;TheFunction();
+23:
+24:      int main()
+25:      {
+26:           SimpleCat &amp;rCat = TheFunction();
+27:           int age = rCat.GetAge();
+28:           cout &lt;&lt; &quot;rCat is &quot; &lt;&lt; age &lt;&lt; &quot; years old!\n&quot;;
+29:     return 0;
+30:      }
+31:
+32:      SimpleCat &amp;TheFunction()
+33:      {
+34:           SimpleCat Frisky(5,9);
+35:           return Frisky;
+<TT>36: }</TT>
+Output: Compile error: Attempting to return a reference to a local object!
+</FONT></PRE>
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>WARNING:</B></FONT><B> </B>This program won't compile on
+	the Borland compiler. It will compile on Microsoft compilers; however, it should
+	be noted that it is a bad coding practice. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P><FONT COLOR="#000077"><TT><B>Anaylsis:</B></TT></FONT><TT><B> </B></TT>On lines
+7-17, <TT>SimpleCat</TT> is declared. On line 26, a reference to a <TT>SimpleCat</TT>
+is initialized with the results of calling <TT>TheFunction()</TT>, which is declared
+on line 22 to return a reference to a <TT>SimpleCat</TT>.<BR>
+<BR>
+The body of <TT>TheFunction()</TT> declares a local object of type <TT>SimpleCat</TT>
+and initializes its age and weight. It then returns that local object by reference.
+Some compilers are smart enough to catch this error and won't let you run the program.
+Others will let you run the program, with unpredictable results.</P>
+<P>When <TT>TheFunction()</TT> returns, the local object, <TT>Frisky</TT>, will be
+destroyed (painlessly, I assure you). The reference returned by this function will
+be an alias to a non-existent object, and this is a bad thing.
+<H3 ALIGN="CENTER"><A NAME="Heading46"></A><FONT COLOR="#000077">Returning a Reference
+to an Object on the Heap</FONT></H3>
+<P>You might be tempted to solve the problem in Listing 9.13 by having <TT>TheFunction()</TT>
+create <TT>Frisky</TT> on the heap. That way, when you return from <TT>TheFunction()</TT>,
+<TT>Frisky</TT> will still exist.</P>
+<P>The problem with this approach is: What do you do with the memory allocated for
+<TT>Frisky</TT> when you are done with it? Listing 9.14 illustrates this problem.</P>
+
+<P><A NAME="Heading48"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 9.14. Memory
+leaks.</B></FONT>
+<PRE><FONT COLOR="#0066FF">
+1:     // Listing 9.14
+2:      // Resolving memory leaks
+3:      #include &lt;iostream.h&gt;
+4:
+5:      class SimpleCat
+6:      {
+7:      public:
+8:              SimpleCat (int age, int weight);
+9:             ~SimpleCat() {}
+10:            int GetAge() { return itsAge; }
+11:            int GetWeight() { return itsWeight; }
+12:
+13      private:
+14:           int itsAge;
+15:           int itsWeight;
+16:      };
+17:
+18:      SimpleCat::SimpleCat(int age, int weight):
+19:      itsAge(age), itsWeight(weight) {}
+20:
+21:      SimpleCat &amp; TheFunction();
+22:
+23:      int main()
+24:      {
+25:           SimpleCat &amp; rCat = TheFunction();
+26:           int age = rCat.GetAge();
+27:           cout &lt;&lt; &quot;rCat is &quot; &lt;&lt; age &lt;&lt; &quot; years old!\n&quot;;
+28:           cout &lt;&lt; &quot;&amp;rCat: &quot; &lt;&lt; &amp;rCat &lt;&lt; endl;
+29:           // How do you get rid of that memory?
+30:           SimpleCat * pCat = &amp;rCat;
+31:           delete pCat;
+32:           // Uh oh, rCat now refers to ??
+33:     return 0;
+34:      }
+35:
+36:      SimpleCat &amp;TheFunction()
+37:      {
+38:           SimpleCat * pFrisky = new SimpleCat(5,9);
+39:           cout &lt;&lt; &quot;pFrisky: &quot; &lt;&lt; pFrisky &lt;&lt; endl;
+40:           return *pFrisky;
+<TT>41: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: pFrisky:  0x2bf4
+rCat is 5 years old!
+&amp;rCat: 0x2bf4
+</FONT></PRE>
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>WARNING:</B></FONT><B> </B>This compiles, links, and appears
+	to work. But it is a time bomb waiting to go off. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P><FONT COLOR="#000077"><TT><B>Anaylss:</B></TT></FONT><TT><B> </B>TheFunction()</TT>
+has been changed so that it no longer returns a reference to a local variable. Memory
+is allocated on the free store and assigned to a pointer on line 38. The address
+that pointer holds is printed, and then the pointer is dereferenced and the <TT>SimpleCat</TT>
+object is returned by reference.<BR>
+On line 25, the return of <TT>TheFunction()</TT> is assigned to a reference to <TT>SimpleCat</TT>,
+and that object is used to obtain the cat's age, which is printed on line 27.</P>
+<P>To prove that the reference declared in <TT>main()</TT> is referring to the object
+put on the free store in <TT>TheFunction()</TT>, the address of operator is applied
+to <TT>rCat</TT>. Sure enough, it displays the address of the object it refers to
+and this matches the address of the object on the free store.</P>
+<P>So far, so good. But how will that memory be freed? You can't call <TT>delete</TT>
+on the reference. One clever solution is to create another pointer and initialize
+it with the address obtained from <TT>rCat</TT>. This does delete the memory, and
+plugs the memory leak. One small problem, though: What is <TT>rCat</TT> referring
+to after line 31? As stated earlier, a reference must always alias an actual object;
+if it references a null object (as this does now), the program is invalid.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>It cannot be overemphasized that
+	a program with a reference to a null object may compile, but it is invalid and its
+	performance is unpredictable. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P>There are actually three solutions to this problem. The first is to declare a
+<TT>SimpleCat</TT> object on line 25, and to return that cat from <TT>TheFunction</TT>
+by value. The second is to go ahead and declare the <TT>SimpleCat</TT> on the free
+store in <TT>TheFunction()</TT>, but have <TT>TheFunction()</TT> return a pointer
+to that memory. Then the calling function can delete the pointer when it is done.<BR>
+The third workable solution, and the right one, is to declare the object in the calling
+function and then to pass it to <TT>TheFunction()</TT> by reference.
+<H3 ALIGN="CENTER"><A NAME="Heading50"></A><FONT COLOR="#000077">Pointer, Pointer,
+Who Has the Pointer?</FONT></H3>
+<P>When your program allocates memory on the free store, a pointer is returned. It
+is imperative that you keep a pointer to that memory, because once the pointer is
+lost, the memory cannot be deleted and becomes a memory leak.</P>
+<P>As you pass this block of memory between functions, someone will &quot;own&quot;
+the pointer. Typically the value in the block will be passed using references, and
+the function that created the memory is the one that deletes it. But this is a general
+rule, not an ironclad one.</P>
+<P>It is dangerous for one function to create memory and another to free it, however.
+Ambiguity about who owns the pointer can lead to one of two problems: forgetting
+to delete a pointer or deleting it twice. Either one can cause serious problems in
+your program. It is safer to build your functions so that they delete the memory
+they create.</P>
+<P>If you are writing a function that needs to create memory and then pass it back
+to the calling function, consider changing your interface. Have the calling function
+allocate the memory and then pass it into your function by reference. This moves
+all memory management out of your program and back to the function that is prepared
+to delete it.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<B>DO </B>pass parameters by value when you must<B>. DO</B> return by value when
+	you must. <B>DON'T </B>pass by reference if the item referred to may go out of scope.
+	<B>DON'T</B> use references to null objects. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H3 ALIGN="CENTER"><A NAME="Heading51"></A><FONT COLOR="#000077">Summary</FONT></H3>
+<P>Today you learned what references are and how they compare to pointers. You saw
+that references must be initialized to refer to an existing object, and cannot be
+reassigned to refer to anything else. Any action taken on a reference is in fact
+taken on the reference's target object. Proof of this is that taking the address
+of a reference returns the address of the target.</P>
+<P>You saw that passing objects by reference can be more efficient than passing by
+value. Passing by reference also allows the called function to change the value in
+the arguments back in the calling function.</P>
+<P>You saw that arguments to functions and values returned from functions can be
+passed by reference, and that this can be implemented with pointers or with references.</P>
+<P>You saw how to use <TT>const</TT> pointers and <TT>const</TT> references to safely
+pass values between functions while achieving the efficiency of passing by reference.
+<H3 ALIGN="CENTER"><A NAME="Heading52"></A><FONT COLOR="#000077">Q&amp;A</FONT></H3>
+
+<DL>
+	<DD><B>Q. Why have references if pointers can do everything references can?<BR>
+	<BR>
+	A.</B> References are easier to use and understand. The indirection is hidden, and
+	there is no need to repeatedly dereference the variable.<BR>
+	<BR>
+	<B>Q. Why have pointers if references are easier?<BR>
+	</B><BR>
+	<B>A.</B> References cannot be null, and they cannot be reassigned. Pointers offer
+	greater flexibility, but are slightly more difficult to use.<BR>
+	<BR>
+	<B>Q. Why would you ever return by value from a function?<BR>
+	</B><BR>
+	<B>A.</B> If the object being returned is local, you must return by value or you
+	will be returning a reference to a non-existent object.<BR>
+	<BR>
+	<B>Q. Given the danger in returning by reference, why not always return by value?<BR>
+	</B><BR>
+	<B>A.</B> There is far greater efficiency in returning by reference. Memory is saved
+	and the program runs faster.
+</DL>
+
+<H3 ALIGN="CENTER"><A NAME="Heading53"></A><FONT COLOR="#000077">Workshop</FONT></H3>
+<P>The Workshop contains quiz questions to help solidify your understanding of the
+material covered and exercises to provide you with experience in using what you've
+learned. Try to answer the quiz and exercise questions before checking the answers
+in Appendix D, and make sure you understand the answers before going to the next
+chapter.
+<H4 ALIGN="CENTER"><A NAME="Heading54"></A><FONT COLOR="#000077">Quiz</FONT></H4>
+
+<DL>
+	<DD><B>1. </B>What is the difference between a reference and a pointer?<BR>
+	<B><BR>
+	2.</B> When must you use a pointer rather than a reference?<BR>
+	<B><BR>
+	3.</B> What does <TT>new</TT> return if there is insufficient memory to make your
+	new object?<BR>
+	<B><BR>
+	4.</B> What is a constant reference?<BR>
+	<B><BR>
+	5.</B> What is the difference between passing by reference and passing a reference?
+</DL>
+
+<H4 ALIGN="CENTER"><A NAME="Heading55"></A><FONT COLOR="#000077">Exercises</FONT></H4>
+
+<DL>
+	<DD><B>1. </B>Write a program that declares an <TT>int</TT>, a reference to an <TT>int</TT>,
+	and a pointer to an <TT>int</TT>. Use the pointer and the reference to manipulate
+	the value in the <TT>int</TT>.<BR>
+	<BR>
+	<B>2.</B> Write a program that declares a constant pointer to a constant integer.
+	Initialize the pointer to an integer variable, <TT>varOne</TT>. Assign 6 to <TT>varOne</TT>.
+	Use the pointer to assign 7 to <TT>varOne</TT>. Create a second integer variable,
+	<TT>varTwo</TT>. Reassign the pointer to <TT>varTwo</TT>.<BR>
+	<BR>
+	<B>3.</B> Compile the program in Exercise 2. What produces errors? What produces
+	warnings?<BR>
+	<BR>
+	<B>4.</B> Write a program that produces a stray pointer.<BR>
+	<BR>
+	<B>5.</B> Fix the program from Exercise 4.<BR>
+	<BR>
+	<B>6.</B> Write a program that produces a memory leak.<BR>
+	<BR>
+	<B>7.</B> Fix the program from Exercise 6.<BR>
+	<BR>
+	<B>8.</B> BUG BUSTERS: What is wrong with this program?
+</DL>
+
+<PRE><FONT COLOR="#0066FF">1:     #include &lt;iostream.h&gt;
+2:
+3:     class CAT
+4:     {
+5:        public:
+6:           CAT(int age) { itsAge = age; }
+7:           ~CAT(){}
+8:           int GetAge() const { return itsAge;}
+9:        private:
+10:          int itsAge;
+11:    };
+12:
+13:    CAT &amp; MakeCat(int age);
+14:    int main()
+15:    {
+16:       int age = 7;
+17:       CAT Boots = MakeCat(age);
+18:       cout &lt;&lt; &quot;Boots is &quot; &lt;&lt; Boots.GetAge() &lt;&lt; &quot; years old\n&quot;;
+19:    }
+20:
+21:    CAT &amp; MakeCat(int age)
+22:    {
+23:       CAT * pCat = new CAT(age);
+24:       return *pCat;
+25:    }
+</FONT></PRE>
+
+<DL>
+	<DD><B>9.</B> Fix the program from Exercise 8.<BR>
+	<BR>
+	
+</DL>
+
+<P ALIGN="CENTER"><A HREF="ch08.htm"><IMG SRC="../buttons/BLANPREV.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch10.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="#heading1"><IMG SRC="../buttons/BLANTOP.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A>
+
+
+</BODY>
+
+</HTML>

@@ -1,0 +1,406 @@
+<Builder name="" type="Microsoft Visual Studio" version="1.0">
+	<Hint>Microsoft Visual Studio .NET 2003\nMicrosoft Visual Studio 2005\nMicrosoft Visual Studio 2008</Hint>
+	<IncPaths>
+		<Pattern>*\Microsoft SDK\Include</Pattern>
+		<Pattern>*\VC\Include</Pattern>
+		<Pattern>*\VC\atlmfc\Include</Pattern>
+		<Pattern>*\VC\PlatformSDK\Include</Pattern>
+		<Pattern>*\VC7\Include</Pattern>
+		<Pattern>*\VC7\PlatformSDK\Include</Pattern>
+		<Pattern>*\Vc7\atlmfc\include</Pattern>
+		<Pattern>*\v6.0A\Include</Pattern>
+	</IncPaths>
+	<LibPaths>
+		<Pattern>*\Microsoft SDK\Lib</Pattern>
+		<Pattern>*\VC\Lib</Pattern>
+		<Pattern>*\VC\atlmfc\Lib</Pattern>
+		<Pattern>*\VC\PlatformSDK\Lib</Pattern>
+		<Pattern>*\VC7\Lib</Pattern>
+		<Pattern>*\VC7\PlatformSDK\Lib</Pattern>
+		<Pattern>*\Vc7\atlmfc\lib</Pattern>
+		<Pattern>*\v6.0A\Lib</Pattern>
+	</LibPaths>
+	<ExePaths>
+		<Pattern>*\Microsoft SDK\Bin</Pattern>
+		<Pattern>*\VC\Bin</Pattern>
+		<Pattern>*\VC\PlatformSDK\Bin</Pattern>
+		<Pattern>*\VC7\Bin</Pattern>
+		<Pattern>*\VC7\PlatformSDK\Bin</Pattern>
+		<Pattern>*\v6.0A\bin</Pattern>
+		<Pattern>*\Debugging Tools for Windows (x86)</Pattern>
+	</ExePaths>
+	<AutoDetect>
+		<Path>C:\Program Files\Microsoft Visual Studio 9.0</Path>
+		<Path>D:\Program Files\Microsoft Visual Studio 9.0</Path>
+		<Path>E:\Program Files\Microsoft Visual Studio 9.0</Path>
+		<Path>F:\Program Files\Microsoft Visual Studio 9.0</Path>
+		<Path>G:\Program Files\Microsoft Visual Studio 9.0</Path>
+		<Reg>\SOFTWARE\Microsoft\VisualStudio\9.0\Setup\VS|ProductDir</Reg>
+		<Reg>\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{CB531F9D-A8AC-3E26-8B8E-DC50A9B1627B}|InstallLocation</Reg>
+		
+		<Path>C:\Program Files\Microsoft SDKs\Windows\v6.0A</Path>
+		<Path>D:\Program Files\Microsoft SDKs\Windows\v6.0A</Path>
+		<Path>E:\Program Files\Microsoft SDKs\Windows\v6.0A</Path>
+		<Path>F:\Program Files\Microsoft SDKs\Windows\v6.0A</Path>
+		<Path>G:\Program Files\Microsoft SDKs\Windows\v6.0A</Path>
+		<Reg>\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v6.0A|InstallationFolder</Reg>
+		
+		<Path>C:\Program Files\Microsoft SDKs\Windows\v6.0</Path>
+		<Path>D:\Program Files\Microsoft SDKs\Windows\v6.0</Path>
+		<Path>E:\Program Files\Microsoft SDKs\Windows\v6.0</Path>
+		<Path>F:\Program Files\Microsoft SDKs\Windows\v6.0</Path>
+		<Path>G:\Program Files\Microsoft SDKs\Windows\v6.0</Path>
+		<Reg>\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v6.0|InstallationFolder</Reg>
+		
+		<Path>C:\Program Files\Microsoft Visual Studio 8</Path>
+		<Path>D:\Program Files\Microsoft Visual Studio 8</Path>
+		<Path>E:\Program Files\Microsoft Visual Studio 8</Path>
+		<Path>F:\Program Files\Microsoft Visual Studio 8</Path>
+		<Path>G:\Program Files\Microsoft Visual Studio 8</Path>
+		<Reg>\SOFTWARE\Microsoft\VisualStudio\8.0\Setup\VS|ProductDir</Reg>
+		<Reg>\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{80610804-8B7A-4753-80AA-ECB5510944C7}|InstallLocation</Reg>
+		
+		<Path>C:\Program Files\Microsoft Visual Studio .NET 2003</Path>
+		<Path>D:\Program Files\Microsoft Visual Studio .NET 2003</Path>
+		<Path>E:\Program Files\Microsoft Visual Studio .NET 2003</Path>
+		<Path>F:\Program Files\Microsoft Visual Studio .NET 2003</Path>
+		<Path>G:\Program Files\Microsoft Visual Studio .NET 2003</Path>
+		<Reg>\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{F05F0804-8517-4564-81F8-6732D0281B57}|InstallLocation</Reg>
+		<Reg>\SOFTWARE\Microsoft\VisualStudio\7.1\Setup\VS|ProductDir</Reg>
+		
+		<Reg>\SOFTWARE\Microsoft\Win32SDK\Directories|Install Dir</Reg>
+		<Reg>\SOFTWARE\Microsoft\MicrosoftSDK\InstalledSDKs\D2FF9F89-8AA2-4373-8A31-C838BF4DBBE1|Install Dir</Reg>
+		
+		<Path>C:\Program Files\Debugging Tools for Windows (x86)</Path>
+		<Path>D:\Program Files\Debugging Tools for Windows (x86)</Path>
+		<Path>E:\Program Files\Debugging Tools for Windows (x86)</Path>
+		<Path>F:\Program Files\Debugging Tools for Windows (x86)</Path>
+		<Path>G:\Program Files\Debugging Tools for Windows (x86)</Path>
+	</AutoDetect>
+	
+	<CompilerOptions>
+		<Category name="Code Generation">
+			<Option value="/G3" desc="Optimize for 80386 [/G3]"/>
+			<Option value="/G4" desc="Optimize for 80486 [/G4]"/>
+			<Option value="/G5" desc="Optimize for Pentium [/G5]"/>
+			<Option value="/G6" desc="Optimize for PPro, P-II, P-III [/G6]"/>
+			<Option value="/G7" desc="Optimize for Pentium 4 or Athlon [/G7]"/>
+			<Option value="/GA" desc="Optimize for Windows Application [/GA]"/>
+			<Option value="/GR" desc="Enable run-time type information (RTTI) [/GR]"/>
+			<Option value="/EHsc" desc="Enable synchronous exception handling [/EHsc]"/>
+			 
+		</Category>
+		<Category name="Debugging">
+			<Option value="/Zi" desc="Generates complete debugging information [/Zi]"/>
+			<Option value="/ZI" desc="Enable Edit and Continue debug info [/ZI]"/>
+		</Category>
+		<Category name="Warnings">
+			<Option value="/Wall" desc="Enable all warnings [/Wall]"/>
+			<Option value="/WX" desc="Treat warnings as errors [/WX]"/>
+			<Option value="/W1" desc="Enable warnings level 1 [/W1]"/>
+			<Option value="/W2" desc="Enable warnings level 2 [/W2]"/>
+			<Option value="/W3" desc="Enable warnings level 3 [/W3]"/>
+			<Option value="/W4" desc="Enable warnings level 4 [/W4]"/>
+			
+		
+		</Category>
+		<Category name="Optimization">
+			<Option value="/O1" desc="Create small code [/O1]"/>
+			<Option value="/O2" desc="Create fast code [/O2]"/>
+			<Option value="/Og" desc="Use global optimizations [/Og]"/>
+			<Option value="/Ox" desc="Use maximum optimization (/Ob2gity /Gs) [/Ox]"/>
+			<Option value="/Od" desc="Disable optimization [/Od]"/>
+			<Option value="/Os" desc="Favors small code [/Os]"/>
+			<Option value="/Ot" desc="Favors fast code [/Ot]"/>
+
+ 
+
+		</Category>
+		<RawOptionsDebug enabled="1">
+			
+			<Default>/EHsc /W3 /Zi /Od /D "DEBUG"</Default>
+			<User>/EHsc /W3 /Zi /Od /D "DEBUG"</User>
+		</RawOptionsDebug>
+		<RawOptionsRelease enabled="0">
+				<Default>/EHsc /W3 /O2</Default>
+			<User>/EHsc /W3 /O2</User>
+		</RawOptionsRelease>
+	</CompilerOptions>
+	<LinkerOptions>
+		<LibsDebug enabled="1">
+			<Default>
+				<Lib>kernel32.lib</Lib>
+				<Lib>user32.lib</Lib>
+				<Lib>gdi32.lib</Lib>
+				<Lib>winspool.lib</Lib>
+				<Lib>comdlg32.lib</Lib>
+				<Lib>advapi32.lib</Lib>
+				<Lib>shell32.lib</Lib>
+				<Lib>ole32.lib</Lib>
+				<Lib>oleaut32.lib</Lib>
+				<Lib>uuid.lib</Lib>
+				<Lib>odbc32.lib</Lib>
+				<Lib>odbccp32.lib</Lib>	
+			</Default>
+			<User>
+				<Lib>kernel32.lib</Lib>
+				<Lib>user32.lib</Lib>
+				<Lib>gdi32.lib</Lib>
+				<Lib>winspool.lib</Lib>
+				<Lib>comdlg32.lib</Lib>
+				<Lib>advapi32.lib</Lib>
+				<Lib>shell32.lib</Lib>
+				<Lib>ole32.lib</Lib>
+				<Lib>oleaut32.lib</Lib>
+				<Lib>uuid.lib</Lib>
+				<Lib>odbc32.lib</Lib>
+				<Lib>odbccp32.lib</Lib>		
+			</User>
+		</LibsDebug>
+		<LibsRelease enabled="0">
+			<Default>
+				<Lib>kernel32.lib</Lib>
+				<Lib>user32.lib</Lib>
+				<Lib>gdi32.lib</Lib>
+				<Lib>winspool.lib</Lib>
+				<Lib>comdlg32.lib</Lib>
+				<Lib>advapi32.lib</Lib>
+				<Lib>shell32.lib</Lib>
+				<Lib>ole32.lib</Lib>
+				<Lib>oleaut32.lib</Lib>
+				<Lib>uuid.lib</Lib>
+				<Lib>odbc32.lib</Lib>
+				<Lib>odbccp32.lib</Lib>			
+			</Default>
+			<User>
+				<Lib>kernel32.lib</Lib>
+				<Lib>user32.lib</Lib>
+				<Lib>gdi32.lib</Lib>
+				<Lib>winspool.lib</Lib>
+				<Lib>comdlg32.lib</Lib>
+				<Lib>advapi32.lib</Lib>
+				<Lib>shell32.lib</Lib>
+				<Lib>ole32.lib</Lib>
+				<Lib>oleaut32.lib</Lib>
+				<Lib>uuid.lib</Lib>
+				<Lib>odbc32.lib</Lib>
+				<Lib>odbccp32.lib</Lib>		
+			</User>
+		</LibsRelease>
+		<RawOptionsDebug enabled="1">
+			<Default>/DEBUG</Default>
+			<User>/DEBUG</User>
+		</RawOptionsDebug>
+		<RawOptionsRelease enabled="0">
+			<Default></Default>
+			<User></User>
+		</RawOptionsRelease>
+	</LinkerOptions>
+	<Configs>
+		<BuildLog enabled="0">$(CFRoot)\Build.log</BuildLog>
+		<LibExt>lib;a</LibExt>
+		<ObjExt>o;obj</ObjExt>
+		<ResExt>res</ResExt>
+	</Configs>
+	<Commands msghandler="Vc.mhr">
+		<Command name="C Compiler" io="1">
+			<Program enabled="1">cl.exe</Program>
+			<Parameter enabled="1">/nologo -I$(IncPaths) $(CompilerOptions) /c "$(FileName)" /Fo"$(Path)$(Name).obj"</Parameter>
+			<FileExt enabled="1">c</FileExt>
+			<Target>$(PATH)$(NAME).obj</Target>
+			<TargetType>obj</TargetType>
+			<CurrentDir>$$(IDE)</CurrentDir>
+			<MsgID>Compiling $(FILENAME)...#81001</MsgID>
+		</Command>
+		<Command name="C++ Compiler" io="1">
+			<Program enabled="1">cl.exe</Program>
+			<Parameter enabled="1">/nologo -I$(IncPaths) $(CompilerOptions) /c "$(FileName)" /Fo"$(Path)$(Name).obj"</Parameter>
+			<FileExt enabled="1">cpp;cxx;c++;cc</FileExt>
+			<Target>$(PATH)$(NAME).obj</Target>
+			<TargetType>obj</TargetType>
+			<CurrentDir>$$(IDE)</CurrentDir>
+			<MsgID>Compiling $(FILENAME)...#81001</MsgID>
+		</Command>
+		<Command name="Linker(CUI)" io="1">
+			<Program enabled="1">link.exe</Program>
+			<Parameter enabled="1">/nologo $(LinkerOptions) /LIBPATH:$(LibPaths) /OUT:"$(Target)" $(Libs) $(ProjectFiles)</Parameter>
+			<FileExt enabled="1">o;obj;a;lib;res</FileExt>
+			<Target>$(Target)</Target>
+			<TargetType>cui</TargetType>
+			<CurrentDir>$$(IDE)</CurrentDir>
+			<MsgID>Linking...#81002</MsgID>
+		</Command>
+		<Command name="Linker(GUI)" io="1">
+			<Program enabled="1">link.exe</Program>
+			<Parameter enabled="1">/nologo $(LinkerOptions) /subsystem:windows /LIBPATH:$(LibPaths) /OUT:"$(Target)" $(Libs) $(ProjectFiles)</Parameter>
+			<FileExt enabled="1">o;obj;a;lib;res</FileExt>
+			<Target>$(Target)</Target>
+			<TargetType>gui</TargetType>
+			<CurrentDir>$$(IDE)</CurrentDir>
+			<MsgID>Linking...#81002</MsgID>
+		</Command>
+		<Command name="Linker for DLL" io="1">
+			<Program enabled="1">link.exe</Program>
+			<Parameter enabled="1">/nologo $(LinkerOptions) /DLL /LIBPATH:$(LibPaths) /OUT:"$(Target)" $(Libs) $(ProjectFiles) /DEF:$(DefFile)</Parameter>
+			<FileExt enabled="1">o;obj;a;lib;res</FileExt>
+			<Target>$(Target)</Target>
+			<TargetType>dll</TargetType>
+			<CurrentDir>$$(IDE)</CurrentDir>
+			<MsgID>Linking...#81002</MsgID>
+		</Command>
+		<Command name="Linker for Lib" io="1">
+			<Program enabled="1">link.exe</Program>
+			<Parameter enabled="1">/LIB /nologo $(LinkerOptions) /LIBPATH:$(LibPaths) /OUT:"$(Target)" $(Libs) $(ProjectFiles)</Parameter>
+			<FileExt enabled="1">o;obj</FileExt>
+			<Target>$(Target)</Target>
+			<TargetType>lib</TargetType>
+			<CurrentDir>$$(IDE)</CurrentDir>
+			<MsgID>Linking...#81002</MsgID>
+		</Command>
+		<Command name="Resource Compiler" io="1">
+			<Program enabled="1">rc.exe</Program>
+			<Parameter enabled="1">-I$(IncPaths) -Fo"$(PATH)$(NAME).res" "$(FileName)"</Parameter>
+			<FileExt enabled="1">rc</FileExt>
+			<Target>$(PATH)$(NAME).res</Target>
+			<TargetType>res</TargetType>
+			<CurrentDir>$$(IDE)</CurrentDir>
+			<MsgID>Compiling $(FILENAME)...#81001</MsgID>
+		</Command>
+		<Command name="Debugger" io="0">
+			<Program enabled="0">cdb.exe</Program>
+			<Parameter enabled="0">cdebug.dll</Parameter>
+			<FileExt enabled="1">exe;dll</FileExt>
+			<Target></Target>
+			<TargetType></TargetType>
+			<CurrentDir></CurrentDir>
+			<MsgID>#81003</MsgID>
+		</Command>
+		<Command name="Run" io="0">
+			<Program enabled="0">$(Target)</Program>
+			<Parameter enabled="0">$(Parameters)</Parameter>
+			<FileExt enabled="1">exe</FileExt>
+			<Target></Target>
+			<TargetType></TargetType>
+			<CurrentDir></CurrentDir>
+			<MsgID>#81004</MsgID>
+		</Command>
+		<Command name="Run DLL" io="0">
+			<Program enabled="0">$(HostApp)</Program>
+			<Parameter enabled="0">$(Parameters)</Parameter>
+			<FileExt enabled="1">dll</FileExt>
+			<Target></Target>
+			<TargetType></TargetType>
+			<CurrentDir></CurrentDir>
+			<MsgID>#81004</MsgID>
+		</Command>
+		<Command name="Clean Objects" io="1">
+			<Program enabled="0">fdel.exe</Program>
+			<Parameter enabled="1">"$(Path)$(Name).obj" $(FileName)</Parameter>
+			<FileExt enabled="1">c;cpp;cxx;c++;cc</FileExt>
+			<Target>$(Target)</Target>
+			<TargetType></TargetType>
+			<CurrentDir></CurrentDir>
+			<MsgID></MsgID>
+		</Command>
+		<Command name="Clean Resource" io="1">
+			<Program enabled="0">fdel.exe</Program>
+			<Parameter enabled="1">"$(Path)$(Name).res" $(FileName)</Parameter>
+			<FileExt enabled="1">rc</FileExt>
+			<Target>$(Target)</Target>
+			<TargetType></TargetType>
+			<CurrentDir></CurrentDir>
+			<MsgID></MsgID>
+		</Command>
+		<Command name="Clean Io" io="1">
+			<Program enabled="0">fdel.exe</Program>
+			<Parameter enabled="0">"$(Path)$(Name).obj" -silent</Parameter>
+			<FileExt enabled="0">*.*</FileExt>
+			<Target>$(Target)</Target>
+			<TargetType></TargetType>
+			<CurrentDir></CurrentDir>
+			<MsgID></MsgID>
+		</Command>
+		<Command name="Clean Target" io="1">
+			<Program enabled="0">fdel.exe</Program>
+			<Parameter enabled="0">"$(Target)"</Parameter>
+			<FileExt enabled="1">*.*</FileExt>
+			<Target></Target>
+			<TargetType></TargetType>
+			<CurrentDir></CurrentDir>
+			<MsgID></MsgID>
+		</Command>
+	</Commands>
+	<Actions>
+		<Action name="Compile" depend="0">
+			<File>
+				<Command>"C Compiler""C++ Compiler""Resource Compiler"</Command>
+			</File>
+			<Project>
+			</Project>
+			<MsgID>Complete Compile $(FileName): $(Error) error(s), $(Warning) warning(s)\nGenerated $(Target)#81005</MsgID>
+			<ErrMsgID>Complete Compile $(FileName): $(Error) error(s), $(Warning) warning(s)#81006</ErrMsgID>
+		</Action>
+		<Action name="Build" depend="0">
+			<File>
+				<Command>"C Compiler""C++ Compiler""Resource Compiler"</Command>
+				<Command>"Linker(CUI)""Linker(GUI)""Linker for DLL""Linker for Lib"</Command>
+			</File>
+			<Project>
+				<Command>"C Compiler""C++ Compiler""Resource Compiler"</Command>
+				<Command>"Linker(CUI)""Linker(GUI)""Linker for DLL""Linker for Lib"</Command>
+			</Project>
+			<MsgID>Complete Build $(TargetName): $(Error) error(s), $(Warning) warning(s)\nGenerated $(Target)#81007</MsgID>
+			<ErrMsgID>Complete Build $(TargetName): $(Error) error(s), $(Warning) warning(s)#81008</ErrMsgID>
+		</Action>
+		<Action name="Make" depend="1">
+			<File>
+				<Command>"C Compiler""C++ Compiler""Resource Compiler"</Command>
+				<Command>"Linker(CUI)""Linker(GUI)""Linker for DLL""Linker for Lib"</Command>
+			</File>
+			<Project>
+				<Command>"C Compiler""C++ Compiler""Resource Compiler"</Command>
+				<Command>"Linker(CUI)""Linker(GUI)""Linker for DLL""Linker for Lib"</Command>
+			</Project>
+			<MsgID>Complete Make $(TargetName): $(Error) error(s), $(Warning) warning(s)\nGenerated $(Target)#81009</MsgID>
+			<ErrMsgID>Complete Make $(TargetName): $(Error) error(s), $(Warning) warning(s)#81010</ErrMsgID>
+		</Action>
+		<Action name="Run" depend="0">
+			<File>
+				<Action>"Make"</Action>
+				<Command>"Run""Run DLL"</Command>
+			</File>
+			<Project>
+				<Action>"Make"</Action>
+				<Command>"Run""Run DLL"</Command>
+			</Project>
+			<MsgID>#81011</MsgID>
+			<ErrMsgID>#81012</ErrMsgID>
+		</Action>
+		<Action name="Debug" depend="0">
+			<File>
+				<Action>"Make"</Action>
+				<Command>"Debugger"</Command>
+			</File>
+			<Project>
+				<Action>"Make"</Action>
+				<Command>"Debugger"</Command>
+			</Project>
+			<MsgID>#81013</MsgID>
+			<ErrMsgID>#81014</ErrMsgID>
+		</Action>
+		<Action name="Clean" depend="0">
+			<File>
+				<Command>"Clean Objects""Clean Resource"</Command>
+				<Command>"Clean Io"</Command>
+				<Command>"Clean Target"</Command>
+			</File>
+			<Project>
+				<Command>"Clean Objects""Clean Resource""Clean Io"</Command>
+				<Command>"Clean Io"</Command>
+				<Command>"Clean Target"</Command>
+			</Project>
+			<MsgID>Complete Clean $(TargetName)#81015</MsgID>
+			<ErrMsgID>Clean $(TargetName) error#81016</ErrMsgID>
+		</Action>		
+	</Actions>
+</Builder>

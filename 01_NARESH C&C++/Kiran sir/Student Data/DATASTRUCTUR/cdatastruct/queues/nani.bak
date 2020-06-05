@@ -1,0 +1,17 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+int i;
+printf("7 multiples are");
+for(i=7;i<=200;i++)
+{
+if(i%7==0)
+{
+printf("7 multiple is=%d",i);
+}
+}
+getch();
+}
+
+

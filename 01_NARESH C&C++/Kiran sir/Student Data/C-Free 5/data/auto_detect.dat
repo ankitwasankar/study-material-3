@@ -1,0 +1,549 @@
+[auto1]
+type=MinGW
+name=mingw
+mpath1=C:\MinGW
+
+[auto2]
+type=MinGW
+name=mingw
+mpath1=D:\MinGW
+
+[auto3]
+type=MinGW
+name=mingw
+mpath1=E:\MinGW
+
+[auto4]
+type=MinGW
+name=mingw
+mpath1=F:\MinGW
+
+[auto5]
+type=MinGW
+name=mingw
+mpath1=G:\MinGW
+
+[auto6]
+type=MinGW
+name=mingw
+mpath1=C:\Dev-Cpp
+
+[auto7]
+type=MinGW
+name=mingw
+mpath1=D:\Dev-Cpp
+
+[auto8]
+type=MinGW
+name=mingw
+mpath1=E:\Dev-Cpp
+
+[auto9]
+type=MinGW
+name=mingw
+mpath1=F:\Dev-Cpp
+
+[auto10]
+type=MinGW
+name=mingw
+mpath1=G:\Dev-Cpp
+
+
+[auto11]
+type=MinGW
+name=mingw
+mreg1=\SOFTWARE\Dev-C++|Install_Dir
+
+[auto12]
+type=MinGW
+name=mingw
+mreg1=\SOFTWARE\CodeBlocks|Path
+
+[auto13]
+type=CYGWIN
+name=cygwin
+mpath1=C:\Cygwin
+
+[auto14]
+type=CYGWIN
+name=cygwin
+mpath1=D:\Cygwin
+
+[auto15]
+type=CYGWIN
+name=cygwin
+mpath1=E:\Cygwin
+
+[auto16]
+type=CYGWIN
+name=cygwin
+mpath1=F:\Cygwin
+
+[auto17]
+type=CYGWIN
+name=cygwin
+mpath1=G:\Cygwin
+
+[auto18]
+type=Borland C++ Compiler
+name=bcc5.5
+mpath1=C:\BCC55
+
+[auto19]
+type=Borland C++ Compiler
+name=bcc5.5
+mpath1=C:\Borland\BCC55
+
+[auto20]
+type=Borland C++ Compiler
+name=bcc5.5
+mpath1=D:\Borland\BCC55
+
+[auto21]
+type=Borland C++ Compiler
+name=bcc5.5
+mpath1=E:\Borland\BCC55
+
+[auto22]
+type=Borland C++ Compiler
+name=bcc5.5
+mpath1=F:\Borland\BCC55
+
+[auto23]
+type=Borland C++ Compiler
+name=bcc5.5
+mpath1=G:\Borland\BCC55
+
+[auto24]
+type=Borland C++ Compiler
+name=bcc5.5
+mpath1=C:\Program Files\Borland\BCC55
+
+[auto25]
+type=Borland C++ Compiler
+name=bcb6.0
+mpath1=C:\Program Files\Borland\CBuilder6
+
+[auto26]
+type=Borland C++ Compiler
+name=bcb6.0
+mpath1=D:\Program Files\Borland\CBuilder6
+
+[auto27]
+type=Borland C++ Compiler
+name=bcb6.0
+mpath1=E:\Program Files\Borland\CBuilder6
+
+[auto28]
+type=Borland C++ Compiler
+name=bcb6.0
+mpath1=F:\Program Files\Borland\CBuilder6
+
+[auto29]
+type=Borland C++ Compiler
+name=bcb6.0
+mpath1=G:\Program Files\Borland\CBuilder6
+
+[auto30]
+type=Borland C++ Compiler
+name=bcb6.0
+mreg1=\SOFTWARE\Borland\C++Builder\6.0|RootDir
+
+[auto31]
+type=Borland C++ Compiler
+name=bds4.0
+mreg1=\Software\Borland\BDS\4.0|RootDir
+
+[auto32]
+type=Borland C++ Compiler
+name=bds5.0
+mreg1=\Software\Borland\BDS\5.0|RootDir
+
+[auto33]
+type=Microsoft C++ Compiler
+name=vc2003
+mpath1=C:\Program Files\Microsoft Visual C++ Toolkit 2003
+path1=C:\Program Files\Debugging Tools for Windows (x86)
+reg1=\SOFTWARE\Microsoft\Win32SDK\Directories|Install Dir
+reg2=\SOFTWARE\Microsoft\MicrosoftSDK\InstalledSDKs\D2FF9F89-8AA2-4373-8A31-C838BF4DBBE1|Install Dir
+
+[auto34]
+type=Microsoft C++ Compiler
+name=vc2003
+mpath1=D:\Program Files\Microsoft Visual C++ Toolkit 2003
+path1=D:\Program Files\Debugging Tools for Windows (x86)
+reg1=\SOFTWARE\Microsoft\Win32SDK\Directories|Install Dir
+reg2=\SOFTWARE\Microsoft\MicrosoftSDK\InstalledSDKs\D2FF9F89-8AA2-4373-8A31-C838BF4DBBE1|Install Dir
+
+[auto35]
+type=Microsoft C++ Compiler
+name=vc2003
+mpath1=E:\Program Files\Microsoft Visual C++ Toolkit 2003
+path1=E:\Program Files\Debugging Tools for Windows (x86)
+reg1=\SOFTWARE\Microsoft\Win32SDK\Directories|Install Dir
+reg2=\SOFTWARE\Microsoft\MicrosoftSDK\InstalledSDKs\D2FF9F89-8AA2-4373-8A31-C838BF4DBBE1|Install Dir
+
+[auto36]
+type=Microsoft C++ Compiler
+name=vc2003
+mpath1=F:\Program Files\Microsoft Visual C++ Toolkit 2003
+path1=F:\Program Files\Debugging Tools for Windows (x86)
+reg1=\SOFTWARE\Microsoft\Win32SDK\Directories|Install Dir
+reg2=\SOFTWARE\Microsoft\MicrosoftSDK\InstalledSDKs\D2FF9F89-8AA2-4373-8A31-C838BF4DBBE1|Install Dir
+
+[auto37]
+type=Microsoft C++ Compiler
+name=vc2003
+mpath1=G:\Program Files\Microsoft Visual C++ Toolkit 2003
+path1=G:\Program Files\Debugging Tools for Windows (x86)
+reg1=\SOFTWARE\Microsoft\Win32SDK\Directories|Install Dir
+reg2=\SOFTWARE\Microsoft\MicrosoftSDK\InstalledSDKs\D2FF9F89-8AA2-4373-8A31-C838BF4DBBE1|Install Dir
+
+
+[auto38]
+type=Microsoft C++ Compiler
+name=vc6.0
+mreg1=\SOFTWARE\Microsoft\VisualStudio\6.0\Setup\Microsoft Visual C++|ProductDir
+mreg2=\SOFTWARE\Microsoft\VisualStudio\6.0\Setup|VsCommonDir
+path1=C:\Program Files\Debugging Tools for Windows (x86)
+path2=D:\Program Files\Debugging Tools for Windows (x86)
+path3=E:\Program Files\Debugging Tools for Windows (x86)
+path4=F:\Program Files\Debugging Tools for Windows (x86)
+path5=G:\Program Files\Debugging Tools for Windows (x86)
+
+
+[auto39]
+type=Microsoft Visual Studio
+name=vs.net2003
+mreg1=\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{F05F0804-8517-4564-81F8-6732D0281B57}|InstallLocation
+mreg2=\SOFTWARE\Microsoft\VisualStudio\7.1\Setup\VS|ProductDir
+path1=C:\Program Files\Debugging Tools for Windows (x86)
+path2=D:\Program Files\Debugging Tools for Windows (x86)
+path3=E:\Program Files\Debugging Tools for Windows (x86)
+path4=F:\Program Files\Debugging Tools for Windows (x86)
+path5=G:\Program Files\Debugging Tools for Windows (x86)
+
+[auto40]
+type=Microsoft Visual Studio
+name=vs.net2003
+mpath1=C:\Program Files\Microsoft Visual Studio .NET 2003
+path1=C:\Program Files\Debugging Tools for Windows (x86)
+
+[auto41]
+type=Microsoft Visual Studio
+name=vs.net2003
+mpath1=D:\Program Files\Microsoft Visual Studio .NET 2003
+path1=D:\Program Files\Debugging Tools for Windows (x86)
+
+[auto42]
+type=Microsoft Visual Studio
+name=vs.net2003
+mpath1=E:\Program Files\Microsoft Visual Studio .NET 2003
+path1=E:\Program Files\Debugging Tools for Windows (x86)
+
+[auto43]
+type=Microsoft Visual Studio
+name=vs.net2003
+mpath1=F:\Program Files\Microsoft Visual Studio .NET 2003
+path1=F:\Program Files\Debugging Tools for Windows (x86)
+
+[auto44]
+type=Microsoft Visual Studio
+name=vs.net2003
+mpath1=G:\Program Files\Microsoft Visual Studio .NET 2003
+path1=G:\Program Files\Debugging Tools for Windows (x86)
+
+[auto45]
+type=Microsoft Visual Studio
+name=vs2005
+mreg1=\SOFTWARE\Microsoft\VisualStudio\8.0\Setup\VS|ProductDir
+mreg2=\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{80610804-8B7A-4753-80AA-ECB5510944C7}|InstallLocation
+path1=C:\Program Files\Debugging Tools for Windows (x86)
+path2=D:\Program Files\Debugging Tools for Windows (x86)
+path3=E:\Program Files\Debugging Tools for Windows (x86)
+path4=F:\Program Files\Debugging Tools for Windows (x86)
+path5=G:\Program Files\Debugging Tools for Windows (x86)
+
+[auto46]
+type=Microsoft Visual Studio
+name=vs2005
+mpath1=C:\Program Files\Microsoft Visual Studio 8
+path1=C:\Program Files\Debugging Tools for Windows (x86)
+
+[auto47]
+type=Microsoft Visual Studio
+name=vs2005
+mpath1=D:\Program Files\Microsoft Visual Studio 8
+path1=D:\Program Files\Debugging Tools for Windows (x86)
+
+[auto48]
+type=Microsoft Visual Studio
+name=vs2005
+mpath1=E:\Program Files\Microsoft Visual Studio 8
+path1=E:\Program Files\Debugging Tools for Windows (x86)
+
+[auto49]
+type=Microsoft Visual Studio
+name=vs2005
+mpath1=F:\Program Files\Microsoft Visual Studio 8
+path1=F:\Program Files\Debugging Tools for Windows (x86)
+
+[auto50]
+type=Microsoft Visual Studio
+name=vs2005
+mpath1=G:\Program Files\Microsoft Visual Studio 8
+path1=G:\Program Files\Debugging Tools for Windows (x86)
+
+[auto51]
+type=Microsoft Visual Studio
+name=vs2008
+mreg1=\SOFTWARE\Microsoft\VisualStudio\9.0\Setup\VS|ProductDir
+mreg2=\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{CB531F9D-A8AC-3E26-8B8E-DC50A9B1627B}|InstallLocation
+path1=C:\Program Files\Debugging Tools for Windows (x86)
+path2=D:\Program Files\Debugging Tools for Windows (x86)
+path3=E:\Program Files\Debugging Tools for Windows (x86)
+path4=F:\Program Files\Debugging Tools for Windows (x86)
+path5=G:\Program Files\Debugging Tools for Windows (x86)
+
+[auto52]
+type=Microsoft Visual Studio
+name=vs2008
+mpath1=C:\Program Files\Microsoft Visual Studio 9.0
+path1=C:\Program Files\Debugging Tools for Windows (x86)
+
+[auto53]
+type=Microsoft Visual Studio
+name=vs2008
+mpath1=D:\Program Files\Microsoft Visual Studio 9.0
+path1=D:\Program Files\Debugging Tools for Windows (x86)
+
+[auto54]
+type=Microsoft Visual Studio
+name=vs2008
+mpath1=E:\Program Files\Microsoft Visual Studio 9.0
+path1=E:\Program Files\Debugging Tools for Windows (x86)
+
+[auto55]
+type=Microsoft Visual Studio
+name=vs2008
+mpath1=F:\Program Files\Microsoft Visual Studio 9.0
+path1=F:\Program Files\Debugging Tools for Windows (x86)
+
+[auto56]
+type=Microsoft Visual Studio
+name=vs2008
+mpath1=G:\Program Files\Microsoft Visual Studio 9.0
+path1=G:\Program Files\Debugging Tools for Windows (x86)
+
+[auto57]
+type=Intel C++ Compiler
+name=icl_vs.net2003
+mpath1=C:\Program Files\Intel\Compiler
+mpath2=D:\Program Files\Intel\Compiler
+mpath3=E:\Program Files\Intel\Compiler
+mpath4=F:\Program Files\Intel\Compiler
+mpath5=G:\Program Files\Intel\Compiler
+reg1=\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{F05F0804-8517-4564-81F8-6732D0281B57}|InstallLocation
+reg2=\SOFTWARE\Microsoft\VisualStudio\7.1\Setup\VS|ProductDir
+path1=C:\Program Files\Debugging Tools for Windows (x86)
+path2=D:\Program Files\Debugging Tools for Windows (x86)
+path3=E:\Program Files\Debugging Tools for Windows (x86)
+path4=F:\Program Files\Debugging Tools for Windows (x86)
+path5=G:\Program Files\Debugging Tools for Windows (x86)
+
+[auto58]
+type=Intel C++ Compiler
+name=icl_vs.net2003
+mpath1=C:\Program Files\Intel\Compiler
+path1=C:\Program Files\Microsoft Visual Studio .NET 2003
+path2=C:\Program Files\Debugging Tools for Windows (x86)
+
+[auto59]
+type=Intel C++ Compiler
+name=icl_vs.net2003
+mpath1=D:\Program Files\Intel\Compiler
+path1=D:\Program Files\Microsoft Visual Studio .NET 2003
+path2=D:\Program Files\Debugging Tools for Windows (x86)
+
+[auto60]
+type=Intel C++ Compiler
+name=icl_vs.net2003
+mpath1=E:\Program Files\Intel\Compiler
+path1=E:\Program Files\Microsoft Visual Studio .NET 2003
+path2=E:\Program Files\Debugging Tools for Windows (x86)
+
+[auto61]
+type=Intel C++ Compiler
+name=icl_vs.net2003
+mpath1=F:\Program Files\Intel\Compiler
+path1=F:\Program Files\Microsoft Visual Studio .NET 2003
+path2=F:\Program Files\Debugging Tools for Windows (x86)
+
+[auto62]
+type=Intel C++ Compiler
+name=icl_vs.net2003
+mpath1=G:\Program Files\Intel\Compiler
+path1=G:\Program Files\Microsoft Visual Studio .NET 2003
+path2=G:\Program Files\Debugging Tools for Windows (x86)
+
+[auto63]
+type=Intel C++ Compiler
+name=icl_vs2005
+mpath1=C:\Program Files\Intel\Compiler
+mpath2=D:\Program Files\Intel\Compiler
+mpath3=E:\Program Files\Intel\Compiler
+mpath4=F:\Program Files\Intel\Compiler
+mpath5=G:\Program Files\Intel\Compiler
+reg1=\SOFTWARE\Microsoft\VisualStudio\8.0\Setup\VS|ProductDir
+reg2=\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{80610804-8B7A-4753-80AA-ECB5510944C7}|InstallLocation
+path1=C:\Program Files\Debugging Tools for Windows (x86)
+path2=D:\Program Files\Debugging Tools for Windows (x86)
+path3=E:\Program Files\Debugging Tools for Windows (x86)
+path4=F:\Program Files\Debugging Tools for Windows (x86)
+path5=G:\Program Files\Debugging Tools for Windows (x86)
+
+[auto64]
+type=Intel C++ Compiler
+name=icl_vs2005
+mpath1=C:\Program Files\Intel\Compiler
+path1=C:\Program Files\Microsoft Visual Studio 8
+path2=C:\Program Files\Debugging Tools for Windows (x86)
+
+[auto65]
+type=Intel C++ Compiler
+name=icl_vs2005
+mpath1=D:\Program Files\Intel\Compiler
+path1=D:\Program Files\Microsoft Visual Studio 8
+path2=D:\Program Files\Debugging Tools for Windows (x86)
+
+[auto66]
+type=Intel C++ Compiler
+name=icl_vs2005
+mpath1=E:\Program Files\Intel\Compiler
+path1=E:\Program Files\Microsoft Visual Studio 8
+path2=E:\Program Files\Debugging Tools for Windows (x86)
+
+[auto67]
+type=Intel C++ Compiler
+name=icl_vs2005
+mpath1=F:\Program Files\Intel\Compiler
+path1=F:\Program Files\Microsoft Visual Studio 8
+path2=F:\Program Files\Debugging Tools for Windows (x86)
+
+[auto68]
+type=Intel C++ Compiler
+name=icl_vs2005
+mpath1=G:\Program Files\Intel\Compiler
+path1=G:\Program Files\Microsoft Visual Studio 8
+path2=G:\Program Files\Debugging Tools for Windows (x86)
+
+[auto69]
+type=Intel C++ Compiler
+name=icl_vs2008
+mpath1=C:\Program Files\Intel\Compiler
+mpath2=D:\Program Files\Intel\Compiler
+mpath3=E:\Program Files\Intel\Compiler
+mpath4=F:\Program Files\Intel\Compiler
+mpath5=G:\Program Files\Intel\Compiler
+reg1=\SOFTWARE\Microsoft\VisualStudio\9.0\Setup\VS|ProductDir
+reg2=\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{CB531F9D-A8AC-3E26-8B8E-DC50A9B1627B}|InstallLocation
+path1=C:\Program Files\Debugging Tools for Windows (x86)
+path2=D:\Program Files\Debugging Tools for Windows (x86)
+path3=E:\Program Files\Debugging Tools for Windows (x86)
+path4=F:\Program Files\Debugging Tools for Windows (x86)
+path5=G:\Program Files\Debugging Tools for Windows (x86)
+
+[auto70]
+type=Intel C++ Compiler
+name=icl_vs2008
+mpath1=C:\Program Files\Intel\Compiler
+path1=C:\Program Files\Microsoft Visual Studio 9.0
+path2=C:\Program Files\Debugging Tools for Windows (x86)
+
+[auto71]
+type=Intel C++ Compiler
+name=icl_vs2008
+mpath1=D:\Program Files\Intel\Compiler
+path1=D:\Program Files\Microsoft Visual Studio 9.0
+path2=D:\Program Files\Debugging Tools for Windows (x86)
+
+[auto72]
+type=Intel C++ Compiler
+name=icl_vs2008
+mpath1=E:\Program Files\Intel\Compiler
+path1=E:\Program Files\Microsoft Visual Studio 9.0
+path2=E:\Program Files\Debugging Tools for Windows (x86)
+
+[auto73]
+type=Intel C++ Compiler
+name=icl_vs2008
+mpath1=F:\Program Files\Intel\Compiler
+path1=F:\Program Files\Microsoft Visual Studio 9.0
+path2=F:\Program Files\Debugging Tools for Windows (x86)
+
+[auto74]
+type=Intel C++ Compiler
+name=icl_vs2008
+mpath1=G:\Program Files\Intel\Compiler
+path1=G:\Program Files\Microsoft Visual Studio 9.0
+path2=G:\Program Files\Debugging Tools for Windows (x86)
+
+[auto75]
+type=Digital Mars C/C++
+name=dm
+mpath1=C:\dm
+
+[auto76]
+type=Digital Mars C/C++
+name=dm
+mpath1=D:\dm
+
+[auto77]
+type=Digital Mars C/C++
+name=dm
+mpath1=E:\dm
+
+[auto78]
+type=Digital Mars C/C++
+name=dm
+mpath1=F:\dm
+
+[auto79]
+type=Digital Mars C/C++
+name=dm
+mpath1=G:\dm
+
+[auto80]
+type=Open Watcom C/C++
+name=watcom
+mpath1=C:\WATCOM
+
+[auto81]
+type=Open Watcom C/C++
+name=watcom
+mpath1=D:\WATCOM
+
+[auto82]
+type=Open Watcom C/C++
+name=watcom
+mpath1=E:\WATCOM
+
+[auto83]
+type=Open Watcom C/C++
+name=watcom
+mpath1=F:\WATCOM
+
+[auto84]
+type=Open Watcom C/C++
+name=watcom
+mpath1=G:\WATCOM
+
+[auto85]
+type=LCC-Win32
+name=lcc
+mreg1=\SOFTWARE\lcc|lccroot
+
+[auto86]
+type=Ch Interpreter
+name=ch
+mreg1=\SOFTWARE\SoftIntegration|CHHOME

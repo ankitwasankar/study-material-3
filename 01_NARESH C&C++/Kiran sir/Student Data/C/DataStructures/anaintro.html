@@ -1,0 +1,220 @@
+﻿<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="690" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Introduction</h2></center>
+
+<pre>
+<font size="2">
+<strong>Introduction:</strong> 
+
+<b>Definition:-</b>
+<p>        The method of solving a problem is known as an algorithm.
+It is a sequence of instructions that act on some input data to 
+produce some output in a finite number of steps.</p>
+<b>Properties:-</b>
+a) Input:An algorithm must receive some input data supplied externally.
+b)Output:An algorithm must produce atleast one output as the result.
+c)Finiteness:The algorithm must terminate after a finite number of steps.
+d)Definiteness:The steps to be performed in the algorithm must be clear 
+and unambiguous.
+e)Effectiveness:One must be able to perform the steps in the algorithm 
+without applying any intelligence.
+<p>   All algorithms basically fall under two broad categories-Iterative 
+and Recursive algorithms.</p><p>   Iterative Algorithms typically use loops and conditional statements.</p><p>   Recursive Algorithms use a divide and Conquer strategy. As per this,
+the recursive algorithm breaks down a large problem into small pieces and 
+then applies the algorithm to each of these smal pieces. Determining which
+algorithm is efficient than the other involves analysis of algorithms. 
+While analyzing,time required to execute it determined .’time’ 
+represents the number of operations that are carried out while executing 
+the algorithm.</p><p>     While analyzing iterative algorithms we need to determine how many 
+times the loop is executed. To analyze a recursive algorithm one needs to
+determine amount of work done for three things:</p>i.breaking down the large problem to smaller pieces.
+ii.Getting solution for each piece and combining the individual solutions 
+to get the solution to the whole problem.
+iii.Combining this information and the number of the smaller pieces and 
+their sizes,we then need to create a recurrence relation for the algorithm.
+
+<b>Analysis:- </b> 
+      The analysis of an algorithm provides information that gives us a 
+general idea of how long an algorithm willtake for solving a problem.For
+comparing the performance of two algorithms we have to esimate the time 
+taken to solve a problem using each algorithm for a set of N input values.
+      Analysis of algorithms give us the scientific reason to determine which 
+algorithm should be chosen to solve the problem. The purpose of determining 
+the number of comparisions is to then use them to figure out which of the 
+algorithms under consideration can solve the problem more efficiently.
+
+<b>What Analysis Doesn’t Do:-</b>
+       The analysis of algorithms does not give a formula that helps us 
+determine how amny seconds or computer cycles a particular algorithm will 
+take to solve a problem. The analysis of algorithm should be done regardless 
+of the computer on which the program that implements the algorithm is going 
+to get executed.
+<font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anaintro.html"><b>Top</b></a></font>
+<b>Things to Count and Consider:-</b>
+i.The significant operatio or operations in the algorithm must be
+identified first.
+ii.Operations integral to the algorithm and which merely contribute to the 
+overheads should be determined next.
+Comparision or arithmetic are two classes of operations that typically chosen
+for the significant operation.
+
+<b>Cases To Consider During Analysis:-</b>
+Multiple input sets must be considered while analyzing an algorithm.
+<b> a)Best Case Input:-</b>
+This represents the input set that allows an algorithm to perform most
+quickly with this input the algorithm takes shortest time to execute, 
+as it causes the algorithms to do the least amount of work. No matter how
+large is the input,searching in a best case will result in a constant time 
+of 1. Since the best case for an algorithm would usually be very small and 
+frequently constant value,a best case analysis is often not done.
+<b>b)Worst Case Input:-</b>
+This represents the input set that allows an algorithm to perform more
+slowly.Worst case is an important analysis because it gives us an idea of 
+the most time an algorithm will ever take. Worst case analysis requires that 
+we identify the input values that cause an algorithm to de the most work.
+<b>c)Average Case Input:</b>
+This represents the input ser that allows an algorithm to deliver an average 
+performance. Doing average case analysis is a four step process.
+
+<b>These steps are as follows:</b>
+i.Determine the number of different groups into which all possible input sets
+can be divided.
+ii.Determine the probability that the input will come from each of these 
+groups.
+iii.Determine how long the algorithm will run for each of these groups.
+All of the input in each group should take the same amount of time,amd if 
+they do not,the group must be split into separate groups.
+
+<b>Calculate average case time using the formula:</b>
+<code><font size=2>        m
+	A(n)=∑pi*ti where
+	i=1
+	n=size of input
+	m=number of groups
+	pi=probability that the input will be from group i
+        ti= time that the algorithm takes for input from group i.
+</font></code>		
+<b>Rates Of Growth:-</b>
+     While doing analysis of algorithm we must consider what happens when 
+the size of the input is large, because small input sets can hide rather 
+dramatic differences.
+     Algorithms can be groped into three categories based on the order of 
+the function or related algorithm.
+   a)Algorithm that grow atleast as fast as same function.
+   b)Algorithms that grow at the same rate.
+   c)Algorithms that grow no faster.
+     The categories mentioned above are commenly known as Big Omega Ω (f),
+Big oh O(f) and Big Theta Ө(f) respectively.
+     Of these, the Big Omega category of functions is not of much interest
+o us since for all values of ‘n’ greater than same threshold value no 
+all the functions in Ω (f) have values that are at least as large as f(i.e)
+all functions in this category grow as fast as f or even faster. Big Oh O(f)
+category represents the class of functions that grow no faster than f. This
+means that for al values of n greater than same threshould number all the 
+functions in O(f) have values that are no greater than f. 
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="analysis.html">Back</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anaintro.html">Top</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+

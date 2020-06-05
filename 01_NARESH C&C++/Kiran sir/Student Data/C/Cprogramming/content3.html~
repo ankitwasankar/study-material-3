@@ -1,0 +1,100 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left"><pre>
+
+Writing A Character: The function putchar is used for writing character one at a time to the terminal. 
+                     It takes the form as shown below:
+                            putchar(variable_name);
+                           where variable_name is a type char variable containing a character.
+       for example:         an='y';
+                            putchar(an);
+                 will display the character y on the screen.
+        The  statement      putchar('\n')  ;
+             would cause the cursor on the screen to move to the beginning of the next line.
+ 
+                   program:   /* Writing a character to the terminal */
+                                 #include<stdio.h>
+                                #include<ctype.h>
+                               main()
+                           { 
+                               char alphabet;
+                               printf("enter an alphabet");
+                               putchar('\n');
+                               alphabet=getchar();
+                               if(islower(alphabet))
+                                 putchar(toupper(alphabet));
+                             else
+                                 putchar(tolower(alphabet));
+                          }      
+
+Output:          enter an alphabet        
+                        a
+                        A
+                 enter an alphabet
+                        R
+                        r  
+Formatted input: Formatted input refer to an input data that has been arranged in a particular format.
+                        example:14.35           134             pinky
+                The first part of data should be read into a variable float,the second into int,and the third part into char.
+                This is possible in C using the scanf  function.
+                              scanf("control string", arg1,arg2............argn);
+                the control string  specifies the field format in which the data is to be entered  and the 
+                argument arg1,arg2,..............argn specify the address of locations where the data is stored.
+                Control string contain field specification which direct the interpretation of input data. 
+                It may include:      field specifications,consisting of the conversion character%, a data type character 
+                and an optional number,specifying the field width.
+	
+<a href="managing.html" target="_self">BACK</a>
+</pre></TD>
+</pre>
+
+</table>
+
+
+</html>

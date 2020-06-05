@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+  FILE *fp,*fp1;
+  char a,sfname[13],tfname[13];
+  clrscr();
+  printf("Enter the source file name - ");
+  scanf("%s",sfname);
+  printf("Enter the target file name - ");
+  scanf("%s",tfname);
+  fp=fopen(sfname,"r");
+  if(fp==NULL)
+    printf("File not found");
+  else
+  {
+  fp1=fopen(tfname,"w");
+  while((a=getc(fp))!=EOF)
+  {
+  putc(a,fp1);
+  }
+  fclose(fp);
+  fclose(fp1);
+  printf("\n 1 file(s) copied.");
+  }
+  getch();
+}

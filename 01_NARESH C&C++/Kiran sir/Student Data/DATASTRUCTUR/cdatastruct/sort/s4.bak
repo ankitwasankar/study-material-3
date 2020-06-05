@@ -1,0 +1,50 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+int i;
+float bal=6000,a;
+clrscr();
+printf("1 for Depositing amount\n");
+printf("2 for Withdraw amount\n");
+printf("3 for Balance Enquiry\n");
+printf("4 for Exit\n");
+printf("Enter your Option:\n");
+scanf("%d",&i);
+if (i==1)
+{
+	printf("Enter deposite amount:");
+	scanf("%f",&a);
+	bal = bal+a;
+	printf("Current balance = %f",bal);
+}
+else
+{
+	if(i==2)
+	{
+		printf("Enter withdawl amount:");
+		scanf("%f",&a);
+		if (a<bal && (bal-a)>=500)
+		{
+			bal=bal-a;
+			printf("Current balance = %f",bal);
+		}
+		else
+		{
+			printf("Unable to process");
+		}
+	}
+	else
+	{
+		if(i==3)
+		{
+			printf("Current balance = %f", bal);
+		}
+		else
+		{
+			printf("Exit");
+		}
+	}
+}
+getch();
+}

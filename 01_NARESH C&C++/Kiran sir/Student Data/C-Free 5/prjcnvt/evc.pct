@@ -1,0 +1,6 @@
+[general]
+name=MS eMbedded Visual C++ Project
+filter=MS eMbedded Visual C++ Project(*.vcw,*.vcp)|*.vcw;*.vcp
+desp=
+cnvt=vc6.cnvt
+bldr=mscc1

@@ -1,0 +1,216 @@
+﻿<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="690" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Graph Traversing</h2></center>
+
+<pre>
+<font size="2">
+Traversal of a graph means that systematically visiting all nodes exactly
+once in the graph. The two important traversal methods are #034;
+Breadth-first Search&#034; and “Depth-first Search”.The graph traversal 
+start at an arbitrary vertex since there is no node as special.
+
+	Assume that each node in a graph will be in one of three states 
+while traversing the graph:
+		ready state,
+        	waiting state,
+		visited state.
+
+<strong>Breadth-first Traversal:-</strong>
+
+	This strategy is much similar to level-by-level traversal of an 
+ordered tree. Breadth-first search operates by processing nodes in layers. 
+The breadth-first search can begin at any arbitrary node. The nodes which 
+are adjacent to start node are processed first,and proceeds to adjacent 
+nodes of that nodes just visited. This process starts until all nodes are 
+visited. If the traversal just visited a node A,then it next visits all the 
+nodes adjacent to A,keeping the node adjacent tothese in waiting list to be 
+traversed after all nodes adjacent to A have been visited.
+
+    A datastructure queue is used to place all waiting nodes.This queue is 
+also convenient to keep the track of nodes that are already visited,so that,
+a node is visited only once.
+
+  The general Breadth-first traversal algorithm is as follows:
+
+1)All nodes are initialized as ready states and initialize queue to empty.
+
+2)Begin with any node which is in ready state and put into queue.mark the 
+status of that node to waiting.
+
+3)While queue is not empty do begin
+
+4)Delete the first node k from queue and process it.Mark the status of that 
+node to visited.
+
+5)Add all the adjacent nodes of K which are in ready state to the rear side 
+of the queue and mark the status of those nodes to waiting.
+
+6) If the graph still contains nodes which are in ready state then goto 
+step2.
+
+7) return.
+
+The step6 in the above algorithm handle those nodes which does not have a 
+path from starting node to them.
+
+	<img src="bredth.jpg">
+
+
+   The above fig shows the visiting nodes in breadth-first traversal. 
+Numbers on the nodes indicate the sequence of nodes visited in Breadth-first
+traversal.
+
+<strong>Depth-first traversal:-</strong>
+
+     The depth-first traversal of a graph is much similar to preorder 
+traversal of an ordered tree. The traversal of a graph start at any arbitrary 
+node,say A. Suppose b,C,D and E be the nodes adjacent to A. Then we will next 
+visit b and keep C,D, and E waiting. After visiting B we traverse all the 
+vertices to which it is adjacent before returning to traverse C,D and E.
+
+	In the depth-first traversal,we backtrack on a path once it reached 
+the end of that path. We consider the datastructure stack instead of a queue 
+as in breadth-first traversal.
+
+	<img src="depth.jpg" align="middle">
+
+     The above fig shows the visiting nodes in depth-first traversal.Number 
+on the nodes indicate the sequence of nodes visited in depth-first 
+traversal.
+
+Algorithm:-
+
+1)All nodes are initialized to ready state and initialize stack to empty.
+
+2)Begin with any node which is in ready state and push into stack. mark the
+status of that node to waiting.
+
+3)While stack is not empty 
+ do 
+ begin
+
+4)pop the top node k of stack and process it. Mark the status of that node
+to visited.
+
+5)Push all the adjacent nodes of k which are in ready state into stacj and
+ mark the status of those nodes to waiting.
+	end.
+
+6)If the graph still contains nodes which are in ready state then<br>
+ goto step2
+
+7)return.
+
+The depth-first traversal continues progressively deeper in a recursive 
+manner.
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="graphs1.html">Back</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+
+
+
+
+

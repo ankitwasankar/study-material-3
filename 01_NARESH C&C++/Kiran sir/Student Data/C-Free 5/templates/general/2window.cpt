@@ -1,0 +1,1257 @@
+<ProjectType name="Windows Application#77014" icon="projecttype.bmp?1" type="GUI" ext="exe" tab="General#77001" desc="Create Windows Application.#77015" version="1.0">
+	<Pages count="2">
+		<Page title="Application Types#77004">
+			<RadioGroup name="AppTypes" title="Select the kind of Windows Application you want to create#77017" value="0" width="290" height="120" enabled="1">
+				<Item>An &empty project.#77018</Item>
+				<Item>A &simple Windows application#77019</Item>
+				<Item>A "&Hello, World!" Windows applicatoin#77020</Item>
+				<Item>A &MDI Windows applicatoin#77037</Item>
+			</RadioGroup>	
+		</Page>
+		<Page title="Language Select#77009">
+			<RadioGroup name="SrcLang" title="#77022" value="0" width="290" height="100" enabled="$(AppTypes)=1|$(AppTypes)=2|$(AppTypes)=3">
+				<Item>&C language (this will generate c source files(.c))#77011</Item>
+				<Item>C++ &language (this will generate c++ source files(.cpp))#77012</Item>
+			</RadioGroup>	
+		</Page>
+	</Pages>
+
+	<Outputs>
+		<Directory name="\">
+		<File folder="Source Files" name="" external="" enabled="1"></File>
+		<File folder="Header Files" name="" external="" enabled="1"></File>
+		<File folder="Other Files" name="" external="" enabled="1"></File>
+		<File folder="Source Files" name="main.c" external="" enabled="$(AppTypes)=2&$(SrcLang)=0">#include &lt;windows.h&gt;
+#include "resource.h"
+
+/*  Declare Windows procedure  */
+LRESULT CALLBACK WindowProcedure (HWND, UINT, WPARAM, LPARAM);
+
+/* Current app instance */
+HINSTANCE hInst;
+/*  Make the class name into a global variable  */
+TCHAR szClassName[] = TEXT("WindowsApp");
+
+
+int WINAPI
+WinMain (HINSTANCE hThisInstance,
+         HINSTANCE hPrevInstance,
+         LPSTR lpszArgument,
+         int nFunsterStil)
+
+{
+    HWND hwnd;               /* This is the handle for our window */
+    MSG messages;            /* Here messages to the application are saved */
+    WNDCLASSEX wincl;        /* Data structure for the windowclass */
+
+		/* Save this instance */
+		hInst = hThisInstance;
+	
+    /* The Window structure */
+    wincl.hInstance = hThisInstance;
+    wincl.lpszClassName = szClassName;
+    wincl.lpfnWndProc = WindowProcedure;      /* This function is called by windows */
+    wincl.style = CS_DBLCLKS;                 /* Catch double-clicks */
+    wincl.cbSize = sizeof (WNDCLASSEX);
+
+    /* Use default icon and mouse-pointer */
+    wincl.hIcon = LoadIcon (NULL, IDI_APPLICATION);
+    wincl.hIconSm = LoadIcon (NULL, IDI_APPLICATION);
+    wincl.hCursor = LoadCursor (NULL, IDC_ARROW);
+    wincl.lpszMenuName = MAKEINTRESOURCE (IDC_$(ProjectName_U));
+    wincl.cbClsExtra = 0;                      /* No extra bytes after the window class */
+    wincl.cbWndExtra = 0;                      /* structure or the window instance */
+    /* Use Windows's default color as the background of the window */
+    wincl.hbrBackground = (HBRUSH)(COLOR_WINDOW+1);
+
+    /* Register the window class, and if it fails quit the program */
+    if (!RegisterClassEx (&wincl))
+        return 0;
+
+    /* The class is registered, let's create the program*/
+    hwnd = CreateWindowEx (
+           0,                   /* Extended possibilites for variation */
+           szClassName,         /* Classname */
+           TEXT("$(ProjectName)"), 		/* Title Text */
+           WS_OVERLAPPEDWINDOW, /* default window */
+           CW_USEDEFAULT,       /* Windows decides the position */
+           0,       						/* where the window ends up on the screen */
+           CW_USEDEFAULT,       /* The programs width */
+           0,                 	/* and height in pixels */
+           HWND_DESKTOP,        /* The window is a child-window to desktop */
+           NULL,                /* No menu */
+           hThisInstance,       /* Program Instance handler */
+           NULL                 /* No Window Creation data */
+           );
+
+    /* Make the window visible on the screen */
+    ShowWindow (hwnd, nFunsterStil);
+
+    /* Run the message loop. It will run until GetMessage() returns 0 */
+    while (GetMessage (&messages, NULL, 0, 0))
+    {
+        /* Translate virtual-key messages into character messages */
+        TranslateMessage(&messages);
+        /* Send message to WindowProcedure */
+        DispatchMessage(&messages);
+    }
+
+    /* The program return-value is 0 - The value that PostQuitMessage() gave */
+    return messages.wParam;
+}
+
+
+/*  This function is called by the Windows function DispatchMessage()  */
+
+LRESULT CALLBACK
+WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	PAINTSTRUCT ps;
+	HDC hdc;
+	RECT rt;
+	TCHAR szHello[] = TEXT("Hello, C-Free!");
+	
+    switch (message)                  /* handle the messages */
+    {
+			case WM_COMMAND:
+    		switch (LOWORD(wParam))
+    		{
+		    case IDM_ABOUT:
+				MessageBox (hwnd, TEXT ("$(ProjectName) v1.0\nCopyright (C) $(DateTime_Year)\n"),
+                        TEXT ("About"), MB_OK | MB_ICONINFORMATION);
+				break;
+			case IDM_EXIT:
+				DestroyWindow(hwnd);
+				break;
+			default:
+				return DefWindowProc(hwnd, message, wParam, lParam);	    		
+		    }
+    		break;
+    	case WM_PAINT:
+			hdc = BeginPaint(hwnd, &ps);
+			/* TODO: Add any drawing code here... */
+			
+			GetClientRect(hwnd, &rt);
+			DrawText(hdc, szHello, lstrlen(szHello), &rt, DT_CENTER);
+			EndPaint(hwnd, &ps);
+			break;
+        case WM_DESTROY:
+            PostQuitMessage (0);       /* send a WM_QUIT to the message queue */
+            break;
+        default:                      /* for messages that we don't deal with */
+            return DefWindowProc (hwnd, message, wParam, lParam);
+    }
+
+    return 0;
+}
+</File>
+	<File folder="Source Files" name="main.cpp" external="" enabled="$(AppTypes)=2&$(SrcLang)=1">#include &lt;windows.h&gt;
+#include &lt;tchar.h&gt;
+#include "resource.h"
+
+// Global Variables:
+HINSTANCE hInst;							// current instance
+TCHAR szTitle[] = TEXT("$(ProjectName)");				// The title bar text
+TCHAR szWindowClass[] = TEXT("WinApp");		// the class name
+
+// Foward declarations of functions included in this code module:
+ATOM				MyRegisterClass(HINSTANCE hInstance);
+BOOL				InitInstance(HINSTANCE, int);
+LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);
+
+
+int APIENTRY WinMain(HINSTANCE hInstance,
+                     HINSTANCE hPrevInstance,
+                     LPSTR     lpCmdLine,
+                     int       nCmdShow)
+{
+ 	// TODO: Place code here.
+	MSG msg;
+
+	// Register Class 
+	MyRegisterClass(hInstance);
+
+	// Perform application initialization:
+	if (!InitInstance (hInstance, nCmdShow)) 
+	{
+		return FALSE;
+	}
+
+	// Main message loop:
+	while (GetMessage(&msg, NULL, 0, 0)) 
+	{
+		TranslateMessage(&msg);
+		DispatchMessage(&msg);
+	}
+
+	return msg.wParam;
+}
+
+
+
+//
+//  FUNCTION: MyRegisterClass()
+//
+//  PURPOSE: Registers the window class.
+//
+//  COMMENTS:
+//
+//    This function and its usage is only necessary if you want this code
+//    to be compatible with Win32 systems prior to the 'RegisterClassEx'
+//    function that was added to Windows 95. 
+//
+ATOM MyRegisterClass(HINSTANCE hInstance)
+{
+	WNDCLASSEX wcex;
+
+	wcex.cbSize = sizeof(WNDCLASSEX); 
+
+	wcex.style			= CS_HREDRAW | CS_VREDRAW;
+	wcex.lpfnWndProc	= (WNDPROC)WndProc;
+	wcex.cbClsExtra		= 0;
+	wcex.cbWndExtra		= 0;
+	wcex.hInstance		= hInstance;
+	wcex.hIcon			= LoadIcon (NULL, IDI_APPLICATION);
+	wcex.hCursor		= LoadCursor(NULL, IDC_ARROW);
+	wcex.hbrBackground	= (HBRUSH)(COLOR_WINDOW+1);
+	wcex.lpszMenuName	= MAKEINTRESOURCE (IDC_$(ProjectName_U));
+	wcex.lpszClassName	= szWindowClass;
+	wcex.hIconSm		= LoadIcon (NULL, IDI_APPLICATION);
+
+	return RegisterClassEx(&wcex);
+}
+
+//
+//   FUNCTION: InitInstance(HANDLE, int)
+//
+//   PURPOSE: Saves instance handle and creates main window
+//
+//   COMMENTS:
+//
+//        In this function, we save the instance handle in a global variable and
+//        create and display the main program window.
+//
+BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
+{
+   HWND hWnd;
+
+   hInst = hInstance; // Store instance handle in our global variable
+
+   hWnd = CreateWindow(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, NULL, NULL, hInstance, NULL);
+
+   if (!hWnd)
+   {
+      return FALSE;
+   }
+
+   ShowWindow(hWnd, nCmdShow);
+   UpdateWindow(hWnd);
+
+   return TRUE;
+}
+
+//
+//  FUNCTION: WndProc(HWND, unsigned, WORD, LONG)
+//
+//  PURPOSE:  Processes messages for the main window.
+//
+//  WM_COMMAND	- process the application menu
+//  WM_PAINT	- Paint the main window
+//  WM_DESTROY	- post a quit message and return
+//
+//
+LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	PAINTSTRUCT ps;
+	HDC hdc;
+	RECT rt;
+	TCHAR szHello[]= TEXT ("Hello, C-Free!");
+	
+	switch (message) 
+	{
+		case WM_COMMAND:
+    		switch (LOWORD(wParam))
+    		{
+		    case IDM_ABOUT:
+				MessageBox (hWnd, TEXT ("$(ProjectName) v1.0\nCopyright (C) $(DateTime_Year)\n"),
+                        TEXT ("About"), MB_OK | MB_ICONINFORMATION);
+				break;
+			case IDM_EXIT:
+				DestroyWindow(hWnd);
+				break;
+			default:
+				return DefWindowProc(hWnd, message, wParam, lParam);	    		
+		    }
+    		break;
+		case WM_PAINT:
+			hdc = BeginPaint(hWnd, &ps);
+			// TODO: Add any drawing code here...
+			
+			GetClientRect(hWnd, &rt);
+			DrawText(hdc, szHello, lstrlen(szHello), &rt, DT_CENTER);
+			EndPaint(hWnd, &ps);
+			break;
+		case WM_CLOSE:
+			DestroyWindow(hWnd);
+			break;
+		case WM_DESTROY:
+			PostQuitMessage(0);
+			break;
+		default:
+			return DefWindowProc(hWnd, message, wParam, lParam);
+	}
+	return 0;
+}
+</File>
+	<File folder="Source Files" name="main.c" external="" enabled="$(AppTypes)=1&$(SrcLang)=0">#include &lt;windows.h&gt;
+
+int APIENTRY WinMain(HINSTANCE hInstance,
+                     HINSTANCE hPrevInstance,
+                     LPSTR     lpCmdLine,
+                     int       nCmdShow)
+{
+ 	/* TODO: Place code here.*/
+
+	return 0;
+}
+</File>	
+	<File folder="Source Files" name="main.cpp" external="" enabled="$(AppTypes)=1&$(SrcLang)=1">#include &lt;windows.h&gt;
+
+int APIENTRY WinMain(HINSTANCE hInstance,
+                     HINSTANCE hPrevInstance,
+                     LPSTR     lpCmdLine,
+                     int       nCmdShow)
+{
+ 	// TODO: Place code here.
+
+	return 0;
+}
+</File>	
+<File folder="Header Files" name="resource.h" external="" enabled="$(AppTypes)=2">
+
+#define 	IDM_EXIT		10001
+#define 	IDM_ABOUT		10002
+
+#define 	IDC_$(ProjectName_U)		10101
+#define 	IDD_ABOUTBOX	10102
+</File>
+<File folder="Other Files" name="$(ProjectName).rc" external="" enabled="$(AppTypes)=2">
+
+#include "resource.h"
+#include &lt;windows.h&gt;
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDC_$(ProjectName_U) MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "E&xit",                	IDM_EXIT
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About ...",           	IDM_ABOUT
+    END
+END
+
+	</File>
+	
+	<File folder="Source Files" name="Main.cpp" external="" enabled="$(AppTypes)=3&$(SrcLang)=1">
+
+#include &lt;windows.h&gt;
+#include &lt;tchar.h&gt;
+#include &lt;stdio.h&gt;
+#include "resource.h"
+#include "filedlg.h"
+
+#define INIT_MENU_POS    0
+#define CHILD_MENU_POS   1
+
+#define UNTITLED_FORMAT  TEXT ("Untitled%d")
+#define IDM_FIRSTCHILD   50000
+
+LRESULT CALLBACK FrameWndProc  (HWND, UINT, WPARAM, LPARAM);
+BOOL    CALLBACK CloseEnumProc (HWND, LPARAM);
+LRESULT CALLBACK ChildWndProc  (HWND, UINT, WPARAM, LPARAM);
+
+// structure for storing data unique to each child window
+typedef struct tagDOCDATA
+{
+	TCHAR szFileName[MAX_PATH];
+	TCHAR szFileTitle[MAX_PATH];
+	BOOL  bNeedSave;
+}DOCDATA, *PDOCDATA;
+
+// global variables
+TCHAR     szAppName[]    = TEXT ("$(ProjectName)");
+TCHAR     szFrameClass[] = TEXT ("MdiFrame");
+TCHAR     szChildClass[] = TEXT ("MdiChild");
+HINSTANCE hInst;
+HMENU     hMenuInit, hMenuChild;
+HMENU     hMenuInitWindow, hMenuChildWindow;
+
+int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance,
+                    PSTR szCmdLine, int iCmdShow)
+{
+	HACCEL   hAccel;
+	HWND     hwndFrame, hwndClient;
+	MSG      msg;
+	WNDCLASS wndclass;
+	
+	hInst = hInstance;
+	
+	// Register the frame window class    
+	wndclass.style         = CS_HREDRAW | CS_VREDRAW;
+	wndclass.lpfnWndProc   = FrameWndProc;
+	wndclass.cbClsExtra    = 0;
+	wndclass.cbWndExtra    = 0;
+	wndclass.hInstance     = hInstance;
+	wndclass.hIcon         = LoadIcon (NULL, IDI_APPLICATION);
+	wndclass.hCursor       = LoadCursor (NULL, IDC_ARROW);
+	wndclass.hbrBackground = (HBRUSH) (COLOR_APPWORKSPACE + 1);
+	wndclass.lpszMenuName  = NULL;
+	wndclass.lpszClassName = szFrameClass;    
+	if (!RegisterClass (&wndclass))
+	{
+		MessageBox (NULL, TEXT ("This program requires Windows NT!"),
+		          szAppName, MB_ICONERROR);
+		return 0;
+	}
+	
+	// Register the child window class        
+	wndclass.style         = CS_HREDRAW | CS_VREDRAW;
+	wndclass.lpfnWndProc   = ChildWndProc;
+	wndclass.cbClsExtra    = 0;
+	wndclass.cbWndExtra    = sizeof (HANDLE);
+	wndclass.hInstance     = hInstance;
+	wndclass.hIcon         = LoadIcon (NULL, IDI_APPLICATION);
+	wndclass.hCursor       = LoadCursor (NULL, IDC_ARROW);
+	wndclass.hbrBackground = (HBRUSH) GetStockObject (WHITE_BRUSH);
+	wndclass.lpszMenuName  = NULL;
+	wndclass.lpszClassName = szChildClass;        
+	RegisterClass (&wndclass);
+	
+	// Obtain handles to menus & submenus    
+	hMenuInit  = LoadMenu (hInstance, TEXT ("MdiMenuInit"));
+	hMenuChild = LoadMenu (hInstance, TEXT ("MdiMenuChild"));
+	
+	hMenuInitWindow  = GetSubMenu (hMenuInit,   INIT_MENU_POS);
+	hMenuChildWindow = GetSubMenu (hMenuChild, CHILD_MENU_POS);
+	
+	// Load accelerator table    
+	hAccel = LoadAccelerators (hInstance, szAppName);
+	
+	// Create the frame window    
+	hwndFrame = CreateWindow (szFrameClass, szAppName,
+	                       WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN,
+	                       CW_USEDEFAULT, CW_USEDEFAULT,
+	                       CW_USEDEFAULT, CW_USEDEFAULT,
+	                       NULL, hMenuInit, hInstance, NULL);
+	
+	hwndClient = GetWindow (hwndFrame, GW_CHILD);
+	
+	ShowWindow (hwndFrame, iCmdShow);
+	UpdateWindow (hwndFrame);
+	
+	// Enter the modified message loop     
+	while (GetMessage (&msg, NULL, 0, 0))
+	{
+		if (!TranslateMDISysAccel (hwndClient, &msg) &&
+		  !TranslateAccelerator (hwndFrame, hAccel, &msg))
+		{
+		   TranslateMessage (&msg);
+		   DispatchMessage (&msg);
+		}
+	}
+	// Clean up by deleting unattached menus    
+	DestroyMenu (hMenuChild);
+	
+	return msg.wParam;
+}
+     
+LRESULT CALLBACK FrameWndProc (HWND hwnd, UINT message, 
+                               WPARAM wParam, LPARAM lParam)
+{
+     static HWND        hwndClient;
+     static int			iTitleIndex;
+     CLIENTCREATESTRUCT clientcreate;
+     HWND               hwndChild;
+     MDICREATESTRUCT    mdicreate;
+     TCHAR				szTitle[MAX_PATH] = { 0 };
+     TCHAR				szFileName[MAX_PATH] = { 0 };
+     PDOCDATA      	 	pDocData;
+          
+     switch (message)
+     {
+     case WM_CREATE:           // Create the client window
+          
+		clientcreate.hWindowMenu  = hMenuInitWindow;
+		clientcreate.idFirstChild = IDM_FIRSTCHILD;
+		
+		hwndClient = CreateWindow (TEXT ("MDICLIENT"), NULL,
+		                         WS_CHILD | WS_CLIPCHILDREN | WS_VISIBLE,   
+		                         0, 0, 0, 0, hwnd, (HMENU) 1, hInst,
+		                         (PSTR) &clientcreate);
+		                         
+  		// Init file open/save dialog structure
+  		FileDlgInit( hwnd );
+		return 0;
+
+     case WM_COMMAND:
+		switch (LOWORD (wParam))
+		{
+		case IDM_FILE_NEW:       // Create/Open a new child window
+		case IDM_FILE_OPEN:
+		
+			if ((LOWORD (wParam) == IDM_FILE_OPEN) )
+			{
+				if( !FileOpenDlg (hwnd, szFileName, szTitle) )
+					return 0;
+			}
+			else
+		   		_stprintf( szTitle, UNTITLED_FORMAT, ++iTitleIndex );
+		   	
+			mdicreate.szClass = szChildClass;
+			mdicreate.szTitle = szTitle;
+			mdicreate.hOwner  = hInst;
+			mdicreate.x       = CW_USEDEFAULT;
+			mdicreate.y       = CW_USEDEFAULT;
+			mdicreate.cx      = CW_USEDEFAULT;
+			mdicreate.cy      = CW_USEDEFAULT;
+			mdicreate.style   = 0;
+			mdicreate.lParam  = (LPARAM)szFileName;
+			
+			hwndChild = (HWND) SendMessage (hwndClient,
+			                   WM_MDICREATE, 0,
+			                   (LPARAM) (LPMDICREATESTRUCT) &mdicreate);
+		   	return 0;
+		
+	   	case IDM_FILE_SAVE:			// Save the active document		 
+	   		hwndChild = (HWND) SendMessage (hwndClient,
+			                               WM_MDIGETACTIVE, 0, 0);
+      		pDocData = (PDOCDATA)GetWindowLong (hwndChild, 0);
+      		lstrcpy( szTitle, pDocData->szFileTitle );
+      		lstrcpy( szFileName, pDocData->szFileName );
+      		if (FileSaveDlg (hwnd, szFileName, szTitle))
+			{
+				
+			}
+		   	return 0;
+	   		
+		case IDM_FILE_CLOSE:		// Close the active window
+		   
+			hwndChild = (HWND) SendMessage (hwndClient,
+			                               WM_MDIGETACTIVE, 0, 0);
+			
+			if (SendMessage (hwndChild, WM_QUERYENDSESSION, 0, 0))
+			    SendMessage (hwndClient, WM_MDIDESTROY,
+			                 (WPARAM) hwndChild, 0);
+			return 0;
+		   
+		case IDM_APP_EXIT:            // Exit the program
+		   
+			SendMessage (hwnd, WM_CLOSE, 0, 0);
+			return 0;
+			
+			// messages for arranging windows
+		
+		case IDM_WINDOW_TILE:
+			SendMessage (hwndClient, WM_MDITILE, 0, 0);
+			return 0;
+		   
+		case IDM_WINDOW_CASCADE:
+			SendMessage (hwndClient, WM_MDICASCADE, 0, 0);
+			return 0;
+		   
+		case IDM_WINDOW_ARRANGE:
+			SendMessage (hwndClient, WM_MDIICONARRANGE, 0, 0);
+			return 0;
+		   
+		case IDM_WINDOW_CLOSEALL:     // Attempt to close all children
+		   
+			EnumChildWindows (hwndClient, CloseEnumProc, 0);
+			return 0;
+		   
+		default:             // Pass to active child...
+		   
+			hwndChild = (HWND) SendMessage (hwndClient,
+			                               WM_MDIGETACTIVE, 0, 0);
+			
+			if (IsWindow (hwndChild))
+			    SendMessage (hwndChild, WM_COMMAND, wParam, lParam);
+			
+			break;        // ...and then to DefFrameProc
+		}
+		break;
+          
+     case WM_QUERYENDSESSION:
+     case WM_CLOSE:                      // Attempt to close all children
+               
+			SendMessage (hwnd, WM_COMMAND, IDM_WINDOW_CLOSEALL, 0);
+			   
+			if (NULL != GetWindow (hwndClient, GW_CHILD))
+			   return 0;
+			   
+			break;   // i.e., call DefFrameProc 
+               
+     case WM_DESTROY:
+			PostQuitMessage (0);
+			return 0;
+     }
+          // Pass unprocessed messages to DefFrameProc (not DefWindowProc)
+     
+     return DefFrameProc (hwnd, hwndClient, message, wParam, lParam);
+}
+
+BOOL CALLBACK CloseEnumProc (HWND hwnd, LPARAM lParam)
+{
+     if (GetWindow (hwnd, GW_OWNER))         // Check for icon title
+          return TRUE;
+     
+     SendMessage (GetParent (hwnd), WM_MDIRESTORE, (WPARAM) hwnd, 0);
+     
+     if (!SendMessage (hwnd, WM_QUERYENDSESSION, 0, 0))
+          return TRUE;
+     
+     SendMessage (GetParent (hwnd), WM_MDIDESTROY, (WPARAM) hwnd, 0);
+     return TRUE;
+}
+
+LRESULT CALLBACK ChildWndProc (HWND hwnd, UINT message, 
+                               WPARAM wParam, LPARAM lParam)
+{
+	static HWND     	hwndClient, hwndFrame;
+	HDC             	hdc;
+	HMENU           	hMenu;
+	PDOCDATA      	 	pDocData;
+	PAINTSTRUCT     	ps;
+	RECT            	rect;
+	LPCREATESTRUCT		lpcs;
+	LPMDICREATESTRUCT	lpmcs;
+	switch (message)
+	{
+	case WM_CREATE:
+		lpcs = (LPCREATESTRUCT) lParam; // structure with creation data 
+		lpmcs = (LPMDICREATESTRUCT) lpcs->lpCreateParams;
+
+		// Allocate memory for window private data  
+		pDocData = (PDOCDATA) HeapAlloc (GetProcessHeap (),
+		                  HEAP_ZERO_MEMORY, sizeof (DOCDATA));
+		
+		GetWindowText (hwnd, pDocData->szFileTitle, MAX_PATH);
+		lstrcpy( pDocData->szFileName, (LPCTSTR)lpmcs->lParam );
+		SetWindowLong (hwnd, 0, (long) pDocData);
+		
+		// Save some window handles          
+		hwndClient = GetParent (hwnd);
+		hwndFrame  = GetParent (hwndClient);
+		return 0;
+  	
+	case WM_COMMAND:
+		switch (LOWORD (wParam))
+		{
+			default:
+				break;
+		}
+		return 0;
+	  
+	case WM_PAINT:
+		// Paint the window
+		   
+		hdc = BeginPaint (hwnd, &ps);
+		   
+		pDocData = (PDOCDATA) GetWindowLong (hwnd, 0);
+		SetTextColor (hdc, RGB(0,0,0));              
+		GetClientRect (hwnd, &rect);
+		   
+		DrawText (hdc, pDocData->szFileTitle, -1, &rect,
+		        DT_SINGLELINE | DT_CENTER | DT_VCENTER);
+		   
+		EndPaint (hwnd, &ps);
+		return 0;
+	       
+	case WM_MDIACTIVATE:
+		// Set the Hello menu if gaining focus        
+		if (lParam == (LPARAM) hwnd)
+		   	SendMessage (hwndClient, WM_MDISETMENU,
+		                (WPARAM) hMenuChild, (LPARAM) hMenuChildWindow);
+		
+		// Set the Init menu if losing focus             
+		if (lParam != (LPARAM) hwnd)
+		   	SendMessage (hwndClient, WM_MDISETMENU, (WPARAM) hMenuInit,
+		                (LPARAM) hMenuInitWindow);
+		   
+		DrawMenuBar (hwndFrame);
+		return 0;
+	       
+	case WM_QUERYENDSESSION:
+	case WM_CLOSE:
+		pDocData = (PDOCDATA) GetWindowLong (hwnd, 0);
+		if (IDOK != MessageBox (hwnd, TEXT ("OK to close window?"),
+		                      pDocData->szFileTitle, 
+		                      MB_ICONQUESTION | MB_OKCANCEL))
+			return 0;
+		   
+		break;   // i.e., call DefMDIChildProc
+		   
+	case WM_DESTROY:
+		pDocData = (PDOCDATA) GetWindowLong (hwnd, 0);
+		HeapFree (GetProcessHeap (), 0, pDocData);
+		return 0;
+	}
+	
+	// Pass unprocessed message to DefMDIChildProc   
+	return DefMDIChildProc (hwnd, message, wParam, lParam);
+}
+
+	
+	</File>
+<File folder="Source Files" name="Main.c" external="" enabled="$(AppTypes)=3&$(SrcLang)=0">
+
+#include &lt;windows.h&gt;
+#include &lt;tchar.h&gt;
+#include &lt;stdio.h&gt;
+#include "resource.h"
+#include "filedlg.h"
+
+#define INIT_MENU_POS    0
+#define CHILD_MENU_POS   1
+
+#define UNTITLED_FORMAT  TEXT ("Untitled%d")
+#define IDM_FIRSTCHILD   50000
+
+LRESULT CALLBACK FrameWndProc  (HWND, UINT, WPARAM, LPARAM);
+BOOL    CALLBACK CloseEnumProc (HWND, LPARAM);
+LRESULT CALLBACK ChildWndProc  (HWND, UINT, WPARAM, LPARAM);
+
+/* structure for storing data unique to each child window */
+typedef struct tagDOCDATA
+{
+	TCHAR szFileName[MAX_PATH];
+	TCHAR szFileTitle[MAX_PATH];
+	BOOL  bNeedSave;
+}DOCDATA, *PDOCDATA;
+
+/* global variables */
+TCHAR     szAppName[]    = TEXT ("$(ProjectName)");
+TCHAR     szFrameClass[] = TEXT ("MdiFrame");
+TCHAR     szChildClass[] = TEXT ("MdiChild");
+HINSTANCE hInst;
+HMENU     hMenuInit, hMenuChild;
+HMENU     hMenuInitWindow, hMenuChildWindow;
+
+int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance,
+                    PSTR szCmdLine, int iCmdShow)
+{
+	HACCEL   hAccel;
+	HWND     hwndFrame, hwndClient;
+	MSG      msg;
+	WNDCLASS wndclass;
+	
+	hInst = hInstance;
+	
+	/* Register the frame window class */   
+	wndclass.style         = CS_HREDRAW | CS_VREDRAW;
+	wndclass.lpfnWndProc   = FrameWndProc;
+	wndclass.cbClsExtra    = 0;
+	wndclass.cbWndExtra    = 0;
+	wndclass.hInstance     = hInstance;
+	wndclass.hIcon         = LoadIcon (NULL, IDI_APPLICATION);
+	wndclass.hCursor       = LoadCursor (NULL, IDC_ARROW);
+	wndclass.hbrBackground = (HBRUSH) (COLOR_APPWORKSPACE + 1);
+	wndclass.lpszMenuName  = NULL;
+	wndclass.lpszClassName = szFrameClass;    
+	if (!RegisterClass (&wndclass))
+	{
+		MessageBox (NULL, TEXT ("This program requires Windows NT!"),
+		          szAppName, MB_ICONERROR);
+		return 0;
+	}
+	
+	/* Register the child window class */
+	wndclass.style         = CS_HREDRAW | CS_VREDRAW;
+	wndclass.lpfnWndProc   = ChildWndProc;
+	wndclass.cbClsExtra    = 0;
+	wndclass.cbWndExtra    = sizeof (HANDLE);
+	wndclass.hInstance     = hInstance;
+	wndclass.hIcon         = LoadIcon (NULL, IDI_APPLICATION);
+	wndclass.hCursor       = LoadCursor (NULL, IDC_ARROW);
+	wndclass.hbrBackground = (HBRUSH) GetStockObject (WHITE_BRUSH);
+	wndclass.lpszMenuName  = NULL;
+	wndclass.lpszClassName = szChildClass;        
+	RegisterClass (&wndclass);
+	
+	/* Obtain handles to menus & submenus */
+	hMenuInit  = LoadMenu (hInstance, TEXT ("MdiMenuInit"));
+	hMenuChild = LoadMenu (hInstance, TEXT ("MdiMenuChild"));
+	
+	hMenuInitWindow  = GetSubMenu (hMenuInit,   INIT_MENU_POS);
+	hMenuChildWindow = GetSubMenu (hMenuChild, CHILD_MENU_POS);
+	
+	/* Load accelerator table */
+	hAccel = LoadAccelerators (hInstance, szAppName);
+	
+	/* Create the frame window */
+	hwndFrame = CreateWindow (szFrameClass, szAppName,
+	                       WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN,
+	                       CW_USEDEFAULT, CW_USEDEFAULT,
+	                       CW_USEDEFAULT, CW_USEDEFAULT,
+	                       NULL, hMenuInit, hInstance, NULL);
+	
+	hwndClient = GetWindow (hwndFrame, GW_CHILD);
+	
+	ShowWindow (hwndFrame, iCmdShow);
+	UpdateWindow (hwndFrame);
+	
+	/* Enter the modified message loop */
+	while (GetMessage (&msg, NULL, 0, 0))
+	{
+		if (!TranslateMDISysAccel (hwndClient, &msg) &&
+		  !TranslateAccelerator (hwndFrame, hAccel, &msg))
+		{
+		   TranslateMessage (&msg);
+		   DispatchMessage (&msg);
+		}
+	}
+	/* Clean up by deleting unattached menus */
+	DestroyMenu (hMenuChild);
+	
+	return msg.wParam;
+}
+     
+LRESULT CALLBACK FrameWndProc (HWND hwnd, UINT message, 
+                               WPARAM wParam, LPARAM lParam)
+{
+     static HWND        hwndClient;
+     static int			iTitleIndex;
+     CLIENTCREATESTRUCT clientcreate;
+     HWND               hwndChild;
+     MDICREATESTRUCT    mdicreate;
+     TCHAR				szTitle[MAX_PATH] = { 0 };
+     TCHAR				szFileName[MAX_PATH] = { 0 };
+     PDOCDATA      	 	pDocData;
+          
+     switch (message)
+     {
+     case WM_CREATE:           /* Create the client window */
+          
+		clientcreate.hWindowMenu  = hMenuInitWindow;
+		clientcreate.idFirstChild = IDM_FIRSTCHILD;
+		
+		hwndClient = CreateWindow (TEXT ("MDICLIENT"), NULL,
+		                         WS_CHILD | WS_CLIPCHILDREN | WS_VISIBLE,   
+		                         0, 0, 0, 0, hwnd, (HMENU) 1, hInst,
+		                         (PSTR) &clientcreate);
+		                         
+  		/* Init file open/save dialog structure */
+  		FileDlgInit( hwnd );
+		return 0;
+
+     case WM_COMMAND:
+		switch (LOWORD (wParam))
+		{
+		case IDM_FILE_NEW:       /* Create/Open a new child window */
+		case IDM_FILE_OPEN:
+		
+			if ((LOWORD (wParam) == IDM_FILE_OPEN) )
+			{
+				if( !FileOpenDlg (hwnd, szFileName, szTitle) )
+					return 0;
+			}
+			else
+		   		_stprintf( szTitle, UNTITLED_FORMAT, ++iTitleIndex );
+		   	
+			mdicreate.szClass = szChildClass;
+			mdicreate.szTitle = szTitle;
+			mdicreate.hOwner  = hInst;
+			mdicreate.x       = CW_USEDEFAULT;
+			mdicreate.y       = CW_USEDEFAULT;
+			mdicreate.cx      = CW_USEDEFAULT;
+			mdicreate.cy      = CW_USEDEFAULT;
+			mdicreate.style   = 0;
+			mdicreate.lParam  = (LPARAM)szFileName;
+			
+			hwndChild = (HWND) SendMessage (hwndClient,
+			                   WM_MDICREATE, 0,
+			                   (LPARAM) (LPMDICREATESTRUCT) &mdicreate);
+		   	return 0;
+		
+	   	case IDM_FILE_SAVE:			/* Save the active document */
+	   		hwndChild = (HWND) SendMessage (hwndClient,
+			                               WM_MDIGETACTIVE, 0, 0);
+      		pDocData = (PDOCDATA)GetWindowLong (hwndChild, 0);
+      		lstrcpy( szTitle, pDocData->szFileTitle );
+      		lstrcpy( szFileName, pDocData->szFileName );
+      		if (FileSaveDlg (hwnd, szFileName, szTitle))
+			{
+				
+			}
+		   	return 0;
+	   		
+		case IDM_FILE_CLOSE:		/* Close the active window */
+		   
+			hwndChild = (HWND) SendMessage (hwndClient,
+			                               WM_MDIGETACTIVE, 0, 0);
+			
+			if (SendMessage (hwndChild, WM_QUERYENDSESSION, 0, 0))
+			    SendMessage (hwndClient, WM_MDIDESTROY,
+			                 (WPARAM) hwndChild, 0);
+			return 0;
+		   
+		case IDM_APP_EXIT:            /* Exit the program */
+		   
+			SendMessage (hwnd, WM_CLOSE, 0, 0);
+			return 0;
+			
+			/* messages for arranging windows */
+		
+		case IDM_WINDOW_TILE:
+			SendMessage (hwndClient, WM_MDITILE, 0, 0);
+			return 0;
+		   
+		case IDM_WINDOW_CASCADE:
+			SendMessage (hwndClient, WM_MDICASCADE, 0, 0);
+			return 0;
+		   
+		case IDM_WINDOW_ARRANGE:
+			SendMessage (hwndClient, WM_MDIICONARRANGE, 0, 0);
+			return 0;
+		   
+		case IDM_WINDOW_CLOSEALL:     /* Attempt to close all children */
+		   
+			EnumChildWindows (hwndClient, CloseEnumProc, 0);
+			return 0;
+		   
+		default:             /* Pass to active child... */
+		   
+			hwndChild = (HWND) SendMessage (hwndClient,
+			                               WM_MDIGETACTIVE, 0, 0);
+			
+			if (IsWindow (hwndChild))
+			    SendMessage (hwndChild, WM_COMMAND, wParam, lParam);
+			
+			break;        /* ...and then to DefFrameProc */
+		}
+		break;
+          
+     case WM_QUERYENDSESSION:
+     case WM_CLOSE:                      /* Attempt to close all children */
+               
+			SendMessage (hwnd, WM_COMMAND, IDM_WINDOW_CLOSEALL, 0);
+			   
+			if (NULL != GetWindow (hwndClient, GW_CHILD))
+			   return 0;
+			   
+			break;   /* i.e., call DefFrameProc */
+               
+     case WM_DESTROY:
+			PostQuitMessage (0);
+			return 0;
+     }
+          /* Pass unprocessed messages to DefFrameProc (not DefWindowProc) */
+     
+     return DefFrameProc (hwnd, hwndClient, message, wParam, lParam);
+}
+
+BOOL CALLBACK CloseEnumProc (HWND hwnd, LPARAM lParam)
+{
+     if (GetWindow (hwnd, GW_OWNER))         /* Check for icon title */
+          return TRUE;
+     
+     SendMessage (GetParent (hwnd), WM_MDIRESTORE, (WPARAM) hwnd, 0);
+     
+     if (!SendMessage (hwnd, WM_QUERYENDSESSION, 0, 0))
+          return TRUE;
+     
+     SendMessage (GetParent (hwnd), WM_MDIDESTROY, (WPARAM) hwnd, 0);
+     return TRUE;
+}
+
+LRESULT CALLBACK ChildWndProc (HWND hwnd, UINT message, 
+                               WPARAM wParam, LPARAM lParam)
+{
+	static HWND     	hwndClient, hwndFrame;
+	HDC             	hdc;
+	HMENU           	hMenu;
+	PDOCDATA      	 	pDocData;
+	PAINTSTRUCT     	ps;
+	RECT            	rect;
+	LPCREATESTRUCT		lpcs;
+	LPMDICREATESTRUCT	lpmcs;
+	switch (message)
+	{
+	case WM_CREATE:
+		lpcs = (LPCREATESTRUCT) lParam; /* structure with creation data */
+		lpmcs = (LPMDICREATESTRUCT) lpcs->lpCreateParams;
+
+		/* Allocate memory for window private data */
+		pDocData = (PDOCDATA) HeapAlloc (GetProcessHeap (),
+		                  HEAP_ZERO_MEMORY, sizeof (DOCDATA));
+		
+		GetWindowText (hwnd, pDocData->szFileTitle, MAX_PATH);
+		lstrcpy( pDocData->szFileName, (LPCTSTR)lpmcs->lParam );
+		SetWindowLong (hwnd, 0, (long) pDocData);
+		
+		/* Save some window handles */
+		hwndClient = GetParent (hwnd);
+		hwndFrame  = GetParent (hwndClient);
+		return 0;
+  	
+	case WM_COMMAND:
+		switch (LOWORD (wParam))
+		{
+			default:
+				break;
+		}
+		return 0;
+	  
+	case WM_PAINT:
+		/* Paint the window */
+		   
+		hdc = BeginPaint (hwnd, &ps);
+		   
+		pDocData = (PDOCDATA) GetWindowLong (hwnd, 0);
+		SetTextColor (hdc, RGB(0,0,0));              
+		GetClientRect (hwnd, &rect);
+		   
+		DrawText (hdc, pDocData->szFileTitle, -1, &rect,
+		        DT_SINGLELINE | DT_CENTER | DT_VCENTER);
+		   
+		EndPaint (hwnd, &ps);
+		return 0;
+	       
+	case WM_MDIACTIVATE:
+		/* Set the Hello menu if gaining focus */
+		if (lParam == (LPARAM) hwnd)
+		   	SendMessage (hwndClient, WM_MDISETMENU,
+		                (WPARAM) hMenuChild, (LPARAM) hMenuChildWindow);
+		
+		/* Set the Init menu if losing focus */
+		if (lParam != (LPARAM) hwnd)
+		   	SendMessage (hwndClient, WM_MDISETMENU, (WPARAM) hMenuInit,
+		                (LPARAM) hMenuInitWindow);
+		   
+		DrawMenuBar (hwndFrame);
+		return 0;
+	       
+	case WM_QUERYENDSESSION:
+	case WM_CLOSE:
+		pDocData = (PDOCDATA) GetWindowLong (hwnd, 0);
+		if (IDOK != MessageBox (hwnd, TEXT ("OK to close window?"),
+		                      pDocData->szFileTitle, 
+		                      MB_ICONQUESTION | MB_OKCANCEL))
+			return 0;
+		   
+		break;   /* i.e., call DefMDIChildProc */
+		   
+	case WM_DESTROY:
+		pDocData = (PDOCDATA) GetWindowLong (hwnd, 0);
+		HeapFree (GetProcessHeap (), 0, pDocData);
+		return 0;
+	}
+	
+	/* Pass unprocessed message to DefMDIChildProc */
+	return DefMDIChildProc (hwnd, message, wParam, lParam);
+}
+
+	
+	</File>	
+	
+	<File folder="Source Files" name="FileDlg.cpp" external="" enabled="$(AppTypes)=3&$(SrcLang)=1">
+#include &lt;windows.h&gt;
+#include &lt;commdlg.h&gt;
+
+static OPENFILENAME ofn;
+
+void FileDlgInit (HWND hwnd)
+{
+    static TCHAR szFileFilter[] = TEXT ("Text Files (*.TXT)\0*.txt\0")  \
+								  TEXT ("All Files (*.*)\0*.*\0\0");
+     
+     ofn.lStructSize       = sizeof (OPENFILENAME);
+     ofn.hwndOwner         = hwnd;
+     ofn.hInstance         = NULL;
+     ofn.lpstrFilter       = szFileFilter;
+     ofn.lpstrCustomFilter = NULL;
+     ofn.nMaxCustFilter    = 0;
+     ofn.nFilterIndex      = 0;
+     ofn.lpstrFile         = NULL; 
+     ofn.nMaxFile          = MAX_PATH;
+     ofn.lpstrFileTitle    = NULL;
+     ofn.nMaxFileTitle     = MAX_PATH;
+     ofn.lpstrInitialDir   = NULL;
+     ofn.lpstrTitle        = NULL;
+     ofn.Flags             = 0;
+     ofn.nFileOffset       = 0;
+     ofn.nFileExtension    = 0;
+     ofn.lpstrDefExt       = TEXT ("txt");
+     ofn.lCustData         = 0L;
+     ofn.lpfnHook          = NULL;
+     ofn.lpTemplateName    = NULL;
+}
+
+BOOL FileOpenDlg (HWND hwnd, PTSTR pstrFileName, PTSTR pstrTitleName)
+{
+     ofn.hwndOwner         = hwnd;
+     ofn.lpstrFile         = pstrFileName;
+     ofn.lpstrFileTitle    = pstrTitleName;
+     ofn.Flags             = OFN_HIDEREADONLY | OFN_CREATEPROMPT;
+     
+     return GetOpenFileName (&ofn) ;
+}
+
+BOOL FileSaveDlg (HWND hwnd, PTSTR pstrFileName, PTSTR pstrTitleName)
+{
+     ofn.hwndOwner         = hwnd;
+     ofn.lpstrFile         = pstrFileName;
+     ofn.lpstrFileTitle    = pstrTitleName;
+     ofn.Flags             = OFN_OVERWRITEPROMPT;
+     
+     return GetSaveFileName (&ofn);
+}
+	
+	</File>
+	
+	<File folder="Source Files" name="FileDlg.c" external="" enabled="$(AppTypes)=3&$(SrcLang)=0">
+#include &lt;windows.h&gt;
+#include &lt;commdlg.h&gt;
+
+static OPENFILENAME ofn;
+
+void FileDlgInit (HWND hwnd)
+{
+    static TCHAR szFileFilter[] = TEXT ("Text Files (*.TXT)\0*.txt\0")  \
+								  TEXT ("All Files (*.*)\0*.*\0\0");
+     
+     ofn.lStructSize       = sizeof (OPENFILENAME);
+     ofn.hwndOwner         = hwnd;
+     ofn.hInstance         = NULL;
+     ofn.lpstrFilter       = szFileFilter;
+     ofn.lpstrCustomFilter = NULL;
+     ofn.nMaxCustFilter    = 0;
+     ofn.nFilterIndex      = 0;
+     ofn.lpstrFile         = NULL; 
+     ofn.nMaxFile          = MAX_PATH;
+     ofn.lpstrFileTitle    = NULL;
+     ofn.nMaxFileTitle     = MAX_PATH;
+     ofn.lpstrInitialDir   = NULL;
+     ofn.lpstrTitle        = NULL;
+     ofn.Flags             = 0;
+     ofn.nFileOffset       = 0;
+     ofn.nFileExtension    = 0;
+     ofn.lpstrDefExt       = TEXT ("txt");
+     ofn.lCustData         = 0L;
+     ofn.lpfnHook          = NULL;
+     ofn.lpTemplateName    = NULL;
+}
+
+BOOL FileOpenDlg (HWND hwnd, PTSTR pstrFileName, PTSTR pstrTitleName)
+{
+     ofn.hwndOwner         = hwnd;
+     ofn.lpstrFile         = pstrFileName;
+     ofn.lpstrFileTitle    = pstrTitleName;
+     ofn.Flags             = OFN_HIDEREADONLY | OFN_CREATEPROMPT;
+     
+     return GetOpenFileName (&ofn) ;
+}
+
+BOOL FileSaveDlg (HWND hwnd, PTSTR pstrFileName, PTSTR pstrTitleName)
+{
+     ofn.hwndOwner         = hwnd;
+     ofn.lpstrFile         = pstrFileName;
+     ofn.lpstrFileTitle    = pstrTitleName;
+     ofn.Flags             = OFN_OVERWRITEPROMPT;
+     
+     return GetSaveFileName (&ofn);
+}
+	
+	</File>
+	<File folder="Header Files" name="resource.h" external="" enabled="$(AppTypes)=3">
+
+#define IDM_FILE_NEW					10001
+#define IDM_FILE_OPEN					10002
+#define IDM_FILE_SAVE					10003
+#define IDM_FILE_CLOSE                  10004
+#define IDM_APP_EXIT                    10005
+
+#define IDM_WINDOW_CASCADE              10010
+#define IDM_WINDOW_TILE                 10011
+#define IDM_WINDOW_ARRANGE              10012
+#define IDM_WINDOW_CLOSEALL             10013
+
+	</File>
+	<File folder="Header Files" name="FileDlg.h" external="" enabled="$(AppTypes)=3">
+#ifndef _FILEDLG_H_
+#define _FILEDLG_H_
+
+void FileDlgInit (HWND);
+BOOL FileOpenDlg (HWND, PTSTR, PTSTR);
+BOOL FileSaveDlg (HWND, PTSTR, PTSTR);
+
+#endif
+
+	</File>
+	<File folder="Other Files" name="$(ProjectName).rc" external="" enabled="$(AppTypes)=3">
+	
+#include "resource.h"
+#include &lt;windows.h&gt;
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+MDIMENUINIT MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                IDM_FILE_NEW
+        MENUITEM "&Open\tCtrl+O",               IDM_FILE_OPEN
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       IDM_APP_EXIT
+    END
+END
+
+MDIMENUCHILD MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                IDM_FILE_NEW
+        MENUITEM "&Open\tCtrl+O",              	IDM_FILE_OPEN
+		MENUITEM "&Save\tCtrl+S",              	IDM_FILE_SAVE
+        MENUITEM "&Close",                      IDM_FILE_CLOSE
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       IDM_APP_EXIT
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&Cascade\tShift+F5",          IDM_WINDOW_CASCADE
+        MENUITEM "&Tile\tShift+F4",             IDM_WINDOW_TILE
+        MENUITEM "Arrange &Icons",              IDM_WINDOW_ARRANGE
+        MENUITEM "Close &All",                  IDM_WINDOW_CLOSEALL
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+$(ProjectName_U) ACCELERATORS DISCARDABLE 
+BEGIN
+    VK_F4,          IDM_WINDOW_TILE,        VIRTKEY, SHIFT, NOINVERT
+    VK_F5,          IDM_WINDOW_CASCADE,     VIRTKEY, SHIFT, NOINVERT
+    "^N",           IDM_FILE_NEW,           ASCII,  NOINVERT
+    "^O",           IDM_FILE_OPEN,          ASCII,  NOINVERT
+    "^S",           IDM_FILE_SAVE,          ASCII,  NOINVERT
+END
+
+	</File>
+	</Directory>
+	</Outputs>
+</ProjectType>

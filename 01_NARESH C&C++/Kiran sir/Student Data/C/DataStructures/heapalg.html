@@ -1,0 +1,56 @@
+<html>
+<body>
+Algorithm :<br>
+   Building Heap :<br>
+   Procedure BuildHeap(A,N)<br>
+     1.For j=2 to N do<br>
+     begin<br>
+     2.Key &#060;&#045; A[j]<br>
+     3.i&#060;&#045;trunc(j/2)<br>
+     4.while (i&#062;0) and (A[i]&#060;key) do <br>
+      begin<br>
+     5.A[j] &#060;&#045; A[i]<br>
+     6.j &#060;&#045; i<br>
+     7.i &#060;&#045; trunc(j/2)<br>
+      end<br>
+     8.A[i] &#060;&#045; key<br>
+     end<br>
+     9.Return<br>
+
+
+  Re-create the Heap:<br>
+  Procedure ReHeap(A,K)<br>
+   1.Parent &#060;&#045; 1<br>
+   2.child &#060;&#045; 2<br>
+   3.key &#060;&#045; A[parent]<br>
+   4.Heap &#060;&#045; False<br>
+   5.while (child &#060;= k) and (not Heap) do<br>
+    begin<br>
+   6.If (child&#060; k) then<br>
+     If A[child + 1]&#062; A[child] then<br>
+      child &#060;&#045; child + 1<br>
+   7.If A[child] &#062; key then<br>
+     begin<br>
+   8.A[parent] &#060;&#045; A[child]<br>
+   9.parent &#060;&#045; child<br>
+   10.child &#060;&#045; parent * 2<br>
+    end<br>
+   else<br>
+   11.Heap &#060;&#045; true<br>
+   end<br>
+   12.A[parent] &#060;&#045; key<br>
+   13.Return.<br>
+
+   Heap sort :<br>
+    procedure HeapSort(A,N)<br>
+   1.call BuildHeap(A,N)<br>
+   2.For pos = N to 2 in steps of -1 do<br>
+    begin<br>
+   3.swap(A[1],A[pos])<br>
+   4.call ReHeap(A,pos-1)<br>
+	end<br>
+   5.Return<br>
+
+
+</body>
+</html>

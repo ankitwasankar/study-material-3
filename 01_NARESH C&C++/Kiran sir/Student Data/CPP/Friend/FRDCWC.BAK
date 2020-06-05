@@ -1,0 +1,33 @@
+#include<iostream.h>
+#include<conio.h>
+class abc
+   {
+   friend class def;
+   int x;
+   public:
+	  void getdata();
+   };
+   class def
+      {
+      public:
+	  friend void display(class abc temp);
+   };
+   inline void abc::getdata()
+   {
+   cout<<"Enter x value";
+   cin>>x;
+   }
+   inline void def:display(class abc temp)
+   {
+   cout<<"Value of x is"<<temp.x;
+   }
+
+   void main()
+   {
+   abc objx;
+   def objy;
+   clrscr();
+   objx.getdata();
+   objy.display(objx);
+   getch();
+   }

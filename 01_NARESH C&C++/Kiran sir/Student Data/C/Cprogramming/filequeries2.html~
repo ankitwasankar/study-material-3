@@ -1,0 +1,220 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table>
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<td align=left><pre><strong><u>Objective Questions on files:</u></strong>
+
+1.Which I/O function is used to receive input from keyboard and write output to VDU
+a)Disk I/O    b)port I/O   c)  Console I/O    d) None   Ans:  C<br>
+2.Which I/O function have been categorised into formatted and un formatted I/o functions 
+a) Disk I/O    b)port I/O   c)  Console I/O    d) None   Ans:  C<br>
+3.Which of the following is formatted I/o functions used for input 
+a) gets()  b) scanf( )   c) both a and b    d) None   Ans:B<br>
+4.Which of the following is formatted I/o functions used for input 
+a) getch()  b) getche( )   c) both a and b    d) None   Ans:C<br>
+5.Which of the following functions is used to output a single character
+a) puts( )   b)putch( )  c)putchar()   d)  b  and  c       Ans:D<br>
+6.Which of the following is used as unsigned character format specifier
+a) %s  b) %c  c)%uc  d)%d    				Ans:B<br>
+7.Identify the following is used as unsigned character format specifier
+a)%d   b)%I   c) both a and b   d)none   		Ans:C<br>
+8.%O
+a)Organised format specifier   b) signed octal  format specifier  
+c) Unsigned Octal  format specifier  d) b and c	Ans:D<br>
+9.Identify the long signed format specifier
+a) %lu b)  %ls  c) %ld  d) None			Ans:C<br>
+10.%10d would print the output exactly as:
+a) print the variable as a decimal integer in field of 10 columns.
+b)print the output.
+c)print the variable as a decimal integer in field of 10 columns as right justified.
+d) print the variable as a decimal integer in field of 10 columns as left justified.
+Ans:C<br>
+11.%-5d will print output with 
+a) output padded with blanks in right.
+b)output padded with blanks in between.
+c) output padded with blanks in left.
+d) None  							Ans:A<br>
+12.main()
+{
+  char f1[ ]="ieg";
+  char f2[ ]="scio";
+ printf("%5s",f1);
+ printf(%-5s",f2);
+}
+Here the output in first and second printf statements would start printed rom which 
+
+column of output?
+a) 4,2  b)2,0  c)4,1  d)3,2			Ans:B
+<strong>Explanation:</strong> In first printf is right justified ,padded with blanks on left.
+In second printf is left justified ,padded with blanks on Right.<br>
+
+13.Which of the following are escape sequences
+a) \n  b)\b  c) \f   d) all the above.		Ans:D<br>
+14.To print \(back slash) at the output ,which of the following is used as an escape 
+
+sequence in printf
+a) '\'   b)  "\"  c)\\  d)none			Ans:A<br>
+15.Which of the following used as alert escape sequences
+a) \a  b) \A  c)\\a   d) /a				Ans:A
+\a -->alerts the user by sounding the speaker inside the computer .Other sequences are
+  \r --> carriage return
+  \"-->Double quote
+ \\ -->Baclslash
+ \' -->single quote
+ \b-->Back space<br>
+16.main()
+ {
+  char ch=' Z ';
+ int i=125;
+ printf("\n %c %d",ch,ch);
+}
+what is the ouput of following program
+a)error  b) Z 122  c)  122 122  d) Z,Z			Ans:B
+<strong>Expalnation:</strong> when a character is printed using %d ,it 
+will print its ascii equivalent.<br>
+
+17. low-level  disk I/O uses:
+a) UNIX system calls  b) c's standard I/O library
+c)both a and b     d) None   Ans:A<br>
+18.What is that fprintf( ) used for 
+a) reads a set of data values from file
+b)Writes a set of data values from file
+c)Wrires only a character to a file   d) none 	Ans:C<br>
+19.putc( ) is used for:
+a)reads a character from memory cache
+b)reads a character from file.
+c)both a and b
+d)None						Ans:C<br>
+20.write the syntax for opening a file:
+a)fp=fopen("mode", "filename");
+b)fp=fopen("filename","mode");
+c)fp=fopen("mode, filename");
+d)fp=fopen("filename,mode");			Ans:D<br>
+21.Which mode of file opening is used to open a file for adding content to a file with current
+ contents being safe:
+ a) a       b) a+  c) w  d) both a and b<br>				Ans:d
+22.A file must be closed as  soon as all operations on it have been completed because:
+a) So that all outstanding information associated with files is flushed out from buffers , 
+     all links to file are broken.
+b) We want to open file in different mode.
+c) To prevent acci dental misuse of file.
+d) All the above						Ans:  D<br>
+23. When getc(file-pointer) is used for reading data from file,readind should be done until:
+a) file-pointer points to null
+b) Using some Null values
+c) When the End-of-filemark EOF has been encountered
+d)All the above						Ans: C<br>
+24.What is syntax of putw( ) function  in files:
+a) putw(fp) b)putw(fp,integer)  c)putw(integer,fp) d) none  Ans:  B<br>
+25.Syntax of fprintf( )
+a) fprintf(fp,"control string",list);
+b)fprintf("control string",fp,list);
+c)fprintf(list,fp,"control string);
+d) none							Ans:A<br>
+26.Which of the follwing are error handling conditions during I/O
+a) Device overflow  b) writing to a write protected file
+c) both a and b         d) None				Ans:C<br>
+27.Typical error situations during I/O:
+a) Trying to read beyond End-of-filemark
+d) Trying to use a file that has not opened 
+c) opening a file with invalid filename
+d) All the above						Ans:D<br>
+28.ferror( )  function
+a) Takes no arguments
+b) Takes pointer as an argument
+c) Takes filepointer as an argument.
+d) Takes structure as an argument.			Ans:D<br>
+29.Whenever a file cannot be opened using fopen 
+a) Value 0 is returned
+b) Value 1 is returned
+c)Non-zero value is returned
+d) Null pointer is returned				Ans:D<br>
+30.ferror function returns
+a) Non zero integer if an error has been detected
+b)positive integer if an error has been detected
+c) Negative integer if an error has been detected
+d) None							Ans:A<br>
+31.ftell function takes file pointer as an argument  returns
+a)Number of type long that corresponds to current position
+b)Number of type int that corresponds to current position
+c)Number of type float that corresponds to current position
+d) None 							Ans:A<br>
+32.fseek(fp,m,0)
+a) Move to (m+1)th byte in the file
+d)Go forward by m bytes 
+c)Go backwards by m bytes
+d)Move to the mth byte in the file.			Ans:A<br>
+33.fseek(fp,0L,0)
+a) Go to the End-of-file
+b)Go to the beginning
+c) both a and b
+d)None							Ans:B<br>
+34.fseek(fp,-m,2)
+a) Go backwards by (m+1) bytes
+b) Go to the (m+1) th byte
+c) Go to the m th byte
+d)Go backwards by m bytes from the end		Ans:D<br>
+35.______________  counts the no.of arguments on the command line
+a) argv  b)  argc   c) both a and b   d) None 		Ans:B<br>
+36.Command line argumens in C are
+a) Arguments on C editor
+b)Parameters supplied to program when the program is invoked
+c)These can be passed as an arguments to main( )
+d) Both b and c 							Ans:D <br>
+37. argv represents 
+a)An array of integer pointers that point to the command line arguments
+b) An array of long pointers that point to the command line arguments
+c)An array of character pointers that point to the command line arguments
+d) None							Ans:C<br>
+38._________ takes a file pointer and resets the positions to start of file
+a)fseek(fp,0L,0)
+b)rewind(fp)
+c) both a and b
+d) None							Ans:C<br>
+39.If statement on the command line is 
+program x-file y-file
+the value in argv[1] is
+a) program
+b)x-file
+c)y-file
+d)none							Ans:B<br>
+<a href="files1.html" target="_self"><strong>Back</strong></a></pre>
+</td></table>

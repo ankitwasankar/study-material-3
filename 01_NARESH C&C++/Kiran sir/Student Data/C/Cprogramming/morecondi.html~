@@ -1,0 +1,154 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<tr>
+<TR><a href="files.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left"><pre>
+
+                              <strong>DECISION MAKING AND BRANCHING </strong>
+ 
+
+<strong>Example:42 </strong>
+                             
+             main() 
+             { 
+                  int x=3,y=4,z=4; 
+                  printf("ans=%d",(z>=y>=x?100:200));                                
+             } 
+OUTPUT:       ans=200 
+
+Explanation:   The expression is 
+                                
+               (z>=y>=x?100:200) 
+	first Z is compared to y and the result of the condition is compared 
+with x. Since z and y are equal, the first condition is satisfied and is replaced
+by 1. 
+Thus the condition is now reduced  to, 
+                                (1>=x?100:200) 
+Since  1 is neither greater than nor equal to value of x, the condition fails and
+the output results. 
+ 
+<strong>Example:43</strong> 
+
+                main() 
+                { 
+                       int i=-4,j,num=10; 
+                       j=i%-3; 
+                       j=(j?0:num*num); 
+                       printf("j=%d",j); 
+                } 
+OUTPUT:         j=0 
+
+Explanation:The statement  is j=i%-3, on substituting the value of I, t becomes, 
+ 
+                j=-4%-3 
+usual arithmetic would have prompted us to cancel the minus signs from numerator 
+and denominator and then perform the division. But not c. 
+In C first division is carried out assuming that there are no signs and then 
+sign of numerator is assigned to reminder. Thus the output results. 
+
+
+<strong>Example:44 </strong>
+
+                main() 
+                { 
+                     int k=12,n=30; 
+                     k=(k>5&&n=4?100:200); 
+                     printf("k=%d",k); 
+                } 
+OUTPUT:  
+           Error message: Lvalue required in function main. 
+
+Explanation:    
+First let us understand the meaning of the word Lvalue An Lvalue is any variable 
+whose value can change ( have a new value assigned to it). 
+   An rvalue is a variable whose value can not change. 
+TIP: The easient way to differentiate between the two is to remember that
+an rvalue goes to the right of the assignment operator,and an Lvalue to theleft.
+               In the above problem 
+ 
+            k=(k>5&&n=4?100:200); 
+Go to precedence table, '&&' enjoys a higher priority compared
+to the assignment operator=. Hence the condition becomes 
+                                 (k>5&&n)=4 
+ 
+Naturally , this can not be evaluated since the compiler will not 
+know to which variable 4 should be assigned.
+In otherwords, there is no Lvalue to which 4 can be assigned. 
+                      Hence  the error message occurred. 
+<strong>Example:45</strong> 
+
+           main() 
+           { 
+                int c=0,d=5,e=10,a; 
+                a=c>1?d>1||e>1?100:200:300; 
+                printf("a=%d",a); 
+           } 
+OUTPUT: 
+            a=300 
+
+Explanation:    
+c>1 fails since value of c is 0, and the control reaches 300 which is
+ assigned to a. 
+It would become easier to understand the statement f we parenthesize 
+the expression as shown below: 
+                  a=(c>1?(d>1||e>1?100:200):300); 
+ 
+ NOTE:  The conditional operator can be Nested. 
+ 
+<strong>Example:46</strong>  Is this program results error? 
+
+                 main() 
+                 { 
+                      int a=10,b=10; 
+                      printf("ans=%d",a>b?a*a:b/b); 
+                 } 
+OUTPUT: 
+                              ans =1 
+Explanation:  No, this doesn't give an error message. Since we may use any 
+other operators within printf().Since the condition a>b fails, the 
+statement after :,that is b/b is evaluated and its result is printed by 
+printf(). 
+
+<a href="branching.html">Back</a>
+</pre><td></tr></table>
+</html>

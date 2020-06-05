@@ -1,0 +1,6 @@
+[general]
+name=MS Visual Studio 2003/2005/2008 Project
+filter=MS Visual Studio Project(*.sln,*.vcproj)|*.sln;*.vcproj
+desp=
+cnvt=vc7.cnvt
+bldr=mscc2

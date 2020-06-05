@@ -1,0 +1,91 @@
+ #include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+void push();
+int pop();
+void display();
+struct stack
+{
+int no;
+struct stack *next;
+}
+*top=NULL;
+typedef struct stack st;
+void main()
+{
+int choice,item;
+char ch;
+clrscr();
+   do
+   {
+	printf("Enter your option\n\n");
+	printf("1 . push\n\n");
+	printf("2 . pop\n\n");
+	printf("3 . display\n\n");
+	scanf("%d",&choice);
+
+	  switch(choice)
+	   {
+	case 1: push();
+		break;
+	case 2: item=pop();
+			printf("Deleted element is = %d\n\n",item);
+			break;
+	case 3: display();
+			break;
+	default:printf("You entered wrong choice");
+	   }
+	printf("\n\nDo you wish to continue");
+	fflush(stdin);
+	scanf("%c",&ch);
+   }
+	while(ch=='y' || ch=='Y');
+ }
+
+
+void push()
+{
+st *node;
+node=(st*)malloc(sizeof(st));
+printf("Enter number");
+scanf("%d",&node->no);
+printf("NODE=%d",node);
+node->next=top;
+top=node;
+printf("top=%d",top);
+}
+
+int pop()
+{
+st *temp;
+temp=top;
+ printf("temp=%d",temp);
+if(top==NULL)
+{
+printf("Stack is empty");
+getch();
+exit(0);
+
+}
+else
+{
+top=top->next;
+printf("%d",top);
+free(temp);
+}
+return(temp->no);
+}
+
+
+
+void display()
+{
+st *temp;
+temp=top;
+while(temp->next!=NULL)
+{
+printf("\nno= %d",temp->no);
+temp=temp->next;
+}
+printf("\nno=%d",temp->no);
+}

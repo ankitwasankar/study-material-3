@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+FILE *fp;
+char ch;
+int digit=0,space=0;
+clrscr();
+fp=fopen("p.txt","r");
+printf("Enter the content:-");
+gets(fp);
+while(1)
+{
+ch=getc(fp);
+if(ch==NULL)
+break;
+}
+//else
+if(ch>48 && ch<57)
+digit++;
+if(ch==' ')
+space++;
+printf("%d",ch);
+fclose(fp);
+getch();
+}

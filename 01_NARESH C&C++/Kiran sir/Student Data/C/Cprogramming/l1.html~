@@ -1,0 +1,58 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+  <strong>LOOP CONTROL STATEMENTS</strong>
+
+	The control statements of a language specify the order in which 
+computations are performed.
+	In general C consider braces { and } is used to group declerations and 
+statements together into compound statements or block ,so that they are 
+considered as single statement.
+	Functionality of  looping can be achieved in C using loop control 
+ statements like 
+	<a href="while.html" target="_self"><strong>While</strong></a>
+	<a href="dowhile.html" target="_self"><strong>Do While</strong></a>
+	<a href="for.html" target="_self"><strong>For</strong></a>
+
+<a href="loops.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

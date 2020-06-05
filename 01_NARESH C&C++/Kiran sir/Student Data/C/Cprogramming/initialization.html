@@ -1,0 +1,201 @@
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Initialization of Arrays</h2></center>
+
+<pre>
+<font size="2">
+      We can initialize the elements of the array in
+the same way as the ordinary variables when they are 
+declared.The general form of initialization of array is:
+  static  type  array-name [size] = { list of variables};
+the values in the list are separated by commas.
+For example, the statement
+   static int number [3] = {0,0,0}
+    will declare the variable number as an array of size
+3 and will assign zero to each element. If the number of
+values in the list is less than the number of elements,
+then only that many elements will be initialized the 
+remaining elements will be set to zero automatically.For
+instance,
+   static float total[5] ={ 0.0, 15.75, -10};
+will initialize the first three elements to 0.0, 15.75,
+-10 and the remaining two elements to zero.
+
+Note that we have used the word static before type 
+declaration. This declares the variable as a static 
+variable. The size may be omitted. In such cases the 
+compiler allocates enough space for all initialized 
+elements.
+For example, the statement 
+     static int counter []={ 1,1,1,1};
+   will declare the counter array to contain four elements
+with initial values 1. This approach works fine as long as
+we initialize every element in the array.
+
+   Character arrays may be initialized in a similar manner.
+Thus, the statement
+  static char name[] = {J, o ,h , n};
+declares the name to be an array of characters,initialized
+with the string John.
+
+Initialization of arrays in C suffers two drawbacks.
+1.There is no convenient way to initialize only selected
+  elements.
+2.There is no shortcut method for initializing a large 
+  number of array elements like the one available in FORTAN.
+
+<u>Program showing One-Dimensional Array:</u>  
+
+ main()
+ {
+  int i;
+  float X[10],value,total;
+  print f (Enter 10 real numbers \n);
+  for (i=0;i<10;i++)
+  {
+   scan f(%f ,&value);
+   X[i]=value;
+  }
+  total=0.0;
+  for(i=0;i<10;i++)
+total =total + X[i] * X[i];
+  print f (\n);
+  for (i=0;i<10;i++)
+  print f( X[%2d]=%5.2f\n, X[i]);
+  print f(\n total =%2.f \n , total);
+ }
+
+OUTPUT:Enter 10 real numbers
+1.2.2 3.3 4.4 5.5 6.6 7.7 8.8 9.9 10.10
+ X[1]=1.10
+ X[2]=2.20
+ X[3]=3.30
+ X[4]=4.40
+ X[5]=5.50
+ X[6]=6.60
+ X[7]=7.70
+ X[8]=8.80
+ X[9]=9.90
+ X[10]=10.10
+  total= 446.86
+consider an array of size ,say 100. All the 100 elements
+have to be explicitly initialize. There is no way to specify
+a repeat count. In such situations, it would be better to 
+use a for loop to initialize the elements. Consider the 
+following segment of a C program:
+      for(i=0;i<100;i=i+1)
+      {
+       if(i<50)
+       sum[i]=0.0;
+       else
+       sum[i]=1.0;
+      }
+  the first 50 elements of the array sum are initialized to
+zero while the remaining 50 elements are initialized to 1.0
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="arrays.html" target="_self">BACK</a>     
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+

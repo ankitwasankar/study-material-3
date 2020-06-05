@@ -1,0 +1,313 @@
+﻿<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="680" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Graph Representation</h2></center>
+
+<pre>
+<font size="2">
+To represent a graph we have to represent two things:nodes and edges.Graphs 
+are generally represented either in &#034;sequential representation&#034; or 
+&#034;linked representation&#034;.
+
+Sequential representation uses a two-dimentional array where as linked 
+representation uses a linked list. We refer graph means directed graphs 
+unless specified otherwise
+
+<strong>Sequential Representation:-</strong>
+
+A graph is conveniently represented by a matrix ( two-dimentional array) 
+called adjacency matrix ( or incidence matrix).A graph containing n nodes 
+can be represented by a matrix containing n  rows and  n  columns.
+
+Adjacency matrix:-
+         The Adjacency matrix A of a graph G=(V,E) with n nodes is an n*n 
+matrix such that:
+
+Aij={1 – if there is an edge between vi and vj.
+     0 – otherwise
+    }
+
+   Essentially,adjacency matrix represents which vertices are adjacent,or 
+rather,which two vertices have an edge.
+
+<img src="Di.jpg">
+
+
+Directed Graph
+
+Adjacency matrix for the above fig is:
+
+        A  B  C  D
+A       0   0  1   0
+B	1   0  0   1
+C	0   1  0   1
+D	1   0  1   0
+
+  Each position of adjacency matrix represents whether one node is 
+connected to another (value 1 or true) or not (value 0 or false).Note that 
+it encodes the direction of the edges.For example,since there is a 1 row 
+B,column A,there is an edge from B to A.
+
+Since there is no edge in the reverse direction(from A to B),row A,column B 
+has a 0.
+
+If a matrix contains only 0&#039;s and 1&#039;s then it is called bit matrix
+or boolean matrix.The total number of 1’s in the matrix represents the 
+number of edges in that directed graph.
+
+The adjacency matrix for a undirected graph is a symmetric matrix.Because an
+edge(A,B) means that both (A,B) and (B,A).
+
+<img src="undirectedgraph.jpg">
+
+Fig:Undirected Graph
+
+Adjacency matrix for the above fig is
+
+       A  B  C  D
+A      0  1  1  0
+B      1  0  1  0
+C      1  1  0  1
+D      0  0  1  0
+
+In Undirected graph ,the sum of a ith row elements gives the degree if ith
+node .In case of directed graph,the sum of ith row elements give the out 
+degree of the ith node and the sum of jth column elements gives the in 
+degree of the jth node.
+
+The adjacency matrix for a null graph is null matrix.<br>
+i.e., all
+elements are zero. The adjacency matrix representation has a special 
+importance if it was multiples repetitively by itself. A non-zero for Aij 
+element in the matrix. A^k represents that the number of paths length k 
+between vi and vj.
+
+<img src="directedgraph.jpg">
+	         	      A   B  C  D
+                       A      0   0  1   0
+Adjacency Matrix= A=   B      1   0  0   1
+                       C      0   1  0   1  
+                       D      1   0  1   0
+
+
+                              A   B  C   D
+                       A      0   1  0   1
+Then    A²=            B      1   0  2   0
+                       C      2   0  1   1
+                       D      0   1  1   1
+
+ 
+                              A  B  C  D
+                          A   2  0  1  1
+Then    A³=               B   0  2  1  2
+                          C   1  1  3  1
+                          D   2  1  1  2
+
+Observe from the matrix A² there are two paths of length 2 from B to C and 
+C to A; and from the matrix A³,there are two paths of length 3 from A to A,B
+to B,B to D,D to A and D to D, and three paths of length 3 from C to C. 
+
+Sometimes for weighted graph,the presence of an edge in adjacency matrix is 
+represented by its weight instead of simply one.
+
+A small variation to adjacency matrix is &#034;path matrix&#034; which is 
+useful to determine whether there is a path between any two nodes in a 
+graph;If there is a path between any vi and vj then the corresponding 
+element of path matrix contains 1 otherwise 0.
+
+<div align="center">The path matrix for the above directed graph is</div>
+
+        A	B	C	D
+A	1	0	1	1
+B	1	0	1	1
+C	1	0	1	1
+D	1	0	1	1
+
+ Disadvantages of Adjacency Matrix:-
+
+1)Graphs with few edges would have a lot of wasteful zeros in the adjacency 
+matrix .That is, the corresponding adjacency matrix is sparse.
+
+2)Insertion and deletion of nodes is fficult.
+
+<strong>Linked Representation:-</strong>
+In this representation we maintain an adjacency list.In adjacency list,for 
+each node,we keep a list of all adjacent nodes.
+
+<img src="linkrep.jpg">		
+
+Directed Graph
+
+The adjacency list for above directed graph is
+
+<center>  Adjacency list</center>
+
+<table align="center" cellspacing="0" 
+border="1"><TR><td>A</td><td>BD</TD></TR>
+<TR><td>B</td><TD>D</td></TR>
+<TR><td>C</td><td>A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D</td></TR>
+<TR><td>D</td><TD>A</td><td></td></TR>
+</table>
+
+  Adjacing list structures using two dimensional array and single linked 
+lists.
+
+<img src="adjr.jpg" align="middle">
+
+
+<img src="adjlist.jpg" align="middle">
+
+fig:Adjacency list structure using single linked list and double linked 
+list Thelinked representation,using linked list,maintain two kinds of 
+lists;a node list NODE and an edge list EDGE.
+
+In node list,each node corresponding to a node in Graph G,and it contains 
+the following three fields:
+
+a)  NODE:-- contains the value of the node in the graph. 
+
+b)   NEXT:-- contains a pointer that points to next node in the node list 
+and
+
+c)   ADJACENT:-- contains pointer that points to the first node of adjacency
+ list of the node
+
+<table align="center" cellspacing="0" border="1">
+<TR><TD>NODE</TD><td>NEXT</td><td>ADJACENT</td></TR></table>
+
+Each node in the node list can have other fields which may contain the 
+information associated with the node.
+
+In edge list,each node corresponds to an edge of graph G.A node in the edge 
+list contain two fields.
+a)TERMINAL- contains a pointer that points to node in the list which is 
+terminal node of the edge in the graph
+
+b)PTR- contains a pointer that points to next node in the adjacency list 
+which are all initaited from same node in the graph.
+
+<table align="center" border="1" cellspacing="0"><TR><TD>TERMINAL</TD><td>PTR</td></TR></table>
+
+Like node list,edge list also may have any other informatio,One such 
+important field is the weight field,if an edge is associated with height.
+
+In the adjacency list representation,each edge appers in two lists and thus 
+the space usage essentially doubles.
+
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="graphs1.html">Back</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!--<html>
+<head><TITLE>GRaphs</TITLE></head>
+<body>
+<strong>Graphs Representation:-</strong><br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+</body>
+</html>-->

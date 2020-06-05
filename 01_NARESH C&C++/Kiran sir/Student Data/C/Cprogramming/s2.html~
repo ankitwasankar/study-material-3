@@ -1,0 +1,342 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left"><pre>
+
+<strong>Objective type questions:</strong>
+
+1.What would be the output of the following program?
+main()
+{
+  printf(5+"fascimile");
+}
+A. error   B. fascimile   C. mile  D. none of the above
+Ans: C
+2.What would be the output of the following program?
+main()
+{
+     char str1[] = "Hello";
+     char str2[] = "Hello";
+    if(str1 == str2)
+          printf("\n Equal");
+              else
+                  printf("\nUnequal");
+       }
+A. Equal   B. Unequal  C. Error  D. None of the above
+Ans: B
+3.What would be the output of the following program?
+main()
+{
+            printf("%c","abcdefgh"[4]);
+      }
+    A. Error    B. d   C. e   D. abcdefgh
+  Ans: C
+4.How would you output \n on the following screen?
+Ans: printf("\\n");
+5.What would be the output of the following program?
+main()
+{ 
+  char str[7] = "strings";
+  printf("%s", str);
+}
+A. error    B. strings     C. cannot predict    D. none of the above
+Ans:  C     Here str[] has been declared as a 7 character array and into it a 8 
+character string has been stored . This would result into overwriting of the byte 
+beyond the seventh byte reserved for the array with a '\0' . There is always a
+ possibility that something important gets overwritten which would be unsafe .
+
+6. What would be the output of the following program?
+ main()
+ {
+   char ch = 'A';
+    printf("%d%d", sizeof(ch), sizeof('A'));
+}
+A. 1 1     B.  1 2        C. 2 2         D. 2 1
+Ans:  B
+7. What would be the output of the following program?
+main()
+{
+   printf("\n%d%d%d", sizeof('3'), sizeof("3"), sizeof(3));
+}
+A 1 1 1     B. 2 2 2          C. 1 2 2       D. 1 1 1
+Ans:B
+
+8. What would be the output of the following program?
+     main()
+  {
+     char *str[] = {"Frogs", "Do", "Not", "Die", "They", "Croak"};
+     printf("%d %d", sizeof(str), sizeof(str[0]));
+   }
+Ans: 12  2
+9. What would be the output of the following program?
+  main()
+  {
+    static char s[] = "Rendezvous";
+    printf("%d", *(s+strlen(s)));
+  }
+Ans:   0
+Explanation: No Rendezvous, but a zero is printed out. Mentioning the name of the 
+ string gives the base address of the string. The function strlen(s) returns the
+ length of the string s[], which in this case is 12. In the printf(), using the 
+'contents of' operator , we are trying to print out the contents of 12th address 
+from the base address of the string. At this address there is a '\0' ,which is
+ automatically stored to mark the end of the string. The ASCII value of '\0' is 0,
+ which is what being printed by the printf().
+
+10. What would be the output of the following program?
+ main()
+ {
+    char ch[20];
+    int i;
+    for(i=0; i<=19; i++)
+        *(ch+i) = 67;
+        *(ch+i) = '\0';
+         printf("%s" , ch);
+ }
+Ans: CCCCCCCCCCCCCCCCCCC
+Explanation:Mentioning the name of the array always gives its base address . Therefore 
+(ch+i) would give the address of the ith element from the base address , and  *(ch+i) would 
+give the value at the address , i.e the value of the ith element . Through the for loop we 
+store 67, which is the ASCII value of upper case 'C' , in all locations of the string.
+Once the control reaches outside the for loop the value of i would be 19 , and in the
+ 19th location from the base address we store a '\0' to mark the end of the string. 
+This is essential , as the compiler has no other way of knowing where the string is terminated . 
+In the printf() that follows , %s is the format specification for printing a string , and 
+ch gives the base address of the string .Hence starting from the first element ,
+ the complete string is printed out.
+
+11. What would be the output of the following program?
+  main()
+   {
+     char str[20];
+      int i;
+      for(1=0;1<=18; i++)
+       i[str] = 'C';
+      i[str] = '\0';
+      printf("%s",str);
+   }
+Ans:CCCCCCCCCCCCCCCCCCC
+Explanation:  If your concept of arrays is fool-proof , you should find the above o/p
+ only natural. If not, here's your chance to make it so. C makes no secret of the fact 
+that it uses pointers internally to access array elements . With the knowledge of how
+ array elements are accessed using pointers , we can think of str[i] as *(str+i). 
+Basic maths tells us that *(str+i) would be same as *(i+str). And if str[i] is same as 
+*(str+i), then naturally *(i+str) would be same as i[str].
+   Thus, we can conclude that all the following expressions are different
+ ways of referring the ith element of the string:
+  str[i]
+  *(str+i)
+  *(i+str)
+  i[str]
+   Hence, through the for loop upper case C is stored in all the elements of the string.
+ A '\0' is stored to mark the end of the string, and then the string is printed out
+ using printf().
+
+12.What would be the output of the following program?
+ main()
+ {
+    char str[20];
+    static int i;
+    for(; ;)
+     {
+       i++[str] = 'A' + 2;
+       if(i == 19)
+             break;
+       }
+       i[str] = '\0';
+       printf("%s",str);
+  }
+Ans:CCCCCCCCCCCCCCCCCCC
+
+13. What would be the output of the following program?
+  main()
+   {
+     static char str[]={48,48,48,48,48,48,48,48,48,48};
+     char *s;
+     int i;
+     s = str;
+    for( i = 0; i<=9; i++)
+     {
+         if(*s)
+              printf("%c", *s);
+           s++;
+     }
+  }
+Ans: 0000000000
+Explanation: In all 10 elements of str[], an integer , 48 is stored. Wondering whether a 
+char string can hold ints? The answer is yes, as 48 does not get stored literally in the
+ elements. 48 is interpreted as the ASCII value of the character to be stored in the string.
+ the character corresponding to ASCII value 48 happens to be 0, which assigned to all the 
+locations of the string.
+  's', a character pointer, is assigned the base address of the string str[]. Next , in the
+ if condition, the value at address contained in s is checked for truth/falsity. 
+As 0 represents ASCII 48, the condition evaluates to true every time, until the end 
+of the string is reached. At the end of the string a '\0' , i.e ASCII 0 is encountered ,
+ and the if condition fails. Irrespective of whether the condition is satisfied or not , 
+'s' is incremented so that each time it points to the subsequent array element .
+ This entire logic is repeated in the for loop , printing out 10 zeros in the process.
+
+14. What would be the output of the following program?
+ main()
+  {
+    static char str[]={0,0,0,0,0,0,0,0,0,0};
+     char *s;
+     int i;
+     s = str;
+    for( i = 0; i<=9; i++)
+     {
+         if(*s)
+              printf("%c", *s);
+           s++;
+     }
+  }
+Ans: No output
+Explanation: Though you may not have expected zeros to be outputted this time,
+you surely did expect some output! We stored the character corresponding to 
+ASCII 0 in all 10 elements of the string. Next, we assigns s, a char pointer ,
+ the base address of the string . Though the for loop , we are attempting to 
+print out all elements one by one , but not before imposing the if condition.
+                 The if is made to test the value at address contained in
+ 's' before the execution of the printf( ) .The first time , *s yields ASCII 0. 
+Therefore the if condition reduces to if(0) , and as 0 stands for falsity, 
+the condition fails. Hence ,
+'s'is incremented and control loops back to for without executing the printf(). 
+The same thing happens the next time around , and the next, and so on, till the
+ for loop ends, resulting in no output at all.
+
+15. What would be the output of the following program?
+ main() 
+ {
+  static char s[]="C Smart!!";
+  int i;
+  for(i =0; s[i]; i++)
+     printf("%c%c%c%c\n",s[i],*(s+i),i[s],*(i+s));
+ }
+Ans:   C C C C
+           S S S S 
+           m m m m
+           a a a a
+           r r r r 
+           t t t t 
+                    
+           ! ! ! !
+Explanation:The above program rubs in the point that s[i], i[s], *(s+i) and *(i+s) are
+ various ways of referring to the same element, that is the ith element of the string s. 
+Each element of the string is printed out for four times,till the end of the 
+string is encountered. Note that in the for loop there is an expression s[i] 
+in the condition part. This means the loop would continue to get executed till 
+s[i] is not equal to zero. We can afford to say this because a string always 
+ends with a '\0', whose ASCII value is 0. Thus the for loop will be terminated 
+when the expression s[i] yields a '\0'.
+
+16. What would be the output of the following program?
+ main()
+  {
+    static char s[] = "Oinks Grunts and Guffaws";
+    printf("%c\n", *(&s[2]));
+    printf("%s\n",  s+5);
+    printf("%s\n", s);
+    printf("%c\n", *(s+2));
+    printf(%s\n", s);
+ }
+Ans: n
+        Grunts and Guffaws
+        Oinks Grunts and Guffaws
+        n
+        404
+Explanation:  In the first printf() the address of operator, & gives the address of the
+ second element of the string . Value at this address is 'n' , which is printed out by
+ the printf() using %c. 
+ since s gives the base address of the array , (s+5) would give the address of the fifth 
+element from the base address . This address is passed to the second printf() . 
+Using the format specification %s , the contents of the string are printed out the
+ 5th element onwards.
+The third printf() prints the entire string , as the base address of the string is
+being passed to it.
+ The fourth printf() is made to print the second character of the string ,
+ as *(s+2) is nothing but s[2]. Thus 'n'gets printed.
+Does the o/p of the final printf() surprise you by printing out a number , 404? 
+Note that the format specification %d is used with s, which gives the base address
+of the string. It happened to be 404 when we executed the program, which got printed out. 
+On executing the same yourself, you may get any other address, depending on what address 
+is allotted to the string by the compiler.
+
+17.What would be the output of the following program?
+ main()
+  {
+    static char s[25] = "The cocaine man";
+    int i =0;
+    char ch;
+    ch = s[++i];
+    printf("%c%d\n",ch,i);
+    ch = s[i++];
+    printf("%c%d\n",ch,i);
+    ch = i++[s];
+     printf("%c%d\n",ch,i);
+    ch = ++i[s];
+     printf("%c%d\n",ch,i);
+  }
+Ans:  h 1
+         h 2
+         e 3
+         !  3
+
+18.What would be the output of the following program?
+ main()
+  {
+    static char arr[] = "pickpocketing my piece of mind";
+    int i:
+    printf("%c\n", *arr);
+    arr++;
+    printf("%c\n", *arr);
+  }
+Ans: Lvalue required in function main
+
+<a href="strings.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</TR>
+
+</table>
+
+
+</html>

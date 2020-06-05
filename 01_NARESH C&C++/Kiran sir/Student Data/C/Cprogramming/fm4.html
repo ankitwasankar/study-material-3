@@ -1,0 +1,370 @@
+﻿<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Solved Problems </h2></center>
+
+<pre>
+<font size="2">
+
+<strong>1)</strong>
+ main()
+ {
+   static char str[]="Academy";
+   printf("%s /n %s", str,"Academy");
+ }
+
+<strong>OUTPUT:</strong> Academy
+
+         Academy
+
+<strong> Explanation:</strong>
+     Name of the string(str) yields the base address of
+the string. When this base address is passed to printf()
+it prints out each character in the string till it 
+encounters ‘/0’ sitting at the end of the string.A 
+string written in double quotes also gives the base 
+address of the string.
+
+2)
+   main()
+   {
+    float a=3.14;
+    printf("/n a=%f",a);
+    printf("/n a=%6.2f",a);
+    printf("/n a=%-6.2f",a);
+    printf("/n a=%6.1f",a);
+    printf("/n a=%6.0f",a);
+   }
+
+<strong> OUTPUT</strong>:
+ a=3.140000   //default a float is printed with 6 decimals.
+ a=  3.14
+ a=3.14
+ a=     3.1
+ a=        3
+
+<strong> Explanation:</strong>
+     The number that preceeds the f is an optional 
+specifier , which governs how exactly the variable is 
+to be printed . 6.2 specifies that the field width i.e.,
+total number of columns that the value occupies on the 
+screen ,should be 6 , and that the value should have two
+digits after decimal point.
+
+3)
+   main()
+   {
+    printf("%20s \n", "short leg");
+    printf("%20s \n", "long leg");
+    printf("%20s \n", "deep fine leg");
+    printf("%20s \n", "backward short leg");
+    printf("%20s \n",legs all the same!");
+   }
+
+<strong> OUTPUT</strong>:
+                    short leg
+                     long leg 
+                deep fine leg  
+           backward short leg
+           legs all the same!
+
+<strong> Explanation:</strong
+    The output is right justified , as the field width 
+specified with each %s in plus 20.For each string , 20
+columns are set aside, and the strings are printed with
+blanks filling up remaining columns on the left.
+
+4)
+main()
+{
+ printf("Hello\nHi \n");
+ printf("Hello\rHi");
+}
+
+<strong> OUTPUT</strong>:
+                Hello
+                  Hello
+                  Hi
+                  Hillo
+
+<strong>Explanation:</strong>
+     The escape sequence ‘\n’ called newline , takes the 
+cursor to the beginning of the newline. A ‘\r’ on the other
+hand , takes the cursor to the beginning of the same line 
+in which the cursor is currently present.The first letters 
+of the Hello are replaced by Hi and we get the output as
+"Hillo".
+
+5)
+  main()
+  {
+   printf(" Hello\b\b\b\b\b");
+   printf("Hi!\b\b\bBye");
+  }
+
+<strong> OUTPUT</strong>:
+                 Byelo
+
+<strong> Explanation:</strong>
+The escape sequence '\b' stands for backspace , which takes
+the cursor to the previous character.In the first printf(),
+"Hello" is printed, Following which the cursor is positioned
+after 'o' .Now the 5 backapaces take the cursor to the letter
+'H' of  "Hello". In the way finally the output becomes Byelo.
+
+
+6)
+  main()
+  {
+   printf("I \t am \t a \t boy");
+  }
+
+<strong> OUTPUT</strong>:
+       The message is printed with spaces inserted whenever 
+the escape sequence '\t' occurred.
+
+7)
+#include "stdio.h "
+main()
+{
+ static char str[]="\n In the country of snake charmers......";
+ char *s;
+ s=str;
+ while(*s)
+ {
+  putch(*s);
+  s++;
+ }
+ printf("\n");
+ s=str;
+ while(*s)
+ {
+   putchar(*s);
+   s++;
+ }
+}
+
+<strong> OUTPUT</strong>:
+      In the country of snake charmers......
+      In the country of snake charmers......
+
+<strong> Explanation:</strong><br>
+ putch() is an unformatted console I/O function , whereas 
+putchar() is a macro.However ,their working is same.
+
+8)
+   #include "stdio.h"
+   main()
+   {
+    char ch;
+    int i;
+    printf("Enter any number......");
+    scanf("%d",&i);
+    fflush(stdin);
+    printf("Enter any character......");
+    scanf("%c",&ch);
+    printf("/n %d %c", i,ch);
+   }
+
+<strong> OUTPUT</strong>:
+     Enter any number......2
+     Enter any character......a
+     2a.
+
+<strong> Explanation:</strong>
+
+   fflush(stdin) --> this statement empties the buffer 
+before prompting us to enter a character.
+
+9)
+
+ #include "stdio.h"
+ main()
+ {
+  char str1[30],str2[30];
+  printf("Enter a Sentence\n ");
+  scanf("%s",str1);
+  printf("%s",str1);
+  fflush(stdin);
+  printf("Enter a Sentence\n");
+  gets(str2);
+  printf("%s",str2);
+ }
+
+<strong> OUTPUT</strong>:
+
+    Enter a Sentence:
+                Nothing  Succeeds like success
+                Nothing
+                Enter a Sentence:
+                Nothing  Succeeds like success
+                Nothing  Succeeds like success	
+
+
+10)
+    main()
+    {
+      char name[20],sname[20] ;
+      puts("Enter your name and surname\n");
+      gets(name,sname);
+      puts(name,sname);
+      printf("%s%s",name,sname);
+    }
+
+<strong> OUTPUT</strong>:
+    Enter your name and surname:
+		  Jaspal Bhatti
+                  Jaspal Bhatti
+    		  Jaspal Bhatti f5$@#$fdfg
+
+<strong> Explanation:</strong>
+    gets() and puts() cannot take more than one argument at
+a time. Though no error message is displayed , what ever is
+typed before hitting enter is accepted by the first argument
+name[] , and the second argument is simply ignored.
+
+11)
+   main()
+   {
+    FILE *fp;
+    fp=fopen("TRAIL.c","r");
+    fclose(fp );
+   }
+
+<strong> OUTPUT</strong>:
+  Error:Undefined symbol FILE in the function main.
+
+<strong> Explanation:</strong>
+      FILE is a structure that is defined in the header file 
+"stdio.h".Hence , for using this stucture , including 
+"stdio.h" is a must.
+
+12)
+ #include"stdio.h"
+ main()
+ {
+  char str[20];
+  FILE *fp;
+  fp=fopen(strcpy(str,"ENGINE.c"),"w");
+  close(fp);
+ }
+
+<strong> OUTPUT</strong>:
+             No Output
+
+<strong> Explanation:</strong>
+     We must open the file in the proper mode like
+ fopen("ENGINE.c","w");
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+
+<a href="filemgt.html" target="_self"><strong>BACK</strong></a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

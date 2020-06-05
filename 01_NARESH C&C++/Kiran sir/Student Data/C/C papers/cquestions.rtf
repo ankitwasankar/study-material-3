@@ -1,0 +1,1552 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fmodern\fcharset0 Courier New;}{\f1\fswiss\fcharset0 Arial;}}
+{\colortbl ;\red0\green0\blue0;}
+\viewkind4\uc1\pard\f0\fs20                         DE SHAW, HYDERABAD\par
+                        PRACTICE QUESTIONS\par
+                        ===================\par
+\par
+\par
+main()\par
+\{\par
+        char a= 'A';\par
+        if( (a=='Z')||( (a='L')&&( a=='A')))\par
+                a=a;\par
+                printf("%c",a);                 \par
+        printf(" Nothing ");\par
+\}\par
+\par
+main()\par
+\{\par
+        static int a[5] = \{2,4,6,8,10\};\par
+        int i,b=5;\par
+        for(i=0; i< 5;i++)\{\par
+                f(a[i],&b);\par
+                printf("%d %d\\n",a[i],b);\par
+        \}\par
+\}\par
+\par
+f(x,y)\par
+int x,*y;\par
+\par
+\{\par
+        x=*(y)+=2;\par
+\}\par
+main()\par
+\{\par
+printf("hello");\par
+fork();\par
+\}\par
+\par
+\cf1\fs28 main()\par
+\{\par
+\par
+    char    as[] = "\\\\0\\0";\par
+\par
+    int     i = 0;\par
+    do\{\par
+\par
+    switch( as[i++])\{\par
+        case '\\\\' : printf("A");\par
+                    break;\par
+        case 0   : printf("B");\par
+                    break;\par
+        default : printf("C");\par
+                break;\par
+                \}\par
+    \}\par
+    while(i<3)\par
+\}\par
+\cf0\fs20\par
+\cf1\fs28 main()\par
+\{       \par
+        int a;\par
+\par
+        \par
+        a = (1,45,012);\par
+\par
+        printf("%d", a);\par
+\}\par
+\par
+\cf0\fs20\par
+main()\par
+\{\par
+int i = 10;\par
+printf(" %d %d %d \\n", ++i, i++, ++i);\par
+\}\par
+#include<stdio.h>\par
+main()\par
+\{\par
+int *p, *c, i;\par
+i = 5;\par
+p = (int*) (malloc(sizeof(i)));\par
+printf("\\n%d",*p);\par
+*p = 10;\par
+printf("\\n%d  %d",i,*p);\par
+c = (int*) calloc(2);\par
+printf("\\n%d\\n",*c);\par
+\}\par
+\par
+#include<stdio.h>\par
+main()\par
+\{\par
+int arr[3][3] = \{1,2,3,\par
+                 4,5,6,\par
+                 7,8,9\};\par
+int i,j;\par
+for (j=2;j>=0;j--)\{\par
+        for(i=2;i>=0;i--)\{\par
+        printf("\\n%d",*(*(arr+i)+j));\par
+        printf("\\n TATATATA");\par
+        \}\par
+        \}\par
+\}\par
+\par
+main()\par
+        \{\par
+                int i = 5, j=10;\par
+                abc(&i,&j);\par
+                printf("%d..%d",i,j);\par
+        \}\par
+\par
+        abc(int *i, int *j)\par
+        \{\par
+                *i = *i + *j;\par
+                *j = *i - *j;\par
+                *i = *i - *j;\par
+        \}\par
+\par
+#define PRINT(int) printf( "int = %d ", int)\par
+main()\par
+\{\par
+int x=03,y=02,z=01;\par
+PRINT (x | y & ~z);\par
+PRINT (x & y && z);\par
+PRINT (x ^ y & ~z);\par
+\}\par
+\par
+main()\par
+\{\par
+     int a,b,c;\par
+     for (b=c=10;a= "Love Your INDIA \\\par
+ TFy!QJu ROo TNn(ROo)SLq SLq ULo+UHs UJq TNn*RPn/QPbEWS_JSWQAIJO^NBELP\\\par
+ eHBFHT\}TnALVlBLOFAKFCFQHFOQIAIREETMSQGCSQOUHATFAJKSbEALGSkMCSlOASn^r\\\par
+ ^r\\\\tZvYxXyT|S~Pn SPm SOn TNn ULo0ULo#ULo-WHq!WFs XDt!"[b+++6];)\par
+     while(a-->64) putchar (++c=='Z'?c=c/9:33^b&1);\par
+\}\par
+\par
+main()\par
+\{\par
+unsigned int m[] = \{ 0x01,0x02, 0x04, 0x08,0x10, 0x20, 0x40, 0x80\};\par
+        unsigned int n,i;\par
+                scanf("%d",&n);\par
+                        for(i=0;i<=7;i++)\par
+                                \{  if (n& m[i])\par
+                                                printf("\\nyes");\par
+                                                else \par
+                                                printf("\\nno");\par
+                                \}\par
+        \}\par
+\par
+\par
+\cf1\fs28 main()\par
+\{\par
+int a,b=2,c;\par
+int *pointer;\par
+c = 3;\par
+pointer = &c;\par
+a = c/*pointer;  \par
+b = c /* assigning 3 to b*/;\par
+printf("a = %d; b = %d", a,b);\par
+\}\par
+\cf0\fs20\par
+main()\par
+\{\par
+int i ;\par
+i = 1;\par
+ i= i+2*i++;\par
+ printf("i is now %d",i);\par
+ \}\par
+\par
+#define MAX(x,y) (x) >(y)?(x):(y)\par
+main()\par
+\{\par
+        int i=10,j=5,k=0;\par
+                k=  MAX(i++,++j);\par
+                        printf("%d..%d..%d",i,j,k);\par
+                        \}\par
+\par
+main()\par
+\{\par
+        const int i = 100;\par
+        int *p = &i;\par
+        *p = 200;\par
+        printf("%d\\n",i);\par
+\par
+\}\par
+\par
+void f(int n)\par
+\{\par
+        int i;\par
+        for(i =1;i<=n;i++)\par
+                f(n-i);\par
+        printf("done  ");\par
+\}\par
+main()\par
+\{\par
+f(5);\par
+\}\par
+\par
+\par
+void test(int , int *);\par
+main()\par
+\{\par
+int * iptr, j, k = 2;\par
+iptr = &j;\par
+j = k;\par
+printf( "%d %d ", k, j);\par
+test(j, iptr);\par
+printf("%d %d\\n", k, j);\par
+\}\par
+void test(int l, int *p)\par
+\{\par
+l++;\par
+(*p)++;\par
+\}\par
+\par
+#define INFINITELOOP while(1)\par
+main()\par
+\{       \par
+        INFINITELOOP    \par
+printf("\\nHello World");\par
+\}\par
+\par
+#include <stdio.h>\par
+int myfunc(char *str)\par
+\{\par
+        char *ptr =str;\par
+        while(*ptr++);\par
+        return ptr-str-1;\par
+\}\par
+main()\par
+\{\par
+        printf("%d", myfunc("DESIS"));\par
+\}\par
+\par
+\par
+#include<stdio.h>\par
+main(int sizeofargv, char *argv[])\par
+\{\par
+while(sizeofargv)\par
+printf("%s ",argv[--sizeofargv]);\par
+\}\par
+\par
+\par
+#include<stdio.h>\par
+main()\par
+\{\par
+int x,y=1,z;\par
+if(x=z=y); x = 3;\par
+printf("%d %d %d\\n",x,y,z);\par
+while (y<4) x+=++y;\par
+printf("%d %d\\n",x,y);\par
+\}\par
+\par
+main()\par
+\{\par
+union \{\par
+long l_e;\par
+float f_e;\par
+\} u;\par
+\par
+long l_v;\par
+float f_v;\par
+l_v = u.l_e = 10;\par
+printf("%f ", (float)l_v);\par
+printf("%f ", u.f_e);\par
+f_v = u.f_e = 3.555;\par
+printf("%d ", (long)f_v);\par
+printf("%d ", u.l_e);\par
+\par
+                \}\par
+\par
+\par
+\par
+\cf1\fs28 void main()\par
+\{\par
+ char a[5] = "abcd";\par
+ int b = 3;\par
+\par
+ printf("%c\\n",a[b]);\par
+ printf("%c\\n",((char *) b)[(int) a]);\par
+\}\par
+\par
+****************************************************************\par
+\par
+\cf0\fs20 #define PRINTIFLESS(x,y) if((x) < (y)) printf("First is smaller");else\par
+main()\par
+\{\par
+        int i = 2, k =1;\par
+        if(i>0 && k>0) PRINTIFLESS(i,k);\par
+        else  printf("Numbers not greater than 0\\n");\par
+\par
+\}\par
+\par
+main()\par
+\{\par
+int *iptr,*dptr, i;\par
+dptr = (int *) malloc(sizeof(i));\par
+iptr =&i ;\par
+*iptr = 10;\par
+free(iptr);\par
+\par
+*dptr = 20;\par
+/*dptr = iptr;*/\par
+free(dptr);\par
+printf("%d,%d,%d",*dptr,*iptr,i);\par
+\}\par
+\par
+\par
+main()\par
+\{\par
+char line[80];\par
+gets(line);\par
+puts(line);\par
+ \par
+\}\par
+\par
+main()\par
+\{\par
+char c1;\par
+int i=0;\par
+c1='a';\par
+while(c1>='a' && c1 <='z')\par
+\{\par
+c1++;\par
+\par
+i++;\par
+\}\par
+printf("%d",i);\par
+\}\par
+\par
+\cf1\fs28 main()\par
+\{\par
+char ch = 'A';\par
+while(ch <='F')\{\par
+        switch(ch)\{\par
+\par
+        case 'A':case 'B':case 'C': case 'D': ch++; continue;\par
+        case 'E': case 'F': ch++;\par
+        \}\par
+putchar(ch);\par
+\}\par
+\}\par
+\cf0\fs20\par
+#include<stdio.h>\par
+main()\par
+\{\par
+FILE *fp1,*fp2;\par
+fp1 = fopen("one","w");\par
+fp2 = fopen("one","w");\par
+fputc('A',fp1);\par
+fputc('B',fp2);\par
+fclose(fp1);\par
+fclose(fp2);\par
+\}\par
+\par
+\par
+\par
+int a[50000];\par
+main()\{\par
+\}\par
+\par
+\cf1\fs28 main()\par
+\par
+\{\par
+        int a = 0xff;\par
+if(a<<4>>12)\par
+        printf("Right");\par
+else \par
+        printf("Wrong");\par
+\}\par
+\cf0\fs20\par
+\par
+#include <stdio.h>\par
+main()\par
+\{\par
+        enum _tag\{ left=10, right, front=100, back\};\par
+        printf("left is %d, right is %d, front is %d, back is\par
+%d",left,right,front,back);\par
+\}\par
+\par
+\fs28 #include<stdio.h>\par
+main()\par
+\{\par
+char *arr = "This is to test";\par
+printf("\\n%c %c ",*(arr), *(arr++));\par
+\par
+\}\par
+\fs20\par
+#include<stdio.h>\par
+main()\par
+\{\par
+int I =-3, j=2, k = 0,m;\par
+m = ++I && ++j || ++k;\par
+printf("\\n%d %d %d %d", I, j, k, m);\par
+\}\par
+\par
+\fs22 int a[50000];\par
+main()\{\}\par
+static int i = 6;\par
+\par
+\par
+extern i;\par
+main()\par
+\{\par
+printf("%d",i);\par
+\}\par
+\par
+\fs20 #include<stdio.h>\par
+#define MAX 20\par
+\par
+main()\par
+\{\par
+        FILE *fp1, *fp2;\par
+        char *this1, *this2;\par
+        fp1 = fopen("ip1.dat","r");\par
+        if(fp1==NULL)printf("file open error\\n");\par
+\par
+        fp2 = fopen("ip2.dat","r");\par
+        if(fp2==NULL)printf("file open error\\n");\par
+\par
+        if((getline(this1,fp1)!=0) && (getline(this2,fp2)!=0))\{\par
+        if(strcmp(this1,this2))\par
+        continue;\par
+        else \{ printf("lines do not match\\n"); break;\}\par
+        \}\par
+\}\par
+int getline(char *line, FILE *fp)\par
+\{\par
+if(fgets(line,MAX, fp) == NULL)\par
+        return 0;\par
+else \par
+        return strlen(line);\par
+\}\par
+\par
+\par
+#include<stdio.h>\par
+main()\par
+\{\par
+        FILE *fp;\par
+fp = fopen("testbuf.txt", "wt");\par
+fwrite("1. This is fwrite\\n",1, 18, fp);\par
+write(fileno(fp),  "2.This is write\\n", 17);\par
+fclose(fp);\par
+\}\par
+\par
+#define PR(a)   printf("a = %d\\t",(int) (a));\par
+#define PRINT(a)  PR(a); putchar('\\n');\par
+#define FUDGE(k)        k + 3.14\par
+\par
+main()\par
+\{\par
+        int x = 2;\par
+        PRINT( x * FUDGE(2));\par
+\}\par
+\par
+#include<stdio.h>\par
+main()\par
+\{\par
+int i = 3,j;\par
+j = add(++i);\par
+printf("i = %d j = %d\\n", i, j);\par
+\}\par
+\par
+add(ii)\par
+int ii;\par
+\{\par
+ii++;\par
+printf("ii = %d\\n", ii);\par
+\}\par
+\par
+\cf1\fs28 #define DEBUG(args) (printf("DEBUG: "), printf args)\par
+\par
+main()\par
+\{\par
+        int n = 0,i = 0 ;\par
+        printf("%d\\n", n);\par
+        if(n != 0) DEBUG(("n is %d\\n", n));\par
+        DEBUG(("%d",i));\par
+\par
+\}\par
+\cf0\fs20\par
+main()\par
+\{\par
+\par
+        char *s2, *s1 ;\par
+        s1* = malloc(sizeof (char) * 20);\par
+        s1 = "Hello, ";\par
+        s2 = "world!";\par
+        strcat(s1, s2);\par
+        printf("%s ", s1);\par
+\}\par
+char*s="char*s=%c%s%c;main()\{printf(s,34,s,34);\}";\par
+        main()\{printf(s,34,s,34);\}\par
+\cf1\fs28 main()\par
+\{\par
+        char *s1 = "alpha", *s2 = "alpha";\par
+        if(!strcmp(s1,s2)) printf("yes\\n");\par
+\}\par
+\par
+\cf0\fs20         \par
+#define DEBUG(args) (printf("DEBUG: "), printf args)\par
+\par
+main()\par
+\{\par
+        int n = 10;\par
+        if(n != 0) DEBUG(("n is %d\\n", n));\par
+\par
+\}\par
+main()\par
+\{\par
+int i;\par
+struct  \par
+        \{\par
+        int left,y;\par
+        \}a;\par
+printf("%5d\\n",a[i].left);\par
+\}\par
+\par
+#include<stdio.h>\par
+main()\par
+\{\par
+char c1,c2,c3;\par
+c1 = getc(stdin);\par
+putc(c1,stdout);\par
+c2 = getche();\par
+putc(c2,stdout);\par
+c3 = getchar();\par
+putc(c3,stdout);\par
+\}\par
+\par
+\par
+#include <stdio.h>\par
+\par
+struct test\{\par
+int f;\par
+\};\par
+\par
+struct test*\par
+f(struct test * (*fPtr)() )\par
+\{\par
+struct  test *ptr = (struct test*) malloc(sizeof(struct test));\par
+return ptr;\par
+\}\par
+\par
+main()\par
+\{\par
+\par
+ f(f)->f;\par
+\}\par
+\par
+main()\par
+\{\par
+print_in_reverse( "char *str" );\par
+\}\par
+\par
+void print_in_reverse( char *str )\par
+\{\par
+    if( *str == '\\0' )\par
+        return;\par
+\par
+    print_str_in_reverse(str+1);\par
+\par
+    printf( "%c" , *str );\par
+\}\par
+\par
+\par
+\par
+#include<math.h>\par
+/* #define sqrt(x) (( x < 0) ? sqrt(-x) : sqrt(x))\par
+*/\par
+main()\par
+\{\par
+int y;\par
+y = sqrt(-9);\par
+printf("%d",y);\par
+\}\par
+\par
+\par
+#define MAXI 100\par
+main()\{\par
+int done,i,x=6;\par
+done=i=0;\par
+for(i = 0; (i< MAXI) && (x/=2)>1; i++)\par
+done++;\par
+\par
+printf("%d %d\\n",i,done);\par
+\}\par
+#define MAXI 100\par
+main()\{\par
+int done,i,x=6;\par
+done=i=0;\par
+while (i < MAXI && !done)\{\par
+if ((x/=2)>1)\{ i++; continue;\}\par
+done++;\par
+\}\par
+printf("%d %d\\n",i,done);\par
+\}\par
+main()\par
+\{\par
+        struct emp\par
+        \{       char name[20];\par
+                int age;\par
+                float sal;\par
+        \};\par
+        struct emp e = \{"Tiger"\};\par
+        printf("\\n%d %f",e.age,e.sal);\par
+\}\par
+\par
+main()\par
+\{\par
+char str[] = "Taj is 2 miles away";\par
+int i;\par
+for(i=0;i<19;++i)\par
+if(isalpha(str[i]))printf("%c",toupper(str[i]));\par
+\}\par
+\par
+\par
+\par
+main()\par
+\{\par
+int c;\par
+\par
+while((c=getchar()) != 0)\{\par
+printf(" %c",c);\par
+\}\par
+\}\par
+#include <stdio.h>\par
+f( )\par
+\{\par
+        printf("I am f()");\par
+\}\par
+extern f1( );\par
+main()\par
+\par
+\{\par
+        int i=10;\par
+        f1(i);\par
+\}\par
+\par
+f1(int i )\par
+\{\par
+        printf("the i value is %d",i);\par
+        f();\par
+\}\par
+\par
+#include<stdio.h>\par
+#define abs(x) x>0?x:-x\par
+#define mabs(x) (((x)>=0)?(x):-(x))\par
+int fabs(int);\par
+main()\par
+\{\par
+printf("\\n%d   %d",abs(10)+1,abs(-10)+1);\par
+printf("\\n%d   %d",mabs(10)+1,mabs(-10)+1); \par
+printf("\\n%d   %d\\n",fabs(10)+1,fabs(-10)+1);\par
+\}\par
+\par
+\par
+int fabs(int n)\par
+\{\par
+return(n>0? n: -n);\par
+ \par
+\}\par
+\par
+unsigned char\par
+f(unsigned n)\par
+\{\par
+  static const unsigned char table[64] = \{\par
+    0, 0, 0, 9, 0, 0, 10, 1, 0, 0, 0, 0, 0, 11, 2, 21, 7, 0, 0, 0, 0, 0, \par
+0,\par
+    15, 0, 0, 12, 0, 17, 3, 22, 27, 32, 8, 0, 0, 0, 0, 0, 20, 6, 0, 0, \par
+14,\par
+    0, 0, 16, 26, 31, 0, 0, 19, 5, 13, 0, 25, 30, 18, 4, 24, 29, 23, 28, \par
+0\par
+  \};\par
+  return table[((n & -n) * 0x1d0d73df) >> 26];\par
+\}\par
+main()\par
+\{\par
+printf("%c",f(8));\par
+\}\par
+#include <stdio.h>\par
+int myfunc(char *str)\par
+\{\par
+        char *ptr =str;\par
+        while(*ptr++);\par
+        return ptr-str-1;\par
+\}\par
+main()\par
+\{\par
+        printf("length is %d", myfunc("DESIS"));\par
+\}\par
+\par
+\par
+#include <stdio.h>\par
+struct _tag\par
+\{\par
+        int i;\par
+        union \par
+        \{\par
+                int a;\par
+                int b;\par
+        \}c;\par
+\} a;\par
+\par
+main()\par
+\{\par
+        a.c.a=10;\par
+        printf("test %d\\n",a.c.b);\par
+\}\par
+\par
+main()\par
+\{\par
+        int a=10,b;\par
+        b=a>=5?100:200;\par
+        printf("%d\\n",b);\par
+\}\par
+\par
+\par
+#define MAXI 100\par
+main()\{\par
+int x=6,done,i;\par
+done=i=0;\par
+do \par
+\{\par
+        if((x/=2)>1) \par
+\par
+                \{i++; continue;\}\par
+        else \par
+                done++;\par
+\}while ((i < MAXI) && !done);\par
+\par
+printf("%d %d\\n",i,done);\par
+\}\par
+#include<stdio.h>\par
+main()\par
+\{\par
+extern int i;\par
+i=20;\par
+printf("%d\\n",sizeof(i));\par
+\}\par
+\par
+fun()\par
+\{\par
+printf("Yes\\n");\par
+\}\par
+\par
+#define fun()  printf("No\\n")\par
+\par
+main()\par
+\{\par
+    fun();\par
+    (fun)();\par
+\}\par
+\par
+main()\par
+\{\par
+        int i = 1;\par
+        switch(i) \{\par
+                printf("\\nHello, ");\par
+                case 1: printf("One, ");\par
+                        i++;\par
+                        break;\par
+                case 2: printf("Two");\par
+                        break;\par
+                \}\par
+\}\par
+\par
+\par
+#define DESHAWCURRENTDEBUGLEVEL 1\par
+\par
+void main(void)\par
+\{\par
+int i = 10 ;\par
+int j = 15 ;\par
+\par
+#ifdef DESHAWCURRENTDEBUGLEVEL\par
+printf("%d\\n",i);\par
+#else\par
+printf("%d\\n",j);\par
+#endif\par
+\}\par
+\par
+#define scanf "%s DE Shaw"\par
+main()\par
+\{\par
+ printf(scanf,scanf);\par
+ \}\par
+\par
+main()\par
+\{\par
+ char *p="abc";\par
+ char *q="abc123";\par
+\par
+   while(*p==*q)\par
+   \{\par
+    printf("%c %c",*p,*q);\par
+    p++;q++;\par
+    \}\par
+\}\par
+#define INTPTR int *\par
+main()\par
+\{\par
+        INTPTR pi, pj;\par
+        int i,j;\par
+        i=10;j=20;\par
+        pi = &j;\par
+        pj = &j;\par
+        j++;\par
+        i= *pi;\par
+        printf("%d,",i);\par
+        j++;\par
+        i= *pj;\par
+        printf("%d",i);\par
+\}\par
+\par
+#include<string.h>\par
+main()\par
+\{\par
+char strp[] = "Never ever say no";\par
+char *chp, c='e';\par
+int i,j;\par
+chp = strrchr(strp, c);\par
+i = chp-strp;\par
+for(j=0;j<=i;j++)printf("%c",strp[j]);\par
+\}\par
+#include<stdio.h>\par
+main()\par
+\{\par
+        char str[] ="abcdef";\par
+        printf("str is %s",str);\par
+        str = "DESIS";\par
+        printf("str is %s",str);\par
+\}\par
+\par
+\par
+main()\par
+\{\par
+        char *str ="India pvt. ltd.";\par
+        char *str1 = "DESIS";\par
+        printf("str is %s",str);\par
+        printf("str is %s",str1);\par
+        strcat(str1,str);\par
+        printf("str is %s",str1);\par
+\}\par
+\par
+main()\par
+\{\par
+        char str[] ="DESIS India pvt. ltd.";\par
+        const char *str1= str;\par
+        strcpy(str1,"DESHAW");\par
+        printf("str is %s",str);\par
+\}\par
+\par
+main()\par
+\{\par
+int i=4,j=2,k=0;\par
+char c1='a',c2='b';\par
+if(k==0)printf("k is zero\\n");\par
+else if(j==2)printf("j is 2\\n");\par
+else if(i==4)printf("i is 4\\n");\par
+if(c1!='a')printf("c1 is not a\\n");\par
+else if (c2=='a')printf("c2 is b");\par
+else printf("Hello\\n");\par
+\}\par
+\par
+#include<stdio.h>\par
+main()\par
+\{\par
+int a[3] = \{1,2,3\};\par
+int i= 2;\par
+printf("\\n %d %d\\n", a[i], i[a]);\par
+\}\par
+#include<stdio.h>\par
+void fun(int, int*);\par
+main()\par
+\{\par
+int j,i;\par
+int * intptr;\par
+printf("enter an integer\\n");\par
+scanf("%d",&i);\par
+intptr = &j;\par
+j = i;\par
+printf("i and j are %d %d \\n",i,j);\par
+fun(j,intptr);\par
+printf("i is:%d",i);\par
+printf("\\n j is:%d",j);\par
+\}\par
+void fun(int k, int *iptr)\par
+\{\par
+k++;\par
+(*iptr)++;\par
+return;\par
+\}\par
+\par
+#include<stdio.h>\par
+main()\par
+\{\par
+                int x;\par
+        x = printf("%d\\n",x=printf("%d",890));\par
+          printf("%d",x);\par
+        \}\par
+\par
+#include<stdio.h>\par
+main()\par
+\{\par
+int i;\par
+char c;\par
+for (i=0;i<5;i++)\{\par
+  scanf("%d",&c);\par
+  printf("%d",i);\par
+  \}\par
+\}\par
+\par
+main()\par
+\{\par
+        int x = 10,y=2,z;\par
+        z=x/*y+y*/+y;\par
+        printf("%d\\n",z);\par
+\}\par
+main()\par
+\{\par
+int a[] = \{0,1,2,3,4\};\par
+int *p[] = \{a,a+1,a+2,a+3,a+4\};\par
+int **pp = p;\par
+\par
+printf("%d, %d, %d ", *pp-a, pp-p, **pp);\par
+pp++; pp++;;++pp;*++pp;\par
+printf("%d, %d, %d ", pp-p, *pp-a, **pp);\par
+\}\par
+\par
+main()\par
+\{\par
+int a[] = \{0,1,2,3,4\};\par
+int *p[] = \{a,a+1,a+2,a+3,a+4\};\par
+int **pp = p;\par
+\par
+printf("%d, %d, %d ", *pp-a, pp-p, **pp);\par
+pp++; *pp++;++pp;*++pp;\par
+printf("%d, %d, %d ", pp-p, *pp-a, **pp);\par
+\}\par
+\par
+main()\par
+\{\par
+char input[] = "SSSWILTECH1\\1\\1";\par
+int i, c;\par
+for ( i=2; (c=input[i])!='\\0'; i++)\{\par
+        switch(c)\{\par
+                case 'a': putchar ('i'); continue;\par
+                case '1': break;\par
+                case 1: while (( c = input[++i]) != '\\1' && c!= '\\0');\par
+                case 9: putchar('S');\par
+                case 'E': case 'L': continue;\par
+                default: putchar(c);continue;\par
+                \}\par
+                putchar(' ');\par
+                \}\par
+                putchar('\\n');\par
+\}\par
+\par
+\par
+main()\{\par
+unsigned int k = 987 , i = 0;\par
+char trans[10];\par
+\par
+       do \{\par
+              trans[i++]  = (k%16 > 9) ? (k%16 - 10 + 'a') : (k%16 - '0' \par
+);\par
+        \par
+          \} while(k /= 16);\par
+\par
+       for(i=0;i<10;i++) printf("%c", trans[i]);\par
+\}\par
+\par
+main()\par
+\{\par
+unsigned int k = 987 , i = 0;\par
+char trans[10];\par
+\par
+  do \{\par
+     trans[i++]  = (k%16 > 9 ? k%16 - 10 + 'a' : k%16 - '0' );\par
+    printf("%d %d\\n",k,k%16);\par
+        \par
+          \} while(k /= 16);\par
+          \par
+ printf("%s\\n", trans);\par
+ \}\par
+\par
+\par
+main()\par
+\{\par
+char *pk;\par
+const char* p;\par
+const char c = 'a';\par
+char c1='b';\par
+p=&c1;\par
+pk = &c;\par
+printf("%c %c",*pk,*p);\par
+\}\par
+\par
+main()\par
+\{\par
+\par
+int i=4;\par
+if (i>5) printf("Hi");\par
+else f(i);\par
+\}\par
+\par
+f(int j)\par
+\{\par
+if (j>=4) f(j-1);\par
+else if(j==0)return;\par
+printf("Hi");\par
+\}\par
+\par
+\par
+int *NEXT(register int  i)\par
+\{\par
+int *ipt;\par
+ipt = &i;\par
+\par
+ipt++;\par
+return ipt;\par
+\}\par
+\par
+main ()\par
+\{\par
+int j;\par
+printf("%d",(NEXT(j)));\par
+\}\par
+\par
+\par
+#define PRINT(int) printf("int = %d  ",int)\par
+main()\par
+\{\par
+int x,y,z;\par
+x=03;y=02;z=01;\par
+PRINT(x^x);\par
+z<<=3;PRINT(x);\par
+y>>=3;PRINT(y);\par
+\}\par
+\par
+\par
+#define PRINT(int) printf( "int = %d ", int)\par
+main()\par
+\{\par
+int x=03,y=02,z=01;\par
+PRINT (x | y & ~z);\par
+PRINT (x & y && z);\par
+PRINT (x ^ y & ~z);\par
+\}\par
+\par
+\par
+main()                  \par
+\{\par
+int p;\par
+for(p = 1; p<=10, --p ; p=p+2)\par
+        puts("Hello");\par
+\}\par
+\par
+#include<stdio.h>\par
+int n, R;\par
+main()\par
+\{\par
+R = 0;\par
+scanf("%d",&n);\par
+printf("\\n %d, %d",fun(n),R);\par
+\}\par
+\par
+int fun(int n)\par
+\{\par
+if (n>3) return\par
+    R = 5;\par
+    R = 6;\par
+    return(1);\par
+\par
+    \}\par
+main()\par
+\{\par
+int a = 10, b = 5,c = 3,d = 3;\par
+\par
+if ((a<b) &&  (c = d++)) printf(" %d  %d  %d  %d ", a, b, c, d);:wq\par
+\par
+else  printf(" %d  %d  %d  %d ", a, b, c, d);\par
+\par
+\}\par
+\par
+main()\par
+\{\par
+struct test\par
+\{\par
+char c;\par
+int i;\par
+\par
+char v;\par
+\} t1;\par
+printf("%d %d\\n",sizeof(t1), sizeof(t1.c));\par
+\}\par
+\par
+#include<stdio.h>\par
+main()\par
+\{\par
+int a,b;\par
+scanf("%d %d", &a, &b);\par
+printf("%d\\n", a+++b);\par
+printf("%d %d\\n",a,b);\par
+\}\par
+\par
+float s=1944,x[5],y[5],z[5],r[5],j,h,a,b,d,e;int i=33,c,l,f=1;int \par
+g()\{return f=\par
+(f*6478+1)%65346;\}m()\{x[i]=g()-l;y[i]=(g()-l)/4;r[i]=g()>>4;\}main()\{char \par
+t[1948\par
+]=" \par
+`MYmtw%FFlj%Jqig~%`jqig~Etsqnsj3stb",*p=t+3,*k="3tjlq9TX";l=s*20;while(i<s)\par
+p[i++]='\\n'+5;for(i=0;i<5;i++)z[i]=(i?z[i-1]:0)+l/3+!m();while(1)\{for(c=33;c<s;\par
+c++)\{c+=!((c+1)%81);j=c/s-.5;h=c%81/40.0-1;p[c]=37;for(i=4;i+1;i--)if((b=(a=h*x\par
+[i]+j*y[i]+z[i])*a-(d=1+j*j+h*h)*(-r[i]*r[i]+x[i]*x[i]+y[i]*y[i]+z[i]*z[i]))>0)\par
+\{for(e=b;e*e>b*1.01||e*e<b*.99;e-=.5*(e*e-b)/e);p[c]=k[(int)(8*e/d/r[i])];\}\}for\par
+(i=4;i+1;z[i]-=s/2,i--)z[i]=z[i]<0?l*2+!m():z[i];while(i<s)putchar(t[i++]-5);\}\}\par
+\par
+int     i;\par
+main()\par
+\{\par
+    char    a[] = "Shiva";\par
+    printf("%c\\n",i[a]);\par
+\}\par
+\par
+\par
+\par
+myread(a,b)\par
+\{\par
+    printf("%d  %d",a,b);\par
+\}\par
+\par
+main()\par
+\{\par
+    myread(2,4);\par
+\}\par
+\par
+\par
+\par
+funct(char* str)\par
+\{\par
+    printf("%s\\n",str);\par
+\}   \par
+\par
+main()\par
+\{\par
+    static  int     ii = 1;\par
+    int jj = 5; \par
+    ii+=++jj;\par
+    funct(ii+++"Campus Interview");\par
+\par
+\}\par
+\par
+\par
+funct(str)\par
+\{\par
+    printf("%s\\n",str);\par
+\}   \par
+\par
+main()\par
+\{\par
+    funct('-'-'-'+"DEShaw");\par
+\}\par
+\par
+main()\par
+\{   \par
+    printf(" %d\\n",'-'-'-'-'/'/'/');\par
+    \}\par
+\par
+static  int     a  = 6;\par
+extern  int     a;\par
+\par
+main()\par
+\{\par
+        printf("%d",a);\par
+        \}\par
+\par
+#include<stdio.h>\par
+main()\par
+\{\par
+int i=6,j=4;\par
+printf("NO\\n");\par
+switch(i)\par
+\{\par
+do\{\par
+\par
+case 1: printf("yes\\n");\par
+\par
+case 2:\par
+\par
+case 3:\par
+\par
+case 4:\par
+\par
+case 5:\par
+\par
+case 6:\par
+        j--;\par
+        \}while (j);\par
+        \}\par
+        \}\par
+\par
+#include<stdio.h>\par
+main()\par
+\{\par
+auto int i = 0;\par
+printf("%d\\n",i);\par
+        \{\par
+        int i = 2;\par
+        printf("%d\\n",i);\par
+                \{\par
+                i+=1;\par
+                printf("%d\\n",i);\par
+                \}\par
+        printf("%d\\n",i);\par
+        \}\par
+printf("%d\\n",i);\par
+printf("%d\\n",reset());\par
+printf("%d\\n",ret10());\par
+printf("%d\\n",reset());\par
+printf("%d\\n",ret10());\par
+\}\par
+\par
+int reset()\par
+\{\par
+int j = 0;\par
+return(j);\par
+\}\par
+\par
+int ret10()\par
+\{\par
+static int i = 10;\par
+i+=1;\par
+return(i);\par
+\}\par
+\par
+#include<stdio.h>\par
+#include<string.h>\par
+main()\par
+\{\par
+struct emp1\par
+\{\par
+        char *name;\par
+        int age;\par
+\};\par
+struct emp2\par
+\{\par
+char *cp;\par
+struct emp1 e1;\par
+\}e2 = \{"ghi",\{"jkl",123\}\};\par
+\par
+struct emp1 e3 = \{"rwer",2341\};\par
+printf("\\n%s %d\\n",e3.name,e3.age);\par
+printf("\\n%s %s %d\\n",e2.cp,e2.e1.name,e2.e1.age);\par
+\}\par
+\par
+struct xyz\{\par
+        int xyz ;\par
+        \}\par
+        ;\par
+\par
+main()\par
+\{\par
+union xyz\{\par
+        int xyz;\par
+        \}\par
+        ;\par
+        \}\par
+\par
+#include<stdio.h>\par
+main()\par
+\{\par
+char s[] = "Bouquets and Brickbats";\par
+printf("\\n%c, ",*(&s[2]));\par
+printf("%s, ",s+5);\par
+printf("\\n%s",s);\par
+printf("\\n%c",*(s+2));\par
+\}\par
+#include<stdio.h>\par
+struct s\par
+        \{\par
+        char *st;\par
+        struct s *sptr;\par
+        \};\par
+main()\par
+\{\par
+int i;\par
+struct s *p[3];\par
+static struct s a[]=\{\par
+        \{"abcd",a+1\},\par
+        \{"pqrs",a+2\},\par
+        \{"stuv",a\}\par
+       \};\par
+for( i=0;i<3;i++ )p[i] = a[i].sptr;\par
+swap(*p,a);\par
+printf("%s %s %s \\n",p[0]->st,(*p)->st, (*p)->sptr->st);\par
+\}\par
+\par
+swap(p1,p2)\par
+struct s *p1,*p2;\par
+\{\par
+char *temp;\par
+temp = p1->st;\par
+p1->st = p2->st;\par
+p2->st = temp;\par
+\}\par
+\par
+Swap( int *x , int *y)\par
+\{\par
+int tmp = *x ;\par
+*y = *x ;\par
+*x = tmp;\par
+\}\par
+main()\par
+\{\par
+\par
+int a = 1, b = 2;\par
+Swap(&a, &b);\par
+printf("%d %d\\n", a, b);\par
+\}\par
+main()\par
+\{\par
+        int i;\par
+\par
+        scanf("%d",&i);\par
+        switch(i) \{\par
+                printf("\\nHello");\par
+                case 1: printf("\\none");\par
+                        break;\par
+                case 2: printf("\\ntwo");\par
+                        break;\par
+                \}\par
+\}\par
+\par
+#include <stdio.h>\par
+main()\par
+\{\par
+int x;\par
+x = 3;\par
+f(x);\par
+printf("MAIN");\par
+\par
+\}\par
+\par
+f(int n)\par
+\{\par
+printf("F");\par
+if (n != 0)\par
+f(n-1);\par
+\}\par
+\par
+#include<stdio.h>\par
+\par
+#include <stdio.h>\par
+\par
+main()\par
+\{\par
+\par
+        int ptr[] = \{1,2,23,6,5,6\};\par
+                char str[] = \{'a','b','c','d','e','f','g','h'\};\par
+\par
+                        printf("pointer differences are %ld, \par
+%d",&ptr[3], &str[3]-&str[0]);\par
+                        \}\par
+\par
+#include<stdio.h>\par
+main()\par
+\par
+\{\par
+char a,b,c;\par
+scanf("%c %c %c",&a,&b,&c);\par
+\par
+printf("%c %c %c ", a, b, c);\par
+\}\par
+\par
+#include<stdio.h>\par
+main()\par
+\{\par
+  int a = 10000;\par
+   char b='c';\par
+\par
+   int i,j;\par
+   /* i=printf("%d\\n",a);\par
+\par
+    j=printf("%c\\n",b);*/\par
+\par
+     printf("%d,%d",printf("%d\\n",a),printf("%c\\n",b));\par
+\par
+     \}\par
+#include<stdio.h>\par
+#define PR(a)   printf("%d\\t",(int) (a));\par
+#define PRINT(a,b,c) PR(a);PR(b);PR(c);\par
+#define MAX(a,b) (a<b?b:a)\par
+main()\{\par
+        int x = 1,y = 2;\par
+                PRINT(MAX(x++,y),x,y);\par
+                        PRINT(MAX(x++,y),x,y);\par
+                        \}\par
+\par
+#include<stdio.h>\par
+main()\par
+\{\par
+ unsigned int i=100;\par
+for(;i>=0;i--)  printf("hello: %u\\n",i);\par
+\}\par
+\par
+main()\par
+\{\par
+\par
+struct list\{\par
+int x;\par
+struct ist next;\par
+\}head;\par
+\par
+struct ist\{\par
+int x;\par
+int y;\par
+\};\par
+head.x = 100;\par
+head.next.x=10;\par
+printf("%d %d", head.x,head.next.x);\par
+\}\par
+\par
+\par
+main()\par
+\{\par
+typedef union\par
+\{\par
+struct\par
+\{\par
+char c1,c2;\par
+\} s;\par
+long j;\par
+float x;\par
+\par
+\} U;\par
+\par
+U example;\par
+example.s.c1 = 'a';\par
+example.s.c2 = 'b';\par
+example.j = 5;\par
+printf("%c %c %d", example.s.c1, example.s.c2, example.j);\par
+\}\par
+\par
+\par
+main()\par
+        \{\par
+                struct s1\par
+                \{       char *str;\par
+                        struct s1 *ptr;\par
+                \};\par
+                static struct s1 arr[] = \{      \{"Hyderabad",arr+1\},\par
+                                                \{"Bangalore",arr+2\},\par
+                                                \{"Delhi",arr\}\par
+                                        \};\par
+                struct s1 *p[3];\par
+                int i;\par
+        \par
+                for(i=0;i<=2;i++)\par
+                        p[i] = arr[i].ptr;\par
+\par
+                printf("%s\\n",(*p)->str);\par
+                printf("%s\\n",(++*p)->str);\par
+                printf("%s\\n",((*p)++)->str);\par
+\par
+        \}\par
+\par
+main()\par
+        \{struct s1\par
+                \{       char *str;\par
+                        struct s1 *ptr;\par
+                \};\par
+                static struct s1 arr[] = \{      \{"Hyderabad",arr+1\},\par
+                                                \{"Bangalore",arr+2\},\par
+                                                \{"Delhi",arr\}\par
+                                        \};\par
+\par
+                struct s1 *p[3];\par
+                int i;\par
+        \par
+                for(i=0;i<=2;i++)       p[i] = arr[i].ptr;\par
+\par
+printf("%s  ",(*p)->str);\par
+                        printf("%s ",(++*p)->str);\par
+printf("%s ",((*p)++)->str);\par
+        \}\par
+                \par
+\par
+main()\par
+\{\par
+char input[] = "SSSWILTECH1\\1\\1";\par
+int i, c;\par
+for ( i=2; (c=input[i])!='\\0'; i++)\{\par
+        switch(c)\{\par
+                case 'a': putchar ('i'); continue;\par
+                case '1': break;\par
+                case 1: while (( c = input[++i]) != '\\1' && c!= '\\0');\par
+                case 9: putchar('S');\par
+                case 'E': case 'L': continue;\par
+                default: putchar(c);continue;\par
+                \}\par
+                putchar(' ');\par
+        \}\par
+        putchar('\\n');\par
+\}\par
+\par
+main()\par
+\{\par
+int i, n, m, b, x[25];\par
+int f1(int, int, int j[25]);\par
+for(i=0;i<25;i++) x[i] = i;\par
+i=0; m = 24;\par
+b=f1(i, m, x);\par
+printf("res %d\\n",b);\par
+\}\par
+\par
+int f1( int p, int q, int a[25])\par
+\{\par
+int m1,m2;\par
+if (q==0) \par
+return(a[p]);\par
+else \par
+\{\par
+m1 = f1 (p, q/2, a);\par
+m2 = f1(p+q/2+1,q/2,a);\par
+if(m1<m2) \par
+return (m2);\par
+else\par
+return(m1);\par
+\}\par
+\}\par
+main()\par
+\{\par
+int a[3][4] =\{1,2,3,4,5,6,7,8,9,10,11,12\} ; \par
+int i,j,k=99 ;\par
+for(i=0;i<3;i++)\par
+for(j=0;j<4;j++)\par
+if(a[i][j] < k) k = a[i][j];\par
+printf("%d", k);\par
+\}\par
+main()\par
+\{\par
+char *p = "hello world!";\par
+p[0] = 'H';\par
+printf("%s",p);\par
+\}\par
+\par
+\par
+\par
+\f1\par
+}
+ 

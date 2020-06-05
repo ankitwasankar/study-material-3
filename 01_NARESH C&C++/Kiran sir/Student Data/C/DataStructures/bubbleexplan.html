@@ -1,0 +1,65 @@
+<html><body>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Bubble sort is the simplest but not very efficient of the sorts.<br> It compares adjacent elements in a list of data elements, and swaps them if they are not in order. Each pair of adjacent elements is compared and swapped until the smallest element bubbles up to the top thus the name bubble sort. Repeat this process till all the elements are in sorting order. This technique is often called Exchange sort, Adjacent sort or Sinking sort.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The step by step procedure to sort in ascending order is given below :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compare two numbers at a time, starting with the first two numbers.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If the top number is larger than the second number, then exchange the two numbers.
+Go down one number and compare that number to the number that follows it. These two form a new pair<br>.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Continue this process until no exchanges had been made in an entire pass through the list.<br>
+For example, sort the following numbers from smallest to largest<br>
+pass1<br>
+2	2	2	2	2	2	2<br>
+6	6	5	5	5	5	5<br>
+5	5	6	4	4	4	4<br>
+4	4	4	6	1	1	1<br>
+1	1	1	1	6	6	6<br>
+7	7	7	7	7	7	7<br>
+3	3	3	3	3	3	3<br><br>
+
+pass 2<br>
+2	2	2	2	2	2<br>
+5	5	4	4	4	4<br>
+4	4	5	1	1	1<br>
+1	1	1	5	5	5<br>
+6	6	6	6	6	3<br>
+7	3	3	3	3	6<br>
+3	7	7	7	7	7<br><br>
+
+pass 3<br>
+2	2	2	2	2<br>
+4	4	1	1	1<br>
+1	1	4	4	4<br>
+5	5	5	5	3<br>
+3	3	3	3	5<br>
+6	6	6	6	6<br>
+7	7	7	7	7<br><br>
+
+pass 4<br>
+2	1	1	1<br>
+1	2	2	2<br>
+4	4	4	3<br>
+3	3	3	4<br>
+5	5	5	5<br>
+6	6	6	6<br>
+7	7	7	7<br><br>
+
+pass 5<br>
+1	1	1<br>
+2	2	2<br>
+3	3	3<br>
+4	4	4<br>
+5	5	5<br>
+6	6	6<br>
+7	7	7<br><br>
+
+pass 6<br>
+1	1<br>
+2	2<br>
+3	3<br>
+4	4<br>
+5	5<br>
+6	6<br>
+7	7<br><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Note that after the first pass the largest element is in the last position of the array. In the ith pass, ith largest element bubbles up to the ith position from the top of the array. Since each pass places a new element into its proper position, it requires N-1 passes for N elements .
+
+</body></html>

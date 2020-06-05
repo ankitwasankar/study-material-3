@@ -1,0 +1,1889 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+<!-- This document was created from RTF source by rtftohtml version 3.0.1 -->
+
+	<META NAME="GENERATOR" Content="Symantec Visual Page 1.0">
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+	<TITLE>Teach Yourself C++ in 21 Days</TITLE>
+</HEAD>
+
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF">
+
+<H1 ALIGN="CENTER"><A HREF="ch12.htm"><IMG SRC="../buttons/BLANPREV.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch14.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A></H1>
+<H1></H1>
+
+<UL>
+	<LI><A HREF="#Heading1">Day 13</A>
+	<UL>
+		<LI><A HREF="#Heading2">Polymorphism</A>
+		<UL>
+			<LI><A HREF="#Heading3">Problems with Single Inheritance</A>
+			<LI><A HREF="#Heading4">Listing 13.1. If horses could fly</A><A HREF="#Heading5">...</A>
+			<UL>
+				<LI><A HREF="#Heading6">Percolating Upward</A>
+				<LI><A HREF="#Heading7">Casting Down</A>
+			</UL>
+			<LI><A HREF="#Heading8">Listing 13.2. Casting down</A><A HREF="#Heading9">.</A>
+			<UL>
+				<LI><A HREF="#Heading10">Adding to Two Lists</A>
+			</UL>
+			<LI><A HREF="#Heading11">Multiple Inheritance</A>
+			<LI><A HREF="#Heading12">Listing 13.3. Multiple inheritance</A><A HREF="#Heading13">.</A>
+			<LI><A HREF="#Heading14">Declaring Multiple Inheritance</A>
+			<UL>
+				<LI><A HREF="#Heading15">The Parts of a Multiply Inherited Object</A>
+				<UL>
+					<LI><A HREF="#Heading16">Figure 13.1.</A>
+				</UL>
+				<LI><A HREF="#Heading17">Constructors in Multiply Inherited Objects</A>
+			</UL>
+			<LI><A HREF="#Heading18">Listing 13.4. Calling multiple constructors</A><A HREF="#Heading19">.</A>
+			<UL>
+				<LI><A HREF="#Heading20">Ambiguity Resolution</A>
+				<LI><A HREF="#Heading21">Inheriting from Shared Base Class</A>
+				<UL>
+					<LI><A HREF="#Heading22">Figure 13.2.</A>
+				</UL>
+			</UL>
+			<LI><A HREF="#Heading23">Listing 13.5. Common base classes</A><A HREF="#Heading24">.</A>
+			<UL>
+				<LI><A HREF="#Heading25">Virtual Inheritance</A>
+				<UL>
+					<LI><A HREF="#Heading26">Figure 13.3.</A>
+				</UL>
+			</UL>
+			<LI><A HREF="#Heading27">Listing 13.6. Illustration of the use of virtual inheritance</A><A
+			HREF="#Heading28">.</A>
+			<LI><A HREF="#Heading29">Declaring Classes for Virtual Inheritance</A>
+			<UL>
+				<LI><A HREF="#Heading30">Problems with Multiple Inheritance</A>
+				<LI><A HREF="#Heading31">Mixins and Capabilities Classes</A>
+			</UL>
+			<LI><A HREF="#Heading32">Abstract Data Types</A>
+			<LI><A HREF="#Heading33">Listing 13.7. Shape classes</A><A HREF="#Heading34">.</A>
+			<UL>
+				<LI><A HREF="#Heading35">Pure Virtual Functions</A>
+			</UL>
+			<LI><A HREF="#Heading36">Listing 13.8. Abstract Data Types</A><A HREF="#Heading37">.</A>
+			<LI><A HREF="#Heading38">Abstract Data Types</A>
+			<UL>
+				<LI><A HREF="#Heading39">Implementing Pure Virtual Functions</A>
+			</UL>
+			<LI><A HREF="#Heading40">Listing 13.9. Implementing pure virtual functions</A><A
+			HREF="#Heading41">.</A>
+			<UL>
+				<LI><A HREF="#Heading42">Complex Hierarchies of Abstraction</A>
+			</UL>
+			<LI><A HREF="#Heading43">Listing 13.10. Deriving ADTs from other ADTs</A><A HREF="#Heading44">.</A>
+			<UL>
+				<LI><A HREF="#Heading45">Which Types Are Abstract?</A>
+			</UL>
+			<LI><A HREF="#Heading46">The Observer Pattern</A>
+			<UL>
+				<LI><A HREF="#Heading47">A Word About Multiple Inheritance, Abstract Data Types,
+				and Java</A>
+			</UL>
+			<LI><A HREF="#Heading48">Summary</A>
+			<LI><A HREF="#Heading49">Q&amp;A</A>
+			<LI><A HREF="#Heading50">Workshop</A>
+			<UL>
+				<LI><A HREF="#Heading51">Quiz</A>
+				<LI><A HREF="#Heading52">Exercises</A>
+			</UL>
+		</UL>
+	</UL>
+</UL>
+
+<P>
+<HR SIZE="4">
+
+<H2 ALIGN="CENTER"><A NAME="Heading1"></A><FONT COLOR="#000077">Day 13</FONT></H2>
+<H2 ALIGN="CENTER"><A NAME="Heading2"></A><FONT COLOR="#000077">Polymorphism</FONT></H2>
+<P>Yesterday, you learned how to write virtual functions in derived classes. This
+is the fundamental building block of polymorphism: the capability to bind specific,
+derived class objects to base class pointers at runtime. Today, you learnWhat multiple
+inheritance is and how to use it.
+
+<UL>
+	<LI>What virtual inheritance is.
+	<P>
+	<LI>What abstract data types are.
+	<P>
+	<LI>What pure virtual functions are.
+</UL>
+
+<H3 ALIGN="CENTER"><A NAME="Heading3"></A><FONT COLOR="#000077">Problems with Single
+Inheritance</FONT></H3>
+<P>Suppose you've been working with your animal classes for a while and you've divided
+the class hierarchy into <TT>Birds</TT> and <TT>Mammals</TT>. The <TT>Bird</TT> class
+includes the member function <TT>Fly()</TT>. The <TT>Mammal</TT> class has been divided
+into a number of types of <TT>Mammal</TT>s, including <TT>Horse</TT>. The <TT>Horse</TT>
+class includes the member functions <TT>Whinny()</TT> and <TT>Gallop()</TT>.</P>
+<P>Suddenly, you realize you need a <TT>Pegasus</TT> object: a cross between a <TT>Horse</TT>
+and a <TT>Bird</TT>. A <TT>Pegasus</TT> can <TT>Fly()</TT>, it can <TT>Whinny()</TT>,
+and it can <TT>Gallop()</TT>. With single inheritance, you're in quite a jam.</P>
+<P>You can make <TT>Pegasus</TT> a <TT>Bird</TT>, but then it won't be able to <TT>Whinny()</TT>
+or <TT>Gallop()</TT>. You can make it a <TT>Horse</TT>, but then it won't be able
+to <TT>Fly()</TT>.</P>
+<P>Your first solution is to copy the <TT>Fly()</TT> method into the <TT>Pegasus</TT>
+class and derive <TT>Pegasus</TT> from <TT>Horse</TT>. This works fine, at the cost
+of having the <TT>Fly()</TT> method in two places (<TT>Bird</TT> and <TT>Pegasus</TT>).
+If you change one, you must remember to change the other. Of course, a developer
+who comes along months or years later to maintain your code must also know to fix
+both places.</P>
+<P>Soon, however, you have a new problem. You wish to create a list of <TT>Horse</TT>
+objects and a list of <TT>Bird</TT> objects. You'd like to be able to add your <TT>Pegasus</TT>
+objects to either list, but if a <TT>Pegasus</TT> is a horse, you can't add it to
+a list of birds.</P>
+<P>You have a couple of potential solutions. You can rename the <TT>Horse</TT> method
+<TT>Gallop()</TT> to <TT>Move()</TT>, and then override <TT>Move()</TT> in your <TT>Pegasus</TT>
+object to do the work of <TT>Fly()</TT>. You would then override <TT>Move()</TT>
+in your other horses to do the work of <TT>Gallop()</TT>. Perhaps <TT>Pegasus</TT>
+could be clever enough to gallop short distances and fly longer distances.</P>
+<PRE><FONT COLOR="#0066FF">Pegasus::Move(long distance)
+{
+if (distance &gt; veryFar)
+fly(distance);
+else
+gallop(distance);
+}
+</FONT></PRE>
+<P>This is a bit limiting. Perhaps one day <TT>Pegasus</TT> will want to fly a short
+distance or gallop a long distance. Your next solution might be to move <TT>Fly()</TT>
+up into <TT>Horse</TT>, as illustrated in Listing 13.1. The problem is that most
+horses can't fly, so you have to make this method do nothing unless it is a <TT>Pegasus</TT>.</P>
+<P><A NAME="Heading4"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 13.1. If horses
+could fly...</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     // Listing 13.1. If horses could fly...
+2:     // Percolating Fly() up into Horse
+3:
+4:     #include &lt;iostream.h&gt;
+5:
+6:     class Horse
+7:     {
+8:     public:
+9:        void Gallop(){ cout &lt;&lt; &quot;Galloping...\n&quot;; }
+10:       virtual void Fly() { cout &lt;&lt; &quot;Horses can't fly.\n&quot; ; }
+11:    private:
+12:       int itsAge;
+13:    };
+14:
+15:    class Pegasus : public Horse
+16:    {
+17:    public:
+18:       virtual void Fly() { cout &lt;&lt; &quot;I can fly! I can fly! I can fly!\n&quot;; }
+19:    };
+20:
+21:    const int NumberHorses = 5;
+22:    int main()
+23:    {
+24:       Horse* Ranch[NumberHorses];
+25:       Horse* pHorse;
+26:       int choice,i;
+27:       for (i=0; i&lt;NumberHorses; i++)
+28:       {
+29:          cout &lt;&lt; &quot;(1)Horse (2)Pegasus: &quot;;
+30:          cin &gt;&gt; choice;
+31:          if (choice == 2)
+32:             pHorse = new Pegasus;
+33:          else
+34:             pHorse = new Horse;
+35:          Ranch[i] = pHorse;
+36:       }
+37:       cout &lt;&lt; &quot;\n&quot;;
+38:       for (i=0; i&lt;NumberHorses; i++)
+39:       {
+40:          Ranch[i]-&gt;Fly();
+41:          delete Ranch[i];
+42:       }
+43:     return 0;
+<TT>44: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: (1)Horse (2)Pegasus: 1
+(1)Horse (2)Pegasus: 2
+(1)Horse (2)Pegasus: 1
+(1)Horse (2)Pegasus: 2
+(1)Horse (2)Pegasus: 1
+
+Horses can't fly.
+I can fly! I can fly! I can fly!
+Horses can't fly.
+I can fly! I can fly! I can fly!
+Horses can't fly. 
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>This program certainly works,
+though at the expense of the <TT>Horse</TT> class having a <TT>Fly()</TT> method.
+On line 10, the method<TT> Fly()</TT> is provided to <TT>Horse</TT>. In a real-world
+class, you might have it issue an error, or fail quietly. On line 18, the <TT>Pegasus</TT>
+class overrides the <TT>Fly()</TT> method to &quot;do the right thing,&quot; represented
+here by printing a happy message.</P>
+<P>The array of <TT>Horse</TT> pointers on line 24 is used to demonstrate that the
+correct <TT>Fly()</TT> method is called based on the runtime binding of the <TT>Horse</TT>
+or <TT>Pegasus</TT> object.
+<H4 ALIGN="CENTER"><A NAME="Heading6"></A><FONT COLOR="#000077">Percolating Upward</FONT></H4>
+<P>Putting the required function higher in the class hierarchy is a common solution
+to this problem and results in many functions &quot;percolating up&quot; into the
+base class. The base class is then in grave danger of becoming a global namespace
+for all the functions that might be used by any of the derived classes. This can
+seriously undermine the class typing of C++, and can create a large and cumbersome
+base class.</P>
+<P>In general, you want to percolate shared functionality up the hierarchy, without
+migrating the interface of each class. This means that if two classes that share
+a common base class (for example, <TT>Horse</TT> and <TT>Bird</TT> both share <TT>Animal</TT>)
+have a function in common (both birds and horses eat, for example), you'll want to
+move that functionality up into the base class and create a virtual function.</P>
+<P>What you'll want to avoid, however, is percolating an interface (like <TT>Fly</TT>
+up where it doesn't belong), just so you can call that function only on some derived
+classes.
+<H4 ALIGN="CENTER"><A NAME="Heading7"></A><FONT COLOR="#000077">Casting Down</FONT></H4>
+<P>An alternative to this approach, still within single inheritance, is to keep the
+<TT>Fly()</TT> method within <TT>Pegasus</TT>, and only call it if the pointer is
+actually pointing to a <TT>Pegasus</TT> object. To make this work, you'll need to
+be able to ask your pointer what type it is really pointing to. This is known as
+Run Time Type Identification (RTTI). Using RTTI has only recently become an official
+part of C++.</P>
+<P>If your compiler does not support RTTI, you can mimic it by putting a method that
+returns an enumerated type in each of the classes. You can then test that type at
+runtime and call <TT>Fly()</TT> if it returns <TT>Pegasus</TT>.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>Beware of adding RTTI to your classes.
+	Use of it may be an indication of poor design. Consider using virtual functions,
+	templates, or multiple inheritance instead. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P>In order to call <TT>Fly()</TT> however, you must cast the pointer, telling it
+that the object it is pointing to is a <TT>Pegasus</TT> object, not a <TT>Horse</TT>.
+This is called casting down, because you are casting the <TT>Horse</TT> object down
+to a more derived type.</P>
+<P>C++ now officially, though perhaps reluctantly, supports casting down using the
+new <TT>dynamic_cast</TT> operator. Here's how it works.</P>
+<P>If you have a pointer to a base class such as <TT>Horse</TT>, and you assign to
+it a pointer to a derived class, such as <TT>Pegasus</TT>, you can use the <TT>Horse</TT>
+pointer polymorphically. If you then need to get at the <TT>Pegasus</TT> object,
+you create a <TT>Pegasus</TT> pointer and use the <TT>dynamic_cast</TT> operator
+to make the conversion.</P>
+<P>At runtime, the base pointer will be examined. If the conversion is proper, your
+new <TT>Pegasus</TT> pointer will be fine. If the conversion is improper, if you
+didn't really have a <TT>Pegasus</TT> object after all, then your new pointer will
+be null. Listing 13.2 illustrates this point.</P>
+<P><A NAME="Heading8"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 13.2. Casting
+down.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     // Listing 13.2 Using dynamic_cast.
+2:     // Using rtti
+3:
+4:     #include &lt;iostream.h&gt;
+5:     enum TYPE { HORSE, PEGASUS };
+6:
+7:     class Horse
+8:     {
+9:     public:
+10:       virtual void Gallop(){ cout &lt;&lt; &quot;Galloping...\n&quot;; }
+11:       
+12:    private:
+13:       int itsAge;
+14:    };
+15:
+16:    class Pegasus : public Horse
+17:    {
+18:    public:
+19:       
+20:       virtual void Fly() { cout &lt;&lt; &quot;I can fly! I can fly! I can fly!\n&quot;; }
+21:    };
+22:
+23:    const int NumberHorses = 5;
+24:    int main()
+25:    {
+26:       Horse* Ranch[NumberHorses];
+27:       Horse* pHorse;
+28:       int choice,i;
+29:       for (i=0; i&lt;NumberHorses; i++)
+30:       {
+31:          cout &lt;&lt; &quot;(1)Horse (2)Pegasus: &quot;;
+32:          cin &gt;&gt; choice;
+33:          if (choice == 2)
+34:             pHorse = new Pegasus;
+35:          else
+36:             pHorse = new Horse;
+37:          Ranch[i] = pHorse;
+38:       }
+39:       cout &lt;&lt; &quot;\n&quot;;
+40:       for (i=0; i&lt;NumberHorses; i++)
+41:       {
+42:          Pegasus *pPeg = dynamic_cast&lt; Pegasus *&gt; (Ranch[i]);
+42:          if (pPeg)
+43:             pPeg-&gt;Fly();
+44:          else
+45:             cout &lt;&lt; &quot;Just a horse\n&quot;;
+46:
+47:          delete Ranch[i];
+48:       }
+49:  return 0;
+<TT>50:</TT></FONT><TT>
+</TT><FONT COLOR="#0066FF">
+Output: (1)Horse (2)Pegasus: 1
+(1)Horse (2)Pegasus: 2
+(1)Horse (2)Pegasus: 1
+(1)Horse (2)Pegasus: 2
+(1)Horse (2)Pegasus: 1
+
+Just a horse
+I can fly! I can fly! I can fly!
+Just a horse
+I can fly! I can fly! I can fly!
+Just a horse
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>This solution also works.
+<TT>Fly()</TT> is kept out of <TT>Horse</TT>, and is not called on <TT>Horse</TT>
+objects. When it is called on <TT>Pegasus</TT> objects, however, they must be explicitly
+cast; <TT>Horse</TT> objects don't have the method <TT>Fly()</TT>, so the pointer
+must be told it is pointing to a <TT>Pegasus</TT> object before being used.</P>
+<P>The need for you to cast the <TT>Pegasus</TT> object is a warning that something
+may be wrong with your design. This program effectively undermines the virtual function
+polymorphism, because it depends on casting the object to its real runtime type.
+<H4 ALIGN="CENTER"><A NAME="Heading10"></A><FONT COLOR="#000077">Adding to Two Lists</FONT></H4>
+<P>The other problem with these solutions is that you've declared <TT>Pegasus</TT>
+to be a type of <TT>Horse</TT>, so you cannot add a <TT>Pegasus</TT> object to a
+list of <TT>Birds</TT>. You've paid the price of either moving <TT>Fly()</TT> up
+into <TT>Horse</TT>, or casting down the pointer, and yet you still don't have the
+full functionality you need.</P>
+<P>One final single inheritance solution presents itself. You can push <TT>Fly()</TT>,
+<TT>Whinny()</TT>, and <TT>Gallop()</TT> all up into a common base class of both
+<TT>Bird</TT> and <TT>Horse</TT>: <TT>Animal</TT>. Now, instead of having a list
+of <TT>Bird</TT>s and a list of <TT>Horse</TT>s, you can have one unified list of
+<TT>Animal</TT>s. This works, but percolates more functionality up into the base
+classes.</P>
+<P>Alternatively, you can leave the methods where they are, but cast down <TT>Horses</TT>
+and <TT>Birds</TT> and <TT>Pegasus</TT> objects, but that is even worse!
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<B>DO</B> move functionality up the inheritance hierarchy. <B>DON'T</B> move interface
+	up the inheritance hierarchy. <B>DO</B> avoid switching on the runtime type of the
+	object--use virtual methods, templates, and multiple inheritance.<B> DON'T</B> cast
+	pointers to base objects down to derived objects. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H3 ALIGN="CENTER"><A NAME="Heading11"></A><FONT COLOR="#000077">Multiple Inheritance</FONT></H3>
+<P>It is possible to derive a new class from more than one base class. This is called
+Multiple Inheritance. To derive from more than the base class, you separate each
+base class by commas in the class designation. Listing 13.3 illustrates how to declare
+<TT>Pegasus</TT> so that it derives from both <TT>Horses</TT> and <TT>Birds</TT>.
+The program then adds <TT>Pegasus</TT> objects to both types of lists.</P>
+<P><A NAME="Heading12"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 13.3. Multiple
+inheritance.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     // Listing 13.3. Multiple inheritance.
+2:     // Multiple Inheritance
+3:
+4:     #include &lt;iostream.h&gt;
+5:
+6:     class Horse
+7:     {
+8:     public:
+9:        Horse() { cout &lt;&lt; &quot;Horse constructor... &quot;; }
+10:       virtual ~Horse() { cout &lt;&lt; &quot;Horse destructor... &quot;; }
+11:       virtual void Whinny() const { cout &lt;&lt; &quot;Whinny!... &quot;; }
+12:    private:
+13:       int itsAge;
+14:    };
+15:
+16:    class Bird
+17:    {
+18:    public:
+19:       Bird() { cout &lt;&lt; &quot;Bird constructor... &quot;; }
+20:       virtual ~Bird() { cout &lt;&lt; &quot;Bird destructor... &quot;; }
+21:       virtual void Chirp() const { cout &lt;&lt; &quot;Chirp... &quot;;  }
+22:       virtual void Fly() const 
+23:       { 
+24:          cout &lt;&lt; &quot;I can fly! I can fly! I can fly! &quot;; 
+25:       }
+26:    private:
+27:       int itsWeight;
+28:    };
+29:
+30:    class Pegasus : public Horse, public Bird
+31:    {
+32:    public:
+33:       void Chirp() const { Whinny(); }
+34:       Pegasus() { cout &lt;&lt; &quot;Pegasus constructor... &quot;; }
+35:       ~Pegasus() { cout &lt;&lt; &quot;Pegasus destructor...  &quot;; }
+36:    };
+37:
+38:    const int MagicNumber = 2;
+39:    int main()
+40:    {
+41:       Horse* Ranch[MagicNumber];
+42:       Bird* Aviary[MagicNumber];
+43:       Horse * pHorse;
+44:       Bird * pBird; 
+45:       int choice,i;
+46:       for (i=0; i&lt;MagicNumber; i++)
+47:       {
+48:          cout &lt;&lt; &quot;\n(1)Horse (2)Pegasus: &quot;;
+49:          cin &gt;&gt; choice;
+50:          if (choice == 2)
+51:             pHorse = new Pegasus;
+52:          else
+53:             pHorse = new Horse;
+54:          Ranch[i] = pHorse;
+55:       }
+56:       for (i=0; i&lt;MagicNumber; i++)
+57:       {
+58:          cout &lt;&lt; &quot;\n(1)Bird (2)Pegasus: &quot;;
+59:          cin &gt;&gt; choice;
+60:          if (choice == 2)
+61:             pBird = new Pegasus; 
+62:          else
+63:             pBird = new Bird;
+64:          Aviary[i] = pBird;
+65:       }
+66:
+67:       cout &lt;&lt; &quot;\n&quot;;
+68:       for (i=0; i&lt;MagicNumber; i++)
+69:       {
+70:          cout &lt;&lt; &quot;\nRanch[&quot; &lt;&lt; i &lt;&lt; &quot;]: &quot; ;
+71:          Ranch[i]-&gt;Whinny();
+72:          delete Ranch[i];
+73:       }
+74:
+75:       for (i=0; i&lt;MagicNumber; i++)
+76:       {
+77:          cout &lt;&lt; &quot;\nAviary[&quot; &lt;&lt; i &lt;&lt; &quot;]: &quot; ;
+78:          Aviary[i]-&gt;Chirp();
+79:          Aviary[i]-&gt;Fly();
+80:          delete Aviary[i];
+81:       }
+82:     return 0;
+<TT>83: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: (1)Horse (2)Pegasus: 1
+Horse constructor...
+(1)Horse (2)Pegasus: 2
+Horse constructor... Bird constructor... Pegasus constructor...
+(1)Bird (2)Pegasus: 1
+Bird constructor...
+(1)Bird (2)Pegasus: 2
+Horse constructor... Bird constructor... Pegasus constructor...
+
+Ranch[0]: Whinny!... Horse destructor...
+Ranch[1]: Whinny!... Pegasus destructor...  Bird destructor... Horse destructor...
+Aviary[0]: Chirp... I can fly! I can fly! I can fly! Bird destructor...
+Aviary[1]: Whinny!... I can fly! I can fly! I can fly! 
+Pegasus destructor... Bird destructor... Horse destructor...
+Aviary[0]: Chirp... I can fly! 
+I can fly! I can fly! Bird destructor...
+Aviary[1]: Whinny!... I can fly! I can fly! I can fly! 
+Pegasus destructor.. Bird destructor... Horse destructor... 
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis: </B></FONT>On lines 6-14, a <TT>Horse</TT>
+class is declared. The constructor and destructor print out a message, and the <TT>Whinny()</TT>
+method prints the word <TT>Whinny!</TT></P>
+<P>On lines 16-25, a <TT>Bird</TT> class is declared. In addition to its constructor
+and destructor, this class has two methods: <TT>Chirp()</TT> and <TT>Fly()</TT>,
+both of which print identifying messages. In a real program these might, for example,
+activate the speaker or generate animated images.</P>
+<P>Finally, on lines 30-36, the class <TT>Pegasus</TT> is declared. It derives both
+from <TT>Horse</TT> and from <TT>Bird</TT>. The <TT>Pegasus</TT> class overrides
+the <TT>Chirp()</TT> method to call the <TT>Whinny()</TT> method, which it inherits
+from <TT>Horse</TT>.</P>
+<P>Two lists are created, a <TT>Ranch</TT> with pointers to <TT>Horse</TT> on line
+41, and an <TT>Aviary</TT> with pointers to <TT>Bird</TT> on line 42. On lines 46-55,
+<TT>Horse</TT> and <TT>Pegasus</TT> objects are added to the <TT>Ranch</TT>. On lines
+56-65, <TT>Bird</TT> and <TT>Pegasus</TT> objects are added to the <TT>Aviary</TT>.</P>
+<P>Invocations of the virtual methods on both the <TT>Bird</TT> pointers and the
+<TT>Horse</TT> pointers do the right things for <TT>Pegasus</TT> objects. For example,
+on line 78 the members of the <TT>Aviary</TT> array are used to call <TT>Chirp()</TT>
+on the objects to which they point. The <TT>Bird</TT> class declares this to be a
+virtual method, so the right function is called for each object.</P>
+<P>Note that each time a <TT>Pegasus</TT> object is created, the output reflects
+that both the <TT>Bird</TT> part and the <TT>Horse</TT> part of the <TT>Pegasus</TT>
+object is also created. When a <TT>Pegasus</TT> object is destroyed, the <TT>Bird</TT>
+and <TT>Horse</TT> parts are destroyed as well, thanks to the destructors being made
+virtual.
+<H3 ALIGN="CENTER"><A NAME="Heading14"></A><FONT COLOR="#000077">Declaring Multiple
+Inheritance</FONT></H3>
+<P>Declare an object to inherit from more than one class by listing the base classes
+following the colon after the class name. Separate the base classes by commas. Example
+1:</P>
+<PRE><FONT COLOR="#0066FF">
+class Pegasus : public Horse, public Bird
+</FONT></PRE>
+<P>Example 2:</P>
+<PRE><FONT COLOR="#0066FF">
+class Schnoodle : public Schnauzer, public Poodle
+</FONT></PRE>
+<H4 ALIGN="CENTER"><A NAME="Heading15"></A><FONT COLOR="#000077">The Parts of a Multiply
+Inherited Object</FONT></H4>
+<P>When the <TT>Pegasus</TT> object is created in memory, both of the base classes
+form part of the <TT>Pegasus</TT> object, as illustrated in Figure 13.1.<BR>
+<BR>
+<A NAME="Heading16"></A><A HREF="../art/ch13/13zcp01.jpg"><FONT COLOR="#000077">Figure
+13.1.</FONT></A><FONT COLOR="#000077"> </FONT><I>Multiply inherited objects.</I><BR>
+<BR>
+A number of issues arise with objects with multiple base classes. For example, what
+happens if two base classes that happen to have the same name have virtual functions
+or data? How are multiple base class constructors initialized? What happens if multiple
+base classes both derive from the same class? The next sections will answer these
+questions, and explore how multiple inheritance can be put to work.
+<H4 ALIGN="CENTER"><A NAME="Heading17"></A><FONT COLOR="#000077">Constructors in
+Multiply Inherited Objects</FONT></H4>
+<P>If <TT>Pegasus</TT> derives from both <TT>Horse</TT> and <TT>Bird</TT>, and each
+of the base classes has constructors that take parameters, the <TT>Pegasus</TT> class
+initializes these constructors in turn. Listing 13.4 illustrates how this is done.</P>
+<P><A NAME="Heading18"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 13.4. Calling
+multiple constructors.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     // Listing 13.4
+2:     // Calling multiple constructors
+3:     #include &lt;iostream.h&gt;
+4:     typedef int HANDS;
+5:     enum COLOR { Red, Green, Blue, Yellow, White, Black, Brown } ;
+6:     enum BOOL { FALSE, TRUE };
+7:
+8:     class Horse
+9:     {
+10:    public:
+11:       Horse(COLOR color, HANDS height);
+12:       virtual ~Horse() { cout &lt;&lt; &quot;Horse destructor...\n&quot;; }
+13:       virtual void Whinny()const { cout &lt;&lt; &quot;Whinny!... &quot;; }
+14:       virtual HANDS GetHeight() const { return itsHeight; }
+15:       virtual COLOR GetColor() const { return itsColor; }
+16:    private:
+17:       HANDS itsHeight;
+18:       COLOR itsColor;
+19:    };
+20:
+21:    Horse::Horse(COLOR color, HANDS height):
+22:       itsColor(color),itsHeight(height)
+23:    {
+24:       cout &lt;&lt; &quot;Horse constructor...\n&quot;;
+25:    }
+26:
+27:    class Bird
+28:    {
+29:    public:
+30:       Bird(COLOR color, BOOL migrates);
+31:       virtual ~Bird() {cout &lt;&lt; &quot;Bird destructor...\n&quot;;  }
+32:       virtual void Chirp()const { cout &lt;&lt; &quot;Chirp... &quot;;  }
+33:       virtual void Fly()const 
+34:       { 
+35:          cout &lt;&lt; &quot;I can fly! I can fly! I can fly! &quot;; 
+36:       }
+37:       virtual COLOR GetColor()const { return itsColor; }
+38:       virtual BOOL GetMigration() const { return itsMigration; }
+39: 
+40:    private:
+41:       COLOR itsColor;
+42:       BOOL itsMigration;
+43:    };
+44:
+45:    Bird::Bird(COLOR color, BOOL migrates):
+46:       itsColor(color), itsMigration(migrates)
+47:    {
+48:       cout &lt;&lt; &quot;Bird constructor...\n&quot;;
+49:    }
+50:
+51:    class Pegasus : public Horse, public Bird
+52:    {
+53:    public:
+54:       void Chirp()const { Whinny(); }
+55:       Pegasus(COLOR, HANDS, BOOL,long);
+56:       ~Pegasus() {cout &lt;&lt; &quot;Pegasus destructor...\n&quot;;}
+57:       virtual long GetNumberBelievers() const 
+58:        { 
+59:           return  itsNumberBelievers; 
+60:        }
+61:
+62:    private:
+63:       long itsNumberBelievers;
+64:    };
+65: 
+66:    Pegasus::Pegasus(
+67:        COLOR aColor, 
+68:        HANDS height, 
+69:        BOOL migrates, 
+70:        long NumBelieve):
+71:    Horse(aColor, height),
+72:    Bird(aColor, migrates),
+73:    itsNumberBelievers(NumBelieve)
+74:    {
+75:       cout &lt;&lt; &quot;Pegasus constructor...\n&quot;;
+76:    }
+77:
+78:    int main()
+79:    {
+80:       Pegasus *pPeg = new Pegasus(Red, 5, TRUE, 10);
+81:       pPeg-&gt;Fly();
+82:       pPeg-&gt;Whinny();
+83:       cout &lt;&lt; &quot;\nYour Pegasus is &quot; &lt;&lt; pPeg-&gt;GetHeight();
+84:       cout &lt;&lt; &quot; hands tall and &quot;;
+85:       if (pPeg-&gt;GetMigration())
+86:          cout &lt;&lt; &quot;it does migrate.&quot;;
+87:       else
+88:          cout &lt;&lt; &quot;it does not migrate.&quot;;
+89:       cout &lt;&lt; &quot;\nA total of &quot; &lt;&lt; pPeg-&gt;GetNumberBelievers();
+90:       cout &lt;&lt; &quot; people believe it exists.\n&quot;;
+91:       delete pPeg;
+92:     return 0;
+<TT>93: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: Horse constructor...
+Bird constructor...
+Pegasus constructor...
+I can fly! I can fly! I can fly! Whinny!...
+Your Pegasus is 5 hands tall and it does migrate.
+A total of 10 people believe it exists.
+Pegasus destructor...
+Bird destructor...
+Horse destructor... 
+</FONT></PRE>
+<P><FONT COLOR="#0000AA"><B>Analysis: </B></FONT>On lines 8-19, the <TT>Horse</TT>
+class is declared. The constructor takes two parameters, both using enumerations
+declared on lines 5 and 6. The implementation of the constructor on lines 21-25 simply
+initializes the member variables and prints a message.</P>
+<P>On lines 27-43, the <TT>Bird</TT> class is declared, and the implementation of
+its constructor is on lines 45-49. Again, the <TT>Bird</TT> class takes two parameters.
+Interestingly, the <TT>Horse</TT> constructor takes color (so that you can detect
+horses of different colors), and the <TT>Bird</TT> constructor takes the color of
+the feathers (so those of one feather can stick together). This leads to a problem
+when you want to ask the <TT>Pegasus</TT> for its color, which you'll see in the
+next example.</P>
+<P>The <TT>Pegasus</TT> class itself is declared on lines 51-64, and its constructor
+is on lines 66-72. The initialization of the <TT>Pegasus</TT> object includes three
+statements. First, the <TT>Horse</TT> constructor is initialized with color and height.
+Then the <TT>Bird</TT> constructor is initialized with color and the Boolean. Finally,
+the <TT>Pegasus</TT> member variable <TT>itsNumberBelievers</TT> is initialized.
+Once all that is accomplished, the body of the <TT>Pegasus</TT> constructor is called.</P>
+<P>In the <TT>main()</TT> function, a <TT>Pegasus</TT> pointer is created and used
+to access the member functions of the base objects.
+<H4 ALIGN="CENTER"><A NAME="Heading20"></A><FONT COLOR="#000077">Ambiguity Resolution</FONT></H4>
+<P>In Listing 13.4, both the <TT>Horse</TT> class and the <TT>Bird</TT> class have
+a method <TT>GetColor()</TT>. You may need to ask the <TT>Pegasus</TT> object to
+return its color, but you have a problem: the <TT>Pegasus</TT> class inherits from
+both <TT>Bird</TT> and <TT>Horse</TT>. They both have a color, and their methods
+for getting that color have the same names and signature. This creates an ambiguity
+for the compiler, which you must resolve.</P>
+<P>If you simply write</P>
+<PRE><FONT COLOR="#0066FF">COLOR currentColor = pPeg-&gt;GetColor();
+</FONT></PRE>
+<P>you will get a compiler error:</P>
+<PRE><FONT COLOR="#0066FF">Member is ambiguous: `Horse::GetColor' and `Bird::GetColor'
+</FONT></PRE>
+<P>You can resolve the ambiguity with an explicit call to the function you wish to
+invoke:</P>
+<PRE><FONT COLOR="#0066FF">COLOR currentColor = pPeg-&gt;Horse::GetColor();
+</FONT></PRE>
+<P>Anytime you need to resolve which class a member function or member data inherits
+from, you can fully qualify the call by prepending the class name to the base class
+data or function.</P>
+<P>Note that if <TT>Pegasus</TT> were to override this function, the problem would
+be moved, as it should be, into the <TT>Pegasus</TT> member function:</P>
+<PRE><FONT COLOR="#0066FF">virtual COLOR GetColor()const { return Horse::itsColor; }
+</FONT></PRE>
+<P>This hides the problem from clients of the <TT>Pegasus</TT> class, and encapsulates
+within <TT>Pegasus</TT> the knowledge of which base class it wishes to inherit its
+color from. A client is still free to force the issue by writing:</P>
+<PRE><FONT COLOR="#0066FF">COLOR currentColor = pPeg-&gt;Bird::GetColor();
+</FONT></PRE>
+<H4 ALIGN="CENTER"><A NAME="Heading21"></A><FONT COLOR="#000077">Inheriting from
+Shared Base Class</FONT></H4>
+<P>What happens if both <TT>Bird</TT> and <TT>Horse</TT> inherit from a common base
+class, such as <TT>Animal</TT>? Figure 13.2 illustrates what this looks like.</P>
+<P>As you can see in Figure 13.2, two base class objects exist. When a function or
+data member is called in the shared base class, another ambiguity exists. For example,
+if <TT>Animal</TT> declares <TT>itsAge</TT> as a member variable and <TT>GetAge()</TT>
+as a member function, and you call <TT>pPeg-&gt;GetAge()</TT>, did you mean to call
+the <TT>GetAge()</TT> function you inherit from <TT>Animal</TT> by way of <TT>Horse</TT>,
+or by way of <TT>Bird</TT>? You must resolve this ambiguity as well, as illustrated
+in Listing 13.5.<BR>
+<BR>
+<A NAME="Heading22"></A><A HREF="../art/ch13/13zcp02.jpg"><FONT COLOR="#000077">Figure
+13.2.</FONT></A><FONT COLOR="#000077"> </FONT><I>Common base classes.</I></P>
+<P><A NAME="Heading23"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 13.5. Common
+base classes.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     // Listing 13.5
+2:     // Common base classes
+3:     #include &lt;iostream.h&gt;
+4:
+5:     typedef int HANDS;
+6:     enum COLOR { Red, Green, Blue, Yellow, White, Black, Brown } ;
+7:     enum BOOL { FALSE, TRUE };
+8:
+9:     class Animal        // common base to both horse and bird
+10:    {
+11:    public:
+12:       Animal(int);
+13:       virtual ~Animal() { cout &lt;&lt; &quot;Animal destructor...\n&quot;; }
+14:       virtual int GetAge() const { return itsAge; }
+15:       virtual void SetAge(int age) { itsAge = age; }
+16:    private:
+17:       int itsAge;
+18:    };
+19:
+20:    Animal::Animal(int age):
+21:    itsAge(age)
+22:    {
+23:       cout &lt;&lt; &quot;Animal constructor...\n&quot;;
+24:    }
+25:
+26:    class Horse : public Animal
+27:    {
+28:    public:
+29:       Horse(COLOR color, HANDS height, int age);
+30:       virtual ~Horse() { cout &lt;&lt; &quot;Horse destructor...\n&quot;; }
+31:       virtual void Whinny()const { cout &lt;&lt; &quot;Whinny!... &quot;; }
+32:       virtual HANDS GetHeight() const { return itsHeight; }
+33:       virtual COLOR GetColor() const { return itsColor; }
+34:    protected:
+35:       HANDS itsHeight;
+36:       COLOR itsColor;
+37:    };
+38: 
+39:    Horse::Horse(COLOR color, HANDS height, int age):
+40:       Animal(age),
+41:       itsColor(color),itsHeight(height)
+42:    {
+43:       cout &lt;&lt; &quot;Horse constructor...\n&quot;;
+44:    }
+45:
+46:    class Bird : public Animal
+47:    {
+48:    public:
+49:       Bird(COLOR color, BOOL migrates, int age);
+50:       virtual ~Bird() {cout &lt;&lt; &quot;Bird destructor...\n&quot;;  }
+51:       virtual void Chirp()const { cout &lt;&lt; &quot;Chirp... &quot;;  }
+52:       virtual void Fly()const 
+53:           { cout &lt;&lt; &quot;I can fly! I can fly! I can fly! &quot;; }
+54:       virtual COLOR GetColor()const { return itsColor; }
+55:       virtual BOOL GetMigration() const { return itsMigration; }
+56:    protected:
+57:       COLOR itsColor;
+58:       BOOL itsMigration;
+59:    };
+60:
+61:    Bird::Bird(COLOR color, BOOL migrates, int age):
+62:       Animal(age),
+63:       itsColor(color), itsMigration(migrates)
+64:    {
+65:       cout &lt;&lt; &quot;Bird constructor...\n&quot;;
+66:    }
+67:
+68:    class Pegasus : public Horse, public Bird
+69:    {
+70:    public:
+71:       void Chirp()const { Whinny(); }
+72:       Pegasus(COLOR, HANDS, BOOL, long, int);
+73:       ~Pegasus() {cout &lt;&lt; &quot;Pegasus destructor...\n&quot;;}
+74:       virtual long GetNumberBelievers() const 
+75:          { return  itsNumberBelievers; }
+76:       virtual COLOR GetColor()const { return Horse::itsColor; }
+77:       virtual int GetAge() const { return Horse::GetAge(); }
+78:    private:
+79:       long itsNumberBelievers;
+80:    };
+81: 
+82:    Pegasus::Pegasus(
+83:       COLOR aColor,
+84:       HANDS height,
+85:       BOOL migrates,
+86:       long NumBelieve,
+87:       int age):
+88:    Horse(aColor, height,age),
+89:    Bird(aColor, migrates,age),
+90:    itsNumberBelievers(NumBelieve)
+91:    {
+92:       cout &lt;&lt; &quot;Pegasus constructor...\n&quot;;
+93:    }
+94:
+95:    int main()
+96:    {
+97:       Pegasus *pPeg = new Pegasus(Red, 5, TRUE, 10, 2);
+98:       int age = pPeg-&gt;GetAge();
+99:       cout &lt;&lt; &quot;This pegasus is &quot; &lt;&lt; age &lt;&lt; &quot; years old.\n&quot;;
+100:      delete pPeg;
+101:     return 0;
+<TT>102: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: Animal constructor...
+Horse constructor...
+Animal constructor...
+Bird constructor...
+Pegasus constructor...
+This pegasus is 2 years old.
+Pegasus destructor...
+Bird destructor...
+Animal destructor...
+Horse destructor...
+Animal destructor... 
+</FONT></PRE>
+<P><FONT COLOR="#0000AA"><B>Analysis:</B></FONT><B> </B>There are a number of interesting
+features to this listing. The <TT>Animal</TT> class is declared on lines 9-18. <TT>Animal</TT>
+adds one member variable, <TT>itsAge</TT> and an accessor, <TT>SetAge()</TT>.</P>
+<P>On line 26, the <TT>Horse</TT> class is declared to derive from <TT>Animal</TT>.
+The <TT>Horse</TT> constructor now has a third parameter, <TT>age</TT>, which it
+passes to its base class, <TT>Animal</TT>. Note that the <TT>Horse</TT> class does
+not override <TT>GetAge()</TT>, it simply inherits it.</P>
+<P>On line 46, the <TT>Bird</TT> class is declared to derive from <TT>Animal</TT>.
+Its constructor also takes an age and uses it to initialize its base class, <TT>Animal</TT>.
+It also inherits <TT>GetAge()</TT> without overriding it.</P>
+<P><TT>Pegasus</TT> inherits from both <TT>Bird</TT> and from <TT>Animal</TT>, and
+so has two <TT>Animal</TT> classes in its inheritance chain. If you were to call
+<TT>GetAge()</TT> on a <TT>Pegasus</TT> object, you would have to disambiguate, or
+fully qualify, the method you want if <TT>Pegasus</TT> did not override the method.</P>
+<P>This is solved on line 76 when the <TT>Pegasus</TT> object overrides <TT>GetAge()</TT>
+to do nothing more than to chain up--that is, to call the same method in a base class.</P>
+<P>Chaining up is done for two reasons: either to disambiguate which base class to
+call, as in this case, or to do some work and then let the function in the base class
+do some more work. At times, you may want to do work and then chain up, or chain
+up and then do the work when the base class function returns.</P>
+<P>The <TT>Pegasus</TT> constructor takes five parameters: the creature's color,
+its height (in <TT>HANDS</TT>), whether or not it migrates, how many believe in it,
+and its age. The constructor initializes the <TT>Horse</TT> part of the <TT>Pegasus</TT>
+with the color, height, and age on line 88. It initializes the <TT>Bird</TT> part
+with color, whether it migrates, and age on line 89. Finally, it initializes <TT>itsNumberBelievers</TT>
+on line 90.</P>
+<P>The call to the <TT>Horse</TT> constructor on line 88 invokes the implementation
+shown on line 39. The <TT>Horse</TT> constructor uses the <TT>age</TT> parameter
+to initialize the <TT>Animal</TT> part of the <TT>Horse</TT> part of the <TT>Pegasus</TT>.
+It then goes on to initialize the two member variables of <TT>Horse</TT>--<TT>itsColor</TT>
+and <TT>itsAge</TT>.</P>
+<P>The call to the <TT>Bird</TT> constructor on line 89 invokes the implementation
+shown on line 46. Here too, the <TT>age</TT> parameter is used to initialize the
+<TT>Animal</TT> part of the <TT>Bird</TT>.</P>
+<P>Note that the <TT>color</TT> parameter to the <TT>Pegasus</TT> is used to initialize
+member variables in each of <TT>Bird</TT> and <TT>Horse</TT>. Note also that the
+<TT>age</TT> is used to initialize <TT>itsAge</TT> in the <TT>Horse</TT>'s base <TT>Animal</TT>
+and in the <TT>Bird</TT>'s base <TT>Animal</TT>.
+<H4 ALIGN="CENTER"><A NAME="Heading25"></A><FONT COLOR="#000077">Virtual Inheritance</FONT></H4>
+<P>In Listing 13.5, the <TT>Pegasus</TT> class went to some lengths to disambiguate
+which of its <TT>Animal</TT> base classes it meant to invoke. Most of the time, the
+decision as to which one to use is arbitrary--after all, the <TT>Horse</TT> and the
+<TT>Bird</TT> have exactly the same base class.</P>
+<P>It is possible to tell C++ that you do not want two copies of the shared base
+class, as shown in Figure 13.2, but rather to have a single shared base class, as
+shown in Figure 13.3.</P>
+<P>You accomplish this by making <TT>Animal</TT> a virtual base class of both <TT>Horse</TT>
+and <TT>Bird</TT>. The <TT>Animal</TT> class does not change at all. The <TT>Horse</TT>
+and <TT>Bird</TT> classes change only in their use of the term virtual in their declarations.
+<TT>Pegasus</TT>, however, changes substantially.</P>
+<P>Normally, a class's constructor initializes only its own variables and its base
+class. Virtually inherited base classes are an exception, however. They are initialized
+by their most derived class. Thus, <TT>Animal</TT> is initialized not by <TT>Horse</TT>
+and <TT>Bird</TT>, but by <TT>Pegasus</TT>. <TT>Horse</TT> and <TT>Bird</TT> have
+to initialize <TT>Animal</TT> in their constructors, but these initializations will
+be ignored when a <TT>Pegasus</TT> object is created.</P>
+<P>Listing 13.6 rewrites Listing 13.5 to take advantage of virtual derivation.<BR>
+<BR>
+<A NAME="Heading26"></A><A HREF="../art/ch13/13zcp03.gif"><FONT COLOR="#000077">Figure
+13.3.</FONT></A><FONT COLOR="#000077"> </FONT><I>A diamond inheritance.</I></P>
+<P><A NAME="Heading27"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 13.6. Illustration
+of the use of virtual inheritance.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     // Listing 13.6
+2:     // Virtual inheritance
+3:     #include &lt;iostream.h&gt;
+4:
+5:     typedef int HANDS;
+6:     enum COLOR { Red, Green, Blue, Yellow, White, Black, Brown } ;
+7:     enum BOOL { FALSE, TRUE };
+8:
+9:     class Animal        // common base to both horse and bird
+10:    {
+11:    public:
+12:       Animal(int);
+13:       virtual ~Animal() { cout &lt;&lt; &quot;Animal destructor...\n&quot;; }
+14:       virtual int GetAge() const { return itsAge; }
+15:       virtual void SetAge(int age) { itsAge = age; }
+16:    private:
+17:       int itsAge;
+18:    };
+19:
+20:    Animal::Animal(int age):
+21:    itsAge(age)
+22:    {
+23:       cout &lt;&lt; &quot;Animal constructor...\n&quot;;
+24:    }
+25:
+26:    class Horse : virtual public Animal
+27:    {
+28:    public:
+29:       Horse(COLOR color, HANDS height, int age);
+30:       virtual ~Horse() { cout &lt;&lt; &quot;Horse destructor...\n&quot;; }
+31:       virtual void Whinny()const { cout &lt;&lt; &quot;Whinny!... &quot;; }
+32:       virtual HANDS GetHeight() const { return itsHeight; }
+33:       virtual COLOR GetColor() const { return itsColor; }
+34:    protected:
+35:       HANDS itsHeight;
+36:       COLOR itsColor;
+37:    };
+38: 
+39:    Horse::Horse(COLOR color, HANDS height, int age):
+40:       Animal(age),
+41:       itsColor(color),itsHeight(height)
+42:    {
+43:       cout &lt;&lt; &quot;Horse constructor...\n&quot;;
+44:    }
+45:
+46:    class Bird : virtual public Animal
+47:    {
+48:    public:
+49:       Bird(COLOR color, BOOL migrates, int age);
+50:       virtual ~Bird() {cout &lt;&lt; &quot;Bird destructor...\n&quot;;  }
+51:       virtual void Chirp()const { cout &lt;&lt; &quot;Chirp... &quot;;  }
+52:       virtual void Fly()const 
+53:          { cout &lt;&lt; &quot;I can fly! I can fly! I can fly! &quot;; }
+54:       virtual COLOR GetColor()const { return itsColor; }
+55:       virtual BOOL GetMigration() const { return itsMigration; }
+56:    protected:
+57:       COLOR itsColor;
+58:       BOOL itsMigration;
+59:    };
+60:
+61:    Bird::Bird(COLOR color, BOOL migrates, int age):
+62:       Animal(age),
+63:       itsColor(color), itsMigration(migrates)
+64:    {
+65:       cout &lt;&lt; &quot;Bird constructor...\n&quot;;
+66:    }
+67:
+68:    class Pegasus : public Horse, public Bird
+69:    {
+70:    public:
+71:       void Chirp()const { Whinny(); }
+72:       Pegasus(COLOR, HANDS, BOOL, long, int);
+73:       ~Pegasus() {cout &lt;&lt; &quot;Pegasus destructor...\n&quot;;}
+74:       virtual long GetNumberBelievers() const 
+75:          { return  itsNumberBelievers; }
+76:       virtual COLOR GetColor()const { return Horse::itsColor; }
+77:    private:
+78:       long itsNumberBelievers;
+79:    };
+80: 
+81:    Pegasus::Pegasus(
+82:       COLOR aColor,
+83:       HANDS height,
+84:       BOOL migrates,
+85:       long NumBelieve,
+86:       int age):
+87:    Horse(aColor, height,age),
+88:    Bird(aColor, migrates,age),
+89:    Animal(age*2),
+90:    itsNumberBelievers(NumBelieve)
+91:    {
+92:       cout &lt;&lt; &quot;Pegasus constructor...\n&quot;;
+93:    }
+94:
+95:    int main()
+96:    {
+97:       Pegasus *pPeg = new Pegasus(Red, 5, TRUE, 10, 2);
+98:       int age = pPeg-&gt;GetAge();
+99:       cout &lt;&lt; &quot;This pegasus is &quot; &lt;&lt; age &lt;&lt; &quot; years old.\n&quot;;
+100:      delete pPeg;
+101:     return 0;
+<TT>102: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: Animal constructor...
+Horse constructor...
+Bird constructor...
+Pegasus constructor...
+This pegasus is 4 years old.
+Pegasus destructor...
+Bird destructor...
+Horse destructor...
+Animal destructor... 
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis</B></FONT><B>: </B>On line 26, <TT>Horse</TT>
+declares that it inherits virtually from <TT>Animal</TT>, and on line 46, <TT>Bird</TT>
+makes the same declaration. Note that the constructors for both <TT>Bird</TT> and
+<TT>Animal</TT> still initialize the <TT>Animal</TT> object.</P>
+<P><TT>Pegasus</TT> inherits from both <TT>Bird</TT> and <TT>Animal</TT>, and as
+the most derived object of <TT>Animal</TT>, it also initializes <TT>Animal</TT>.
+It is <TT>Pegasus</TT>' initialization which is called, however, and the calls to
+<TT>Animal</TT>'s constructor in <TT>Bird</TT> and <TT>Horse</TT> are ignored. You
+can see this because the value <TT>2</TT> is passed in, and <TT>Horse</TT> and <TT>Bird</TT>
+pass it along to <TT>Animal</TT>, but <TT>Pegasus</TT> doubles it. The result, 4,
+is reflected in the printout on line 99 and as shown in the output.</P>
+<P><TT>Pegasus</TT> no longer has to disambiguate the call to <TT>GetAge()</TT>,
+and so is free to simply inherit this function from <TT>Animal</TT>. Note that <TT>Pegasus</TT>
+must still disambiguate the call to <TT>GetColor()</TT>, as this function is in both
+of its base classes and not in <TT>Animal</TT>.
+<H3 ALIGN="CENTER"><A NAME="Heading29"></A><FONT COLOR="#000077">Declaring Classes
+for Virtual Inheritance</FONT></H3>
+<P>To ensure that derived classes have only one instance of common base classes,
+declare the intermediate classes to inherit virtually from the base class. Example
+1:</P>
+<PRE><FONT COLOR="#0066FF">class Horse : virtual public Animal
+class Bird : virtual public Animal
+class Pegasus : public Horse, public Bird
+</FONT></PRE>
+<P>Example 2:</P>
+<PRE><FONT COLOR="#0066FF">class Schnauzer : virtual public Dog
+class Poodle : virtual public Dog
+
+class Schnoodle : public Schnauzer, public Poodle
+</FONT></PRE>
+<H4 ALIGN="CENTER"><A NAME="Heading30"></A><FONT COLOR="#000077">Problems with Multiple
+Inheritance</FONT></H4>
+<P>Although multiple inheritance offers a number of advantages over single inheritance,
+there are many C++ programmers who are reluctant to use it. The problems they cite
+are that many compilers don't support it yet, that it makes debugging harder, and
+that nearly everything that can be done with multiple inheritance can be done without
+it.</P>
+<P>These are valid concerns, and you will want to be on your guard against installing
+needless complexity into your programs. Some debuggers have a hard time with multiple
+inheritance, and some designs are needlessly made complex by using multiple inheritance
+when it is not needed.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<B>DO</B> use multiple inheritance when a new class needs functions and features
+	from more than one base class<B>. DO</B> use virtual inheritance when the most derived
+	classes must have only one instance of the shared base class. DO initialize the shared
+	base class from the most derived class when using virtual base classes. <B>DON'T</B>
+	use multiple inheritance when single inheritance will do. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H4 ALIGN="CENTER"><A NAME="Heading31"></A><FONT COLOR="#000077">Mixins and Capabilities
+Classes</FONT></H4>
+<P>One way to strike a middle ground between multiple inheritance and single inheritance
+is to use what are called mixins. Thus, you might have your <TT>Horse</TT> class
+derive from <TT>Animal</TT> and from <TT>Displayable</TT>. <TT>Displayable</TT> would
+just add a few methods for displaying any object onscreen.</P>
+
+<DL>
+	<DD>
+<HR>
+<FONT COLOR="#000077"><B>New Term:</B></FONT><B> </B>A<I> mixin</I> , or <I>capability</I>
+	class, is a class that adds functionality without adding much or any data. 
+<HR>
+
+</DL>
+
+<P>Capability classes are mixed into a derived class like any other class might be,
+by declaring the derived class to inherit publicly from them. The only difference
+between a capability class and any other class is that the capability class has little
+or no data. This is an arbitrary distinction, of course, and is just a shorthand
+way of noting that at times all you want to do is mix in some additional capabilities
+without complicating the derived class.</P>
+<P>This will, for some debuggers, make it easier to work with mixins than with more
+complex multiply inherited objects. There is also less likelihood of ambiguity in
+accessing the data in the other principal base class.</P>
+<P>For example, if <TT>Horse</TT> derives from <TT>Animal</TT> and from <TT>Displayable</TT>,
+<TT>Displayable</TT> would have no data. <TT>Animal</TT> would be just as it always
+was, so all the data in <TT>Horse</TT> would derive from <TT>Animal</TT>, but the
+functions in <TT>Horse</TT> would derive from both.</P>
+<P>The term mixin comes from an ice-cream store in Sommerville, Massachusetts, where
+candies and cakes were mixed into the basic ice-cream flavors. This seemed like a
+good metaphor to some of the object-oriented programmers who used to take a summer
+break there, especially while working with the object-oriented programming language
+SCOOPS.
+<H3 ALIGN="CENTER"><A NAME="Heading32"></A><FONT COLOR="#000077">Abstract Data Types</FONT></H3>
+<P>Often, you will create a hierarchy of classes together. For example, you might
+create a <TT>Shape</TT> class, and derive from that <TT>Rectangle</TT> and <TT>Circle</TT>.
+From <TT>Rectangle</TT>, you might derive <TT>Square</TT>, as a special case of <TT>Rectangle</TT>.</P>
+<P>Each of the derived classes will override the <TT>Draw()</TT> method, the <TT>GetArea()</TT>
+method, and so forth. Listing 13.7 illustrates a bare-bones implementation of the
+<TT>Shape</TT> class and its derived <TT>Circle</TT> and <TT>Rectangle</TT> classes.</P>
+<P><A NAME="Heading33"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 13.7. Shape
+classes.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     //Listing 13.7. Shape classes.
+2:
+3:     #include &lt;iostream.h&gt;
+4:
+5:     enum BOOL { FALSE, TRUE };
+6:
+7:     class Shape
+8:     {
+9:     public:
+10:       Shape(){}
+11:       ~Shape(){}
+12:       virtual long GetArea() { return -1; } // error
+13:       virtual long GetPerim() { return -1; }
+14:       virtual void Draw() {}
+15:    private:
+16:    };
+17:
+18:    class Circle : public Shape
+19:    {
+20:    public:
+21:          Circle(int radius):itsRadius(radius){}
+22:          ~Circle(){}
+23:          long GetArea() { return 3 * itsRadius * itsRadius; }
+24:          long GetPerim() { return 9 * itsRadius; }
+25:          void Draw();
+26:    private:
+27:       int itsRadius;
+28:       int itsCircumference;
+29:    };
+30: 
+31:    void Circle::Draw()
+32:    {
+33:       cout &lt;&lt; &quot;Circle drawing routine here!\n&quot;;
+34:    }
+35:
+36:
+37:    class Rectangle : public Shape
+38:    {
+39:    public:
+40:          Rectangle(int len, int width):
+41:             itsLength(len), itsWidth(width){}
+42:          ~Rectangle(){}
+43:          virtual long GetArea() { return itsLength * itsWidth; }
+44:          virtual long GetPerim() {return 2*itsLength + 2*itsWidth; }
+45:          virtual int GetLength() { return itsLength; }
+46:          virtual int GetWidth() { return itsWidth; }
+47:          virtual void Draw();
+48:    private:
+49:       int itsWidth;
+50:       int itsLength;
+51:    };
+52:
+53:    void Rectangle::Draw()
+54:    {
+55:       for (int i = 0; i&lt;itsLength; i++)
+56:       {
+57:          for (int j = 0; j&lt;itsWidth; j++)
+58:             cout &lt;&lt; &quot;x &quot;;
+59:
+60:          cout &lt;&lt; &quot;\n&quot;;
+61:       }
+62:    }
+63:
+64:    class Square : public Rectangle
+65:    {
+66:    public:
+67:          Square(int len);
+68:          Square(int len, int width);
+69:          ~Square(){}
+70:          long GetPerim() {return 4 * GetLength();}
+71:    };
+72:
+73:    Square::Square(int len):
+74:       Rectangle(len,len)
+75:    {}
+76:
+77:    Square::Square(int len, int width):
+78:       Rectangle(len,width) 
+79:
+80:    {
+81:       if (GetLength() != GetWidth())
+82:          cout &lt;&lt; &quot;Error, not a square... a Rectangle??\n&quot;;
+83:    }
+84:
+85:    int main()
+86:    {
+87:       int choice;
+88:       BOOL fQuit = FALSE;
+89:       Shape * sp;
+90:
+91:       while (1)
+92:       {
+93:          cout &lt;&lt; &quot;(1)Circle (2)Rectangle (3)Square (0)Quit: &quot;;
+94:          cin &gt;&gt; choice;
+95:
+96:          switch (choice)
+97:          {
+98:             case 1: sp = new Circle(5);
+99:             break;
+100:            case 2: sp = new Rectangle(4,6);
+101:            break;
+102:            case 3: sp = new Square(5);
+103:            break;
+104:            default: fQuit = TRUE;
+105:            break;
+106:         }
+107:         if (fQuit)
+108:            break;
+109:
+110:         sp-&gt;Draw();
+111:         cout &lt;&lt; &quot;\n&quot;;
+112:      }
+113:     return 0;
+<TT>114: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: (1)Circle (2)Rectangle (3)Square (0)Quit: 2
+x x x x x x
+x x x x x x
+x x x x x x
+x x x x x x
+
+(1)Circle (2)Rectangle (3)Square (0)Quit:3
+x x x x x
+x x x x x
+x x x x x
+x x x x x
+x x x x x
+
+(1)Circle (2)Rectangle (3)Square (0)Quit:0
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis</B></FONT><B>: </B>On lines 7-16, the <TT>Shape</TT>
+class is declared. The <TT>GetArea()</TT> and <TT>GetPerim()</TT> methods return
+an error value, and <TT>Draw()</TT> takes no action. After all, what does it mean
+to draw a Shape? Only types of shapes (circles, rectangle, and so on) can be drawn,
+<TT>Shapes</TT> as an abstraction cannot be drawn.</P>
+<P><TT>Circle</TT> derives from <TT>Shape</TT> and overrides the three virtual methods.
+Note that there is no reason to add the word &quot;virtual,&quot; as that is part
+of their inheritance. But there is no harm in doing so either, as shown in the <TT>Rectangle</TT>
+class on lines 43, 44, and 47. It is a good idea to include the term virtual as a
+reminder, a form of documentation.</P>
+<P><TT>Square</TT> derives from <TT>Rectangle</TT>, and it too overrides the <TT>GetPerim()</TT>
+method, inheriting the rest of the methods defined in <TT>Rectangle</TT>.</P>
+<P>It is troubling, though, that a client might try to instantiate a <TT>Shape</TT>
+object, and it might be desirable to make that impossible. The <TT>Shape</TT> class
+exists only to provide an interface for the classes derived from it; as such it is
+an Abstract Data Type, or ADT.</P>
+
+<DL>
+	<DD>
+<HR>
+<FONT COLOR="#000077"><B>New Term:</B></FONT><B> </B>An <I>Abstract Data Type </I>represents
+	a concept (like shape) rather than an object (like circle). In C++, an ADT is always
+	the base class to other classes, and it is not valid to make an instance of an ADT.
+	
+<HR>
+
+</DL>
+
+<H4 ALIGN="CENTER"><A NAME="Heading35"></A><FONT COLOR="#000077">Pure Virtual Functions</FONT></H4>
+<P>C++ supports the creation of abstract data types with pure virtual functions.
+A virtual function ismade pure by initializing it with zero, as in</P>
+<PRE><FONT COLOR="#0066FF">
+virtual void Draw() = 0;
+</FONT></PRE>
+<P>Any class with one or more pure virtual functions is an ADT, and it is illegal
+to instantiate an object of a class that is an ADT. Trying to do so will cause a
+compile-time error. Putting a pure virtual function in your class signals two things
+to clients of your class:
+
+<UL>
+	<LI>Don't make an object of this class, derive from it.
+	<P>
+	<LI>Make sure you override the pure virtual function.
+</UL>
+
+<P>Any class that derives from an ADT inherits the pure virtual function as pure,
+and so must override every pure virtual function if it wants to instantiate objects.
+Thus, if <TT>Rectangle</TT> inherits from <TT>Shape</TT>, and <TT>Shape</TT> has
+three pure virtual functions, <TT>Rectangle</TT> must override all three or it too
+will be an ADT. Listing 13.8 rewrites the <TT>Shape</TT> class to be an abstract
+data type. To save space, the rest of Listing 13.7 is not reproduced here. Replace
+the declaration of <TT>Shape</TT> in Listing 13.7, lines 7-16, with the declaration
+of <TT>Shape</TT> in Listing 13.8 and run the program again.</P>
+<P><A NAME="Heading36"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 13.8. Abstract
+Data Types.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:  class Shape
+2:  {
+3:  public:
+4:       Shape(){}
+5:       ~Shape(){}
+6:       virtual long GetArea() = 0; // error
+7:       virtual long GetPerim()= 0;
+8:       virtual void Draw() = 0;
+9:  private:
+</FONT></PRE>
+<P><TT>10: };</TT></P>
+<PRE><FONT COLOR="#0066FF">
+Output: (1)Circle (2)Rectangle (3)Square (0)Quit: 2
+x x x x x x
+x x x x x x
+x x x x x x
+x x x x x x
+
+(1)Circle (2)Rectangle (3)Square (0)Quit: 3
+x x x x x
+x x x x x
+x x x x x
+x x x x x
+x x x x x
+
+(1)Circle (2)Rectangle (3)Square (0)Quit: 0
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>As you can see, the workings
+of the program are totally unaffected. The only difference is that it would now be
+impossible to make an object of class <TT>Shape</TT>.
+<H3 ALIGN="CENTER"><A NAME="Heading38"></A><FONT COLOR="#000077">Abstract Data Types</FONT></H3>
+<P>Declare a class to be an abstract data type by including one or more pure virtual
+functions in the class declaration. Declare a pure virtual function by writing <TT>=
+0</TT> after the function declaration. Example:</P>
+<PRE><FONT COLOR="#0066FF">class Shape
+{
+virtual void Draw() = 0;    // pure virtual
+};
+</FONT></PRE>
+<H4 ALIGN="CENTER"><A NAME="Heading39"></A><FONT COLOR="#000077">Implementing Pure
+Virtual Functions</FONT></H4>
+<P>Typically, the pure virtual functions in an abstract base class are never implemented.
+Because no objects of that type are ever created, there is no reason to provide implementations,
+and the ADT works purely as the definition of an interface to objects which derive
+from it.</P>
+<P>It is possible, however, to provide an implementation to a pure virtual function.
+The function can then be called by objects derived from the ADT, perhaps to provide
+common functionality to all the overridden functions. Listing 13.9 reproduces Listing
+13.7, this time with <TT>Shape</TT> as an ADT and with an implementation for the
+pure virtual function <TT>Draw()</TT>. The <TT>Circle</TT> class overrides <TT>Draw()</TT>,
+as it must, but it then chains up to the base class function for additional functionality.</P>
+<P>In this example, the additional functionality is simply an additional message
+printed, but one can imagine that the base class provides a shared drawing mechanism,
+perhaps setting up a window that all derived classes will use.</P>
+<P><A NAME="Heading40"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 13.9. Implementing
+pure virtual functions.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     //Implementing pure virtual functions
+2:
+3:     #include &lt;iostream.h&gt;
+4:
+5:     enum BOOL { FALSE, TRUE };
+6:
+7:     class Shape
+8:     {
+9:     public:
+10:       Shape(){}
+11:       ~Shape(){}
+12:       virtual long GetArea() = 0; // error
+13:       virtual long GetPerim()= 0;
+14:       virtual void Draw() = 0;
+15:    private:
+16:    };
+17:
+18:     void Shape::Draw()
+19:    {
+20:       cout &lt;&lt; &quot;Abstract drawing mechanism!\n&quot;;
+21:    }
+22:
+23:    class Circle : public Shape
+24:    {
+25:    public:
+26:          Circle(int radius):itsRadius(radius){}
+27:          ~Circle(){}
+28:          long GetArea() { return 3 * itsRadius * itsRadius; }
+29:          long GetPerim() { return 9 * itsRadius; }
+30:          void Draw();
+31:    private:
+32:       int itsRadius;
+33:       int itsCircumference;
+34:    };
+35:
+36:    void Circle::Draw()
+37:    {
+38:       cout &lt;&lt; &quot;Circle drawing routine here!\n&quot;;
+39:       Shape::Draw();
+40:    }
+41:
+42: 
+43:    class Rectangle : public Shape
+44:    {
+45:    public:
+46:          Rectangle(int len, int width):
+47:             itsLength(len), itsWidth(width){}
+48:          ~Rectangle(){}
+49:          long GetArea() { return itsLength * itsWidth; }
+50:          long GetPerim() {return 2*itsLength + 2*itsWidth; }
+51:          virtual int GetLength() { return itsLength; }
+52:          virtual int GetWidth() { return itsWidth; }
+53:          void Draw();
+54:    private:
+55:       int itsWidth;
+56:       int itsLength;
+57:    };
+58:
+59:    void Rectangle::Draw()
+60:    {
+61:       for (int i = 0; i&lt;itsLength; i++)
+62:       {
+63:          for (int j = 0; j&lt;itsWidth; j++)
+64:             cout &lt;&lt; &quot;x &quot;;
+65:
+66:          cout &lt;&lt; &quot;\n&quot;;
+67:       }
+68:       Shape::Draw();
+69:    }
+70:
+71:
+72:    class Square : public Rectangle
+73:    {
+74:    public:
+75:          Square(int len);
+76:          Square(int len, int width);
+77:          ~Square(){}
+78:          long GetPerim() {return 4 * GetLength();}
+79:    };
+80: 
+81:    Square::Square(int len):
+82:       Rectangle(len,len)
+83:    {}
+84:
+85:    Square::Square(int len, int width):
+86:       Rectangle(len,width)
+87:
+88:    {
+89:       if (GetLength() != GetWidth())
+90:          cout &lt;&lt; &quot;Error, not a square... a Rectangle??\n&quot;;
+91:    }
+92:
+93:    int main()
+94:    {
+95:       int choice;
+96:       BOOL fQuit = FALSE;
+97:       Shape * sp;
+98: 
+99:       while (1)
+100:      {
+101:         cout &lt;&lt; &quot;(1)Circle (2)Rectangle (3)Square (0)Quit: &quot;;
+102:         cin &gt;&gt; choice;
+103:
+104:         switch (choice)
+105:         {
+106:            case 1: sp = new Circle(5);
+107:            break;
+108:            case 2: sp = new Rectangle(4,6);
+109:            break;
+110:            case 3: sp = new Square (5);
+111:            break;
+112:            default: fQuit = TRUE;
+113:            break;
+114:         }
+115:         if (fQuit)
+116:            break;
+117:
+118:         sp-&gt;Draw();
+119:         cout &lt;&lt; &quot;\n&quot;;
+120:      }
+121:     return 0;
+<TT>122: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: (1)Circle (2)Rectangle (3)Square (0)Quit: 2
+x x x x x x
+x x x x x x
+x x x x x x
+x x x x x x
+Abstract drawing mechanism!
+
+(1)Circle (2)Rectangle (3)Square (0)Quit: 3
+x x x x x
+x x x x x
+x x x x x
+x x x x x
+x x x x x
+Abstract drawing mechanism!
+
+(1)Circle (2)Rectangle (3)Square (0)Quit: 0
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis</B></FONT><B>: </B>On lines 7-16, the abstract
+data type <TT>Shape</TT> is declared, with all three of its accessor methods declared
+to be pure virtual. Note that this is not necessary. If any one were declared pure
+virtual, the class would have been an ADT.</P>
+<P>The <TT>GetArea()</TT> and <TT>GetPerim()</TT> methods are not implemented, but
+<TT>Draw()</TT> is. <TT>Circle</TT> and <TT>Rectangle</TT> both override <TT>Draw()</TT>,
+and both chain up to the base method, taking advantage of shared functionality in
+the base class.
+<H4 ALIGN="CENTER"><A NAME="Heading42"></A><FONT COLOR="#000077">Complex Hierarchies
+of Abstraction</FONT></H4>
+<P>At times, you will derive ADTs from other ADTs. It may be that you will want to
+make some of the derived pure virtual functions non-pure, and leave others pure.</P>
+<P>If you create the <TT>Animal</TT> class, you may make <TT>Eat()</TT>,<TT> Sleep()</TT>,<TT>
+Move()</TT>, and <TT>Reproduce()</TT> all be pure virtual functions. Perhaps from
+<TT>Animal</TT> you derive <TT>Mammal</TT> and <TT>Fish</TT>.</P>
+<P>On examination, you decide that every <TT>Mammal</TT> will reproduce in the same
+way, and so you make <TT>Mammal::Reproduce()</TT> be non-pure, but you leave <TT>Eat()</TT>,<TT>
+Sleep()</TT>, and <TT>Move()</TT> as pure virtual functions.</P>
+<P>From <TT>Mammal</TT> you derive <TT>Dog</TT>, and <TT>Dog</TT> must override and
+implement the three remaining pure virtual functions so that you can make objects
+of type <TT>Dog</TT>.</P>
+<P>What you've said, as class designer, is that no <TT>Animal</TT>s or <TT>Mammal</TT>s
+can be instantiated, but that all <TT>Mammal</TT>s may inherit the provided <TT>Reproduce()</TT>
+method without overriding it.</P>
+<P>Listing 13.10 illustrates this technique with a bare-bones implementation of these
+classes.</P>
+<P><A NAME="Heading43"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 13.10. Deriving
+ADTs from other ADTs.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     // Listing 13.10
+2:     // Deriving ADTs from other ADTs
+3:     #include &lt;iostream.h&gt;
+4:
+5:     enum COLOR { Red, Green, Blue, Yellow, White, Black, Brown } ;
+6:     enum BOOL { FALSE, TRUE };
+7:
+8:     class Animal        // common base to both horse and bird
+9:     {
+10:    public:
+11:       Animal(int);
+12:       virtual ~Animal() { cout &lt;&lt; &quot;Animal destructor...\n&quot;; }
+13:       virtual int GetAge() const { return itsAge; }
+14:       virtual void SetAge(int age) { itsAge = age; }
+15:       virtual void Sleep() const = 0;
+16:       virtual void Eat() const = 0;
+17:       virtual void Reproduce() const = 0;
+18:       virtual void Move() const = 0;
+19:       virtual void Speak() const = 0;
+20:    private:
+21:       int itsAge;
+22:    };
+23:
+24:    Animal::Animal(int age):
+25:    itsAge(age)
+26:    {
+27:       cout &lt;&lt; &quot;Animal constructor...\n&quot;;
+28:    }
+29:
+30:    class Mammal : public Animal
+31:    {
+32:    public:
+33:       Mammal(int age):Animal(age)
+34:          { cout &lt;&lt; &quot;Mammal constructor...\n&quot;;}
+35:       ~Mammal() { cout &lt;&lt; &quot;Mammal destructor...\n&quot;;}
+36:       virtual void Reproduce() const 
+37:           { cout &lt;&lt; &quot;Mammal reproduction depicted...\n&quot;; }
+38:    };
+39: 
+40:    class Fish : public Animal
+41:    {
+42:    public:
+43:       Fish(int age):Animal(age)
+44:          { cout &lt;&lt; &quot;Fish constructor...\n&quot;;}
+45:       virtual ~Fish() {cout &lt;&lt; &quot;Fish destructor...\n&quot;;  }
+46:       virtual void Sleep() const { cout &lt;&lt; &quot;fish snoring...\n&quot;; }
+47:       virtual void Eat() const { cout &lt;&lt; &quot;fish feeding...\n&quot;; }
+48:       virtual void Reproduce() const 
+49:          { cout &lt;&lt; &quot;fish laying eggs...\n&quot;; }
+50:       virtual void Move() const 
+51:           { cout &lt;&lt; &quot;fish swimming...\n&quot;;   }
+52:       virtual void Speak() const { }
+53:    };
+54:
+55:    class Horse : public Mammal
+56:    {
+57:    public:
+58:       Horse(int age, COLOR color ):
+59:       Mammal(age), itsColor(color) 
+60:             { cout &lt;&lt; &quot;Horse constructor...\n&quot;; }
+61:       virtual ~Horse() { cout &lt;&lt; &quot;Horse destructor...\n&quot;; }
+62:       virtual void Speak()const { cout &lt;&lt; &quot;Whinny!... \n&quot;; }
+63:       virtual COLOR GetItsColor() const { return itsColor; }
+64:       virtual void Sleep() const 
+65:           { cout &lt;&lt; &quot;Horse snoring...\n&quot;; }
+66:       virtual void Eat() const { cout &lt;&lt; &quot;Horse feeding...\n&quot;; }
+67:       virtual void Move() const { cout &lt;&lt; &quot;Horse running...\n&quot;;}
+68:
+69:    protected:
+70:       COLOR itsColor;
+71:    };
+72:
+73:    class Dog : public Mammal
+74:    {
+75:    public:
+76:       Dog(int age, COLOR color ):
+77:          Mammal(age), itsColor(color) 
+78:             { cout &lt;&lt; &quot;Dog constructor...\n&quot;; }
+79:       virtual ~Dog() { cout &lt;&lt; &quot;Dog destructor...\n&quot;; }
+80:       virtual void Speak()const { cout &lt;&lt; &quot;Whoof!... \n&quot;; }
+81:       virtual void Sleep() const { cout &lt;&lt; &quot;Dog snoring...\n&quot;; }
+82:       virtual void Eat() const { cout &lt;&lt; &quot;Dog eating...\n&quot;; }
+83:       virtual void Move() const  { cout &lt;&lt; &quot;Dog running...\n&quot;; }
+84:       virtual void Reproduce() const 
+85:           { cout &lt;&lt; &quot;Dogs reproducing...\n&quot;; }
+86: 
+87:    protected:
+88:       COLOR itsColor;
+89:    };
+90:
+91:    int main()
+92:    {
+93:       Animal *pAnimal=0;
+94:       int choice;
+95:       BOOL fQuit = FALSE;
+96:
+97:       while (1)
+98:       {
+99:          cout &lt;&lt; &quot;(1)Dog (2)Horse (3)Fish (0)Quit: &quot;;
+100:          cin &gt;&gt; choice;
+101:
+102:          switch (choice)
+103:          {
+104:             case 1: pAnimal = new Dog(5,Brown);
+105:             break;
+106:             case 2: pAnimal = new Horse(4,Black);
+107:             break;
+108:            case 3: pAnimal = new Fish (5);
+109:            break;
+110:            default: fQuit = TRUE;
+111:            break;
+112:         }
+113:         if (fQuit)
+114:            break;
+115:
+116:         pAnimal-&gt;Speak();
+117:         pAnimal-&gt;Eat();
+118:         pAnimal-&gt;Reproduce();
+119:         pAnimal-&gt;Move();
+120:         pAnimal-&gt;Sleep();
+121:         delete pAnimal;
+122:         cout &lt;&lt; &quot;\n&quot;;
+123:      }
+124:     return 0
+<TT>125: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: (1)Dog (2)Horse (3)Bird (0)Quit: 1
+Animal constructor...
+Mammal constructor...
+Dog constructor...
+Whoof!...
+Dog eating...
+Dog reproducing....
+Dog running...
+Dog snoring...
+Dog destructor...
+Mammal destructor...
+Animal destructor...
+
+(1)Dog (2)Horse (3)Bird (0)Quit: 0
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis</B></FONT><B>: </B>On lines 8-22, the abstract
+data type <TT>Animal</TT> is declared. <TT>Animal</TT> has non-pure virtual accessors
+for <TT>itsAge</TT>, which are shared by all <TT>Animal</TT> objects. It has five
+pure virtual functions, <TT>Sleep()</TT>,<TT> Eat()</TT>,<TT> Reproduce()</TT>,<TT>
+Move()</TT>, and <TT>Speak()</TT>.</P>
+<P><TT>Mammal</TT> is derived from <TT>Animal</TT>, is declared on lines 30-38, and
+adds no data. It overrides <TT>Reproduce()</TT>, however, providing a common form
+of reproduction for all mammals. <TT>Fish</TT> must override <TT>Reproduce()</TT>,
+because <TT>Fish</TT> derives directly from <TT>Animal</TT> and cannot take advantage
+of Mammalian reproduction (and a good thing, too!).</P>
+<P><TT>Mammal</TT> classes no longer have to override the <TT>Reproduce()</TT> function,
+but they are free to do so if they choose, as <TT>Dog</TT> does on line 84. <TT>Fish</TT>,
+<TT>Horse</TT>, and <TT>Dog</TT> all override the remaining pure virtual functions,
+so that objects of their type can be instantiated.</P>
+<P>In the body of the program, an <TT>Animal</TT> pointer is used to point to the
+various derived objects in turn. The virtual methods are invoked, and based on the
+runtime binding of the pointer, the correct method is called in the derived class.</P>
+<P>It would be a compile-time error to try to instantiate an <TT>Animal</TT> or a
+<TT>Mammal</TT>, as both are abstract data types.
+<H4 ALIGN="CENTER"><A NAME="Heading45"></A><FONT COLOR="#000077">Which Types Are
+Abstract?</FONT></H4>
+<P>In one program, the class <TT>Animal</TT> is abstract, in another it is not. What
+determines whether to make a class abstract or not?</P>
+<P>The answer to this question is decided not by any real-world intrinsic factor,
+but by what makes sense in your program. If you are writing a program that depicts
+a farm or a zoo, you may want <TT>Animal</TT> to be an abstract data type, but <TT>Dog</TT>
+to be a class from which you can instantiate objects.</P>
+<P>On the other hand, if you are making an animated kennel, you may want to keep
+<TT>Dog</TT> as an abstract data type, and only instantiate types of dogs: retrievers,
+terriers, and so fort. The level of abstraction is a function of how finely you need
+to distinguish your types.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<B>DO</B> use abstract data types to provide common functionality for a number of
+	related classes. <B>DO</B> override all pure virtual functions. <B>DO</B> make pure
+	virtual any function that must be overridden. <B>DON'T</B> try to instantiate an
+	object of an abstract data type. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H3 ALIGN="CENTER"><A NAME="Heading46"></A><FONT COLOR="#000077">The Observer Pattern</FONT></H3>
+<P>A very hot trend in C++ is the creation and dissemination of design patterns.
+These are well- documented solutions to common problems encountered by C++ programmers.
+As an example, the observer pattern solves a common problem in inheritance.</P>
+<P>Imagine you develop a timer class which knows how to count elapsed seconds. Such
+a class might have a class member <TT>itsSeconds</TT> which is an integer, and it
+would have methods to set, get, and increment <TT>itsSeconds</TT>.</P>
+<P>Now let's further assume that your program wants to be informed every time the
+timer's <TT>itsSeconds</TT> member is incremented. One obvious solution would be
+to put a notification method into the timer. However, notification is not an intrinsic
+part of timing, and the complex code for registering those classes which need to
+be informed when the clock increments doesn't really belong in your timer class.</P>
+<P>More importantly, once you work out the logic of registering those who are interested
+in these changes, and then notifying them, you'd like to abstract this out into a
+class of its own and be able to reuse it with other classes which might be &quot;observed&quot;
+in this way.</P>
+<P>Therefore, a better solution is to create an observer class. Make this observer
+an Abstract Data Type with a pure virtual function <TT>Update()</TT>.</P>
+<P>Now create a second abstract data type, called <TT>Subject</TT>. <TT>Subject</TT>
+keeps an array of <TT>Observer</TT> objects and also provides two methods: <TT>register()</TT>
+(which adds observers to its list) and <TT>Notify()</TT>, which is called when there
+is something to report.</P>
+<P>Those classes which wish to be notified of your timer's changes inherit from <TT>Observer</TT>.
+The timer itself inherits from <TT>Subject</TT>. The <TT>Observer</TT> class registers
+itself with the <TT>Subject</TT> class. The <TT>Subject</TT> class calls <TT>Notify</TT>
+when it changes (in this case when the timer updates).</P>
+<P>Finally, we note that not every client of timer wants to be observable, and thus
+we create a new class called <TT>ObservedTimer</TT>, which inherits both from timer
+and from <TT>Subject</TT>. This gives the <TT>ObservedTimer</TT> the timer characteristics
+and the ability to be observed.
+<H4 ALIGN="CENTER"><A NAME="Heading47"></A><FONT COLOR="#000077">A Word About Multiple
+Inheritance, Abstract Data Types, and Java</FONT></H4>
+<P>Many C++ programmers are aware that Java was based in large part on C++, and yet
+the creators of Java chose to leave out multiple inheritance. It was their opinion
+that multiple inheritance introduced complexity that worked against the ease of use
+of Java. They felt they could meet 90% of the multiple inheritance functionality
+using what are called interfaces.</P>
+
+<DL>
+	<DD>
+<HR>
+<FONT COLOR="#000077"><B>New Term:</B></FONT><B> </B>An interface is much like an
+	Abstract Data Type in that it defines a set of functions that can only be implemented
+	in a derived class. However, with interfaces, you don't directly derive from the
+	interface, you derive from another class and implement the interface, much like multiple
+	inheritance. Thus, this marriage of an abstract data type and multiple inheritance
+	gives you something akin to a capability class without the complexity or overhead
+	of multiple inheritance. In addition, because interfaces cannot have implementations
+	nor data members, the need for virtual inheritance is eliminated. 
+<HR>
+
+</DL>
+
+<P>Whether this is a bug or a feature is in the eyes of the beholder. In either case,
+if you understand multiple inheritance and Abstract Data Types in C++ you will be
+in a good position to move on to using some of the more advanced features of Java
+should you decide to learn that language as well.</P>
+<P>The observer pattern and how it is implemented both in Java and C++ is covered
+in detail in Robert Martin's article &quot;C++ and Java: A Critical Comparison,&quot;
+in the January 1997 issue of C++ Report.
+<H3 ALIGN="CENTER"><A NAME="Heading48"></A><FONT COLOR="#000077">Summary</FONT></H3>
+<P>Today you learned how to overcome some of the limitations in single inheritance.
+You learned about the danger of percolating interfaces up the inheritance hierarchy,
+and the risks in casting down the inheritance hierarchy. You also learned how to
+use multiple inheritance, what problems multiple inheritance can create and how to
+solve them using virtual inheritance.</P>
+<P>You also learned what Abstract Data Types are and how to create Abstract classes
+using pure virtual functions. You learned how to implement pure virtual functions
+and when and why you might do so. Finally, you saw how to implement the Observer
+Pattern using multiple inheritance and Abstract Data types.
+<H3 ALIGN="CENTER"><A NAME="Heading49"></A><FONT COLOR="#000077">Q&amp;A</FONT></H3>
+
+<DL>
+	<DD><B>Q. What does percolating functionality upwards mean?<BR>
+	</B><BR>
+	<B>A.</B> This refers to the idea of moving shared functionality upwards into a common
+	base class. If more than one class shares a function, it is desirable to find a common
+	base class in which that function can be stored.<BR>
+	<BR>
+	<B>Q. Is percolating upwards always a good thing?<BR>
+	</B><BR>
+	<B>A.</B> Yes, if you are percolating shared functionality upwards. No, if all you
+	are moving is interface. That is, if all the derived classes can't use the method,
+	it is a mistake to move it up into a common base class. If you do, you'll have to
+	switch on the runtime type of the object before deciding if you can invoke the function.<BR>
+	<BR>
+	<B>Q. Why is switching on the runtime type of an object bad?<BR>
+	</B><BR>
+	<B>A</B>. With large programs, the <TT>switch</TT> statements become big and hard
+	to maintain. The point of virtual functions is to let the virtual table, rather than
+	the programmer, determine the runtime type of the object.<BR>
+	<BR>
+	<B>Q. Why is casting bad?<BR>
+	</B><BR>
+	<B>A.</B> Casting isn't bad if it is done in a way that is type-safe. If a function
+	is called that knows that the object must be of a particular type, casting to that
+	type is fine. Casting can be used to undermine the strong type checking in C++, and
+	that is what you want to avoid. If you are switching on the runtime type of the object
+	and then casting a pointer, that may be a warning sign that something is wrong with
+	your design.<BR>
+	<BR>
+	<B>Q. Why not make all functions virtual?<BR>
+	</B><BR>
+	<B>A.</B> Virtual functions are supported by a virtual function table, which incurs
+	runtime overhead, both in the size of the program and in the performance of the program.
+	If you have very small classes that you don't expect to subclass, you may not want
+	to make any of the functions virtual.<BR>
+	<BR>
+	<B>Q. When should the destructor be made virtual?<BR>
+	</B><BR>
+	<B>A.</B> Anytime you think the class will be subclassed, and a pointer to the base
+	class will be used to access an object of the subclass. As a general rule of thumb,
+	if you've made any functions in your class virtual, be sure to make the destructor
+	virtual as well.<BR>
+	<BR>
+	<B>Q. Why bother making an Abstract Data Type--why not just make it non-abstract
+	and avoid creating any objects of that type?<BR>
+	</B><BR>
+	<B>A. </B>The purpose of many of the conventions in C++ is to enlist the compiler
+	in finding bugs, so as to avoid runtime bugs in code that you give your customers.
+	Making a class abstract, that is, giving it pure virtual functions, causes the compiler
+	to flag any objects created of that abstract type as errors.
+</DL>
+
+<H3 ALIGN="CENTER"><A NAME="Heading50"></A><FONT COLOR="#000077">Workshop</FONT></H3>
+<P>The Workshop provides quiz questions to help you solidify your understanding of
+the material covered, and exercises to provide you with experience in using what
+you've learned. Try to answer the quiz and exercise questions before checking the
+answers in Appendix D, and make sure you understand the answers before continuing
+to the next chapter.
+<H4 ALIGN="CENTER"><A NAME="Heading51"></A><FONT COLOR="#000077">Quiz</FONT></H4>
+
+<DL>
+	<DD><B>1.</B> What is a down cast?<BR>
+	<BR>
+	<B>2.</B> What is the <TT>v-ptr</TT>?<BR>
+	<BR>
+	<B>3.</B> If a round-rectangle has straight edges and rounded corners, and your <TT>RoundRect</TT>
+	class inherits both from <TT>Rectangle</TT> and from <TT>Circle</TT>, and they in
+	turn both inherit from <TT>Shape</TT>, how many <TT>Shape</TT>s are created when
+	you create a <TT>RoundRect</TT>?<BR>
+	<BR>
+	<B>4.</B> If <TT>Horse</TT> and <TT>Bird</TT> inherit from <TT>Animal</TT> using
+	public virtual inheritance, do their constructors initialize the <TT>Animal</TT>
+	constructor? If <TT>Pegasus</TT> inherits from both <TT>Horse</TT> and <TT>Bird</TT>,
+	how does it initialize <TT>Animal</TT>'s constructor?<BR>
+	<BR>
+	<B>5.</B> Declare a class <TT>vehicle</TT>, and make it an abstract data type.<BR>
+	<BR>
+	<B>6.</B> If a base class is an ADT, and it has three pure virtual functions, how
+	many of these must be overridden in its derived classes?
+</DL>
+
+<H4 ALIGN="CENTER"><A NAME="Heading52"></A><FONT COLOR="#000077">Exercises</FONT></H4>
+
+<DL>
+	<DD><B>1.</B> Show the declaration for a class <TT>JetPlane</TT>, which inherits
+	from <TT>Rocket</TT> and <TT>Airplane</TT>.<BR>
+	<BR>
+	<B>2.</B> Show the declaration for <TT>747</TT>, which inherits from the <TT>JetPlane</TT>
+	class described in Exercise 1.<BR>
+	<BR>
+	<B>3.</B> Write a program that derives <TT>Car</TT> and <TT>Bus</TT> from the class
+	<TT>Vehicle</TT>. Make <TT>Vehicle</TT> be an ADT with two pure virtual functions.
+	Make <TT>Car</TT> and <TT>Bus</TT> not be ADTs.<BR>
+	<BR>
+	<B>4.</B> Modify the program in Exercise 3 so that <TT>Car</TT> is an ADT, and derive
+	<TT>SportsCar</TT>, <TT>Wagon</TT>, and <TT>Coupe</TT> from <TT>Car</TT>. In the
+	<TT>Car</TT> class, provide an implementation for one of the pure virtual functions
+	in <TT>Vehicle</TT> and make it non-pure.<BR>
+	
+</DL>
+
+<P ALIGN="CENTER"><A HREF="ch12.htm"><IMG SRC="../buttons/BLANPREV.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch14.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="#heading1"><IMG SRC="../buttons/BLANTOP.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A>
+
+
+</BODY>
+
+</HTML>

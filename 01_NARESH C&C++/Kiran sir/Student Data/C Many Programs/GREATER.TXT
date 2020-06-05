@@ -1,0 +1,14 @@
+#include<stdio.h>
+#include<conio.h>
+#define SIZE 53
+void main()
+{
+clrscr();
+#if SIZE<=25
+printf("Size is less than 25");
+#elif SIZE<=50
+printf("Size is between from 26-50");
+#else
+printf("Size is greater than 50");
+#endif
+}

@@ -1,0 +1,186 @@
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Objective Type Questions</h2></center>
+
+<pre>
+<font size="2">
+        
+4.main()
+  { 
+   static float arr[]= {1.2,12,2.4,24,3.5,35};
+   int i;
+   for(i=0;i<=5;i++)
+   print f(%f, arr[i]);
+  }
+
+output: 
+1.200000 12.000000 2.400000 24.000000 3.500000 35.000000
+
+Explanation: were you expecting an error message because
+in the array initialization some values are integers 
+where as others are floats? Well, the initialization is 
+perfectly alright. When we initialize arr[1] to a value 
+12, what really gets stored in arr[1] is 12.0some thing
+happens when we try to store 24or 35 in the array. They
+are promoted to floats before storing the values.Thus the
+array contains all floats, there by meeting the basic 
+requirement of the array that all its elements must be 
+similar. Since print f() always prints a float with a 
+precision of 6 digits
+after the decimal point, each array
+element has been printed with six places after the decimal
+point.
+
+5.main()
+  {
+   int size=10;
+   int arr[size];
+   for(i=1;i<=size;i++)
+   {
+    scan f(%d, &arr[i]);
+    print f(%d,arr[i]);
+   }
+  }
+
+output: error message: constant expression required in 
+function main.
+
+Explanation: while declaring the array , its size should 
+always be mentioned with a positive integer constant.Thus
+arr[10] is acceptable, where as arr[size] is unacceptable,
+irrespective of whether size has been declared earlier to
+array declaration or not. Hence the error message.
+
+6.main()
+  {
+    int i, j=10, arrsize;
+    int arr[arrsize];
+    if(j==10)
+    arr size=20;
+    else
+    arr size=40;
+    for(i=0;i<arrsize;i++)
+  }
+
+output: error message: constant expression required in 
+function main.
+
+Explanation: depending upon the values of j, we are 
+attempting to determine the value of arr size,and then 
+expecting this value to be used in the array declaration.
+This is too ambitious, because when the array declaration
+statement is executed,C has to know how much space is to 
+be reserved for the array. So,if we except that the size
+of the array can be determined in if, and then this size
+should be used to declare the array, then by the time 
+control reaches the if it has already lost the opportunity
+to declare the array.So,only positive integer is acceptable
+in the array size declaration.
+
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="arrays.html" target="_self">BACK</a>     
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+

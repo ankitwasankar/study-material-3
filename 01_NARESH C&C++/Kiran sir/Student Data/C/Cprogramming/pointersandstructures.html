@@ -1,0 +1,241 @@
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Pointers And Structures</h2></center>
+
+<pre>
+<font size="2">
+ We know that the name of an array stands for the address of
+its zeroth element.The samething is true of the names of 
+arrays of structure variables.Suppose product is an array 
+variable of structtype.The name product represents the 
+address of its zeroth element consider the following 
+declaration.
+
+  struct inventory
+  {
+     char name[30];
+     int number;
+     float price;
+  } 
+  product[2],*ptr;
+ This statement declares product s an array of two elements,
+each of the type struct inventory and ptr as a pointer to 
+data objects of the type struct inventory.
+
+  The assignment
+	ptr=product;
+  would assign the address of the zeroth element of product
+to ptr.This is,the pointer ptr will now point to product[0].
+Its members can be accessed using the following notation.
+   
+     ptr --> name
+     ptr--> number
+     ptr --> price
+    The symbol -->is called the arrow operator and is made 
+up of a minus sign and a greater than sign.Note that ptr-->
+is simply another way f wrting product[0].When the pointer
+ptr is incremented by one,it is made to point to the next 
+record. i.e,product[1].
+ We could use the notation
+	(*ptr).number
+  to access the member number.The parantheses around *ptr
+are necessary because the member operator "." has a higher
+precedence than the operator *
+
+  A program to illustrate the use of a structure pointer 
+to manipulate the elements of an array of structures the 
+program highlights all the features discussed above.Note 
+that the pointer ptr(of type struct invert) is also used
+as the loop control index in for loops
+
+struct invent
+{
+    char *name[20];
+    int number;
+    float price;
+};
+  main( )
+  {
+    struct invent product[3],*ptr;
+    printf("INPUT\n\n");
+    for(ptr=product;ptr lessthan product+3;ptr++)
+    scannf("%s%d%f",ptr->name,ampercent ptr->number,
+             ampercent ptr->price);
+    printf("\n  OUTPUT\n\n");
+    ptr=product;
+    while(ptr lessthan product+3)
+    {
+      printf("% -20s %5d %102f\n",ptr->name,
+              ptr->number,ptr->price);
+      ptr++;
+    }
+  }
+  
+
+ Output:
+ INPUT
+     Washing-machine 5  7500
+     Electric-iron   12 350
+     Two-in-one      7  1250
+
+ OUTPUT:
+     Washing-machine  5  7500.00
+     Electric-iron    12 350
+     Two-in-one       7  1250.00
+  
+    While using structure pointers, we should take care
+of the precedence of operators.
+   The operators '->', '.',(),[] enjoy higher priority 
+among the operators.They  bind very tightly with thier
+operands
+ For example,given the definition
+     struct 
+          {
+            int count;
+            float *p;
+            *ptr	
+          }
+     then the statement ++ptr->count;
+     increments count,not ptr however,
+<strong>(++ptr)->count;</strong> increments ptr first,and
+then links count the statement
+<strong>ptr++->count;</strong>increments ptr first,and then
+links count the statement
+<strong>ptr++->count;</strong> is legal and increments ptr 
+after accessing count.The following statements also behave
+in the similar fashion.
+<strong>*ptr->p </strong>  Fetches whatever p points to 
+<strong>*ptr-p++</strong>  Increments p after accessing what
+ever it points to
+<strong>(*ptr->p)++ </strong> Increments  whatever p points to
+<strong>*ptr++->p</strong> Increments ptr after accessing 
+whatever it points to.
+   Passing of a structure as an argument to a function or a
+function recieves a copy of an entire structure and returns 
+it after working on it.This method is inefficient in terms 
+of both.The execution speed and memory.
+    We can overcome this drawback by passing a pointer to 
+the structure and then using this pointer to work on the 
+structure members.Consider the following function:
+     Print_invent(item)
+     struct invent *item;
+     {	printf("Name:%s\n",item->name);
+        printf("price:%f\n",item->price);
+     }
+   this function can be called by
+     print_invent(&product)
+   The ormal argument item recieves the address of the 
+structure product an therefore it must be declared as a 
+pointer of type struct invent,which represents the 
+structure of product.
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+
+<a href="pointer.html" target="_self"><strong>Back</strong></a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+
+
+
+

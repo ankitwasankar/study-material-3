@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<conio.h>
+struct tel
+{
+char cname[10];
+long int tno;
+};
+struct tel t;
+void main()
+{
+FILE *fp;
+int i;
+clrscr();
+fp=fopen("a.txt","w");
+for(i=0;i<2;i++)
+{
+flushall();
+printf("Enter the name -");
+gets(t.cname);
+printf("Enter the phone no. -");
+scanf("%ld",&t.tno);
+fprintf(fp,"\n%s %ld",t.cname,t.tno);
+}
+fclose(fp);
+fp=fopen("a.txt","r");
+for(i=0;i<2;i++)
+{
+fscanf(fp,"\n%s %ld",t.cname,&t.tno);
+printf("%s %ld",t.cname,t.tno);
+}
+fclose(fp);
+getch();
+}

@@ -1,0 +1,10 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+char a='y',b='n';
+clrscr();
+printf("avalue is=%c\n",a);
+printf("bvalue is=%dc\n",b);
+getch();
+}

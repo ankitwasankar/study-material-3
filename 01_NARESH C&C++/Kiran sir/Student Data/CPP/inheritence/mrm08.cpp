@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+int i;
+printf("enter i value");
+scanf("%d",&i);
+switch (i)
+{
+case 50:printf("h c");
+		  break;
+case 100:printf("c");
+			break;
+case 200:printf("d c");
+			break;
+default:printf("w c");
+}
+getch();
+}
+

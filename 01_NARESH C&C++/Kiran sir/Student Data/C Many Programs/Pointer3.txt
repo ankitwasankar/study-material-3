@@ -1,0 +1,19 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+void junk(int,int*);
+int i,j;
+clrscr();
+printf("Enter the no.:-");
+scanf("%d %d",&i,&j);
+junk(i,&j);
+getch();
+}
+void junk(int i,int *j)
+{
+i=i*i;
+*j=(*j)*(*j);
+printf("value of i,j:-%d %d",i,*j);
+}
+

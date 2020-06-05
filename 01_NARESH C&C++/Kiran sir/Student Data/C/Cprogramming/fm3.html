@@ -1,0 +1,222 @@
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Closing A File & File Functions </h2></center>
+
+<pre>
+<font size="2">
+     When we have finished all operations the file must
+be closed . This ensures that all outstanding information
+associated with the file is flushed out from the buffers 
+and all links to the file are broken .It also prevents
+accidental misuse of data. The I/O library supports a 
+function to do this. It takes following form:
+
+ fclose(file-pointer);
+
+<strong>The getc() and putc() Functions:</strong>
+     The simplest fie I/O functions are getc() & putc().
+These are analogous to getchar and putchar() functions 
+and handle one character at a time.Assume that a file 
+that is opened with file pointer fp1. Then , the 
+statement
+ putc(c,fp1);
+   writes the character contained in the character 
+variable to the file associated with FILE pointer fp.
+Similerly , getc is used to read a character from a
+file has been opened in read mode.
+
+ For example , the statement 
+    c=getc(fp2);
+would read a character from the file whose pointer is
+fp2.
+   The file pointer moves by one character position for
+every operation of getc or putc. The getc will return
+am end of file marker EOF , when end of file has been 
+reached. Therefore the reading should be terminated when
+EOF is encountered.
+
+// As a practical use of these character I/O functions 
+we can copy the contents of one file into another. This 
+program takes text file and copies then into another 
+text file , character by character. //
+
+#include"stdio.h"
+main()
+{
+  FILE *fs,*fp;
+  char ch;
+  fs=fopen("pr1.c","r");
+  if(fs==NULL)
+  {
+    puts("cannot open source file");
+    exit();
+  }
+  ft=fopen("pr2.c","w");
+  if(ft==NULL)
+  {
+    puts("cannot open target file");
+    fclose(fs);
+    exit();
+  }
+  while(1)
+  {
+   ch=fgetc(fs);
+   if(ch==EOF)
+   break;
+   else
+   fputc(ch,ft);
+  }
+  fclose(fs);
+  fclose(ft);
+}
+<strong>The getw() and putw() Functions:</strong>
+ The getw an putw functions are integer oriented functions.
+These are analogous to getc and putc functions and are 
+used to read and write integer values .These functions 
+would be useful to deal with only integer data. The 
+general forms of getw , putw are:
+
+putw(integer,fp);
+getw(fp);
+
+<strong>The fgets() and fputs() functions:</strong>
+     For many purposes , character I/O is just what is 
+needed . However , in some situations the usage of
+functions which read or write entire strings might turn
+out to be more efficient.Reading or Writing strings of
+characters from and to files is as easy as reading and
+writing individual characters .
+
+<table border="1" width="450">
+    <tr><TD> CATEGORY</TD>
+    <td>FUNCTIONS</td>
+    </tr>
+<tr><TD>High level , Text , Unformatted Character I/O</TD>
+<td>Getc(),putc(),fgetc(),fputc().
+Here getc() and putc() are macros where as fgetc() and fputc() are their function versions.</td>
+</tr>
+<tr><TD>High level, Text , Unformatted String I/O</TD>
+<td>Fgets(),fputs()</td>
+</tr>
+<tr><TD>High level, Text , Unformatted int I/O
+</TD>
+<td>No standerd I/O Library Functions</td>
+</tr>
+<tr><TD>High level, Text , Unformatted float I/O</TD>
+<td>No standerd I/O Library Functions
+</td>
+</tr>
+</table>
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+
+<a href="filemgt.html" target="_self"><strong>BACK</strong></a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+
+
+
+
+
+

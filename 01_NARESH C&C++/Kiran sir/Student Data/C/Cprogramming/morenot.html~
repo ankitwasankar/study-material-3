@@ -1,0 +1,171 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<tr>
+<TR><a href="files.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left"><pre>
+
+                              <strong>DECISION MAKING AND BRANCHING </strong>
+
+<strong>The ! operator:</strong> 
+ So far we have used only the logical operators && and ||. Third operator
+is the Not operator, written as !. This operator reverses the result of 
+the expression it operates on.
+For example, if the expression evaluates to a non-zero value,then applying 
+! operator to it results into a '0'. Vice versa, if the expression evaluates
+ to zero then applying ! operator to it makes it 1,a non-zero value.
+ The result (after applying !) 0 or 1 is considered to be FALSE or TRUE 
+ respectively. 
+  value.The final are
+Here is an example of the 'NOT' operator applied to a relational expression. 
+ 
+                    !(y<10) 
+This means "not y is less than 10". In other words if y is less than 10, 
+the expression will be FALSE, since (y<10) is TRUE.
+
+We can express the same condition as (y>=10). The NOT operator is often used
+to reverse the logical value of a single variable, as in the expression 
+
+                    if(!flag) 
+                 This s another way of saying 
+Does the NOT operator sound confusing?  Avoid it if you want, as the same thing 
+can be achieved without using NOT operator. 
+
+<strong>Example:30</strong> 
+             
+                main() 
+               { 
+                   int i=-1,j=1,k,l; 
+                   k=!i&&j; 
+                   l=!i||j; 
+                   printf("%d%d",I,j); 
+               } 
+OUTPUT: 
+              0 1 
+
+<strong>Example:31 </strong>
+                    
+                     main() 
+                     { 
+                           int x=10,y=5,p,q; 
+                           p=x>9; 
+                           q=x>3&&y!=3; 
+                           printf("p=%d q=%d",p,q); 
+                      } 
+OUTPUT: 
+               p=1  q=1 
+
+<div align="justify">Explanation: Since x is greater than  9, the condition evaluates to TRUE, 
+the result of the test is treated as I otherwise it is treated as 0.Hence
+p contains value 1.</div>
+             q=x>3&&y!=3, 
+<div align="justify">The first  condition evaluates to TRUE,hence is replaced by 1.Similarly,
+second condition also evaluates to TRUE and is replaced by 1.Since the 
+conditions are combined  using && and since both are TRUE, the result of 
+the entire expression becomes 1,which is assigned to q. </div>
+
+ <strong>Example:32 </strong>
+            main() 
+              { 
+                   int a=30,b=40,x; 
+                   x=(a!=10)&&(b=50); 
+                   printf("x=%",x); 
+              } 
+OUTPUT: 
+              x=1 
+
+Explanation:  a!=10 evaluates to TRUE and is replaced by 1,b=50 uses 
+an assignment(=), hence 50 is assigned to b. Therefore the condition 
+becomes, 
+                  x=1&&50 
+           Since 1 and 50 both are TRUE values , x value is '1' 
+ 
+
+<strong>Example:33 </strong>
+                                   
+     
+               main() 
+               { 
+                      int a=300,b=10,c=20; 
+                      if(!(a>=400) 
+                      b=300; 
+                      c=200; 
+                      printf("b=%d c=%d",b,c); 
+               } 
+ 
+OUTPUT:                     b=300 c=200 
+
+Explanation:         The condition (a>=400) evaluates to FALSE since a is neither
+equal to nor greater than 400.The condition is therefore(!)  negates the result
+of this condition. This means it reverses the result of condition 0 to 1> thus
+the IF gets reduced to, 
+                         if(1) 
+                               b=300; 
+   obviously, b=300 would get executed, followed by c=200, hence the output.          
+ 
+<strong>Example:34</strong> 
+                                
+                    main() 
+                    { 
+                           int x=10,y=100%90; 
+                           if(x!=y) 
+                           printf("x=% y=%d",x,y); 
+                    } 
+OUTPUT:                x=10 y=10 
+
+Explanation:  Contrary to usual belief, the statement y=100/90 is 
+perfectly acceptable. So the output results. 
+ 
+<strong>Example:35 </strong>
+               
+             main() 
+             { 
+                   int  x=10,y=-20; 
+                   x=!x; 
+                   y=!y;  
+                   printf("x=%d y=%d",x,y): 
+             } 
+OUTPUT:          x=0 y=0 
+
+<a href="branching.html">Back</a>
+</pre><td></tr></table>
+</html>

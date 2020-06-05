@@ -1,0 +1,21 @@
+<html>
+<body>Merge sort is a classic example of the techniques used to analyze recursive routines.<br> It is not obvious that merge sort can easily be rewritten without recursion, so we have to write a recurrence relation for the running time. We will always assume that n is a power of 2 so that we always split into two even halves.<br> For n=1,the time to merge sort is constant, which we will denote by 1. Otherwise, the time to merge sort n numbers is equal to the time to do two recursive merge sorts of size n/2,plus the time to merge,which is linear.<br>
+			T(1) = 1<br>
+			T(n) = 2T(n/2) + n<br>
+	This is a standard recurrence relation that can be solved several ways.The one main idea is to divide the recurrence relation through by n. This yields<br>
+	
+			T(n)/n = T(n/2)/(n/2) + 1<br>
+	This equation is valid for any n that is a power of 2, so we may also write<br>
+			T(n/2)/(n/2) = T(n/4)/(n/4) + 1<br>
+	and<br>
+			T(n/4)/(n/4)  =  T(n/8)/(n/8) + 1<br>
+				.<br>
+				.<br>
+				.<br>
+			T(2)/2 = T(1)/1 + 1<br>
+		Now add up all the equations. After everything is added the final result is because all of the other terms cancel and there are logn equations , and so all the 1s at the end of these equations add up to logn.<br>
+		T(n)/n = T(1)/1 + logn<br>
+	Multiplying through by n gives the final answer.<br>
+		T(n) = nlogn + n<br>
+		       = O(nlogn)</body>
+</html>

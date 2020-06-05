@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+char *ptr[5];
+int i,j,l=0;
+clrscr();
+for(i=0;i<5;i++)
+{ printf("Enter the string- ");
+gets(ptr[i]);
+}
+for(i=0;i<5;i++)
+{ printf("\n%s",ptr[i]);
+  for(j=0;*(ptr[i]+j)!=NULL;j++)
+  l++;
+  printf("  %d",l);
+  l=0;
+}
+getch();
+}
+

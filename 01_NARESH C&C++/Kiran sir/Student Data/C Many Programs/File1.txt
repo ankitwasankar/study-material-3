@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<conio.h>
+struct emp
+{
+  int empno;
+  char name[20];
+  int salary;
+};
+void main()
+{
+  FILE *fp;
+  struct emp e;
+  char ch;
+  clrscr();
+  fp=fopen("emp.dat","w");
+  do
+  {
+    printf("Enter the employee number - ");
+    scanf("%d",&e.empno);
+    flushall();
+    printf("Enter the name - ");
+    gets(e.name);
+    printf("Enter the salary - ");
+    scanf("%d",&e.salary);
+    fwrite(&e,sizeof(e),1,fp);
+    flushall();
+    printf("Do you want to continue - ");
+    scanf("%c",&ch);
+  }while(ch=='y' || ch=='Y');
+  fclose(fp);
+}

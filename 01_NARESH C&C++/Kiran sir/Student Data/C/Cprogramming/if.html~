@@ -1,0 +1,133 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<tr>
+<TR><a href="files.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left"><pre>
+
+                              <strong>DECISION MAKING AND BRANCHING </strong>
+ 
+
+<strong>Demonstration of "IF" statement</strong>
+<strong>Example:1</strong>
+ 
+                main() 
+                 { 
+                   int num; 
+                   printf("Enter a number less than 10"); 
+                   scanf("%d",&num); 
+                   if(num<=10) 
+                   printf(" How nice you are"); 
+                 } 
+
+<strong>Description: </strong>
+     On execution of this program, if you type a number less than or equal to 10, 
+you get a message on the screen through printf(). If you type some other number 
+the program doesn't  do anything.
+
+
+To make you comfortable with the decision control instruction  one more example has 
+been given below: 
+ 
+<strong>Example:2 </strong>
+While purchasing certain items,a discount of 10% is offered if the quantity purchased 
+is more than 1000.
+If quantity and price per item are input through the keyboard , while a program to calculate the total expenses. 
+
+   main() 
+   { 
+      int qty,dis=0; 
+      float rate,tot; 
+      printf("Enter quantity and rate"); 
+      scanf("%d%f",&qty,&rate); 
+      if(qty>1000) 
+      dis=10; 
+      tot=(qty*rate)-(qty*rate*dis/100); 
+      printf("total Expenses = Rs.%f",tot); 
+   }
+ 
+    Here is some sample interaction with the program: 
+ 
+Enter quantity and rate 1200 15.50 
+Total  expenses = Rs 16740.000000 
+ 
+Enter quantity and rate  200 15.50 
+Total expenses = Rs 3100.00000 
+ 
+Description: 
+ In the first run of the program, the condition evaluates to true, as 1200 (value
+of qty) 
+is greater than 1000. Therefore, the variable dis, which was earlier set to 0,
+now gets a new value 10. using this new values total expenses are calculated and printed. 
+
+       Is the statement dis=0 necessary ?
+ 
+The  answer is YES, since in C, a variable if not specifically initialized contains 
+ some unpredictable values( garbage value). 
+   We can even use Arithmetic Expressions in the "IF"   statement.
+       For example all the following "IF" statements are valid.                
+ 
+                           if(3+2%5) 
+                                printf("This works"); 
+  
+                           if(a=10) 
+                                printf("Even this works"); 
+ 
+                           if(-5) 
+                                printf("Surprisingly  even this also works"); 
+ 
+Note That in C a non-zero value is considered to be true, where as a '0' is 
+considered to be FALSE.
+In the first "IF" , the expression evaluates to 5 and since 5 is a non-zero,
+ it is considered to be TRUE. Hence the printf() gets executed 
+In the second "IF" , 10 gets assigned to a so the if is now reduced to if(a) or if(10) 
+   Since 10 is a non-zero, it is TRUE  hence again printf() goes to work. 
+In  the third "IF", -5 is a non-zero number, hence TRUE. So again printf() goes to work.  
+In place of -5 even if a float like 3.14 were used it would be considered to be TRUE.
+ 
+So the issue is not whether the number is integer or float, or whether the number is
+ positive or negative.
+ Issue is whether it is zero or non-zero. 
+
+<a href="branching.html">Back</a>
+</pre><td></tr></table>
+</pre></html>

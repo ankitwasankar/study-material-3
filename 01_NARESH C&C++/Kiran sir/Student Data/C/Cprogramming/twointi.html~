@@ -1,0 +1,77 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+<u>Initializing two-dimensional arrays: </u> like the one-dimensional arrays,two-dimensional 
+arrays may be initialized by following their declaration with a list of initial values 
+enclosed in braces.
+For example,
+                            static int table[2][3] = {0,0,0,1,1,1};
+initializes the elements of the first row to zero and the second row to one.The initialization
+ is done row by row. 
+The above statement can be equivalently written as
+                         static int table[2][3]={{0,0,0}, {1,1,1});
+by surrounding the elements of each row by braces.
+  
+we can also initialize a two-dimensional array in the form of a matrix as shown below:
+        static int table[2][3] = {  {0,0,0},
+                                     {1,1,1}
+                                                 };
+ note the syntax of the above statements, commas are required after each brace that closes 
+ off a row, except in the case of the last row.
+If the values are missing in an initializer, they are automatically set to zero. For instance,
+ the statement
+                 static int table[2][3] = {
+                                             {1,1},
+                                              {2}
+                                                 };
+will initialize the first two elements of the first row to one, the first element of the second 
+row to two, and other elements to zero.
+When all the elements are to be initialized to zero, the following short-cut method may be used.
+                      Static int m[3][4]= {{0}, {0}, {0},{0}};
+the first element of each row is explicitly initialized to zero while other elements are
+ automatically initializes to zero.
+ <a href="arrays.html" target="_self">BACK</a>
+</pre>
+</TD>
+</table>

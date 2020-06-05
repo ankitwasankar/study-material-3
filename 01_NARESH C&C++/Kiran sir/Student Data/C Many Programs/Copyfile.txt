@@ -1,0 +1,13 @@
+#include<stdio.h>
+#include<conio.h>
+void main(int argc,char *argv[])
+{
+FILE *fp;
+int i;
+fp=fopen(argv[1],"w");
+for(i=2;i<argc;i++)
+{
+fprintf(fp," %s",argv[i]);
+}
+fclose(fp);
+}

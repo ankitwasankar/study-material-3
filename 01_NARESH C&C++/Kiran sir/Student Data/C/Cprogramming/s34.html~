@@ -1,0 +1,79 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+<strong>Strcmp():</strong>
+
+    This is a function which compares two strings to find out whether they are same or different. 
+The two strings are compared character by character until there is a mismatch or end of one of
+ the strings is reached, whichever occurs first. If the two strings are identical , strcmp() 
+returns a value zero. If they aren't not, it returns the numeric difference b/w the ASCII 
+values of the first non-matching pairs of characters. Here is a program which 
+puts strcmp() in action.
+
+main()
+{
+  char string1[] = "Jerry";
+   char string2[] = "Ferry";
+   int i, j, k;
+    i = strcmp ( string1, "Jerry");
+    j = strcmp ( string1, "string2");
+    k = strcmp ( string1, "Jerryboy");
+     printf("\n%d%d%d",i,j,k);
+}
+
+output:
+0   4   -32
+
+In the first call to strcmp(), the two strings are identical-"Jerry" and "Jerry" and the 
+value returned by strcmp() is zero. In the second call , the first character of "Jerry" 
+doesn't match with the first character of "Ferry" and the result is 4, which is the 
+numeric difference b/w ASCII value of 'J' and ASCII value of 'F''. In the third 
+call to strcmp() also the same procedure repeats.
+
+<a href="s3.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

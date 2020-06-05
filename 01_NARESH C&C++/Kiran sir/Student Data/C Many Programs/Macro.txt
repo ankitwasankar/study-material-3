@@ -1,0 +1,14 @@
+#include<stdio.h>
+#include<conio.h>
+#define max(x,y) x>y?x:y
+#define sum(x,y) x+y
+void main()
+{
+  int a,b;
+  clrscr();
+  printf("Enter two numbers - ");
+  scanf("%d%d",&a,&b);
+  printf("\n The maximum number is - %d",max(a,b));
+  printf("\n The sum is - %d",sum(a,b));
+  getch();
+}

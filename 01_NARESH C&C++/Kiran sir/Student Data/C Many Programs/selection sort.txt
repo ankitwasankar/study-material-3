@@ -1,0 +1,43 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+ int a[10],n,i;
+ void selection_sort(int *,int);
+ clrscr();
+ printf("How Many Elements : - ");
+ scanf("%d",&n);
+ for(i=0;i<n;i++)
+ {
+ printf("Enter the value:-");
+ scanf("%d",&a[i]);
+ }
+ selection_sort(a,n);
+ for(i=0;i<n;i++)
+ printf("\n %d",a[i]);
+ getch();
+ }
+ void selection_sort(int *ptr,int n)
+ {
+ int i,j,max,p;
+ for(i=0;i<n;i++)
+ {
+ max=*(ptr+0);
+ p=0;
+ for(j=0;j<n-i;j++)
+ {
+ if(*(ptr+j)>max)
+ {
+ max=*(ptr+j);
+ p=j;
+ }
+ }
+ *(ptr+p)=*(ptr+(n-i-1));
+ *(ptr+(n-i-1))=max;
+ }
+ }
+
+
+
+
+

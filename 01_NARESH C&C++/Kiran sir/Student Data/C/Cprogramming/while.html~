@@ -1,0 +1,86 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+<strong>While:</strong>
+	Syntax:   while(test-condtion)
+			 
+ 	The test-condition is evaluated if it is non-zero statement is executed 
+	and test-condition is re-evaluated. This cycle continues until 
+	test-condition become zero at which point execution resumes after .
+	
+    The for statement 
+		for(expr1; expr2; expr3)
+			"statement"
+    is equivalent to
+		
+		expr1;
+		while(expr2)
+		{
+		   "statement "  
+		    expr3;  
+		}
+	
+	The while is an entry-controlled loop.The test-condition is evaluated and 
+if condition is true then the body of the loop is executed.After execution 
+of body the process is repeated until the test condition becomes false and the control is transferred 
+out of the loop.
+	If the body of the loop contains one or more statements then only braces 
+are required otherwise for a single statement following while, braces can 
+be dropped.
+
+<strong>Example:</strong>
+ Program to find a sum of square of 10 numbers using while?
+	
+	# include "stdio.h"
+	main( )
+	{
+	 int n=1, sum=0;
+	 while(n<=10)
+	 {
+		sum=sum+n*n;
+	  	n=n+1;	}
+	 printf("sum =%d /n",sum);
+	}
+
+
+<a href="l1.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

@@ -1,0 +1,71 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><html>
+<h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+         <pre><h2>MANAGING INPUT AND OUTPUT OPERATIONS</h2></pre>
+
+Introduction: Reading, processing and writing of data are the three essential functions of a computer 
+Program.Most programs  take some data as input and  display the processed data often known as information or results.
+There are two methods of providing data to the program data to the  programvariables.One method 
+is to assign values to variables through the assignment statements such as x=5, a=0 and so on. Another 
+method to use the input function scanf which can read data from a terminal. For outputting results the 
+function printf which sends results out to a terminal is used.'C' does not have any built-in input and
+output statements as part of its syntax .All input and output operations are carried out through function 
+calls such as printf and scanf.There exits several functions that have more or less become standard for input 
+and output operation in C.These functions are collectively known as i/o library. Each program that uses 
+a standard input/output function must contain the statement, at the beginning.
+                     #include'stdio.h' 
+ The filename stdio.h is an  input-output header file.Theinstruction#include'stdio.h'tells the compiler 
+to search for a file named stdio.h and place its contents at this point in the program. when it is compiled
+thecontents of the header file become part of the  source code.
+
+<a href="managing.html" target="_self">BACK</a>
+</pre></TD>
+</pre>
+
+</table>
+
+
+</html>

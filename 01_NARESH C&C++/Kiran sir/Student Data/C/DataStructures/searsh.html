@@ -1,0 +1,510 @@
+<html>
+<body>
+
+<br>
+            Terms to be  known before considering specific search techniques are:<br>
+      (1)A table or file:-Is a group of elements each of which a record.<br>
+       (2)Associated with each record is a key which is used to differentiate among different records.<br>
+    For every file there is atleast one   set of keys that is unique such akey is called a Primary key.<br>
+EX:- if the file is stored in an array the  index within the array of an element is a unique  such a key  is called a primary key.<br><br>
+Keys need not always be unique.  for example,in a file of names and addresses if the state is used as akey for a particular search itwill probably not be unique,since there may be two records with the som e state in the file .Such a key is called a Secondary key.<br>
+      
+         A search algorithm is an algorithm that depends upon argument ‘a’ and tries to find a record whose key is ‘a’ .It may return the entire record or more commonly it may be return a pointer to that record.If  there is no record in the table with that argument ,the algorithm may return a special nullrecord.  Or a Null pointer.Very often ,if a search is  a Unsuccessful it may be desirable to add a new record with the argument as its key.An algorithm that does this is called a search and insertion algorithm.<br>
+      A Successful search is often called a retrival a table of records in which a key is used for retrival is often called a searchtable or  Dictionary searcher in which the entire tble in constantly in main memory are called internal searches,where as those in the which most of the table is kept as a auxilary storage are called external searches.
+
+     Notations:-K(i) denotes the ith  key .
+                       Key of the record to be pointed by p as K(p).
+                       Similarly the corresponding record is r(i) or r(p).
+ Two of the widely used search methods are Linear or sequential search  and Binary search.
+                
+                                                                  SEQUENTIAL  SEARCH
+The simplest form of a seach is the sequential search.This search is applicable to a table organized  either as an array or as a linked list.Let us assume that K is an array of n keys .K(0) through ,k(n-1) and r an array of records ,r(0)through r(n-1) such that  the key  is a search argument .We wish to return the smallest integer i such that K(i) equals to the key .If such an i exists and -1 otherwise.The algorithm for doing this is as follows.<br><br><br>
+         For(i=0;i&#060;n;i++)<br>
+        if(key==k(i))<br>
+            return(i);<br>
+return(-1);<br>
+             The algorithm examines each key in turn ,upon finding one that mathes the search argument ,its index is returned .If no match is found -1 is returned.<br>
+          This algorithm can be modified easily to add a record with key to the t able if key is not already there .The last statement is modified that record.<br>
+         K(N)=key<br>
+         r(n)=rec;<br>
+        n++;<br>
+           return(n-1);<br>
+When the above algorithm is implement in C,we must ensure that incrementing n does not make its    value go beyond the upper bound of the array .To use a sequential insertion search on an array ,sufficent storage must hve been previously allocated for the array.
+        An even more efficient search method involvs inserting the argument key at the end of the array<br>
+sufficient storage must have been previously allocated  for the array.<br>
+  K(n)=key<br>
+for(i=0;key!=k(i);i++)<br>
+if(i&#060;n)<br>
+return(i);<br>
+else<br>
+return(-1);<br>
+for a search and insertion the entire ,if statement is replaced by<br>
+ if(i==n)<br>
+r(n++)=rec;<br>
+return(i);<br>
+   The extra key inserted at the end of the array is called a sentinel.<br>
+  
+               Storing a table as a Linked list has the advantage that the size of the table can be the increased dynamically as needed ,Let us assume that the table  linked by a pointer field next.Then assuming K,r,key and rec as before ,the sequential insertion search for a linked list may be written as follows:
+
+q=NULL;
+for(p=table;p!=NULL&#038;&#038;0(p)!=Key;p=next(p))
+q=p;<br>
+if(p!=NULL)<br>
+return(p);<br>
+/*  insert a new node */<br>
+S=getnode();<br>
+K(s)=key;<br>
+r(s)=rec;<br>
+Next(s)=NULL;<br>
+If(q==Null)<br>
+table=s;<br>
+else<br>
+next(q)=s;<br>
+return(s);<br>
+The efficiency of searching a list can be improved by adding a sentinel node containing the argument key to the end of the list  before  beginning the search so that the condition in the for loop is the simple 
+condition K(p)1=key.
+    Deleting a record from a table stored as an unordered array is implemented by replacing the record to be deleted.
+     With the last record in the array and reducing the table size by 1.If the array is ordered in some way ,this method can not be used  and half the elements in the array must be moved on the average. If thre table is stored in a linked list ,it is quite efficient to delete an element regardless of the ordering.
+
+EFFICIENCY OF LIEAR EARCH:-   To find the number of key comparisions for a successful match ,we can add the number required for eachcomparision and divide by the total number of elements in the list.This would give:<br>
+       1+2+3+...........+n/n  =n(n+1)/2n -(n+1)/2<br>
+   In any case the number of comparisions is O(n).<br>
+it would be helpful to have an algorithm  that continually recorders.The table sothat more frequently accessed records drift to the back.<br>
+There are two search methods that accomplish this .One of this is known as the move-to-front method and is efficient only for a table organized as a list .In this method ,Whenever a search is successful,the retrived  record is removed from its current location in the list and is placed at the head of the list.
+           The other method is the transportation method . In which a successfully retrived record is interchanged with the record that is interchanged with the record that immediately preceeds it.An algorithm to implement  the transposition method on a table stored as a linked list as below.The algorithm returns a pointer to the retrived record,or the NULL pointer if the record is not the found.As before ,key is the search  argument  K and r are the tables of keys and records tabl is a pointer to the first node of the list.
+            Q=s=NULL;
+/* q is the step behind p;*/<br>
+/*s is two steps behind p*/<br>
+for(p=table;P!+null&#038;&#038;k(p)!=key;p=next(p))<br>
+{<br>
+s=q;<br>
+q=p;<br>
+if(p==NULL)<br>
+return(p);<br>
+/*we have to found the record at position p*/<br>
+if(q==NULL)<br>
+/*No transposition is necessary */<br>
+return(p);<br>
+next(q)=next(p)<br>
+
+next(p)=q;<br>
+(s=null)?table=p:next(s)=p;<br>
+return(p);<br>
+However the move-to-front method yields better results for a small to medium number of requires and responds more quickly to a change in probability distribution .It also has better worst case behaviour than does transposition.<br>
+For this reason ,Move-to-front is prefered in most practical situations involving sequential search.<br>
+  One advantage of the transposition method over the move-to-front method is that it can be applied efficiently to tables are stored in array form as well as to list structure tables.<br>
+SEARCHING AN ORDERED TABLE:- <br>If the table is stored in aparticular order of the record keys,there are several techniques that can be used to improve the efficiency of searching.One obvious advantage in searching a sorted file over the unsorted fileis in the case that the argument key is absent from the file .In unsorted file n,comparisions  where assorted as n/2 comparisions.<br>
+ 
+       Morever in an ordred file table,each request willonly few lookup or perhaps only a single comparision.Because of the simplicity and efficiently of sequential search on sorted files.<br>
+
+Indexed Sequential seaarch:<br>
+Is a technique to improve search efficiency for a sorted file,but it involvs an increase in the amount of he space required.An auxillary table called an index is set aside in addition to the stored file itself.<br>Each element in the index consists of a key kindex and pointer to the record in the file.must be stored on the key.If the index is one eight the size of the file,every eight record of the file is shows a index.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

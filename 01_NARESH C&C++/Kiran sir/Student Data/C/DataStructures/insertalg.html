@@ -1,0 +1,28 @@
+<html>
+<head><TITLE>Insertion Algorithm</TITLE></head>
+<body>
+<strong>Algorithm for Insertion sort</strong><br><br>
+&nbsp;&nbsp;1.&nbsp;&nbsp;For index=2 to N do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;2.&nbsp;&nbsp;temp &#060;&#045; A[index]<br>
+&nbsp;&nbsp;3.&nbsp;&nbsp;position&#060;&#045;index<br>
+&nbsp;&nbsp;4.&nbsp;&nbsp;while(position>1) and (A[position-1]>temp) do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+&nbsp;&nbsp;5.&nbsp;&nbsp;A[position]&#060;&#045; A[position-1]<br>
+&nbsp;&nbsp;6.&nbsp;&nbsp;position&#060;&#045;position-1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br>
+&nbsp;&nbsp;7.&nbsp;&nbsp;A[position]&#060;&#045; temp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br>
+&nbsp;&nbsp;8.&nbsp;&nbsp;Return <br>
+<br>
+
+<strong>Analysis of Insertion sort :</strong><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Because of the nested loops, each of which can take  n iterations, insertion sort is O(n<sup>2</sup>). Furthermore , this bound is tight because input in reverse order can actually achieve this bound. The inner loop can be executed at most p times for each value of p.Summing over all &#039;p&#039; gives a total of<br>&
+               n<br>
+              ∑p=2+3+4+...............n = O(n<sup>2</sup>)<br>
+               p=2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;On the other hand, if the input is presorted, the running time is O(n) because the test at the top of the inner loop is always fails immediately. Indeed, if the input is almost sorted, insertion sort will run quickly. Because of this wide variation, it is worth analyzing the average case behavior of this algorithm. It 	turns out that the average case is O(n<sup>2</sup>) for insertion sort as well as for a variety of other  sorting algorithms.
+
+
+</body>
+</html>

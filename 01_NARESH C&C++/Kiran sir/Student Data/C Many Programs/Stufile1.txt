@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<conio.h>
+struct student
+{
+char sname[20],sfname[20];
+int scode,scla,sage;
+};
+void main()
+{
+struct student *s;
+FILE *fp;
+int i;
+char ch;
+clrscr();
+fp=fopen("p.dat","r");
+for(i=0;i<2;i++)
+{
+ fscanf(fp,"\nStudent Code %d",&s->scode);
+ fscanf(fp,"\nStudent Name %s",s->sname);
+ fscanf(fp,"\nFather Name %s",s->sfname);
+ fscanf(fp,"\nClass %d",&s->scla);
+ fscanf(fp,"\nAge %d",&s->sage);
+ printf("\nStudent Code   %d",s->scode);
+ printf("\nStudent Name   %s",s->sname);
+ printf("\nFather Name    %s",s->sfname);
+ printf("\nClass          %d",s->scla);
+ printf("\nAge            %d",s->sage);
+}
+ fclose(fp);
+getch();
+}

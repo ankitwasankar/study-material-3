@@ -1,0 +1,134 @@
+$C template#include <stdio.h>
+int main(int argc, char *argv[])
+{
+	|
+	return 0;
+}$C++ template1#include <iostream.h>
+int main(int argc, char *argv[])
+{
+	|
+	return 0;
+}$C++ template2#include <iostream>
+using namespace std;
+int main(int argc, char *argv[])
+{
+	|
+	return 0;
+}$Dialog procedureBOOL CALLBACK |( HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam )
+{
+	switch(message)
+	{
+		case WM_INITDIALOG:
+        	{
+			
+        	}
+		return TRUE;
+		case WM_CLOSE:
+        	{
+            		EndDialog( hDlg,0 );
+        	}
+		return TRUE;
+		case WM_COMMAND:
+			switch ( LOWORD(wParam) )
+			{
+				case IDCANCEL:
+            			{
+                			SendMessage( hDlg, WM_CLOSE, 0, 0 );
+            			}
+            			return TRUE;
+				case IDOK:
+            			{
+                
+            			}
+				return TRUE;
+			}
+			return FALSE;
+	}
+	return FALSE;
+}
+$Function Header/**
+	Description: |
+
+	Arguments:
+
+	Returns:
+
+*/$Module Header/**
+	Module Name: |
+
+	Description:
+
+	Author:
+	Created:
+	Last Change:
+
+	Functions:
+
+*/$Window procedureLRESULT CALLBACK |( HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam )
+{
+    HDC hdc;
+    PAINTSTRUCT ps;
+    switch( message )
+    {
+    case WM_CREATE:
+        return 0;
+		
+    case WM_PAINT:
+        hdc = BeginPaint( hwnd, &ps );
+        
+        EndPaint( hwnd, &ps );
+        return 0;
+		
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        return 0;
+    }
+    return DefWindowProc( hwnd, message, wParam, lParam );
+}
+$_#ifdef#ifdef |
+
+#endif$_#ifndef#ifndef |
+
+#endif$_#ifndef...#define#ifndef |
+#define 
+
+#endif$classclass T| : public T
+{
+	private:
+
+	protected:
+
+	public:
+
+};$do..while..do{
+	
+}while(|);$for{}..for(|; ; )
+{
+}$if...if(|)
+{
+
+}$if..else..if(|)
+{
+
+}
+else
+{
+
+}$structstruct T|
+{
+
+};$switch..case..switch(|)
+{
+	case :
+		break;
+	case :
+		break;
+	default:
+		break;
+}$template classtemplate <class T>
+class |
+{
+};$while...while(|)
+{
+	
+}

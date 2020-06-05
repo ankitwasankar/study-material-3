@@ -1,0 +1,344 @@
+<ProjectType name="Dialog based Application#77023" icon="projecttype.bmp?3" type="GUI" ext="exe" tab="General#77001" desc="Create Windows application based on dialog.#77024" version="1.0">
+	<Pages count="1">
+		<Page title="Options#77035">
+			<RadioGroup name="SrcLang" title="#77009" value="0" width="290" height="100" enabled="1">
+				<Item>&C language (this will generate c source files(.c))#77011</Item>
+				<Item>C++ &language (this will generate c++ source files(.cpp))#77012</Item>
+			</RadioGroup>	
+			<CheckBox name="MsgCrack" value="1" width="290" height="15" enabled="1">&Using Window Message Crackers#77034</CheckBox>
+			<CheckBox name="XpStyle" value="1" width="290" height="15" enabled="1">&Xp Style#77036</CheckBox>
+		</Page>
+	</Pages>
+
+	<Outputs>
+		<Directory name="\">
+		<File folder="Source Files" name="" external="" enabled="1"></File>
+		<File folder="Header Files" name="" external="" enabled="1"></File>
+		<File folder="Other Files" name="" external="" enabled="1"></File>
+		<File folder="Source Files" name="main.c" external="" enabled="$(SrcLang)=0&$(MsgCrack)=1">#include &lt;windows.h&gt;
+#include &lt;windowsx.h&gt;
+#include "main.h"
+#include "dialogs.h"
+#include "resource.h"
+
+BOOL WINAPI Main_Proc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    switch(uMsg)
+    {
+        /* BEGIN MESSAGE CRACK */
+        HANDLE_MSG(hWnd, WM_INITDIALOG, Main_OnInitDialog);
+        HANDLE_MSG(hWnd, WM_COMMAND, Main_OnCommand);
+        HANDLE_MSG(hWnd,WM_CLOSE, Main_OnClose);
+        /* END MESSAGE CRACK */
+    }
+
+    return FALSE;
+}
+
+/*******************************************************************************
+*  Main_OnInitDialog
+*/
+BOOL Main_OnInitDialog(HWND hwnd, HWND hwndFocus, LPARAM lParam)
+{
+    /* Set app icons */
+    HICON hIcon = LoadIcon((HINSTANCE) GetWindowLong(hwnd, GWL_HINSTANCE) ,MAKEINTRESOURCE(IDI_ICONAPP));
+    SendMessage(hwnd, WM_SETICON, TRUE,  (LPARAM)hIcon);
+    SendMessage(hwnd, WM_SETICON, FALSE, (LPARAM)hIcon);
+    
+    /*
+    * Add initializing code here
+    */
+    
+    return TRUE;
+}
+
+/*******************************************************************************
+*  Main_OnCommand
+*/
+void Main_OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
+{
+    switch(id)
+    {
+        case IDC_OK:
+            MessageBox(hwnd,TEXT("You clicked OK!"),TEXT("$(ProjectName)"),MB_OK);
+            EndDialog(hwnd, id);
+        break;
+        case IDC_CANCEL:
+            MessageBox(hwnd,TEXT("You clicked Cancel!"),TEXT("$(ProjectName)"),MB_OK);
+            EndDialog(hwnd, id);
+        break;
+        default:break;
+    }
+
+}
+
+/*******************************************************************************
+*  Main_OnClose
+*/
+void Main_OnClose(HWND hwnd)
+{
+    EndDialog(hwnd, 0);
+}
+</File>
+		<File folder="Source Files" name="main.cpp" external="" enabled="$(SrcLang)=1&$(MsgCrack)=1">#include &lt;windows.h&gt;
+#include &lt;windowsx.h&gt;
+#include "main.h"
+#include "dialogs.h"
+#include "resource.h"
+
+BOOL WINAPI Main_Proc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    switch(uMsg)
+    {
+        //BEGIN MESSAGE CRACK
+        HANDLE_MSG(hWnd, WM_INITDIALOG, Main_OnInitDialog);
+        HANDLE_MSG(hWnd, WM_COMMAND, Main_OnCommand);
+        HANDLE_MSG(hWnd,WM_CLOSE, Main_OnClose);
+        //END MESSAGE CRACK
+    }
+
+    return FALSE;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//  Main_OnInitDialog
+BOOL Main_OnInitDialog(HWND hwnd, HWND hwndFocus, LPARAM lParam)
+{
+    // Set app icons
+    HICON hIcon = LoadIcon((HINSTANCE) GetWindowLong(hwnd, GWL_HINSTANCE) ,MAKEINTRESOURCE(IDI_ICONAPP));
+    SendMessage(hwnd, WM_SETICON, TRUE,  (LPARAM)hIcon);
+    SendMessage(hwnd, WM_SETICON, FALSE, (LPARAM)hIcon);
+    
+    //
+    // Add initializing code here
+    //
+    
+    return TRUE;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//  Main_OnCommand
+void Main_OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
+{
+    switch(id)
+    {
+        case IDC_OK:
+            MessageBox(hwnd,TEXT("You clicked OK!"),TEXT("$(ProjectName)"),MB_OK);
+            EndDialog(hwnd, id);
+        break;
+        case IDC_CANCEL:
+            MessageBox(hwnd,TEXT("You clicked Cancel!"),TEXT("$(ProjectName)"),MB_OK);
+            EndDialog(hwnd, id);
+        break;
+        default:break;
+    }
+
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//  Main_OnClose
+void Main_OnClose(HWND hwnd)
+{
+    EndDialog(hwnd, 0);
+}
+</File>
+		<File folder="Source Files" name="main.c" external="" enabled="$(SrcLang)=0&$(MsgCrack)=0">#include &lt;windows.h&gt;
+
+#include "dialogs.h"
+#include "resource.h"
+
+HINSTANCE hInst;
+
+BOOL WINAPI Main_Proc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+	int id;
+	HICON hIcon;
+	
+    switch(uMsg)
+    {
+    	case WM_INITDIALOG:
+    		hInst = (HINSTANCE) GetWindowLong(hWnd, GWL_HINSTANCE);
+    		/* Set app icons */
+		    hIcon = LoadIcon(hInst, MAKEINTRESOURCE(IDI_ICONAPP));
+		    SendMessage(hWnd, WM_SETICON, TRUE,  (LPARAM)hIcon);
+		    SendMessage(hWnd, WM_SETICON, FALSE, (LPARAM)hIcon);
+		    
+		    /*
+		    * Add initializing code here
+		    */
+		    
+		    return TRUE;
+   		case WM_COMMAND:
+   			id = LOWORD(wParam);
+   			switch( id )
+		    {
+		        case IDC_OK:
+		            MessageBox(hWnd,TEXT("You clicked OK!"),TEXT("$(ProjectName)"),MB_OK);
+		            EndDialog(hWnd, id);
+		        break;
+		        case IDC_CANCEL:
+		            MessageBox(hWnd,TEXT("You clicked Cancel!"),TEXT("$(ProjectName)"),MB_OK);
+		            EndDialog(hWnd, id);
+		        break;
+		        default:
+					break;
+		    }
+   			break;
+		case WM_CLOSE:
+			EndDialog(hWnd, 0);
+			break;
+    }
+
+    return FALSE;
+}
+
+</File>
+		<File folder="Source Files" name="main.cpp" external="" enabled="$(SrcLang)=1&$(MsgCrack)=0">#include &lt;windows.h&gt;
+
+#include "dialogs.h"
+#include "resource.h"
+
+HINSTANCE hInst;
+
+BOOL WINAPI Main_Proc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+	int id;
+	HICON hIcon;
+	
+    switch(uMsg)
+    {
+    	case WM_INITDIALOG:
+    		hInst = (HINSTANCE) GetWindowLong(hWnd, GWL_HINSTANCE);
+    		// Set app icons
+		    hIcon = LoadIcon(hInst, MAKEINTRESOURCE(IDI_ICONAPP));
+		    SendMessage(hWnd, WM_SETICON, TRUE,  (LPARAM)hIcon);
+		    SendMessage(hWnd, WM_SETICON, FALSE, (LPARAM)hIcon);
+		    
+		    //
+		    // Add initializing code here
+		    //
+		    
+		    return TRUE;
+   		case WM_COMMAND:
+   			id = LOWORD(wParam);
+   			switch( id )
+		    {
+		        case IDC_OK:
+		            MessageBox(hWnd,TEXT("You clicked OK!"),TEXT("$(ProjectName)"),MB_OK);
+		            EndDialog(hWnd, id);
+		        break;
+		        case IDC_CANCEL:
+		            MessageBox(hWnd,TEXT("You clicked Cancel!"),TEXT("$(ProjectName)"),MB_OK);
+		            EndDialog(hWnd, id);
+		        break;
+		        default:
+					break;
+		    }
+   			break;
+		case WM_CLOSE:
+			EndDialog(hWnd, 0);
+			break;
+    }
+
+    return FALSE;
+}
+
+</File>
+	<File folder="Source Files" name="$(ProjectName).cpp" external="" enabled="$(SrcLang)=1">
+#include "main.h"
+#include "dialogs.h"
+
+int APIENTRY WinMain(HINSTANCE hInstance,
+                     HINSTANCE hPrevInstance,
+                     LPSTR     lpCmdLine,
+                     int       nCmdShow)
+{
+    DialogBox(hInstance, MAKEINTRESOURCE(IDD_MAIN), NULL, (DLGPROC)Main_Proc);
+    return(0);
+}
+</File>
+	<File folder="Source Files" name="$(ProjectName).c" external="" enabled="$(SrcLang)=0">
+#include "main.h"
+#include "dialogs.h"
+
+int APIENTRY WinMain(HINSTANCE hInstance,
+                     HINSTANCE hPrevInstance,
+                     LPSTR     lpCmdLine,
+                     int       nCmdShow)
+{
+    DialogBox(hInstance, MAKEINTRESOURCE(IDD_MAIN), NULL, Main_Proc);
+    return(0);
+}
+</File>
+
+	<File folder="Header Files" name="main.h" external="" enabled="$(MsgCrack)=1">#ifndef _MAIN_H
+#define _MAIN_H
+
+#include &lt;windows.h&gt;
+
+BOOL WINAPI Main_Proc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+BOOL Main_OnInitDialog(HWND hwnd, HWND hwndFocus, LPARAM lParam);
+void Main_OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify);
+void Main_OnClose(HWND hwnd);
+
+
+#endif
+</File>
+	<File folder="Header Files" name="main.h" external="" enabled="$(MsgCrack)=0">#ifndef _MAIN_H
+#define _MAIN_H
+
+#include &lt;windows.h&gt;
+
+BOOL WINAPI Main_Proc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+#endif
+</File>
+	<File folder="Header Files" name="dialogs.h" external="" enabled="1">
+#define IDD_MAIN                    100
+#define IDC_OK                      101
+#define IDC_CANCEL                  102
+#define IDC_TEXT                    103
+
+</File>
+	<File folder="Header Files" name="resource.h" external="" enabled="1">
+#define IDI_ICONAPP	1001
+</File>
+	<File folder="Other Files" name="$(ProjectName).rc" external="" enabled="$(XpStyle)=1">#include "resource.h"
+#include "dialogs.dlg"
+#include &lt;windows.h&gt;
+
+IDI_ICONAPP ICON    DISCARDABLE "res\\dlgapp.ico"
+1 24 "res\\xpstyle.manifest"
+	</File>
+	<File folder="Other Files" name="$(ProjectName).rc" external="" enabled="$(XpStyle)=0">#include "resource.h"
+#include "dialogs.dlg"
+#include &lt;windows.h&gt;
+
+IDI_ICONAPP ICON    DISCARDABLE "res\\dlgapp.ico"
+	</File>
+	<File folder="Other Files" name="dialogs.dlg" external="" enabled="1">#include "dialogs.h"
+#include &lt;windows.h&gt;
+
+IDD_MAIN DIALOG 122, 75, 213, 143
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+STYLE WS_MAXIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | 
+    WS_THICKFRAME
+CAPTION "$(ProjectName)"
+FONT 8, "Tahoma"
+BEGIN
+    DEFPUSHBUTTON   "OK", IDC_OK, 162, 101, 40, 14
+    PUSHBUTTON      "Cancel", IDC_CANCEL, 162, 120, 40, 14
+    LTEXT           "Text", IDC_TEXT, 26, 30, 20, 8
+END
+	</File>
+	<File folder="" name="dialogs.dres" external="dialogs.dres" enabled="1">
+	</File>
+	</Directory>
+	<Directory name="res">
+	<File folder="" name="dlgapp.ico" external="res\dlgapp.ico" enabled="1">
+	</File>
+	<File folder="" name="xpstyle.manifest" external="res\xpstyle.manifest" enabled="$(XpStyle)=1">
+	</File>
+	</Directory>
+	</Outputs>
+</ProjectType>

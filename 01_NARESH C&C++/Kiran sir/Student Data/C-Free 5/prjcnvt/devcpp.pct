@@ -1,0 +1,6 @@
+[general]
+name=Dev-C++ Project
+filter=Dev-C++ Project(*.dev)|*.dev
+desp=
+cnvt=devcpp.cnvt
+bldr=mingw1

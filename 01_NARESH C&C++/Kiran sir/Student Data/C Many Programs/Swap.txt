@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+   void swapv(int,int);
+   void swapr(int *,int *);
+   int a,b;
+   clrscr();
+   printf("Enter two numbers - ");
+   scanf("%d%d",&a,&b);
+   swapv(a,b);
+   printf("%d %d",a,b);
+   swapr(&a,&b);
+   printf("\n%d %d",a,b);
+   getch();
+}
+
+void swapv(int a,int b)
+{
+  int t;
+  t=a;
+  a=b;
+  b=t;
+}
+
+void swapr(int *p,int *q)
+{
+  int t;
+  t=*p;
+  *p=*q;
+  *q=t;
+}

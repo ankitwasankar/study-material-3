@@ -1,0 +1,123 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+<strong>PROBLEMS IN STRUCTURES</strong>
+
+typedef struct
+{
+int data;
+NODEPTR link;
+}*NODEPTR;
+
+  A typedef defines a new name for a type and in similar cases like the one shown below you can
+ define a new structure type and a typedef for it at the same time.
+
+           typedef struct
+          {
+	char name[20];
+  	int age;
+          }emp;
+ 
+	typedef struct
+	{
+	int data;
+	NODEPTR link;
+	}*NODEPTR;
+
+	there is no error in this because a typedef declaration cannot be used until it
+ is defined.In the given code fragment the typedef declaration is not yet defined at the
+ point where the link file is declared.To eliminate this problem ,first give the structure 
+a name("struct node").Then declare the link field as a simple struct node as shown below:
+
+typedef struct node
+{
+int data;
+struct node *link;
+}*NODEPTR;
+
+         Another way to eliminate this problem is to disentangle the typedef declaration 
+from the structure definition as
+           struct node
+           {
+	int data;
+	struct node *link;
+	};
+	typedef struct node *NODEPTR;
+
+Another way is to precede the struct declaration with the typedef ,in which case we would
+ use the NODEPTR typedef when declaring the link field as
+
+    	typedef struct node *NODEPTR
+	struct node
+	{
+	int data;
+	NODEPTR next;
+	};
+  
+   In this case ,we declare a new typedef name involving struct node even though struct
+ node has not been completely defined yet,this allowed to do.
+
+
+2.void modify(struct emp *);
+struct emp
+{
+  char name[20];
+  int age;
+};
+main()
+{
+  struct emp e={"sanjay",4};
+  modify( &e);
+     printf("\n %s%d",e.name,e.age);
+}
+void modify(struct emp *p)
+{
+strupr(struct emp *p)
+p->age=p->age+2;
+} 
+
+<a href="structures.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

@@ -1,0 +1,49 @@
+<html>
+<body>
+PARANTHISIS CHECKING:-<br>
+
+{x+(y-[a+b])*c-[(d+e)]}/(h-(j-(k-[l-n])))<br>
+
+
+valid=true<br>
+
+s=empty stack<br>
+
+while(we have not read the entire string)<br>
+{<br>
+
+read the nest symbol(symb) of the string;<br>
+
+if(symb=='9'||symb=='['||symb=='{')<br>
+
+push(s,symb);<br>
+
+if(symb==')'||symb==']'||symb=='}')<br>
+
+if(empty(s))<br>
+
+valid=fase;<br>
+
+else<br>
+
+{<br>
+
+i=pop(s);<br>
+
+if(i is not the matching opener)<br>
+
+valid=false;<br>
+
+if(valid)<br>
+
+printf(&#034;%s&#034;,string is valid);<br>
+
+else<br>
+
+printf(&#034;%s&#034;,the string is invalid);<br>
+
+}<br>
+
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+void main()
+{
+   int a[3][3],i,j,ch,num;
+   void input(int [][3]);
+   void print(int [][3]);
+   void transpose(int [][3]);
+   void scalar(int [][3],int);
+   void diagonal(int [][3]);
+   clrscr();
+   while(1)
+   {
+     clrscr();
+     printf("\n 1. Input the Matrix");
+     printf("\n 2. Print the Matrix");
+     printf("\n 3. Transpose the Matrix");
+     printf("\n 4. Scalar Matrix");
+     printf("\n 5. Dialog Matrix");
+     printf("\n 6. Exit");
+     printf("\n Enter the choice (1-6) - ");
+     scanf("%d",&ch);
+     clrscr();
+     switch(ch)
+     {
+       case 1:
+	input(a);
+	break;
+       case 2:
+	print(a);
+	break;
+       case 3:
+	transpose(a);
+	break;
+       case 4:
+	printf("Enter the scalar number - ");
+	scanf("%d",&num);
+	scalar(a,num);
+	break;
+       case 5:
+	diagonal(a);
+	break;
+       case 6:
+	exit(0);
+     }
+   }
+   getch();
+}
+
+void input(int a[][3])
+{
+  int i,j;
+  for(i=0;i<3;i++)
+  {
+     for(j=0;j<3;j++)
+     {
+       printf("Enter the number - ");
+       scanf("%d",&a[i][j]);
+     }
+  }
+}
+
+void print(int a[][3])
+{
+  int i,j;
+  for(i=0;i<3;i++)
+  {
+    printf("\n");
+    for(j=0;j<3;j++)
+    {
+      printf("%3d",a[i][j]);
+    }
+  }
+  getch();
+}
+
+void transpose(int a[][3])
+{
+  int i,j;
+  for(i=0;i<3;i++)
+  {
+    printf("\n");
+    for(j=0;j<3;j++)
+    {
+      printf("%3d",a[j][i]);
+    }
+  }
+  getch();
+}
+
+void scalar(int a[][3],int num)
+{
+  int i,j;
+  for(i=0;i<3;i++)
+  {
+    printf("\n");
+    for(j=0;j<3;j++)
+    {
+      printf("%3d",a[i][j]*num);
+    }
+  }
+  getch();
+}
+
+void diagonal(int a[][3])
+{
+  int i,j;
+  for(i=0;i<3;i++)
+  {
+    printf("\n");
+    for(j=0;j<3;j++)
+    {
+      if(i==j)
+       printf("%3d",a[i][j]);
+      else
+       printf("%3d",0);
+    }
+  }
+  getch();
+}

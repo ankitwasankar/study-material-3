@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<conio.h>
+struct customer
+{
+  int code;
+  char name[20];
+  char tran_type;
+  int amount;
+};
+typedef struct customer customer;
+
+void main()
+{
+  customer *c[5];
+  int i;
+  clrscr();
+  for(i=0;i<3;i++)
+  {
+  printf("Enter the code no - ");
+  scanf("%d",&c[i]->code);
+  printf("Enter the name - ");
+  scanf("%s",c[i]->name);
+  flushall();
+  printf("Enter the type of transaction - ");
+  scanf("%c",&c[i]->tran_type);
+  printf("Enter the amount - ");
+  scanf("%d",&c[i]->amount);
+  }
+  for(i=0;i<3;i++)
+  {
+  printf("\n Record No. - %d",i+1);
+  printf("\n Code No. - %d",c[i]->code);
+  printf("\n Customer Name - %s",c[i]->name);
+  printf("\n Transaction Type - %c",c[i]->tran_type);
+  printf("\n Amount - %d",c[i]->amount);
+  }
+  getch();
+}

@@ -1,0 +1,189 @@
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h3>Questions On Pointers Through Structures</h3></center>
+
+<pre>
+<font size="2">
+ 1.Can a structure contain a pointer to itself ?
+Ans:Certainly such structures are known as self 
+referential structures	
+
+2.What would be the output of the following program ?
+  main( )
+   {
+     struct emp
+     {
+      char *n;
+      int age;
+      }
+      
+      struct emp e1={"dravid",123};
+      struct emp e2=e1;
+      strupr(e2.n);
+      prntf("\n%s",e1n);
+      }
+Ans: DRAVID
+3.If the following structure is written to a file usng 
+fwrite( ) ,can fread( ) read it back successfully ?
+Ans: No,Since the structure contains a char pointer 
+while writting the structure to 
+the disk using fwrite( )
+only the value stored in the pointer would get written.
+When  this structure is read back the address would be 
+read back but it is quite unlikely that the desired 
+string would be present at this adress in memory.
+4.What is the output of the following program:
+  main()
+  {
+    struct a
+    {
+     char ch[7];
+     char *str;
+     };
+     static struct a s1={"Nagpur","Bombay"};
+     printf("%c%c\n",s1.ch[0],*s1.str);
+     printf("%s%s\n",s1.ch,s1.str);
+     }
+Output: N B
+	Nagpur Bombay	
+5.what is the output of the following program?
+  main()
+  {
+    struct s1
+    {
+      char *z;
+      int i;
+      struct s1 *p;
+    };
+    static struct s1 a[]={
+                           {"Nagpur",1,a+1};
+			   {"Raipur",2,a+2};
+			   {Kanpur",3,a}
+			 };
+    struct s1 *ptr=a;
+    printf("%s%s%s\n",a[0].z,ptr->z,a[2]p-z);
+   }
+ 6.What is the output of the following program?
+ main( )
+ {
+   struct node
+   {
+      int data;
+      struct node *link;
+   };
+   struct node *p,*q;
+   p=malloc(sizeof(struct node));
+   q=malloc(sizeof(struct node));
+   printf("%d%d",sizeof(p),sizeof(q));
+ }
+ <strong>Output: </strong> 22 
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+
+<a href="pointer.html" target="_self"><strong>Back</strong></a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+
+
+

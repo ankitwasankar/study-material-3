@@ -1,0 +1,40 @@
+<html>
+<body>
+Analysis of Quick sort :<br>
+	    Like Merge sort, Quick sort is recursive and hence its analysis requires solving a recurrence formula.<br>
+	  We will do this for a quick sort, assuming a random pivot and no cutoff for small files.<br>
+	  The running time of quick sort is equal to the running time of two recursive calls plus the linear time spent in the partition.<br>
+	The basic Quick sort relation is <br>
+			T(n)  = T(i) + T(n-i-1) + Cn<br>
+		where i= |s1| is the number of elements in s1.	<br>
+          Worst-case Analysis :<br>
+	The pivot is the smallest element all the time. Then  i=0 and if we ignore T(0) = 1, which is significant, the recurrence is<br>
+	  	T(n) = T(n-1) + Cn , n>1<br>
+		T(n-1) = T(n-2) + C(n-1)<br>
+		T(n-2) = T(n-3) + C(n-2)<br>
+		    .<br>
+		    .<br>
+		T(2) = T(1) + C(2)<br>
+	Adding up all these equations we get<br>
+
+	    T(n) = T(1) + C∑<sub>i=2</sub>  i = O(n<sup>2</sup>)<br>
+                                                 
+           Best-case Analysis :<br>
+	In this case the pivot is in the middle.<br>
+	T(n) = 2T(n/2) + Cn<br>
+	divide both sides by n<br>
+	T(n)/n = T(n/2)/(n/2) + C<br>
+	T(n/2)/(n/2) = T(n/4)/(n/4) + C<br>
+	and<br>
+			T(n/4)/(n/4)  =  T(n/8)/(n/8) + C<br>
+				.<br>
+				.<br>
+				.<br>
+			T(2)/2 = T(1)/1 + C<br>
+		Now add up all the equations. After everything is added the final result is because all of the other terms cancel and there are logn equations , and so all the 1s at the end of these equations add up to logn.<br>
+		T(n)/n = T(1)/1 + logn<br>
+	Multiplying through by n gives the final answer.<br>
+		T(n) =  Cnlogn + n<br>
+		       = O(nlogn)
+	
+</body></html>

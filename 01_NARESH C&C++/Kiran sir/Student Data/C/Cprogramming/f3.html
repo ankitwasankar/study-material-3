@@ -1,0 +1,189 @@
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Function Declaration and prototype</h2></center>
+
+<pre>
+<font size="2">
+         It is one of the most important feature of ANSI C. 
+A function prototype tells the compiler the type of data 
+returned by the function, the number of arguments the 
+function expects to receive, the types of arguments,and the
+order in which these arguments are expected.The compiler 
+uses function prototype to validate function calls.
+        The function prototype is written as follows:
+   Data-type function-name(type1,type2 ..........typen);
+Where data-type is the data-type returned by the function
+type1,type2,.......typen are the type of data fed as 
+arguments.
+      Any C function by default returns an int value. More 
+specifically whenever a call is made to a function,the 
+compiler assumes that this function would return a value of
+the type int.If we desire that a function should return a 
+value other than an int, the it is necessary to explicitly 
+mention so in the calling function as well as in the called
+function. Suppose we want to find out square of a number 
+using a function,
+
+1)  main()
+    {
+       float a,b;
+       printf("\n Enter any number");
+       scanf("%f",&a);
+       b=square(a);
+       printf("\n square of %f is %f", a,b);
+    }
+    square(float x)
+    {
+       float y;
+       y=x*x;
+       return(y);
+    }
+   And here are the sample runs of this program
+  Enter any number 3
+  square of 3 is 9.000000
+  Enter any number 1.5
+  square of 1.5 is 2.000000
+  Enter any number 2.5
+  square of 2.5 is 6.000000
+
+    The first of these answers is correct. But square of 1.5
+is definitely not 2. This is happened because any C function,
+by default always returns an integer value. Therefore, even
+though the function square() calculates the square of 1.5 as
+2.25,it is not capable of returning a float value. To 
+overcome this problem, the function square() must be declared
+as float in main() as well.The statement float square() means
+that it is a function which will return a float value.
+
+<strong>Return Statement:</strong>
+       The return statement has two important uses:
+
+1) It causes an important exit from the function it is in. 
+That   is, it causes program execution to return to the 
+calling code.
+2) It can be used to return the value.
+  The syntax of the return statement is: 
+            return;
+            return(var);
+            return(expression);
+  Where var is any variable and expression is any arithmetic 
+or logical expression.When the return statement is encount-
+ered in the called function, control is passed on to the 
+calling function and a variable var or the value obtained by
+the arithmetic or logical expression is returned by the 
+called function to the calling function.
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="functions.html" target="_self">BACK</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

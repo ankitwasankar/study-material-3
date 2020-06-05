@@ -1,0 +1,30 @@
+<html><body>
+Void queue_store(char *p)<br>
+{<br>
+/* The queue is full if(a) end is one less than the start ,or(b) end is at the end poisition of queue.and start is the beginning of queue.*/<br>
+if((end+1==start)||(end+1==MAX&#038;&#038;art==0))<br>
+{<br>
+printf("queue is full,can not add new items\n");<br>
+return;<br>
+}<br>
+arr[end]=p;<br>
+end++;<br>
+/* loop back to complete the circle of the queue if end is reached*/<br>
+if(end==MAX)<br>
+end=0;<br>
+}<br>
+char *queue_retrive(void)<br>
+{<br>
+/*loop back*/<br>
+if (start==MAX)<br>
+start=0;<br>
+if(start==end)<br>
+{<br>
+printf(&#034;Queues empty&#034;) <br>
+return(NULL");<br>
+}<br>
+start++;<br>
+return(arr[start-1];<br>
+}
+</body>
+</html>

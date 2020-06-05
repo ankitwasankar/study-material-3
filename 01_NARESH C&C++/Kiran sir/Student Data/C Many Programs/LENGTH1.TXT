@@ -1,0 +1,14 @@
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+void main()
+{
+char a[20];
+int l=0;
+clrscr();
+printf("Enter the string:-");
+scanf("%s",&a);
+l=strlen(a);
+printf("%d",l);
+getch();
+}

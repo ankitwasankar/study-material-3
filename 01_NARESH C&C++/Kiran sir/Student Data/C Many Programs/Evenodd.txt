@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+int a[10],*p,i,sum=0,sum1=0;
+clrscr();
+p=a;
+for(i=0;i<10;i++)
+{
+printf("Enter the no.:-");
+scanf("%d",p+i);
+}
+printf("even numbers");
+for(i=0;i<10;i++)
+{
+if(*(p+i)%2==0)
+{
+sum=sum+ *(p+i);
+printf("\n%d",*(p+i));
+}
+}
+printf("\n------");
+printf("\n%d",sum);
+printf("\n------");
+printf("\nodd number ");
+for(i=0;i<10;i++)
+{
+if(*(p+i)%2!=0)
+{
+sum1=sum1+ *(p+i);
+printf("\n%d",*(p+i));
+}
+}
+printf("\n------");
+printf("\n%d",sum1);
+printf("\n------");
+getch();
+}

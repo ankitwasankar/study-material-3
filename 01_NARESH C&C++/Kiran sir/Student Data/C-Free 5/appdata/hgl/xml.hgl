@@ -1,0 +1,74 @@
+[File]
+Name=XML
+Filter=XML Documents (*.xml,*.xsd,*.xsl,*.xslt,*.dtd)|*.xml;*.xsd;*.xsl;*.xslt;*.dtd
+FileExt=*.xml;*.xsd;*.xsl;*.xslt;*.dtd
+[Default0]
+Background=536870911
+Foreground=16711680
+Style=1
+[Default1]
+Background=536870911
+Foreground=255
+Style=0
+[Default10]
+Background=12632256
+Foreground=8421504
+Style=1
+[Default11]
+Background=536870911
+Foreground=16711680
+Style=2
+[Default12]
+Background=536870911
+Foreground=536870911
+Style=0
+[Default2]
+Background=536870911
+Foreground=255
+Style=0
+[Default3]
+Background=536870911
+Foreground=16711680
+Style=0
+[Default4]
+Background=536870911
+Foreground=8421504
+Style=0
+[Default5]
+Background=536870911
+Foreground=16711680
+Style=0
+[Default6]
+Background=536870911
+Foreground=0
+Style=0
+[Default7]
+Background=536870911
+Foreground=32896
+Style=2
+[Default8]
+Background=536870911
+Foreground=8421504
+Style=0
+[Default9]
+Background=536870911
+Foreground=16711680
+Style=0
+[TokenString]
+default0=Element Name#78022
+default1=Attribute Name#78023
+default2=Namespace Attribute Name#78024
+default3=Symbol#78014
+default4=Attribute Value#78025
+default5=Namespace Attribute Value#78026
+default6=Text#78027
+default7=CDATA Section#78028
+default8=Entity Reference#78029
+default9=Processing Instruction#78030
+default10=Comment#78003
+default11=DOCTYPE Section#78031
+default12=Whitespace#78012
+[Default13]
+Background=536870911
+Foreground=536870911
+Style=2

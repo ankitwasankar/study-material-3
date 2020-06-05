@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+int i,j,n;
+FILE *fp,*fe,*fo;
+clrscr();
+fp=fopen("ap.txt","w");
+for(i=0;i<5;i++)
+{
+printf("\n Enter the no.:-");
+scanf("%d",&n);
+putw(n,fp);
+}
+fclose(fp);
+fp=fopen("ap.txt","r");
+fe=fopen("even.txt","w");
+fo=fopen("odd.txt","w");
+while(fp)
+{
+j=getw(fp);
+if(j==EOF)
+break;
+else if(j%2==0)
+fprintf(fe," %d ",j);
+else
+fprintf(fo," %d ",j);
+}
+fclose(fp);
+fclose(fe);
+fclose(fo);
+}

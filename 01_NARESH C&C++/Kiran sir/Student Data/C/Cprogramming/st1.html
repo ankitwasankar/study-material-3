@@ -1,0 +1,249 @@
+﻿<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Inroduction To Structures</h2></center>
+
+<pre>
+<font size="2">
+ Arrays can be used to represent a group of data items
+that belong to same type,such as int or float.However,
+If we want to represent a collection of data items of
+different types using a single name,then we cannot use
+arrays.At this time,we use structures.Structure is used
+to represent a set of attributes,such as student_name,
+roll_number and marks.The individual structure elements
+are referred to as members.
+
+  Consider a book database consisting of book name,
+author,number of pages and price. We can define a 
+structure to hold this information as follows.
+
+        struct book_bank
+        {
+ 	 char title[20];
+         char author[15];
+	int pages;
+	float price;
+        };
+
+  The keyword ‘struct’ declares a structure to hold the
+details of four fields,namely title,author,pages and 
+price. These fields are nothing but members of structure
+elements.Each member may belong to a different type of 
+data. book_bank is the name of the structure and is 
+called the structure tag.This will be used to declare 
+variables that have tag’s structure.
+     This declaration has not declared any variable. It
+simply describes a format called template to represent
+information as follows.......
+       struct book_bank
+	title           array of 20 char’s
+        author          array of 15 char’s
+        pages           integer
+        price           float
+
+      general declaration of a structure
+
+     struct tag_name
+     {
+        data_type member1;
+        data_type member2;
+         ------------
+         ------------
+     }
+  we can declare structure variables using the tag name 
+any where in the program.For example, struct book_bank,
+book_bank1,book_bank2, book_bank3;
+each one of these variables has 4 members as specified
+by the template.The complete declaration is like ....
+  struct book_bank
+  {
+   char title[20];
+   int  author[15];
+   int pages;
+   float price;
+  };
+  struct book_bank book1,book2,book3,book3;
+
+These members do not occupy any memory until they are 
+associated with the structure variables such as book1.
+
+ In defining structure we may follow the syntax 
+
+ 1.The template is terminated with a semicolon.
+ 2.While the entire declaration is considered as a 
+   statement, each member is declared independently for
+   its name and type in a separate statement inside the
+   template.
+ 3.The tag name such as book_bank can be used to declare
+   structure variables of its type,later in the program.
+
+ Normally structure definitions appear at the beginning 
+of the program profile,before any variables or functions 
+are defined. They also appear before the main,along with
+macro definitions such as #define.
+  We can assign values to the member of a structure in a
+no. of ways. The link between a member and a variable is
+established using the member operator.Which is also known
+as dot period or
+ period operator.
+
+For example, 
+         book1.price
+    is the variable representing the price of book1 and 
+can be treated like anyother ordinary variable.
+            Strcpy(book1.title,"BASIC");
+            book1.pages=250;
+  Like any other  data type,a structure variable can be 
+initialized. A structure must be declared as static if 
+it is to be initialized inside a function.
+
+  main()
+  { 
+    static struct;
+    {
+      int wt;
+      float  ht;
+    }
+    student ={60,180.75};
+  }  
+    we can initialize a structure by using different ways.
+    main()
+    { 
+     struct st_record;
+     {
+       int wt;
+       float  ht;
+     }
+     static struct st_record student1={60,170.75};
+     static struct st_record student2={63,170.65};
+    }  
+
+  Another method is to initialize a structure variable 
+outside the function like...
+
+    struct st_record;
+    {
+       int wt;
+       float  ht;
+    }
+    student1={60,170.75};
+    main()
+    {
+     static struct st_record student2={63,170.65};
+    }
+   C language does not permit the initialization of 
+individual structure members within the template. The 
+initialization must be done only in the declaration of 
+the actual variables.
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+
+<a href="structures.html" target="_self"><strong>BACK</strong></a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+
+
+
+
+

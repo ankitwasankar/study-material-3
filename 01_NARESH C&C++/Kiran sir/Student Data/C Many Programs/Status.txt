@@ -1,0 +1,40 @@
+#include<stdio.h>
+#include<conio.h>
+#include<ctype.h>
+void main()
+{
+   char *str;
+   int v,c,d,s,o;
+   void count(char *,int *,int *,int *,int *,int *);
+   v=c=d=s=o=0;
+   clrscr();
+   printf("Enter the string - ");
+   gets(str);
+   count(str,&v,&c,&d,&s,&o);
+   printf("\n No. of Vowels - %d",v);
+   printf("\n No. of Consonants - %d",c);
+   printf("\n No. of Digits - %d",d);
+   printf("\n No. of Spaces - %d",s);
+   printf("\n No. of Other Characters - %d",o);
+   getch();
+}
+
+void count(char *ptr,int *pv,int *pc,int *pd,int *ps,int *po)
+{
+  int i;
+  char t;
+  for(i=0;*(ptr+i)!=NULL;i++)
+  {
+    t=toupper(*(ptr+i));
+    if(t=='A' || t=='E' || t=='I' || t=='O' || t=='U')
+      (*pv)++;  // *pv=*pv+1;
+    else if(t>='A' && t<='Z')
+      (*pc)++;
+    else if(t>='0' && t<='9')
+      (*pd)++;
+    else if(t==' ')
+      (*ps)++;
+    else
+      (*po)++;
+  }
+}

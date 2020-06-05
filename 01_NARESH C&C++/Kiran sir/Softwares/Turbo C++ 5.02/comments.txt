@@ -1,0 +1,4 @@
+Borland C++ 5.02
+
+Notes:
+This is the latest C++ compiler from Borland. It has great enhancements over the 5.0 version. Read BC502.TXT for more info.

@@ -1,0 +1,127 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+<strong>strcpy():</strong>
+
+This function copies the contents of one string into another. The base address of
+ the source and target strings should be supplied to this function. 
+Here is an example of strcpy() in action.....
+
+main()
+{
+    char source[] = "sayonara";
+    char target[20];
+    strcpy(target, source);
+     printf("\n source string= %s", source);
+    printf("\n target string = %s", target);
+}
+
+output:
+  source string = sayonara
+  target string = sayonara
+
+On supplying the base address , strcpy() goes on copying the characters in source 
+string into the target string till it doesn't encounter the end of source string('\0').
+ It is our responsibility to see to it that the target string's dimension is big enough
+to hold the string being copied into it. Thus , a string gets copied into another , 
+piece -meal , character by character . There is no short cut for this . 
+
+<strong>User-defined Function for strcpy():</strong>
+
+main()
+{
+   char source[] = "sayonara";
+   char target[20];
+   xstrcpy(target, source);
+    printf("\n source string= %s", source);
+    printf("\n target string = %s", target);
+}
+  xstrcpy(char *t, char *s)
+{
+while (*s! = '\0')
+{
+*t = *s;
+s++;
+t++;
+}
+*t = '\0';
+}
+output:
+   source string = sayonara
+   target string = sayonara
+
+  Note that having copied the entire source string into the target string , 
+it is necessary to place a '\0' into the target string , to mark its end.
+ If you look at the prototype of strcpy() standard library function, it looks like this
+             strcpy(char *t, const char *s);
+    We didn't use the keyword constant in our version of xstrcpy() and still our 
+function worked correctly. So what is the need of the const qualifier?
+what would happen if we add the following lines beyond the last statement of xstrcpy()?
+s = s-8;
+*s = 'k';
+This would change the source string to "Kayonara" . Can we not ensure that the source
+string doesn't change even accidentally in xstrcpy()? We can , by changing the definition
+as folows:
+
+void xstrcpy (char *t,const char *s)
+{
+while(*s! ='\0')
+{
+  *t = *s;
+   s++;
+   t++;
+}
+   *t = '\0';
+}
+
+     By declaring char *s as const we are declaring that the source string should remain constant 
+Thus the const qualifier ensures that your program does not inadvertently alter a variable 
+that you intended to be a constant. It also reminds anybody reading the program listing that 
+the variable is not intended to change.
+
+<a href="s3.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

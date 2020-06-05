@@ -1,0 +1,14 @@
+<html>
+<head><TITLE>Analysis of Insertion Sort</TITLE></head>
+<body>
+<strong>Analysis of Insertion sort :</strong><br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Because of the nested loops, each of which can take  n iterations, insertion 	sort is O(n²). Furthermore , this bound is tight because input in reverse order can 	actually achieve this bound. The inner loop can be executed at most  p times for 	each value of p. Summing over all ‘p’ gives a total of<br>
+			n<br>
+			∑p=2+3+4+...............n = O(n²)<br>
+                        p=2<br>
+		
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;On the other hand, if the input is presorted, the running time is O(n) 	because the test at the top of the inner loop is always fails immediately. Indeed, if 	the input is almost sorted, insertion sort will run quickly. Because of this wide 	variation, it is worth analyzing the average case behavior of this algorithm. It 	turns out that the average case is O(n²) for insertion sort as well as for a variety of 	other  sorting algorithms.
+
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+hi mam
+pls post these sol incase sumbdy is searching for sol.these qs were requested by a chetanite--------------------------------------------------------- 
+1.There are 11 more animals than birds in a pet shop.If there are
+as many birds as animals and if there are as many animals as birds
+the no. of legs is 4/5 of the original.Howmany birds and animals 
+are there?
+Sol: 
+let no of animals=a,birds=b
+first case:a=b+11----legs=4(b+11)+2b=6b+44----eq(1)
+sec case  :animals=b,birds=a
+again since a=b+11;legs=2(b+11)+4b=6b+22----eq(2)
+given ;6b+22=(4/5)(6b+44).solve to get b=11,a=22
+ans: b=11,a=22
+-----------------------------------------------------------------
+2.The main line train starts at 5.00AM and the harbour line train
+starts at 5.02AM.Each train has the frequency of 10 minutes.If a 
+guy goes in the morning at a random time what is the probability
+of he getting main line train?
+sol:a very easy question but may confuse many
+suppose the person arrives at station just after 5am.he has 2 min left for the harbr line train.
+that means he gets hrbr line train if he arrives at any time bet 5 and 5:02am.but if he arrives
+after 5:02 am next train is at 5:10am(given freq is 10 min).tht means he can arrive at any time
+bet 5:02 and 5:10am to catch it.so he has 8 minutes(5:10-5:02)at his disposal.s prob of getting
+main line train=8/freq and tht of harbr train=2/freq.
+freq=10.
+so prob=0.8--main line
+" "  " =0.2--harb line
+Ans: 0.8
+----------------------------------------------------------------------
+3.A farmer has C chickens.A sack of feed comes for 9 days.As the feed cost is increasing the
+farmer sells some chickens and retains 12 chicken.If he reduces the feed quantity by 10% .Then
+he observesthat the feed comes for 30 days.What is C?
+sol:
+C chickens can b fed for 9 days.so C chick can eat 1/9 in 1 day.
+                                so 1 chick can eat (1/9C)in one day.
+after his reduction one chick gets to eat only 90% of wht it used to eat in one day.
+so new feed value=0.9*(1/9C)for 1day.but now he has only 12 chicks.
+that means as per new rule feed is suitable for 12 chicks for 30 days.
+i.e. 
+0.9*(1/9C)*12*30=1.  solve to get C=36
+Ans:36
+--------------------------------------------------------------------
+4.There is 66x33m rectangular area .Ram is 11/8 times faster than
+Krishna.Both of them started walking at opposite ends and they 
+met at some point then,Ram said &quot;See you in the other end&quot;Then
+they continued walking.After some time Ram thought he will have tea
+so he turned back walked back 15 meters then he changed his mind
+again and continued walking .How much Krishna has travelled by 
+the time they meet?
+question not clr
+5. fifty minutes ago it was four times as many minutes past threeo colck. how many minutes is it
+to six o clock
+sol:
+let it b "y" min to six o' clk.
+as per qs we get time past 3 o'clk as 4y.
+current time=4y+50 minutes frm 3 o' clk.
+no. of minutes bet 3 and 6pm =180.
+hence current time by counting bck frm 6 o'clk =180-y
+so 4y+50=180-y.
+we get y=26min.
+--------------------------------------------------------------------
+6,a mans wife drives him every morning and evening exactly at 6 . she piscks him from the station 
+and take shim home. one dayhe was let off at work an hour earlier. so he arrives at the howrah 
+station at 5 pm instead of at 6pm. he started walking home, however he met his wife enroute to 
+the station and got into the car. they drove home arriving at 10minsutes earlier than usual.how
+ long did the man have to walk before he as picked up by his wife.
+sol:
+they reached 10 min earlier.reduction in car journey in mintues=2*5(to and fro).this mean wife 
+met him walkin toward home at 5 min to 6pm.since he strtd at 5pm he's been walking for 55 min.
+ans:55min
+---------------------------------------------------------------------------
+7, we all know that the hour hand and minute hand on a clock travel at didffpseeds. howveer there are certain instances they are excatly opposite to each other. can u give  simple formula for calulcting the times of these occassions.
+Sol:don't worry they don't ask such questions i suppose.sol is there in s.devi.read it urself,
+understand whts their sol and follow ur own method
+--------------------------------------------------------------------
+8,puzzles to ouzzles you the catch a thief problem. 
+the thief takes 8steps to 5 of the officer. the officer has a longer stride ...two stpes of his are equal to five of the theif. the theif wa s
+aleadry 27steps ahead of teh officer when the officer started.can u find out how many steps the officer needed to ctach upon with the theif?
+sol:
+extra distance covered by thief=27* dist covered by him in each stride.
+given tht dist cov by policeman in 2steps and thief in 5 steps r same.let it b "y".
+thief covers  y/5 and police y/2 dist in each step respectively.
+also given: time of 5 steps of police=time of 8 steps of thief.let time taken be 1 unit for this-----(assumption1)
+         
+         so dist cov in 5steps of police =5y/2 in unit time----eq(1)
+            dist  "     8  "   "   thief =8y/5 "   "    "  ----eq(2)
+let the common time of run of both(i.e.excluding the time for 27 steps of thief) be "t" units,
+now we know ;to catchup with the thief police has to cover the same distance totally
+ coverd by thief which is equal to
+     27steps* dist per step of thief + dist run by him for the time t(which is no of steps it time "t" * y/5)
+i.e.     27 *(y/5)                    + (8y/5)*t ------eq(3)
+                                       {frm eq(2)}
+total dist covered by police=t*(5y/2)----eq(4)
+we know eq(3)=eq(4)
+so 27y/5 + 8yt/5 = 5yt/2;  y gets cancelled.u get t=6units.
+in unit time we know police takes 5 steps and thief tkes 8steps frm (assumption1).
+so in 6 units of time police takes 5*6=30 steps.
+""       "         "  thief     "  8*6=48 steps.thief has taken totally 48+27=75steps.
+so 30 steps is taken by police to catch thief.
+
+-------------------------------------------------------
+
+
+
+
+
+Some questions that were asked in HCL Technologies on 7th of Jan. 05’in Noida(U.P.)
+
+I am a student of B.Tech(2005’)
+
+#)2 nos.,1 larger than the other are such that
+
+the larger one is 1/10 larger than the reciprocal of the smaller no.
+
+The smaller 1 is such that it is 1/24 larger than the reciprocal of the larger 1.
+
+Find the larger 1.
+
+ 
+
+#)There are 10 stations b/w A and B stations ,both inclusive .All these stations provide tickets to every other station .Return tickets have to be bought separately .Find the total no. of different tickets.
+
+ 
+
+#)There were certain no of marbles with Ajay. He gave 1 to anita. Then gave the half of what was left to amita. Gave 1 to rati .Then 2/3 of wat was left to sameer. .Then half of what was left to sagar.He gave three to the beggar and was left with 1.What is the minimum no. of marbles he had initially.
+
+ 
+
+The entire paper had 3 sections. 1 section with 20 ques. Like above.
+
+1 section dedicated to aptitude ques. Based on a detailed paragraphs like 
+
+ 
+
+#)            A,B,C,D,E,F are six friends living on a 6storied building where lowest floor was the ground.All of them live in separate floors each not in the order given above. A is on the 3rd floor. D is always above A.The difference of floors b/w E and B is 3.B is below D.
+
+Q)Who is on the 6th floor.
+
+Q)How many different sets of living arrangements can we have based on above facts?
+
+ 
+
+Total ques in this section were also 20.
+
+ 
+
+The next section was English which had 2 small passages and 2 ques each based on the pssg.There were 
+
+i)                    parajumbles 
+
+ii)                   Fill in the blanks(general usage one)
+
+iii)                 Choose the correct phrase that could replace the underlined phrase in given sentences
+
+ 
+
+ 
+
+All together prep ur apti well if u r a fresher of 2005 batch otherwise there was technical paper also (datastructures and C) for MCA( but for which batch is not clear to me as I didn’t get a chance 2 speak 2 them)
+
+ 
+
+ 
+
+Hey I m very sad abt. The fact that I m not able to remember all the ques. But atleast to cater the urgent need of latest pattern and some of the ques that were asked ,this might help.I’ll try to find out more ques and sent them later.
+
+I wud b elated if this mail of mine would  help some1 in the chetana group or their friends.
+
+
+

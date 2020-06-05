@@ -1,0 +1,30 @@
+# include <stdio.h>
+# include <conio.h>
+void main()
+{
+  int a[100],n,i,j,tmp;
+  clrscr();
+  printf("\n Enter how many numbers   ");
+  scanf("%d",&n);
+  for(i=0;i<n;i++)
+  {
+	 printf("\n Enter  %d   number   ",i);
+	 scanf("%d",&a[i]);
+  }
+  for(i=0;i<n-1;i++)
+  {
+	 for(j=i+1;j<n;j++)
+	 {
+		if(a[j]>a[i])
+		{
+	  tmp=a[i];
+	  a[i]=a[j];
+	  a[j]=tmp;
+		 }
+		}
+	  }
+	  printf("\n Given values in descending order  \n");
+	  for(i=0;i<n;i++)
+	  printf("\n%d",a[i]);
+	  getch();
+}

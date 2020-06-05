@@ -1,0 +1,239 @@
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="650" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Graphs</h2></center>
+
+<pre>
+<font size="2">
+<strong>INTRODUCTION:</strong>
+Graphs are mathematically structures and are found very 
+useful in problem solving.
+Graphs provide an excellent way to describe the essential 
+features of many applications.
+Graph is a set of nodes (or vertices ) and edges (or arcs)
+which connect them. 
+
+<div align="center">G= (V,E)</div>
+
+where V is the set of nodes and E is the set of edges.
+A set of edges E are such that E={(vi,vj)} where vi,vj ?V. 
+That is each edge in a graph is specified by a pair of 
+nodes. 
+
+Example:
+
+    A Graph could be viewed as a map of what cities are 
+connected by train routes. Viewing in this way ,each vertex
+represents a particular city and each edge represents 
+whether there is a train route for one city to  another.
+
+If two nodes are connected by an edge those two nodes are 
+said to be adjacent (or neighbours ). That is ,nodes v1 and
+v2 are adjacent if there is an edge (v1,v2) or (v2,v1).
+
+<div align="center">	<img src="undirectedgraph1.jpg" align="middle"></div>
+
+In the above fig  Vertices adjacent to node 3 are 1,5,6 and
+4 and that to node  2 are 1 and 4.An edge which has 
+direction is called &#034;directed edge&#034;. That means , 
+directed edge is &#034;unidirectional&#034;.It goes from 
+one node to  another.
+
+<div align="center"><img src="directedgraph1.jpg" align="middle"></div>
+
+In the above fig there is a edge from B to C but there is
+no edge representing reverse relationship(from C to B).The
+edge which has no specific direction is  called #034; undirected edge&#034;.
+
+If a node doesn't have any adjacent nodes,then it is said 
+to be #034;isolated&#034;.node 8 in the above fig is 
+isolated  node .A graph which contains only isolated nodes
+is called a &#034;null graph&#034;
+
+A directed  graph(or digraph) is a graph in which all 
+edges are directed  edges.
+
+An undirected  graph is a graph in which all edges are 
+&#034;undirected  edges&#034;.A graph which contain both 
+directed and undirected edges is said to be mixed graph.
+
+An edge in a graph  which starts and ends on the same node
+is called a  &#034;loop&#034;.A loop can be considered 
+either a directed  or undirected since there is no 
+significance.
+
+A pair of nodes may be connected by more than one edge .
+Such edges are referred to a parallel. A #034; 
+MultiGraph&#034; is a graph in which there are some 
+parallel edges .A simple graph is a graph in which there
+are no parllel edges.
+
+The &#034;Degree&#034; of a node is the number of edges 
+connected directly to that node , i.e., the number of 
+edges incident on it.
+
+<div align="center"><img src="graph.jpg" align="middle"></div>
+
+In a directed graph,the &#034;in degree&#034; of a node is
+the number of edges beginning from the node .The &#034;out
+degree&#034; of a node is the number of edges terminating
+at that node.
+
+In the above fig the in degree of a node B is 2 and out 
+degree of a node B is 1.The sum of in degree and out 
+degree of a node is the total degree of that node . In 
+case of undirected graphs ,total degree is nothing but 
+degree itself . The concept of in degree and out degree 
+can not apply to undirected graph . A node whose in degree
+os 0 is called a &#034;source node&#034; and a node whose 
+out degree is 0 is called  &#034;sink node&#034;.for i
+solate nodes,the degree is 0.
+
+A &#034;weighted  graph&#034; is a graph that has a number
+( weight) associated with each edge.<br>
+
+Examples of 
+Weighted graphs are:-
+
+1)Airline flight information in which the nodes are 
+airports(cites) and the edges are flights .The weights 
+could be ticket prices,or distances.
+2)A computer network 
+in which the nodes are computers and the edges are 
+communication lines .The weights could be line bandwidth.
+
+3)A natural gas distribution system in which nodes are 
+storage tanks and edges are pipes. Weights could be pipe 
+capacity or distance.
+
+A path P of length  k,in a graph is a sequence of connected
+vertices v1,v2,v3,........vk such that (vi,vi+1) ? E for 
+1&#060;=i&#060;k.
+
+ The number of edges in a path is the  length of that path.
+
+A simple path in a graph is a path such that all nodes are 
+distinct,except that the first and last could be same .A 
+&#034;cycle&#034; in a graph is a path of length atleast 3
+ which has the first and last nodes are same. i.e., the 
+path begins and ends on the same node .A directed graph is
+a cyclic if it has no cycles.
+
+A graph is said to be connected , if a path exists from 
+any node to any other node . A digraph with this property
+is said to be strongly connected, i.e., a directed path 
+exists from any node to any other node . If a digraph is 
+not strongly connected then it is said to be weakly 
+connected .A graph is said to be complete graph if there is
+an edge between  every pair of nodes. A tree is nothing but
+a complete graph without any cycles.
+
+<div align="center"><img src="weightedgraph.jpg"></div>
+         
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="graphs1.html">Back</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+
+

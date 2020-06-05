@@ -1,0 +1,162 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left">
+
+
+                         <pre>   <strong><u>Pointers and structures:</u></strong>
+			    
+  We know that the name of an array stands for the address of its zeroth 
+  element.The samething is true of the names of arrays of structure vari-
+  ables.Suppose product is an array variable of structtype.The name prod-
+  uct represents the address of its zeroth element consider the following 
+  declaration.
+  
+  struct inventory
+  {
+     char name[30];
+     int number;
+     float price;
+  } product[2],*ptr;
+  This statement declares product s an array of two elements,each of the 
+  type struct inventory and ptr as a pointer to data objects of the type 
+  struct inventory.
+
+  The assignment
+	ptr=product;
+  would assign the address of the zeroth element of product to ptr.This is,
+  the pointer ptr will now point to product[0].Its members can be accessed 
+  using the following notation.
+        ptr --> name
+	ptr--> number
+	ptr --> price
+  The symbol -->is called the arrow operator and is made up of a minus sign 
+  and a greater than sign.Note that ptr --> is simply another way f wrting 
+  product[0].When the pointer ptr is incremented by one,it is made to point
+  to the next record. i.e,product[1].
+  We could use the notation
+	(*ptr).number
+  to access the member number.The parantheses around *ptr are necessary because 
+  the member operator "." has a higher precedence than the operator *
+  
+  A program to illustrate the use of a structure pointer to manipulate the
+  elements of an array of structuresthe program highlights all the features 
+  discussed above.Note that the pointer ptr(of type struct invert) is also
+  used as the loop control index in for loops
+  
+  struct invent
+  {
+    char *name[20];
+    int number;
+    float price;
+  };
+  main( )
+  {
+    struct invent product[3],*ptr;
+    printf("INPUT\n\n");
+    for(ptr=product;ptr lessthan product+3;ptr++)
+    scannf("%s%d%f",ptr->name,ampercent ptr->number,ampercent ptr->price);
+    printf("\n  OUTPUT\n\n");
+    ptr=product;
+    while(ptr lessthan product+3)
+    {
+      printf("% -20s %5d %102f\n",ptr->name,ptr->number,ptr->price);
+      ptr++;
+    }
+  }
+  
+  Output:
+  INPUT
+     Washing-machine 5  7500
+     Electric-iron   12 350
+     Two-in-one      7  1250
+     
+  OUTPUT:
+     Washing-machine  5  7500.00
+     Electric-iron    12 350
+     Two-in-one       7  1250.00
+     
+  While using structure pointers, we should takecare of the precedence of operators.
+  	The operators '->', '.',(),[] enjoy higher priority among the operators.They
+  bind very tightly with thier operands
+      For example,given the definition
+        struct {
+	        int count;
+		float *p;
+		*ptr	}
+     then the statement ++ptr->count;
+     increments count,not ptr however,
+     <strong>(++ptr)->count;</strong> increments ptr first,and then links count the statement
+     <strong>ptr++->count;</strong>increments ptr first,and then links count the statement
+     <strong>ptr++->count;</strong> is legal and increments ptr  after accessing count.The following
+     statements also behave in the similar fashion.
+     <strong>*ptr->p </strong>  Fetches whatever p points to
+     <strong>*ptr-p++</strong>  Increments p after accessing what ever it points to
+     <strong>(*ptr->p)++ </strong> Increments  whatever p points to
+     <strong>*ptr++->p</strong> Increments ptr after accessing whatever it points to.
+    Passing of a structure as an argument to a function or a function recieves a
+    copy of an entire structure and returns it after working on it.This method
+    is inefficient in terms of both.The execution speed and memory.     
+   
+    We can overcome this drawback by passing a pointer to the structure and then
+     using this pointer to work on the structure members.Consider the following function:
+     
+     Print_invent(item)
+     struct invent *item;
+     {	printf("Name:%s\n",item->name);
+        printf("price:%f\n",item->price);
+	}
+   this function can be called by
+     print_invent(&product)
+   The formal argument item recieves the address of the structure product an
+   therefore it must be declared as a pointer of type struct invent,which represents
+   the structure of product.
+<a href="pointer.html" target="_self"><strong>Back</strong></a>   
+</pre></TD>
+</TR>
+
+</table>
+
+
+
+</pre></html>

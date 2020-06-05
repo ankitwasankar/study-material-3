@@ -1,0 +1,14 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+float l,b,area;
+clrscr();
+printf("enter l value");
+scanf("%f",&l);
+printf("enter b value");
+scanf("%f",&b);
+area=l*b;
+printf("area is=%f",area);
+getch();
+}

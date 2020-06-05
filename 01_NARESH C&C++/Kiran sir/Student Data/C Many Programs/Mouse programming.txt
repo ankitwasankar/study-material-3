@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<graphics.h>
+#include<dos.h>
+union REGS regs;
+void getxy(int *,int *);
+void main()
+{
+  int gd=0,gm;
+  int x=0,y=0;
+  initgraph(&gd,&gm,"c:\\tc\\bgi");
+  regs.x.ax=1;
+  int86(0x33,&regs,&regs);
+  do
+  {
+     regs.x.ax=3;
+     getxy(&x,&y);
+     int86(0x33,&regs,&regs);
+     if(regs.x.bx&1)
+     outtextxy(x,y,"Hello");
+  }while(!kbhit());
+  getch();
+  closegraph();
+}
+
+void getxy(int *x,int *y)
+{
+   regs.x.ax=3;
+   x=regs.x.dx;
+   y=regs.x.cx;
+   int86(0x33,&regs,&regs);
+}

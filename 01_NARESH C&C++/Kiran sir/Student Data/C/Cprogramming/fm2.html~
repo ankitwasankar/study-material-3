@@ -1,0 +1,104 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+<strong>DEFINING AND OPENING A FILE</strong><br>
+         If we want to store data in a file in the secondary memory , we must specify
+ certain things about the file , to the operating system. They include:
+
+ 1.File name.<br>
+ 2.Data Structure.<br>
+ 3.Purpose.<br><br>
+          File name is a string of characters that make up valid filename for the operating system. 
+It may contain two parts , a primary name and an operational period with the extension.
+Data structure of a file is defined as FILE in the library of standard I/O function definitions.
+Therefore , all files should be declared as type FILE before they are used. FILE is defined data type .
+When we open a file , we must specify what we want to do with the file . For example , we may write 
+data to the file or read the already existing data.
+ Following is  the general format for declaring and opening a file:
+                                             <div >FILE *fp;<br>
+                                  fp=fopen("filename","mode");<br></div>
+          The first statement declares the variable fp as a "pointer to the data type FILE". As stated earlier ,
+ FILE is a structure that is defined in the I/O library .The second statement opens the file named filename and
+ assigns an identifier to the FILE type fp . This pointer which contains all the information about the file is
+ subsequently  used as a communication link between the system and the program.
+        The second statement also specifies the purpose  of opening this file .The Mode does the job.
+ Mode can be one of the following:
+
+<table border="1" width="550">
+<TR><td>Mode Type</td>
+<td>Operation</td>
+</TR>
+<tr><TD>"r"</TD>
+<td>Searches File . If the file exists loads it into memory and sets up a pointer which points to the first character in it , if file doesn’t exists it returns null.
+Operations possible – Reading from a file.</td>
+</tr>
+ <tr><TD> "w"</TD>
+ <td>Searches File . If the file exists its contents are overwritten .If file doesn’t exists new file is created .Returns null if unable to open a file.
+Operations possible – Writing to a file.
+</td>
+</tr>             
+<tr><TD>"a"</TD>
+<td>Searches File . If the file exists loads it into memory and sets up a pointer to point the first character .If file doesn’t exists new file is created .Returns null if unable to open a file.
+Operations possible – Appending new contents at the end of file.</td>         
+ </tr>
+ <tr><TD>"r+"</TD>
+ <td>Searches File .If it exists,loads it into memory sets up a pointer which points to the first character in it. If does not exist it returns NULL.
+Operations possible – reading,writing,modifying existing contents.
+</td>
+ </tr>           
+<tr><TD>"w+"</TD>
+<td>Searches File . If the file exists its contents are destroyed .If file doesn’t exists new file is created .Returns null if unable to open a file.
+</td>
+</tr>
+ <tr><TD> "a+"</TD>
+ <td>Searches File . If the file exists loads in to memory and sets up a pointer which  points to first of a file. If file doesn’t exists new file is created .Returns null if unable to open a file.
+Operations possible – Writing to a file.</td>
+ </tr> 
+  </table>
+
+<a href="filemgt.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

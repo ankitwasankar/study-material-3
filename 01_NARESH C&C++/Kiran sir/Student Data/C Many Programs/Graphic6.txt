@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<graphics.h>
+#include<dos.h>
+void main()
+{
+int gd=0,gm;
+initgraph(&gd,&gm,"c:\\tc\\bgi");
+settextstyle(4,0,3);
+setcolor(10);
+setfillstyle(8,4);
+circle(300,200,50);
+floodfill(305,205,10);
+ellipse(240,400,0,360,200,30);
+floodfill(245,405,10);
+outtextxy(180,370,"Main Menu");
+//arc(300,300,10,70,50);
+outtextxy(230,100,"sandeep");
+bar(200,110,300,112);
+getch();
+}

@@ -1,0 +1,14 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+  FILE *fp;
+  char a;
+  clrscr();
+  fp=fopen("x.txt","w");
+  while((a=getchar())!=EOF)
+  {
+  putc(a,fp);
+  }
+  fclose(fp);
+}

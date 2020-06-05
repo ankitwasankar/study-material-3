@@ -1,0 +1,213 @@
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h3>The Conditional Operators</h3></center>
+
+<pre>
+<font size="3">
+<pre>
+         The Conditional operator ? and :  are sometimes
+called ternary operators since they take three arguments.
+Infact,they form a kind of foreshortened 
+IF-Then-ELSE. 
+
+<strong>Their general form is:</strong> 
+          expression1?expression2:expression3 
+This expression: "if expression1 is TRUE
+( that is, if its value is non-zero), 
+then the value returned  will be expression2, otherwise the
+value returned  will be  expression3". 
+
+          Let us understand  this with the help of a few 
+examples: 
+
+(a) <strong>Example:37</strong>
+             int x,y; 
+              scanf("%d",&x); 
+              y=(x>5?3:4); 
+         This statement will store 3 in y if x is greater 
+than 5, otherwise it will store 4 in y.   
+
+      The equivalent If statement will  be, 
+
+              if(x>5) 
+              y=3; 
+              else 
+              y=4; 
+
+(b)<strong>Example:38 </strong>
+
+           char  a;
+           int y; 
+           scanf("%c",&a);
+           y=(a>=65&&a<=90?1:0); 
+          
+         Here  1 would be assigned  to y if a >=65 && a<=90 
+evaluates to TRUE,otherwise  would be assigned. 
+
+       The following points may be noted about the conditional
+operators: 
+
+(a)  It's not necessary that the conditional operators should 
+   be used only in arithmetic statements.This  is illustrated 
+   in the following examples: 
+
+<strong>Example: 39</strong>   
+
+            int i; 
+            scanf("%d",&I); 
+           (i==1?prntf("Amit"):printf("All and Sundry"); 
+
+<strong>Example:40 </strong>
+
+           char a='z'; 
+           printf("%c",(a>='a'?a:'1')); 
+
+(b) The conditional operators can be nested as shown below: 
+
+                int big,a,b,c; 
+                big=(a>b?(a>c?3:4):(b>c?6:8)); 
+              Check out the following conditional expression 
+
+  This will give you an error' Lvalue required' statement 
+in the: part within a pair of parenthesis. 
+
+This is shown below; 
+
+               a>b?g=a:(g=b); 
+
+       In absence of parenthesis the compiler believes that
+b is being assigned to the result of the expression to the 
+left of the second=. Hence it reports an error.
+
+<strong>Example:41</strong> 
+
+             main() 
+             { 
+              int x=3,y=4,z=4;
+              printf("ans=%d",z>=y&&y>=x?1:0);
+             } 
+
+OUTPUT:     ans=1 
+
+Explanation: 
+       Let  us isolate the condition for closer examination. 
+
+               z>=y&&y>=x 
+
+ If we are place the variable with their value the condition
+ becomes,4>=4&&4>=3 Since both the conditions are TRUE and 
+ they have been combine using &&, the whole thing evaluates 
+ to TRUE. This is deduced from the fact that truth&&truth 
+ yields truth. 
+       printf("ans=%d",truth?1:0); 
+Hence ans=1 gets printed.
+
+       
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="branching.html">Back</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+</body>
+</html>
+
+
+
+
+
+
+

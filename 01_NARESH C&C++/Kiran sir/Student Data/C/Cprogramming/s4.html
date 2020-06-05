@@ -1,0 +1,276 @@
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Programs In String Handling Functions </h2></center>
+
+<pre>
+<font size="2">
+     1.Is the folowing program correct or not?   yes/no
+
+main()
+{
+  char *str1 = "United";
+  char * str2 = "Front";
+  char  *str3;
+  str3 = strcat(str1, str2);
+  printf("\n %s", str3);
+}
+
+Ans: No, since what is present in memory beyond "united" is 
+not known and we are attaching "Front" at the end of "United",
+thereby overwriting something, which is unsafe thing to do.
+
+2.How would you improve the code in the above program?
+
+ Ans: main()
+      {
+       char str1[15] = "United";
+       char *str2 = "Front";
+       char *str3;
+       str3 = strcat(str1,str2);
+       printf("\n%s", str3);
+      }
+
+3. Write  a program to enter the two strings and compare them 
+without using any standard function. Determine whether the 
+strings are identical or not.
+  Also display the number of position where the characters are 
+different.
+
+main()
+{
+static char sr[10], tr[10];
+int diff = 0,i;
+clrscr();
+printf("\n enter the string");
+gets(sr);
+printf("enter the second string");
+gets(tr);
+for(i =0; i<10;i++)
+{
+if(sr[i] ==tr[i]);
+continue;
+else
+{
+printf("%c %c\n", sr[i],tr[i]);
+diff++;
+}
+}
+if(strlen(sr) == strlen(tr)&&diff == 0)
+puts("\n The two strings are identical");
+else
+printf("\n The two strings are different
+        at %d places", diff);
+getch();
+}
+
+output:
+   enter the string: BEST LUCK
+   enter the second string: GOOD LUCK
+   G B
+   O E
+   O S
+   D T
+
+4.Write a program to concatenate two strings without the use
+ of standard library functions
+
+main()
+{
+char name[50], fname[15], sname[15], lname[15];
+int i,j,k;
+printf("first name");
+grts(fname);
+printf("second name");
+grts(sname);
+printf("last name");
+grts(lname);
+for(i =0; fname[i]!='\0'; i++)
+name[i]=fname[i];
+name[i]=' ';
+for(j =0; sname[j]!='\0'; j++)
+name[i+j+1]=sname[i];
+name[i+j+1]=' ';
+for(k =0; lname[k]!='\0'; k++)
+name[i+j+k+2]=lname[k];
+name[i+j+k+2]='\0 ';
+printf("\n\n");
+printf("complete name after concatenation\n");
+printf("%s", name);
+getch();
+}
+
+output:
+   first name: MOHAN
+   second name:KARAMCHAND
+   last name: GANDHI
+   complete name after concatenation
+   MOHAN KARAMCHAND GANDHI
+
+5.Write a program to display reverse of a string without using
+ standard library functions.
+
+main()
+{
+char text[15];
+int i = 0;
+printf("enter the string");
+gets(text);
+while(text[i[!='\0')
+{
+printf("\n 5c is stored at location %u", text[i],&text[i])
+i++;
+}
+strrev(text);
+printf("reverse string");
+printf("%s",text);
+i =0;
+while(text[i]!='\0')
+{
+printf("\n %c is stored at location %u",text[i], &text[i]);
+i++;
+}
+}
+
+output:
+enter string:ABC
+A is stored at location 4054
+B is stored at location 4055
+C is stored at location 4056
+reverse string:CBA
+C is stored at location 4054
+B is stored at location 4055
+A is stored at location 4056
+
+6.Write a program to find the number of words in a given 
+statement . Exclude spaces between them.
+
+main()
+{
+char text[30];
+int count = 0,i = 0;
+printf("enter the line of text");
+printf("give one space after each word");
+gets(text);
+while(text[i++]!='\0')
+if(text[i]==32 || text[i]=='\0')
+cout++;
+printf("The number of words in line = %d\n", count);
+}
+
+output:
+enter the line of text
+give one space after each words
+read books
+The number of words in line = 2
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+
+<a href="strings.html" target="_self"><strong>BACK</strong></a>   
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,136 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+<strong>CLOSING A FILE:</strong><br>
+
+       When we have finished all operations the file must be closed . This ensures that all outstanding information
+ associated with the file is flushed out from the buffers and all links to the file are broken . It also prevents
+ accidental misuse of data. The I/O library supports a function to do this. It takes following form:
+                   <div> fclose(file-pointer);</div><br>
+
+<strong>The getc() and putc() Functions:</strong>
+     The simplest fie I/O functions are getc() & putc().
+These are analogous to getchar and putchar() functions and handle one character at a time.
+Assume that a file that is opened with file pointer fp1. Then , the statement
+                                   <div> putc(c,fp1);</div>
+     writes the character contained in the character variable to the file associated with FILE pointer fp.
+ Similerly , getc is used to read a character from a fle has been opened in read mode.<br> For example , the
+ statement 
+                                    <div>c=getc(fp2);</div>
+ would read a character from the file whose pointer is fp2.
+
+        The file pointer moves by one character position for every operation of getc or putc. The getc will return
+ am end of file marker EOF , when end of file has been reached. Therefore the reading should be terminated when EOF
+ is encountered.
+
+// As a practical use of these character I/O functions we can copy the contents of one file into another. This  
+ program takes text file and copies then into another text file , character by character. //
+
+#include"stdio.h"<br>
+main()<br>
+{<br>
+	FILE *fs,*fp;<br>
+	char ch;<br>
+	fs=fopen("pr1.c","r");<br>
+	if(fs==NULL)<br>
+	{<br>
+		puts("cannot open source file");<br>
+		exit();<br>
+	}<br>
+	ft=fopen("pr2.c","w");<br>
+	if(ft==NULL)<br>
+	{<br>
+		puts("cannot open target file");<br>
+		fclose(fs);<br>
+		exit();<br>
+	}<br>
+	while(1)<br>
+	{<br>
+		ch=fgetc(fs);<br>
+		if(ch==EOF)<br>
+		break;<br>
+		else<br>
+		fputc(ch,ft);<br>
+	}<br>
+	fclose(fs);<br>
+	fclose(ft);<br>
+}<br>
+<strong>The getw() and putw() Functions:</strong><br>
+             The getw an putw functions are integer oriented functions . These are analogous to getc and putc
+ functions and are used to read and write integer values . These functions would be useful to deal with only
+ integer data. The general forms of getw , putw are:
+                                 <div>putw(integer,fp);<br>
+                                 getw(fp);<br>
+</div>
+<strong>The fgets() and fputs() functions:</strong>
+         For many purposes , character I/O is just what is needed . However , in some situations the usage of
+ functions which read or write entire strings might turn out to be more efficient.
+Reading or Writing strings of characters from and to files is as easy as reading and writing individual characters .<br>
+	<table border="1" width="550">
+    <tr><TD> CATEGORY</TD>
+    <td>FUNCTIONS</td>
+    </tr>
+<tr><TD>High level , Text , Unformatted Character I/O</TD>
+<td>Getc(),putc(),fgetc(),fputc().
+Here getc() and putc() are macros where as fgetc() and fputc() are their function versions.</td>
+</tr>
+<tr><TD>High level, Text , Unformatted String I/O</TD>
+<td>Fgets(),fputs()</td>
+</tr>
+<tr><TD>High level, Text , Unformatted int I/O
+</TD>
+<td>No standerd I/O Library Functions</td>
+</tr>
+<tr><TD>High level, Text , Unformatted float I/O</TD>
+<td>No standerd I/O Library Functions
+</td>
+</tr>
+</table>
+
+
+
+<a href="filemgt.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

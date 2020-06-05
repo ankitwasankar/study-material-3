@@ -1,0 +1,110 @@
+  <html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre> 
+<u>Declaration of Arrays: </u>Like any other variables, arrays must be declared before
+ they are used.
+ The general form of array declaration is
+                                       type variable-name [size];
+									   
+The type specifies the type of elements that will be contained in the array, such as int,
+float or char and the size 
+indicates the maximum number of elements that can be stored inside the array.
+<u>For example:</u> float height[50];
+                  declares the height to be an array containing 50 real elements. 
+									
+Any subscript 0 to 49 are valid.  Similarly,
+                                              int group[10];
+											  
+declares the group to be an array to contain maximum of 10 integer constants.
+Remember, any reference to the array outside the declared limits would not necessarily 
+cause an error. 
+Rather, it might result in unpredictable program results.
+
+The C language treats character string simply as array of characters. The size in a character
+string represents the maximum number of characters that the string can hold.
+For instance,
+                                            char name[10];
+declares the name as a character array(string) variable that can hold a maximum of
+ 10 characters.
+Suppose we declare the following string constant into the string variable name.
+                            WELL DONE
+each character of the string is treated as an element of the array name and is 
+stored in the memory as follows:
+
+                              
+               W
+               E
+               L
+               L
+                 
+               D
+               O
+               N
+               E
+               \0
+			   
+ When the compiler sees a character string, it terminates it with an additional 
+ null character. 
+Thus,the element name[9] holds the null character \0 at the end. When declaring
+character array,
+ we must always allow 
+one extra element space for the null terminator.
+<a href="arrays.html" target="_self">BACK</a>
+</pre>
+</TD>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</table>
+</TD>
+</TR>
+</table>
+</html>     

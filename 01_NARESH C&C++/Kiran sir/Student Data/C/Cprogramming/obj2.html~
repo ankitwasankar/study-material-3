@@ -1,0 +1,115 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><html>
+<h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+
+
+4.main()
+   { 
+     static float arr[]= {1.2,12,2.4,24,3.5,35};
+         int i;
+        for(i=0;i<=5;i++)
+       print f(%f, arr[i]);
+}
+output: 1.200000 12.000000 2.400000 24.000000 3.500000 35.000000
+Explanation: were you expecting an error message because in the array initialization some values
+are integers where as others are floats? Well, the initialization is perfectly alright. When we
+initialize arr[1] to a value 12, what really gets stored in arr[1] is 12.0some thing happens 
+when we try to store 24or 35 in the array. They are promoted to floats before storing the values.
+Thus the array contains all floats, there by meeting the basic requirement of the array that all
+its elements must be similar. Since print f() always prints a float with a precision of 6 digits
+after the decimal point, each array element has been printed with six places after the decimal point.
+
+5.main()
+{ 
+  int size=10;
+  int arr[size];
+            for(i=1;i<=size;i++)
+          {
+           scan f(%d, &arr[i]);
+          print f(%d,arr[i]);
+          }
+               }
+output: error message: constant expression required in function main.
+Explanation: while declaring the array , its size should always be mentioned with a positive integer
+constant.Thus arr[10] is acceptable, where as arr[size] is unacceptable, irrespective of whether
+size has been declared earlier to 
+array declaration or not. Hence the error message.
+
+6.main()
+  {
+    int i, j=10, arrsize;
+    int arr[arrsize];
+    if(j==10)
+   arr size=20;
+  else
+       arr size=40;
+      for(i=0;i<arrsize;i++)
+}
+output: error message: constant expression required in function main.
+Explanation: depending upon the values of j, we are attempting to determine the value of arr size,
+and then expecting this value to be used in the array declaration. This is too ambitious, because
+when the array declaration statement is executed,C has to know how much space is to be reserved for
+the array. So, if we except that the size of the array can be determined in if, and then this size
+should be used to declare the array, then by the time control reaches the if it has already lost 
+the opportunity to declare the array. So, only positive integer is acceptable in the array size
+ declaration.
+ <pre>
+ <a href="arrays.html" target="_self">BACK</a>
+</TD>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</table>
+</TD>
+</TR>
+</table>
+</html>     

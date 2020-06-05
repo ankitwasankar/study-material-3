@@ -1,0 +1,1613 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+<!-- This document was created from RTF source by rtftohtml version 3.0.1 -->
+
+	<META NAME="GENERATOR" Content="Symantec Visual Page 1.0">
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+	<TITLE>Teach Yourself C++ in 21 Days</TITLE>
+</HEAD>
+
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF">
+
+<H1 ALIGN="CENTER"><A HREF="ch11.htm"><IMG SRC="../buttons/BLANPREV.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch13.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A></H1>
+<H1></H1>
+
+<UL>
+	<LI><A HREF="#Heading1">Day 12</A>
+	<UL>
+		<LI><A HREF="#Heading2">Inheritance</A>
+		<UL>
+			<LI><A HREF="#Heading3">What Is Inheritance?</A>
+			<UL>
+				<LI><A HREF="#Heading4">Inheritance and Derivation</A>
+				<UL>
+					<LI><A HREF="#Heading5">Figure 12.1.</A>
+				</UL>
+				<LI><A HREF="#Heading6">The Animal Kingdom</A>
+				<LI><A HREF="#Heading7">The Syntax of Derivation</A>
+			</UL>
+			<LI><A HREF="#Heading8">Listing 12.1. Simple inheritance</A><A HREF="#Heading9">.</A>
+			<LI><A HREF="#Heading10">Private Versus Protected</A>
+			<LI><A HREF="#Heading11">Listing 12.2. Using a derived object</A><A HREF="#Heading12">.</A>
+			<LI><A HREF="#Heading13">Constructors and Destructors</A>
+			<LI><A HREF="#Heading14">Listing 12.3. Constructors and destructors called</A><A
+			HREF="#Heading15">.</A>
+			<UL>
+				<LI><A HREF="#Heading16">Passing Arguments to Base Constructors</A>
+			</UL>
+			<LI><A HREF="#Heading17">Listing 12.4. Overloading constructors in derived classes</A><A
+			HREF="#Heading18">.</A>
+			<LI><A HREF="#Heading19">Overriding Functions</A>
+			<LI><A HREF="#Heading20">Listing 12.5. Overriding a base class method</A>
+			<LI><A HREF="#Heading21">in a derived class.</A>
+			<LI><A HREF="#Heading22">Overloading Versus Overriding</A>
+			<UL>
+				<LI><A HREF="#Heading23">Hiding the Base Class Method</A>
+			</UL>
+			<LI><A HREF="#Heading24">Listing 12.6. Hiding methods</A><A HREF="#Heading25">.</A>
+			<LI><A HREF="#Heading26">Overriding Versus Hiding</A>
+			<UL>
+				<LI><A HREF="#Heading27">Calling the Base Method</A>
+			</UL>
+			<LI><A HREF="#Heading28">Listing 12.7. Calling base method from overridden method</A><A
+			HREF="#Heading29">.</A>
+			<LI><A HREF="#Heading30">Virtual Methods</A>
+			<LI><A HREF="#Heading31">Listing 12.8. Using virtual methods</A><A HREF="#Heading32">.</A>
+			<LI><A HREF="#Heading33">Listing 12.9. Multiple virtual functions called in turn</A><A
+			HREF="#Heading34">.</A>
+			<UL>
+				<LI><A HREF="#Heading35">How Virtual Functions Work</A>
+				<UL>
+					<LI><A HREF="#Heading36">Figure 12.2.</A>
+					<LI><A HREF="#Heading37">Figure 12.3.</A>
+					<LI><A HREF="#Heading38">Figure 12.4.</A>
+				</UL>
+				<LI><A HREF="#Heading39">You Cant Get There from Here</A>
+				<LI><A HREF="#Heading40">Slicing</A>
+			</UL>
+			<LI><A HREF="#Heading41">Listing 12.10. Data slicing when passing by value</A><A
+			HREF="#Heading42">.</A>
+			<UL>
+				<LI><A HREF="#Heading43">Virtual Destructors</A>
+				<LI><A HREF="#Heading44">Virtual Copy Constructors</A>
+			</UL>
+			<LI><A HREF="#Heading45">Listing 12.11. Virtual copy constructor</A><A HREF="#Heading46">.</A>
+			<UL>
+				<LI><A HREF="#Heading47">The Cost of Virtual Methods</A>
+			</UL>
+			<LI><A HREF="#Heading48">Summary</A>
+			<LI><A HREF="#Heading49">Q&amp;A</A>
+			<LI><A HREF="#Heading50">Workshop</A>
+			<UL>
+				<LI><A HREF="#Heading51">Quiz</A>
+				<LI><A HREF="#Heading52">Exercises</A>
+			</UL>
+		</UL>
+	</UL>
+</UL>
+
+<P>
+<HR SIZE="4">
+
+<H2 ALIGN="CENTER"><A NAME="Heading1"></A><FONT COLOR="#000077">Day 12</FONT></H2>
+<H2 ALIGN="CENTER"><A NAME="Heading2"></A><FONT COLOR="#000077">Inheritance</FONT></H2>
+<P>It is a fundamental aspect of human intelligence to seek out, recognize, and create
+relationships among concepts. We build hierarchies, matrices, networks, and other
+interrelationships to explain and understand the ways in which things interact. C++
+attempts to capture this in inheritance hierarchies. Today you will learn
+
+<UL>
+	<LI>What inheritance is.
+	<P>
+	<LI>How to derive one class from another.
+	<P>
+	<LI>What protected access is and how to use it.
+	<P>
+	<LI>What virtual functions are.
+</UL>
+
+<H3 ALIGN="CENTER"><A NAME="Heading3"></A><FONT COLOR="#000077">What Is Inheritance?</FONT></H3>
+<P>What is a dog? When you look at your pet, what do you see? A biologist sees a
+network of interacting organs, a physicist sees atoms and forces at work, and a taxonomist
+sees a representative of the species canine domesticus.</P>
+<P>It is that last assessment that interests us at the moment. A dog is a kind of
+canine, a canine is a kind of mammal, and so forth. Taxonomists divide the world
+of living things into Kingdom, Phylum, Class, Order, Family, Genus, and Species.</P>
+<P>This hierarchy establishes an is-a relationship. A dog is a kind of canine. We
+see this relationship everywhere: A Toyota is a kind of car, which is a kind of vehicle.
+A sundae is a kind of dessert, which is a kind of food.</P>
+<P>What do we mean when we say something is a kind of something else? We mean that
+it is a specialization of that thing. That is, a car is a special kind of vehicle.
+<H4 ALIGN="CENTER"><A NAME="Heading4"></A><FONT COLOR="#000077">Inheritance and Derivation</FONT></H4>
+<P>The concept dog inherits, that is, it automatically gets, all the features of
+a mammal. Because it is a mammal, we know that it moves and that it breathes air--all
+mammals move and breathe air by definition. The concept of a dog adds the idea of
+barking, wagging its tail, and so forth to that definition. We can further divide
+dogs into hunting dogs and terriers, and we can divide terriers into Yorkshire Terriers,
+Dandie Dinmont Terriers, and so forth.</P>
+<P>A Yorkshire Terrier is a kind of terrier, therefore it is a kind of dog, therefore
+a kind of mammal, therefore a kind of animal, and therefore a kind of living thing.
+This hierarchy is represented in Figure 12.1.<BR>
+<BR>
+<A NAME="Heading5"></A><A HREF="../art/ch12/12zcp01.jpg"><FONT COLOR="#000077">Figure
+12.1.</FONT></A><I>Hierarchy of <TT>Animal</TT>s. </I><BR>
+<BR>
+C++ attempts to represent these relationships by enabling you to define classes that
+derive from one another. Derivation is a way of expressing the is-a relationship.
+You derive a new class, <TT>Dog</TT>, from the class <TT>Mammal</TT>. You don't have
+to state explicitly that dogs move, because they inherit that from <TT>Mammal</TT>.</P>
+
+<DL>
+	<DD>
+<HR>
+<FONT COLOR="#000077"><B>New Term:</B></FONT><B> </B>A class which adds new functionality
+	to an existing class is said to <I>derive </I>from that original class. The original
+	class is said to be the new class's base class. 
+<HR>
+
+</DL>
+
+<P>If the <TT>Dog</TT> class derives from the <TT>Mammal</TT> class, then <TT>Mammal</TT>
+is a base class of <TT>Dog</TT>. Derived classes are supersets of their base classes.
+Just as dog adds certain features to the idea of mammal, the <TT>Dog</TT> class will
+add certain methods or data to the <TT>Mammal</TT> class.</P>
+<P>Typically, a base class will have more than one derived class. Just as dogs, cats,
+and horses are all types of mammals, their classes would all derive from the <TT>Mammal</TT>
+class.
+<H4 ALIGN="CENTER"><A NAME="Heading6"></A><FONT COLOR="#000077">The Animal Kingdom</FONT></H4>
+<P>To facilitate the discussion of derivation and inheritance, this chapter will
+focus on the relationships among a number of classes representing animals. You can
+imagine that you have been asked to design a children's game--a simulation of a farm.</P>
+<P>In time you will develop a whole set of farm animals, including horses, cows,
+dogs, cats, sheep, and so forth. You will create methods for these classes so that
+they can act in the ways the child might expect, but for now you'll stub-out each
+method with a simple <TT>print</TT> statement.</P>
+<P>Stubbing-out a function means you'll write only enough to show that the function
+was called, leaving the details for later when you have more time. Please feel free
+to extend the minimal code provided in this chapter to enable the animals to act
+more realistically.
+<H4 ALIGN="CENTER"><A NAME="Heading7"></A><FONT COLOR="#000077">The Syntax of Derivation</FONT></H4>
+<P>When you declare a class, you can indicate what class it derives from by writing
+a colon after the class name, the type of derivation (public or otherwise), and the
+class from which it derives. The following is an example.</P>
+<PRE><FONT COLOR="#0066FF">class Dog : public Mammal
+</FONT></PRE>
+<P>The type of derivation will be discussed later in this chapter. For now, always
+use <TT>public</TT>. The class from which you derive must have been declared earlier,
+or you will get a compiler error. Listing 12.1 illustrates how to declare a <TT>Dog</TT>
+class that is derived from a <TT>Mammal</TT> class.</P>
+<P><A NAME="Heading8"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 12.1. Simple
+inheritance.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     //Listing 12.1 Simple inheritance
+2:
+3:     #include &lt;iostream.h&gt;
+4:     enum BREED { YORKIE, CAIRN, DANDIE, SHETLAND, DOBERMAN, LAB };
+5:
+6:     class Mammal
+7:     {
+8:     public:
+9:        // constructors
+10:       Mammal();
+11:       ~Mammal();
+12:
+13:       //accessors
+14:       int GetAge()const;
+15:       void SetAge(int);
+16:       int GetWeight() const;
+17:       void SetWeight();
+18:
+19:       //Other methods
+20:       void Speak();
+21:       void Sleep();
+22:
+23:
+24:    protected:
+25:       int itsAge;
+26:       int itsWeight;
+27:    };
+28:
+29:    class Dog : public Mammal
+30:    {
+31:    public:
+32:
+33:       // Constructors
+34:       Dog();
+35:       ~Dog();
+36:
+37:       // Accessors
+38:       BREED GetBreed() const;
+39:       void SetBreed(BREED);
+40:
+41:       // Other methods
+42:       // WagTail();
+43:       // BegForFood();
+44:
+45:    protected:
+46:       BREED itsBreed;
+<TT>47: };</TT></FONT></PRE>
+<P><TT><BR>
+</TT>This program has no output because it is only a set of class declarations without
+their implementations. Nonetheless, there is much to see here.</P>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On lines 6-27, the <TT>Mammal</TT>
+class is declared. Note that in this example, <TT>Mammal</TT> does not derive from
+any other class. In the real world, mammals do derive--that is, mammals are kinds
+of animals. In a C++ program, you can represent only a fraction of the information
+you have about any given object. Reality is far too complex to capture all of it,
+so every C++ hierarchy is an arbitrary representation of the data available. The
+trick of good design is to represent the areas that you care about in a way that
+maps back to reality in a reasonably faithful manner.</P>
+<P>The hierarchy has to begin somewhere; this program begins with <TT>Mammal</TT>.
+Because of this decision, some member variables that might properly belong in a higher
+base class are now represented here. For example, certainly all animals have an age
+and weight, so if <TT>Mammal</TT> is derived from <TT>Animal</TT>, we might expect
+to inherit those attributes. As it is, the attributes appear in the <TT>Mammal</TT>
+class.</P>
+<P>To keep the program reasonably simple and manageable, only six methods have been
+put in the <TT>Mammal</TT> class--four accessor methods, <TT>Speak()</TT>, and <TT>Sleep()</TT>.</P>
+<P>The <TT>Dog</TT> class inherits from <TT>Mammal</TT>, as indicated on line 29.
+Every <TT>Dog</TT> object will have three member variables: <TT>itsAge</TT>, <TT>itsWeight</TT>,
+and <TT>itsBreed</TT>. Note that the class declaration for <TT>Dog</TT> does not
+include the member variables <TT>itsAge</TT> and <TT>itsWeight</TT>. <TT>Dog</TT>
+objects inherit these variables from the <TT>Mammal</TT> class, along with all of
+<TT>Mammal</TT>'s methods except the copy operator and the constructors and destructor.
+<H3 ALIGN="CENTER"><A NAME="Heading10"></A><FONT COLOR="#000077">Private Versus Protected</FONT></H3>
+<P>You may have noticed that a new access keyword, <TT>protected</TT>, has been introduced
+on lines 24 and 45 of Listing 12.1. Previously, class data had been declared <TT>private</TT>.
+However, <TT>private</TT> members are not available to derived classes. You could
+make <TT>itsAge</TT> and <TT>itsWeight</TT> public, but that is not desirable. You
+don't want other classes accessing these data members directly.</P>
+<P>What you want is a designation that says, &quot;Make these visible to this class
+and to classes that derive from this class.&quot; That designation is protected.
+Protected data members and functions are fully visible to derived classes, but are
+otherwise private.</P>
+<P>There are, in total, three access specifiers: public, protected, and private.
+If a function has an object of your class, it can access all the public member data
+and functions. The member functions, in turn, can access all private data members
+and functions of their own class, and all protected data members and functions of
+any class from which they derive.</P>
+<P>Thus, the function <TT>Dog::WagTail()</TT> can access the private data <TT>itsBreed</TT>
+and can access the protected data in the <TT>Mammal</TT> class.</P>
+<P>Even if other classes are layered between <TT>Mammal</TT> and <TT>Dog</TT> (for
+example, <TT>DomesticAnimals</TT>), the <TT>Dog</TT> class will still be able to
+access the protected members of <TT>Mammal</TT>, assuming that these other classes
+all use public inheritance. Private inheritance is discussed on Day 15, &quot;Advanced
+Inheritance.&quot;</P>
+<P>Listing 12.2 demonstrates how to create objects of type <TT>Dog</TT> and access
+the data and functions of that type.</P>
+<P><A NAME="Heading11"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 12.2. Using
+a derived object.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     //Listing 12.2 Using a derived object
+2:
+3:     #include &lt;iostream.h&gt;
+4:     enum BREED { YORKIE, CAIRN, DANDIE, SHETLAND, DOBERMAN, LAB };
+5:
+6:     class Mammal
+7:     {
+8:     public:
+9:        // constructors
+10:       Mammal():itsAge(2), itsWeight(5){}
+11:       ~Mammal(){}
+12:
+13:       //accessors
+14:       int GetAge()const { return itsAge; }
+15:       void SetAge(int age) { itsAge = age; }
+16:       int GetWeight() const { return itsWeight; }
+17:       void SetWeight(int weight) { itsWeight = weight; }
+18:
+19:       //Other methods
+20:       void Speak()const { cout &lt;&lt; &quot;Mammal sound!\n&quot;; }
+21:       void Sleep()const { cout &lt;&lt; &quot;shhh. I'm sleeping.\n&quot;; }
+22:
+23:
+24:    protected:
+25:       int itsAge;
+26:       int itsWeight;
+27:    };
+28:
+29:    class Dog : public Mammal
+30:    {
+31:    public:
+32:
+33:       // Constructors
+34:       Dog():itsBreed(YORKIE){}
+35:       ~Dog(){}
+36:
+37:       // Accessors
+38:       BREED GetBreed() const { return itsBreed; }
+39:       void SetBreed(BREED breed) { itsBreed = breed; }
+40:
+41:       // Other methods
+42:       void WagTail() { cout &lt;&lt; &quot;Tail wagging...\n&quot;; }
+43:       void BegForFood() { cout &lt;&lt; &quot;Begging for food...\n&quot;; }
+44:
+45:    private:
+46:       BREED itsBreed;
+47:    };
+48:
+49:    int main()
+50:    {
+51:       Dog fido;
+52:       fido.Speak();
+53:       fido.WagTail();
+54:       cout &lt;&lt; &quot;Fido is &quot; &lt;&lt; fido.GetAge() &lt;&lt; &quot; years old\n&quot;;
+55:     return 0;
+<TT>56: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: Mammal sound!
+Tail wagging...
+Fido is 2 years old
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B><BR>
+Analysis:</B></FONT><B> </B>On lines 6-27, the <TT>Mammal</TT> class is declared
+(all of its functions are inline to save space here). On lines 29-47, the <TT>Dog</TT>
+class is declared as a derived class of <TT>Mammal</TT>. Thus, by these declarations,
+all <TT>Dog</TT>s have an age, a weight, and a breed.</P>
+<P>On line 51, a <TT>Dog</TT> is declared: <TT>Fido</TT>. <TT>Fido</TT> inherits
+all the attributes of a <TT>Mammal</TT>, as well as all the attributes of a <TT>Dog</TT>.
+Thus, <TT>Fido</TT> knows how to <TT>WagTail()</TT>, but also knows how to <TT>Speak()</TT>
+and <TT>Sleep()</TT>.
+<H3 ALIGN="CENTER"><A NAME="Heading13"></A><FONT COLOR="#000077">Constructors and
+Destructors</FONT></H3>
+<P><TT>Dog</TT> objects are <TT>Mammal</TT> objects. This is the essence of the is-a
+relationship. When <TT>Fido</TT> is created, his base constructor is called first,
+creating a <TT>Mammal</TT>. Then the <TT>Dog</TT> constructor is called, completing
+the construction of the <TT>Dog</TT> object. Because we gave <TT>Fido</TT> no parameters,
+the default constructor was called in each case. <TT>Fido</TT> doesn't exist until
+he is completely constructed, which means that both his <TT>Mammal</TT> part and
+his <TT>Dog</TT> part must be constructed. Thus, both constructors must be called.</P>
+<P>When <TT>Fido</TT> is destroyed, first the <TT>Dog</TT> destructor will be called
+and then the destructor for the <TT>Mammal</TT> part of <TT>Fido</TT>. Each destructor
+is given an opportunity to clean up after its own part of <TT>Fido</TT>. Remember
+to clean up after your <TT>Dog</TT>! Listing 12.3 demonstrates this.</P>
+<P><A NAME="Heading14"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 12.3. Constructors
+and destructors called.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     //Listing 12.3 Constructors and destructors called.
+2:
+3:     #include &lt;iostream.h&gt;
+4:     enum BREED { YORKIE, CAIRN, DANDIE, SHETLAND, DOBERMAN, LAB };
+5:
+6:     class Mammal
+7:     {
+8:     public:
+9:        // constructors
+10:       Mammal();
+11:       ~Mammal();
+12:
+13:       //accessors
+14:       int GetAge() const { return itsAge; }
+15:       void SetAge(int age) { itsAge = age; }
+16:       int GetWeight() const { return itsWeight; }
+17:       void SetWeight(int weight) { itsWeight = weight; }
+18:
+19:       //Other methods
+20:       void Speak() const { cout &lt;&lt; &quot;Mammal sound!\n&quot;; }
+21:       void Sleep() const { cout &lt;&lt; &quot;shhh. I'm sleeping.\n&quot;; }
+22:
+23:
+24:    protected:
+25:       int itsAge;
+26:       int itsWeight;
+27:    };
+28:
+29:    class Dog : public Mammal
+30:    {
+31:    public:
+32:
+33:       // Constructors
+34:       Dog();
+35:       ~Dog();
+36:
+37:       // Accessors
+38:       BREED GetBreed() const { return itsBreed; }
+39:       void SetBreed(BREED breed) { itsBreed = breed; }
+40:
+41:       // Other methods
+42:       void WagTail() { cout &lt;&lt; &quot;Tail wagging...\n&quot;; }
+43:       void BegForFood() { cout &lt;&lt; &quot;Begging for food...\n&quot;; }
+44:
+45:    private:
+46:       BREED itsBreed;
+47:    };
+48:
+49:    Mammal::Mammal():
+50:    itsAge(1),
+51:    itsWeight(5)
+52:    {
+53:       cout &lt;&lt; &quot;Mammal constructor...\n&quot;;
+54:    }
+55:
+56:    Mammal::~Mammal()
+57:    {
+58:       cout &lt;&lt; &quot;Mammal destructor...\n&quot;;
+59:    }
+60:
+61:    Dog::Dog():
+62:    itsBreed(YORKIE)
+63:    {
+64:       cout &lt;&lt; &quot;Dog constructor...\n&quot;;
+65:    }
+66:
+67:    Dog::~Dog()
+68:    {
+69:       cout &lt;&lt; &quot;Dog destructor...\n&quot;;
+70:    }
+71:    int main()
+72:    {
+73:       Dog fido;
+74:       fido.Speak();
+75:       fido.WagTail();
+76:       cout &lt;&lt; &quot;Fido is &quot; &lt;&lt; fido.GetAge() &lt;&lt; &quot; years old\n&quot;;
+77:     return 0;
+<TT>78: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: Mammal constructor...
+Dog constructor...
+Mammal sound!
+Tail wagging...
+Fido is 1 years old
+Dog destructor...
+Mammal destructor...
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B><BR>
+Analysis:</B></FONT><B> </B>Listing 12.3 is just like Listing 12.2, except that the
+constructors and destructors now print to the screen when called. <TT>Mammal</TT>'s
+constructor is called, then <TT>Dog</TT>'s. At that point the <TT>Dog</TT> fully
+exists, and its methods can be called. When <TT>fido</TT> goes out of scope, <TT>Dog</TT>'s
+destructor is called, followed by a call to <TT>Mammal</TT>'s destructor.
+<H4 ALIGN="CENTER"><A NAME="Heading16"></A><FONT COLOR="#000077">Passing Arguments
+to Base Constructors</FONT></H4>
+<P>It is possible that you'll want to overload the constructor of <TT>Mammal</TT>
+to take a specific age, and that you'll want to overload the <TT>Dog</TT> constructor
+to take a breed. How do you get the age and weight parameters passed up to the right
+constructor in <TT>Mammal</TT>? What if <TT>Dog</TT>s want to initialize weight but
+<TT>Mammal</TT>s don't?</P>
+<P>Base class initialization can be performed during class initialization by writing
+the base class name, followed by the parameters expected by the base class. Listing
+12.4 demonstrates this.</P>
+<P><A NAME="Heading17"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 12.4. Overloading
+constructors in derived classes.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     //Listing 12.4 Overloading constructors in derived classes
+2:
+3:     #include &lt;iostream.h&gt;
+4:     enum BREED { YORKIE, CAIRN, DANDIE, SHETLAND, DOBERMAN, LAB };
+5:
+6:     class Mammal
+7:     {
+8:     public:
+9:        // constructors
+10:       Mammal();
+11:       Mammal(int age);
+12:       ~Mammal();
+13:
+14:       //accessors
+15:       int GetAge() const { return itsAge; }
+16:       void SetAge(int age) { itsAge = age; }
+17:       int GetWeight() const { return itsWeight; }
+18:       void SetWeight(int weight) { itsWeight = weight; }
+19:
+20:       //Other methods
+21:       void Speak() const { cout &lt;&lt; &quot;Mammal sound!\n&quot;; }
+22:       void Sleep() const { cout &lt;&lt; &quot;shhh. I'm sleeping.\n&quot;; }
+23:
+24:
+25:    protected:
+26:       int itsAge;
+27:       int itsWeight;
+28:    };
+29:
+30:    class Dog : public Mammal
+31:    {
+32:    public:
+33:
+34:       // Constructors
+35:       Dog();
+36:       Dog(int age);
+37:       Dog(int age, int weight);
+38:       Dog(int age, BREED breed);
+39:       Dog(int age, int weight, BREED breed);
+40:       ~Dog();
+41:
+42:       // Accessors
+43:       BREED GetBreed() const { return itsBreed; }
+44:       void SetBreed(BREED breed) { itsBreed = breed; }
+45:
+46:       // Other methods
+47:       void WagTail() { cout &lt;&lt; &quot;Tail wagging...\n&quot;; }
+48:       void BegForFood() { cout &lt;&lt; &quot;Begging for food...\n&quot;; }
+49:
+50:    private:
+51:       BREED itsBreed;
+52:    };
+53:
+54:    Mammal::Mammal():
+55:    itsAge(1),
+56:    itsWeight(5)
+57:    {
+58:       cout &lt;&lt; &quot;Mammal constructor...\n&quot;;
+59:    }
+60:
+61:    Mammal::Mammal(int age):
+62:    itsAge(age),
+63:    itsWeight(5)
+64:    {
+65:       cout &lt;&lt; &quot;Mammal(int) constructor...\n&quot;;
+66:    }
+67:
+68:    Mammal::~Mammal()
+69:    {
+70:       cout &lt;&lt; &quot;Mammal destructor...\n&quot;;
+71:    }
+72:
+73:    Dog::Dog():
+74:    Mammal(),
+75:    itsBreed(YORKIE)
+76:    {
+77:       cout &lt;&lt; &quot;Dog constructor...\n&quot;;
+78:    }
+79:
+80:    Dog::Dog(int age):
+81:    Mammal(age),
+82:    itsBreed(YORKIE)
+83:    {
+84:       cout &lt;&lt; &quot;Dog(int) constructor...\n&quot;;
+85:    }
+86:
+87:    Dog::Dog(int age, int weight):
+88:    Mammal(age),
+89:    itsBreed(YORKIE)
+90:    {
+91:       itsWeight = weight;
+92:       cout &lt;&lt; &quot;Dog(int, int) constructor...\n&quot;;
+93:    }
+94:
+95:    Dog::Dog(int age, int weight, BREED breed):
+96:    Mammal(age),
+97:    itsBreed(breed)
+98:    {
+99:       itsWeight = weight;
+100:      cout &lt;&lt; &quot;Dog(int, int, BREED) constructor...\n&quot;;
+101:   }
+102:
+103:   Dog::Dog(int age, BREED breed):
+104:   Mammal(age),
+105:   itsBreed(breed)
+106:   {
+107:      cout &lt;&lt; &quot;Dog(int, BREED) constructor...\n&quot;;
+108:   }
+109:
+110:   Dog::~Dog()
+111:   {
+112:      cout &lt;&lt; &quot;Dog destructor...\n&quot;;
+113:   }
+114:   int main()
+115:   {
+116:      Dog fido;
+117:      Dog rover(5);
+118:      Dog buster(6,8);
+119:      Dog yorkie (3,YORKIE);
+120:      Dog dobbie (4,20,DOBERMAN);
+121:      fido.Speak();
+122:      rover.WagTail();
+123:      cout &lt;&lt; &quot;Yorkie is &quot; &lt;&lt; yorkie.GetAge() &lt;&lt; &quot; years old\n&quot;;
+124:      cout &lt;&lt; &quot;Dobbie weighs &quot;;
+125:      cout &lt;&lt; dobbie.GetWeight() &lt;&lt; &quot; pounds\n&quot;;
+126:     return 0;
+<TT>127: }</TT></FONT></PRE>
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>The output has been numbered here
+	so that each line can be referred to in the analysis. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<PRE><FONT COLOR="#0066FF">Output: 1:  Mammal constructor...
+2:  Dog constructor...
+3:  Mammal(int) constructor...
+4:  Dog(int) constructor...
+5:  Mammal(int) constructor...
+6:  Dog(int, int) constructor...
+7:  Mammal(int) constructor...
+8:  Dog(int, BREED) constructor....
+9:  Mammal(int) constructor...
+10: Dog(int, int, BREED) constructor...
+11: Mammal sound!
+12: Tail wagging...
+13: Yorkie is 3 years old.
+14: Dobbie weighs 20 pounds.
+15: Dog destructor. . . 
+16: Mammal destructor...
+17: Dog destructor...
+18: Mammal destructor...
+19: Dog destructor...
+20: Mammal destructor...
+21: Dog destructor...
+22: Mammal destructor...
+23: Dog destructor...
+24: Mammal destructor...
+</FONT></PRE>
+<P><FONT COLOR="#0000AA"><B><BR>
+Analysis:</B></FONT><B> </B>In Listing 12.4, <TT>Mammal</TT>'s constructor has been
+overloaded on line 11 to take an integer, the <TT>Mammal</TT>'s age. The implementation
+on lines 61-66 initializes <TT>itsAge</TT> with the value passed into the constructor
+and initializes <TT>itsWeight</TT> with the value <TT>5</TT>.</P>
+<P><TT>Dog</TT> has overloaded five constructors, on lines 35-39. The first is the
+default constructor. The second takes the age, which is the same parameter that the
+<TT>Mammal</TT> constructor takes. The third constructor takes both the age and the
+weight, the fourth takes the age and breed, and the fifth takes the age, weight,
+and breed.</P>
+<P>Note that on line 74 <TT>Dog</TT>'s default constructor calls <TT>Mammal</TT>'s
+default constructor. Although it is not strictly necessary to do this, it serves
+as documentation that you intended to call the base constructor, which takes no parameters.
+The base constructor would be called in any case, but actually doing so makes your
+intentions explicit.</P>
+<P>The implementation for the <TT>Dog</TT> constructor, which takes an integer, is
+on lines 80-85. In its initialization phase (lines 81-82), <TT>Dog</TT> initializes
+its base class, passing in the parameter, and then it initializes its breed.</P>
+<P>Another <TT>Dog</TT> constructor is on lines 87-93. This one takes two parameters.
+Once again it initializes its base class by calling the appropriate constructor,
+but this time it also assigns <TT>weight</TT> to its base class's variable <TT>itsWeight</TT>.
+Note that you cannot assign to the base class variable in the initialization phase.
+Because <TT>Mammal</TT> does not have a constructor that takes this parameter, you
+must do this within the body of the <TT>Dog</TT>'s constructor.</P>
+<P>Walk through the remaining constructors to make sure you are comfortable with
+how they work. Note what is initialized and what must wait for the body of the constructor.</P>
+<P>The output has been numbered so that each line can be referred to in this analysis.
+The first two lines of output represent the instantiation of <TT>Fido</TT>, using
+the default constructor.</P>
+<P>In the output, lines 3 and 4 represent the creation of <TT>rover</TT>. Lines 5
+and 6 represent <TT>buster</TT>. Note that the <TT>Mammal</TT> constructor that was
+called is the constructor that takes one integer, but the <TT>Dog</TT> constructor
+is the constructor that takes two integers.</P>
+<P>After all the objects are created, they are used and then go out of scope. As
+each object is destroyed, first the <TT>Dog</TT> destructor and then the <TT>Mammal</TT>
+destructor is called, five of each in total.
+<H3 ALIGN="CENTER"><A NAME="Heading19"></A><FONT COLOR="#000077">Overriding Functions</FONT></H3>
+<P>A <TT>Dog</TT> object has access to all the member functions in class <TT>Mammal</TT>,
+as well as to any member functions, such as <TT>WagTail()</TT>, that the declaration
+of the <TT>Dog</TT> class might add. It can also override a base class function.
+Overriding a function means changing the implementation of a base class function
+in a derived class. When you make an object of the derived class, the correct function
+is called.</P>
+
+<DL>
+	<DD>
+<HR>
+<FONT COLOR="#000077"><B>New Term:</B></FONT><B> </B>When a derived class creates
+	a function with the same return type and signature as a member function in the base
+	class, but with a new implementation, it is said to be <I>overriding </I>that method.
+	
+<HR>
+
+</DL>
+
+<P>When you override a function, it must agree in return type and in signature with
+the function in the base class. The signature is the function prototype other than
+the return type: that is, the name, the parameter list, and the keyword <TT>const</TT>
+if used.</P>
+
+<DL>
+	<DD>
+<HR>
+<FONT COLOR="#000077"><B>New Term:</B></FONT><B> </B>The <I>signature</I> of a function
+	is its name, as well as the number and type of its parameters. The signature does
+	not include the return type. 
+<HR>
+
+</DL>
+
+<P>Listing 12.5 illustrates what happens if the <TT>Dog</TT> class overrides the
+<TT>Speak()</TT> method in <TT>Mammal</TT>. To save room, the accessor functions
+have been left out of these classes.</P>
+<P><A NAME="Heading20"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 12.5. Overriding
+a base class methodin a derived class.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     //Listing 12.5 Overriding a base class method in a derived class
+2:
+3:     #include &lt;iostream.h&gt;
+4:     enum BREED { YORKIE, CAIRN, DANDIE, SHETLAND, DOBERMAN, LAB };
+5:
+6:     class Mammal
+7:     {
+8:     public:
+9:        // constructors
+10:       Mammal() { cout &lt;&lt; &quot;Mammal constructor...\n&quot;; }
+11:       ~Mammal() { cout &lt;&lt; &quot;Mammal destructor...\n&quot;; }
+12:
+13:       //Other methods
+14:       void Speak()const { cout &lt;&lt; &quot;Mammal sound!\n&quot;; }
+15:       void Sleep()const { cout &lt;&lt; &quot;shhh. I'm sleeping.\n&quot;; }
+16:
+17:
+18:    protected:
+19:       int itsAge;
+20:       int itsWeight;
+21:    };
+22:
+23:    class Dog : public Mammal
+24:    {
+25:    public:
+26:
+27:       // Constructors
+28:       Dog(){ cout &lt;&lt; &quot;Dog constructor...\n&quot;; }
+29:       ~Dog(){ cout &lt;&lt; &quot;Dog destructor...\n&quot;; }
+30:
+31:       // Other methods
+32:       void WagTail() { cout &lt;&lt; &quot;Tail wagging...\n&quot;; }
+33:       void BegForFood() { cout &lt;&lt; &quot;Begging for food...\n&quot;; }
+34:       void Speak()const { cout &lt;&lt; &quot;Woof!\n&quot;; }
+35:
+36:    private:
+37:       BREED itsBreed;
+38:    };
+39:
+40:    int main()
+41:    {
+42:       Mammal bigAnimal;
+43:       Dog fido;
+44:       bigAnimal.Speak();
+45:       fido.Speak();
+46:     return 0;
+<TT>47: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: Mammal constructor...
+Mammal constructor...
+Dog constructor...
+Mammal sound!
+Woof!
+Dog destructor...
+Mammal destructor...
+Mammal destructor...
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B><BR>
+Analysis:</B></FONT><B> </B>On line 34, the <TT>Dog</TT> class overrides the <TT>Speak()</TT>
+method, causing <TT>Dog</TT> objects to say <TT>Woof!</TT> when the <TT>Speak()</TT>
+method is called. On line 42, a <TT>Mammal</TT> object, <TT>bigAnimal</TT>, is created,
+causing the first line of output when the <TT>Mammal</TT> constructor is called.
+On line 43, a <TT>Dog</TT> object, <TT>fido</TT>, is created, causing the next two
+lines of output, where the <TT>Mammal</TT> constructor and then the <TT>Dog</TT>
+constructor are called.</P>
+<P>On line 44, the <TT>Mammal</TT> object calls its <TT>Speak()</TT> method, then
+on line 45, the <TT>Dog</TT> object calls its <TT>Speak()</TT> method. The output
+reflects that the correct methods were called. Finally, the two objects go out of
+scope and the destructors are called.
+<H3 ALIGN="CENTER"><A NAME="Heading22"></A><FONT COLOR="#000077">Overloading Versus
+Overriding</FONT></H3>
+<P>These terms are similar, and they do similar things. When you overload a method,
+you create more than one method with the same name, but with a different signature.
+When you override a method, you create a method in a derived class with the same
+name as a method in the base class and the same signature.
+<H4 ALIGN="CENTER"><A NAME="Heading23"></A><FONT COLOR="#000077">Hiding the Base
+Class Method</FONT></H4>
+<P>In the previous listing, the <TT>Dog</TT> class's <TT>Speak()</TT> method hides
+the base class's method. This is just what is wanted, but it can have unexpected
+results. If <TT>Mammal</TT> has a method, <TT>Move()</TT>, which is overloaded, and
+<TT>Dog</TT> overrides that method, the <TT>Dog</TT> method will hide all of the
+<TT>Mammal</TT> methods with that name.</P>
+<P>If <TT>Mammal</TT> overloads <TT>Move()</TT> as three methods--one that takes
+no parameters, one that takes an integer, and one that takes an integer and a direction--and
+<TT>Dog</TT> overrides just the <TT>Move()</TT> method that takes no parameters,
+it will not be easy to access the other two methods using a <TT>Dog</TT> object.
+Listing 12.6 illustrates this problem.</P>
+<P><A NAME="Heading24"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 12.6. Hiding
+methods.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     //Listing 12.6 Hiding methods
+2:
+3:     #include &lt;iostream.h&gt;
+4:
+5:     class Mammal
+6:     {
+7:     public:
+8:        void Move() const { cout &lt;&lt; &quot;Mammal move one step\n&quot;; }
+9:        void Move(int distance) const 
+10:       { 
+11:          cout &lt;&lt; &quot;Mammal move &quot;;
+12:          cout &lt;&lt; distance &lt;&lt;&quot; _steps.\n&quot;; 
+13:       }
+14:    protected:
+15:       int itsAge;
+16:       int itsWeight;
+17:    };
+18:
+19:    class Dog : public Mammal
+20:    {
+21:    public:
+22: // You may receive a warning that you are hiding a function!
+23:       void Move() const { cout &lt;&lt; &quot;Dog move 5 steps.\n&quot;; }
+24:    };      
+25:
+26:    int main()
+27:    {
+28:       Mammal bigAnimal;
+29:       Dog fido;
+30:       bigAnimal.Move();
+31:       bigAnimal.Move(2);
+32:       fido.Move();
+33:       // fido.Move(10);
+34:     return 0;
+<TT>35: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: Mammal move one step
+Mammal move 2 steps.
+Dog move 5 steps.
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>All of the extra methods
+and data have been removed from these classes. On lines 8 and 9, the <TT>Mammal</TT>
+class declares the overloaded <TT>Move()</TT> methods. On line 18, <TT>Dog</TT> overrides
+the version of <TT>Move()</TT> with no parameters. These are invoked on lines 30-32,
+and the output reflects this as executed.</P>
+<P>Line 33, however, is commented out, as it causes a compile-time error. While the
+<TT>Dog</TT> class could have called the <TT>Move(int)</TT> method if it had not
+overridden the version of<TT> Move()</TT> without parameters, now that it has done
+so it must override both if it wishes to use both. This is reminiscent of the rule
+that if you supply any constructor, the compiler will no longer supply a default
+constructor.</P>
+<P>It is a common mistake to hide a base class method when you intend to override
+it, by forgetting to include the keyword <TT>const</TT>. <TT>const</TT> is part of
+the signature, and leaving it off changes the signature and thus hides the method
+rather than overriding it.
+<H3 ALIGN="CENTER"><A NAME="Heading26"></A><FONT COLOR="#000077">Overriding Versus
+Hiding</FONT></H3>
+<P>In the next section, virtual methods are described. Overriding a virtual method
+supports polymorphism--hiding it undermines polymorphism. You'll see more on this
+very soon.
+<H4 ALIGN="CENTER"><A NAME="Heading27"></A><FONT COLOR="#000077">Calling the Base
+Method</FONT></H4>
+<P>If you have overridden the base method, it is still possible to call it by fully
+qualifying the name of the method. You do this by writing the base name, followed
+by two colons and then the method name. For example: <TT>Mammal::Move()</TT>.</P>
+<P>It would have been possible to rewrite line 28 in Listing 12.6 so that it would
+compile, by writing</P>
+<PRE><FONT COLOR="#0066FF">28:     fido.Mammal::Move(10);
+</FONT></PRE>
+<P>This calls the <TT>Mammal</TT> method explicitly. Listing 12.7 fully illustrates
+this idea.</P>
+<P><A NAME="Heading28"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 12.7. Calling
+base method from overridden method.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     //Listing 12.7 Calling base method from overridden method.
+2:
+3:     #include &lt;iostream.h&gt;
+4:
+5:     class Mammal
+6:     {
+7:     public:
+8:        void Move() const { cout &lt;&lt; &quot;Mammal move one step\n&quot;; }
+9:        void Move(int distance) const 
+10:       { 
+11:            cout &lt;&lt; &quot;Mammal move &quot; &lt;&lt; distance;
+12:            cout &lt;&lt; &quot; steps.\n&quot;; 
+13:       }
+14:
+15:    protected:
+16:       int itsAge;
+17:       int itsWeight;
+18:    };
+19:
+20:    class Dog : public Mammal
+21:    {
+22:    public:
+23:       void Move()const;
+24:
+25:    };
+26:
+27:    void Dog::Move() const
+28:    {
+29:       cout &lt;&lt; &quot;In dog move...\n&quot;;
+30:       Mammal::Move(3);
+31:    }
+32:
+33:    int main()
+34:    {
+35:       Mammal bigAnimal;
+36:       Dog fido;
+37:       bigAnimal.Move(2);
+38:       fido.Mammal::Move(6);
+39:     return 0;
+<TT>40: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: Mammal move 2 steps.
+Mammal move 6 steps.
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On line 35, a <TT>Mammal</TT>,
+<TT>bigAnimal</TT>, is created, and on line 36, a <TT>Dog</TT>, <TT>fido</TT>, is
+created. The method call on line 37 invokes the <TT>Move()</TT> method of <TT>Mammal</TT>,
+which takes an <TT>int</TT>.</P>
+<P>The programmer wanted to invoke <TT>Move(int)</TT> on the <TT>Dog</TT> object,
+but had a problem. <TT>Dog</TT> overrides the <TT>Move()</TT> method, but does not
+overload it and does not provide a version that takes an <TT>int</TT>. This is solved
+by the explicit call to the base class <TT>Move(int)</TT> method on line 33.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<B>DO</B> extend the functionality of tested classes by deriving. <B>DO</B> change
+	the behavior of certain functions in the derived class by overriding the base class
+	methods. <B>DON'T</B> hide a base class function by changing the function signature.
+	
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H3 ALIGN="CENTER"><A NAME="Heading30"></A><FONT COLOR="#000077">Virtual Methods</FONT></H3>
+<P>This chapter has emphasized the fact that a <TT>Dog</TT> object is a <TT>Mammal</TT>
+object. So far that has meant only that the <TT>Dog</TT> object has inherited the
+attributes (data) and capabilities (methods) of its base class. In C++ the is-a relationship
+runs deeper than that, however.</P>
+<P>C++ extends its polymorphism to allow pointers to base classes to be assigned
+to derived class objects. Thus, you can write</P>
+<PRE><FONT COLOR="#0066FF">Mammal* pMammal = new Dog;
+</FONT></PRE>
+<P>This creates a new <TT>Dog</TT> object on the heap and returns a pointer to that
+object, which it assigns to a pointer to <TT>Mammal</TT>. This is fine, because a
+dog is a mammal.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>This is the essence of polymorphism.
+	For example, you could create many different types of windows, including dialog boxes,
+	scrollable windows, and list boxes, and give them each a virtual <TT>draw()</TT>
+	method. By creating a pointer to a window and assigning dialog boxes and other derived
+	types to that pointer, you can call <TT>draw()</TT> without regard to the actual
+	run-time type of the object pointed to. The correct <TT>draw()</TT> function will
+	be called. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P>You can then use this pointer to invoke any method on <TT>Mammal</TT>. What you
+would like is for those methods that are overridden in <TT>Dog()</TT> to call the
+correct function. Virtual functions let you do that. Listing 12.8 illustrates how
+this works, and what happens with non-virtual methods.</P>
+<P><A NAME="Heading31"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 12.8. Using
+virtual methods.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     //Listing 12.8 Using virtual methods
+2:
+3:     #include &lt;iostream.h&gt;
+4:
+5:     class Mammal
+6:     {
+7:     public:
+8:        Mammal():itsAge(1) { cout &lt;&lt; &quot;Mammal constructor...\n&quot;; }
+9:        ~Mammal() { cout &lt;&lt; &quot;Mammal destructor...\n&quot;; }
+10:       void Move() const { cout &lt;&lt; &quot;Mammal move one step\n&quot;; }
+11:       virtual void Speak() const { cout &lt;&lt; &quot;Mammal speak!\n&quot;; }
+12:    protected:
+13:       int itsAge;
+14:
+15:    };
+16:
+17:    class Dog : public Mammal
+18:    {
+19:    public:
+20:       Dog() { cout &lt;&lt; &quot;Dog Constructor...\n&quot;; }
+21:       ~Dog() { cout &lt;&lt; &quot;Dog destructor...\n&quot;; }
+22:       void WagTail() { cout &lt;&lt; &quot;Wagging Tail...\n&quot;; }
+23:       void Speak()const { cout &lt;&lt; &quot;Woof!\n&quot;; }
+24:       void Move()const { cout &lt;&lt; &quot;Dog moves 5 steps...\n&quot;; }
+25:    };
+26:
+27:    int main()
+28:    {
+29:
+30:       Mammal *pDog = new Dog;
+31:       pDog-&gt;Move();
+32:       pDog-&gt;Speak();
+33:
+34:     return 0;
+<TT>35: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: Mammal constructor...
+Dog Constructor...
+Mammal move one step
+Woof!
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On line 11, <TT>Mammal</TT>
+is provided a virtual method--<TT>speak()</TT>. The designer of this class thereby
+signals that she expects this class eventually to be another class's base type. The
+derived class will probably want to override this function.</P>
+<P>On line 30, a pointer to <TT>Mammal</TT> is created (<TT>pDog</TT>), but it is
+assigned the address of a new <TT>Dog</TT> object. Because a dog is a mammal, this
+is a legal assignment. The pointer is then used to call the <TT>Move()</TT> function.
+Because the compiler knows <TT>pDog</TT> only to be a <TT>Mammal</TT>, it looks to
+the <TT>Mammal</TT> object to find the <TT>Move()</TT> method.</P>
+<P>On line 32, the pointer then calls the <TT>Speak()</TT> method. Because <TT>Speak()</TT>
+is virtual, the <TT>Speak()</TT> method overridden in <TT>Dog</TT> is invoked.</P>
+<P>This is almost magical. As far as the calling function knew, it had a <TT>Mammal</TT>
+pointer, but here a method on <TT>Dog</TT> was called. In fact, if you had an array
+of pointers to <TT>Mammal</TT>, each of which pointed to a subclass of <TT>Mammal</TT>,
+you could call each in turn and the correct function would be called. Listing 12.9
+illustrates this idea.</P>
+<P><A NAME="Heading33"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 12.9. Multiple
+virtual functions called in turn.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:      //Listing 12.9 Multiple virtual functions called in turn
+2:
+3:      #include &lt;iostream.h&gt;
+4:
+5:     class Mammal
+6:     {
+7:     public:
+8:        Mammal():itsAge(1) {  }
+9:        ~Mammal() { }
+10:       virtual void Speak() const { cout &lt;&lt; &quot;Mammal speak!\n&quot;; }
+11:    protected:
+12:       int itsAge;
+13:    };
+14:
+15:    class Dog : public Mammal
+16:    {
+17:    public:
+18:       void Speak()const { cout &lt;&lt; &quot;Woof!\n&quot;; }
+19:    };
+20:
+21:
+22:    class Cat : public Mammal
+23:    {
+24:    public:
+25:       void Speak()const { cout &lt;&lt; &quot;Meow!\n&quot;; }
+26:    };
+27:
+28:
+29:    class Horse : public Mammal
+30:    {
+31:    public:
+32:       void Speak()const { cout &lt;&lt; &quot;Winnie!\n&quot;; }
+33:    };
+34:
+35:    class Pig : public Mammal
+36:    {
+37:    public:
+38:       void Speak()const { cout &lt;&lt; &quot;Oink!\n&quot;; }
+39:    };
+40:
+41:    int main()
+42:    {
+43:       Mammal* theArray[5];
+44:       Mammal* ptr;
+45:       int choice, i;
+46:       for ( i = 0; i&lt;5; i++)
+47:       {
+48:          cout &lt;&lt; &quot;(1)dog (2)cat (3)horse (4)pig: &quot;;
+49:          cin &gt;&gt; choice;
+50:          switch (choice)
+51:          {
+52:             case 1: ptr = new Dog;
+53:             break;
+54:             case 2: ptr = new Cat;
+55:             break;
+56:             case 3: ptr = new Horse;
+57:             break;
+58:             case 4: ptr = new Pig;
+59:             break;
+60:             default: ptr = new Mammal;
+61:             break;
+62:          }
+63:          theArray[i] = ptr;
+64:       }
+65:       for (i=0;i&lt;5;i++)
+66:          theArray[i]-&gt;Speak();
+67:     return 0;
+<TT>68: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: (1)dog (2)cat (3)horse (4)pig: 1
+(1)dog (2)cat (3)horse (4)pig: 2
+(1)dog (2)cat (3)horse (4)pig: 3
+(1)dog (2)cat (3)horse (4)pig: 4
+(1)dog (2)cat (3)horse (4)pig: 5
+Woof!
+Meow!
+Winnie!
+Oink!
+Mammal speak!
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>This stripped-down program,
+which provides only the barest functionality to each class, illustrates virtual functions
+in their purest form. Four classes are declared; <TT>Dog</TT>,<TT> Cat</TT>,<TT>
+Horse</TT>, and <TT>Pig</TT> are all derived from <TT>Mammal</TT>.</P>
+<P>On line 10, <TT>Mammal</TT>'s <TT>Speak()</TT> function is declared to be virtual.
+On lines 18, 25, 32, and 38, the four derived classes override the implementation
+of <TT>Speak()</TT>.</P>
+<P>The user is prompted to pick which objects to create, and the pointers are added
+to the array on lines 46-64.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE: </B></FONT>At compile time, it is impossible to know
+	which objects will be created, and thus which <TT>Speak()</TT> methods will be invoked.
+	The pointer <TT>ptr</TT> is bound to its object at runtime. This is called dynamic
+	binding, or run-time binding, as opposed to static binding, or compile-time binding.
+	
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H4 ALIGN="CENTER"><A NAME="Heading35"></A><FONT COLOR="#000077">How Virtual Functions
+Work</FONT></H4>
+<P>When a derived object, such as a <TT>Dog</TT> object, is created, first the constructor
+for the base class is called and then the constructor for the derived class is called.
+Figure 12.2 shows what the <TT>Dog</TT> object looks like after it is created. Note
+that the <TT>Mammal</TT> part of the object is contiguous in memory with the <TT>Dog</TT>
+part.<BR>
+<BR>
+<A NAME="Heading36"></A><A HREF="../art/ch12/12zcp02.jpg"><FONT COLOR="#000077">Figure
+12.2.</FONT></A><FONT COLOR="#000077"> </FONT><I>The <TT>Dog</TT> object after it
+is created.</I> <BR>
+<BR>
+When a virtual function is created in an object, the object must keep track of that
+function. Many compilers build a virtual function table, called a v-table. One of
+these is kept for each type, and each object of that type keeps a virtual table pointer
+(called a <TT>vptr</TT> or v-pointer), which points to that table.</P>
+<P>While implementations vary, all compilers must accomplish the same thing, so you
+won't be too wrong with this description.<BR>
+<BR>
+<A NAME="Heading37"></A><A HREF="../art/ch12/12zcp03.jpg"><FONT COLOR="#000077">Figure
+12.3.</FONT></A><FONT COLOR="#000077"> </FONT><I>The v-table of a <TT>Mammal</TT>.</I><BR>
+<BR>
+Each object's <TT>vptr</TT> points to the v-table which, in turn, has a pointer to
+each of the virtual functions. (Note, pointers to functions will be discussed in
+depth on Day 14, &quot;Special Classes and Functions.&quot;) When the <TT>Mammal</TT>
+part of the <TT>Dog</TT> is created, the <TT>vptr</TT> is initialized to point to
+the correct part of the v-table, as shown in Figure 12.3.<BR>
+<BR>
+<A NAME="Heading38"></A><A HREF="../art/ch12/12zcp04.jpg"><FONT COLOR="#000077">Figure
+12.4.</FONT></A><FONT COLOR="#000077"> </FONT>The v-table of a <TT>Dog</TT>.<BR>
+<BR>
+When the <TT>Dog</TT> constructor is called, and the <TT>Dog</TT> part of this object
+is added, the <TT>vptr</TT> is adjusted to point to the virtual function overrides
+(if any) in the <TT>Dog</TT> object (see Figure 12.4) .</P>
+<P>When a pointer to a <TT>Mammal</TT> is used, the <TT>vptr</TT> continues to point
+to the correct function, depending on the &quot;real&quot; type of the object. Thus,
+when <TT>Speak()</TT> is invoked, the correct function is invoked.
+<H4 ALIGN="CENTER"><A NAME="Heading39"></A><FONT COLOR="#000077">You Cant Get There
+from Here</FONT></H4>
+<P>If the <TT>Dog</TT> object had a method, <TT>WagTail()</TT>, which is not in the
+<TT>Mammal</TT>, you could not use the pointer to <TT>Mammal</TT> to access that
+method (unless you cast it to be a pointer to <TT>Dog</TT>). Because <TT>WagTail()</TT>
+is not a virtual function, and because it is not in a <TT>Mammal</TT> object, you
+can't get there without either a <TT>Dog</TT> object or a <TT>Dog</TT> pointer.</P>
+<P>Although you can transform the <TT>Mammal</TT> pointer into a <TT>Dog</TT> pointer,
+there are usually far better and safer ways to call the <TT>WagTail()</TT> method.
+C++ frowns on explicit casts because they are error-prone. This subject will be addressed
+in depth when multiple inheritance is covered tomorrow, and again when templates
+are covered on Day 20, &quot;Exceptions and Error Handling.&quot;
+<H4 ALIGN="CENTER"><A NAME="Heading40"></A><FONT COLOR="#000077">Slicing</FONT></H4>
+<P>Note that the virtual function magic operates only on pointers and references.
+Passing an object by value will not enable the virtual functions to be invoked. Listing
+12.10 illustrates this problem.</P>
+<P><A NAME="Heading41"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 12.10. Data
+slicing when passing by value.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:      //Listing 12.10 Data slicing with passing by value
+2:
+3:      #include &lt;iostream.h&gt;
+4:
+5:     enum BOOL { FALSE, TRUE };
+6:     class Mammal
+7:     {
+8:     public:
+9:        Mammal():itsAge(1) {  }
+10:       ~Mammal() { }
+11:       virtual void Speak() const { cout &lt;&lt; &quot;Mammal speak!\n&quot;; }
+12:    protected:
+13:       int itsAge;
+14:    };
+15:
+16:    class Dog : public Mammal
+17:    {
+18:    public:
+19:       void Speak()const { cout &lt;&lt; &quot;Woof!\n&quot;; }
+20:    };
+21:
+22:    class Cat : public Mammal
+23:    {
+24:    public:
+25:       void Speak()const { cout &lt;&lt; &quot;Meow!\n&quot;; }
+26:    };
+27:
+28     void ValueFunction (Mammal);
+29:    void PtrFunction   (Mammal*);
+30:    void RefFunction (Mammal&amp;);
+31:    int main()
+32:    {
+33:       Mammal* ptr=0;
+34:       int choice;
+35:       while (1)
+36:       {
+37:          BOOL fQuit = FALSE;
+38:          cout &lt;&lt; &quot;(1)dog (2)cat (0)Quit: &quot;;
+39:          cin &gt;&gt; choice;
+40:          switch (choice)
+41:          {
+42:             case 0: fQuit = TRUE;
+43:             break;
+44:             case 1: ptr = new Dog;
+45:             break;
+46:             case 2: ptr = new Cat;
+47:             break;
+48:             default: ptr = new Mammal;
+49:             break;
+50:          }
+51:           if (fQuit)
+52:             break;
+53:           PtrFunction(ptr);
+54:           RefFunction(*ptr);
+55:           ValueFunction(*ptr);
+56:       }
+57:        return 0;
+58:    }
+59:
+60:    void ValueFunction (Mammal MammalValue)
+61:    {
+62:       MammalValue.Speak();
+63:    }
+64:
+65:    void PtrFunction (Mammal * pMammal)
+66:    {
+67:       pMammal-&gt;Speak();
+68:    }
+69:
+70:    void RefFunction (Mammal &amp; rMammal)
+71:    {
+72:       rMammal.Speak();
+<TT>73: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: (1)dog (2)cat (0)Quit: 1
+Woof
+Woof
+Mammal Speak!
+(1)dog (2)cat (0)Quit: 2
+Meow!
+Meow!
+Mammal Speak!
+(1)dog (2)cat (0)Quit: 0
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On lines 6-26, stripped-down
+versions of the <TT>Mammal</TT>, <TT>Dog</TT>, and <TT>Cat</TT> classes are declared.
+Three functions are declared--<TT>PtrFunction()</TT>, <TT>RefFunction()</TT>, and
+<TT>ValueFunction()</TT>. They take a pointer to a <TT>Mammal</TT>, a <TT>Mammal</TT>
+reference, and a <TT>Mammal</TT> object, respectively. All three functions then do
+the same thing--they call the <TT>Speak()</TT> method.</P>
+<P>The user is prompted to choose a <TT>Dog</TT> or <TT>Cat</TT>, and based on the
+choice he makes, a pointer to the correct type is created on lines 44-49.</P>
+<P>In the first line of the output, the user chooses <TT>Dog</TT>. The <TT>Dog</TT>
+object is created on the free store on line 44. The <TT>Dog</TT> is then passed as
+a pointer, as a reference, and by value to the three functions.</P>
+<P>The pointer and references all invoke the virtual functions, and the <TT>Dog-&gt;Speak()</TT>
+member function is invoked. This is shown on the first two lines of output after
+the user's choice.</P>
+<P>The dereferenced pointer, however, is passed by value. The function expects a
+<TT>Mammal</TT> object, and so the compiler slices down the <TT>Dog</TT> object to
+just the <TT>Mammal</TT> part. At that point, the <TT>Mammal</TT> <TT>Speak()</TT>
+method is called, as reflected in the third line of output after the user's choice.</P>
+<P>This experiment is then repeated for the <TT>Cat</TT> object, with similar results.
+<H4 ALIGN="CENTER"><A NAME="Heading43"></A><FONT COLOR="#000077">Virtual Destructors</FONT></H4>
+<P>It is legal and common to pass a pointer to a derived object when a pointer to
+a base object is expected. What happens when that pointer to a derived subject is
+deleted? If the destructor is virtual, as it should be, the right thing happens--the
+derived class's destructor is called. Because the derived class's destructor will
+automatically invoke the base class's destructor, the entire object will be properly
+destroyed.</P>
+<P>The rule of thumb is this: If any of the functions in your class are virtual,
+the destructor should be as well.
+<H4 ALIGN="CENTER"><A NAME="Heading44"></A><FONT COLOR="#000077">Virtual Copy Constructors</FONT></H4>
+<P>As previously stated, no constructor can be virtual. Nonetheless, there are times
+when your program desperately needs to be able to pass in a pointer to a base object
+and have a copy of the correct derived object that is created. A common solution
+to this problem is to create a <TT>Clone()</TT> method in the base class and to make
+that be virtual. The <TT>Clone()</TT> method creates a new object copy of the current
+class, and returns that object.</P>
+<P>Because each derived class overrides the <TT>Clone()</TT> method, a copy of the
+derived class is created. Listing 12.11 illustrates how this is used.</P>
+<P><A NAME="Heading45"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 12.11. Virtual
+copy constructor.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     //Listing 12.11 Virtual copy constructor
+2:
+3:     #include &lt;iostream.h&gt;
+4:
+5:     class Mammal
+6:     {
+7:     public:
+8:        Mammal():itsAge(1) { cout &lt;&lt; &quot;Mammal constructor...\n&quot;; }
+9:        ~Mammal() { cout &lt;&lt; &quot;Mammal destructor...\n&quot;; }
+10:       Mammal (const Mammal &amp; rhs);
+11:       virtual void Speak() const { cout &lt;&lt; &quot;Mammal speak!\n&quot;; }
+12:       virtual Mammal* Clone() { return new Mammal(*this); } 
+13:       int GetAge()const { return itsAge; }
+14:    protected:
+15:       int itsAge;
+16:    };
+17:
+18:    Mammal::Mammal (const Mammal &amp; rhs):itsAge(rhs.GetAge())
+19:    {
+20:       cout &lt;&lt; &quot;Mammal Copy Constructor...\n&quot;;
+21:    }
+22:
+23:    class Dog : public Mammal
+24:    {
+25:    public:
+26:       Dog() { cout &lt;&lt; &quot;Dog constructor...\n&quot;; }
+27:       ~Dog() { cout &lt;&lt; &quot;Dog destructor...\n&quot;; }
+28:       Dog (const Dog &amp; rhs);
+29:       void Speak()const { cout &lt;&lt; &quot;Woof!\n&quot;; }
+30:       virtual Mammal* Clone() { return new Dog(*this); }
+31:    };
+32:
+33:    Dog::Dog(const Dog &amp; rhs):
+34:    Mammal(rhs)
+35:    {
+36:       cout &lt;&lt; &quot;Dog copy constructor...\n&quot;;
+37:    }
+38:
+39:    class Cat : public Mammal
+40:    {
+41:    public:
+42:       Cat() { cout &lt;&lt; &quot;Cat constructor...\n&quot;; }
+43:       ~Cat() { cout &lt;&lt; &quot;Cat destructor...\n&quot;; }
+44:       Cat (const Cat &amp;);
+45:       void Speak()const { cout &lt;&lt; &quot;Meow!\n&quot;; }
+46:       virtual Mammal* Clone() { return new Cat(*this); }
+47:    };
+48:
+49:    Cat::Cat(const Cat &amp; rhs):
+50:    Mammal(rhs)
+51:    {
+52:       cout &lt;&lt; &quot;Cat copy constructor...\n&quot;;
+53:    }
+54:
+55:    enum ANIMALS { MAMMAL, DOG, CAT};
+56:    const int NumAnimalTypes = 3;
+57:    int main()
+58:    {
+59:       Mammal *theArray[NumAnimalTypes];
+60:       Mammal* ptr;
+61:       int choice, i;
+62:       for ( i = 0; i&lt;NumAnimalTypes; i++)
+63:       {
+64:          cout &lt;&lt; &quot;(1)dog (2)cat (3)Mammal: &quot;;
+65:          cin &gt;&gt; choice;
+66:          switch (choice)
+67:          {
+68:             case DOG: ptr = new Dog;
+69:             break;
+70:             case CAT: ptr = new Cat;
+71:             break;
+72:             default: ptr = new Mammal;
+73:             break;
+74:          }
+75:          theArray[i] = ptr;
+76:       }
+77:       Mammal *OtherArray[NumAnimalTypes];
+78:       for (i=0;i&lt;NumAnimalTypes;i++)
+79:       {
+80:          theArray[i]-&gt;Speak();
+81:          OtherArray[i] = theArray[i]-&gt;Clone();
+82:       }
+83:       for (i=0;i&lt;NumAnimalTypes;i++)
+84:          OtherArray[i]-&gt;Speak();
+25:     return 0;
+<TT>86: }</TT></FONT>
+<FONT COLOR="#0066FF">
+1:  (1)dog (2)cat (3)Mammal: 1
+2:  Mammal constructor...
+3:  Dog constructor...
+4:  (1)dog (2)cat (3)Mammal: 2
+5:  Mammal constructor...
+6:  Cat constructor...
+7:  (1)dog (2)cat (3)Mammal: 3
+8:  Mammal constructor...
+9:  Woof!
+10: Mammal Copy Constructor...
+11: Dog copy constructor...
+12: Meow!
+13: Mammal Copy Constructor...
+14: Cat copy constructor...
+15: Mammal speak!
+16: Mammal Copy Constructor...
+17: Woof!
+18: Meow!
+19: Mammal speak!
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>Listing 12.11 is very similar
+to the previous two listings, except that a new virtual method has been added to
+the <TT>Mammal</TT> class: <TT>Clone()</TT>. This method returns a pointer to a new
+<TT>Mammal</TT> object by calling the copy constructor, passing in itself (<TT>*this</TT>)
+as a <TT>const</TT> reference.</P>
+<P><TT>Dog</TT> and <TT>Cat</TT> both override the <TT>Clone()</TT> method, initializing
+their data and passing in copies of themselves to their own copy constructors. Because
+<TT>Clone()</TT> is virtual, this will effectively create a virtual copy constructor,
+as shown on line 81.</P>
+<P>The user is prompted to choose dogs, cats, or mammals, and these are created on
+lines 62-74. A pointer to each choice is stored in an array on line 75.</P>
+<P>As the program iterates over the array, each object has its <TT>Speak()</TT> and
+its <TT>Clone()</TT> methods called, in turn, on lines 80 and 81. The result of the
+<TT>Clone()</TT> call is a pointer to a copy of the object, which is then stored
+in a second array on line 81.</P>
+<P>On line 1 of the output, the user is prompted and responds with <TT>1</TT>, choosing
+to create a dog. The <TT>Mammal</TT> and <TT>Dog</TT> constructors are invoked. This
+is repeated for <TT>Cat</TT> and for <TT>Mammal</TT> on lines 4-8 of the constructor.</P>
+<P>Line 9 of the constructor represents the call to <TT>Speak()</TT> on the first
+object, the <TT>Dog</TT>. The virtual <TT>Speak()</TT> method is called, and the
+correct version of <TT>Speak()</TT> is invoked. The <TT>Clone()</TT> function is
+then called, and as this is also virtual, <TT>Dog</TT>'s <TT>Clone()</TT> method
+is invoked, causing the <TT>Mammal</TT> constructor and the <TT>Dog</TT> copy constructor
+to be called.</P>
+<P>The same is repeated for <TT>Cat</TT> on lines 12-14, and then for <TT>Mammal</TT>
+on lines 15 and 16. Finally, the new array is iterated, and each of the new objects
+has <TT>Speak()</TT> invoked.
+<H4 ALIGN="CENTER"><A NAME="Heading47"></A><FONT COLOR="#000077">The Cost of Virtual
+Methods</FONT></H4>
+<P>Because objects with virtual methods must maintain a v-table, there is some overhead
+in having virtual methods. If you have a very small class from which you do not expect
+to derive other classes, there may be no reason to have any virtual methods at all.</P>
+<P>Once you declare any methods virtual, you've paid most of the price of the v-table
+(although each entry does add a small memory overhead). At that point, you'll want
+the destructor to be virtual, and the assumption will be that all other methods probably
+will be virtual as well. Take a long hard look at any non-virtual methods, and be
+certain you understand why they are not virtual.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<B>DO</B> use virtual methods when you expect to derive from a class. <B>DO</B> use
+	a virtual destructor if any methods are virtual. <B>DON'T </B>mark the constructor
+	as virtual. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H3 ALIGN="CENTER"><A NAME="Heading48"></A><FONT COLOR="#000077">Summary</FONT></H3>
+<P>Today you learned how derived classes inherit from base classes. This chapter
+discussed public inheritance and virtual functions. Classes inherit all the public
+and protected data and functions from their base classes.</P>
+<P>Protected access is public to derived classes and private to all other objects.
+Even derived classes cannot access private data or functions in their base classes.</P>
+<P>Constructors can be initialized before the body of the constructor. It is at this
+time that base constructors are invoked and parameters can be passed to the base
+class.</P>
+<P>Functions in the base class can be overridden in the derived class. If the base
+class functions are virtual, and if the object is accessed by pointer or reference,
+the derived class's functions will be invoked, based on the run-time type of the
+object pointed to.</P>
+<P>Methods in the base class can be invoked by explicitly naming the function with
+the prefix of the base class name and two colons. For example, if <TT>Dog</TT> inherits
+from <TT>Mammal</TT>, <TT>Mammal</TT>'s <TT>walk()</TT> method can be called with
+<TT>Mammal::walk()</TT>.</P>
+<P>In classes with virtual methods, the destructor should almost always be made virtual.
+A virtual destructor ensures that the derived part of the object will be freed when
+<TT>delete</TT> is called on the pointer. Constructors cannot be virtual. Virtual
+copy constructors can be effectively created by making a virtual member function
+that calls the copy constructor.
+<H3 ALIGN="CENTER"><A NAME="Heading49"></A><FONT COLOR="#000077">Q&amp;A</FONT></H3>
+
+<DL>
+	<DD><B>Q. Are inherited members and functions passed along to subsequent generations?
+	If Dog derives from Mammal, and Mammal derives from Animal, does Dog inherit Animal's
+	functions and data?<BR>
+	</B><BR>
+	<B>A.</B> Yes. As derivation continues, derived classes inherit the sum of all the
+	functions and data in all their base classes.<BR>
+	<BR>
+	<B>Q. If, in the example above, Mammal overrides a function in Animal, which does
+	Dog get, the original or the overridden function?<BR>
+	</B><BR>
+	<B>A.</B> If <TT>Dog</TT> inherits from <TT>Mammal</TT>, it gets the function in
+	the state <TT>Mammal</TT> has it: the overridden function.<BR>
+	<BR>
+	<B>Q. Can a derived class make a public base function private?<BR>
+	</B><BR>
+	<B>A.</B> Yes, and it remains private for all subsequent derivation.<BR>
+	<BR>
+	<B>Q. Why not make all class functions virtual?<BR>
+	</B><BR>
+	<B>A.</B> There is overhead with the first virtual function in the creation of a
+	v-table. After that, the overhead is trivial. Many C++ programmers feel that if one
+	function is virtual, all others should be. Other programmers disagree, feeling that
+	there should always be a reason for what you do.<BR>
+	<BR>
+	<B>Q. If a function (SomeFunc()) is virtual in a base class and is also overloaded,
+	so as to take either an integer or two integers, and the derived class overrides
+	the form taking one integer, what is called when a pointer to a derived object calls
+	the two-integer form?<BR>
+	</B><BR>
+	<B>A.</B> The overriding of the one-<TT>int</TT> form hides the entire base class
+	function, and thus you will get a compile error complaining that that function requires
+	only one <TT>int</TT>.
+</DL>
+
+<H3 ALIGN="CENTER"><A NAME="Heading50"></A><FONT COLOR="#000077">Workshop</FONT></H3>
+<P>The Workshop provides quiz questions to help you solidify your understanding of
+the material that was covered, and exercises to provide you with experience in using
+what you've learned. Try to answer the quiz and exercise questions before checking
+the answers in Appendix D, and make sure you understand the answers before continuing
+to the next chapter.
+<H4 ALIGN="CENTER"><A NAME="Heading51"></A><FONT COLOR="#000077">Quiz</FONT></H4>
+
+<DL>
+	<DD><B>1.</B> What is a v-table?<BR>
+	<BR>
+	<B>2.</B> What is a virtual destructor?<BR>
+	<BR>
+	<B>3.</B> How do you show the declaration of a virtual constructor?<BR>
+	<BR>
+	<B>4.</B> How can you create a virtual copy constructor?<BR>
+	<BR>
+	<B>5.</B> How do you invoke a base member function from a derived class in which
+	you've overridden that function?<BR>
+	<BR>
+	<B>6.</B> How do you invoke a base member function from a derived class in which
+	you have not overridden that function?<BR>
+	<BR>
+	<B>7.</B> If a base class declares a function to be virtual, and a derived class
+	does not use the term virtual when overriding that class, is it still virtual when
+	inherited by a third-generation class?<BR>
+	<BR>
+	<B>8.</B> What is the <TT>protected</TT> keyword used for?
+</DL>
+
+<H4 ALIGN="CENTER"><A NAME="Heading52"></A><FONT COLOR="#000077">Exercises</FONT></H4>
+
+<DL>
+	<DD><B>1. </B>Show the declaration of a virtual function that takes an integer parameter
+	and returns <TT>void</TT>.<BR>
+	<B><BR>
+	2.</B> Show the declaration of a class <TT>Square</TT>, which derives from <TT>Rectangle</TT>,
+	which in turn derives from <TT>Shape</TT>.<BR>
+	<B><BR>
+	3.</B> If, in Exercise 2, <TT>Shape</TT> takes no parameters, <TT>Rectangle</TT>
+	takes two (<TT>length</TT> and <TT>width</TT>), but <TT>Square</TT> takes only one
+	(<TT>length</TT>), show the constructor initialization for <TT>Square</TT>.<BR>
+	<B><BR>
+	4.</B> Write a virtual copy constructor for the class <TT>Square</TT> (in Exercise
+	3).<BR>
+	<B><BR>
+	5.</B> BUG BUSTERS: What is wrong with this code snippet?
+</DL>
+
+<PRE><FONT COLOR="#0066FF">void SomeFunction (Shape);
+Shape * pRect = new Rectangle;
+SomeFunction(*pRect);
+</FONT></PRE>
+
+<DL>
+	<DD><B>6.</B> BUG BUSTERS: What is wrong with this code snippet?
+</DL>
+
+<PRE><FONT COLOR="#0066FF">class Shape()
+{
+public:
+     Shape();
+     virtual ~Shape();
+     virtual Shape(const Shape&amp;);
+};
+
+</FONT></PRE>
+<P ALIGN="CENTER"><A HREF="ch11.htm"><IMG SRC="../buttons/BLANPREV.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch13.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="#heading1"><IMG SRC="../buttons/BLANTOP.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A>
+
+
+</BODY>
+
+</HTML>

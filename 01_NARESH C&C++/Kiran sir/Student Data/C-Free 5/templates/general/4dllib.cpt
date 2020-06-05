@@ -1,0 +1,139 @@
+<ProjectType name="Dynamic Link Library#77025" icon="projecttype.bmp?2" type="DLL" ext="dll" tab="General#77001" desc="Create Windows Dynamic Link Library (DLL).#77026" version="1.0">
+	<Pages count="2">
+		<Page title="Application Types#77004">
+			<RadioGroup name="AppTypes" title="Select the kind of DLL Applicationn you want to create#77027" value="0" width="290" height="100" enabled="1">
+				<Item>An &empty project.#77028</Item>
+				<Item>A &simple DLL project.#77029</Item>
+				<Item>A &DLL that exports some symbols.#77030</Item>
+			</RadioGroup>	
+		</Page>
+		<Page title="Language Select#77009">
+			<RadioGroup name="SrcLang" title="#77031" value="0" width="290" height="100" enabled="$(AppTypes)=1|$(AppTypes)=2">
+				<Item>&C language (this will generate c source files(.c))#77011</Item>
+				<Item>C++ &language (this will generate c++ source files(.cpp))#77012</Item>
+			</RadioGroup>	
+		</Page>
+	</Pages>
+
+	<Outputs>
+		<Directory name="\">
+		<File folder="Source Files" name="" external="" enabled="1"></File>
+		<File folder="Header Files" name="" external="" enabled="1"></File>
+		<File folder="Other Files" name="" external="" enabled="1"></File>
+		<File folder="Source Files" name="$(ProjectName).c" external="" enabled="$(AppTypes)=2&$(SrcLang)=0">#include &lt;windows.h&gt;
+#define _EXPORTDLL
+#include "$(ProjectName).h"
+
+BOOL APIENTRY DllMain (HINSTANCE hInst     /* Library instance handle. */ ,
+                       DWORD reason        /* Reason this function is being called. */ ,
+                       LPVOID reserved     /* Not used. */ )
+{
+	switch (reason)
+	{
+		case DLL_PROCESS_ATTACH:
+		break;
+
+		case DLL_PROCESS_DETACH:
+		break;
+
+		case DLL_THREAD_ATTACH:
+		break;
+
+		case DLL_THREAD_DETACH:
+		break;
+	}
+
+	/* Returns TRUE on success, FALSE on failure */
+	return TRUE;
+}
+
+void CallFromDll(char* str)
+{
+	MessageBox(NULL,str,"",MB_OK);
+}
+</File>
+	<File folder="Header Files" name="$(ProjectName).h" external="" enabled="$(AppTypes)=2&$(SrcLang)=0">#ifndef _DLLMAIN_H
+#define _DLLMAIN_H
+
+#ifdef	_EXPORTDLL
+#define _LIBAPI __declspec(dllexport)
+#else
+#define _LIBAPI __declspec(dllimport)
+#endif
+
+/* Export following functions */
+_LIBAPI void CallFromDll(char* str);
+
+#endif
+</File>
+
+	<File folder="Source Files" name="$(ProjectName).cpp" external="" enabled="$(AppTypes)=2&$(SrcLang)=1">#include &lt;windows.h&gt;
+#define _EXPORTDLL
+#include "$(ProjectName).h"
+
+BOOL APIENTRY DllMain (HINSTANCE hInst,     // Library instance handle. 
+                       DWORD reason,       	//Reason this function is being called
+                       LPVOID reserved)		// Not used    
+{
+	switch (reason)
+	{
+		case DLL_PROCESS_ATTACH:
+		break;
+
+		case DLL_PROCESS_DETACH:
+		break;
+
+		case DLL_THREAD_ATTACH:
+		break;
+
+		case DLL_THREAD_DETACH:
+		break;
+	}
+
+	// Returns TRUE on success, FALSE on failure 
+	return TRUE;
+}
+
+void CallFromDll(char* str)
+{
+	MessageBox(NULL,str,"$(ProjectName)",MB_OK);
+}
+</File>
+	<File folder="Header Files" name="$(ProjectName).h" external="" enabled="$(AppTypes)=2&$(SrcLang)=1">#ifndef _DLLMAIN_H
+#define _DLLMAIN_H
+
+#ifdef	_EXPORTDLL
+#define _LIBAPI __declspec(dllexport)
+#else
+#define _LIBAPI __declspec(dllimport)
+#endif
+
+// Export following functions 
+extern "C" _LIBAPI void CallFromDll(char* str);
+
+#endif
+</File>
+
+	<File folder="Source Files" name="$(ProjectName).c" external="" enabled="$(AppTypes)=1&$(SrcLang)=0">#include &lt;windows.h&gt;
+
+BOOL APIENTRY DllMain( HANDLE hModule, 
+                       DWORD  ul_reason_for_call, 
+                       LPVOID lpReserved
+					 )
+{
+    return TRUE;
+}
+</File>	
+	<File folder="Source Files" name="$(ProjectName).cpp" external="" enabled="$(AppTypes)=1&$(SrcLang)=1">#include &lt;windows.h&gt;
+
+BOOL APIENTRY DllMain( HANDLE hModule, 
+                       DWORD  ul_reason_for_call, 
+                       LPVOID lpReserved
+					 )
+{
+    return TRUE;
+}
+</File>	
+	</Directory>
+	</Outputs>
+</ProjectType>

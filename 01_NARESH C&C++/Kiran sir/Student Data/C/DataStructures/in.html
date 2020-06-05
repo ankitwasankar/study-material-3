@@ -1,0 +1,58 @@
+<html>
+<body>
+<strong>IN-ORDER:</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  In-order is traversing a tree In the order:  left  root  right<br>
+The following is the procedure for In-order:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.Traverse the left sub-tree In In-order.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.Visit the root.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.Traverse the right sub-tree In In-order.<br>
+<!--The following diagram represents the procedure of In-order.<br><!---->
+
+<!--Let us consider with an example
+
+This is the tree on which In-order is to be implemented. The following is the figure of In-order traversal.
+
+The In-order traversal is  D B H E A F C K I G J
+
+This tree traversals are also used In traversing a binary tree which represents an arithmetic expression.<!---->
+<pre>
+<strong>ALGORITHM : In-order Traversal (Recursive):
+<strong></strong></strong>
+Procedure In-order(T)
+1.If T=NULL then 
+begin
+         Print &#039;Tree is empty&#039;
+         Return
+end
+2.If leftptr(T) != NULL then 
+   Call In-order(leftptr(T))
+3.Print info(T)
+4.If rightptr(T) != NULL then
+   Call In-order(rightptr(T))
+5.Return
+<strong>ALGORTHM: IN-ORDER TRAVERSAL (ITERATIVE):<strong></strong></strong>
+
+Procedure IterIn-order(T)
+1.If T = NULL then
+begin
+         Print &#039;Tree is empty&#039;
+         Return
+end
+2.P&#060;-T
+Top&#060;-0
+3.Repeat
+while P!=NULL do
+begin
+            Call PUSH(S,Top,P)
+            P&#060;-Iptr(P)
+end
+  if  (Top>0) then
+begin
+           P&#060;-POP(S,Top)
+           Info(P)
+           P&#060;-rptr(P)
+end
+until(top=0 &#038;&#038; p=NULL)
+4.Return
+
+</pre>
+</body></html>

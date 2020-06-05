@@ -1,0 +1,44 @@
+
+#include<iostream.h>
+#include<conio.h>
+class sumdif
+  {
+  private:
+	  int x;
+	  int y;
+	  int sum1,dif1;
+  public: inline void getdata();
+	  inline void sum();
+	  inline void dif();
+};
+	  inline void sumdif::getdata()
+	  {
+	  cout<<"enter x value"<<endl<<endl;
+	  cin>>x;
+	  cout<<endl;
+	  cout<<"enter y value"<<endl<<endl;
+	  cin>>y;
+	  cout<<endl;
+	  }
+
+	 inline void sumdif::sum()
+	  {
+	   sum1=x+y;
+	   cout<<"sumatio is ="<<sum1<<endl;
+	  }
+	  inline void sumdif::dif()
+	  {
+	  dif1=x-y;
+	   cout<<"difference is ="<<dif1<<endl<<endl;
+	  }
+
+
+  void main()
+  {
+  sumdif obj;
+  clrscr();
+  obj.getdata();
+  obj.dif();
+  obj.sum();
+  getch();
+  }

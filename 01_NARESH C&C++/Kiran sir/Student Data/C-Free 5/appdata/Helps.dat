@@ -1,0 +1,10 @@
+<Helps version="1.0">
+	<Help name="C/C++ Library Reference#80001" type="1">
+		<TargetFile>$(CFRoot)\Help\CLib.chm</TargetFile>
+		<Shortcut>112</Shortcut>
+	</Help>
+	<Help name="Search on MSDN#80002" type="2">
+		<TargetFile>http://social.msdn.microsoft.com/Search/en-US/?Query=$(Word)</TargetFile>
+		<Shortcut>24688</Shortcut>
+	</Help>
+</Helps>

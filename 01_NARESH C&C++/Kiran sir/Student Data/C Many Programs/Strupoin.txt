@@ -1,0 +1,19 @@
+#include<stdio.h>
+#include<conio.h>
+struct stud
+{
+  char nm[20];
+  int age,m1,m2,m3;
+};
+void main()
+{
+  struct stud *s;
+  printf("Enter the student name - ");
+  gets(s->nm);
+  printf("Enter the age - ");
+  scanf("%d",&s->age);
+  printf("Enter the marks of 3 subjects - ");
+  scanf("%d%d%d",&s->m1,&s->m2,&s->m3);
+  printf("%s %d %d %d %d",(*s).nm,(*s).age,s->m1,s->m2,s->m3);
+  getch();
+}

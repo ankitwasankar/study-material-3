@@ -1,0 +1,244 @@
+﻿<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h3>GOTO Statment</h3></center>
+
+<pre>
+<font size="3">
+<pre>
+    This Keyword is used when we want to transfer the control
+to some point in the program which is not in the normal, step
+by step sequence of a program.
+
+         It takes control from one place to another unconditi
+onally, So a different  path for the execution of a program to
+set up.
+The following program illustrates the use of a GOTO.
+
+<strong>Example:63</strong>
+  
+        main()
+        {
+         printf("Hope is hoping against hope. . . . . . ");
+         goto here;
+         printf("Even it seems hopeless");
+         hope();
+         exit(0);
+        }
+
+OUTPUT:
+     Hope is hoping against hope. . . . . . 
+
+Explanation:
+     The second part of the message will not get printed, 
+as due to goto, control skips  to the label hope and
+execution is terminated due to exit(0) present here.After
+hope, those would have got executed.
+
+   Though goto seems to be handing over to us a magic 
+word for placing control where are please, we would do 
+well to empty combinations of IF, For,while and switch 
+instead.This is because goto makes the program less reada
+ble and hard to debug. Besides,once the control is given
+to goto, there no telling how the program would behave, as
+is illustrated. 
+
+<strong>Example:64</strong> 
+         main()
+        { 
+         int i;
+         for(i=1;i<=5;i++)
+         {
+          if(i*i>=121)
+          goto there;
+          else
+          printf("%d",i);
+         }     
+         there:
+          printf("\n No more   murphys laws");
+        }
+
+OUTPUT:    1  2  3  4  5 
+
+<strong>Example:65</strong>
+
+          main()
+          {
+           int i,j;
+           for(j=1;j<=10;j++)
+           {
+            for(i=1;i<=10;i++)
+            {
+            if(j<10)
+            goto out;
+            printf("Murphy’s first law");
+            }
+            printf("If the price of the PC is a dream");
+           }
+           printf("Dream about a nightmare");
+          }
+
+OUTPUT:
+        Dream about a nightmare
+
+Explanation:Can we abruptly break out of the loop using goto?
+
+    YES. In fact goto can take the  control anywhere in the 
+program.Here, first time through  the loop itself the 
+condition is satisfied,and goto takes the control directly 
+to the label out, where the printf() gets executed.
+
+<strong>Example:66</strong>
+
+           main()
+          {
+           int i, k=1;
+           here:
+                if(k>2) 
+                 goto out;
+               there:
+               for(i=1;i<=5;i++)
+               printf("%d",i);
+               k++;
+               goto there;
+               out: ;
+           }
+
+OUTPUT:  12345 12345 12345 12345
+
+<strong>Example:67</strong>
+
+        main()
+        {
+         int i=1;
+         switch(i)
+         {
+          case 1:
+                 goto label;
+          label:
+          case 2:
+                 printf(" He looks like a Saint. . . . . ");
+                 break;
+          }
+          printf("\n Saint Bernard!");
+        }
+
+OUTPUT:He looks like a Saint. . . . . 
+       Saint Bernard!           .
+
+Explanation:
+       Since i is 1, case 1 is executed, which takes control
+ to label.Once  the control is here, contrary to what one might
+expect, case 2 gets executed,as is clear from the output. 
+Legally speaking, case2 should have got executed only for value
+of i equal to 2. But goto overrules this,and whatever follows 
+goto, it takes as the law.  
+
+        
+       
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="branching.html">Back</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+</body>
+</html>
+
+
+
+
+
+

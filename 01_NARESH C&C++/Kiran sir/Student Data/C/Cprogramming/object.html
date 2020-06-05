@@ -1,0 +1,513 @@
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Objective Type Questions</h2></center>
+
+<pre>
+<font size="2">
+   
+What will be the output of the following programs:
+1.main()
+  {
+   static char str[] ="Academy"
+   printf("%s\n%s",str,"Acemedy");
+  }
+ a. Academy Academy              b.Error
+ c.No Error                     d.None  
+
+Output:    Academy Acamedy
+
+Explanation:      We know that mentioning the name of a
+string yields the base address of the string.When this
+base address is passed to printf() it prints out each 
+character in the string till it encounters '\0' sitting
+at the end of the string.A string written double quotes
+also gives the base address of the string.This base 
+address when passed to printf() would result in printing
+"Acemedy"once again.
+
+2. main()
+   {
+    float  a=3.14;
+    printf("%\na=%f",a);
+    printf("%\na=%6.2f",a);
+    printf("%\na=%-6.2f",a);
+    printf("%\na=%6.1f",a);
+    printf("%\na=%6.0f",a);
+   }
+
+Output:  a=3.140000
+         a=  3.14
+         a=3.14
+         a=   3.1
+         a=     3
+
+Explanation:  The first printf() uses the format 
+specification for a float,hence a gets printed as 
+3.140000, as bydefault a float is printed with 6 
+decimal places.In the next printf() the number that
+precedes the f in %f is an optional specifier,which
+governs how exactly the varible is to be printed 6.2
+signifies that the field width i.e the total number 
+of columns that the values occupies on the screen,
+should be 6 and that the value should have 2 digits
+after the decimal point.Thus 3.14 is printed with 
+blank spaces on the left,that is with right
+justification.
+
+    For left justification,we use a minus sign with
+the specifiers,as is done in the next printf().It 
+prints the value of a starting from the zeroth column
+,with only 2 decimal digits.The specification 6.1 
+prints 3.1 with right justification.
+    In the last printf(),6.0 specifies zero decimal 
+digits,have only 3 is dsplayed right justified.
+
+3.   main()
+     {
+      printf("%20s\n","short leg");
+      printf("%20s\na","long leg");
+      printf("%20s\n","deep fine leg");
+      printf("%20s\n","backward short leg");
+      printf("%20s\n","legs all the same!");
+     }
+
+Output:                             shortleg
+                                          longleg
+                                  deep fine leg
+                        backward short leg
+                      legs all the same!
+
+Explanation:  The output is right justified,as the field
+width specified with each %s is plus 20.For each string,
+20 column are set aside,and the strings are printed with
+blanks filling up the remaining columns are on the left.
+
+4. main()
+   {  
+    printf("hello\nhi\n");
+    printf("hello\rhi");
+   }
+
+Output:      hello
+               hi
+               hillo
+
+Explanation: The escape sequence '\n' called new line 
+takes the cursor to the beginning of the next line.Hence
+with the first printf() "hello" and "hi" are printed on
+consective lines.A '\r' on the other hand,takes the cursor
+to the beginning of the same line in which the cursor is 
+currently present.Hence,having printed "hello",the cursor
+is sent back at 'hi' is printed.The first two letters of 
+"hello" are therefore written over,and we get the output 
+as "hillo".
+
+5.  main()
+    {  
+    printf("%hello\b\b\b\b\b");
+    printf("hi\b\b\bbye");
+    }
+
+Output:  byelo
+
+Explanation:  The escape sequence '\b' stands for backspace
+which takes the cursor to the previous character.In the
+first printf(), "hello" is printed, following which the 
+cursor is positioned after 'o'.Now the 5 backspaces take 
+the cursor to the letter 'h' of "hello".The control now 
+passes to the second printf(),and "hi" is written over the 
+first three characters of "hello" resulting in "hilo".Once 
+again 3 backspaces are encountered,which take the cursor 
+back at 'h' of "hi".Next "bye" is printed on top of "hi".
+The "lo" that is seen has persisted from the first printf()'s.
+"hello", as it never got overwritten.Hence the output "byelo".
+
+ 6.main()
+   {
+     printf(" i\tam\ta\tboy");
+   }
+
+Output:i am a boy
+
+Explanation:  The message is printed with space inserted 
+wherever the escape sequence '\t' occured. This sequence 
+stands for a tab.In one compiler,the tabs had been setup 
+after every 5 colunms,at 0,5,10 etc.Hence while executing
+printf(),when '\t' is encountered,the cursor skips to the 
+immediately next column which is a multiple of 5,and then 
+prints the next word.Thus 'i' is printed form the 15th 
+column,"am" from the 5th,'a' from the 10th,and "boy" from
+the 15th column.Some compilers like turbo c allow you to 
+change the tab settings,so that the tab widths can set up 
+as desired.
+
+7. #include<stdio.h>
+   main()
+   {
+    char str1[30],str2[30];
+    printf("enter a sentence \n");
+    scanf("%s",str1);
+    printf("%s",str2);
+    fflush(stdin);
+    printf("\n enter a sentence \n");
+    gets(str2);
+    printf("%s",str2);
+   }
+Output:    enter a sentence
+        nothing succeeds like success
+           enter a sentence
+        nothing succeeds like success
+        nothing succeeds like success
+
+Explanation: The scanf() suffers from the limitation that a 
+maximum of only one word can be accepted by it.The moment a 
+space(or a tab or a newline)is typed,scanf() assumes you have
+finished supplying information ,and hence ignores whatever 
+follows.That's why,str[] stroes only "Nothing,as it is proved 
+by the first output.To overcome this limitation,we have an 
+unformatted console i/o function called gets().It accepts 
+whatever u type from the keyboard till the enter key is hit.
+To be precise,get() accepts everything until a '\n' is 
+encountered,which it replaces with a '\0' . 
+   Thus the entire string that we entered is obtained in the
+second output.fflush() flushes out the current keyboard buffer 
+would be read by gets() .Since gets() is terminated on reading
+an enter key ,u won't get a chance to supply the 2nd sentence.
+
+8. #include
+   main()
+   {
+    char name[20],name1[20];
+    int age,age1;
+    printf("enter name and age\n");
+    scanf("%s%d",name,&age);
+    printf("%s%d",name,age);
+    printf("\n enter name and age\n");
+    fscanf("stdin,"%s%d",name1,&age1);
+    printf("stdout,"%s%d",name1,age1);
+   }
+
+Output: enter name and age
+         raj 18
+        enter name and age
+         anjali 21
+
+Explanation: Here the first set of statement comprising of 
+prinf()s and scanf() is fairly simple.The fscanf() and 
+fprintf() that follow next need some explaning.
+      Fscanf( ) like scanf(),is used for formatted reading
+of data. The only difference is that the former takes an
+additional arugement that of a file pointer.This pointer 
+indicates to the fscanf() from where the data is to be read.
+whereas scanf() is capable of reading data onlyfrom the 
+keyboard.In the call to fsacnf() the file pointer stdin is 
+being used ,which sands for standard input device i.e the 
+keyboard.Since stdin is a pointer to a standard file,we do 
+not need to use fopen() to open it,as it is always open for 
+reading.The counterpart of fscanf() is fprintf().
+
+        It too needs a file pointer as its first argument.
+Here the file pointer used is stdout,which stands for 
+standard output device,i.e the display monitor.Thus using 
+stdin in fscanf() and stdout in fprint() makes them them work
+like the familiar scanf() and printf() functions.Hence both
+the sets collect the  names and ages from keyboard. 
+
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="managing.html" target="_self">BACK</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+
+
+
+
+<!--<html><pre>
+
+
+<strong>OBJECTIVE TYPE QUESTIONS</strong>
+
+What will be the output of the following programs:
+
+1.main()
+  {
+               static char str[] ="Academy"
+                    printf("%s\n%s",str,"Acemedy" );
+     }
+        a. Academy Academy              b.Error
+        c.No Error                                d.None  
+
+Output:    Academy Acamedy
+
+Explanation:      We know that mentioning the name of a string yields the base address of the string.
+            When this base address is passed to printf() it prints out each character in the string till it
+ encounters '\0' sitting at the end of the string.A string written double quotes also gives the base address of the
+ string.This base address when passed to printf() would result in printing "Acemedy"once again.
+
+
+2.         main()
+           {
+                float  a=3.14;
+                printf("%\na=%f",a);
+                printf("%\na=%6.2f",a);
+                printf("%\na=%-6.2f",a);
+         printf("%\na=%6.1f",a);
+                printf("%\na=%6.0f",a);
+           }
+
+Output:  a=3.140000
+               a=  3.14
+               a=3.14
+               a=   3.1
+               a=     3
+
+Explanation:  The first printf() uses the format specification for a float,hence a gets printed as 3.140000,
+ as bydefault a float is printed with 6 decimal places.In the next printf() the number that  precedes the f in %f is
+ an optional specifier,which governs how exactly the varible is to be printed 6.2 signifies that the field width
+ i.e the total number of columns that the values occupies on the screen,should be 6 and that the value should have 
+ 2 digits after the decimal point.Thus 3.14 is printed with blank spaces on the left,that is with right
+ justification.
+        For left justification,we use a minus sign with the specifiers,as is done in the next printf().It prints
+ the value of a starting from the zeroth column,with only 2 decimal digits.The specification 6.1 prints 3.1 with
+ right justification.
+       In the last printf(),6.0 specifies zero decimal digits,have only 3 is dsplayed right justified.
+
+
+3.           main()
+            {
+               printf("%20s\n","short leg"); 
+              printf("%20s\na","long leg");
+                printf("%20s\n","deep fine leg");
+                printf("%20s\n","backward short leg");
+                printf("%20s\n","legs all the same!");
+               }
+
+Output:                             shortleg
+                                          longleg
+                                  deep fine leg
+                        backward short leg
+                      legs all the same!
+
+Explanation:  The output is right justified,as the field width specified with each %s is plus 20.For each string,
+20 column are set aside,and the strings are printed with blanks filling up the remaining columns are on the left.
+
+
+4. main()
+   {  
+         printf("hello\nhi\n");
+         printf("hello\rhi");
+   }
+
+Output:      hello
+               hi
+               hillo
+
+Explanation: The escape sequence '\n' called new line takes the cursor to the beginning of the next line.
+ Hence with the first printf() "hello" and "hi" are printed on consective lines.A '\r' on the other hand,takes the
+ cursor to the beginning of the same line in which the cursor is currently present.Hence,having printed "hello",the
+ cursor is sent back at 'hi' is printed.The first two letters of "hello" are therefore written over,and we get the
+ output as "hillo".
+
+
+5.main()
+  {  
+    printf("%hello\b\b\b\b\b");
+    printf("hi\b\b\bbye");
+  }
+
+Output:  byelo
+Explanation:       The escape sequence '\b' stands for backspace which takes the cursor to the previous character.
+In the first printf(), "hello" is printed, following which the cursor is positioned after 'o'.
+Now the 5 backspaces take the cursor to the letter 'h' of "hello".
+The control now passes to the second printf(),and "hi" is written over the first three characters of "hello" resulting 
+in "hilo".Once again 3 backspaces are encountered,which take the cursor back at 'h' of "hi".Next "bye" is printed on top
+of "hi".The "lo" that is seen has persisted from the first printf()'s."hello", as it never got overwritten.Hence the output
+ "byelo".
+ 
+ 6.main()
+   {
+     printf(" i\tam\ta\tboy");
+   }
+
+Output:i am a boy
+
+Explanation:  The message is printed with space inserted wherever the escape sequence '\t' occured.
+ This sequence stands for a tab.In one compiler,the tabs had been setup after every 5 colunms,at 0,5,10 etc.
+ Hence while executing printf(),when '\t' is encountered,the cursor skips to the immediately next column which is a
+ multiple of 5,and then prints the next word.Thus 'i' is printed form the 15th column,"am" from the 5th,'a' from
+ the 10th,and "boy" from the 15th column.Some compilers like turbo c allow you to change the tab settings,so that
+ the tab widths can set up as desired.
+
+
+
+7.                   #include<stdio.h>
+                      main()
+               {
+                    char str1[30],str2[30];
+                     printf("enter a sentence \n");
+                     scanf("%s",str1);
+                     printf("%s",str2);
+                      fflush(stdin);
+                    printf("\n enter a sentence \n");
+                           gets(str2);
+                     printf("%s",str2);
+                }
+Output:    enter a sentence
+                  nothing succeeds like success
+                  enter a sentence
+                  nothing succeeds like success
+                  nothing succeeds like success
+ 
+Explanation: The scanf() suffers from the limitation that a maximum of only one word can be accepted by it.
+ The moment a space(or a tab or a newline)is typed,scanf() assumes you have finished supplying information ,and
+ hence ignores whatever follows.That's why,str[] stroes only "Nothing,as it is proved by the first output.To
+ overcome this
+  limitation,we have an unformatted console i/o function called gets().It accepts whatever u type from the keyboard
+ till the enter key is hit.To be precise,get() accepts everything until a '\n' is encountered,which it replaces
+ with a '\0' . 
+   Thus the entire string that we entered is obtained in the second output.fflush() flushes out the current keyboard
+ buffer 
+   would be read by gets() .Since gets() is terminated on reading an enter key ,u won't get a chance to supply the
+ 2nd sentence.
+
+8.                 #include<font>
+                      main()
+                  {
+                                char name[20],name1[20];
+                         int age,age1;
+                         printf("enter name and age\n");
+                             scanf("%s%d",name,&age);
+                        printf("%s%d",name,age);
+                        printf("\n enter name and age\n"); 
+                        fscanf("stdin,"%s%d",name1,&age1);
+                         printf("stdout,"%s%d",name1,age1);
+                  }
+
+Output: enter name and age
+                  raj 18
+              enter name and age
+               anjali 21
+
+Explanation: Here the first set of statement comprising of prinf()s and scanf() is fairly simple.The fscanf() and
+ fprintf() that follow next need some explaning.
+      Fscanf( ) like scanf(),is used for formatted reading of data. The only difference is that the former takes an
+ additional arugement that of a file pointer.
+      This pointer indicates to the fscanf() from where the data is to be read. whereas scanf() is capable of
+ reading data onlyfrom the keyboard.In the call to fsacnf() the file pointer stdin is being used ,which sands for
+ standard input device i.e the keyboard.Since stdin is a pointer to a standard file,we do not need to use fopen()
+ to open it,as it is always open for reading.The counterpart of fscanf() is fprintf().
+
+        It too needs a file pointer as its first argument.Here the file pointer used is stdout,which stands for
+ standard output device,i.e the display monitor.Thus using stdin in fscanf() 
+ and stdout in fprint() makes them them work like the familiar scanf() and printf() functions.Hence both the sets
+ collect the  names and ages from keyboard.
+ 
+ <a href="managing.html" target="_self">BACK</a></font>
+</pre></TD>
+</pre>
+
+</table>
+
+
+</html>-->

@@ -1,0 +1,91 @@
+
+
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left"><pre>
+
+
+Inputting Real Numbers :  Unlike integer numbers,the field width of real numbers s not to be specified and therefore scanf reads 
+ real numbers using the simple specifications %f for both the notations,namely decimal point and exponential
+ notation.
+                
+                Example:      scanf(%f%f%f",&x,&y,&z);
+         input data 
+                  475.89       43.21e-1         678 
+ will assign the value 475.89 to x,4.321 to y and 678.0 to z. The input field specifications may be separated by an
+ arbitrary blank spaces.
+ If the  number to be read is of double type ,then the specification should be lf% instead of %f. A number may be
+ skipped using %*f.
+
+Program:             /* Reading of real numbers */
+                            main()  
+                        {
+                            float x,y;
+                           double  p,q;
+                            printf("values of x and y:");
+                            scanf("%f\n%e",&x,&y);
+                            printf("\n");
+                        printf("x=%f \n y=%f\n\n",x,y);
+                        printf("values of p and q:");
+                        scanf("%lf%lf",&p,&q);
+                        printf("\n p=%lf \n q=%e",p,q);
+                        printf("\n\n p=%12lf \n p=%12e",p,q);
+                    }        
+
+Output:   values of x and y:12.3456 17.5e-2
+                                 x=12.345600
+                                 y=0.175000
+          values of p and q: 4.14285178        18.5678901234567890   
+                               p=4.14285178
+                               q=1.856789012346e+00
+    
+<a href="managing.html" target="_self">BACK</a>
+</pre></TD>
+</pre>
+
+</table>
+
+
+</html>

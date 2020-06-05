@@ -1,0 +1,29 @@
+<html>
+<head><TITLE>Selection Algorithm</TITLE></head>
+<body>
+<strong>Algorithm </strong><br><br>
+
+Procedure SelectionSort (A,N)<br><br>
+1.For index=1 to N-1 do<br>
+ begin<br>
+2.MinPosition <-- index<br>
+3.For j=index+1 to N do<br>
+ begin<br>
+4.If A[j]<A[MinPosition] then <br>
+ MinPosition <-- j<br>
+end<br>
+5.swap(A[index],A[MinPosition])<br>
+end<br>
+6.Return.<br>
+<br>
+<strong>Analysis</strong><br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In step 5 we are swapping the smallest element with current index 	element. However when array is almost sorted,this swapping is unnecessary and 	step can be modified by providing a simple condition whether the smallest 	element position is same as current index element.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The number of comparisons is N-1 in the first pass,N-2 in the second 	pass,N-3 passes in the third pass , and so on, and N-i in the ith pass. Hence there 	are at most <br>
+            <div align="center">  (N-1)+(N-2)+(N-3)+...............+1= N(N-1)/2 comparisons</div>
+		<div align="center">Time Complexity is [O(N)]²</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Selection sort is efficient than Bubble sort and Insertion sort in the 	sense that there are no more than N-1 actual exchanges. Thus the selection is very 	much suitable in the application in which excessive swapping is a problem.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			Since the number of comparisons cannot be limited in a particular 	pass , there is no significance if the input data is completely sorted or unsorted. 	That is, performance for both Best case and Worst case is same in selection sort.
+
+
+</body>
+</html>

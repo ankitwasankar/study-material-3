@@ -1,0 +1,181 @@
+<html>
+<head><TITLE></TITLE>
+<!--<h6 align="center"><a href="decisionformat.html">BACK</a></h6></html>
+</head>-->
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<tr>
+<TR><a href="files.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left"><pre>
+
+
+                              <strong>DECISION MAKING AND BRANCHING </strong>
+<strong>GOTO STATEMENT</strong>
+
+This Keyword is used when we want to transfer the control to some point in the 
+program which is not in the normal, step by step sequence of a program.
+
+It takes control from one place to another unconditionally, So a different  path 
+for the execution of a program to set up.
+
+The following program illustrates the use of a GOTO.
+
+<strong>Example:63</strong>
+                      
+          main()
+          {
+                printf("Hope is hoping against hope. . . . . . ");
+                goto here;
+                printf("Even it seems hopeless");
+                hope();
+                exit(0);
+          }
+
+OUTPUT:
+                  Hope is hoping against hope. . . . . . 
+
+Explanation:
+     The second part of the message will not get printed, as due to goto, control
+skips  to the label hope and execution is terminated due to exit(0) present here. 
+After  hope, those would have got executed.
+
+
+   Though goto seems to be handing over to us a magic word for placing control 
+where are please, we would do well to empty combinations of IF, For,while and switch instead.
+   This is because goto makes the program less readable and hard to debug. 
+Besides, once the control is given to goto, there ' 	s no telling how the program
+would behave, as is illustrated. 
+
+<strong>Example:64</strong>           
+                    
+          main()
+          {                               
+                int i;
+                for(i=1;i<=5;i++)
+                {
+                     if(i*i>=121)
+                         goto there;
+                     else
+                         printf("%d",i);
+                }     
+                there:
+                        printf("\n No more   murphys laws");
+          }
+
+OUTPUT:
+                      1  2  3  4  5 
+
+<strong>Example:65</strong>
+                      
+          main()
+          {
+              int i,j;
+              for(j=1;j<=10;j++)
+              {
+                  for(i=1;i<=10;i++)
+                  {
+                        if(j<10)
+                               goto out;
+                               printf("Murphy’s first law");
+                  }
+                  printf("If the price of the PC is a dream");
+              }
+              printf("Dream about a nightmare");
+          }
+
+OUTPUT:
+                       Dream about a nightmare
+
+Explanation:Can we abruptly break out of the loop using goto?
+           YES.  
+In fact goto can take the  control anywhere in the program. Here, first time  
+through  the loop itself the condition is satisfied,and goto takes the control 
+directly to the label out, where the printf() gets executed.
+
+<strong>Example:66</strong>
+                          
+            main()
+            {
+               int i, k=1;
+               here:
+                      if(k>2) 
+                           goto out;
+               there:
+                      for(i=1;i<=5;i++)
+                           printf("%d",i);
+                           k++;
+                           goto there;
+               out: ;
+            }
+OUTPUT:
+                           12345 12345 12345 12345
+        
+<strong>Example:67</strong>
+                   
+        main()
+        {
+           int i=1;
+           switch(i)
+           {
+               case 1:
+                        goto label;
+               label:
+                        case 2:
+                                 printf(" He looks like a Saint. . . . . ");
+                                 break;
+            }
+           printf("\n Saint Bernard!");
+        }
+
+OUTPUT:
+                      He looks like a Saint. . . . . 
+                          Saint Bernard!           .
+Explanation:
+           Since i is 1, case 1 is executed, which takes control to label. 
+Once  the control is here, contrary to what one might expect, case 2 gets executed,
+as is clear from the output. Legally speaking, case2 should have got executed only 
+for value of i equal to 2. But goto overrules this, and whatever follows goto, it 
+takes as the law.   
+
+<a href="branching.html">Back</a>
+</pre><td></tr></table>
+</html>

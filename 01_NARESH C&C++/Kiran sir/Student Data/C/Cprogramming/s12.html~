@@ -1,0 +1,88 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+</table></TD>
+<TD align="left"><pre>
+
+<strong>Reading strings from the terminal:</strong>
+
+ The familiar input function scanf can be used with %s format specification to read in a 
+string of characters.
+              char address[15];
+              scanf("%s", address);
+   The problem with the scanf function is that it terminates its input on the first white
+ space it finds.Therefore if the following line of text is typed in at the terminal,
+                                NEW YORK
+then only the string "NEW" will be read into the array address , since the blank space after
+the word "NEW" will terminate the string.
+
+<strong>Note:</strong> Unlike previous scanf calls, in the case of character arrays , the ampersand(&) is not
+ required before the variable name.
+  The scanf function automatically terminates the string that is read with a null character and
+therefore the character array should be large enough to hold the input string plus the null character.
+'C' does not provide operators that work on strings directly. For instance we cannot assign 
+one string to another directly.
+                string = "ABC";
+                string1 = string2;   are not valid.
+
+<strong>Writing strings to screen:</strong>
+ 
+ The %s format can be used to display an array of characters that is terminated by 
+the null character.
+% 10.4s indicates that the first four characters are to be printed in a field width
+ of 10 columns.
+%-10.4s indicates that the string will be printed left justified.
+
+<strong>Note :</strong>
+1.When the field width is less than the length of the string , the entire string is printed.
+2.The integer value on the right side of the decimal print specifies the number of 
+characters to be printed.
+3.When the number of characters to be printed is specified as 'zero' nothing is printed.
+4.The minus sign in the specification causes the string to be printed left justified.
+
+
+<a href="s1.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</TR>
+file:///root/Desktop/sushma/s12.html
+</table>
+
+
+</html>

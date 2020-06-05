@@ -1,0 +1,87 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+
+<strong><u>Automatic:</u></strong>
+
+The auto variables stored in memory
+Its default initial value is garbage value.
+Scope of the variable is with in the function in which it is declared/defined.
+Lifetime: Till the control remains in the block in which the variable is defined.
+
+ex1:          main()
+                 {
+	auto int x,y;
+	printf("%d" \t %d", x,y);
+                 }
+ Output: Some garbage values we get
+        St different times of running this program, we can get different outputs.
+
+To examine scope and lifetime of variable (auto)
+
+Ex: 
+	main()
+	{
+	auto int i=1;
+	{
+	auto int i=2;
+	{
+	auto int i=3;
+	printf("%d \n", i);
+	}
+	printf("%d \n", i);
+	}
+	printf("%d \n", i);
+	}
+
+Output: 3
+             2
+             1
+
+
+
+<a href="sto1.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

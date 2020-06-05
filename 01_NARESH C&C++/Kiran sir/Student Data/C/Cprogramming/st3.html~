@@ -1,0 +1,116 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+
+ <strong>ARRAYS WITHIN THE STRUCTURES</strong>
+
+    C permits the use of arrays as structure members. we can use single or multidimensional 
+arrays of type int or float.
+Ex:   struct marks
+                 {
+                    int number;
+                    float subject[3];
+                    student[2];
+                  }
+here,the member subject contains 3 elements,subject[0],subject[1] and subject[2].
+These elements can be accessed using appropriate subscripts. For example ,the name 
+      student[1].subject[2]; would refer to the marks obtained in the third subject 
+by the second student.
+
+We can use arrays inside the structures. We can use single-or multidimensional
+arrays of type int or float.
+For example, the following structure declaration is valid.
+struct marks
+{
+int number;
+float subject[3];
+}student[3];
+ 
+Here,the member subject contains 3 elements,subject[0],subject[1] and subject[2].
+These elements can be accessed  using subscripts like
+student[1].subject[2];
+would refer to the marks obtained in the third subject by the second student.
+/*Arrays Within The Structures*/
+main()
+{
+struct marks
+{
+int sub[3];
+int total;
+};
+static struct marks student[3]={45,67,81,0,75,53,69,0,57,36,71,0};
+static struct marks total;
+int i,j;
+for(i=0;i<=2;i++)
+{
+for(j=0;j<=2;j++)
+{
+student[i].total += student[i].sub[j];
+total.sub[j] +=student[i].sub[j];
+}
+total.total +=student[i].total;
+}
+printf("STUDENT TOTAL \n\n");
+for(i=0;i<=2;i++)
+printf("student[%d] %d\n",i+1,student[i].total);
+printf("SUBJECT TOTAL \n\n");
+for(j=0;j<=2;j++)
+printf("subject-%d %d\n",j+1,total.sub[j]);
+printf("\n Grand Total = %d\n",total.total);
+}
+OUTPUT:
+
+STUDENT             	TOTAL
+student[1]        	193
+student[1]		197	
+student[1]		164
+SUBJECT  		TOTAL
+subject-1		177
+subject-2		156	
+subject-3		221
+Grand Total 	         =554
+
+<a href="structures.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

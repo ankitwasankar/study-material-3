@@ -1,0 +1,126 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left"><pre>
+
+
+
+<u>Commonly used scanf format codes are:</u>
+
+code                Meaning
+
+ %d                  Read a decimal integer             
+        
+  %e                 Read a floating point value             
+         
+  %f                 Read a floating point value             
+        
+  %g                  Read a floating point value             
+        
+  %h                 Read a  short integer             
+        
+  %i                 Read a decimal,hexadecimal or octal integer           
+        
+  %o                  Read an octal integer           
+        
+   %s                 Read a string         
+        
+  %u                 Read an unsigned decimal integer            
+        
+ %c                   Read a single character           
+        
+  %x                    Read a hexadecimal integer         
+        
+ %[....]                Read a string of word[s]            
+       
+                  Points to remember while using scanf:
+      If we do not plan carefully,some crazy things can happen with scanf.Since the i/o routines are
+ not a part of c language,they are made available either as a separate module of the c library or as 
+a part of the operating system(like unix).Givenbelow are some of the general points to keep in mind 
+while writing a scanf statement.
+
+1.All function arguments,except the control string,must be pointers to variables.
+2.Format specifications contained in the control string should match the arguments in order.
+3.Input data items must be separated by spaces and must match the 
+variables receiving the input in the same order.
+4.The reading will be terminated,when scanf encounter an invalid
+mismatch of data or a character that is not valid for the value being  read.
+5.When searching for a value,scanf ignores line boundaries and simply looks for the next appropriate character.
+6.Any unread data items in a line will be considered as a part of the data input line to the next scanf call.
+7.When the field width specifier w is used,it should be large enough to contain the input data size. 
+
+Formatted Output: The printf statement provides certain features that can be effectively exploited to control 
+                  the alignment and pacing of print-outs n the terminals. The general form of printf statement is 
+    printf("control string",arg1,arg2,.........argn); 
+control string consists of three of items:
+1.Characters that will be printed on the screen as they appear.
+2.Format specifications that defines the output format for display of each item.
+3.Escape sequence characters such as \n,\t and \b.
+         The control string indicates how many arguments follow and what their types are. 
+ The arguments arg1,arg2,..............argn are the variables whose values are formatted and printed according to 
+specifications of the control string. The argument should match in number,order and type with the format specifications.
+        A  simple format specification has the following form:
+                                  %w.p type-specifier.	
+ Where "w"is an integer number that specifies the total number of columns for the output value and p is another
+ integer number that specifies the number of digits to the right of the decimal point or the number of characters
+ to be printed from a string. Both w and p are optional. Some examples of printf statement are:
+
+printf("programming in c");
+printf(" ");
+printf("\n");
+printf("%d",x);
+printf("a=%f\n b=%f",a,b);
+printf("sum=%d",1234);
+printf("\n\n");
+printf never supplies a new line automatically and therefore
+multiple printf statements may be used to build one line of output.
+
+<a href="managing.html" target="_self">BACK</a>
+</pre></TD>
+</pre>
+
+</table>
+
+
+</html>

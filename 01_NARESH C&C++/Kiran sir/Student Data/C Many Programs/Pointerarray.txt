@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+void display(int*);
+int a[5],i;
+clrscr();
+for(i=0;i<5;i++)
+{
+printf("Enter the no.:-");
+scanf("%d",&a[i]);
+}
+display(a);
+getch();
+}
+void display(int *p)
+{
+int i;
+for(i=0;i<5;i++)
+printf("%d",*(p++));
+}

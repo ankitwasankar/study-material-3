@@ -1,0 +1,119 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><html>
+<h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+<u>Objective-type Questions :</u>
+1.what will be the output of the following program
+main()
+{
+   int a[5], i;
+  static int b[5];
+  for(i=0 ; i<5 ;i++)
+print f(%d %d %d , i, a[i], b[i]);
+}
+output: 0 100 0
+            1 -75  0
+            2 123  0
+            3 1245 0
+            4  347 0
+Explanation :since the storage class of the array a[] has not been mentioned, the default 
+storage class auto is assigned for it. As against this, the storage class of b[] has been
+explicitly mentioned as static. The default value of auto storage class variable is any 
+garbage value and the default value of static storage variable is 0. therefore all zeros
+ are printed out for b[], where as garbage values are printed out for a[].
+
+2.main()
+{
+   static int sub[5] = {10,20,30,40,50};
+int i;
+for (i=0;i<=4;i++)
+{
+  if(i<=4)
+{
+sub[i]=i*i;
+print f( %d, sub[i]);
+}
+}
+}
+output: no output
+Explanation:there is a semicolon at the end of the for loop, thus the loop is reduced to the form: 
+                  for(i=0;i<=4;i++)
+this loop repeats the null statement (;)5times and then the control comes out of the loop. At this
+ time the value of i has become 5 and hence the if condition fails and the control reaches the
+  closing brace of main(). The execution is therefore terminated without any output to the screen.
+
+3.int b[5];
+main()
+{
+  static int a[5];
+  int i;
+  for(i=0;i<=4;i++)
+print f(%d %d, b[i], a[i]);
+}
+output :  0  0
+          0  0
+          0  0
+          0  0
+          0  0
+Explanation: default initial value of a static or extern storage class variable is 0. thus ,
+ though the array b[] and a[] have not been initialized, the fact that their storage class is
+  extern and static respectively causes their values to be 0.
+  <a href="arrays.html" target="_self">BACK</a>
+  </pre>
+</TD>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</table>
+</TD>
+</TR>
+</table>
+</html>     

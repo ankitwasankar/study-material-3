@@ -1,0 +1,18 @@
+#include<stdio.h>
+void main(int argc,char *argv[])
+{
+    int i,l=0,j;
+    if(argc<2)
+      printf("Too few parameters");
+    else
+    {
+      for(j=1;j<argc;j++)
+      {
+       for(i=0;argv[j][i]!=NULL;i++)
+	l++;
+       if(argc>2 && j!=argc-1)
+	l++;
+      }
+      printf("Length of string - %d",l);
+    }
+}

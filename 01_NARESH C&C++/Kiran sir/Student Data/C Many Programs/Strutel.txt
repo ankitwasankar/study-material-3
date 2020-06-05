@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include<conio.h>
+struct tel
+{
+char name[10];
+long int tn;
+};
+void main()
+{
+struct tel *t;
+FILE *fp;
+int i;
+clrscr();
+fp=fopen("pra.txt","w");
+for(i=0;i<5;i++)
+{
+flushall();
+printf("Enter the Customer Name   :-  ");
+gets(t->name);
+printf("Enter the Telepohne Number:-  ");
+scanf("%ld",&t->tn);
+fprintf(fp,"\n%s   %ld",t->name,t->tn);
+}
+fclose(fp);
+getch();
+}

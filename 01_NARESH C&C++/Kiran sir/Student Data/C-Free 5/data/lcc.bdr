@@ -1,0 +1,289 @@
+<Builder name="" type="LCC-Win32" version="1.0">
+	<Hint>LCC-Win32</Hint>
+	<IncPaths endslash="0">
+		
+		<Pattern>*\Include</Pattern>
+	</IncPaths>
+	<LibPaths>
+		
+		<Pattern>*\Lib</Pattern>
+	</LibPaths>
+	<ExePaths>
+		
+		<Pattern>*\Bin</Pattern>
+	</ExePaths>
+	<AutoDetect>
+		<Path>C:\lcc</Path>
+		<Path>D:\lcc</Path>
+		<Path>E:\lcc</Path>
+		<Path>F:\lcc</Path>
+		<Path>G:\lcc</Path>
+		<Reg>\SOFTWARE\lcc|lccroot</Reg>
+	</AutoDetect>
+	<CompilerOptions>
+		<Category name="Options">
+			<Option value="-A" desc="All warnings will be active. [-A]"/>
+			<Option value="-ansic90" desc="Conform to ANSI 1990 standard. [-ansic90]"/>
+			<Option value="-dd" desc="Debug defines. [-dd]"/>
+			<Option value="-E" desc="Generate an intermediate file with the output of the preprocessor. [-E]"/>
+			<Option value="-fno-inline" desc="The inline directive is ignored. [-fno-inline]"/>
+			<Option value="-g2" desc="Generate the debugging information. [-g2]"/>
+			<Option value="-nw" desc="No warnings will be emitted. [-nw]"/>
+			<Option value="-O" desc="Optimize the output. [-O]"/>
+			<Option value="-overflowcheck" desc="Generate code to test for overflow for all additions, subtractions and multiplications. [-overflowcheck]"/>
+			<Option value="-p6" desc="Enable SSE3 instructions. [-p6]"/>
+			<Option value="-profile" desc="Inject code into the generated program to measure execution time. [-profile]"/>
+			<Option value="-shadows" desc="Warn when a local variable shadows a global one. [-shadows]"/>
+			<Option value="-unused" desc="Warns about unused assignments and suppresses the dead code. [-unused]"/>
+		</Category>
+		<RawOptionsDebug enabled="1">
+			<Default>-g2 -DDEBUG</Default>
+			<User>-g2 -DDEBUG</User>
+		</RawOptionsDebug>
+		<RawOptionsRelease enabled="0">
+			<Default>-O</Default>
+			<User>-O</User>
+		</RawOptionsRelease>
+	</CompilerOptions>
+	<LinkerOptions>
+		<LibsDebug enabled="1">
+			<Default>
+			</Default>
+			<User>
+			</User>
+		</LibsDebug>
+		<LibsRelease enabled="0">
+			<Default>
+			</Default>
+			<User>
+			</User>
+		</LibsRelease>
+		<RawOptionsDebug enabled="1">
+			<Default></Default>
+			<User></User>
+		</RawOptionsDebug>
+		<RawOptionsRelease enabled="0">
+			<Default>-s</Default>
+			<User>-s</User>
+		</RawOptionsRelease>
+	</LinkerOptions>
+	<Configs>
+		<BuildLog enabled="0">$(CFRoot)\Build.log</BuildLog>
+		<LibExt>lib;a</LibExt>
+		<ObjExt>o;obj</ObjExt>
+		<ResExt>res</ResExt>
+	</Configs>
+	<Commands msghandler="lcc.mhr">
+		<Command name="C Compiler" io="1" rdos="0" sys="0">
+			<Program enabled="1">lcc.exe</Program>
+			<Parameter enabled="1">&quot;$(FileName)&quot; -o &quot;$(Path)$(Name).obj&quot; $(CompilerOptions) -I$(IncPaths)</Parameter>
+			<FileExt enabled="1">c</FileExt>
+			<Target>$(PATH)$(NAME).obj</Target>
+			<TargetType>obj</TargetType>
+			<CurrentDir>$(FilePath)</CurrentDir>
+			<EnvVar></EnvVar>
+			<MsgID>Compiling $(FILENAME)...#81001</MsgID>
+		</Command>
+		<Command name="Linker(CUI)" io="1" rdos="0" sys="0">
+			<Program enabled="1">lcclnk.exe</Program>
+			<Parameter enabled="1">$(LinkerOptions) -o &quot;$(Target)&quot; $(ProjectFiles) $(Libs)</Parameter>
+			<FileExt enabled="1">o;obj;a;lib;res</FileExt>
+			<Target>$(Target)</Target>
+			<TargetType>cui</TargetType>
+			<CurrentDir>$(ProjectPath)</CurrentDir>
+			<EnvVar></EnvVar>
+			<MsgID>Linking...#81002</MsgID>
+		</Command>
+		<Command name="Linker(GUI)" io="1" rdos="0" sys="0">
+			<Program enabled="1">lcclnk.exe</Program>
+			<Parameter enabled="1">-subsystem windows $(LinkerOptions) -o &quot;$(Target)&quot; $(ProjectFiles) $(Libs)</Parameter>
+			<FileExt enabled="1">o;obj;a;lib;res</FileExt>
+			<Target>$(Target)</Target>
+			<TargetType>gui</TargetType>
+			<CurrentDir>$(ProjectPath)</CurrentDir>
+			<EnvVar></EnvVar>
+			<MsgID>Linking...#81002</MsgID>
+		</Command>
+		<Command name="Linker for DLL" io="1" rdos="0" sys="0">
+			<Program enabled="1">lcclnk.exe</Program>
+			<Parameter enabled="1">-dll $(LinkerOptions) -o &quot;$(Target)&quot; $(ProjectFiles) $(Libs)</Parameter>
+			<FileExt enabled="1">o;obj;a;lib;res;def</FileExt>
+			<Target>$(Target)</Target>
+			<TargetType>dll</TargetType>
+			<CurrentDir>$(ProjectPath)</CurrentDir>
+			<EnvVar></EnvVar>
+			<MsgID>Linking...#81002</MsgID>
+		</Command>
+		<Command name="Linker for Lib" io="1" rdos="0" sys="0">
+			<Program enabled="1">lcclib.exe</Program>
+			<Parameter enabled="1">/out:&quot;$(Target)&quot; $(ProjectFiles)</Parameter>
+			<FileExt enabled="1">o;obj</FileExt>
+			<Target>$(Target)</Target>
+			<TargetType>lib</TargetType>
+			<CurrentDir>$(ProjectPath)</CurrentDir>
+			<EnvVar></EnvVar>
+			<MsgID>Linking...#81002</MsgID>
+		</Command>
+		<Command name="Resource Compiler" io="1" rdos="0" sys="0">
+			<Program enabled="1">lrc.exe</Program>
+			<Parameter enabled="1">/I$(IncPaths) /fo&quot;$(Path)$(Name).res&quot; &quot;$(FileName)&quot;</Parameter>
+			<FileExt enabled="1">rc</FileExt>
+			<Target>$(PATH)$(NAME).res</Target>
+			<TargetType>res</TargetType>
+			<CurrentDir>$(FilePath)</CurrentDir>
+			<EnvVar></EnvVar>
+			<MsgID>Compiling $(FILENAME)...#81001</MsgID>
+		</Command>
+		<Command name="Debugger" io="0" rdos="0" sys="0">
+			<Program enabled="0"></Program>
+			<Parameter enabled="0"></Parameter>
+			<FileExt enabled="0">*.*</FileExt>
+			<Target></Target>
+			<TargetType></TargetType>
+			<CurrentDir></CurrentDir>
+			<EnvVar></EnvVar>
+			<MsgID>#81003</MsgID>
+		</Command>
+		<Command name="Run Exe" io="0" rdos="0" sys="0">
+			<Program enabled="0">$(Target)</Program>
+			<Parameter enabled="0">$(Parameters)</Parameter>
+			<FileExt enabled="1">exe</FileExt>
+			<Target></Target>
+			<TargetType></TargetType>
+			<CurrentDir></CurrentDir>
+			<EnvVar></EnvVar>
+			<MsgID>#81004</MsgID>
+		</Command>
+		<Command name="Run DLL" io="0" rdos="0" sys="0">
+			<Program enabled="0">$(HostApp)</Program>
+			<Parameter enabled="0">$(Parameters)</Parameter>
+			<FileExt enabled="1">dll</FileExt>
+			<Target></Target>
+			<TargetType></TargetType>
+			<CurrentDir></CurrentDir>
+			<EnvVar></EnvVar>
+			<MsgID>#81004</MsgID>
+		</Command>
+		<Command name="Run" io="0" rdos="0" sys="0">
+			<Program enabled="0">$(HostApp)</Program>
+			<Parameter enabled="0">$(Parameters)</Parameter>
+			<FileExt enabled="0">:exe;dll</FileExt>
+			<Target></Target>
+			<TargetType></TargetType>
+			<CurrentDir></CurrentDir>
+			<EnvVar></EnvVar>
+			<MsgID>#81004</MsgID>
+		</Command>
+		<Command name="Clean Objects" io="1" rdos="0" sys="0">
+			<Program enabled="0">fdel.exe</Program>
+			<Parameter enabled="1">&quot;$(Path)$(Name).o&quot; $(FileName)</Parameter>
+			<FileExt enabled="1">c;cpp;cxx;c++;cc</FileExt>
+			<Target>$(Target)</Target>
+			<TargetType></TargetType>
+			<CurrentDir></CurrentDir>
+			<EnvVar></EnvVar>
+			<MsgID></MsgID>
+		</Command>
+		<Command name="Clean Resource" io="1" rdos="0" sys="0">
+			<Program enabled="0">fdel.exe</Program>
+			<Parameter enabled="1">&quot;$(Path)$(Name).res&quot; $(FileName)</Parameter>
+			<FileExt enabled="1">rc</FileExt>
+			<Target>$(Target)</Target>
+			<TargetType></TargetType>
+			<CurrentDir></CurrentDir>
+			<EnvVar></EnvVar>
+			<MsgID></MsgID>
+		</Command>
+		<Command name="Clean Io" io="1" rdos="0" sys="0">
+			<Program enabled="0">fdel.exe</Program>
+			<Parameter enabled="0">&quot;$(Path)$(Name).o&quot; -silent</Parameter>
+			<FileExt enabled="0">*.*</FileExt>
+			<Target>$(Target)</Target>
+			<TargetType></TargetType>
+			<CurrentDir></CurrentDir>
+			<EnvVar></EnvVar>
+			<MsgID></MsgID>
+		</Command>
+		<Command name="Clean Target" io="1" rdos="0" sys="0">
+			<Program enabled="0">fdel.exe</Program>
+			<Parameter enabled="0">&quot;$(Target)&quot;</Parameter>
+			<FileExt enabled="1">*.*</FileExt>
+			<Target></Target>
+			<TargetType></TargetType>
+			<CurrentDir></CurrentDir>
+			<EnvVar></EnvVar>
+			<MsgID></MsgID>
+		</Command>
+	</Commands>
+	<Actions>
+		<Action name="Compile" depend="0">
+			<File>
+				<Command>"C Compiler""Resource Compiler"</Command>
+			</File>
+			<Project>
+			</Project>
+			<MsgID>Complete Compile $(FileName): $(Error) error(s), $(Warning) warning(s)\nGenerated $(Target)#81005</MsgID>
+			<ErrMsgID>Complete Compile $(FileName): $(Error) error(s), $(Warning) warning(s)#81006</ErrMsgID>
+			<PreAction></PreAction>
+			<PostAction con="0"></PostAction>
+		</Action>
+		<Action name="Build" depend="0">
+			<File>
+				<Command>"C Compiler""Resource Compiler"</Command>
+				<Command>"Linker(CUI)""Linker(GUI)""Linker for DLL""Linker for Lib"</Command>
+			</File>
+			<Project>
+				<Command>"C Compiler""Resource Compiler"</Command>
+				<Command>"Linker(CUI)""Linker(GUI)""Linker for DLL""Linker for Lib"</Command>
+			</Project>
+			<MsgID>Complete Build $(TargetName): $(Error) error(s), $(Warning) warning(s)\nGenerated $(Target)#81007</MsgID>
+			<ErrMsgID>Complete Build $(TargetName): $(Error) error(s), $(Warning) warning(s)#81008</ErrMsgID>
+			<PreAction></PreAction>
+			<PostAction con="0"></PostAction>
+		</Action>
+		<Action name="Make" depend="1">
+			<File>
+				<Command>"C Compiler""Resource Compiler"</Command>
+				<Command>"Linker(CUI)""Linker(GUI)""Linker for DLL""Linker for Lib"</Command>
+			</File>
+			<Project>
+				<Command>"C Compiler""Resource Compiler"</Command>
+				<Command>"Linker(CUI)""Linker(GUI)""Linker for DLL""Linker for Lib"</Command>
+			</Project>
+			<MsgID>Complete Make $(TargetName): $(Error) error(s), $(Warning) warning(s)\nGenerated $(Target)#81009</MsgID>
+			<ErrMsgID>Complete Make $(TargetName): $(Error) error(s), $(Warning) warning(s)#81010</ErrMsgID>
+			<PreAction></PreAction>
+			<PostAction con="0"></PostAction>
+		</Action>
+		<Action name="Run" depend="0">
+			<File>
+				<Action>"Make"</Action>
+				<Command>"Run Exe""Run DLL""Run"</Command>
+			</File>
+			<Project>
+				<Action>"Make"</Action>
+				<Command>"Run Exe""Run DLL""Run"</Command>
+			</Project>
+			<MsgID>#81011</MsgID>
+			<ErrMsgID>#81012</ErrMsgID>
+			<PreAction></PreAction>
+			<PostAction con="0"></PostAction>
+		</Action>
+		<Action name="Clean" depend="0">
+			<File>
+				<Command>"Clean Objects""Clean Resource"</Command>
+				<Command>"Clean Io"</Command>
+				<Command>"Clean Target"</Command>
+			</File>
+			<Project>
+				<Command>"Clean Objects""Clean Resource""Clean Io"</Command>
+				<Command>"Clean Io"</Command>
+				<Command>"Clean Target"</Command>
+			</Project>
+			<MsgID>Complete Clean $(TargetName)#81015</MsgID>
+			<ErrMsgID>Clean $(TargetName) error#81016</ErrMsgID>
+			<PreAction></PreAction>
+			<PostAction con="0"></PostAction>
+		</Action>
+	</Actions>
+</Builder>

@@ -1,0 +1,141 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+
+<strong>Enumerated datatype:</strong>
+
+   This is one of the user defined datatypes. The use of this datatype is to make programs more readable.
+ It allows you to create your own datatype with predefined values. Though its form is like that of a
+ structure, the values mentioned within its braces do not indicate variables but infact are constant 
+values that are enum can take.
+
+<strong>Syntax:</strong>
+
+enum identifier
+{
+value 1;
+value 2
+.
+.
+.
+.
+.
+value n;
+};
+
+   The identifier can be used to declare variables that can have one of the values enclosed within 
+the braces (known as enumerated constants)
+ After this definition, we can declare variables to be of this 'new' type as below.
+
+Enum identifier  v1,v2,v3.....vn;
+    The enumerated variables v1,v2,.......vn have only values among value1,value2........valuen
+The assignments of the following types are valid
+
+v1=value5;
+v5=value3;
+Ex:
+enum rail
+{
+firstclass;
+secondclass;
+ac
+};
+enum rail person1,person2;
+
+
+  Here firstclass , secondclass , ac are called enumerators, which are the values that the variable of 
+the type enum rail can take. The next statement declares that person1, person2 are variables of the type 
+enum rail. These variable cannot take values other than firstclass, secondclass and ac. Internally, these 
+values are treated as integers by compiler. Hence, firstclass is interpreted as value 0, secondclass as 
+value1 and a as 2. we can override these values by saying in the declaration.
+
+Enum rail
+{
+firstclass=20;
+secondclass=30;
+ac=40;
+};
+
+ or any numbers we can  assign. The enumerated variables suffer from one minor weakness. The enumerated 
+values cannot be used directly in input/output functions like printf() and scanf(). This is because these
+ functions are not smart enough to understand that by 20 you mean firstclass or vicevera.
+
+<strong>Ex:</strong>
+
+main()
+{
+enum code.m{
+odd,delete
+modify, unchanged
+};
+typedef enum code CODE
+CODE c, d;
+c=add;
+d=modify;
+printf("c=%d \t d=%d", c, d);
+}
+
+Output: c=0, d=2
+Explanation: the enumerated datatype code is declared to be capable of taking values odd,delete,modify,unchanged using the typedef statement. Two variables of this type c and d are declared and initialized. Cis assigned the value odd and d, the value modify. The printf() then prints out the values of c and d. When values are defined for enum, they are interpreted as integer values 0,1,2 etc by default.So odd is assigned 0 and delete-1, modify-2. Hence the output is 0,2.
+
+
+main()
+{
+enum status { low,medium,high};
+enum status rain;
+rain=0;
+if(rain==low)
+printf("rain=%d",rain);
+}
+
+output: rain=0
+
+   rain is a variable of the type enum status, which is declared to be able to take values low,medium,high.
+ In an enum, the values are interpreted as 0,1,2 in that order. Hence assigning 0 to rain is same as
+ assigning low to rain. The if condition is therefore satisfied & hence output rain=0.
+
+<a href="storageclasses.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

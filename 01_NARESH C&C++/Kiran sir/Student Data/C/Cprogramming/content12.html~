@@ -1,0 +1,91 @@
+html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left"><pre>
+
+
+<strong>Mixed data types:</strong> It ispermitted to mix data types in one printf statement:   
+                     printf("%d%f%s%c",a,b,c,d);
+printf uses its control string to decide how many variables to be printed and what their types are.
+
+Program: /* printing of characters and strings*/
+                    main()
+                     {
+                           char x='A'
+                           static char name[20]="ANIL KUMAR";
+                           printf("%c\n%3c\n%5c\n",x,x,x);
+                           printf("%3c\n%c\n",x,x,x);
+                           printf("\n");
+                           printf("OUTPUT OF STRINGS\n\n");
+                           printf("%s\n",name);
+                           printf("%20s\n",name);
+                           printf("%.5s\n",name);
+                           printf("-20.10s\n",name)
+                          printf("%5s\n",name);
+                     }
+Output:  output of characters
+                       A 
+                          A 
+                              A 
+                         A
+                     A
+ 
+          output of strings
+                     ANIL     KUMAR GUPTA
+                         ANIL KUMAR GUPTA
+                                        ANIL KUMAR 
+                     ANIL
+                     ANIL KUMAR
+                     ANIL KUMAR GUPTA       
+<a href="managing.html" target="_self">BACK</a>
+</pre></TD>
+</pre>
+
+</table>
+
+
+</html>

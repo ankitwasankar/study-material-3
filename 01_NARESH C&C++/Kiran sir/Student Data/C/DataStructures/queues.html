@@ -1,0 +1,202 @@
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="605" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Queue</h2></center>
+
+<pre>
+<font size="2">
+<strong>Introduction:</strong> 
+            
+       A Queue is a very similar to the way we are supposed to
+queue up at train reservation counters or at bank cashiers 
+desks.A queue is a linear,sequential list of items that are 
+accessed in the order First In First Out(FIFO).That is the first
+item inserted in a queue is also the first one to be accessed,
+and the second item inserted in a queue is also the second one to 
+be accessed and also the last item inserted in a queue is also the
+last one to be accessed.We cannot store or access the items in a
+queue arbitrarily or in any random fashion.
+
+        Suppose that we are creating a queue of items.For this 
+purpose let us assume two very simple functions write and read.
+The write function adds a new item to the queue where as read item 
+reads one item from the queue.If wwe go on operating with these
+functions with a few insertions and a few retrievals the resulting 
+values of the queue would look as shown.
+<ul><ul><ul>
+<table border=1>
+<tr><td>Operation</td><td>Contents of the Queue</tr>
+<tr><td>Write(a)<br>Write(b)<br>Write(c)<br>read(returns a)<br>Write(d)<br>read(returns b)<br>read(returns c)<br>Write(e)</td><td>a<br>ab<br>abc<br>bc<br>bcd<br>cd<br>d<br>de</td></tr>
+</table></ul></ul></ul>
+<pre><font size=2>                    Fig: Queue Operations</font></pre>
+        As the table shows,the operations on a queue are FIFO.Also
+note that when one time is read from the queue,it is destroyed.
+Therefore,a read operation on a queue is destructive,unlike what 
+happens with other data structures,such as linked lists.If the 
+programmer needs to implement a non-destructive reading of a queue,
+the values ,as they are read(and therefore automatically removed)
+from the queue,must be stored somewhere else for later retrieval.
+
+       In order to implement the write and read operations of a 
+queue,two pointers,start and end are required.One pointer(start) 
+points at the current start of the queue.The other pointer(end) 
+points at the current end of the queue.
+
+<font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="queues.html"><b>Top</b></a></font>
+<b>Circular Queue</b>
+       
+       A list /queue can also be circular in which case,it is 
+called a circular queue or circular linked list.When we discussed
+queues ,you might have thought that as the items froma queue get
+deleted ,the space for that item is reclaimed.However this is not
+used those queue poisitions continue to be empty.This problem is 
+solved by circular linked lists. which are usually in the form of 
+circular queues.
+      
+      Instead of using a linear approach ,a circular list takes 
+the circular approach.That is items in acircular list are arranged 
+to form a circular shape.Thatiswhy circular linked list does not 
+have a beginning or end.
+
+<b>Circular Queue Program:</b>
+<code><font size=2>
+Void queue_store(char *p)
+ {
+   /* The queue is full if(a) end is one less than the start,
+   or(b) end is at the end poisition of queue.and start is the 
+   beginning of queue.*/ 
+
+   if((end+1==start)||(end+1==MAX&&art==0))
+    {
+      printf("queue is full,can not add new items\n");
+      return;
+    }
+   arr[end]=p;
+   end++;
+   /* loop back to complete the circle of the queue if end
+   is reached*/
+  
+  if(end==MAX)
+   end=0;
+ }
+
+char *queue_retrive(void)
+ {
+     /*loop back*/
+
+   if (start==MAX)
+   start=0;
+   if(start==end)
+    {
+      printf("Queues empty") 
+      return(NULL");
+    }
+    start++;
+  return(arr[start-1];
+ }
+</font></code> 
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="contents.html">Back</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="queues.html">Top</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+

@@ -1,0 +1,96 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+
+<strong>For-Loop:</strong>	
+
+		The  for loop is anotheer entry controlled lop that provides a 
+		more concise  loop control structure.
+                   The general form of the loop is:
+		
+		for(initialization; test-condition ; increment)
+		{
+			body of the loop
+		}
+
+The execution of the for statement is as follows:
+
+1.Initalization of the control variables is done first,using assignments
+ statements such as i=1 and count=0.The variable i and count are known as
+ loop-control.
+
+2. The value of the control variable is tested using the test-condition.The
+ test-condition is a relational expression such as (i<10)that determines when 
+the loop will exit.If the condition is true,the body of lop
+ is executed otherwise the loop is terminated and the execution continues
+ with the statement that immediately follows the loop.
+
+3. When the body of the loop is executed,the control is transferred back 
+to the for statement after evaluating the last statement in the loop.Now,
+the control variable incremented using an assignment statement such as i=i+1 
+and the new value of the control variable is again tested to see whether 
+it satisfies the loop condition.If the condition is satisfied, the 
+body of the loop is again executed.The process continues until the value
+ of the control variables fails to satisfy the test condition.
+
+<strong>Example:</strong> 
+Program to find sum of 'n' numbers
+
+       #include "stdio.h"
+       void main()
+       {
+        int i,n,sum=0;
+        printf("Enter the value of  n \n");
+  	scanf("%d", &n);
+  	for(i=0;i < n;i++)
+  	sum+=i;
+  	printf("Sum of %d numbers=%d",n,sum);
+       }
+
+output: Enter the value of n
+        10
+        Sum of 10 numbers=55
+      Here the 'i' is initalized to zero,which is agan incremented until it is less than n,which 
+is tested within the loop.
+
+<a href="l1.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

@@ -1,0 +1,42 @@
+#include<graphics.h>
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+  int gd=0,gm,i,x=100,y=100,j,x1=200;
+  initgraph(&gd,&gm,"c:\\tc\\bgi");
+  for(j=0;j<10;j++)
+  {
+  for(i=0;i<10;i++)
+  {
+    putpixel(x,y,2);
+    x++;
+  }
+  x=100;
+  y++;
+  }
+  y=110;
+  for(j=0;j<10;j++)
+  {
+  for(i=0;i<10;i++)
+  {
+    putpixel(x1,y,2);
+    x1++;
+  }
+  x1=200;
+  y++;
+  }
+  y=310;
+  for(j=0;j<10;j++)
+  {
+  for(i=0;i<10;i++)
+  {
+    putpixel(x,y,2);
+    x++;
+  }
+  x=100;
+  y++;
+  }
+  getch();
+  closegraph();
+}

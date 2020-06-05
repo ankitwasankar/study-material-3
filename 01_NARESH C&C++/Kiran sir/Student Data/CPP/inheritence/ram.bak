@@ -1,0 +1,29 @@
+#include<iostream.h>
+#include<conio.h>
+class c1
+{
+int n;
+public:void getdata()
+{
+cout<<"enter n values";
+cin>>n;
+}
+friend void display(class c1 xxxx);
+};
+inline display(c1 xxxx)
+{
+int i,j;
+for(i=0;i<10;i++)
+{
+j=xxxx.n*i;
+cout<<"xxxx.n<<"*"<<i>>"="<<i<<endl;
+}
+};
+void main()
+{
+c1 obj1;
+obj1.getdata();
+display(obj1);
+getch();
+}
+

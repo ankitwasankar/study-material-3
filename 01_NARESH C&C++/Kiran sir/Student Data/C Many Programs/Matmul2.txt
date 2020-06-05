@@ -1,0 +1,44 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+int a[3][3],b[3][3],i,j,k;
+void display(int(*)[3],int(*)[3]);
+clrscr();
+for(i=0;i<3;i++)
+{
+for(j=0;j<3;j++)
+{
+printf("Enter the matrix:-");
+scanf("%d",&a[i][j]);
+}
+}
+for(i=0;i<3;i++)
+{
+for(j=0;j<3;j++)
+{
+printf("Enter the another matrix:-");
+scanf("%d",&b[i][j]);
+}
+}
+display(a,b);
+getch();
+}
+void display(int (*p)[3],int (*q)[3])
+{
+int i,j,k,c[3][3]={0};
+for(i=0;i<3;i++)
+{
+for(j=0;j<3;j++)
+{
+for(k=0;k<3;k++)
+*(*(c+i)+j)=*(*(c+i)+j)+*(*(p+i)+k)**(*(q+k)+j);
+}
+}
+for(i=0;i<3;i++)
+{
+printf("\n");
+for(j=0;j<3;j++)
+printf(" %d ",*(*(c+i)+j));
+}
+}

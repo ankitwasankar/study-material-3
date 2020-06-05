@@ -1,0 +1,89 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left"><pre>
+
+
+Output of integer number: The format specification for printing an integer number is    %wd
+  where w specifies the minimum field width for the output. However if a number is greater than the specified field
+ width,it will be printed in full. Overriding the minimum specification d specifies the value to be printed is an
+ integer.
+                    The following examples illustrate the output of the number 9876 under different formates:
+               Format                                    Output
+       printf("%d", 9876)                                9 8 7 6
+       printf("%6d",9876)                               S S 9 8 7 6        
+       printf("%2d",9876)                               9 8 7 6   
+       printf("%-6d",9876)                             9 8 7  6 S S
+       printf("%06d",9876)                            0 0 9 8 7 6   
+                 
+  It is possible to force the printing to be left-justified by placing a minus sign directly after the % character.
+
+Program: The output of integer number under various formats
+                         /* printing of integer numbers*/
+                         main()
+                     { 
+                        int m=12345;
+                        long n=987654;
+                        printf("%d\n",m);
+                        printf("%10d\n",m);
+                        printf("%010d\n",m);
+                        printf("-10d\n",m);
+                        printf("%10ld\n",n);
+            printf("%10ld \n",-n);
+         }
+output: 12345
+                       12345
+             0000012345
+             12345
+                     987654
+                   - 987654   
+<a href="managing.html" target="_self">BACK</a>
+</pre></TD>
+</pre>
+
+</table>
+
+
+</html>	       
+                                   

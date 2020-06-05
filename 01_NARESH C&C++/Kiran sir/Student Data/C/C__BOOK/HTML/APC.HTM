@@ -1,0 +1,1176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+<!-- This document was created from RTF source by rtftohtml version 3.0.1 -->
+
+	<META NAME="GENERATOR" Content="Symantec Visual Page 1.0">
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+	<TITLE>Teach Yourself C++ in 21 Days</TITLE>
+</HEAD>
+
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF">
+
+<H1></H1>
+<H2 ALIGN="CENTER"><A HREF="apb.htm"><IMG SRC="../buttons/BLANPREV.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="apd.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><BR>
+<BR>
+<BR>
+<A NAME="Heading1"></A><FONT COLOR="#000077">Appendix C<BR>
+<BR>
+Binary and Hexadecimal</FONT></H2>
+
+<H2 ALIGN="CENTER"><FONT COLOR="#000077"></FONT></H2>
+<P>You learned the fundamentals of arithmetic so long ago, it is hard to imagine
+what it would be like without that knowledge. When you look at the number 145 you
+instantly see &quot;one hundred and forty-five&quot; without much reflection.</P>
+<P>Understanding binary and hexadecimal requires that you re-examine the number 145
+and see it not as a number, but as a code for a number.</P>
+<P>Start small: Examine the relationship between the number three and &quot;3.&quot;
+The numeral 3 is a squiggle on a piece of paper; the number three is an idea. The
+numeral is used to represent the number.</P>
+<P>The distinction can be made clear by realizing that three, 3, |||, III, and ***
+all can be used to represent the same idea of three.</P>
+<P>In base 10 (decimal) math you use the numerals 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 to
+represent all numbers. How is the number ten represented?</P>
+<P>One can imagine that we would have evolved a strategy of using the letter A to
+represent ten; or we might have used IIIIIIIIII to represent that idea. The Romans
+used X. The Arabic system, which we use, makes use of position in conjunction with
+numerals to represent values. The first (right-most) column is used for &quot;ones,&quot;
+and the next column is used for tens. Thus, the number fifteen is represented as
+15 (read &quot;one, five&quot;); that is, 1 ten and 5 ones.</P>
+<P>Certain rules emerge, from which some generalizations can be made:
+
+<DL>
+	<DD><B>1.</B> Base 10 uses the digits 0-9.<BR>
+	<BR>
+	<B>2.</B> The columns are powers of ten: 1s, 10s, 100s, and so on.<BR>
+	<B><BR>
+	3.</B> If the third column is 100, the largest number you can make with two columns
+	is 99. More generally, with n columns you can represent 0 to (10<SUP>n</SUP>-1).
+	Thus, with 3 columns you can represent 0 to (10<SUP>3</SUP>-1) or 0-999.
+</DL>
+
+<H3 ALIGN="CENTER"><A NAME="Heading3"></A><FONT COLOR="#000077">Other Bases</FONT></H3>
+<P>It is not a coincidence that we use base 10; we have 10 fingers. One can imagine
+a different base, however. Using the rules found in base 10, you can describe base
+8:
+
+<DL>
+	<DD><B>1.</B> The digits used in base 8 are 0-7.<BR>
+	<B><BR>
+	2.</B> The columns are powers of 8: 1s, 8s, 64, and so on.<BR>
+	<B>3.</B> With n columns you can represent 0 to 8<SUP>n</SUP>-1.
+</DL>
+
+<P>To distinguish numbers written in each base, write the base as a subscript next
+to the number. The number fifteen in base 10 would be written as 15<SUB>10</SUB>
+and read as &quot;one, five, base ten.&quot;</P>
+<P>Thus, to represent the number 15<SUB>10</SUB> in base 8 you would write 17<SUB>8</SUB>.
+This is read &quot;one, seven, base eight.&quot; Note that it can also be read &quot;fifteen&quot;
+as that is the number it continues to represent.</P>
+<P>Why 17? The 1 means 1 eight, and the 7 means 7 ones. One eight plus seven ones
+equals fifteen. Consider fifteen asterisks:</P>
+<PRE><FONT COLOR="#0066FF">
+*****     *****
+</FONT></PRE>
+<PRE><FONT COLOR="#0066FF">
+*****
+</FONT></PRE>
+<P>The natural tendency is to make two groups, a group of ten asterisks and another
+of five. This would be represented in decimal as 15 (1 ten and 5 ones). You can also
+group the asterisks as</P>
+<PRE><FONT COLOR="#0066FF">
+****          *******
+</FONT></PRE>
+<PRE><FONT COLOR="#0066FF">
+****
+</FONT></PRE>
+<P>That is, eight asterisks and seven. That would be represented in base eight as
+17<SUB>8</SUB>. That is, one eight and seven ones.
+<H3 ALIGN="CENTER"><A NAME="Heading4"></A><FONT COLOR="#000077">Around the Bases</FONT></H3>
+<P>You can represent the number fifteen in base ten as 15, in base nine as 16<SUB>9</SUB>,
+in base 8 as 17<SUB>8</SUB>, in base 7 as 21<SUB>7</SUB>. Why 21<SUB>7</SUB>? In
+base 7 there is no numeral 8. In order to represent fifteen, you will need two sevens
+and one 1.</P>
+<P>How do you generalize the process? To convert a base ten number to base 7, think
+about the columns: in base 7 they are ones, sevens, forty-nines, three-hundred forty-threes,
+and so on. Why these columns? They represent 7<SUP>0</SUP>, 7<SUP>1</SUP>, 7<SUP>2</SUP>,
+7<SUP>4</SUP> and so forth. Create a table for yourself: 
+<TABLE BORDER="0">
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">4</TD>
+		<TD ALIGN="LEFT">3</TD>
+		<TD ALIGN="LEFT">2</TD>
+		<TD ALIGN="LEFT">1</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">7<SUP>3</SUP></TD>
+		<TD ALIGN="LEFT">7<SUP>2</SUP></TD>
+		<TD ALIGN="LEFT">7<SUP>1</SUP></TD>
+		<TD ALIGN="LEFT">7<SUP>0</SUP></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>343
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>49
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>7
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>1
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+	</TR>
+</TABLE>
+The first row represents the column number. The second row represents the power of
+7. The third row represents the decimal value of each number in that row.</P>
+<P>To convert from a decimal value to base 7, here is the procedure: Examine the
+number and decide which column to use first. If the number is 200, for example, you
+know that column 4 (343) is 0, and you don't have to worry about it.</P>
+<P>To find out how many 49s there are, divide 200 by 49. The answer is 4, so put
+4 in column 3 and examine the remainder: 4. There are no 7s in 4, so put a zero in
+the sevens column. There are 4 ones in 4, so put a 4 in the 1s column. The answer
+is 404<SUB>7</SUB>.</P>
+<P>To convert the number 968 to base 6: 
+<TABLE BORDER="0">
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">5</TD>
+		<TD ALIGN="LEFT">4</TD>
+		<TD ALIGN="LEFT">3</TD>
+		<TD ALIGN="LEFT">2</TD>
+		<TD ALIGN="LEFT">1</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">6<SUP>4</SUP></TD>
+		<TD ALIGN="LEFT">6<SUP>3</SUP></TD>
+		<TD ALIGN="LEFT">6<SUP>2</SUP></TD>
+		<TD ALIGN="LEFT">6<SUP>1</SUP></TD>
+		<TD ALIGN="LEFT">6<SUP>0</SUP></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>1296
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>216
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>36
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>6
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>1
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+	</TR>
+</TABLE>
+There are no 1296s in 968, so column 5 has 0. Dividing 968 by 216 yields 4 with a
+remainder of 104. Column 4 is 4. Dividing 104 by 36 yields 2 with a remainder of
+32. Column 3 is 2. Dividing 32 by 6 yields 5 with a remainder of 2. The answer therefore
+is 4252<SUB>6</SUB>. 
+<TABLE BORDER="0">
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">5</TD>
+		<TD ALIGN="LEFT">4</TD>
+		<TD ALIGN="LEFT">3</TD>
+		<TD ALIGN="LEFT">2</TD>
+		<TD ALIGN="LEFT">1</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">6<SUP>4</SUP></TD>
+		<TD ALIGN="LEFT">6<SUP>3</SUP></TD>
+		<TD ALIGN="LEFT">6<SUP>2</SUP></TD>
+		<TD ALIGN="LEFT">6<SUP>1</SUP></TD>
+		<TD ALIGN="LEFT">6<SUP>0</SUP></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">1296</TD>
+		<TD ALIGN="LEFT">216</TD>
+		<TD ALIGN="LEFT">36</TD>
+		<TD ALIGN="LEFT">6</TD>
+		<TD ALIGN="LEFT">1</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>0
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>4
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>2
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>5
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>2
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+	</TR>
+</TABLE>
+There is a shortcut when converting from one base to another base (such as 6) to
+base 10. You can multiply: 
+<TABLE BORDER="0">
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">4 * 216</TD>
+		<TD ALIGN="LEFT">=</TD>
+		<TD ALIGN="LEFT">864</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">2 * 36</TD>
+		<TD ALIGN="LEFT">=</TD>
+		<TD ALIGN="LEFT">72</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">5 * 6</TD>
+		<TD ALIGN="LEFT">=</TD>
+		<TD ALIGN="LEFT">30</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">2 * 1</TD>
+		<TD ALIGN="LEFT">=</TD>
+		<TD ALIGN="LEFT">2</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>968
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT"></TD>
+		<TD ALIGN="LEFT"></TD>
+	</TR>
+</TABLE>
+
+<CENTER>
+<H4><A NAME="Heading5"></A><FONT COLOR="#000077">Binary</FONT></H4>
+</CENTER>
+<P>Base 2 is the ultimate extension of this idea. There are only two digits: 0 and
+1. The columns are: 
+<TABLE BORDER="0">
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">Col:</TD>
+		<TD ALIGN="LEFT">8</TD>
+		<TD ALIGN="LEFT">7</TD>
+		<TD ALIGN="LEFT">6</TD>
+		<TD ALIGN="LEFT">5</TD>
+		<TD ALIGN="LEFT">4</TD>
+		<TD ALIGN="LEFT">3</TD>
+		<TD ALIGN="LEFT">2</TD>
+		<TD ALIGN="LEFT">1</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">Power:</TD>
+		<TD ALIGN="LEFT">2<SUP>7</SUP></TD>
+		<TD ALIGN="LEFT">2<SUP>6</SUP></TD>
+		<TD ALIGN="LEFT">2<SUP>5</SUP></TD>
+		<TD ALIGN="LEFT">2<SUP>4</SUP></TD>
+		<TD ALIGN="LEFT">2<SUP>3</SUP></TD>
+		<TD ALIGN="LEFT">2<SUP>2</SUP></TD>
+		<TD ALIGN="LEFT">2<SUP>1</SUP></TD>
+		<TD ALIGN="LEFT">2<SUP>0</SUP></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>Value:
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>128
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>64
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>32
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>16
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>8
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>4
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>2
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>1
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+	</TR>
+</TABLE>
+To convert the number 88 to base 2, you follow the same procedure: There are no 128s,
+so column 8 is 0.</P>
+<P>There is one 64 in 88, so column 7 is 1 and 24 is the remainder. There are no
+32s in 24 so column 6 is 0.</P>
+<P>There is one 16 in 24 so column 5 is 1. The remainder is 8. There is one 8 in
+8, and so column 4 is 1. There is no remainder, so the rest of the columns are 0.
+
+<TABLE BORDER="0">
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>0
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>1
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>0
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>1
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>1
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>0
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>0
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>0
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+	</TR>
+</TABLE>
+To test this answer, convert it back:</P>
+<PRE><FONT COLOR="#0066FF">
+1 * 64 =  64
+0 * 32 =   0
+1 * 16 =  16
+1 *  8 =   8
+0 *  4 =   0
+0 *  2 =   0
+0 *  1 =   0                88
+</FONT></PRE>
+<CENTER>
+<H4><A NAME="Heading6"></A><FONT COLOR="#000077">Why Base 2?</FONT></H4>
+</CENTER>
+<P>The power of base 2 is that it corresponds so cleanly to what a computer needs
+to represent. Computers do not really know anything at all about letters, numerals,
+instructions, or programs. At their core they are just circuitry, and at a given
+juncture there either is a lot of power or there is very little.</P>
+<P>To keep the logic clean, engineers do not treat this as a relative scale (a little
+power, some power, more power, lots of power, tons of power), but rather as a binary
+scale (&quot;enough power&quot; or &quot;not enough power&quot;). Rather than saying
+&quot;enough&quot; or &quot;not enough,&quot; they simplify it to &quot;yes&quot;
+or &quot;no.&quot; Yes or no, or true or false, can be represented as 1 or 0. By
+convention, 1 means true or Yes, but that is just a convention; it could just as
+easily have meant false or no.</P>
+<P>Once you make this great leap of intuition, the power of binary becomes clear:
+With 1s and 0s you can represent the fundamental truth of every circuit (there is
+power or there isn't). All a computer ever knows is, &quot;Is you is, or is you ain't?&quot;
+Is you is = 1; is you ain't = 0.
+<CENTER>
+<H4><A NAME="Heading7"></A><FONT COLOR="#000077">Bits, Bytes, and Nybbles</FONT></H4>
+</CENTER>
+<P>Once the decision is made to represent truth and falsehood with 1s and 0s, binary
+digits (or bits) become very important. Since early computers could send 8 bits at
+a time, it was natural to start writing code using 8-bit numbers--called bytes.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>Half a byte (4 bits) is called a
+	nybble! 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P>With 8 binary digits you can represent up to 256 different values. Why? Examine
+the columns: If all 8 bits are set (1), the value is 255. If none is set (all the
+bits are clear or zero) the value is 0. 0-255 is 256 possible states.
+<CENTER>
+<H4><A NAME="Heading8"></A><FONT COLOR="#000077">Whats a KB?</FONT></H4>
+</CENTER>
+<P>It turns out that 2<SUP>10 </SUP>(1,024)<SUP> </SUP>is roughly equal to 10<SUP>3
+</SUP>(1,000). This coincidence was too good to miss, so computer scientists started
+referring to 2<SUP>10 </SUP>bytes<SUP> </SUP>as 1KB or 1 kilobyte, based on the scientific
+prefix of kilo for thousand.</P>
+<P>Similarly, 1024 * 1024 (1,048,576) is close enough to one million to receive the
+designation 1MB or 1 megabyte, and 1,024 megabytes is called 1 gigabyte (giga implies
+thousand-million or billion).
+<CENTER>
+<H4><A NAME="Heading9"></A><FONT COLOR="#000077">Binary Numbers</FONT></H4>
+</CENTER>
+<P>Computers use patterns of 1s and 0s to encode everything they do. Machine instructions
+are encoded as a series of 1s and 0s and interpreted by the fundamental circuitry.
+Arbitrary sets of 1s and 0s can be translated back into numbers by computer scientists,
+but it would be a mistake to think that these numbers have intrinsic meaning.</P>
+<P>For example, the Intel 80x6 chip set interprets the bit pattern 1001 0101 as an
+instruction. You certainly can translate this into decimal (149), but that number
+per se has no meaning.</P>
+<P>Sometimes the numbers are instructions, sometimes they are values, and sometimes
+they are codes. One important standardized code set is ASCII. In ASCII every letter
+and punctuation is given a 7-digit binary representation. For example, the lowercase
+letter &quot;a&quot; is represented by 0110 0001. This is not a number, although
+you can translate it to the number 97 (64 + 32 + 1). It is in this sense that people
+say that the letter &quot;a&quot; is represented by 97 in ASCII; but the truth is
+that the binary representation of 97, 01100001, is the encoding of the letter &quot;a,&quot;
+and the decimal value 97 is a human convenience.
+<CENTER>
+<H3><A NAME="Heading10"></A><FONT COLOR="#000077">Hexadecimal</FONT></H3>
+</CENTER>
+<P>Because binary numbers are difficult to read, a simpler way to represent the same
+values is sought. Translating from binary to base 10 involves a fair bit of manipulation
+of numbers; but it turns out that translating from base 2 to base 16 is very simple,
+because there is a very good shortcut.</P>
+<P>To understand this, you must first understand base 16, which is known as hexadecimal.
+In base 16 there are sixteen numerals: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D,
+E, and F. The last six are arbitrary; the letters A-F were chosen because they are
+easy to represent on a keyboard. The columns in hexadecimal are 
+<TABLE BORDER="0">
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">4</TD>
+		<TD ALIGN="LEFT">3</TD>
+		<TD ALIGN="LEFT">2</TD>
+		<TD ALIGN="LEFT">1</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">16<SUP>3</SUP></TD>
+		<TD ALIGN="LEFT">16<SUP>2</SUP></TD>
+		<TD ALIGN="LEFT">16<SUP>1</SUP></TD>
+		<TD ALIGN="LEFT">16<SUP>0</SUP></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>4096
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>256
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>16
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+
+
+			<BLOCKQUOTE>
+			<P>1
+
+			</BLOCKQUOTE>
+
+			<P>
+		</TD>
+	</TR>
+</TABLE>
+To translate from hexadecimal to decimal, you can multiply. Thus, the number F8C
+represents:</P>
+<PRE><FONT COLOR="#0066FF">
+F * 256 = 15 * 256 = 3840
+8 * 16 =		128
+C * 1 = 12 * 1 =	12
+3980
+</FONT></PRE>
+<P>Translating the number FC to binary is best done by translating first to base
+10, and then to binary:</P>
+<PRE><FONT COLOR="#0066FF">
+F * 16 = 15 * 16 =  240
+C * 1 = 12 * 1 =     12
+252
+</FONT></PRE>
+<P>Converting 252<SUB>10</SUB> to binary requires the chart:</P>
+<PRE><FONT COLOR="#0066FF">
+Col:       9     8    7   6    5   4    3    2    1
+Power:     28   27   26   25   24  23   22   21   20
+Value:   256   128   64  32   16   8    4    2    1
+
+There are no 256s.
+1 128 leaves 124
+1 64 leaves 60
+1 32 leaves 28
+1 16 leaves 12
+1 8 leaves 4
+1 4 leaves 0
+0
+0
+1    1    1    1    1    1    0    0
+</FONT></PRE>
+<P>Thus, the answer in binary is 1111 1100.</P>
+<P>Now, it turns out that if you treat this binary number as two sets of 4 digits,
+you can do a magical transformation.</P>
+<P>The right set is 1100. In decimal that is 12, or in hexadecimal it is C.</P>
+<P>The left set is 1111, which in base 10 is 15, or in hex is F.</P>
+<P>Thus, you have:</P>
+<PRE><FONT COLOR="#0066FF">1111 1100
+F     C
+</FONT></PRE>
+<P>Putting the two hex numbers together is FC, which is the real value of 1111 1100.
+This shortcut always works. You can take any binary number of any length, and reduce
+it to sets of 4, translate each set of four to hex, and put the hex numbers together
+to get the result in hex. Here's a much larger number:</P>
+<PRE><FONT COLOR="#0066FF">1011 0001 1101 0111
+</FONT></PRE>
+<P>The columns are 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192,
+16384, and 32768.</P>
+<PRE><FONT COLOR="#0066FF">1 x 1 =		1
+1 x 2=		2
+1 x 4 =		4
+0 x 8 =		0
+
+1 x 16 =		16
+0 x 32 =		0
+1 x 64 =		64
+1 x 128 =		128
+
+1 x 256 =		256
+0 x 512 =		0
+0 x 1024 =		0
+0 x 2048 =		0
+
+1 x 4096 =		4,096
+1 x 8192 =		8,192
+0 x 16384 =	0
+1 x 32768 =	32,768
+Total:		45,527</FONT></PRE>
+<P>Converting this to hexadecimal requires a chart with the hexadecimal values.</P>
+<PRE><FONT COLOR="#0066FF">65535    4096    256    16    1
+</FONT></PRE>
+<P>There are no 65,536s in 45,527 so the first column is 4096. There are 11 4096s
+(45,056), with a remainder of 471. There is one 256 in 471 with a remainder of 215.
+There are 13 16s (208) in 215 with a remainder of 7. Thus, the hexadecimal number
+is B1D7.</P>
+<P>Checking the math:</P>
+<PRE><FONT COLOR="#0066FF">B (11) * 4096 =	45,056
+1 * 256 =		256
+D (13) * 16 =	 208
+7 * 1 =		7
+Total		45,527
+</FONT></PRE>
+<PRE>The shortcut version would be to take the original binary number, 1011000111010111, 
+and break it into groups of 4: 1011 0001 1101 0111. Each of the four then 
+is evaluated as a hexadecimal number: </PRE>
+<P>
+<TABLE BORDER="0">
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+1011 =</FONT></PRE>
+		</TD>
+		<TD ALIGN="LEFT"></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">1 x 1 =</FONT></PRE>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+1
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+1 x 2 =
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+2
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+0 x 4 =
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+0
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+1 x 8 =
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+8
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+Total
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+11
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+Hex:
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+B
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+0001 =</FONT></PRE>
+		</TD>
+		<TD ALIGN="LEFT"></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+1 x 1 =
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+1
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+0 x 2 =
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+0
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+0 x 4 =
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+0
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+0 * 8 =
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+0
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+Total
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+1
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+Hex:
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+1
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+1101 =</FONT></PRE>
+		</TD>
+		<TD ALIGN="LEFT"></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+1 x 1 =
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+1
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+0 x 2 =
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+0
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+1 x 4 =
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+4
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+1 x 8 =
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+8
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+Total
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+13
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+Hex =
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+D
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+0111 =</FONT></PRE>
+		</TD>
+		<TD ALIGN="LEFT"></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+1 x 1 =
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+1
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+1 x 2 =
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+2
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+1 x 4 =
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+4
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+0 x 8 =
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+0
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+Total
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+7
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+Hex:
+</FONT></PRE>
+			<P>
+		</TD>
+		<TD ALIGN="LEFT">
+			<PRE><FONT COLOR="#0066FF">
+7
+</FONT></PRE>
+			<P>
+		</TD>
+	</TR>
+</TABLE>
+<FONT COLOR="#0066FF">Total Hex: B1D7</FONT></P>
+<CENTER>
+<P><A HREF="apb.htm"><IMG SRC="../buttons/BLANPREV.GIF" WIDTH="37"
+HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="apd.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="#heading1"><IMG SRC="../buttons/BLANTOP.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A>
+</CENTER>
+
+
+</BODY>
+
+</HTML>

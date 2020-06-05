@@ -1,0 +1,115 @@
+html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><html>
+<h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table>
+<font size="4">
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+13.main()
+{
+  int arr(24),i;
+  for(i=0;i<=100;i++)
+ {
+   arr(i)=100;
+   print f(%d, arr(i));
+}
+}
+output: error message:function definition out of place in function main.
+Explanation: the moment the compiler finds () , it expects a reference to a function, and arr
+ has not been defined as a function. Hence the error message.
+
+14.main()
+  {
+   static int a[]={10,20,30,40,50};
+  int j;
+  for(j=0;j<5;j++)
+{
+  print f(%d, *a);
+a++;
+}
+}
+
+output:error message: L value required in function main.
+Explanation : whenever we mention the name of the array, we get its base address. Therefore,
+first time through the loop,the print f() should print the value of this base address. There
+is no problem up to this. The problem lies in the nextstatement, a++. since C doesn't perform
+bounds checking on an array, the only thing that it remembers about  an array oncedeclared is 
+its base address. And a++ attempts to change this base address, which C wont allow because if 
+it does so, itwould be unable to remember the beginning of the array. Anything which can change
+in compilers language is called Lvalue. Since value of  a cannot be changed through ++, it
+flashes the error saying L value required. So that ++ operator can change it.
+
+15.main()
+     {
+        static float a[]={13.24,1.5,1.5,5.4,3.5};
+         float *j, *k;
+          j=a;
+         k=a+4;
+        j=j*2;
+       k=k/2;
+      print f(%f%f, *j, *k);
+}
+output:error message: illegal use of pointers in function main.
+Explanation: j and k has been declared as pointer variables, which would contain the addresses
+of floats. In other words,j and k are float pointers. To begin with, the base address of the
+array a[] is stored in j. the next statement is perfectly acceptable; the address of the fourth
+float from the base address is stored in k. the next two statements are erroneous. This is
+because the only operations that can be performed on pointers are addition and subtraction. 
+Multiplication or division of a pointer is not allowed. Hence the error message.
+<a href="arrays.html" target="_self">BACK</a></=100;i++)>font>
+</pre>
+</TD>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</table>
+</TD>
+</TR>
+</table>
+</html>     

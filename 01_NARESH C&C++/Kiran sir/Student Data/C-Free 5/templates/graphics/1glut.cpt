@@ -1,0 +1,154 @@
+<ProjectType name="GLUT project" icon="glut.bmp?0" type="CUI" ext="exe" tab="Graphics" desc="Create basic GLUT (OpenGL Utility Toolkit) application." version="1.0">
+	<Pages count="2">
+		<Page title="Application Types#77004">
+			<RadioGroup name="AppTypes" title="Select the kind of Application type you want to create" value="0" width="290" height="100" enabled="1">
+				<Item>An &empty project.#77018</Item>
+				<Item>&Simple demo project</Item>
+			</RadioGroup>	
+		</Page>
+		<Page title="GLUT Library Selection">
+			<BrowseFolder name="GlutDir" title="GLUT's location (Base directory):" value="" width="290" height="20" enabled="1">
+			</BrowseFolder>
+			
+		</Page>
+	</Pages>
+
+	<Outputs>
+		<Directory name="\">
+		<File folder="Source Files" name="" external="" enabled="1"></File>
+		<File folder="Header Files" name="" external="" enabled="1"></File>
+		<File folder="Other Files" name="" external="" enabled="1"></File>
+	
+		<File folder="Source Files" name="$(ProjectName).c" external="" enabled="$(AppTypes)=1">
+#include &lt;GL/glut.h&gt;
+
+GLfloat light_diffuse[] = {1.0, 0.0, 0.0, 1.0};  /* Red diffuse light. */
+GLfloat light_position[] = {1.0, 1.0, 1.0, 0.0};  /* Infinite light location. */
+GLfloat n[6][3] = {  /* Normals for the 6 faces of a cube. */
+  {-1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {1.0, 0.0, 0.0},
+  {0.0, -1.0, 0.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, -1.0} };
+GLint faces[6][4] = {  /* Vertex indices for the 6 faces of a cube. */
+  {0, 1, 2, 3}, {3, 2, 6, 7}, {7, 6, 5, 4},
+  {4, 5, 1, 0}, {5, 6, 2, 1}, {7, 4, 0, 3} };
+GLfloat v[8][3];  /* Will be filled in with X,Y,Z vertexes. */
+
+void drawBox(void)
+{
+  int i;
+
+  for (i = 0; i &lt; 6; i++) {
+    glBegin(GL_QUADS);
+    glNormal3fv(&n[i][0]);
+    glVertex3fv(&v[faces[i][0]][0]);
+    glVertex3fv(&v[faces[i][1]][0]);
+    glVertex3fv(&v[faces[i][2]][0]);
+    glVertex3fv(&v[faces[i][3]][0]);
+    glEnd();
+  }
+}
+
+void display(void)
+{
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  drawBox();
+  glutSwapBuffers();
+}
+
+void key(unsigned char k, int x, int y)
+{
+    switch (k)
+    {
+        case 27 :
+        case 'q':
+            exit(0);
+            break;
+    }
+}
+
+void init(void)
+{
+  /* Setup cube vertex data. */
+  v[0][0] = v[1][0] = v[2][0] = v[3][0] = -1;
+  v[4][0] = v[5][0] = v[6][0] = v[7][0] = 1;
+  v[0][1] = v[1][1] = v[4][1] = v[5][1] = -1;
+  v[2][1] = v[3][1] = v[6][1] = v[7][1] = 1;
+  v[0][2] = v[3][2] = v[4][2] = v[7][2] = 1;
+  v[1][2] = v[2][2] = v[5][2] = v[6][2] = -1;
+
+  /* Enable a single OpenGL light. */
+  glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+  glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+  glEnable(GL_LIGHT0);
+  glEnable(GL_LIGHTING);
+
+  /* Use depth buffering for hidden surface elimination. */
+  glEnable(GL_DEPTH_TEST);
+
+  /* Setup the view of the cube. */
+  glMatrixMode(GL_PROJECTION);
+  gluPerspective( /* field of view in degree */ 40.0,
+    /* aspect ratio */ 1.0,
+    /* Z near */ 1.0, /* Z far */ 10.0);
+  glMatrixMode(GL_MODELVIEW);
+  gluLookAt(0.0, 0.0, 5.0,  /* eye is at (0,0,5) */
+    0.0, 0.0, 0.0,      /* center is at (0,0,0) */
+    0.0, 1.0, 0.);      /* up is in positive Y direction */
+
+  /* Adjust cube position to be asthetic angle. */
+  glTranslatef(0.0, 0.0, -1.0);
+  glRotatef(60, 1.0, 0.0, 0.0);
+  glRotatef(-20, 0.0, 0.0, 1.0);
+}
+
+int main(int argc, char **argv)
+{
+  glutInit(&argc, argv);
+  glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+  glutCreateWindow("$(ProjectName)");
+  glutDisplayFunc(display);
+  glutKeyboardFunc(key);
+  init();
+  glutMainLoop();
+  return 0;             /* ANSI C requires main to return int. */
+}
+
+
+
+		</File>
+		
+	
+		</Directory>
+	</Outputs>
+	<Options>
+		<Compiler bldr="MinGW" type="">-D_STDCALL_SUPPORTED -D_M_IX86 -DGLUT_DISABLE_ATEXIT_HACK</Compiler>
+		<Compiler bldr="CYGWIN" type="">-D_STDCALL_SUPPORTED -D_M_IX86 -DGLUT_DISABLE_ATEXIT_HACK</Compiler>
+		
+		
+		<Linker bldr="MinGW"></Linker>
+		<Linker bldr="Borland"></Linker>
+		
+		<Lib bldr="MinGW">opengl32</Lib>
+		<Lib bldr="MinGW">glu32</Lib>
+		<Lib bldr="MinGW">glut32</Lib>
+		
+		<Lib bldr="CYGWIN">opengl32</Lib>
+		<Lib bldr="CYGWIN">glu32</Lib>
+		<Lib bldr="CYGWIN">glut32</Lib>
+		
+		<Lib bldr="Borland">opengl32.lib</Lib>
+		<Lib bldr="Borland">glu32.lib</Lib>
+		<Lib bldr="Borland">glut32.lib</Lib>
+		
+		<Lib bldr="Microsoft">opengl32.lib</Lib>
+		<Lib bldr="Microsoft">glu32.lib</Lib>
+		<Lib bldr="Microsoft">glut32.lib</Lib>
+
+		
+		<IncPath bldr="*">$(GlutDir)</IncPath>
+		<IncPath bldr="*">$(GlutDir)\include</IncPath>
+		<LibPath bldr="*">$(GlutDir)</LibPath>
+		<LibPath bldr="*">$(GlutDir)\lib</LibPath>
+		
+
+	</Options>
+</ProjectType>

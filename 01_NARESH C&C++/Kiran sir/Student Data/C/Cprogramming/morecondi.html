@@ -1,0 +1,228 @@
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h3>More examples On Conditional Operators</h3></center>
+
+<pre>
+<font size="3">
+<pre>
+
+ <strong>Example:42 </strong>
+             main() 
+             { 
+              int x=3,y=4,z=4; 
+              printf("ans=%d",(z>=y>=x?100:200));
+             } 
+OUTPUT:       ans=200 
+
+Explanation:   The expression is 
+               (z>=y>=x?100:200)
+	first Z is compared to y and the result of the 
+condition is compared with x. Since z and y are equal, 
+the first condition is satisfied and is replaced by 1. 
+Thus the condition is now reduced  to, 
+             (1>=x?100:200) 
+     Since  1 is neither greater than nor equal to value 
+of x, the condition fails and the output results. 
+
+<strong>Example:43</strong> 
+
+                main() 
+                { 
+                 int i=-4,j,num=10; 
+                 j=i%-3; 
+                 j=(j?0:num*num); 
+                 printf("j=%d",j); 
+                } 
+
+OUTPUT:         j=0 
+
+Explanation:The statement  is j=i%-3, on substituting the 
+value of I, t becomes,
+                j=-4%-3 
+         Usual arithmetic would have prompted us to cancel
+the minus signs from numerator and denominator and then 
+perform the division. But not c. In C first division is 
+carried out assuming that there are no signs and then sign 
+of numerator is assigned to reminder. Thus the output results.
+
+<strong>Example:44 </strong>
+
+                main() 
+                { 
+                 int k=12,n=30; 
+                 k=(k>5&&n=4?100:200); 
+                 printf("k=%d",k); 
+                } 
+
+OUTPUT:  Error message: Lvalue required in function main. 
+
+Explanation:    
+          First let us understand the meaning of the word 
+Lvalue An Lvalue is any variable whose value can change 
+( have a new value assigned to it). An rvalue is a variable
+ whose value can not change. 
+
+TIP: The easient way to differentiate between the two is to
+ remember that an rvalue goes to the right of the assignment
+ operator,and an Lvalue to theleft.
+
+     In the above problem 
+
+            k=(k>5&&n=4?100:200); 
+   Go to precedence table, '&&' enjoys a higher priority 
+compared to the assignment operator=. Hence the condition 
+becomes 
+            (k>5&&n)=4 
+
+    Naturally , this can not be evaluated since the compiler
+will not know to which variable 4 should be assigned.In 
+otherwords,there is no Lvalue to which 4 can be assigned. 
+
+    Hence  the error message occurred. 
+
+<strong>Example:45</strong>
+
+           main()
+           { 
+            int c=0,d=5,e=10,a; 
+            a=c>1?d>1||e>1?100:200:300;
+            printf("a=%d",a);
+           } 
+
+OUTPUT:    a=300 
+
+Explanation:    
+       c>1 fails since value of c is 0, and the control reaches
+ 300 which is assigned to a. It would become easier to 
+understand  the statement f we parenthesize the expression as 
+shown below: 
+                  a=(c>1?(d>1||e>1?100:200):300); 
+
+ NOTE:  The conditional operator can be Nested. 
+
+<strong>Example:46</strong>  Is this program results error? 
+
+                 main() 
+                 { 
+                  int a=10,b=10; 
+                  printf("ans=%d",a>b?a*a:b/b); 
+                 }
+
+OUTPUT: 
+       ans =1 
+
+Explanation:  No, this doesn't give an error message. Since 
+we may use any other operators within printf().Since the 
+condition a>b fails, the statement after :,that is b/b is 
+evaluated and its result is printed by printf(). 
+        
+       
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="branching.html">Back</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+</body>
+</html>
+
+
+
+
+
+
+
+

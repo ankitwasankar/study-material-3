@@ -1,0 +1,12 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+float x1,x2,y1,y2,m1;
+clrscr();
+printf("Enter x1,x2,y1,y2 values");
+scanf("%f%f%f%f",&x1,&x2,&y1,&y2);
+m1=((x1*y1)-(y2*x2))/(x1-x2);
+printf("Value of m1=%f",m1);
+getch();
+}

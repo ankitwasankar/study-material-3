@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<conio.h>
+struct emp
+{
+  int empno;
+  char name[20];
+  int salary;
+};
+void main()
+{
+  FILE *fp;
+  struct emp e;
+  char ch;
+  int num,c=0;
+  long bytes;
+  clrscr();
+  fp=fopen("emp.dat","r+");
+  printf("Enter the employee code - ");
+  scanf("%d",&num);
+  fseek(fp,0,SEEK_SET);
+  while(fread(&e,sizeof(e),1,fp))
+  {
+    if(num==e.empno)
+    {
+      printf("\n Employee Number - %d",e.empno);
+      printf("\n Employee Name - %s",e.name);
+      printf("\n Salary - %d",e.salary);
+      flushall();
+      printf("\n Do you want to changing the record - ");
+      scanf("%c",&ch);
+      if(ch=='y' || ch=='Y')
+      {
+	 printf("Enter the new employee number - ");
+	 scanf("%d",&e.empno);
+	 printf("Enter the new employee name - ");
+	 scanf("%s",e.name);
+	 printf("Enter the new salary - ");
+	 scanf("%d",&e.salary);
+	 bytes=c*sizeof(e);
+	 fseek(fp,bytes,SEEK_SET);
+	 fwrite(&e,sizeof(e),1,fp);
+      }
+      break;
+    }
+    c++;
+  }
+  fclose(fp);
+}

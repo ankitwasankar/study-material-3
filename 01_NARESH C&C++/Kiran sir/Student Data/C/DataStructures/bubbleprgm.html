@@ -1,0 +1,47 @@
+<html>
+<head><TITLE>Bubble Sort</TITLE></head>
+<body>
+<strong>Program to implement Bubble sort :</strong><br><br>
+
+	# include <stdio.h><br>
+	# define swp(x,y)(int t;t=x;x=y;y=t)<br>
+	main()<br>
+	{<br>
+	   int a[20],n,i;<br>
+	   printf(“How many numbers”);<br>
+	   scanf(“%d”,&n);<br>
+	   printf(“Enter %d numbers”,n);<br>
+	   for(i=0;i<n;++i)<br>
+	   scanf(“%d”,&a[i]);<br>
+	   printf(“\n Numbers before sort:\n”);<br>
+	   for(i=0;i<n;++i)<br>
+	   printf(“%d”,a[i]);<br>
+	bubblesort(a,n);<br>
+	 printf(“\n Numbers after sort:\n”);<br>
+	 for(i=0;i<n;++i)<br>
+	  printf(“%d”,a[i]);<br>
+	}<br>
+	
+		
+	bubblesort(int a[],int n)<br>
+	{<br>
+	int pass,j,noexchange;<br>
+	for(pass=0;pass<n-1;pass++)<br>
+	{<br>
+	noexchange=1;<br>
+	for(j=0;j<n-pass;j++)<br>
+	{<br>
+	if(a[j]>a[j+1]<br>
+	{<br>
+	swap(a[j],a[j+1])<br>
+	noexchange=0;<br>
+	}<br>
+	}<br>
+	if(noexchange)<br>
+	return;<br>
+	}<br>
+	}<br>
+
+</body>
+
+</html>

@@ -1,0 +1,734 @@
+<ProjectType name="wxWidgets project" icon="wxWidgets.bmp?0" type="GUI" ext="exe" tab="GUI toolkits" desc="Create basic wxWidgets application." version="1.0">
+	<Pages count="3">
+		<Page title="Application Types#77004">
+			<RadioGroup name="AppTypes" title="Select the kind of Application type you want to create" value="0" width="290" height="100" enabled="1">
+				<Item>An &empty project.#77018</Item>
+				<Item>&Dialog Based</Item>
+				<Item>&Frame Based</Item>
+			</RadioGroup>	
+		</Page>
+		<Page title="wxWidgets Library Selection 1">
+			<RadioGroup name="WXVersion" title="Select the version of wxWidgets you want to use" value="0" width="290" height="80" enabled="1">
+				<Item>wxWidgets 2.8.x</Item>
+				<Item>wxWidgets 2.6.x</Item>			
+			</RadioGroup>	
+		</Page>
+		<Page title="wxWidgets Library Selection 2">
+			<BrowseFolder name="WXDir" title="wxWidgets' location (Base directory):" value="" width="290" height="20" enabled="1">
+			</BrowseFolder>
+			<CheckBox name="Unicode" value="0" width="290" height="15" enabled="1">&Enable Unicode</CheckBox>
+			<CheckBox name="Mono" value="0" width="290" height="15" enabled="1">Using &Monolithic Library</CheckBox>
+			<CheckBox name="Univ" value="0" width="290" height="15" enabled="1">Using wxUni&versal instead of native wxMSW</CheckBox>
+			<CheckBox name="Dll" value="0" width="290" height="15" enabled="1">Using D&LL Library</CheckBox>
+		</Page>
+	</Pages>
+
+	<Outputs>
+		<Directory name="\">
+		<File folder="Source Files" name="" external="" enabled="1"></File>
+		<File folder="Header Files" name="" external="" enabled="1"></File>
+		<File folder="Other Files" name="" external="" enabled="1"></File>
+		<File folder="Source Files" name="$(ProjectName)App.cpp" external="" enabled="$(AppTypes)=2">
+#ifdef WX_PRECOMP
+#include "wx_pch.h"
+#endif
+
+#ifdef __BORLANDC__
+#pragma hdrstop
+#endif //__BORLANDC__
+
+#include "$(ProjectName)App.h"
+#include "$(ProjectName)Main.h"
+
+IMPLEMENT_APP($(ProjectName)App);
+
+bool $(ProjectName)App::OnInit()
+{
+    $(ProjectName)Frame* frame = new $(ProjectName)Frame(0L, _("$(ProjectName)"));
+    frame->SetIcon(wxICON($(ProjectName_U))); // To Set App Icon
+    frame->Show();
+    
+    return true;
+}
+
+		</File>
+		<File folder="Source Files" name="$(ProjectName)App.cpp" external="" enabled="$(AppTypes)=1">
+#ifdef WX_PRECOMP
+#include "wx_pch.h"
+#endif
+
+#ifdef __BORLANDC__
+#pragma hdrstop
+#endif //__BORLANDC__
+
+#include "$(ProjectName)App.h"
+#include "$(ProjectName)Main.h"
+
+IMPLEMENT_APP($(ProjectName)App);
+
+bool $(ProjectName)App::OnInit()
+{
+    $(ProjectName)Dialog* dlg = new $(ProjectName)Dialog(0L, _("$(ProjectName)"));
+    dlg->SetIcon(wxICON($(ProjectName_U))); // To Set App Icon
+    dlg->Show();
+    
+    return true;
+}
+
+		</File>
+		<File folder="Source Files" name="$(ProjectName)Main.cpp" external="" enabled="$(AppTypes)=2">
+#ifdef WX_PRECOMP
+#include "wx_pch.h"
+#endif
+
+#ifdef __BORLANDC__
+#pragma hdrstop
+#endif //__BORLANDC__
+
+#include "$(ProjectName)Main.h"
+
+//helper functions
+enum wxbuildinfoformat {
+    short_f, long_f };
+
+wxString wxbuildinfo(wxbuildinfoformat format)
+{
+    wxString wxbuild(wxVERSION_STRING);
+
+    if (format == long_f )
+    {
+#if defined(__WXMSW__)
+        wxbuild &lt;&lt; _T("-Windows");
+#elif defined(__WXMAC__)
+        wxbuild &lt;&lt; _T("-Mac");
+#elif defined(__UNIX__)
+        wxbuild &lt;&lt; _T("-Linux");
+#endif
+
+#if defined(__WXUNIVERSAL__)
+        wxbuild &lt;&lt; _T("-Universal");
+#endif
+
+#if wxUSE_UNICODE
+        wxbuild &lt;&lt; _T("-Unicode build");
+#else
+        wxbuild &lt;&lt; _T("-ANSI build");
+#endif // wxUSE_UNICODE
+    }
+
+    return wxbuild;
+}
+
+BEGIN_EVENT_TABLE($(ProjectName)Frame, wxFrame)
+    EVT_CLOSE($(ProjectName)Frame::OnClose)
+    EVT_MENU(idMenuQuit, $(ProjectName)Frame::OnQuit)
+    EVT_MENU(idMenuAbout, $(ProjectName)Frame::OnAbout)
+END_EVENT_TABLE()
+
+$(ProjectName)Frame::$(ProjectName)Frame(wxFrame *frame, const wxString& title)
+    : wxFrame(frame, -1, title)
+{
+#if wxUSE_MENUS
+    // create a menu bar
+    wxMenuBar* mbar = new wxMenuBar();
+    wxMenu* fileMenu = new wxMenu(_T(""));
+    fileMenu->Append(idMenuQuit, _("&Quit\tAlt-F4"), _("Quit the application"));
+    mbar->Append(fileMenu, _("&File"));
+
+    wxMenu* helpMenu = new wxMenu(_T(""));
+    helpMenu->Append(idMenuAbout, _("&About\tF1"), _("Show info about this application"));
+    mbar->Append(helpMenu, _("&Help"));
+
+    SetMenuBar(mbar);
+#endif // wxUSE_MENUS
+
+#if wxUSE_STATUSBAR
+    // create a status bar with some information about the used wxWidgets version
+    CreateStatusBar(3);
+    SetStatusText(_("Ready"),0);
+    SetStatusText(wxbuildinfo(short_f), 1);
+#endif // wxUSE_STATUSBAR
+
+}
+
+
+$(ProjectName)Frame::~$(ProjectName)Frame()
+{
+}
+
+void $(ProjectName)Frame::OnClose(wxCloseEvent &event)
+{
+    Destroy();
+}
+
+void $(ProjectName)Frame::OnQuit(wxCommandEvent &event)
+{
+    Destroy();
+}
+
+void $(ProjectName)Frame::OnAbout(wxCommandEvent &event)
+{
+    wxString msg = wxbuildinfo(long_f);
+    wxMessageBox(msg, _("Welcome to..."));
+}
+
+		</File>
+		<File folder="Source Files" name="$(ProjectName)Main.cpp" external="" enabled="$(AppTypes)=1">
+#ifdef WX_PRECOMP
+#include "wx_pch.h"
+#endif
+
+#ifdef __BORLANDC__
+#pragma hdrstop
+#endif //__BORLANDC__
+
+#include "$(ProjectName)Main.h"
+
+//helper functions
+enum wxbuildinfoformat {
+    short_f, long_f };
+
+wxString wxbuildinfo(wxbuildinfoformat format)
+{
+    wxString wxbuild(wxVERSION_STRING);
+
+    if (format == long_f )
+    {
+#if defined(__WXMSW__)
+        wxbuild &lt;&lt; _T("-Windows");
+#elif defined(__WXMAC__)
+        wxbuild &lt;&lt; _T("-Mac");
+#elif defined(__UNIX__)
+        wxbuild &lt;&lt; _T("-Linux");
+#endif
+
+#if defined(__WXUNIVERSAL__)
+        wxbuild &lt;&lt; _T("-Universal");
+#endif
+
+#if wxUSE_UNICODE
+        wxbuild &lt;&lt; _T("-Unicode build");
+#else
+        wxbuild &lt;&lt; _T("-ANSI build");
+#endif // wxUSE_UNICODE
+    }
+
+    return wxbuild;
+}
+
+
+BEGIN_EVENT_TABLE($(ProjectName)Dialog, wxDialog)
+    EVT_CLOSE($(ProjectName)Dialog::OnClose)
+    EVT_BUTTON(idBtnQuit, $(ProjectName)Dialog::OnQuit)
+    EVT_BUTTON(idBtnAbout, $(ProjectName)Dialog::OnAbout)
+END_EVENT_TABLE()
+
+$(ProjectName)Dialog::$(ProjectName)Dialog(wxDialog *dlg, const wxString &title)
+    : wxDialog(dlg, -1, title)
+{
+    this->SetSizeHints(wxDefaultSize, wxDefaultSize);
+    wxBoxSizer* bSizer1;
+    bSizer1 = new wxBoxSizer(wxHORIZONTAL);
+    m_staticText1 = new wxStaticText(this, wxID_ANY, wxT("Hello\nC-Free"), wxDefaultPosition, wxDefaultSize, 0);
+    m_staticText1->SetFont(wxFont(20, 74, 90, 90, false, wxT("Arial")));
+    bSizer1->Add(m_staticText1, 0, wxALL|wxEXPAND, 5);
+    wxBoxSizer* bSizer2;
+    bSizer2 = new wxBoxSizer(wxVERTICAL);
+    BtnAbout = new wxButton(this, idBtnAbout, wxT("&About"), wxDefaultPosition, wxDefaultSize, 0);
+    bSizer2->Add(BtnAbout, 0, wxALL, 5);
+    m_staticline1 = new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL);
+    bSizer2->Add(m_staticline1, 0, wxALL|wxEXPAND, 5);
+    BtnQuit = new wxButton(this, idBtnQuit, wxT("&Quit"), wxDefaultPosition, wxDefaultSize, 0);
+    bSizer2->Add(BtnQuit, 0, wxALL, 5);
+    bSizer1->Add(bSizer2, 1, wxEXPAND, 5);
+    this->SetSizer(bSizer1);
+    this->Layout();
+    bSizer1->Fit(this);
+}
+
+
+$(ProjectName)Dialog::~$(ProjectName)Dialog()
+{
+}
+
+void $(ProjectName)Dialog::OnClose(wxCloseEvent &event)
+{
+    Destroy();
+}
+
+void $(ProjectName)Dialog::OnQuit(wxCommandEvent &event)
+{
+    Destroy();
+}
+
+void $(ProjectName)Dialog::OnAbout(wxCommandEvent &event)
+{
+    wxString msg = wxbuildinfo(long_f);
+    wxMessageBox(msg, _("Welcome to..."));
+}
+
+		</File>
+		<File folder="Header Files" name="$(ProjectName)App.h" external="" enabled="$(AppTypes)=1|$(AppTypes)=2">
+#ifndef $(ProjectName_U)APP_H
+#define $(ProjectName_U)APP_H
+
+#include &lt;wx/app.h&gt;
+
+class $(ProjectName)App : public wxApp
+{
+    public:
+        virtual bool OnInit();
+};
+
+#endif // $(ProjectName_U)APP_H			
+		</File>
+		<File folder="Header Files" name="$(ProjectName)Main.h" external="" enabled="$(AppTypes)=2">
+#ifndef $(ProjectName_U)MAIN_H
+#define $(ProjectName_U)MAIN_H
+
+#ifndef WX_PRECOMP
+    #include &lt;wx/wx.h&gt;
+#endif
+
+#include "$(ProjectName)App.h"
+
+class $(ProjectName)Frame: public wxFrame
+{
+    public:
+        $(ProjectName)Frame(wxFrame *frame, const wxString& title);
+        ~$(ProjectName)Frame();
+    private:
+        enum
+        {
+            idMenuQuit = 1000,
+            idMenuAbout
+        };
+        void OnClose(wxCloseEvent& event);
+        void OnQuit(wxCommandEvent& event);
+        void OnAbout(wxCommandEvent& event);
+        DECLARE_EVENT_TABLE()
+};
+
+
+#endif // $(ProjectName_U)MAIN_H
+
+		</File>
+		<File folder="Header Files" name="$(ProjectName)Main.h" external="" enabled="$(AppTypes)=1">
+#ifndef $(ProjectName_U)MAIN_H
+#define $(ProjectName_U)MAIN_H
+
+#ifndef WX_PRECOMP
+    #include &lt;wx/wx.h&gt;
+#endif
+
+#include "$(ProjectName)App.h"
+#include &lt;wx/button.h&gt;
+#include &lt;wx/statline.h&gt;
+
+class $(ProjectName)Dialog: public wxDialog
+{
+    public:
+        $(ProjectName)Dialog(wxDialog *dlg, const wxString& title);
+        ~$(ProjectName)Dialog();
+        
+    protected:
+        enum
+        {
+            idBtnQuit = 1000,
+            idBtnAbout
+        };
+        wxStaticText* m_staticText1;
+        wxButton* BtnAbout;
+        wxStaticLine* m_staticline1;
+        wxButton* BtnQuit;
+        
+    private:
+        void OnClose(wxCloseEvent& event);
+        void OnQuit(wxCommandEvent& event);
+        void OnAbout(wxCommandEvent& event);
+        DECLARE_EVENT_TABLE()
+};
+
+
+#endif // $(ProjectName_U)MAIN_H
+		</File>
+		<File folder="Other Files" name="$(ProjectName).rc" external="" enabled="$(AppTypes)=1|$(AppTypes)=2">
+$(ProjectName_U) ICON "wx/msw/std.ico"
+
+#include "wx/msw/wx.rc"
+
+		</File>
+		</Directory>
+	</Outputs>
+	<Options>
+		<Compiler bldr="MinGW" type="debug">-D_DEBUG -D__WXDEBUG__</Compiler>
+		<Compiler bldr="Borland" type="debug">-D_DEBUG -D__WXDEBUG__</Compiler>
+		<Compiler bldr="CYGWIN" type="debug">-D_DEBUG -D__WXDEBUG__</Compiler>
+		<Compiler bldr="Watcom" type="debug">-d_DEBUG -d__WXDEBUG__</Compiler>
+		<Compiler bldr="Microsoft" type="debug">/MDd /D "_DEBUG" /D "__WXDEBUG__"</Compiler>
+		<Compiler bldr="Microsoft" type="release">/MD</Compiler>
+		
+		<Compiler bldr="MinGW" type="any" enabled="$(Unicode)=1">-D_UNICODE -DUNICODE</Compiler>
+		<Compiler bldr="Borland" type="any" enabled="$(Unicode)=1">-D_UNICODE -DUNICODE</Compiler>
+		<Compiler bldr="CYGWIN" type="any" enabled="$(Unicode)=1">-D_UNICODE -DUNICODE</Compiler>
+		<Compiler bldr="Watcom" type="any" enabled="$(Unicode)=1">-d_UNICODE -dUNICODE</Compiler>
+		<Compiler bldr="Microsoft" type="any" enabled="$(Unicode)=1">/D "_UNICODE" /D "UNICODE"</Compiler>
+		
+		<Compiler bldr="MinGW" type="any" enabled="$(Univ)=1">-D__WXUNIVERSAL__</Compiler>
+		<Compiler bldr="Borland" type="any" enabled="$(Univ)=1">-D__WXUNIVERSAL__</Compiler>
+		<Compiler bldr="CYGWIN" type="any" enabled="$(Univ)=1">-D__WXUNIVERSAL__</Compiler>
+		<Compiler bldr="Watcom" type="any" enabled="$(Univ)=1">-d__WXUNIVERSAL__</Compiler>
+		<Compiler bldr="Microsoft" type="any" enabled="$(Univ)=1">/D "__WXUNIVERSAL__"</Compiler>
+		
+		<Compiler bldr="MinGW" type="any" enabled="$(Dll)=1">-DWXUSINGDLL</Compiler>
+		<Compiler bldr="Borland" type="any" enabled="$(Dll)=1">-DWXUSINGDLL</Compiler>
+		<Compiler bldr="CYGWIN" type="any" enabled="$(Dll)=1">-DWXUSINGDLL</Compiler>
+		<Compiler bldr="Watcom" type="any" enabled="$(Dll)=1">-dWXUSINGDLL</Compiler>
+		<Compiler bldr="Microsoft" type="any" enabled="$(Dll)=1">/D "WXUSINGDLL"</Compiler>
+		
+		<Linker bldr="MinGW"></Linker>
+		<Linker bldr="Borland"></Linker>
+		
+		<Lib bldr="MinGW" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=0&$(WXVersion)=0">wxmsw28d_core</Lib>
+		<Lib bldr="MinGW" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=1&$(WXVersion)=0">wxmswuniv28d_core</Lib>
+		<Lib bldr="MinGW" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(WXVersion)=0">wxbase28d</Lib>
+		<Lib bldr="MinGW" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=0&$(WXVersion)=0">wxmsw28ud_core</Lib>
+		<Lib bldr="MinGW" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=1&$(WXVersion)=0">wxmsw28ud_core</Lib>
+		<Lib bldr="MinGW" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(WXVersion)=0">wxbase28ud</Lib>
+		<Lib bldr="MinGW" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=0&$(WXVersion)=1">wxmsw26d_core</Lib>
+		<Lib bldr="MinGW" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=1&$(WXVersion)=1">wxmswuniv26d_core</Lib>
+		<Lib bldr="MinGW" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(WXVersion)=1">wxbase26d</Lib>
+		<Lib bldr="MinGW" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=0&$(WXVersion)=1">wxmsw26ud_core</Lib>
+		<Lib bldr="MinGW" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=1&$(WXVersion)=1">wxmsw26ud_core</Lib>
+		<Lib bldr="MinGW" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(WXVersion)=1">wxbase26ud</Lib>
+		<Lib bldr="MinGW" type="debug">wxpngd</Lib>
+		<Lib bldr="MinGW" type="debug">wxzlibd</Lib>
+		<Lib bldr="MinGW" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=0&$(WXVersion)=0">wxmsw28_core</Lib>
+		<Lib bldr="MinGW" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=1&$(WXVersion)=0">wxmswuniv28_core</Lib>
+		<Lib bldr="MinGW" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(WXVersion)=0">wxbase28</Lib>
+		<Lib bldr="MinGW" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=0&$(WXVersion)=0">wxmsw28u_core</Lib>
+		<Lib bldr="MinGW" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=1&$(WXVersion)=0">wxmswuniv28u_core</Lib>
+		<Lib bldr="MinGW" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(WXVersion)=0">wxbase28u</Lib>
+		<Lib bldr="MinGW" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=0&$(WXVersion)=1">wxmsw26_core</Lib>
+		<Lib bldr="MinGW" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=1&$(WXVersion)=1">wxmswuniv26_core</Lib>
+		<Lib bldr="MinGW" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(WXVersion)=1">wxbase26</Lib>
+		<Lib bldr="MinGW" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=0&$(WXVersion)=1">wxmsw26u_core</Lib>
+		<Lib bldr="MinGW" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=1&$(WXVersion)=1">wxmswuniv26u_core</Lib>
+		<Lib bldr="MinGW" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(WXVersion)=1">wxbase26u</Lib>
+		<Lib bldr="MinGW" type="release">wxpng</Lib>
+		<Lib bldr="MinGW" type="release">wxzlib</Lib>
+		
+		<Lib bldr="MinGW" type="debug" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=0&$(WXVersion)=0">wxmsw28d</Lib>
+		<Lib bldr="MinGW" type="release" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=0&$(WXVersion)=0">wxmsw28</Lib>
+		<Lib bldr="MinGW" type="debug" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=0&$(WXVersion)=0">wxmsw28ud</Lib>
+		<Lib bldr="MinGW" type="release" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=0&$(WXVersion)=0">wxmsw28u</Lib>
+		<Lib bldr="MinGW" type="debug" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=1&$(WXVersion)=0">wxmswuniv28d</Lib>
+		<Lib bldr="MinGW" type="release" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=1&$(WXVersion)=0">wxmswuniv28</Lib>
+		<Lib bldr="MinGW" type="debug" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=1&$(WXVersion)=0">wxmswuniv28ud</Lib>
+		<Lib bldr="MinGW" type="release" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=1&$(WXVersion)=0">wxmswuniv28u</Lib>
+		<Lib bldr="MinGW" type="debug" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=0&$(WXVersion)=1">wxmsw26d</Lib>
+		<Lib bldr="MinGW" type="release" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=0&$(WXVersion)=1">wxmsw26</Lib>
+		<Lib bldr="MinGW" type="debug" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=0&$(WXVersion)=1">wxmsw26ud</Lib>
+		<Lib bldr="MinGW" type="release" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=0&$(WXVersion)=1">wxmsw26u</Lib>
+		<Lib bldr="MinGW" type="debug" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=1&$(WXVersion)=1">wxmswuniv26d</Lib>
+		<Lib bldr="MinGW" type="release" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=1&$(WXVersion)=1">wxmswuniv26</Lib>
+		<Lib bldr="MinGW" type="debug" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=1&$(WXVersion)=1">wxmswuniv26ud</Lib>
+		<Lib bldr="MinGW" type="release" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=1&$(WXVersion)=1">wxmswuniv26u</Lib>
+		
+		<Lib bldr="MinGW">comctl32</Lib>
+		<Lib bldr="MinGW">winmm</Lib>
+		<Lib bldr="MinGW">rpcrt4</Lib>
+		<Lib bldr="MinGW">wsock32</Lib>
+		<Lib bldr="MinGW">kernel32</Lib>
+		<Lib bldr="MinGW">user32</Lib>
+		<Lib bldr="MinGW">gdi32</Lib>
+		<Lib bldr="MinGW">winspool</Lib>
+		<Lib bldr="MinGW">comdlg32</Lib>
+		<Lib bldr="MinGW">advapi32</Lib>
+		<Lib bldr="MinGW">shell32</Lib>
+		<Lib bldr="MinGW">ole32</Lib>
+		<Lib bldr="MinGW">oleaut32</Lib>
+		<Lib bldr="MinGW">uuid</Lib>
+		<Lib bldr="MinGW">odbc32</Lib>
+		<Lib bldr="MinGW">odbccp32</Lib>
+		
+		<Lib bldr="CYGWIN" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=0&$(WXVersion)=0">wxmsw28d_core</Lib>
+		<Lib bldr="CYGWIN" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=1&$(WXVersion)=0">wxmswuniv28d_core</Lib>
+		<Lib bldr="CYGWIN" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(WXVersion)=0">wxbase28d</Lib>
+		<Lib bldr="CYGWIN" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=0&$(WXVersion)=0">wxmsw28ud_core</Lib>
+		<Lib bldr="CYGWIN" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=1&$(WXVersion)=0">wxmswuniv28ud_core</Lib>
+		<Lib bldr="CYGWIN" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(WXVersion)=0">wxbase28ud</Lib>
+		<Lib bldr="CYGWIN" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=0&$(WXVersion)=1">wxmsw26d_core</Lib>
+		<Lib bldr="CYGWIN" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=1&$(WXVersion)=1">wxmswuniv26d_core</Lib>
+		<Lib bldr="CYGWIN" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(WXVersion)=1">wxbase26d</Lib>
+		<Lib bldr="CYGWIN" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=0&$(WXVersion)=1">wxmsw26ud_core</Lib>
+		<Lib bldr="CYGWIN" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=1&$(WXVersion)=1">wxmswuniv26ud_core</Lib>
+		<Lib bldr="CYGWIN" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(WXVersion)=1">wxbase26ud</Lib>
+		<Lib bldr="CYGWIN" type="debug">wxpngd</Lib>
+		<Lib bldr="CYGWIN" type="debug">wxzlibd</Lib>
+		<Lib bldr="CYGWIN" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=0&$(WXVersion)=0">wxmsw28_core</Lib>
+		<Lib bldr="CYGWIN" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=1&$(WXVersion)=0">wxmswuniv28_core</Lib>
+		<Lib bldr="CYGWIN" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(WXVersion)=0">wxbase28</Lib>
+		<Lib bldr="CYGWIN" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=0&$(WXVersion)=0">wxmsw28u_core</Lib>
+		<Lib bldr="CYGWIN" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=1&$(WXVersion)=0">wxmswuniv28u_core</Lib>
+		<Lib bldr="CYGWIN" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(WXVersion)=0">wxbase28u</Lib>
+		<Lib bldr="CYGWIN" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=0&$(WXVersion)=1">wxmsw26_core</Lib>
+		<Lib bldr="CYGWIN" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=1&$(WXVersion)=1">wxmswuniv26_core</Lib>
+		<Lib bldr="CYGWIN" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(WXVersion)=1">wxbase26</Lib>
+		<Lib bldr="CYGWIN" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=0&$(WXVersion)=1">wxmsw26u_core</Lib>
+		<Lib bldr="CYGWIN" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=1&$(WXVersion)=1">wxmswuniv26u_core</Lib>
+		<Lib bldr="CYGWIN" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(WXVersion)=1">wxbase26u</Lib>
+		<Lib bldr="CYGWIN" type="release">wxpng</Lib>
+		<Lib bldr="CYGWIN" type="release">wxzlib</Lib>
+		
+		<Lib bldr="CYGWIN" type="debug" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=0&$(WXVersion)=0">wxmsw28d</Lib>
+		<Lib bldr="CYGWIN" type="release" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=0&$(WXVersion)=0">wxmsw28</Lib>
+		<Lib bldr="CYGWIN" type="debug" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=0&$(WXVersion)=0">wxmsw28ud</Lib>
+		<Lib bldr="CYGWIN" type="release" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=0&$(WXVersion)=0">wxmsw28u</Lib>
+		<Lib bldr="CYGWIN" type="debug" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=1&$(WXVersion)=0">wxmswuniv28d</Lib>
+		<Lib bldr="CYGWIN" type="release" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=1&$(WXVersion)=0">wxmswuniv28</Lib>
+		<Lib bldr="CYGWIN" type="debug" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=1&$(WXVersion)=0">wxmswuniv28ud</Lib>
+		<Lib bldr="CYGWIN" type="release" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=1&$(WXVersion)=0">wxmswuniv28u</Lib>
+		<Lib bldr="CYGWIN" type="debug" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=0&$(WXVersion)=1">wxmsw26d</Lib>
+		<Lib bldr="CYGWIN" type="release" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=0&$(WXVersion)=1">wxmsw26</Lib>
+		<Lib bldr="CYGWIN" type="debug" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=0&$(WXVersion)=1">wxmsw26ud</Lib>
+		<Lib bldr="CYGWIN" type="release" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=0&$(WXVersion)=1">wxmsw26u</Lib>
+		<Lib bldr="CYGWIN" type="debug" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=1&$(WXVersion)=1">wxmswuniv26d</Lib>
+		<Lib bldr="CYGWIN" type="release" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=1&$(WXVersion)=1">wxmswuniv26</Lib>
+		<Lib bldr="CYGWIN" type="debug" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=1&$(WXVersion)=1">wxmswuniv26ud</Lib>
+		<Lib bldr="CYGWIN" type="release" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=1&$(WXVersion)=1">wxmswuniv26u</Lib>
+		
+		<Lib bldr="CYGWIN">comctl32</Lib>
+		<Lib bldr="CYGWIN">winmm</Lib>
+		<Lib bldr="CYGWIN">rpcrt4</Lib>
+		<Lib bldr="CYGWIN">wsock32</Lib>
+		<Lib bldr="CYGWIN">kernel32</Lib>
+		<Lib bldr="CYGWIN">user32</Lib>
+		<Lib bldr="CYGWIN">gdi32</Lib>
+		<Lib bldr="CYGWIN">winspool</Lib>
+		<Lib bldr="CYGWIN">comdlg32</Lib>
+		<Lib bldr="CYGWIN">advapi32</Lib>
+		<Lib bldr="CYGWIN">shell32</Lib>
+		<Lib bldr="CYGWIN">ole32</Lib>
+		<Lib bldr="CYGWIN">oleaut32</Lib>
+		<Lib bldr="CYGWIN">uuid</Lib>
+		<Lib bldr="CYGWIN">odbc32</Lib>
+		<Lib bldr="CYGWIN">odbccp32</Lib>
+		
+		
+		<Lib bldr="Borland" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=0&$(WXVersion)=0">wxmsw28d_core.lib</Lib>
+		<Lib bldr="Borland" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=1&$(WXVersion)=0">wxmswuniv28d_core.lib</Lib>
+		<Lib bldr="Borland" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(WXVersion)=0">wxbase28d.lib</Lib>
+		<Lib bldr="Borland" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=0&$(WXVersion)=0">wxmsw28ud_core.lib</Lib>
+		<Lib bldr="Borland" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=1&$(WXVersion)=0">wxmswuniv28ud_core.lib</Lib>
+		<Lib bldr="Borland" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(WXVersion)=0">wxbase28ud.lib</Lib>
+		<Lib bldr="Borland" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=0&$(WXVersion)=1">wxmsw26d_core.lib</Lib>
+		<Lib bldr="Borland" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=1&$(WXVersion)=1">wxmswuniv26d_core.lib</Lib>
+		<Lib bldr="Borland" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(WXVersion)=1">wxbase26d.lib</Lib>
+		<Lib bldr="Borland" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=0&$(WXVersion)=1">wxmsw26ud_core.lib</Lib>
+		<Lib bldr="Borland" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=1&$(WXVersion)=1">wxmswuniv26ud_core.lib</Lib>
+		<Lib bldr="Borland" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(WXVersion)=1">wxbase26ud.lib</Lib>
+		<Lib bldr="Borland" type="debug">wxpngd.lib</Lib>
+		<Lib bldr="Borland" type="debug">wxzlibd.lib</Lib>
+		<Lib bldr="Borland" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=0&$(WXVersion)=0">wxmsw28_core.lib</Lib>
+		<Lib bldr="Borland" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=1&$(WXVersion)=0">wxmswuniv28_core.lib</Lib>
+		<Lib bldr="Borland" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(WXVersion)=0">wxbase28.lib</Lib>
+		<Lib bldr="Borland" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=0&$(WXVersion)=0">wxmsw28u_core.lib</Lib>
+		<Lib bldr="Borland" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=1&$(WXVersion)=0">wxmswuniv28u_core.lib</Lib>
+		<Lib bldr="Borland" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(WXVersion)=0">wxbase28u.lib</Lib>
+		<Lib bldr="Borland" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=0&$(WXVersion)=1">wxmsw26_core.lib</Lib>
+		<Lib bldr="Borland" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=1&$(WXVersion)=1">wxmswuniv26_core.lib</Lib>
+		<Lib bldr="Borland" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(WXVersion)=1">wxbase26.lib</Lib>
+		<Lib bldr="Borland" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=0&$(WXVersion)=1">wxmsw26u_core.lib</Lib>
+		<Lib bldr="Borland" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=1&$(WXVersion)=1">wxmswuniv26u_core.lib</Lib>
+		<Lib bldr="Borland" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(WXVersion)=1">wxbase26u.lib</Lib>
+		<Lib bldr="Borland" type="release">wxpng.lib</Lib>
+		<Lib bldr="Borland" type="release">wxzlib.lib</Lib>
+		
+		<Lib bldr="Borland" type="debug" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=0&$(WXVersion)=0">wxmsw28d.lib</Lib>
+		<Lib bldr="Borland" type="release" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=0&$(WXVersion)=0">wxmsw28.lib</Lib>
+		<Lib bldr="Borland" type="debug" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=0&$(WXVersion)=0">wxmsw28ud.lib</Lib>
+		<Lib bldr="Borland" type="release" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=0&$(WXVersion)=0">wxmsw28u.lib</Lib>
+		<Lib bldr="Borland" type="debug" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=1&$(WXVersion)=0">wxmswuniv28d.lib</Lib>
+		<Lib bldr="Borland" type="release" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=1&$(WXVersion)=0">wxmswuniv28.lib</Lib>
+		<Lib bldr="Borland" type="debug" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=1&$(WXVersion)=0">wxmswuniv28ud.lib</Lib>
+		<Lib bldr="Borland" type="release" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=1&$(WXVersion)=0">wxmswuniv28u.lib</Lib>
+		<Lib bldr="Borland" type="debug" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=0&$(WXVersion)=1">wxmsw26d.lib</Lib>
+		<Lib bldr="Borland" type="release" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=0&$(WXVersion)=1">wxmsw26.lib</Lib>
+		<Lib bldr="Borland" type="debug" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=0&$(WXVersion)=1">wxmsw26ud.lib</Lib>
+		<Lib bldr="Borland" type="release" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=0&$(WXVersion)=1">wxmsw26u.lib</Lib>
+		<Lib bldr="Borland" type="debug" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=1&$(WXVersion)=1">wxmswuniv26d.lib</Lib>
+		<Lib bldr="Borland" type="release" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=1&$(WXVersion)=1">wxmswuniv26.lib</Lib>
+		<Lib bldr="Borland" type="debug" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=1&$(WXVersion)=1">wxmswuniv26ud.lib</Lib>
+		<Lib bldr="Borland" type="release" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=1&$(WXVersion)=1">wxmswuniv26u.lib</Lib>
+		
+		<Lib bldr="Microsoft" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=0&$(WXVersion)=0">wxmsw28d_core.lib</Lib>
+		<Lib bldr="Microsoft" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=1&$(WXVersion)=0">wxmswuniv28d_core.lib</Lib>
+		<Lib bldr="Microsoft" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(WXVersion)=0">wxbase28d.lib</Lib>
+		<Lib bldr="Microsoft" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=0&$(WXVersion)=0">wxmsw28ud_core.lib</Lib>
+		<Lib bldr="Microsoft" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=1&$(WXVersion)=0">wxmswuniv28ud_core.lib</Lib>
+		<Lib bldr="Microsoft" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(WXVersion)=0">wxbase28ud.lib</Lib>
+		<Lib bldr="Microsoft" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=0&$(WXVersion)=1">wxmsw26d_core.lib</Lib>
+		<Lib bldr="Microsoft" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=1&$(WXVersion)=1">wxmswuniv26d_core.lib</Lib>
+		<Lib bldr="Microsoft" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(WXVersion)=1">wxbase26d.lib</Lib>
+		<Lib bldr="Microsoft" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=0&$(WXVersion)=1">wxmsw26ud_core.lib</Lib>
+		<Lib bldr="Microsoft" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=1&$(WXVersion)=1">wxmswuniv26ud_core.lib</Lib>
+		<Lib bldr="Microsoft" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(WXVersion)=1">wxbase26ud.lib</Lib>
+		<Lib bldr="Microsoft" type="debug">wxpngd.lib</Lib>
+		<Lib bldr="Microsoft" type="debug">wxzlibd.lib</Lib>
+		<Lib bldr="Microsoft" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=0&$(WXVersion)=0">wxmsw28_core.lib</Lib>
+		<Lib bldr="Microsoft" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=1&$(WXVersion)=0">wxmswuniv28_core.lib</Lib>
+		<Lib bldr="Microsoft" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(WXVersion)=0">wxbase28.lib</Lib>
+		<Lib bldr="Microsoft" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=0&$(WXVersion)=0">wxmsw28u_core.lib</Lib>
+		<Lib bldr="Microsoft" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=1&$(WXVersion)=0">wxmswuniv28u_core.lib</Lib>
+		<Lib bldr="Microsoft" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(WXVersion)=0">wxbase28u.lib</Lib>
+		<Lib bldr="Microsoft" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=0&$(WXVersion)=1">wxmsw26_core.lib</Lib>
+		<Lib bldr="Microsoft" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=1&$(WXVersion)=1">wxmswuniv26_core.lib</Lib>
+		<Lib bldr="Microsoft" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(WXVersion)=1">wxbase26.lib</Lib>
+		<Lib bldr="Microsoft" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=0&$(WXVersion)=1">wxmsw26u_core.lib</Lib>
+		<Lib bldr="Microsoft" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=1&$(WXVersion)=1">wxmswuniv26u_core.lib</Lib>
+		<Lib bldr="Microsoft" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(WXVersion)=1">wxbase26u.lib</Lib>
+		<Lib bldr="Microsoft" type="release">wxpng.lib</Lib>
+		<Lib bldr="Microsoft" type="release">wxzlib.lib</Lib>
+		<Lib bldr="Microsoft">comctl32.lib</Lib>
+		<Lib bldr="Microsoft">winmm.lib</Lib>
+		<Lib bldr="Microsoft">rpcrt4.lib</Lib>
+		<Lib bldr="Microsoft">wsock32.lib</Lib>
+		<Lib bldr="Microsoft">kernel32.lib</Lib>
+		<Lib bldr="Microsoft">user32.lib</Lib>
+		<Lib bldr="Microsoft">gdi32.lib</Lib>
+		<Lib bldr="Microsoft">winspool.lib</Lib>
+		<Lib bldr="Microsoft">comdlg32.lib</Lib>
+		<Lib bldr="Microsoft">advapi32.lib</Lib>
+		<Lib bldr="Microsoft">shell32.lib</Lib>
+		<Lib bldr="Microsoft">ole32.lib</Lib>
+		<Lib bldr="Microsoft">oleaut32.lib</Lib>
+		<Lib bldr="Microsoft">uuid.lib</Lib>
+		<Lib bldr="Microsoft">odbc32.lib</Lib>
+		<Lib bldr="Microsoft">odbccp32.lib</Lib>
+		
+		<Lib bldr="Microsoft" type="debug" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=0&$(WXVersion)=0">wxmsw28d.lib</Lib>
+		<Lib bldr="Microsoft" type="release" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=0&$(WXVersion)=0">wxmsw28.lib</Lib>
+		<Lib bldr="Microsoft" type="debug" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=0&$(WXVersion)=0">wxmsw28ud.lib</Lib>
+		<Lib bldr="Microsoft" type="release" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=0&$(WXVersion)=0">wxmsw28u.lib</Lib>
+		<Lib bldr="Microsoft" type="debug" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=1&$(WXVersion)=0">wxmswuniv28d.lib</Lib>
+		<Lib bldr="Microsoft" type="release" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=1&$(WXVersion)=0">wxmswuniv28.lib</Lib>
+		<Lib bldr="Microsoft" type="debug" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=1&$(WXVersion)=0">wxmswuniv28ud.lib</Lib>
+		<Lib bldr="Microsoft" type="release" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=1&$(WXVersion)=0">wxmswuniv28u.lib</Lib>
+		<Lib bldr="Microsoft" type="debug" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=0&$(WXVersion)=1">wxmsw26d.lib</Lib>
+		<Lib bldr="Microsoft" type="release" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=0&$(WXVersion)=1">wxmsw26.lib</Lib>
+		<Lib bldr="Microsoft" type="debug" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=0&$(WXVersion)=1">wxmsw26ud.lib</Lib>
+		<Lib bldr="Microsoft" type="release" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=0&$(WXVersion)=1">wxmsw26u.lib</Lib>
+		<Lib bldr="Microsoft" type="debug" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=1&$(WXVersion)=1">wxmswuniv26d.lib</Lib>
+		<Lib bldr="Microsoft" type="release" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=1&$(WXVersion)=1">wxmswuniv26.lib</Lib>
+		<Lib bldr="Microsoft" type="debug" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=1&$(WXVersion)=1">wxmswuniv26ud.lib</Lib>
+		<Lib bldr="Microsoft" type="release" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=1&$(WXVersion)=1">wxmswuniv26u.lib</Lib>
+		
+		<Lib bldr="Watcom" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=0&$(WXVersion)=0">wxmsw28d_core.lib</Lib>
+		<Lib bldr="Watcom" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=1&$(WXVersion)=0">wxmswuniv28d_core.lib</Lib>
+		<Lib bldr="Watcom" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(WXVersion)=0">wxbase28d.lib</Lib>
+		<Lib bldr="Watcom" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=0&$(WXVersion)=0">wxmsw28ud_core.lib</Lib>
+		<Lib bldr="Watcom" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=1&$(WXVersion)=0">wxmswuniv28ud_core.lib</Lib>
+		<Lib bldr="Watcom" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(WXVersion)=0">wxbase28ud.lib</Lib>
+		<Lib bldr="Watcom" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=0&$(WXVersion)=1">wxmsw26d_core.lib</Lib>
+		<Lib bldr="Watcom" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=1&$(WXVersion)=1">wxmswuniv26d_core.lib</Lib>
+		<Lib bldr="Watcom" type="debug" enabled="$(Unicode)=0&$(Mono)=0&$(WXVersion)=1">wxbase26d.lib</Lib>
+		<Lib bldr="Watcom" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=0&$(WXVersion)=1">wxmsw26ud_core.lib</Lib>
+		<Lib bldr="Watcom" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=1&$(WXVersion)=1">wxmswuniv26ud_core.lib</Lib>
+		<Lib bldr="Watcom" type="debug" enabled="$(Unicode)=1&$(Mono)=0&$(WXVersion)=1">wxbase26ud.lib</Lib>
+		<Lib bldr="Watcom" type="debug">wxpngd.lib</Lib>
+		<Lib bldr="Watcom" type="debug">wxzlibd.lib</Lib>
+		<Lib bldr="Watcom" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=0&$(WXVersion)=0">wxmsw28_core.lib</Lib>
+		<Lib bldr="Watcom" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=1&$(WXVersion)=0">wxmswuniv28_core.lib</Lib>
+		<Lib bldr="Watcom" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(WXVersion)=0">wxbase28.lib</Lib>
+		<Lib bldr="Watcom" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=0&$(WXVersion)=0">wxmsw28u_core.lib</Lib>
+		<Lib bldr="Watcom" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=1&$(WXVersion)=0">wxmswuniv28u_core.lib</Lib>
+		<Lib bldr="Watcom" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(WXVersion)=0">wxbase28u.lib</Lib>
+		<Lib bldr="Watcom" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=0&$(WXVersion)=1">wxmsw26_core.lib</Lib>
+		<Lib bldr="Watcom" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(Univ)=1&$(WXVersion)=1">wxmswuniv26_core.lib</Lib>
+		<Lib bldr="Watcom" type="release" enabled="$(Unicode)=0&$(Mono)=0&$(WXVersion)=1">wxbase26.lib</Lib>
+		<Lib bldr="Watcom" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=0&$(WXVersion)=1">wxmsw26u_core.lib</Lib>
+		<Lib bldr="Watcom" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(Univ)=1&$(WXVersion)=1">wxmswuniv26u_core.lib</Lib>
+		<Lib bldr="Watcom" type="release" enabled="$(Unicode)=1&$(Mono)=0&$(WXVersion)=1">wxbase26u.lib</Lib>
+		<Lib bldr="Watcom" type="release">wxpng.lib</Lib>
+		<Lib bldr="Watcom" type="release">wxzlib.lib</Lib>
+
+		
+		<Lib bldr="Watcom" type="debug" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=0&$(WXVersion)=0">wxmsw28d.lib</Lib>
+		<Lib bldr="Watcom" type="release" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=0&$(WXVersion)=0">wxmsw28.lib</Lib>
+		<Lib bldr="Watcom" type="debug" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=0&$(WXVersion)=0">wxmsw28ud.lib</Lib>
+		<Lib bldr="Watcom" type="release" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=0&$(WXVersion)=0">wxmsw28u.lib</Lib>
+		<Lib bldr="Watcom" type="debug" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=1&$(WXVersion)=0">wxmswuniv28d.lib</Lib>
+		<Lib bldr="Watcom" type="release" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=1&$(WXVersion)=0">wxmswuniv28.lib</Lib>
+		<Lib bldr="Watcom" type="debug" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=1&$(WXVersion)=0">wxmswuniv28ud.lib</Lib>
+		<Lib bldr="Watcom" type="release" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=1&$(WXVersion)=0">wxmswuniv28u.lib</Lib>
+		<Lib bldr="Watcom" type="debug" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=0&$(WXVersion)=1">wxmsw26d.lib</Lib>
+		<Lib bldr="Watcom" type="release" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=0&$(WXVersion)=1">wxmsw26.lib</Lib>
+		<Lib bldr="Watcom" type="debug" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=0&$(WXVersion)=1">wxmsw26ud.lib</Lib>
+		<Lib bldr="Watcom" type="release" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=0&$(WXVersion)=1">wxmsw26u.lib</Lib>
+		<Lib bldr="Watcom" type="debug" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=1&$(WXVersion)=1">wxmswuniv26d.lib</Lib>
+		<Lib bldr="Watcom" type="release" enabled="$(Unicode)=0&$(Mono)=1&$(Univ)=1&$(WXVersion)=1">wxmswuniv26.lib</Lib>
+		<Lib bldr="Watcom" type="debug" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=1&$(WXVersion)=1">wxmswuniv26ud.lib</Lib>
+		<Lib bldr="Watcom" type="release" enabled="$(Unicode)=1&$(Mono)=1&$(Univ)=1&$(WXVersion)=1">wxmswuniv26u.lib</Lib>
+		
+		<IncPath bldr="MinGW">$(WXDir)\include</IncPath>
+		<IncPath bldr="MinGW" enabled="$(Univ)=0&$(Dll)=0&$(Unicode)=0">$(WXDir)\lib\gcc_lib\mswd</IncPath>
+		<IncPath bldr="MinGW" enabled="$(Univ)=1&$(Dll)=0&$(Unicode)=0">$(WXDir)\lib\gcc_lib\mswunivd</IncPath>
+		<IncPath bldr="MinGW" enabled="$(Univ)=0&$(Dll)=1&$(Unicode)=0">$(WXDir)\lib\gcc_dll\mswd</IncPath>
+		<IncPath bldr="MinGW" enabled="$(Univ)=1&$(Dll)=1&$(Unicode)=0">$(WXDir)\lib\gcc_dll\mswunivd</IncPath>
+		<IncPath bldr="MinGW" enabled="$(Univ)=0&$(Dll)=0&$(Unicode)=1">$(WXDir)\lib\gcc_lib\mswud</IncPath>
+		<IncPath bldr="MinGW" enabled="$(Univ)=1&$(Dll)=0&$(Unicode)=1">$(WXDir)\lib\gcc_lib\mswunivud</IncPath>
+		<IncPath bldr="MinGW" enabled="$(Univ)=0&$(Dll)=1&$(Unicode)=1">$(WXDir)\lib\gcc_dll\mswud</IncPath>
+		<IncPath bldr="MinGW" enabled="$(Univ)=1&$(Dll)=1&$(Unicode)=1">$(WXDir)\lib\gcc_dll\mswunivud</IncPath>
+		<LibPath bldr="MinGW" enabled="$(Dll)=0">$(WXDir)\lib\gcc_lib</LibPath>
+		<LibPath bldr="MinGW" enabled="$(Dll)=1">$(WXDir)\lib\gcc_dll</LibPath>
+		
+		<IncPath bldr="CYGWIN">$(WXDir)\include</IncPath>
+		<IncPath bldr="CYGWIN" enabled="$(Univ)=0&$(Dll)=0&$(Unicode)=0">$(WXDir)\lib\gcc_lib\mswd</IncPath>
+		<IncPath bldr="CYGWIN" enabled="$(Univ)=1&$(Dll)=0&$(Unicode)=0">$(WXDir)\lib\gcc_lib\mswunivd</IncPath>
+		<IncPath bldr="CYGWIN" enabled="$(Univ)=0&$(Dll)=1&$(Unicode)=0">$(WXDir)\lib\gcc_dll\mswd</IncPath>
+		<IncPath bldr="CYGWIN" enabled="$(Univ)=1&$(Dll)=1&$(Unicode)=0">$(WXDir)\lib\gcc_dll\mswunivd</IncPath>
+		<IncPath bldr="CYGWIN" enabled="$(Univ)=0&$(Dll)=0&$(Unicode)=1">$(WXDir)\lib\gcc_lib\mswud</IncPath>
+		<IncPath bldr="CYGWIN" enabled="$(Univ)=1&$(Dll)=0&$(Unicode)=1">$(WXDir)\lib\gcc_lib\mswunivud</IncPath>
+		<IncPath bldr="CYGWIN" enabled="$(Univ)=0&$(Dll)=1&$(Unicode)=1">$(WXDir)\lib\gcc_dll\mswud</IncPath>
+		<IncPath bldr="CYGWIN" enabled="$(Univ)=1&$(Dll)=1&$(Unicode)=1">$(WXDir)\lib\gcc_dll\mswunivud</IncPath>
+		<LibPath bldr="CYGWIN" enabled="$(Dll)=0">$(WXDir)\lib\gcc_lib</LibPath>
+		<LibPath bldr="CYGWIN" enabled="$(Dll)=1">$(WXDir)\lib\gcc_dll</LibPath>
+		
+		<IncPath bldr="Microsoft">$(WXDir)\include</IncPath>
+		<IncPath bldr="Microsoft" enabled="$(Univ)=0&$(Dll)=0&$(Unicode)=0">$(WXDir)\lib\vc_lib\mswd</IncPath>
+		<IncPath bldr="Microsoft" enabled="$(Univ)=1&$(Dll)=0&$(Unicode)=0">$(WXDir)\lib\vc_lib\mswunivd</IncPath>
+		<IncPath bldr="Microsoft" enabled="$(Univ)=0&$(Dll)=1&$(Unicode)=0">$(WXDir)\lib\vc_dll\mswd</IncPath>
+		<IncPath bldr="Microsoft" enabled="$(Univ)=1&$(Dll)=1&$(Unicode)=0">$(WXDir)\lib\vc_dll\mswunivd</IncPath>
+		<IncPath bldr="Microsoft" enabled="$(Univ)=0&$(Dll)=0&$(Unicode)=1">$(WXDir)\lib\vc_lib\mswud</IncPath>
+		<IncPath bldr="Microsoft" enabled="$(Univ)=1&$(Dll)=0&$(Unicode)=1">$(WXDir)\lib\vc_lib\mswunivud</IncPath>
+		<IncPath bldr="Microsoft" enabled="$(Univ)=0&$(Dll)=1&$(Unicode)=1">$(WXDir)\lib\vc_dll\mswud</IncPath>
+		<IncPath bldr="Microsoft" enabled="$(Univ)=1&$(Dll)=1&$(Unicode)=1">$(WXDir)\lib\vc_dll\mswunivud</IncPath>
+		<LibPath bldr="Microsoft" enabled="$(Dll)=0">$(WXDir)\lib\vc_lib</LibPath>
+		<LibPath bldr="Microsoft" enabled="$(Dll)=1">$(WXDir)\lib\vc_dll</LibPath>
+		
+		<IncPath bldr="Borland">$(WXDir)\include</IncPath>
+		<IncPath bldr="Borland" enabled="$(Univ)=0&$(Dll)=0&$(Unicode)=0">$(WXDir)\lib\bcc_lib\mswd</IncPath>
+		<IncPath bldr="Borland" enabled="$(Univ)=1&$(Dll)=0&$(Unicode)=0">$(WXDir)\lib\bcc_lib\mswunivd</IncPath>
+		<IncPath bldr="Borland" enabled="$(Univ)=0&$(Dll)=1&$(Unicode)=0">$(WXDir)\lib\bcc_dll\mswd</IncPath>
+		<IncPath bldr="Borland" enabled="$(Univ)=1&$(Dll)=1&$(Unicode)=0">$(WXDir)\lib\bcc_dll\mswunivd</IncPath>
+		<IncPath bldr="Borland" enabled="$(Univ)=0&$(Dll)=0&$(Unicode)=1">$(WXDir)\lib\bcc_lib\mswud</IncPath>
+		<IncPath bldr="Borland" enabled="$(Univ)=1&$(Dll)=0&$(Unicode)=1">$(WXDir)\lib\bcc_lib\mswunivud</IncPath>
+		<IncPath bldr="Borland" enabled="$(Univ)=0&$(Dll)=1&$(Unicode)=1">$(WXDir)\lib\bcc_dll\mswud</IncPath>
+		<IncPath bldr="Borland" enabled="$(Univ)=1&$(Dll)=1&$(Unicode)=1">$(WXDir)\lib\bcc_dll\mswunivud</IncPath>
+		<LibPath bldr="Borland" enabled="$(Dll)=0">$(WXDir)\lib\bcc_lib</LibPath>
+		<LibPath bldr="Borland" enabled="$(Dll)=1">$(WXDir)\lib\bcc_dll</LibPath>
+		
+		<IncPath bldr="Watcom">$(WXDir)\include</IncPath>
+		<IncPath bldr="Watcom" enabled="$(Univ)=0&$(Dll)=0&$(Unicode)=0">$(WXDir)\lib\wat_lib\mswd</IncPath>
+		<IncPath bldr="Watcom" enabled="$(Univ)=1&$(Dll)=0&$(Unicode)=0">$(WXDir)\lib\wat_lib\mswunivd</IncPath>
+		<IncPath bldr="Watcom" enabled="$(Univ)=0&$(Dll)=1&$(Unicode)=0">$(WXDir)\lib\wat_dll\mswd</IncPath>
+		<IncPath bldr="Watcom" enabled="$(Univ)=1&$(Dll)=1&$(Unicode)=0">$(WXDir)\lib\wat_dll\mswunivd</IncPath>
+		<IncPath bldr="Watcom" enabled="$(Univ)=0&$(Dll)=0&$(Unicode)=1">$(WXDir)\lib\wat_lib\mswud</IncPath>
+		<IncPath bldr="Watcom" enabled="$(Univ)=1&$(Dll)=0&$(Unicode)=1">$(WXDir)\lib\wat_lib\mswunivud</IncPath>
+		<IncPath bldr="Watcom" enabled="$(Univ)=0&$(Dll)=1&$(Unicode)=1">$(WXDir)\lib\wat_dll\mswud</IncPath>
+		<IncPath bldr="Watcom" enabled="$(Univ)=1&$(Dll)=1&$(Unicode)=1">$(WXDir)\lib\wat_dll\mswunivud</IncPath>
+		<LibPath bldr="Watcom" enabled="$(Dll)=0">$(WXDir)\lib\wat_lib</LibPath>
+		<LibPath bldr="Watcom" enabled="$(Dll)=1">$(WXDir)\lib\wat_dll</LibPath>
+	</Options>
+</ProjectType>

@@ -1,0 +1,298 @@
+<Builder name="" type="Borland C++ Compiler" version="1.0">
+	<Hint>Borland C++ Compiler 5.5\nBorland C++ Builder 6.0\nBorland Developer Studio 2006</Hint>
+	<IncPaths>
+		<Pattern>*\Include</Pattern>
+		<Pattern>*\Include\Stlport</Pattern>
+	</IncPaths>
+	<LibPaths>
+		<Pattern>*\Lib</Pattern>
+	</LibPaths>
+	<ExePaths>
+		<Pattern>*\Bin</Pattern>
+	</ExePaths>
+	<AutoDetect>
+		<Path>C:\BCC55</Path>
+		<Path>C:\Borland\BCC55</Path>
+		<Path>C:\Program Files\Borland\BCC55</Path>
+		<Path>C:\Program Files\Borland\CBuilder6</Path>
+		<Path>D:\Borland\BCC55</Path>
+		<Path>E:\Borland\BCC55</Path>
+		<Reg>\SOFTWARE\Borland\C++Builder\6.0|RootDir</Reg>
+		<Reg>\Software\Borland\BDS\4.0|RootDir</Reg>
+		<Reg>\Software\Borland\BDS\5.0|RootDir</Reg>
+	</AutoDetect>
+	<CompilerOptions>
+		<Category name="Warnings">
+			<Option value="-w" desc="Display all warnings [-w]"/>
+			<Option value="-w-" desc="Inhibit all warning messages [-w-]"/>
+			<Option value="-wcln" desc="W8009 Constant is long [-wcln]"/>
+			<Option value="-wdef" desc="W8013 Possible use of 'identifier' before definition [wdef]"/>
+			<Option value="-wstu" desc="W8037 Undefined structure 'structure' [-wstu]"/>
+			<Option value="-wnod" desc="W8045 No declaration for function 'function' [-wnod]"/>
+			<Option value="-wpin" desc="W8061 Initialization is only partially bracketed [-wpin]"/>
+			<Option value="-wsig" desc="W8071 Conversion may lose significant digits [-wsig]"/>
+			<Option value="-wucp" desc="W8079 Mixing pointers to different 'char' types [-wucp]"/>
+			<Option value="-wuse" desc="W8080 'identifier' declared but never used [-wuse]"/>
+		</Category>
+		<Category name="C++ Language">
+			<Option value="-Jgx" desc="Generate external references for all template instances [-Jgx]"/>
+			<Option value="-RT-" desc="Disable C++ RTTI [-RT-]"/>
+			<Option value="-x-" desc="Disable C++ Exception [-x-]"/>
+			<Option value="-Vx" desc="Zero-length empty class member functions [-Vx]"/>
+			<Option value="-Ve" desc="Zero-length empty base classes [-Ve]"/>
+			<Option value="-Vd" desc="Don't restrict for loop scope [-Vd]"/>
+			<Option value="-VC" desc="Calling convention mangling compatibility [-VC]"/>
+		</Category>
+		<Category name="Compatibility">
+			<Option value="-A" desc="Use ANSI keywords and extensions [-A]"/>
+			<Option value="-AK" desc="Use Kernighan and Ritchie keywords and extensions [-AK]"/>
+			<Option value="-AT" desc="Use Borland C++ keywords and extensions [-AT]"/>
+			<Option value="-AU" desc="Use UNIX V keywords and extensions [-AU]"/>
+			<Option value="-VM" desc="Microsoft Visual C++ compatibility [-VM]"/>
+			<Option value="-VF" desc="MFC compatibility [-VF]"/>
+			<Option value="-VM" desc="Microsoft Visual C++ compatibility [-VM]"/>
+		</Category>
+		<Category name="Code Generation">
+			<Option value="-4" desc="Generate 80386/80486 protected-mode compatible instructions [-4]"/>
+			<Option value="-5" desc="Generate Pentium instructions [-5]"/>
+			<Option value="-6" desc="Generate Pentium Pro instructions [-6]"/>
+			<Option value="-O" desc="Optimize jumps [-O]"/>
+			<Option value="-O1" desc="Generate smallest possible code [-O1]"/>
+			<Option value="-O2" desc="Generate fastest possible code [-O2]"/>
+			<Option value="-Oc" desc="Eliminate duplicate expressions within basic blocks and functions [-Oc]"/>
+		</Category>
+		<RawOptionsDebug enabled="1">
+			<Default>-v -Od -DDEBUG</Default>
+			<User>-v -Od -DDEBUG</User>
+		</RawOptionsDebug>
+		<RawOptionsRelease enabled="0">
+			<Default>-O2</Default>
+			<User>-O2</User>
+		</RawOptionsRelease>
+	</CompilerOptions>
+	<LinkerOptions>
+		<LibsDebug enabled="1">
+			<Default>
+				<Lib>CW32.LIB</Lib>
+				<Lib>IMPORT32.LIB</Lib>
+			</Default>
+			<User>
+				<Lib>CW32.LIB</Lib>
+				<Lib>IMPORT32.LIB</Lib>
+			</User>
+		</LibsDebug>
+		<LibsRelease enabled="0">
+			<Default>
+				<Lib>CW32.LIB</Lib>
+				<Lib>IMPORT32.LIB</Lib>
+			</Default>
+			<User>
+				<Lib>CW32.LIB</Lib>
+				<Lib>IMPORT32.LIB</Lib>
+			</User>
+		</LibsRelease>
+		<RawOptionsDebug enabled="1">
+			<Default>-v</Default>
+			<User>-v</User>
+		</RawOptionsDebug>
+		<RawOptionsRelease enabled="0">
+			<Default></Default>
+			<User></User>
+		</RawOptionsRelease>
+	</LinkerOptions>
+	<Configs>
+		<BuildLog enabled="0">$(CFRoot)\Build.log</BuildLog>
+		<LibExt>lib;a</LibExt>
+		<ObjExt>o;obj</ObjExt>
+		<ResExt>res</ResExt>
+	</Configs>
+	<Commands msghandler="Bcc.mhr">
+		<Command name="C Compiler" io="1">
+			<Program enabled="1">bcc32.exe</Program>
+			<Parameter enabled="1">-c $(CompilerOptions) -I$(IncPaths) -o"$(Path)$(Name).obj" "$(FileName)"</Parameter>
+			<FileExt enabled="1">c</FileExt>
+			<Target>$(PATH)$(NAME).obj</Target>
+			<TargetType>obj</TargetType>
+			<CurrentDir>$(FilePath)</CurrentDir>
+			<MsgID>Compiling $(FILENAME)...#81001</MsgID>
+		</Command>
+		<Command name="C++ Compiler" io="1">
+			<Program enabled="1">bcc32.exe</Program>
+			<Parameter enabled="1">-c $(CompilerOptions) -I$(IncPaths) -o"$(Path)$(Name).obj" "$(FileName)"</Parameter>
+			<FileExt enabled="1">cpp;cxx;c++;cc</FileExt>
+			<Target>$(PATH)$(NAME).obj</Target>
+			<TargetType>obj</TargetType>
+			<CurrentDir>$(FilePath)</CurrentDir>
+			<MsgID>Compiling $(FILENAME)...#81001</MsgID>
+		</Command>
+		<Command name="Linker(CUI)" io="1">
+			<Program enabled="1">ilink32.exe</Program>
+			<Parameter enabled="1">-ap -Tpe -x -Gn $(LinkerOptions) -L$(LibPaths) c0x32 $(ObjFiles),"$(Target)",,$(Libs) $(LibFiles),,$(ResFiles)</Parameter>
+			<FileExt enabled="1">o;obj;a;lib;res</FileExt>
+			<Target>$(Target)</Target>
+			<TargetType>cui</TargetType>
+			<CurrentDir>$(ProjectsPath)</CurrentDir>
+			<MsgID>Linking...#81002</MsgID>
+		</Command>
+		<Command name="Linker(GUI)" io="1">
+			<Program enabled="1">ilink32.exe</Program>
+			<Parameter enabled="1">-aa -Tpe -x -Gn $(LinkerOptions) -L$(LibPaths) c0w32 $(ObjFiles),"$(Target)",,$(Libs) $(LibFiles),,$(ResFiles)</Parameter>
+			<FileExt enabled="1">o;obj;a;lib;res</FileExt>
+			<Target>$(Target)</Target>
+			<TargetType>gui</TargetType>
+			<CurrentDir>$(ProjectsPath)</CurrentDir>
+			<MsgID>Linking...#81002</MsgID>
+		</Command>
+		<Command name="Linker for DLL" io="1">
+			<Program enabled="1">ilink32.exe</Program>
+			<Parameter enabled="1">-aa -Tpd -x -Gi -Gn $(LinkerOptions) -L$(LibPaths) c0d32 $(ObjFiles),"$(Target)",,$(Libs) $(LibFiles),$(DefFile),$(ResFiles)</Parameter>
+			<FileExt enabled="1">o;obj;a;lib;res</FileExt>
+			<Target>$(Target)</Target>
+			<TargetType>dll</TargetType>
+			<CurrentDir>$(ProjectsPath)</CurrentDir>
+			<MsgID>Linking...#81002</MsgID>
+		</Command>
+		<Command name="Linker for Lib" io="1">
+			<Program enabled="1">tlib.exe</Program>
+			<Parameter enabled="1">/C "$(Target)" +$(ProjectFiles)</Parameter>
+			<FileExt enabled="1">o;obj;a;lib;res</FileExt>
+			<Target>$(Target)</Target>
+			<TargetType>lib</TargetType>
+			<CurrentDir>$(ProjectsPath)</CurrentDir>
+			<MsgID>Linking...#81002</MsgID>
+		</Command>
+		<Command name="Resource Compiler" io="1">
+			<Program enabled="1">brcc32.exe</Program>
+			<Parameter enabled="1">-32 -i$(IncPaths) -fo"$(Path)$(Name).res" "$(FileName)"</Parameter>
+			<FileExt enabled="1">rc</FileExt>
+			<Target>$(PATH)$(NAME).res</Target>
+			<TargetType>res</TargetType>
+			<CurrentDir>$(FilePath)</CurrentDir>
+			<MsgID>Compiling $(FILENAME)...#81001</MsgID>
+		</Command>
+		<Command name="Debugger" io="0">
+			<Program enabled="0">gdb.exe</Program>
+			<Parameter enabled="0">gdebug.dll</Parameter>
+			<FileExt enabled="1">exe;dll</FileExt>
+			<Target></Target>
+			<TargetType></TargetType>
+			<CurrentDir></CurrentDir>
+			<MsgID>#81003</MsgID>
+		</Command>
+		<Command name="Run" io="0">
+			<Program enabled="0">$(Target)</Program>
+			<Parameter enabled="0">$(Parameters)</Parameter>
+			<FileExt enabled="1">exe</FileExt>
+			<Target></Target>
+			<TargetType></TargetType>
+			<CurrentDir></CurrentDir>
+			<MsgID>#81004</MsgID>
+		</Command>
+		<Command name="Run DLL" io="0">
+			<Program enabled="0">$(HostApp)</Program>
+			<Parameter enabled="0">$(Parameters)</Parameter>
+			<FileExt enabled="1">dll</FileExt>
+			<Target></Target>
+			<TargetType></TargetType>
+			<CurrentDir></CurrentDir>
+			<MsgID>#81004</MsgID>
+		</Command>
+		<Command name="Clean Objects" io="1">
+			<Program enabled="0">fdel.exe</Program>
+			<Parameter enabled="1">"$(Path)$(Name).obj" $(FileName)</Parameter>
+			<FileExt enabled="1">c;cpp;cxx;c++;cc</FileExt>
+			<Target>$(Target)</Target>
+			<TargetType></TargetType>
+			<CurrentDir></CurrentDir>
+			<MsgID></MsgID>
+		</Command>
+		<Command name="Clean Resource" io="1">
+			<Program enabled="0">fdel.exe</Program>
+			<Parameter enabled="1">"$(Path)$(Name).res" $(FileName)</Parameter>
+			<FileExt enabled="1">rc</FileExt>
+			<Target>$(Target)</Target>
+			<TargetType></TargetType>
+			<CurrentDir></CurrentDir>
+			<MsgID></MsgID>
+		</Command>
+		<Command name="Clean Io" io="1">
+			<Program enabled="0">fdel.exe</Program>
+			<Parameter enabled="0">"$(Path)$(Name).obj" -silent</Parameter>
+			<FileExt enabled="0">*.*</FileExt>
+			<Target>$(Target)</Target>
+			<TargetType></TargetType>
+			<CurrentDir></CurrentDir>
+			<MsgID></MsgID>
+		</Command>
+		<Command name="Clean Target" io="1">
+			<Program enabled="0">fdel.exe</Program>
+			<Parameter enabled="0">"$(Target)"</Parameter>
+			<FileExt enabled="1">*.*</FileExt>
+			<Target></Target>
+			<TargetType></TargetType>
+			<CurrentDir></CurrentDir>
+			<MsgID></MsgID>
+		</Command>
+	</Commands>
+	<Actions>
+		<Action name="Compile" depend="0">
+			<File>
+				<Command>"C Compiler""C++ Compiler""Resource Compiler"</Command>
+			</File>
+			<Project>
+			</Project>
+			<MsgID>Complete Compile $(FileName): $(Error) error(s), $(Warning) warning(s)\nGenerated $(Target)#81005</MsgID>
+			<ErrMsgID>Complete Compile $(FileName): $(Error) error(s), $(Warning) warning(s)#81006</ErrMsgID>
+		</Action>
+		<Action name="Build" depend="0">
+			<File>
+				<Command>"C Compiler""C++ Compiler""Resource Compiler"</Command>
+				<Command>"Linker(CUI)""Linker(GUI)""Linker for DLL""Linker for Lib"</Command>
+			</File>
+			<Project>
+				<Command>"C Compiler""C++ Compiler""Resource Compiler"</Command>
+				<Command>"Linker(CUI)""Linker(GUI)""Linker for DLL""Linker for Lib"</Command>
+			</Project>
+			<MsgID>Complete Build $(TargetName): $(Error) error(s), $(Warning) warning(s)\nGenerated $(Target)#81007</MsgID>
+			<ErrMsgID>Complete Build $(TargetName): $(Error) error(s), $(Warning) warning(s)#81008</ErrMsgID>
+		</Action>
+		<Action name="Make" depend="1">
+			<File>
+				<Command>"C Compiler""C++ Compiler""Resource Compiler"</Command>
+				<Command>"Linker(CUI)""Linker(GUI)""Linker for DLL""Linker for Lib"</Command>
+			</File>
+			<Project>
+				<Command>"C Compiler""C++ Compiler""Resource Compiler"</Command>
+				<Command>"Linker(CUI)""Linker(GUI)""Linker for DLL""Linker for Lib"</Command>
+			</Project>
+			<MsgID>Complete Make $(TargetName): $(Error) error(s), $(Warning) warning(s)\nGenerated $(Target)#81009</MsgID>
+			<ErrMsgID>Complete Make $(TargetName): $(Error) error(s), $(Warning) warning(s)#81010</ErrMsgID>
+		</Action>
+		<Action name="Run" depend="0">
+			<File>
+				<Action>"Make"</Action>
+				<Command>"Run""Run DLL"</Command>
+			</File>
+			<Project>
+				<Action>"Make"</Action>
+				<Command>"Run""Run DLL"</Command>
+			</Project>
+			<MsgID>#81011</MsgID>
+			<ErrMsgID>#81012</ErrMsgID>
+		</Action>
+		<Action name="Clean" depend="0">
+			<File>
+				<Command>"Clean Objects""Clean Resource"</Command>
+				<Command>"Clean Io"</Command>
+				<Command>"Clean Target"</Command>
+			</File>
+			<Project>
+				<Command>"Clean Objects""Clean Resource""Clean Io"</Command>
+				<Command>"Clean Io"</Command>
+				<Command>"Clean Target"</Command>
+			</Project>
+			<MsgID>Complete Clean $(TargetName)#81015</MsgID>
+			<ErrMsgID>Clean $(TargetName) error#81016</ErrMsgID>
+		</Action>		
+	</Actions>
+</Builder>

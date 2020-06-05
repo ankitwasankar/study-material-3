@@ -1,0 +1,216 @@
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h3>Demonstration Of If Statment</h3></center>
+
+<pre>
+<font size="3">
+<pre>
+<strong>Example:1</strong>
+
+        main()                    { 
+          int num; 
+          printf("Enter a number lessthan 10");
+          scanf("%d",&num); 
+          if(num<=10)  
+          printf(" How nice you are"); 
+        } 
+<strong>Description:</strong>
+               On execution of this program, if you type a 
+number less than or equal to 10, you get a message on the 
+screen through printf(). If you type some other number the 
+program doesn't do anything.
+
+               To make you comfortable with the decision 
+control instruction  one more example has been given below: 
+
+<strong>Example:2 </strong>
+    
+             While purchasing certain items,a discount of 
+10% is offered if the quantity purchased is more than 1000.
+
+         If quantity and price per item are input through the 
+keyboard , while a program to calculate the total expenses. 
+
+
+      main() 
+
+      {            
+        int qty,dis=0; 
+
+        float rate,tot; 
+
+        printf("Enter quantity and rate"); 
+
+        scanf("%d%f",&qty,&rate); 
+
+        if(qty>1000) 
+
+        dis=10;  
+
+        tot=(qty*rate)-(qty*rate*dis/100); 
+
+        printf("total Expenses = Rs.%f",tot); 
+
+      }
+
+        Here is some sample interaction with the program: 
+
+Enter quantity and rate 1200 15.50 
+
+Total  expenses = Rs 16740.000000 
+
+Enter quantity and rate  200 15.50 
+
+Total expenses = Rs 3100.00000 
+
+<strong>Description: </strong>
+                 In the first run of the program, the 
+condition evaluates to true, as 1200 (value
+of qty) is 
+greater than 1000. Therefore, the variable dis, which 
+was earlier set to 0,now gets a new value 10. using this 
+new values total expenses are calculated and printed.
+
+   Is the statement dis=0 necessary ?
+
+             The  answer is YES, since in C, a variable 
+if not specifically initialized contains some unpredic
+table values( garbage value).
+
+   We can even use Arithmetic Expressions in the "IF"  
+ statement. For example all the following "IF" statements
+ are valid.                
+
+           if(3+2%5)   
+            printf("This works");  
+
+           if(a=10) 
+              printf("Even this works");      
+
+           if(-5)
+              printf("Surprisingly  even this also works"); 
+
+            Note That in C a non-zero value is considered 
+to be true, where as a '0' is considered to be FALSE.In the
+first "IF" , the expression evaluates to 5 and since 5 is a
+non-zero,it is considered to be TRUE. Hence the printf() 
+gets executed In the second "IF" , 10 gets assigned to a 
+so the if is now reduced to if(a) or if(10) Since 10 is a
+non-zero, it is TRUE hence again printf() goes to work.
+In  the third "IF", -5 is a non-zero number, hence TRUE. 
+So again printf() goes to work. In place of -5 even if a 
+float like 3.14 were used it would be considered to be 
+TRUE.So the issue is not whether the number is integer or
+float, or whether the number is positive or negative.
+Issue is whether it is zero or non-zero. 
+
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="branching.html">Back</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+FILE *fp,*fs;
+int n,i,max;
+clrscr();
+printf("How many element:-");
+scanf("%d",&n);
+for(i=0;i<n;i++)
+{
+fp=fopen("p.c","r");
+fflush(stdin);
+printf("Enter the value:-");
+gets(fp);
+}
+for(i=0;i<n;i++)
+{
+max=getw(fp);
+}
+fclose(fp);
+getch();
+}
+

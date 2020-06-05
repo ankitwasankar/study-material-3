@@ -1,0 +1,1517 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+<!-- This document was created from RTF source by rtftohtml version 3.0.1 -->
+
+	<META NAME="GENERATOR" Content="Symantec Visual Page 1.0">
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+	<TITLE>Teach Yourself C++ in 21 Days</TITLE>
+</HEAD>
+
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF">
+
+<H1 ALIGN="CENTER"><A HREF="ch18.htm"><IMG SRC="../buttons/BLANPREV.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch20.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A></H1>
+<H1></H1>
+
+<UL>
+	<LI><A HREF="#Heading1">Day 19</A>
+	<UL>
+		<LI><A HREF="#Heading2">Templates</A>
+		<UL>
+			<LI><A HREF="#Heading3">What Are Templates?</A>
+			<LI><A HREF="#Heading4">Parameterized Types</A>
+			<LI><A HREF="#Heading5">Template Definition</A>
+			<LI><A HREF="#Heading6">Listing 19.1. A template of an Array class</A><A HREF="#Heading7">.</A>
+			<UL>
+				<LI><A HREF="#Heading8">Using the Name</A>
+				<LI><A HREF="#Heading9">Implementing the Template</A>
+			</UL>
+			<LI><A HREF="#Heading10">Listing 19.2. The implementation of the template array</A><A
+			HREF="#Heading11">.</A>
+			<LI><A HREF="#Heading12">Template Functions</A>
+			<LI><A HREF="#Heading13">Templates and Friends</A>
+			<UL>
+				<LI><A HREF="#Heading14">Non-Template Friend Classes and Functions</A>
+			</UL>
+			<LI><A HREF="#Heading15">Listing 19.3. Non-template friend function</A><A HREF="#Heading16">.</A>
+			<UL>
+				<LI><A HREF="#Heading17">General Template Friend Class or Function</A>
+			</UL>
+			<LI><A HREF="#Heading18">Listing 19.4. Using operator ostream</A><A HREF="#Heading19">.</A>
+			<UL>
+				<LI><A HREF="#Heading20">A Type-Specific Template Friend Class or Function</A>
+			</UL>
+			<LI><A HREF="#Heading21">Using Template Items</A>
+			<LI><A HREF="#Heading22">Listing 19.5. Passing template objects</A>
+			<LI><A HREF="#Heading23">to and from functions.</A>
+			<UL>
+				<LI><A HREF="#Heading24">Specialized Functions</A>
+			</UL>
+			<LI><A HREF="#Heading25">Listing 19.6. Specializing template implementations</A><A
+			HREF="#Heading26">.</A>
+			<UL>
+				<LI><A HREF="#Heading27">Static Members and Templates</A>
+			</UL>
+			<LI><A HREF="#Heading28">Listing 19.7. Using static member data and functions</A>
+			<LI><A HREF="#Heading29">with templates.</A>
+			<LI><A HREF="#Heading30">The Standard Template Library</A>
+			<LI><A HREF="#Heading31">Summary</A>
+			<LI><A HREF="#Heading32">Q&amp;A</A>
+			<LI><A HREF="#Heading33">Workshop</A>
+			<UL>
+				<LI><A HREF="#Heading34">Quiz</A>
+				<LI><A HREF="#Heading35">Exercises</A>
+			</UL>
+		</UL>
+	</UL>
+</UL>
+
+<P>
+<HR SIZE="4">
+
+<H2 ALIGN="CENTER"><A NAME="Heading1"></A><FONT COLOR="#000077">Day 19</FONT></H2>
+
+<H2 ALIGN="CENTER"><A NAME="Heading2"></A><FONT COLOR="#000077">Templates</FONT></H2>
+<P>On Day 17, &quot;The Preprocessor,&quot; you saw how to use macros to create various
+lists using the concatenation operator. Macros have a number of problems that are
+fixed by templates.</P>
+<P>Today you will learn
+
+<UL>
+	<LI>What templates are and how to use them.
+	<P>
+	<LI>Why templates supply a better alternative to macros.
+	<P>
+	<LI>How to create class templates.
+	<P>
+	<LI>How to create function templates.
+</UL>
+
+<H3 ALIGN="CENTER"><A NAME="Heading3"></A><FONT COLOR="#000077">What Are Templates?</FONT></H3>
+<P>At the end of Week 2, you saw how to build a <TT>PartsList</TT> object and how
+to use it to create a <TT>PartsCatalog</TT>. If you want to build on the <TT>PartsList</TT>
+object to make a list of cats, you have a problem: <TT>PartsList</TT> only knows
+about parts.</P>
+<P>To solve this problem, you can create a <TT>List</TT> base class and derive from
+it the <TT>PartsList</TT> and <TT>CatsList</TT> classes. You could then cut and paste
+much of the <TT>PartsList</TT> class into the new <TT>CatsList</TT> declaration.
+Next week, when you want to make a list of <TT>Car</TT> objects, you would then have
+to make a new class, and again you'd cut and paste.</P>
+<P>Needless to say, this is not a satisfactory solution. Over time, the <TT>List</TT>
+class and its derived classes will have to be extended. Making sure that all the
+changes are propagated to all the related classes would be a nightmare.</P>
+<P>On Day 17, one approach to parameterizing lists was demonstrated briefly--using
+macros and name concatenation. Although macros do save much of the cutting and pasting,
+they have one killer disadvantage: Like everything else in the preprocessor, they
+are not type-safe.</P>
+<P>Templates offer the preferred method of creating parameterized lists in C++. They
+are an integrated part of the language, they are type-safe, and they are very flexible.
+<H3 ALIGN="CENTER"><A NAME="Heading4"></A><FONT COLOR="#000077">Parameterized Types</FONT></H3>
+<P>Templates allow you to teach the compiler how to make a list of any type of thing,
+rather than creating a set of type-specific lists--a <TT>PartsList</TT> is a list
+of parts, a <TT>CatList</TT> is a list of cats. The only way in which they differ
+is the type of the thing on the list. With templates, the type of the thing on the
+list becomes a parameter to the definition of the class.</P>
+<P>A common component of virtually all C++ libraries is an array class. As you saw
+with <TT>Lists</TT>, it is tedious and inefficient to create one array class for
+integers, another for doubles, and yet another for an array of <TT>Animal</TT>s.
+Templates let you declare a parameterized array class and then specify what type
+of object each instance of the array will hold.</P>
+
+<DL>
+	<DD>
+<HR>
+<FONT COLOR="#000077"><B>New Term:</B></FONT><B> </B><I>Instantiation</I> is the
+	act of creating a specific type from a template. The individual classes are called
+	instances of the template. 
+<HR>
+
+</DL>
+
+<P>Parameterized templates provide you with the ability to create a general class,
+and pass types as parameters to that class, in order to build specific instances.
+<H3 ALIGN="CENTER"><A NAME="Heading5"></A><FONT COLOR="#000077">Template Definition</FONT></H3>
+<P>You declare a parameterized <TT>Array</TT> object (a template for an array) by
+writing</P>
+<PRE><FONT COLOR="#0066FF">1: template &lt;class T&gt;    // declare the template and the parameter
+2: class Array           // the class being parameterized
+3: {
+4:    public:
+5:      Array();
+6:   // full class declaration here
+7: };
+</FONT></PRE>
+<P>The keyword <TT>template</TT> is used at the beginning of every declaration and
+definition of a template class. The parameters of the template are after the keyword
+<TT>template</TT>. The parameters are the things that will change with each instance.
+For example, in the array template shown previously, the type of the objects stored
+in the array will change. One instance might store an array of integers, while another
+might store an array of <TT>Animals</TT>.</P>
+<P>In this example, the keyword <TT>class</TT> is used, followed by the identifier
+<TT>T</TT>. The keyword <TT>class</TT> indicates that this parameter is a type. The
+identifier <TT>T</TT> is used throughout the rest of the template definition to refer
+to the parameterized type. One instance of this class will substitute <TT>int</TT>
+everywhere <TT>T</TT> appears, and another will substitute <TT>Cat</TT>.</P>
+<P>To declare an <TT>int</TT> and a <TT>Cat</TT> instance of the parameterized <TT>Array</TT>
+class, you would write</P>
+<PRE><FONT COLOR="#0066FF">Array&lt;int&gt; anIntArray;
+Array&lt;Cat&gt; aCatArray;
+</FONT></PRE>
+<P>The object <TT>anIntArray</TT> is of the type array of integers; the object <TT>aCatArray</TT>
+is of the type array of cats. You can now use the type <TT>Array&lt;int&gt;</TT>
+anywhere you would normally use a type--as the return value from a function, as a
+parameter to a function, and so forth. Listing 19.1 provides the full declaration
+of this stripped-down <TT>Array</TT> template.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>Listing 19.1 is not a complete program!
+	
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P><A NAME="Heading6"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 19.1. A template
+of an Array class</B></FONT>
+<PRE><FONT COLOR="#0066FF">1: Listing 19.1 A template of an array class
+2:     #include &lt;iostream.h&gt;
+3:     const int DefaultSize = 10;
+4:
+5:     template &lt;class T&gt;  // declare the template and the parameter
+6:     class Array            // the class being parameterized
+7:     {
+8:     public:
+9:        // constructors
+10:       Array(int itsSize = DefaultSize);
+11:       Array(const Array &amp;rhs);
+12:       ~Array() { delete [] pType; }
+13:
+14:       // operators
+15:       Array&amp; operator=(const Array&amp;);
+16:       T&amp; operator[](int offSet) { return pType[offSet]; }
+17:
+18:       // accessors
+19:       int getSize() { return itsSize; }
+20:
+21:    private:
+22:       T *pType;
+23:       int  itsSize;</FONT><TT>
+</TT><FONT COLOR="#0066FF"><TT>24: };</TT> </FONT>
+</PRE>
+
+<DL>
+	<DD>
+<HR>
+<FONT COLOR="#000077"><B>Output:</B></FONT><B> </B>There is no output. This is an
+	incomplete program. 
+<HR>
+
+</DL>
+
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>The definition of the template
+begins on line 5, with the keyword <TT>template</TT> followed by the parameter. In
+this case, the parameter is identified to be a type by the keyword <TT>class</TT>,
+and the identifier <TT>T</TT> is used to represent the parameterized type.</P>
+<P>From line 6 until the end of the template on line 24, the rest of the declaration
+is like any other class declaration. The only difference is that wherever the type
+of the object would normally appear, the identifier <TT>T</TT> is used instead. For
+example, <TT>operator[]</TT> would be expected to return a reference to an object
+in the array, and in fact it is declared to return a reference to a <TT>T</TT>.</P>
+<P>When an instance of an integer array is declared, the <TT>operator=</TT> that
+is provided to that array will return a reference to an integer. When an instance
+of an <TT>Animal</TT> array is declared, the <TT>operator=</TT> provided to the <TT>Animal</TT>
+array will return a reference to an <TT>Animal</TT>.
+<H4 ALIGN="CENTER"><A NAME="Heading8"></A><FONT COLOR="#000077">Using the Name</FONT></H4>
+<P>Within the class declaration, the word <TT>Array</TT> may be used without further
+qualification. Elsewhere in the program, this class will be referred to as <TT>Array&lt;T&gt;</TT>.
+For example, if you do not write the constructor within the class declaration, you
+must write</P>
+<PRE><FONT COLOR="#0066FF">template &lt;class T&gt;
+Array&lt;T&gt;::Array(int size):
+itsSize = size
+{
+pType = new T[size];
+for (int i = 0; i&lt;size; i++)
+pType[i] = 0;
+}
+</FONT></PRE>
+<P>The declaration on the first line of this code fragment is required to identify
+the type (<TT>class T</TT>). The template name is <TT>Array&lt;T&gt;</TT>, and the
+function name is <TT>Array(int size)</TT>.</P>
+<P>The remainder of the function is exactly the same as it would be for a non-template
+function. It is a common and preferred method to get the class and its functions
+working as a simple declaration before turning it into a template.
+<H4 ALIGN="CENTER"><A NAME="Heading9"></A><FONT COLOR="#000077">Implementing the
+Template</FONT></H4>
+<P>The full implementation of the <TT>Array</TT> template class requires implementation
+of the copy constructor, <TT>operator=</TT>, and so forth. Listing 19.2 provides
+a simple driver program to exercise this template class.
+
+<DL>
+	<DD>
+<HR>
+<FONT COLOR="#000077"><B><BR>
+	NOTE:</B></FONT><B> </B>Some older compilers do not support templates. Templates
+	are, however, part of the emerging C++ standard. All major compiler vendors have
+	committed to supporting templates in their next release, if they have not already
+	done so. If you have an older compiler, you won't be able to compile and run the
+	exercises in this chapter. It's still a good idea to read through the entire chapter,
+	however, and return to this material when you upgrade your compiler. 
+<HR>
+
+</DL>
+
+<P><A NAME="Heading10"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 19.2. The implementation
+of the template array.</B></FONT>
+<PRE><FONT COLOR="#0066FF">1:     #include &lt;iostream.h&gt;
+2:
+3:     const int DefaultSize = 10;
+4:
+5:     // declare a simple Animal class so that we can
+6:     // create an array of animals
+7:
+8:     class Animal
+9:     {
+10:    public:
+11:       Animal(int);
+12:       Animal();
+13:       ~Animal() {}
+14:       int GetWeight() const { return itsWeight; }
+15:       void Display() const { cout &lt;&lt; itsWeight; }
+16:    private:
+17:       int itsWeight;
+18:    };
+19:
+20:    Animal::Animal(int weight):
+21:    itsWeight(weight)
+22:    {}
+23:
+24:    Animal::Animal():
+25:    itsWeight(0)
+26:    {}
+27:
+28:
+29:    template &lt;class T&gt;  // declare the template and the parameter
+30:    class Array            // the class being parameterized
+31:    {
+32:    public:
+33:       // constructors
+34:       Array(int itsSize = DefaultSize);
+35:       Array(const Array &amp;rhs);
+36:       ~Array() { delete [] pType; }
+37:
+38:       // operators
+39:       Array&amp; operator=(const Array&amp;);
+40:       T&amp; operator[](int offSet) { return pType[offSet]; }
+41:       const T&amp; operator[](int offSet) const 
+42:           { return pType[offSet]; }
+43:       // accessors
+44:       int GetSize() const { return itsSize; }
+45:
+46:    private:
+47:       T *pType;
+48:       int  itsSize;
+49:    };
+50:
+51:    // implementations follow...
+52:
+53:    // implement the Constructor
+54:    template &lt;class T&gt;
+55:    Array&lt;T&gt;::Array(int size = DefaultSize):
+56:    itsSize(size)
+57:    {
+58:       pType = new T[size];
+59:       for (int i = 0; i&lt;size; i++)
+60:          pType[i] = 0;
+61:    }
+62:
+63:    // copy constructor
+64:    template &lt;class T&gt;
+65:    Array&lt;T&gt;::Array(const Array &amp;rhs)
+66:    {
+67:       itsSize = rhs.GetSize();
+68:       pType = new T[itsSize];
+69:       for (int i = 0; i&lt;itsSize; i++)
+70:          pType[i] = rhs[i];
+71:    }
+72:
+73:    // operator=
+74:    template &lt;class T&gt;
+75:    Array&lt;T&gt;&amp; Array&lt;T&gt;::operator=(const Array &amp;rhs)
+76:    {
+77:       if (this == &amp;rhs)
+78:          return *this;
+79:       delete [] pType;
+80:       itsSize = rhs.GetSize();
+81:       pType = new T[itsSize];
+82:       for (int i = 0; i&lt;itsSize; i++)
+83:          pType[i] = rhs[i];
+84:       return *this;
+85:    }
+86:
+87:    // driver program
+88:    int main()
+89:    {
+90:       Array&lt;int&gt; theArray;      // an array of integers
+91:       Array&lt;Animal&gt; theZoo;     // an array of Animals
+92:       Animal *pAnimal;
+93:
+94:       // fill the arrays
+95:       for (int i = 0; i &lt; theArray.GetSize(); i++)
+96:       {
+97:          theArray[i] = i*2;
+98:          pAnimal = new Animal(i*3);
+99:          theZoo[i] = *pAnimal;
+100:            delete pAnimal;
+101:      }
+102:      // print the contents of the arrays
+103:      for (int j = 0; j &lt; theArray.GetSize(); j++)
+104:      {
+105:         cout &lt;&lt; &quot;theArray[&quot; &lt;&lt; j &lt;&lt; &quot;]:\t&quot;;
+106:         cout &lt;&lt; theArray[j] &lt;&lt; &quot;\t\t&quot;;
+107:         cout &lt;&lt; &quot;theZoo[&quot; &lt;&lt; j &lt;&lt; &quot;]:\t&quot;;
+108:         theZoo[j].Display();
+109:         cout &lt;&lt; endl;
+110:      }
+111:
+112:      for (int k = 0; k &lt; theArray.GetSize(); k++)
+113:         delete &amp;theZoo[j];
+114:     return 0;
+<TT>115: }</TT>
+Output: theArray[0]:    0            theZoo[0]:    0
+theArray[1]:    2            theZoo[1]:    3
+theArray[2]:    4            theZoo[2]:    6
+theArray[3]:    6            theZoo[3]:    9
+theArray[4]:    8            theZoo[4]:    12
+theArray[5]:    10           theZoo[5]:    15
+theArray[6]:    12           theZoo[6]:    18
+theArray[7]:    14           theZoo[7]:    21
+theArray[8]:    16           theZoo[8]:    24
+theArray[9]:    18           theZoo[9]:    27
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>Lines 8 to 26 provide a stripped-down
+<TT>Animal</TT> class, created here so that there are objects of a user-defined type
+to add to the array.<BR>
+<BR>
+Line 29 declares that what follows is a template, and that the parameter to the template
+is a type, designated as <TT>T</TT>. The <TT>Array</TT> class has two constructors
+as shown, the first of which takes a size and defaults to the constant integer <TT>DefaultSize</TT>.</P>
+<P>The assignment and offset operators are declared, with the latter declaring both
+a <TT>const</TT> and a non-<TT>const</TT> variant. The only accessor provided is
+<TT>GetSize()</TT>, which returns the size of the array.</P>
+<P>One can certainly imagine a fuller interface, and, for any serious <TT>Array</TT>
+program, what has been supplied here would be inadequate. At a minimum, operators
+to remove elements, to expand the array, to pack the array, and so forth would be
+required.</P>
+<P>The private data consists of the size of the array and a pointer to the actual
+in-memory array of objects.
+<H3 ALIGN="CENTER"><A NAME="Heading12"></A><FONT COLOR="#000077">Template Functions</FONT></H3>
+<P>If you want to pass an array object to a function, you must pass a particular
+instance of the array, not a template. Therefore, if <TT>SomeFunction()</TT> takes
+an integer array as a parameter, you may write</P>
+<PRE><FONT COLOR="#0066FF">void SomeFunction(Array&lt;int&gt;&amp;);    // ok
+</FONT></PRE>
+<P>but you may not write</P>
+<PRE><FONT COLOR="#0066FF">void SomeFunction(Array&lt;T&gt;&amp;);   // error!
+</FONT></PRE>
+<P>because there is no way to know what a <TT>T&amp;</TT> is. You also may not write</P>
+<PRE><FONT COLOR="#0066FF">void SomeFunction(Array &amp;);     // error!
+</FONT></PRE>
+<P>because there is no class <TT>Array</TT>--only the template and the instances.</P>
+<P>To accomplish the more general approach, you must declare a template function.</P>
+<PRE><FONT COLOR="#0066FF">template &lt;class T&gt;
+void MyTemplateFunction(Array&lt;T&gt;&amp;);    // ok
+</FONT></PRE>
+<P>Here the function <TT>MyTemplateFunction()</TT> is declared to be a template function
+by the declaration on the top line. Note that template functions can have any name,
+just as other functions can.</P>
+<P>Template functions can also take instances of the template, in addition to the
+parameterized form. The following is an example:</P>
+<PRE><FONT COLOR="#0066FF">template &lt;class T&gt;
+void MyOtherFunction(Array&lt;T&gt;&amp;, Array&lt;int&gt;&amp;);   // ok
+</FONT></PRE>
+<P>Note that this function takes two arrays: a parameterized array and an array of
+integers. The former can be an array of any object, but the latter is always an array
+of integers.
+<H3 ALIGN="CENTER"><A NAME="Heading13"></A><FONT COLOR="#000077">Templates and Friends</FONT></H3>
+<P>Template classes can declare three types of friends:
+
+<UL>
+	<LI>A non-template friend class or function.
+	<P>
+	<LI>A general template friend class or function.
+	<P>
+	<LI>A type-specific template friend class or function.
+</UL>
+
+<H4 ALIGN="CENTER"><A NAME="Heading14"></A><FONT COLOR="#000077">Non-Template Friend
+Classes and Functions</FONT></H4>
+<P>It is possible to declare any class or function to be a friend to your template
+class. Each instance of the class will treat the friend properly, as if the declaration
+of friendship had been made in that particular instance. Listing 19.3 adds a trivial
+friend function, <TT>Intrude()</TT>, to the template definition of the <TT>Array</TT>
+class, and the driver program invokes <TT>Intrude()</TT>. Because it is a friend,
+<TT>Intrude()</TT> can then access the private data of the <TT>Array</TT>. Because
+this is not a template function, it can only be called on <TT>Array</TT>s of <TT>int</TT>.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>To use Listing 19.3, copy lines
+	1-26 of Listing 19.2 after line 1 of this listing, and then copy lines 51-86 of Listing
+	19.2 after line 37 of this listing. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P><A NAME="Heading15"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 19.3. Non-template
+friend function.</B></FONT>
+<PRE><FONT COLOR="#0066FF">1:     // Listing 19.3 - Type specific friend functions in templates
+2:
+3:      template &lt;class T&gt;  // declare the template and the parameter
+4:      class Array            // the class being parameterized
+5:      {
+6:      public:
+7:         // constructors
+8:         Array(int itsSize = DefaultSize);
+9:         Array(const Array &amp;rhs);
+10:        ~Array() { delete [] pType; }
+11:
+12:        // operators
+13:        Array&amp; operator=(const Array&amp;);
+14:        T&amp; operator[](int offSet) { return pType[offSet]; }
+15:        const T&amp; operator[](int offSet) const 
+16:            { return pType[offSet]; }
+17:        // accessors
+18:        int GetSize() const { return itsSize; }
+19:
+20:       // friend function
+21:       friend void Intrude(Array&lt;int&gt;);
+22:
+23:     private:
+24:        T *pType;
+25:        int  itsSize;
+26:     };
+27:
+28:       // friend function. Not a template, can only be used
+29:       // with int arrays! Intrudes into private data.
+30:      void Intrude(Array&lt;int&gt; theArray)
+31:      {
+32:       cout &lt;&lt; &quot;\n*** Intrude ***\n&quot;;
+33:       for (int i = 0; i &lt; theArray.itsSize; i++)
+34:          cout &lt;&lt; &quot;i: &quot; &lt;&lt;    theArray.pType[i] &lt;&lt; endl;
+35:       cout &lt;&lt; &quot;\n&quot;;
+36:      }
+37:
+38:     // driver program
+39:     int main()
+40:     {
+41:        Array&lt;int&gt; theArray;      // an array of integers
+42:        Array&lt;Animal&gt; theZoo;     // an array of Animals
+43:        Animal *pAnimal;
+44:
+45:        // fill the arrays
+46:        for (int i = 0; i &lt; theArray.GetSize(); i++)
+47:        {
+48:           theArray[i] = i*2;
+49:           pAnimal = new Animal(i*3);
+50:           theZoo[i] = *pAnimal;
+51:        }
+52:
+53:        int j, k;
+54:        for (j = 0; j &lt; theArray.GetSize(); j++)
+55:        {
+56:           cout &lt;&lt; &quot;theZoo[&quot; &lt;&lt; j &lt;&lt; &quot;]:\t&quot;;
+57:           theZoo[j].Display();
+58:           cout &lt;&lt; endl;
+59:        }
+60:        cout &lt;&lt; &quot;Now use the friend function to &quot;;
+61:        cout &lt;&lt; &quot;find the members of Array&lt;int&gt;&quot;;
+62:        Intrude(theArray);
+63:
+63:        // return the allocated memory before the arrays are destroyed.
+64:        for (k = 0; k &lt; theArray.GetSize(); k++)
+65:           delete &amp;theZoo[j];
+66:
+67:        cout &lt;&lt; &quot;\n\nDone.\n&quot;;
+68:        return 0;
+<TT>69: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: theZoo[0]:      0
+theZoo[1]:      3
+theZoo[2]:      6
+theZoo[3]:      9
+theZoo[4]:      12
+theZoo[5]:      15
+theZoo[6]:      18
+theZoo[7]:      21
+theZoo[8]:      24
+theZoo[9]:      27
+Now use the friend function to find the members of Array&lt;int&gt;
+*** Intrude ***
+i: 0
+i: 2
+i: 4
+i: 6
+i: 8
+i: 10
+i: 12
+i: 14
+i: 16
+i: 18
+
+Done.
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis: </B></FONT>The declaration of the <TT>Array</TT>
+template has been extended to include the friend function <TT>Intrude()</TT>. This
+declares that every instance of an array will consider <TT>Intrude()</TT> to be a
+friend function; thus, <TT>Intrude()</TT> will have access to the private member
+data and functions of the array instance.<BR>
+<BR>
+On line 33, <TT>Intrude()</TT> accesses <TT>itsSize</TT> directly, and on line 34
+it accesses <TT>pType</TT> directly. This trivial use of these members was unnecessary
+because the <TT>Array</TT> class provides public accessors for this data, but it
+serves to demonstrate how friend functions can be declared with templates.
+<H4 ALIGN="CENTER"><A NAME="Heading17"></A><FONT COLOR="#000077">General Template
+Friend Class or Function</FONT></H4>
+<P>It would be helpful to add a display operator to the <TT>Array</TT> class. One
+approach would be to declare a display operator for each possible type of <TT>Array</TT>,
+but this would undermine the whole point of having made <TT>Array</TT> a template.</P>
+<P>What is needed is an insertion operator that works for any possible type of <TT>Array</TT>.</P>
+<PRE><FONT COLOR="#0066FF">ostream&amp; operator&lt;&lt; (ostream&amp; Array&lt;T&gt;&amp;);
+</FONT></PRE>
+<P>To make this work, we need to declare <TT>operator&lt;&lt;</TT> to be a template
+function.</P>
+<PRE><FONT COLOR="#0066FF">template &lt;class T&gt; ostream&amp; operator&lt;&lt; (ostream&amp;, Array&lt;T&gt;&amp;)
+</FONT></PRE>
+<P>Now that <TT>operator&lt;&lt;</TT> is a template function, you need only to provide
+an implementation. Listing 19.4 shows the <TT>Array</TT> template extended to include
+this declaration and provides the implementation for the <TT>operator&lt;&lt;</TT>.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE: </B></FONT>To compile this listing, copy lines 8-26
+	of Listing 19.2 and insert them between lines 3 and 4. Also copy lines 51-86 of Listing
+	19.2 and insert them between lines 37 and 38. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P><A NAME="Heading18"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 19.4. Using
+operator ostream.</B></FONT>
+<PRE><FONT COLOR="#0066FF">1:     #include &lt;iostream.h&gt;
+2:
+3:     const int DefaultSize = 10;
+4:
+5:     template &lt;class T&gt;  // declare the template and the parameter
+6:     class Array            // the class being parameterized
+7:     {
+8:     public:
+9:        // constructors
+10:       Array(int itsSize = DefaultSize);
+11:       Array(const Array &amp;rhs);
+12:       ~Array() { delete [] pType; }
+13:
+14:       // operators
+15:       Array&amp; operator=(const Array&amp;);
+16:       T&amp; operator[](int offSet) { return pType[offSet]; }
+17:       const T&amp; operator[](int offSet) const 
+18:        { return pType[offSet]; }
+19:       // accessors
+20:       int GetSize() const { return itsSize; }
+21:
+22:       friend ostream&amp; operator&lt;&lt; (ostream&amp;, Array&lt;T&gt;&amp;);
+23:
+24:    private:
+25:       T *pType;
+26:       int  itsSize;
+27:    };
+28:
+29:    template &lt;class T&gt;
+30:    ostream&amp; operator&lt;&lt; (ostream&amp; output, Array&lt;T&gt;&amp; theArray)
+31:    {
+32:       for (int i = 0; i&lt;theArray.GetSize(); i++)
+33:          output &lt;&lt; &quot;[&quot; &lt;&lt; i &lt;&lt; &quot;] &quot; &lt;&lt; theArray[i] &lt;&lt; endl; return output;
+34:    }
+35:
+36:    enum BOOL { FALSE, TRUE};
+37:
+38:    int main()
+39:    {
+40:       BOOL Stop = FALSE;       // flag for looping
+41:       int offset, value;
+42:       Array&lt;int&gt; theArray;
+43:
+44:       while (!Stop)
+45:       {
+46:          cout &lt;&lt; &quot;Enter an offset (0-9) &quot;;
+47:          cout &lt;&lt; &quot;and a value. (-1 to stop): &quot; ;
+47:          cin &gt;&gt; offset &gt;&gt; value;
+48:
+49:          if (offset &lt; 0)
+50:             break;
+51:
+52:          if (offset &gt; 9)
+53:          {
+54:             cout &lt;&lt; &quot;***Please use values between 0 and 9.***\n&quot;;
+55:             continue;
+56:          }
+57:
+58:          theArray[offset] = value;
+59:       }
+60:
+61:       cout &lt;&lt; &quot;\nHere's the entire array:\n&quot;;
+62:       cout &lt;&lt; theArray &lt;&lt; endl;
+63:     return 0;
+<TT>64: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: Enter an offset (0-9) and a value. (-1 to stop): 1 10
+Enter an offset (0-9) and a value. (-1 to stop): 2 20
+Enter an offset (0-9) and a value. (-1 to stop): 3 30
+Enter an offset (0-9) and a value. (-1 to stop): 4 40
+Enter an offset (0-9) and a value. (-1 to stop): 5 50
+Enter an offset (0-9) and a value. (-1 to stop): 6 60
+Enter an offset (0-9) and a value. (-1 to stop): 7 70
+Enter an offset (0-9) and a value. (-1 to stop): 8 80
+Enter an offset (0-9) and a value. (-1 to stop): 9 90
+Enter an offset (0-9) and a value. (-1 to stop): 10 10
+***Please use values between 0 and 9.***
+Enter an offset (0-9) and a value. (-1 to stop): -1 -1
+
+Here's the entire array:
+[0] 0
+[1] 10
+[2] 20
+[3] 30
+[4] 40
+[5] 50
+[6] 60
+[7] 70
+[8] 80
+[9] 90
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On line 22, the function
+template <TT>operator&lt;&lt;()</TT> is declared to be a friend of the <TT>Array</TT>
+class template. Because <TT>operator&lt;&lt;()</TT> is implemented as a template
+function, every instance of this parameterized array type will automatically have
+an <TT>operator&lt;&lt;()</TT>. The implementation for this operator starts on line
+29. Every member of an array is called in turn. This only works if there is an <TT>operator&lt;&lt;</TT>
+defined for every type of object stored in the array.
+<H4 ALIGN="CENTER"><A NAME="Heading20"></A><FONT COLOR="#000077">A Type-Specific
+Template Friend Class or Function</FONT></H4>
+<P>Although the insertion operator shown in Listing 19.4 works, it is still not quite
+what is needed. Because the declaration of the friend operator on line 29 declares
+a template, it will work for any instance of <TT>Array</TT> and any insertion operator
+taking an array of any type.</P>
+<P>The insertion operator template shown in Listing 19.4 makes all instances of the
+insertion <TT>operator&lt;&lt;</TT> a friend of any instance of <TT>Array</TT>, whether
+the instance of the insertion operator is an integer, an <TT>Animal</TT>, or a <TT>Car</TT>.
+It makes no sense, however, for an <TT>Animal</TT> insertion operator to be a friend
+to the insertion operator for an integer array.</P>
+<P>What is needed is for the insertion operator for an array of <TT>int</TT> to be
+a friend to the <TT>Array</TT> of <TT>int</TT> class, and for the insertion operator
+of an array of <TT>Animals</TT> to be a friend to the <TT>Array</TT> of animals instance.</P>
+<P>To accomplish this, modify the declaration of the insertion operator on line 29
+of Listing 19.4, and remove the words <TT>template &lt;class T&gt;</TT>. That is,
+change line 30 to read</P>
+<PRE><FONT COLOR="#0066FF">friend ostream&amp; operator&lt;&lt; (ostream&amp;, Array&lt;T&gt;&amp;);
+</FONT></PRE>
+<P>This will use the type (<TT>T</TT>) declared in the template of <TT>Array</TT>.
+Thus, the <TT>operator&lt;&lt;</TT> for an integer will only work with an array of
+integers, and so forth.
+<H3 ALIGN="CENTER"><A NAME="Heading21"></A><FONT COLOR="#000077">Using Template Items</FONT></H3>
+<P>You can treat template items as you would any other type. You can pass them as
+parameters, either by reference or by value, and you can return them as the return
+values of functions, also by value or by reference. Listing 19.5 demonstrates how
+to pass template objects.</P>
+
+<P><A NAME="Heading22"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 19.5. Passing
+template objects to and from functions.</B></FONT>
+<PRE><FONT COLOR="#0066FF">1:     #include &lt;iostream.h&gt;
+2:
+3:     const int DefaultSize = 10;
+4:
+5:     // A trivial class for adding to arrays
+6:     class Animal
+7:     {
+8:     public:
+9:     // constructors
+10:         Animal(int);
+11:         Animal();
+12:         ~Animal();
+13:
+14:         // accessors
+15:         int GetWeight() const { return itsWeight; }
+16:         void SetWeight(int theWeight) { itsWeight = theWeight; }
+17:
+18:          // friend operators
+19:         friend ostream&amp; operator&lt;&lt; (ostream&amp;, const Animal&amp;);
+20:
+21:    private:
+22:         int itsWeight;
+23:    };
+24:
+25:    // extraction operator for printing animals
+26:    ostream&amp; operator&lt;&lt; 
+27:        (ostream&amp; theStream, const Animal&amp; theAnimal)
+28    {
+29:    theStream &lt;&lt; theAnimal.GetWeight();
+30:    return theStream;
+31:    }
+32:
+33:    Animal::Animal(int weight):
+34:    itsWeight(weight)
+35:    {
+36:       // cout &lt;&lt; &quot;Animal(int)\n&quot;;
+37:    }
+38:
+39:    Animal::Animal():
+40:    itsWeight(0)
+41:    {
+42:       // cout &lt;&lt; &quot;Animal()\n&quot;;
+43:    }
+44:
+45:    Animal::~Animal()
+46:    {
+47:      // cout &lt;&lt; &quot;Destroyed an animal...\n&quot;;
+48:    }
+49:
+50:    template &lt;class T&gt;  // declare the template and the parameter
+51:    class Array            // the class being parameterized
+52:    {
+53:    public:
+54:       Array(int itsSize = DefaultSize);
+55:       Array(const Array &amp;rhs);
+56:       ~Array() { delete [] pType; }
+57:
+58:       Array&amp; operator=(const Array&amp;);
+59:       T&amp; operator[](int offSet) { return pType[offSet]; }
+60:       const T&amp; operator[](int offSet) const 
+61:          { return pType[offSet]; }
+62:       int GetSize() const { return itsSize; }
+63
+64:      // friend function
+65:      friend ostream&amp; operator&lt;&lt; (ostream&amp;, const Array&lt;T&gt;&amp;);
+66:
+67:    private:
+68:       T *pType;
+69:       int  itsSize;
+70:    };
+71:
+70:    template &lt;class T&gt;
+72:    ostream&amp; operator&lt;&lt; (ostream&amp; output, const Array&lt;T&gt;&amp; theArray)
+73:    {
+74:       for (int i = 0; i&lt;theArray.GetSize(); i++)
+75:          output &lt;&lt; &quot;[&quot; &lt;&lt; i &lt;&lt; &quot;] &quot; &lt;&lt; theArray[i] &lt;&lt; endl;
+76:       return output;
+77:    }
+78:
+79:    void IntFillFunction(Array&lt;int&gt;&amp; theArray);
+80:    void AnimalFillFunction(Array&lt;Animal&gt;&amp; theArray);
+81:    enum BOOL {FALSE, TRUE};
+82:
+84:    int main()
+85:    {
+86:       Array&lt;int&gt; intArray;
+87:       Array&lt;Animal&gt; animalArray;
+88:       IntFillFunction(intArray);
+87:       AnimalFillFunction(animalArray);
+89:       cout &lt;&lt; &quot;intArray...\n&quot; &lt;&lt; intArray;
+90:       cout &lt;&lt; &quot;\nanimalArray...\n&quot; &lt;&lt; animalArray &lt;&lt; endl;
+91:       return 0;
+92:    }
+93:
+94:    void IntFillFunction(Array&lt;int&gt;&amp; theArray)
+95:    {
+96:       BOOL Stop = FALSE;
+97:       int offset, value;
+98:       while (!Stop)
+99:       {
+100:          cout &lt;&lt; &quot;Enter an offset (0-9) &quot;;
+101:          cout &lt;&lt; &quot;and a value. (-1 to stop): &quot; ;
+102:          cin &gt;&gt; offset &gt;&gt; value;
+103:         if (offset &lt; 0)
+104:            break;
+105:         if (offset &gt; 9)
+106:         {
+107:            cout &lt;&lt; &quot;***Please use values between 0 and 9.***\n&quot;;
+108:            continue;
+109:         }
+110:         theArray[offset] = value;
+111:      }
+112:   }
+113:
+114:
+115:   void AnimalFillFunction(Array&lt;Animal&gt;&amp; theArray)
+116:   {
+117:      Animal * pAnimal;
+118:      for (int i = 0; i&lt;theArray.GetSize(); i++)
+119:      {
+120:         pAnimal = new Animal;
+121:         pAnimal-&gt;SetWeight(i*100);
+122:         theArray[i] = *pAnimal;
+123:         delete pAnimal;  // a copy was put in the array
+124:      }
+<TT>125: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: Enter an offset (0-9) and a value. (-1 to stop): 1 10
+Enter an offset (0-9) and a value. (-1 to stop): 2 20
+Enter an offset (0-9) and a value. (-1 to stop): 3 30
+Enter an offset (0-9) and a value. (-1 to stop): 4 40
+Enter an offset (0-9) and a value. (-1 to stop): 5 50
+Enter an offset (0-9) and a value. (-1 to stop): 6 60
+Enter an offset (0-9) and a value. (-1 to stop): 7 70
+Enter an offset (0-9) and a value. (-1 to stop): 8 80
+Enter an offset (0-9) and a value. (-1 to stop): 9 90
+Enter an offset (0-9) and a value. (-1 to stop): 10 10
+***Please use values between 0 and 9.***
+Enter an offset (0-9) and a value. (-1 to stop): -1 -1
+
+intArray:...
+[0] 0
+[1] 10
+[2] 20
+[3] 30
+[4] 40
+[5] 50
+[6] 60
+[7] 70
+[8] 80
+[9] 90
+
+animalArray:...
+[0] 0
+[1] 100
+[2] 200
+[3] 300
+[4] 400
+[5] 500
+[6] 600
+[7] 700
+[8] 800
+[9] 900
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>Most of the <TT>Array</TT>
+class implementation is left out to save space. The <TT>Animal</TT> class is declared
+on lines 6-23. Although this is a stripped-down and simplified class, it does provide
+its own insertion operator (<TT>&lt;&lt;</TT>) to allow the printing of <TT>Animal</TT>s.
+Printing simply prints the current weight of the <TT>Animal</TT>.<BR>
+Note that <TT>Animal</TT> has a default constructor. This is necessary because, when
+you add an object to an array, the object's default constructor is used to create
+the object. This creates some difficulties, as you'll see.</P>
+<P>On line 79, the function <TT>IntFillFunction()</TT> is declared. The prototype
+indicates that this function takes an integer array. Note that this is not a template
+function. <TT>IntFillFunction()</TT> expects only one type of an array--an integer
+array. Similarly, on line 80, <TT>AnimalFillFunction()</TT> is declared to take an
+<TT>Array </TT>of <TT>Animal</TT>.</P>
+<P>The implementations for these functions are different from one another, because
+filling an array of integers does not have to be accomplished in the same way as
+filling an array of <TT>Animal</TT>s.
+<H4 ALIGN="CENTER"><A NAME="Heading24"></A><FONT COLOR="#000077">Specialized Functions</FONT></H4>
+<P>If you uncomment the <TT>print</TT> statements in <TT>Animal</TT>'s constructors
+and destructor in Listing 19.5, you'll find there are unanticipated extra constructions
+and destructions of <TT>Animal</TT>s.</P>
+<P>When an object is added to an array, the object's default constructor is called.
+The <TT>Array</TT> constructor, however, goes on to assign <TT>0</TT> to the value
+of each member of the array, as shown on lines 59 and 60 of Listing 19.2.</P>
+<P>When you write <TT>someAnimal = (Animal) 0;</TT>, you call the default <TT>operator=</TT>
+for <TT>Animal</TT>. This causes a temporary <TT>Animal</TT> object to be created,
+using the constructor, which takes an integer (zero). That temporary is used as the
+right-hand side of the <TT>operator=</TT> and then is destroyed.</P>
+<P>This is an unfortunate waste of time, because the <TT>Animal</TT> object was already
+properly initialized. However, you can't remove this line, because integers are not
+automatically initialized to a value of <TT>0</TT>. The solution is to teach the
+template not to use this constructor for <TT>Animal</TT>s, but to use a special <TT>Animal</TT>
+constructor.</P>
+<P>You can provide an explicit implementation for the <TT>Animal</TT> class, as indicated
+in Listing 19.6.</P>
+
+<P><A NAME="Heading25"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 19.6. Specializing
+template implementations.</B></FONT>
+<PRE><FONT COLOR="#0066FF">1:     #include &lt;iostream.h&gt;
+2:
+3:     const int DefaultSize = 3;
+4:
+5:     // A trivial class for adding to arrays
+6:       class Animal
+7:       {
+8:       public:
+9:          // constructors
+10:         Animal(int);
+11:         Animal();
+12:         ~Animal();
+13:
+14:         // accessors
+15:         int GetWeight() const { return itsWeight; }
+16:         void SetWeight(int theWeight) { itsWeight = theWeight; }
+17:
+18:         // friend operators
+19:         friend ostream&amp; operator&lt;&lt; (ostream&amp;, const Animal&amp;);
+20:
+21:      private:
+22:         int itsWeight;
+23:      };
+24:
+25:       // extraction operator for printing animals
+26:      ostream&amp; operator&lt;&lt; 
+27:          (ostream&amp; theStream, const Animal&amp; theAnimal)
+28:      {
+29:        theStream &lt;&lt; theAnimal.GetWeight();
+30:        return theStream;
+31:      }
+32:
+33:      Animal::Animal(int weight):
+34:      itsWeight(weight)
+35:      {
+36:         cout &lt;&lt; &quot;animal(int) &quot;;
+37:      }
+38:
+39:      Animal::Animal():
+40:      itsWeight(0)
+41:      {
+42:         cout &lt;&lt; &quot;animal() &quot;;
+43:      }
+44:
+45:      Animal::~Animal()
+46:      {
+47:        cout &lt;&lt; &quot;Destroyed an animal...&quot;;
+48:      }
+49:
+50:    template &lt;class T&gt;  // declare the template and the parameter
+51:    class Array            // the class being parameterized
+52:    {
+53:    public:
+54:       Array(int itsSize = DefaultSize);
+55:       Array(const Array &amp;rhs);
+56:       ~Array() { delete [] pType; }
+57:
+58:       // operators
+59:       Array&amp; operator=(const Array&amp;);
+60:       T&amp; operator[](int offSet) { return pType[offSet]; }
+61:       const T&amp; operator[](int offSet) const 
+62:          { return pType[offSet]; }
+62:
+63:       // accessors
+64:       int GetSize() const { return itsSize; }
+65:
+66:       // friend function
+67:      friend ostream&amp; operator&lt;&lt; (ostream&amp;, const Array&lt;T&gt;&amp;);
+68:
+69:    private:
+70:       T *pType;
+71:       int  itsSize;
+72:    };
+73:
+74:    template &lt;class T&gt;
+75:    Array&lt;T&gt;::Array(int size = DefaultSize):
+76:    itsSize(size)
+77:    {
+78:       pType = new T[size];
+79:       for (int i = 0; i&lt;size; i++)
+80:         pType[i] = (T)0;
+81:    }
+82:
+83:    template &lt;class T&gt;
+84:    Array&lt;T&gt;&amp; Array&lt;T&gt;::operator=(const Array &amp;rhs)
+85:    {
+86:       if (this == &amp;rhs)
+87:          return *this;
+88:       delete [] pType;
+89:       itsSize = rhs.GetSize();
+90:       pType = new T[itsSize];
+91:       for (int i = 0; i&lt;itsSize; i++)
+92:          pType[i] = rhs[i];
+93:       return *this;
+94:    }
+95:    template &lt;class T&gt;
+96:    Array&lt;T&gt;::Array(const Array &amp;rhs)
+97:    {
+98:       itsSize = rhs.GetSize();
+99:       pType = new T[itsSize];
+100:      for (int i = 0; i&lt;itsSize; i++)
+101:         pType[i] = rhs[i];
+102:   }
+103:
+104:
+105:   template &lt;class T&gt;
+106:   ostream&amp; operator&lt;&lt; (ostream&amp; output, const Array&lt;T&gt;&amp; theArray)
+107:   {
+108:      for (int i = 0; i&lt;theArray.GetSize(); i++)
+109:         output &lt;&lt; &quot;[&quot; &lt;&lt; i &lt;&lt; &quot;] &quot; &lt;&lt; theArray[i] &lt;&lt; endl;
+110:      return output;
+111:   }
+112:
+113:
+114:   Array&lt;Animal&gt;::Array(int AnimalArraySize):
+115:   itsSize(AnimalArraySize)
+116:   {
+117:      pType = new Animal[AnimalArraySize];
+118:   }
+119:
+120:
+121:   void IntFillFunction(Array&lt;int&gt;&amp; theArray);
+122:   void AnimalFillFunction(Array&lt;Animal&gt;&amp; theArray);
+123:   enum BOOL {FALSE, TRUE};
+124:
+125:   int main()
+126:   {
+127:      Array&lt;int&gt; intArray;
+128:      Array&lt;Animal&gt; animalArray;
+129:      IntFillFunction(intArray);
+130:      AnimalFillFunction(animalArray);
+131:      cout &lt;&lt; &quot;intArray...\n&quot; &lt;&lt; intArray;
+132:      cout &lt;&lt; &quot;\nanimalArray...\n&quot; &lt;&lt; animalArray &lt;&lt; endl;
+133:     return 0;
+134:   }
+135:
+136:   void IntFillFunction(Array&lt;int&gt;&amp; theArray)
+137:   {
+138:      BOOL Stop = FALSE;
+139:      int offset, value;
+140:      while (!Stop)
+141:      {
+142:         cout &lt;&lt; &quot;Enter an offset (0-9) and a value. &quot;;
+143:         cout &lt;&lt; &quot;(-1 to stop): &quot; ;
+143:         cin &gt;&gt; offset &gt;&gt; value;
+144:         if (offset &lt; 0)
+145:            break;
+146:         if (offset &gt; 9)
+147:         {
+148:            cout &lt;&lt; &quot;***Please use values between 0 and 9.***\n&quot;;
+149:            continue;
+150:         }
+151:         theArray[offset] = value;
+152:      }
+153:   }
+154:
+155:
+156:   void AnimalFillFunction(Array&lt;Animal&gt;&amp; theArray)
+157:   {
+158:      Animal * pAnimal;
+159:      for (int i = 0; i&lt;theArray.GetSize(); i++)
+160:      {
+161:         pAnimal = new Animal(i*10);
+162:         theArray[i] = *pAnimal;
+163:         delete pAnimal;
+164:      }
+<TT>165: }</TT></FONT></PRE>
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>Line numbers have been added to
+	the output to make analysis easier. Line numbers will not appear in your output.
+	
+<HR>
+
+
+</BLOCKQUOTE>
+
+<PRE><FONT COLOR="#0066FF">Output: 1:  animal() animal() animal() Enter an offset (0-9) and a value. (-1 to      stop): 0 0
+2:  Enter an offset (0-9) and a value. (-1 to stop): 1 1
+3:  Enter an offset (0-9) and a value. (-1 to stop): 2 2
+4:  Enter an offset (0-9) and a value. (-1 to stop): 3 3
+5:  Enter an offset (0-9) and a value. (-1 to stop): -1 -1
+6:  animal(int) Destroyed an animal...animal(int) Destroyed an      animal...animal(int) Destroyed an animal...initArray...
+7: [0] 0
+8: [1] 1
+9: [2] 2
+10:
+11: animal array...
+12: [0] 0
+13: [1] 10
+14: [2] 20
+15:
+16: Destroyed an animal...Destroyed an animal...Destroyed an animal...
+17:
+&lt;&lt;&lt; Second run &gt;&gt;&gt;
+
+18: animal(int)  Destroyed an animal...
+19: animal(int)  Destroyed an animal...
+20: animal(int)  Destroyed an animal...
+21: Enter an offset (0-9) and a value. (-1 to stop): 0 0
+22: Enter an offset (0-9) and a value. (-1 to stop): 1 1
+23: Enter an offset (0-9) and a value. (-1 to stop): 2 2
+24: Enter an offset (0-9) and a value. (-1 to stop): 3 3
+25: animal(int)
+26: Destroyed an animal...
+27: animal(int)
+28: Destroyed an animal...
+29: animal(int)
+30: Destroyed an animal...
+31: initArray...
+32: [0] 0
+33: [1] 1
+34: [2] 2
+35:
+36: animal array...
+37: [0] 0
+38: [1] 10
+39: [2] 20
+40:
+41: Destroyed an animal...
+42: Destroyed an animal...
+43: Destroyed an animal...
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>Listing 19.6 reproduces both
+classes in their entirety, so that you can see the creation and destruction of temporary
+<TT>Animal</TT> objects. The value of <TT>DefaultSize</TT> has been reduced to <TT>3</TT>
+to simplify the output.<BR>
+The <TT>Animal</TT> constructors and destructors on lines 33-48 each print a statement
+indicating when they are called.</P>
+<P>On lines 74-81, the template behavior of an <TT>Array</TT> constructor is declared.
+On lines 114-118, the specialized constructor for an <TT>Array</TT> of <TT>Animal</TT>s
+is demonstrated. Note that in this special constructor, the default constructor is
+allowed to set the initial value for each <TT>Animal</TT>, and no explicit assignment
+is done.</P>
+<P>The first time this program is run, the first set of output is shown. Line 1 of
+the output shows the three default constructors called by creating the array. The
+user enters four numbers, and these are entered into the integer array.</P>
+<P>Execution jumps to <TT>AnimalFillFunction()</TT>. Here a temporary <TT>Animal</TT>
+object is created on the heap on line 161, and its value is used to modify the <TT>Animal</TT>
+object in the array on line 162. On line 163, the temporary <TT>Animal</TT> is destroyed.
+This is repeated for each member of the array and is reflected in the output on line
+6.</P>
+<P>At the end of the program, the arrays are destroyed, and when their destructors
+are called, all their objects are destroyed as well. This is reflected in the output
+on line 16.</P>
+<P>For the second set of output (lines 18-43), the special implementation of the
+array of character constructor, shown on lines 114-118 of the program, is commented
+out. When the program is run again, the <TT>template</TT> constructor, shown on lines
+74-81 of the program, is run when the <TT>Animal</TT> array is constructed.</P>
+<P>This causes temporary <TT>Animal</TT> objects to be called for each member of
+the array on lines 79 and 80 of the program, and is reflected in the output on lines
+18 to 20 of the output.</P>
+<P>In all other respects, the output for the two runs is identical, as you would
+expect.
+<H4 ALIGN="CENTER"><A NAME="Heading27"></A><FONT COLOR="#000077">Static Members and
+Templates</FONT></H4>
+<P>A template can declare static data members. Each instantiation of the template
+then has its own set of static data, one per class type. That is, if you add a static
+member to the <TT>Array</TT> class (for example, a counter of how many arrays have
+been created), you will have one such member per type: one for all the arrays of
+<TT>Animal</TT>s, and another for all the arrays of integers. Listing 19.7 adds a
+static member and a static function to the <TT>Array</TT> class.</P>
+
+<P><A NAME="Heading28"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 19.7. Using
+static member data and functions with templates.</B></FONT>
+<PRE><FONT COLOR="#0066FF">1:     #include &lt;iostream.h&gt;
+2:
+3:     template &lt;class T&gt;  // declare the template and the parameter
+4:     class Array            // the class being parameterized
+5:     {
+6:     public:
+7:        // constructors
+8:        Array(int itsSize = DefaultSize);
+9:        Array(const Array &amp;rhs);
+10:       ~Array() { delete [] pType;   itsNumberArrays--; }
+11:
+12:       // operators
+13:       Array&amp; operator=(const Array&amp;);
+14:       T&amp; operator[](int offSet) { return pType[offSet]; }
+15:       const T&amp; operator[](int offSet) const 
+16:          { return pType[offSet]; }
+17:       // accessors
+18:       int GetSize() const { return itsSize; }
+19:       static int GetNumberArrays() { return itsNumberArrays; }
+20:
+21:       // friend function
+22:      friend ostream&amp; operator&lt;&lt; (ostream&amp;, const Array&lt;T&gt;&amp;);
+23:
+24:    private:
+25:       T *pType;
+26:       int  itsSize;
+27:       static int itsNumberArrays;
+28:    };
+29:
+30:    template &lt;class T&gt;
+31:       int Array&lt;T&gt;::itsNumberArrays = 0;
+32:
+33:    template &lt;class T&gt;
+34:    Array&lt;T&gt;::Array(int size = DefaultSize):
+35:    itsSize(size)
+36:    {
+37:       pType = new T[size];
+38:       for (int i = 0; i&lt;size; i++)
+39:         pType[i] = (T)0;
+40:       itsNumberArrays++;
+41:    }
+42:
+43:    template &lt;class T&gt;
+44:    Array&lt;T&gt;&amp; Array&lt;T&gt;::operator=(const Array &amp;rhs)
+45:    {
+46:       if (this == &amp;rhs)
+47:          return *this;
+48:       delete [] pType;
+49:       itsSize = rhs.GetSize();
+50:       pType = new T[itsSize];
+51:       for (int i = 0; i&lt;itsSize; i++)
+52:          pType[i] = rhs[i];
+53:    }
+54:
+55:    template &lt;class T&gt;
+56:    Array&lt;T&gt;::Array(const Array &amp;rhs)
+57:    {
+58:       itsSize = rhs.GetSize();
+59:       pType = new T[itsSize];
+60:       for (int i = 0; i&lt;itsSize; i++)
+61:          pType[i] = rhs[i];
+62:       itsNumberArrays++;
+63:    }
+64:
+65:
+66:    template &lt;class T&gt;
+67:    ostream&amp; operator&lt;&lt; (ostream&amp; output, const Array&lt;T&gt;&amp; theArray)
+68:    {
+69:       for (int i = 0; i&lt;theArray.GetSize(); i++)
+70:          output &lt;&lt; &quot;[&quot; &lt;&lt; i &lt;&lt; &quot;] &quot; &lt;&lt; theArray[i] &lt;&lt; endl;
+71:       return output;
+72:    }
+73:
+74:
+75:    Array&lt;Animal&gt;::Array(int AnimalArraySize):
+76:    itsSize(AnimalArraySize)
+77:    {
+78:       pType = new T[AnimalArraySize];
+79:       itsNumberArrays++;
+80:    }
+81:
+82:    int main()
+83:    {
+84:
+85:       cout &lt;&lt; Array&lt;int&gt;::GetNumberArrays() &lt;&lt; &quot; integer arrays\n&quot;;
+86:       cout &lt;&lt; Array&lt;Animal&gt;::GetNumberArrays();
+87        cout &lt;&lt; &quot; animal arrays\n\n&quot;;
+88:       Array&lt;int&gt; intArray;
+89:       Array&lt;Animal&gt; animalArray;
+90:
+91:       cout &lt;&lt; intArray.GetNumberArrays() &lt;&lt; &quot; integer arrays\n&quot;;
+92:       cout &lt;&lt; animalArray.GetNumberArrays();
+93:       cout &lt;&lt; &quot; animal arrays\n\n&quot;;
+93:
+94:       Array&lt;int&gt; *pIntArray = new Array&lt;int&gt;;
+95:
+96:       cout &lt;&lt; Array&lt;int&gt;::GetNumberArrays() &lt;&lt; &quot; integer arrays\n&quot;;
+97:       cout &lt;&lt; Array&lt;Animal&gt;::GetNumberArrays();
+98:       cout &lt;&lt; &quot; animal arrays\n\n&quot;;
+98:
+99:       delete pIntArray;
+100:
+101:      cout &lt;&lt; Array&lt;int&gt;::GetNumberArrays() &lt;&lt; &quot; integer arrays\n&quot;;
+102:      cout &lt;&lt; Array&lt;Animal&gt;::GetNumberArrays();
+103:      cout &lt;&lt; &quot; animal arrays\n\n&quot;;
+103:     return 0;
+<TT>104: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: 0 integer arrays
+0 animal arrays
+
+1 integer arrays
+1 animal arrays
+
+2 integer arrays
+1 animal arrays
+
+1 integer arrays
+1 animal arrays
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>The declaration of the <TT>Animal</TT>
+class has been left out to save space. The <TT>Array</TT> class has added the static
+variable <TT>itsNumberArrays</TT> on line 27, and because this data is private, the
+static public accessor <TT>GetNumberArrays()</TT> was added on line 19.<BR>
+Initialization of the static data is accomplished with a full template qualification,
+as shown on lines 30 and 31. The constructors of <TT>Array</TT> and the destructor
+are each modified to keep track of how many arrays exist at any moment.</P>
+<P>Accessing the static members is exactly like accessing the static members of any
+class: You can do so with an existing object, as shown on lines 91 and 92, or by
+using the full class specification, as shown on lines 85 and 86. Note that you must
+use a specific type of array when accessing the static data. There is one variable
+for each type.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<B>DO</B> use statics with templates as needed.<B> DO</B> specialize template behavior
+	by overriding template functions by type.<B> DO</B> use the parameters to template
+	functions to narrow their instances to be type-safe. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H3 ALIGN="CENTER"><A NAME="Heading30"></A><FONT COLOR="#000077">The Standard Template
+Library</FONT></H3>
+<P>A new development in C++ is the adoption of the Standard Template Library (STL).
+All the major compiler vendors now offer the STL as part of their compilers. STL
+is a library of template-based container classes, including vectors, lists, queues,
+and stacks. The STL also includes a number of common algorithms, including sorting
+and searching.</P>
+<P>The goal of the STL is to give you an alternative to reinventing the wheel for
+these common requirements. The STL is tested and debugged, offers high performance,
+and is free. Most important, the STL is reusable; once you understand how to use
+an STL container, you can use it in all your programs without reinventing it.
+<H3 ALIGN="CENTER"><A NAME="Heading31"></A><FONT COLOR="#000077">Summary</FONT></H3>
+<P>Today you learned how to create and use templates. Templates are a built-in facility
+of C++, used to create parameterized types--types that change their behavior based
+on parameters passed in at creation. They are a way to reuse code safely and effectively.</P>
+<P>The definition of the template determines the parameterized type. Each instance
+of the template is an actual object, which can be used like any other object--as
+a parameter to a function, as a return value, and so forth.</P>
+<P>Template classes can declare three types of friend functions: non-template, general
+template, and type-specific template. A template can declare static data members,
+in which case each instance of the template has its own set of static data.</P>
+<P>If you need to specialize behavior for some template functions based on the actual
+type, you can override a template function with a particular type. This works for
+member functions as well.
+<H3 ALIGN="CENTER"><A NAME="Heading32"></A><FONT COLOR="#000077">Q&amp;A</FONT></H3>
+
+<DL>
+	<DD><B>Q. Why use templates when macros will do?<BR>
+	</B><BR>
+	<B>A. </B>Templates are type-safe and built into the language.<BR>
+	<BR>
+	<B>Q. What is the difference between the parameterized type of a template function
+	and the parameters to a normal function?<BR>
+	</B><BR>
+	<B>A.</B> A regular function (non-template) takes parameters on which it may take
+	action. A template function allows you to parameterize the type of a particular parameter
+	to the function. That is, you can pass an <TT>Array</TT> of Type to a function, and
+	then have the Type determined by the template instance.<BR>
+	<BR>
+	<B>Q. When do you use templates and when do you use inheritance?<BR>
+	</B><BR>
+	<B>A.</B> Use templates when all the behavior, or virtually all the behavior, is
+	unchanged, except in regard to the type of the item on which your class acts. If
+	you find yourself copying a class and changing only the type of one or more of its
+	members, it may be time to consider using a template.<BR>
+	<BR>
+	<B>Q. When do you use general template friend classes?<BR>
+	</B><BR>
+	<B>A.</B> When every instance, regardless of type, should be a friend to this class
+	or function.<BR>
+	<BR>
+	<B>Q. When do you use type-specific template friend classes or functions?<BR>
+	</B><BR>
+	<B>A.</B> When you want to establish a one-to-one relationship between two classes.
+	For example, <TT>array&lt;int&gt;</TT> should match <TT>iterator&lt;int&gt;</TT>,
+	but not <TT>iterator&lt;Animal&gt;</TT>.
+</DL>
+
+<H3 ALIGN="CENTER"><A NAME="Heading33"></A><FONT COLOR="#000077">Workshop</FONT></H3>
+<P>The Workshop provides quiz questions to help you solidify your understanding of
+the material covered, and exercises to provide you with experience in using what
+you've learned. Try to answer the quiz and exercise questions before checking the
+answers in Appendix D, and make sure you understand the answers before continuing
+to the next chapter.
+<H4 ALIGN="CENTER"><A NAME="Heading34"></A><FONT COLOR="#000077">Quiz</FONT></H4>
+
+<DL>
+	<DD><B>1.</B> What is the difference between a template and a macro?<BR>
+	<B><BR>
+	2.</B> What is the difference between the parameter in a template and the parameter
+	in a function?<BR>
+	<B><BR>
+	3.</B> What is the difference between a type-specific template friend class and a
+	general template friend class?<BR>
+	<B><BR>
+	4.</B> Is it possible to provide special behavior for one instance of a template
+	but not for other instances?<BR>
+	<B><BR>
+	5.</B> How many static variables are created if you put one static member into a
+	template class definition?
+</DL>
+
+<H4 ALIGN="CENTER"><A NAME="Heading35"></A><FONT COLOR="#000077">Exercises</FONT></H4>
+
+<DL>
+	<DD><B>1.</B> Create a template based on this <TT>List</TT> class:
+</DL>
+
+<PRE><FONT COLOR="#0066FF">class List
+{
+private:
+
+public:
+     List():head(0),tail(0),theCount(0) {}
+     virtual ~List();
+     void insert( int value );
+     void append( int value );
+     int is_present( int value ) const;
+     int is_empty() const { return head == 0; }
+     int count() const { return theCount; }
+private:
+     class ListCell
+     {
+     public:
+          ListCell(int value, ListCell *cell =
+):val(value),next(cell){}
+          int val;
+          ListCell *next;
+     };
+     ListCell *head;
+     ListCell *tail;
+     int theCount;
+};
+</FONT></PRE>
+
+<DL>
+	<DD><B>2. </B>Write the implementation for the <TT>List</TT> class (non-template)
+	version.<BR>
+	<B><BR>
+	3.</B> Write the template version of the implementations.<BR>
+	<B><BR>
+	4.</B> Declare three list objects: a list of <TT>String</TT>s, a list of <TT>Cat</TT>s,
+	and a list of <TT>int</TT>s.<BR>
+	<B><BR>
+	5.</B> BUG BUSTERS: What is wrong with the following code? (Assume the <TT>List</TT>
+	template is defined and <TT>Cat</TT> is the class defined earlier in the book.)
+</DL>
+
+<PRE><FONT COLOR="#0066FF">List&lt;Cat&gt; Cat_List;
+Cat Felix;
+CatList.append( Felix );
+cout &lt;&lt; &quot;Felix is &quot; &lt;&lt;
+     ( Cat_List.is_present( Felix ) ) ? &quot;&quot; : &quot;not &quot; &lt;&lt; &quot;present\n&quot;;
+</FONT></PRE>
+
+<DL>
+	<DD>HINT (this is tough): What makes <TT>Cat</TT> different from <TT>int</TT>?<BR>
+	<BR>
+	<B>6.</B> Declare friend <TT>operator==</TT> for <TT>List</TT>.<BR>
+	<B><BR>
+	7.</B> Implement friend <TT>operator==</TT> for <TT>List</TT>.<BR>
+	<B><BR>
+	8.</B> Does <TT>operator==</TT> have the same problem as in Exercise 5?<BR>
+	<B><BR>
+	9.</B> Implement a template function for <TT>swap</TT>, which exchanges two variables.
+	<P>
+</DL>
+
+<P ALIGN="CENTER"><A HREF="ch18.htm"><IMG SRC="../buttons/BLANPREV.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch20.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="#heading1"><IMG SRC="../buttons/BLANTOP.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A>
+
+
+</BODY>
+
+</HTML>

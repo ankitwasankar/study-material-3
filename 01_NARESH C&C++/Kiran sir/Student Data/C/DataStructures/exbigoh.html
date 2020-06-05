@@ -1,0 +1,202 @@
+﻿<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="675" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>The BIG OH NOTATION</h2></center>
+
+<pre>
+<font size="2">
+<strong>The BIG OH NOTATION:</strong> 
+     If f(n) and g(n) are functions defined for positive integers,
+then to write f(n) is O(g(n)) which means that there exists a 
+constant C such that |f(n)|<=C|g(n)| for all sufficiently large
+positive integers n.
+     Here f(n) will normally be the operation count or time for 
+some algorithm then O(n) means that the time is bounded by a 
+constant;O(n) means that the time is directly proportional to n 
+and is called linear time. O(2^n ) is exponential time and 
+O(log n) and O(n log n) are logarithmic time. Big O and its 
+utility. Big O->f(n)-O(g(n)) if there exists two constants C 
+and no such that |f(n)|<=c|g(n)| for all n>= no .
+
+<b>Utility:</b>
+
+     f(n) will normally represent the computing time of some 
+algorithm. When we say that the computing time of an algorithm is
+O(g(n)) we mean that its execution takes no more than a constant 
+times g(n).n is a parameter which characterizes the input and/or output.
+
+i)Big O is transitive:-
+    It is easy to show that if f(n) is O(g(n)) is O(h(n)),f(n) s O(h(n)).
+e.g:nÂ³+100n is O(nÂ²),nÂ² is and O( nÂ³ ) consequently nÂ² +100n
+is O( nÂ³ ). This is called transitive property.
+
+ii)Big O is multiplicative:
+
+    A constant computing time is referred to as O(1),O(1) is better
+than O(n),which in tern is better than O(nÂ²).O(nÂ³)is worse and 
+O(2^n) is awful.
+   One other frequently seen computing time is O(log n base 2)which 
+is better than O(n).
+   Its complexity increases in multiple as n increases,hence it is 
+multiplicative. Total number of key comparisons by Quick Sort algorithm
+for an unordered array is O(nlog n) and for ordered array is O(nÂ²).
+   For an unsorted array if we are lucky then each time a record is
+correctly positioned the subfile to its left will be of the same size 
+as that to its right. This would leave us with the sorting of two 
+subfiles each of size roughly n/2. The time required to position a
+record in the file of size n is O(n). If T(n) is the time taken to sort 
+a file of n records then when the file splits roughly into two equal 
+parts each time a record is positioned correctly we have
+T(n)<=Cn+2T(n/2) for some constant c
+<=Cn+2(Cn/2+2T(n/4))
+<=2Cn+4T(n/4)
+<=Cnlogn+nT(1)
+=O(nlogn)
+<font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="exbigoh.html"><b>Top</b></a></font>
+<b>Sorted List:</b>
+
+    If the list sorted then the first element will require n comparisons 
+to recognize that it remains in final position. The sublist will be
+empty and second one will have n-1 elements. Thus the second element 
+require n-1 comparisons to recognize that it remain in second position 
+and so on. Thus there will be a total of
+f(n)=n+(n-1)+........2+1
+=n(n+1)/2= nÂ² /2+O(n)
+= O( nÂ² )
+     The average number of key comparisons by quick sort algorithm 
+is O(nlogn).
+     The running time of a sorting algorithm is usually measured by the 
+number f(n) of comparisons required to sort n elements. The quick sort
+algorithm has a worst case running time of order nÂ²/2 ,but an average 
+case running time of order nlogn.
+     The worst case occurs when the list is already sorted. Then the
+element will require n comparisons to recognize that it remain in the 
+first position. Futhermore,the first sublist will be empty ,but the second 
+sublist will have n-1 elements. Accordingly,second element will require
+n-1 comparisons to recognize that it remains in the second position and
+so on. Consequently there will be total of 
+f(n)=n+(n+1)+.....2+1
+=n(n+1)/2= nÂ² /2+O(n)
+=O( nÂ² )comparisons.
+     The complexity f(n)=O(nlogn) of the average case comes from the fact 
+that, on the average,each reduction step of the algorithm produces two
+sublists.
+
+Accordingly:
+
+1)Reducing the initial list places 1 elements and produces 2 sublists.
+2)Reducing the 2 sublist places 2 elements and produce 4 sublists and so in.
+The reduction step in the k th level finds the location of 2^k-1 elements;
+hence there will be approximately logn level of reduction steps.
+Futher more,each level uses at most n comparisons,so 
+f(n)=O(nlogn)
+In fact,mathematical analysis and empirical evidence hence both shown that 
+f(n)~1.4[nlogn]
+is the expected number of comparisons for the quick sort algorithm.
+
+
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="analysis.html">Back</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="exbigoh.html">Top</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+

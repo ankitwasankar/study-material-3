@@ -1,0 +1,163 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+
+
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+  <strong>STRUCTURES</strong>
+
+    Arrays can be used to represent a group of data items that belong to same type,such
+ as int or float. However,If we want to represent a collection of data items of different 
+types using a single name,then we cannot use arrays. At this time,we use structures.
+ Structure is used to represent a set of attributes,such as student_name,roll_number and marks. 
+The individual structure elements are referred to as members.
+
+  Consider a book database consisting of book name,author,number of pages and price. 
+We can define a structure to hold this information as follows.
+                 
+                                    struct book_bank
+                                      {
+ 				char title[20];
+				char author[15];
+				int pages;
+				float price;
+                                      };
+The keyword ‘struct’ declares a structure to hold the details of four fields,namely title,
+author,pages and price. These fields are nothing but members of structure elements. 
+Each member may belong to a different type of data. book_bank is the name of the structure
+and is called the structure tag. This will be used to declare variables that have tag’s structure.
+     This declaration has not declared any variable. It simply describes a format called 
+template to represent information as follows.......
+    
+                                               struct book_bank
+	title                             array of 20 char’s
+            author                         array of 15 char’s
+            pages                            integer
+            price                             float
+       
+         general declaration of a structure
+                        struct tag_name
+                         {
+                                  data_type member1;
+                                  data_type member2;
+                                    ------------
+                                   ------------
+                        }
+  we can declare structure variables using the tag name any where in the program.
+For example,
+  struct book_bank,book_bank1,book_bank2, book_bank3;
+each one of these variables has 4 members as specified by the template. 
+The complete declaration is like ....
+                           struct book_bank
+                            {
+                                 char title[20];
+                                  int  author[15];
+                                  int pages;
+                                  float price;
+                          };
+                        struct book_bank book1,book2,book3,book3;
+These members do not occupy any memory until they are associated with the structure 
+variables such as book1.
+ In defining structure 
+     we may follow the syntax 
+ 1.The template is terminated with a semicolon.
+ 2.While the entire declaration is considered as a statement, each member is 
+declared independently for its name and type in a separate statement inside the template.
+ 3.The tag name such as book_bank can be used to declare structure variables of its type,
+later in the program.
+ Normally structure definitions appear at the beginning of the program profile,before any 
+variables or functions are defined. They also appear before the main,along with macro definitions 
+such as #define.
+  We can assign values to the member of a structure in a no. of ways. The link between a member
+ and a variable is established using the member operator. Which is also known as dot period or
+ period operator.
+     For example, 
+                       book1.price
+is the variable representing the price of book1 and can be treated like anyother ordinary variable.
+            Strcpy(book1.title,"BASIC");
+           book1.pages=250;
+Like any other  data type,a structure variable can be initialized. A structure must be 
+declared as static if it is to be initialized inside a function.
+              main()
+            {    
+                   static struct;
+                   {
+                        int wt;
+                       float  ht;
+                  }
+          student ={60,180.75};
+         }  
+             
+      we can initialize a structure by using different ways.
+          main()
+            {    
+                   struct st_record;
+                   {
+                        int wt;
+                       float  ht;
+                  }
+          static struct st_record student1={60,170.75};
+          static struct st_record student2={63,170.65};  
+         }  
+
+Another method is to initialize a structure variable outside the function like...
+                   
+    struct st_record;
+                   {
+                        int wt;
+                       float  ht;
+                  }
+    student1={60,170.75};                
+      main()
+    {
+      static struct st_record student2={63,170.65};
+  }
+ C language does not permit the initialization of individual structure members 
+within the template. The initialization must be done only in the declaration of the
+ actual variables.
+
+<a href="structures.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

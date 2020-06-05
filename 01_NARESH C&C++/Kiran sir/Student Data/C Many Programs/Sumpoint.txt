@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+  int *sum(int *,int *);
+  int a,b,*s;
+  clrscr();
+  printf("Enter two numbers - ");
+  scanf("%d%d",&a,&b);
+  s=sum(&a,&b);
+  printf("%d",*s);
+  getch();
+}
+
+int *sum(int *x,int *y)
+{
+  int z;
+  z=*x + *y;
+  return(&z);
+}

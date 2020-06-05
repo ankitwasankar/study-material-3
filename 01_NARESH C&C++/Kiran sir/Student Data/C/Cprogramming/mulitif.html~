@@ -1,0 +1,177 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<tr>
+<TR><a href="files.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left"><pre>
+
+                              <strong>DECISION MAKING AND BRANCHING </strong>
+ 
+<strong><centre>Multiple Statements within IF:</centre></strong>
+ 
+It may so happen that in program we want more than one statement to be execute if the 
+expression following
+IF is satisfied.If such multiple statements are to be execute then they must be placed 
+within a pair of braces as illustrated in the following example. 
+ 
+<strong>Example:3</strong>   /* calculation of Bonus*/ 
+ 
+                    main() 
+                    { 
+                           int bonus, cy, yoi,yr_of_ser; 
+                           printf("Enter current Year and Year  of joining"); 
+                           scanf(%d%d",&cy,&yoi); 
+                           yr_of_ser=cy-yoi; 
+                           if(yr_of_ser>3) 
+                           { 
+                                bonus=2500; 
+                                printf("Bomus=Rs. %d",binus); 
+                           } 
+                    } 
+
+Observe that here the two statements to be executed on satisfaction of the condition
+ have been enclosed within a pair of braces. If a pair of braces is not used then the
+C compiler assumes that the programmer wants only the immediately next statement after
+the if to be execute on satisfaction of the condition. 
+In the other words we can say that the default scope of the IF statement is the immediately
+ next statement after it. 
+
+<strong>The IF-ELSE Statement:</strong>
+
+   if. . .else statement is an extension of the simple IF statement. 
+ 
+       <strong> The general form is:</strong>
+ 
+                          if(test condition) 
+                          { 
+                               True-Block statement(s) 
+ 
+                          } 
+                          else 
+                          { 
+                               False-Block statement(s)   
+                          } 
+                          statement -x; 
+ 
+<strong>Points to be remembered:</strong>
+ 
+1. The group of statements after the IF up to and not including the ELSE is called an 
+"IF BLOCK". Similarly, the statements after the ELSE form the "ELSE BLOCK".
+2. Notice that the ELSE is written exactly below the IF. The statements in the IF block and
+ those in the ELSE block have been indented to the right.
+3. Had there been only one statement to be executed in the IF block and only one statement
+ in the ELSE block we would have dropped the pair of Braces.
+4. As with the If statement, the default scope of ELSE is also the statement immediately after 
+the ELSE. to override this default scope a pair of braces must be used. 
+
+Let us consider an example of counting the number of boys and girls in a class.
+ We can use  code 1 for boys and 2 for girls.  
+                         - - - - - - - - - -  -  - - - - 
+                         - - - - - - - - - - - - - - - - 
+                         if(code==1) 
+                                boy=boy+1; 
+                         if(code==2) 
+                                girl=girl+1; 
+                         - - - - - - - - - -  -  - - - - 
+                         - - - - - - - - - - - - - - - -
+ <strong>Example:4 </strong>
+
+                    main() 
+                    { 
+                          int a=300,b=10,c=20; 
+                          if(!(a>=400)) 
+                               b=300; 
+                               c=200; 
+                             printf("b=%d c=%d",b,c); 
+                    } 
+ 
+OUTPUT:   b=300   c=200 
+
+Explanation:  The condition (a>=400) evaluates to FALSE since a is neither equal 
+to nor greater than 400. The condition is therefore replaced by '0'.
+But the NOT operator (!) negates the result of this condition. This means it 
+reverses the  result of the condition (0) to 1.
+
+ Thus the If gets reduced to, 
+                                if(1) 
+                                    b=300; 
+   obviously, b=300 would get executed, followed by c=200, hence the output.                                               
+<strong>Example:5</strong>
+
+                      main() 
+                      { 
+                            if(!3.14) 
+                                printf("rama is a good boy"); 
+                            else             
+                                printf("Rama and Krishna are friends"); 
+                      } 
+ 
+OUTPUT: 
+                         Rama and Krishna  are friends 
+
+Explanation: 3.14 being a positive number, is a truth value, and on negating it 
+using the ! operator it results  into a '0'. thus the result of the condition is 
+FALSE, hence the second printf() is executed. 
+
+<strong>Example:6 </strong>
+
+                main()        
+                 { 
+                      float a=12.25, b=13.65; 
+                      if(a=b) 
+                              printf("a and b are equal"); 
+                      else  
+                              printf("a and b are not equal"); 
+                 } 
+OUTPUT: 
+                            a and b are equal 
+
+Explanation:  To begin with a and b are not equal. The catch here is the 
+assignment operator used in the if statement. it simply assigns the value 
+of b to a, and hence the condition becomes,  
+
+                      if(13.65) 
+   The  condition evaluates since the value is a non-zero value, so the printf()
+ may evaluate, Hence the result. 
+
+<a href="branching.html">Back</a>
+</pre><td></tr></table>
+</html>

@@ -1,0 +1,215 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left"><pre>
+
+
+Printing of strings: The format specification for outting strings
+is of the form %w.ps
+        where w specifies width for display and p instructs that only the first p characters of string are to be
+ displayed.The display is right-justified.
+       The following examples show the effect of a variety of specifications in printing a string "NEW DELHI
+ 110001", containing 16   (including  blanks).    
+
+ Specification & Output:
+
+ 1)   %s 
+
+<table border="1"><TR>
+<TD>N</TD>
+<td>E</td>
+<td>W</td>
+<td></td>
+<td>D</td>
+<td>E</td>
+<td>L</td>
+<td>H</td>
+<td>I</td>
+<td></td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</TR></table>
+
+2) %20s
+<TABLE border="1"><TR>
+<TD></TD>
+<td></td>
+<td></td>
+<td></td>
+<td>N</td>
+<td>E</td>
+<td>W</td>
+<td></td>
+<td>D</td>
+<td>E</td>
+</td>L</td>
+<td>H</td>
+<td>I</td>
+<td></td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</TR></table>
+
+3) %20.10s
+
+<table border="1"><TR>
+<TD></TD>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>N</td>
+<td>E</td>
+<td>W</td>
+<td></td>
+<td>D</td>
+<td>E</td>
+<td>L</td>
+<td>H</td>
+<td>I</td>
+<td></td>
+</TR></table>
+
+
+4) %.5S
+
+<table border="1"><TR>
+<TD>N</TD>
+<td>E</td>
+<td>W</td>
+<td></td>
+<td>D</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</TR></table>
+
+
+5) %-20.10s
+
+<table border="1"><TR>
+<TD>N</TD>
+<td>E</td>
+<td>W</td>
+<td></td>
+<td>D</td>
+<td>E</td>
+<td>L</td>
+<td>H</td>
+<td>I</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</TR></table>
+
+
+6) %5s
+
+<table border="1"><TR>
+<TD>N</TD>
+<td>E</td>
+<td>W</td>
+<td></td>
+<td>D</td>
+<td>E</td>
+<td>L</td>
+<td>H</td>
+<td>I</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</TR></table>
+<a href="managing.html" target="_self">BACK</a>
+</pre></TD>
+</pre>
+
+</table>
+
+
+</html>

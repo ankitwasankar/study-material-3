@@ -1,0 +1,68 @@
+<html>
+<body>
+<strong>POST-ORDER:
+</strong>  <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Post-order is traversing a tree in the order:  left   right   root<br>
+The following is the procedure for Post-order:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.Traverse the left sub-tree in Post-order.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.Visit the root.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.Traverse the right sub-tree in Post-order.<br>
+<!--The following diagram represents the procedure of Post-order.
+
+Let us consider with an example
+
+This is the tree on which Post-order is to be implemented. The following is the figure of Post-order traversal.
+
+The Post-order traversal is  D H E B F K I J G C A
+<!---->
+<pre>
+<strong>ALGORITHM : Post-order Traversal (Recursive):
+<strong></strong></strong>
+Procedure Post-order(T)
+1.If T=NULL then 
+begin
+         Print &#039;Tree is empty&#039;
+         Return
+end
+2.If leftptr(T) != NULL then 
+   Call Post-order(leftptr(T))
+3.If rightptr(T) != NULL then
+   Call Post-order(rightptr(T))
+4.Print info(T)
+5.Return
+<strong>ALGORTHM: POST-ORDER TRAVERSAL (ITERATIVE):<strong></strong></strong>
+
+Procedure IterPost-order(T)
+1.If T = NULL then
+begin
+         Print &#039;Tree is empty&#039;
+         Return
+end
+2.P&#060;-T
+Top&#060;-0
+3.while(true) do
+begin
+    while P!=NULL do
+     begin
+            Call PUSH(S,Top,P)
+           if rptr(P)!=NULL then
+           Call Push(S,Top,-rptr(P))
+           P&#060;-lptr(P)
+end
+P&#060;-POP(S,Top)
+while(P>0) do
+begin
+     Print info(P)
+  if  (Top=0) then
+begin
+           Return
+           P&#060;-POP(S,Top)
+ end
+if p&#060;0 then
+      P=-P
+end
+4.Return
+
+
+</pre>
+
+</body></html>

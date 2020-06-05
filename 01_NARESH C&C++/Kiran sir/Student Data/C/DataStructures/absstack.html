@@ -1,0 +1,21 @@
+<html>
+<body>
+                                                                       
+Why use ADT&#039;s?<br>
+    <list> <ol><LI>Precisely specify the nature of the data and the operations<br>
+    <li> ADT&#039;s are independent of representation (indeed, of programming language).</li><li> No matter what language we will be using a complex number data type means the same thing.<br>
+     Provide solutions to common problems, giving us a toolkit we can use to solve problems (&#034;building blocks&#034;).</LI></ol></list>
+Many ADT&#039;s are concerned with how values of some other type can be stored and accessed. Classes which implement such storage types are called &#034;container classes&#034; in C++ programming.<br>
+If we assume these definitions then we could provide an implementation for the push operation as a function. The function will need at least three parameters:
+    <ol><LI> The stack storage (the array)</LI>
+     <li>The index of the first available stack location</li>
+     <li>The item to be added</li>
+C++allows us to pass in arrays to functions without having to list their size (it&#039;s assumed that the programmer some how knows the size by looking at other parameters,and will use the array safely).<br><br>
+          void push(int contents[], int top, int item)<br>
+
+{<br>
+                         contents[top++] = item;<br>
+
+
+</body>
+</html>

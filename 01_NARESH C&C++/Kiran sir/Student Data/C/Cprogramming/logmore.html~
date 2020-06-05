@@ -1,0 +1,145 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+<font size="4">
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<tr>
+<TR><a href="files.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left"><pre>
+
+                              <strong>DECISION MAKING AND BRANCHING </strong>
+ 
+<strong>Example:24 </strong>
+          main()      
+          { 
+              int i=4,z=12; 
+              if(i==4||z>50) 
+                    printf("Dean of Student affairs"); 
+              else 
+                    printf("Dosa"); 
+          } 
+OUTPUT:
+               Dean of Student affairs 
+Explanation:  Logical OR(||)  operator in the IF evaluates to TRUE.
+ That's why the output results. 
+
+<strong>Example:25 </strong>
+            main() 
+            { 
+                 int i=4,j=-1,k=0,w,x,y,z; 
+                 w=i||j||k; 
+                 x=i&&j&&k; 
+                 y=i||j&&k; 
+                 z=i&&j||k; 
+                 printf("\n w=%d X=%d y=%d z=%d",w,x,y,z); 
+            } 
+OUTPUT:                  1010 
+
+<strong>Example:26 </strong>
+            main() 
+            { 
+                 int i=5,j=30,k=5; 
+                 if(i<30) 
+                 { 
+                      if(j<20) 
+                      { 
+                           if(k==40) 
+                                printf("Hi Computer!"); 
+                           else; 
+                      } 
+                      else; 
+                 } 
+                 else; 
+           } 
+
+This can be written by using logical operators as Follows: 
+           main() 
+           { 
+                int i=5,j=30,k=5; 
+                if(i<30&&j<20&&k==40) 
+                      printf("Hi Computer!");    
+           } 
+
+Explanation:  Since after checking the three nested conditions only one printf() 
+is to be executed, it makes sense to combine the conditions using the logical operator&&.
+ As there are no statements to be executed in th ELSE block, the ELSE block can as
+well as dropped.  
+
+<strong>Example:27 </strong>
+       main() 
+       { 
+            int i=4,j=-1,k=0,y,z; 
+            y=i+5&&j+1||k+2; 
+            z=i+5++j+1&&k+2; 
+            printf("\n y=%d z=%d",y,z); 
+       } 
+  
+OUTPUT:               1 1. 
+
+<strong>Example:28 </strong> 
+       main() 
+       { 
+            int p=80,q=20; 
+            if(p==5&&q>5) 
+                 printf("\n Why not C"); 
+            else 
+                 printf("\n Definitely C!"); 
+       } 
+ 
+OUTPUT:  Definitely C! 
+
+<strong>Example:29 </strong>
+         main() 
+         { 
+             int x=20,y=40,z=45; 
+             if(x>y&&x>z) 
+                   printf("X ia big"); 
+             else if(y>x&&y>z) 
+                   printf("Y is big"); 
+             else if(z>x&&z>y) 
+                   printf("Z is big"); 
+         } 
+
+OUTPUT: Z is big. 
+
+<a href="branching.html">Back</a></font>
+</pre><td></tr></table>
+</html>
+

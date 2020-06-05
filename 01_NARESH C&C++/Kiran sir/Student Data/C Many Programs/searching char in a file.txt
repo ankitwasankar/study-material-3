@@ -1,0 +1,25 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+FILE *fp;
+char ch,*sfname,s;
+int no=0;
+clrscr();
+printf("Enter the file name:-");
+gets(sfname);
+fp=fopen(sfname,"r");
+printf("Enter the charecter for serching:-");
+scanf("%c",&s);
+while(1)
+{
+ch=getc(fp);
+if(ch==EOF)
+break;
+if(ch==s)
+no++;
+}
+printf("%d",no);
+fclose(fp);
+getch();
+}

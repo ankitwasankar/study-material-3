@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include<graphics.h>
+void main()
+{
+int gd=0,gm,i,x1=100,y1=100,x2=400,y2=300;
+initgraph(&gd,&gm,"c:\\tc\\bgi");
+setcolor(4);
+for(i=x1;i<=x2;i++)
+{
+  putpixel(i,y1,4);
+  delay(20);
+}
+for(i=y1;i<=y2;i++)
+{
+  putpixel(x2,i,4);
+  delay(20);
+}
+for(i=x2;i>=x1;i--)
+{
+  putpixel(i,y2,4);
+  delay(20);
+}
+for(i=y2;i>=y1;i--)
+{
+  putpixel(x1,i,4);
+  delay(20);
+}
+getch();
+}

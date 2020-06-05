@@ -1,0 +1,6 @@
+[general]
+name=MS Visual C++ 6 Project
+filter=MS Visual C++ 6 Project(*.dsw,*.dsp)|*.dsw;*.dsp
+desp=
+cnvt=vc6.cnvt
+bldr=mscc1

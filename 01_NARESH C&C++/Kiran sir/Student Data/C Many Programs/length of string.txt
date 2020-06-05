@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+  char (*p)[20];
+  int i,l=0,j;
+  clrscr();
+  for(i=0;i<5;i++)
+  {
+    printf("Enter the string - ");
+    gets(*(p+i));
+  }
+  for(i=0;i<5;i++)
+  {
+  printf("\n%s",(p+i));
+    for(j=0;*(*(p+i)+j)!=NULL;j++)
+     l++;
+    printf("\t=%d",l);
+    l=0;
+  }
+  getch();
+}

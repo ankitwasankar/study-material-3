@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<conio.h>
+#include<alloc.h>
+struct employee
+{
+  char name[20];
+  int age,salary;
+};
+typedef struct employee employee;
+void main()
+{
+  employee *e;
+  int n,i;
+  clrscr();
+  printf("How many records - ");
+  scanf("%d",&n);
+  e=(employee *)calloc(n,sizeof(e));
+  for(i=0;i<n;i++)
+  {
+    printf("Enter the name - ");
+    scanf("%s", (e+i)->name);
+    printf("Enter the age - ");
+    scanf("%d",&(e+i)->age);
+    printf("Enter the salary - ");
+    scanf("%d",&(e+i)->salary);
+  }
+  for(i=0;i<n;i++)
+  {
+    printf("\n %s %d %d",(e+i)->name,(e+i)->age,(e+i)->salary);
+  }
+  getch();
+  free(e);
+}

@@ -1,0 +1,340 @@
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h3>Examples Of If-Else</h3></center>
+
+<pre>
+<font size="3">
+<pre>
+<strong>Example:7</Strong>     
+              main() 
+              { 
+                int i=65; 
+                char j='A'; 
+                if(i==j) 
+                 printf("C is Wow"); 
+                else 
+                 printf("C is a headache");     
+              } 
+
+<strong>Example:9 </strong>
+                main()  
+                { 
+                  int a=500,b,c; 
+                  if(a>=400) 
+                    b=300; 
+                  c=200; 
+                  printf("\n%d%d",b,c); 
+                } 
+
+OUTPUT: 
+        300 200 
+
+<strong>Example:10 </strong>   
+                   main() 
+                   { 
+                    int x=10,y=20;
+                    if(x==y); 
+                    printf(\n %d%d",x,y); 
+                   } 
+
+OUTPUT:       10 20 
+
+Explanation:  
+	The semi-colon (;) at the end of IF statement 
+terminates, IF functionally, so x and y values are get 
+printed. 
+
+<strong>Example:11 </strong>
+
+          main()          
+          { 
+           int x=3,y=5; 
+           if(x==3) 
+           printf("%d",x); 
+           else; 
+           printf("%d",y); 
+          } 
+
+OUTPUT:       3 
+
+<strong>Example:12 </strong>
+              
+              main()             
+              { 
+                char str1[]="Hello"; 
+                char str2 []="Hello"; 
+                if(str1==str2) 
+                 printf("Equal"); 
+                else 
+                 printf("Unequal"); 
+              } 
+
+OUTPUT:         Unequal 
+
+Explanation:  By using "==" operator we cann't campare two 
+strings,we must use strcmp() to compare  strings. So the 
+else is executed. 
+
+<strong>Example:13 </strong>
+      main()
+      { 
+       int i=10,j=40; 
+       if((j-I)%10) 
+       printf("Man sees your actions. . . . . . . . . "); 
+       else 
+       printf("God sees your motives   . . . . . . . "); 
+      } 
+
+OUTPUT: God sees your motives   . . . . . . .  
+
+Explanation:     This is quite straight-forward.(j-I)%10,
+on substituting the values of j and I, become (40-10)%10.
+that is 30%10, which gives the remainder as 0. thus the
+condition would now become, Since 0 is treated ad falsely
+in c, the control reaches the second printf() which prints
+output. 
+
+<strong>Example:14 </strong>
+
+               main() 
+               { 
+                 float a=0.7; 
+                 if(a<0.7) 
+                 printf("Stoned"); 
+                 else 
+                 printf("Averaged"); 
+                } 
+
+OUTPUT:      Stoned. 
+
+Explanation: 
+	 The output is very surprising! 0.7 is never less
+than 0.7, so the condition 0should evaluate to FALSE.But
+that doesn't happen, Reason is ,when 0.7 is stored in a,
+due to precision considerations, it is stored as something
+less than 0.7. naturally,when value stored in a is 
+compared with 0.7, the condition evaluates to TRUE and 
+Stoned gets printed.  
+
+    Two get rid of the problem there are 2 solutions. 
+(a) declare A as a long Double as shown below:
+           long double a; 
+(b) Typecast 0.7 to a Float while comparing as shown below:
+          if(a<(float)0.7) 
+
+    Typecasting means converting to the specified data type. 
+
+<strong>Example:15</strong>
+              
+                 main() 
+                 { 
+                   int i=400*400/400; 
+                   if(i==400) 
+                    printf("Hai"); 
+                   else 
+                    printf("Hello"); 
+                 }
+
+OUTPUT:  Hello. 
+
+Explanation:     
+       The answer is Yes. Thus, the statement int 
+i=400*400/400 is quite alright.But on evaluating the 
+expression it doesn't turnout to be 400. Reason is,
+when 400*400  is done we don't get 160000 because 
+160000 falls outside the integer range (-32768 to +32767).
+Whenever a number exceeds 32767,it goes to the negative 
+side and picks up the appropriate number. 
+
+       So if results FALSE, that's why the result. 
+
+ <strong>Example:16 </strong>
+             
+                main() 
+                { 
+                 int x=3; 
+                 float y=3.0; 
+                 if(x==y) 
+                  printf("\n x and y are equal"); 
+                 else 
+                  printf("\n x and y are not equal"); 
+                 } 
+
+OUTPUT: x and y are not equal 
+
+Explanation:  Because, here data types of two variables 
+are different, so,else part get executed. 
+
+<strong>Example:17 </strong>    
+              main() 
+              { 
+               int i=65; 
+               char j='A'; 
+               if(i==j) 
+                printf("C is Wow"); 
+               else 
+                printf("C is a headache"); 
+              } 
+
+OUTPUT:         C is Wow 
+
+Explanation: Here , the ASCI value of character 'A' is 65.
+While comparing it takes A as 65, that's why if part is 
+executed. 
+
+<strong>Example:18 </strong>
+ 
+             main() 
+             { 
+               float a=12.25, b=12.52; 
+               if(a=b) 
+               printf(\n a and b are equal"); 
+             }  
+
+OUTPUT:     a and b are equal 
+
+Explanation:  Here in IF we are not comparing the values,
+but it is an assignment, So, IF value is non-zero , so 
+the output results. 
+
+<strong>Example:19 </strong>
+
+            main() 
+            { 
+             int x=30,y=40;
+             if(x==y)
+              printf("\n x is equal to y"); 
+             else if(x>y)
+              printf("\n x is greater than y");
+             else if(x<font y)
+              printf("\n x is less than y"); 
+            } 
+
+OUTPUT:   x is less than y 
+
+Explanation:  It  compares in first IF whether x and y 
+are equal or not,the comparison results FALSE,so the 
+control comes to next IF it also fails.Finally the 
+condition satisfied, thus the output.
+
+ <strong>Example:20 </strong>
+            main()  
+            { 
+             int x=10;
+             if(x>=2) then 
+             printf("\n %d",x); 
+            } 
+
+OUTPUT:     10 
+
+Explanation:  It checks for the condition, it results 
+TRUE then printf() get executed.
+
+    
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="branching.html">Back</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+

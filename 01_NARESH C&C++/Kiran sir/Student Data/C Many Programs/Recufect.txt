@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+int n,f;
+int fact(int);
+clrscr();
+printf("********************************************************************************");
+printf("\nEnter the no.:-");
+scanf("%d",&n);
+f=fact(n);
+printf("%d",f);
+printf("\n********************************************************************************");
+getch();
+}
+int fact(int n)
+{
+if(n==1)
+return n;
+else
+return n*fact(n-1);
+}

@@ -1,0 +1,28 @@
+<html>
+<head><TITLE>Explanation</TITLE></head>
+<body>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+The selection sort searches all of the elements in a list until it finds the 	smallest element. It &#034;swaps&#034; this with the first element in the list. Next it finds the smallest of the remaining elements, and &#034;swaps&#034; it with the second element.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Repeat this process until only the last two elements in the list are compared.<br>
+<u>Explanation with an example:</u><br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consider the data elements&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.<br>
+<img src="sele1.jpg" align="middle"><br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Swap the smallest element with the first element.<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After the smallest element is in the first position, we continue the process by taking second element and looking for the next smallest element in the remaining unsorted array.<br>
+<img src="sele2.jpg" align="center"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In this special case, the next smallest element is in the second position already. Swapping the element with itself keeps it in the same position.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After the next smallest element is in the second position, we continue as above for the next smallest element.<br>
+<img src="sele3.jpg" align="middle"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap this smallest element with the third element.<br>
+<img src="sele3.jpg" align="middle"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap this element with the fourth element<br>
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Continue in the same way for the next smallest element we have<br>
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It can be noted that the largest of all the elements is in the last position after completion of all passes. That means the maximum number of passes required to sort N elements is N-1.
+
+</body>
+
+</html>

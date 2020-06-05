@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+int a[3][3],i,j;
+void arr(int(*)[3]);
+clrscr();
+for(i=0;i<3;i++)
+{
+for(j=0;j<3;j++)
+{
+printf("Enter the no.:-");
+scanf("%d",&a[i][j]);
+}
+}
+arr(a);
+getch();
+}
+void arr(int(*p)[3])
+{
+int i,j;
+for(i=0;i<3;i++)
+{
+printf("\n");
+for(j=0;j<3;j++)
+{
+if(i==j || (i==0 && j==2) || (i==2 && j==0))
+printf(" %d",*(*(p+i)+j));
+else
+printf(" %d",0);
+}
+}
+}

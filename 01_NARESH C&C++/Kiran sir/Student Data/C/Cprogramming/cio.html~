@@ -1,0 +1,129 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+<h3>CONSOLE I/O FUNCTIONS:</h3>
+          Console I/O functions can be further divided into two categories: 
+Formatted and Unformatted functions allow the input read from the keyboard or the output 
+displayed on the VDU to be formatted as per our requirements.
+
+<table  bgcolor="#D6AAFF" border="1">
+<center><tr><td>Console Input/Output Functions</td></tr></center></table><br><br>
+<table  border="1" width="300"><tr><td colspan="3"> Formatted Functions</td></tr>
+<tr>
+<Td>Type</td>
+<Td>Input</Td>
+<Td>Output</Td>
+</tr>
+<tr>
+<TD>Char</TD>
+<td>Scanf()</td>
+<td>Printf()</td>
+</tr>
+<tr>
+<td>Int</td>
+<td>Scanf()</td>
+<td>Printf()</td>
+</tr>
+<tr>
+<td>Float</td>
+<td>Scanf()</td>
+<td>Printf()</td>
+</tr>
+<tr><TD>String</TD>
+<td>Scanf()</td>
+<td>Printf()</td>
+
+</tr>
+</table>
+
+<table  border="1" width="300"><tr><td colspan="3">Unformatted Functions</td></tr>
+<tr>
+<TD>Type</TD>
+<td>Input</td>
+<td>Output</td>
+</tr>
+<tr>
+<TD>Char</td>
+<td>Getch()</td>
+<td>Getche()</TD>
+</tr>
+<tr><TD>Getchar()</td>
+<td>Putch()</td>
+<td>Putchar()</TD>
+</tr>
+<tr><TD>Int</td>
+       <td> --</td>
+         <td> --</TD></tr>
+<tr><TD>Float</td>
+    <td>  --</td>
+    <td>      --</TD></tr>
+         <tr><TD>String
+</TD><td>Gets()</td>
+<td>Puts()</TD></tr>
+</table>
+  
+                Console oriented applications always use the terminal (keyboard and screen) 
+as the target place.This works fine as long as the data is small . However , many real-life 
+problems involve large volumes of data and such situations , the console oriented I/O operations
+ pose two major problems.
+1. It becomes cumbersome and time consuming to handle large volumes of data through terminals.
+2. The entire data is lost when either the program is terminated or the computer turned off.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       It is therefore necessary to have a more flexible approach where data can be stored on disks and read
+ whenever necessary,without destroying the data. This method employs the concept of files to store data. A file is
+ a place on the disk where a group of related data is stored. Like most other languages , C supports a number of
+ functions that have ability to perform basic file  operations , which include:
+
+                      1. Naming a file,<br>
+                      2. Opening a file,<br>
+                      3. Reading data from a file ,<br>
+4.Writing data to a file, and<br>
+5.Closing a file.<br><br>
+
+
+
+<a href="fm1.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

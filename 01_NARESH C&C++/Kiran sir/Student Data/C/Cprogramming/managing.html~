@@ -1,0 +1,75 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left">
+<pre>
+
+<center>
+<strong><h3>MANAGING INPUT & OUTPUT FUNCTIONS</h3></strong></center>
+<pre>
+
+	<a href="content1.html" target="_self">INTRODUCTION</a><br><br>
+	<a href="content2.html" target="_self">READING A CHARACTER</a><br><br>
+	<a href="content3.html" target="_self">WRITING A CHARACTER</a><br><br>
+	<a href="content4.html" target="_self">INPUTTING  INTEGER NUMBERS</a><br><br>
+	<a href="content5.html" target="_self">INPUTTING REAL NUMBER</a><br><br>
+	<a href="content6.html" target="_self">INPUTTING CHARACTER STRINGS</a><br><br>
+	<a href="content7.html" target="_self">READING MIXED DATATYPES</a><br><br>
+	<a href="example7.html" target="_self">EXAMPLES</a><br><br>
+	<a href="content8.html" target="_self">COMMONLY USED scanf() FORMAT CODES</a><br><br>
+	<a href="content9.html" target="_self">OUTPUTING  INTEGER NUMBERS</a><br><br>
+	<a href="content10.html" target="_self">OUTPUTING REAL NUMBER</a><br><br>
+	<a href="content11.html" target="_self">PRINTING OF STRINGS</a><br><br>
+	<a href="content12.html" target="_self">MIXED DATATYPES</a><br><br>
+	<a href="object.html" target="_self">OBJECTIVE QUESTIONS</a><br><br>
+	
+	<a href="main.html" target="_self">BACK</a>
+
+</pre></TD>
+
+
+</table>
+
+
+</html>

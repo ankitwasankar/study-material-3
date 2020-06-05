@@ -1,0 +1,171 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+ <strong>Long Answer Questions:</strong>
+
+1) Two dates are entered through the keyboard in dd,mm,yy format. Write a program to 
+find out the difference in the two dates in terms of days.
+
+main()
+{
+int d1,m1,y1,d2,m2,y2,days,dm;
+dm=0;
+printf("input first date(dd,mm,yy)");
+scanf("%d%d%d", &d1, &m1, &y1);
+printf("input second date(dd,mm,yy)");
+scanf("%d%d%d", &d2, &m2, &y2);
+	dm=daysinmonth(m1,y1);
+	while(1)
+	{
+	days=days+1;
+	d1=d1+1;
+	if(d1>dm)
+	{
+	m1=m1+1;
+	d1=1;
+	if(m1>12)
+	{
+	m1=1;
+	y1=y1+1;
+	}
+	dm=daysinmonth(m1,y1)
+	if(d1==d2 && m1==m2 && y1==y2)
+	break;
+	}	
+	printf(" \n\n Difference in dates= %d", days);
+	}
+	daysinmonth(m,y)
+	int m,y;
+	{
+	int dm;
+	if(m==1 || m==3 || m==5 || m==7 || m==8 || m==10 || m==12)
+	dm=30;
+	if(m==2)
+	{
+	dm=28;
+	f((y%400==0) || (y%100!=0 && y%4==0))
+	dm=29;
+	}
+	return(dm);
+	}
+Sample Run:  
+                      Input first date(dd,mm,yy) 01 01 1993
+                      Input second date(dd,mm,yy) 31 12 1993      
+	          Difference in dates=365days
+Explanation:   Firstly  the two dates  are received n dd,mm,yy format. Then the 
+function daysinmonth() is called to find out number of days in the month m1 of 
+year y1. Nextly through the indefinte while loop the variable days s continuously
+ incremented. It counts the number of days. F d1 exceeds the days n a month, then
+ we go to the next year’s first month . Ths counting goes on till we reach the second
+date. This happens when d1 equals d2, m1 equals m2, y1 equals y2. When this happens the 
+control comes out of the loop by executing break and prints out the difference n dates 
+stored in the variable days.
+
+
+
+2)Program to calculate the Fibonacc number usng recurson.
+
+#include<stdio.h>
+int fib(int n)
+{
+f(n<=1)
+return 1;
+else 
+return(fib(n-1)+fib(n-2));
+}
+int main(void)
+{
+int n;
+for(n=0;n<=15;n++)
+printf("%d", fib(n));
+return 0;
+}
+Explanation:
+		fib(n)=1	for values of n=0 and 1	
+		fib(n)=fib(n-1)+fib(n-2)         for all integer values of n>1
+          Thus a sequence might be 1,1,2,3,5,8,13,21 and so on. Here the function fib() 
+is directly and recursively called twice. The call to fib(3) would then in turn call
+ itself to calculate  fib(2) and fib(1). While the two calls to fib(2) would calculate
+ the values of fib(1) and fib(0).
+Output: 1,1,3,5,8,13,21,34,55,89,144,233,377,610
+
+
+
+3) Towers of Hanio solved using recursion.
+
+	#include<stdio.h>
+	#include<stdlib.h>
+	void towers( char from, char to, char middle, nt number)
+	{
+	if(number==1)
+	printf("Move Disk from %c to %c \n",from, to);
+	else
+	{
+	towers(from,middle,to,number-1);
+	towers(from,to,middle,1);
+	towers(middle,to,from,number-1);
+	}
+	}
+	int main(void)
+	{
+	int disks;
+	char buffer[BUFSZ];
+	printf("Enter Number of disks");
+	disks=atoi(gets(buffer));
+	if(disks>0)
+	towers(‘A’,’C’,’B’,disks);
+	else
+	printf("Enter Disk must be greater than 0 ........\n");
+	return 0;
+	}	
+Explanation: Here a function can be written to move one disk, it can be
+ recursively called n times to move n disks. The function towers() directly 
+calls itself no less than three times, making the transition to an iterative 
+approach extremely difficult.
+
+<a href="functions.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

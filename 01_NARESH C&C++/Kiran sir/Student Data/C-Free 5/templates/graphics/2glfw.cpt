@@ -1,0 +1,156 @@
+<ProjectType name="GLFW project" icon="glfw.bmp?0" type="CUI" ext="exe" tab="Graphics" desc="Create basic GLFW application." version="1.0">
+	<Pages count="2">
+		<Page title="Application Types#77004">
+			<RadioGroup name="AppTypes" title="Select the kind of Application type you want to create" value="0" width="290" height="100" enabled="1">
+				<Item>An &empty project.#77018</Item>
+				<Item>A &Minimal GLFW project</Item>
+				<Item>&Simple demo project</Item>
+			</RadioGroup>	
+		</Page>
+		<Page title="GLFW Library Selection">
+			<BrowseFolder name="GlfwDir" title="GLFW's location (Base directory):" value="" width="290" height="20" enabled="1">
+			</BrowseFolder>
+		</Page>
+	</Pages>
+
+	<Outputs>
+		<Directory name="\">
+		<File folder="Source Files" name="" external="" enabled="1"></File>
+		<File folder="Header Files" name="" external="" enabled="1"></File>
+		<File folder="Other Files" name="" external="" enabled="1"></File>
+	
+		<File folder="Source Files" name="$(ProjectName).c" external="" enabled="$(AppTypes)=1">
+#include &lt;GL/glfw.h&gt;
+int main( void )
+{
+	int running = GL_TRUE;
+	/* Initialize GLFW */
+	glfwInit();
+	/* Open an OpenGL window */
+	if( !glfwOpenWindow( 300,300, 0,0,0,0,0,0, GLFW_WINDOW ) )
+	{
+		glfwTerminate();
+		return 0;
+	}
+	/* Main loop */
+	while( running )
+	{
+		// OpenGL rendering goes here...
+		glClear( GL_COLOR_BUFFER_BIT );
+		// Swap front and back rendering buffers
+		glfwSwapBuffers();
+		// Check if ESC key was pressed or window was closed
+		running = !glfwGetKey( GLFW_KEY_ESC ) &&
+		glfwGetWindowParam( GLFW_OPENED );
+	}
+	/* Close window and terminate GLFW */
+	glfwTerminate();
+	/* Exit program */
+	return 0;
+}
+		</File>
+		<File folder="Source Files" name="$(ProjectName).c" external="" enabled="$(AppTypes)=2">
+#include &lt;GL/glfw.h&gt;
+
+int main()
+{
+    int     width, height;
+    int     frame = 0;
+    int    	running = 1;
+
+    glfwInit();
+
+    if( !glfwOpenWindow( 512, 512, 0, 0, 0, 0, 0, 0, GLFW_WINDOW ) )
+    {
+        glfwTerminate();
+        return 0;
+    }
+
+    glfwSetWindowTitle("GLFW Application");
+
+    while(running)
+    {
+        frame++;
+
+        glfwGetWindowSize( &width, &height );
+        height = height > 0 ? height : 1;
+
+        glViewport( 0, 0, width, height );
+
+        glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
+        glClear( GL_COLOR_BUFFER_BIT );
+
+        glMatrixMode( GL_PROJECTION );
+        glLoadIdentity();
+        gluPerspective( 65.0f, (GLfloat)width/(GLfloat)height, 1.0f, 100.0f );
+
+        /* Draw some rotating garbage */
+        glMatrixMode( GL_MODELVIEW );
+        glLoadIdentity();
+        gluLookAt(0.0f, -10.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 1.0f );
+
+        /* glTranslatef( 1.0f, 1.0f, 0.0f ); */
+        glRotatef(frame, 0.25f, 1.0f, 0.75f);
+        glBegin( GL_TRIANGLES );
+          glColor3f(0.1f, 0.0f, 0.0f );
+          glVertex3f(0.0f, 3.0f, -4.0f);
+          glColor3f(0.0f, 1.0f, 0.0f );
+          glVertex3f(3.0f, -2.0f, -4.0f);
+          glColor3f(0.0f, 0.0f, 1.0f );
+          glVertex3f(-3.0f, -2.0f, -4.0f);
+        glEnd();
+        glBegin( GL_TRIANGLES );
+          glColor3f(0.0f, 0.1f, 0.0f );
+          glVertex3f(0.0f, 3.0f, -3.0f);
+          glColor3f(0.0f, 0.0f, 1.0f );
+          glVertex3f(3.0f, -2.0f, -2.0f);
+          glColor3f(1.0f, 0.0f, 0.0f );
+          glVertex3f(-3.0f, -2.0f, 2.0f);
+        glEnd();
+        glfwSwapBuffers();
+
+        /* exit if ESC was pressed or window was closed */
+        running = !glfwGetKey(GLFW_KEY_ESC) && glfwGetWindowParam( GLFW_OPENED);
+    }
+
+    glfwTerminate();
+
+    return 0;
+}
+
+		</File>
+	
+		</Directory>
+	</Outputs>
+	<Options>
+		
+		
+		<Linker bldr="MinGW"></Linker>
+		<Linker bldr="Borland"></Linker>
+		
+		<Lib bldr="MinGW">glfw</Lib>
+		<Lib bldr="MinGW">opengl32</Lib>
+		<Lib bldr="MinGW">glu32</Lib>
+		<Lib bldr="MinGW">gdi32</Lib>
+		
+		<Lib bldr="CYGWIN">glfw</Lib>
+		<Lib bldr="CYGWIN">opengl32</Lib>
+		<Lib bldr="CYGWIN">glu32</Lib>
+		<Lib bldr="CYGWIN">gdi32</Lib>
+		
+		<Lib bldr="Microsoft">glfw.lib</Lib>
+		<Lib bldr="Microsoft">opengl32.lib</Lib>
+		<Lib bldr="Microsoft">glu32.lib</Lib>
+		
+
+		
+		<IncPath bldr="*">$(GlfwDir)\include</IncPath>
+		<LibPath bldr="*">$(GlfwDir)\lib</LibPath>
+		<LibPath bldr="MinGW">$(GlfwDir)\lib-mingw</LibPath>
+		<LibPath bldr="CYGWIN">$(GlfwDir)\lib-cygwin</LibPath>
+		<LibPath bldr="Microsoft">$(GlfwDir)\lib-msvc</LibPath>
+
+	</Options>
+</ProjectType>

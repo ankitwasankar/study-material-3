@@ -1,0 +1,475 @@
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Objective Type Questions on Pointers</h2></center>
+
+<pre>
+<font size="2">
+1.What would be the output of the following program?
+   #include "stdio.h"
+    main( )
+    {
+      printf( "%d %d", sizeof(NULL),sizeof(" " ) );
+    }
+
+(a)   1   1
+(b)   1   2
+(c)   2   1
+(d)   2   2
+
+Ans:  c
+
+2.How many bytes are occupied by near,far and huge
+ pointers?
+
+(a) 2,2,4
+(b) 2,4,4
+(c) 2,4,2
+(d) 2,2,2 
+
+Ans:  b
+
+4.Can anything else generate a Null Pointer Assignment
+ error?
+
+(a) Yes
+(b) No
+(c) Can't say
+(d) None
+
+Ans:  a
+
+5. Are the three declarations char **apple, char 
+*orange[ ], and char cherry [ ] [ ] same?
+
+(a) Yes
+(b) No
+(c) Can't say
+(d) None
+
+Ans:  b
+
+6.Can two different  near pointers contain two different
+ addresses but refer to the same location in memory?
+
+(a) Yes
+(b) No
+(c) Can't say
+(d) None 
+
+Ans:  b
+
+7.  Can two different  far pointers contain two different
+ addresses but refer to the same location in memory?
+
+(a) Yes
+(b) No
+(c) Can't say
+(d) None 
+
+Ans:  a
+
+8.  Can two different  huge pointers contain two different
+ addresses but refer to the same location in memory?
+
+(a) Yes
+(b) No
+(c) Can't say
+(d) None 
+
+Ans:  b
+
+9.Would the following program give any warning on compilation?
+
+#include "stdio.h"
+main( )
+{
+  int *p1,i=25;
+  void *p2;
+  p1=&i;
+  p2=&i;
+  p1=p2;
+  p2=p1;
+} 
+
+(a) Yes
+(b) No
+(c) Can't say
+(d) None
+
+Ans:  b
+
+10.Would the following program give any warning on compilation?
+
+#include "stdioh"
+main( )
+{
+  float *p1,i=25.50;
+  char *p2;
+  p1=&i;
+  p2=&i;
+} 
+
+(a) Yes. Suspicious pointer conversion in function main
+(b) No
+(c) Can't say
+(d) None
+
+Ans:  a
+
+11.What warning would be generated on compiling the following
+ program?
+
+main( )
+{
+  char far *scr;
+  scr=0*B8000000;
+  *scr = 'A';
+}
+
+(a)  Suspicious pointer conversion in function main
+(b)  Non-portable pointer assignment in function main
+(c)  Can't say
+(d)  None
+
+Ans:  b
+
+12.How would you eliminate the warning generated on compiling
+ the following program?
+
+main( )
+{
+ char far *scr;
+ scr=0*B8000000;
+ *scr = 'A';
+}
+
+(a)  Use the typecast scr= (char *far ) 0*B8000000;
+(b)  Use the typecast scr= (char far * ) 0*B8000000;
+(c)  Use the typecast scr= (char **far ) 0*B8000000;
+(d)  Use the typecast scr= (char far ** ) 0*B8000000;
+
+Ans: b
+
+13.  In a large data model (compact, large, huge) all pointers
+to data are 32 bits long,whereas in a small data model (tiny,
+small,medium) all pointers are 16 bits long
+
+(a) True
+(b) False
+(c) Can't say
+(d) None
+
+Ans:  a
+
+14.  A near pointer uses the contents of CS register 
+(if the pointer is pointing to code) or contents of DS 
+register (if the pointer is pointing to data) for the 
+segment part,whereas the offset part is stored in the 
+16-bit near pointer
+
+(a) True
+(b) False
+(c) Can't say
+(d) None
+
+Ans:  a
+
+15.  What would be the output of the following program?
+
+ main( )
+ {
+   char far *a=0*00000120;
+   char far *b=0*00100020;
+   char far *c=0*00120000;
+   if(a==b)
+    printf("\nHello");
+   if(a==c)
+    printf("\nHi");
+   if(b==c)
+    printf("\nHello Hi");
+   if(a>b && a>c &&b>c)
+    printf("\nBye");
+ }
+
+(a) Hello
+(b) Hi
+(c) Hello Hi
+(d) Bye
+
+Ans:  d
+
+16.  What would be the output of the following program?
+
+main( )
+{
+ char huge *a=0*00000120;
+ char huge *b=0*00100020;
+ char huge *c=0*00120000;
+ if(a==b)
+  printf("\nHello");
+ if(a==c)
+  printf("\nHi");
+ if(b==c)
+  printf("\nHello Hi");
+ if(a>b && a>c &&b>c)
+  printf("\nBye");
+}
+
+(a) Hello
+(b) Hi
+(c) Hello Hi
+(d) all
+
+ans:   d
+
+17.  Are the expressions *ptr++ and ++*ptr same?
+
+(a) Yes
+(b) No
+(c) Can't Say
+(d) None
+Ans: b
+
+18.Can you write another expression which does the same
+job as ++*ptr?
+
+(a) (ptr*)++
+(b) *ptr++
+(c) ptr*++
+(d) (*ptr)++
+
+Ans: d
+
+19.  What would be the equivalent pointer expression for
+referring the same element as a[i][j][k][l]?
+
+(a) *(*(*(*(a+i)+j)+k)+l)
+(b) *(*(*(*a[i])[j])[k])[l])
+(c) both
+(d) None
+
+Ans: a
+
+20. What would be the output of the following program ?
+   main( )
+  {
+    int arr[ ]={12,13,14,15,16};
+    printf("\n%d %d %d",sizeof(arr),sizeof(*arr),
+                sizeof(arr[0]));
+  }
+
+ (a) 10   4   4
+ (b) 10   4   2
+ (c) 10   2   2
+ (d) 10   2   4
+
+Ans: c
+
+21.What would be the output of the following program 
+assuming that the array begins at location 1002?
+
+main( )
+{
+ int a[3][4]={1,2,3,4,
+              5,6,7,8,
+              9,10,11,12
+             };
+ printf( "\n%u %u %u",a[0]+1,*(a[0]+1),*(*(a+0)+1));
+}
+
+(a) 1004   2   2
+(b) 1004  4   4
+(c) 1002  2   2
+(d) 1002  4   4
+
+Ans: a
+
+22.  What would be the output of the following program 
+assuming that the array begins at location 1002?
+
+main( )
+{
+ int a[2][3][4]={ {
+                   1,2,3,4,
+                   5,6,7,8,
+                   9,1,1,2
+                  },
+                  {
+                   2,1,4,7,
+                   6,7,8,9,
+                   0,0,0,0
+                  }
+                };
+ printf("\n%u %u %u %d",a,*a,**a,***a);
+}
+
+(a) 1002  1002 1002  2
+(b) 1002 1002  1002  1
+(c) 1004 1004  1004  1
+(d) 1004 1004  1004  2
+
+Ans: b
+
+23.  In the following program how would you print 50 
+using p?
+
+ main( )
+ {
+  int a[ ]={10,20,30,40,50};
+  char *p;
+  p = (char *) a;
+ }
+
+(a) printf("\n%d",*( (int *)p+4) );
+(b) printf("\n%d",( (int *)p+4) );
+(c) printf("\n%d",*( (int )p+4) );
+(d) printf("\n%d",*( (int **)p+4) );
+
+Ans:  a
+
+24.In the following program add a statement in the 
+function fun( ) such that address
+ of a gets stored 
+in j
+
+main( )
+{
+ int *j;
+ void fun(int **);
+ fun(&j);
+}
+void fun(int **k)
+{
+ int a=10;
+} 
+
+(a) *k=&a;
+(b)  &a=*k;
+(c) &k=*a;
+(d) *a=&k;
+
+Ans: a
+
+25.How would you declare an array of three function 
+pointers where each function receives two ints and 
+returns a float?
+
+(a) float (arr[3])(int,int);
+(b) int (arr[3])(float,float);
+(c) int (*arr[3])(float,float);
+(d) float(*arr[3])(int,int);
+
+Ans: d
+
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+
+<a href="pointer.html" target="_self"><strong>Back</strong></a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+
+
+
+
+

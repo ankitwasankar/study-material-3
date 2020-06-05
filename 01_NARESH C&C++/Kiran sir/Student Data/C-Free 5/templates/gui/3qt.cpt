@@ -1,0 +1,78 @@
+<ProjectType name="Qt project" icon="qt.bmp?0" type="GUI" ext="exe" tab="GUI toolkits" desc="Create basic Qt application." version="1.0">
+	<Pages count="2">
+		<Page title="Application Types#77004">
+			<RadioGroup name="AppTypes" title="Select the kind of Application type you want to create" value="0" width="290" height="100" enabled="1">
+				<Item>An &empty project.#77018</Item>
+				<Item>&Simple "Hello World" project</Item>
+				<Item>&Form based project</Item>
+			</RadioGroup>	
+		</Page>
+		<Page title="Qt Library Selection">
+			<BrowseFolder name="QtDir" title="Qt's location (Base directory):" value="" width="290" height="20" enabled="1">
+			</BrowseFolder>
+			
+		</Page>
+	</Pages>
+
+	<Outputs>
+		<Directory name="\">
+		<File folder="Source Files" name="" external="" enabled="1"></File>
+		<File folder="Header Files" name="" external="" enabled="1"></File>
+		<File folder="Other Files" name="" external="" enabled="1"></File>
+	
+		<File folder="Source Files" name="$(ProjectName).cpp" external="" enabled="$(AppTypes)=1">
+#include &lt;QApplication&gt;
+#include &lt;QPushButton&gt;
+
+int main(int argc, char *argv[])
+{
+	QApplication app(argc, argv);
+	
+	QPushButton hello(QPushButton::tr("Hello world!"));
+	hello.resize(100, 30);
+	
+	hello.show();
+	return app.exec();
+}
+
+		</File>
+		<File folder="Source Files" name="main.cpp" external="qt\main.cpp" enabled="$(AppTypes)=2">
+		</File>
+		<File folder="Source Files" name="mainwindow.cpp" external="qt\mainwindow.cpp" enabled="$(AppTypes)=2">
+		</File>
+		<File folder="Source Files" name="moc_mainwindow.cpp" external="qt\moc_mainwindow.cpp" enabled="$(AppTypes)=2">
+		</File>
+		<File folder="Header Files" name="mainwindow.h" external="qt\mainwindow.h" enabled="$(AppTypes)=2">
+		</File>
+		<File folder="" name="ui_mainwindow.h" external="qt\ui_mainwindow.h" enabled="$(AppTypes)=2">
+		</File>
+		<File folder="Other Files" name="mainwindow.ui" external="qt\mainwindow.ui" enabled="$(AppTypes)=2">
+		</File>
+		</Directory>
+	</Outputs>
+	<Options>
+		
+		<Linker bldr="MinGW"></Linker>
+		<Linker bldr="Borland"></Linker>
+		
+		<Lib bldr="MinGW">QtCore4</Lib>
+		<Lib bldr="MinGW">QtGui4</Lib>
+		
+		<Lib bldr="CYGWIN">QtCore4</Lib>
+		<Lib bldr="CYGWIN">QtGui4</Lib>
+		
+		<Lib bldr="Borland">QtCore4.lib</Lib>
+		<Lib bldr="Borland">QtGui4.lib</Lib>
+		
+		<Lib bldr="Microsoft">QtCore4.lib</Lib>
+		<Lib bldr="Microsoft">QtGui4.lib</Lib>
+
+		
+		<IncPath bldr="*">$(QtDir)\include</IncPath>
+		<IncPath bldr="*">$(QtDir)\include\QtGui</IncPath>
+		
+		<LibPath bldr="*">$(QtDir)\lib</LibPath>
+		<ExePath bldr="*">$(QtDir)\bin</ExePath>
+
+	</Options>
+</ProjectType>

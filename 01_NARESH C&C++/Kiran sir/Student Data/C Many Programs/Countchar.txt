@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+FILE *fp;
+char ch;
+int noc=0,nob=0;
+clrscr();
+fp=fopen("acess.txt","r");
+while(1)
+{
+ch=fgetc(fp);
+if(ch==EOF)
+break;
+noc++;
+if(ch==' ')
+nob++;
+}
+fclose(fp);
+printf("No. of char   :-%d",noc);
+printf("No. of spaces :-%d",nob);
+}

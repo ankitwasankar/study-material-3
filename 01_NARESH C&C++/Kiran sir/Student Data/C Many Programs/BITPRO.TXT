@@ -1,0 +1,1332 @@
+#include<graphics.h>
+#include<stdlib.h>
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+#include<dos.h>
+/* Declaration of Functions*/
+void mainm(void);
+void bkinf(void);
+void meminf(void);
+void trans(void);
+void records(void);
+void bkentry(void);
+void bkdel(void);
+void newmem(void);
+void memdel(void);
+void bkissue(void);
+void bkdep(void);
+void rectotbk(void);
+void recissbk(void);
+void recmem(void);
+void calfine(void);
+void border();
+/* Declaration of Structures*/
+struct entry
+{
+int cno;
+char name[30];
+char author[30];
+char edition[20];
+};
+struct entry e;
+
+struct issue
+{
+int cno;
+char namebook[30];
+char author[30];
+int stcd;
+char namestu[30];
+int ddis,mmis,yyis;
+int ddre,mmre,yyre;
+};
+struct issue s;
+
+struct member
+{
+int stcode;
+char stname[30];
+char stcourse[10];
+};
+struct member m;
+
+FILE *f1,*f2,*f3,*f4,*f5;
+
+/* Data type declaration*/
+char ans1,ans2,ans3,ans4,ans5;
+int z,t,u,x,v,w,y,q=205,p,b=212,c=190;
+static int number,mement;
+int j,k,l;
+
+
+void main(void)
+{
+// request auto detection
+int gd=DETECT,gm;
+int s,d,t,i;
+// initialize graphics and local variables /
+initgraph(&gd,&gm,"c:\\tc\\bgi");
+
+border();
+// output a message
+setcolor(2);
+settextstyle(7, HORIZ_DIR, 3);
+outtextxy(199,105,"College of Education");
+
+setcolor(6);
+settextstyle(GOTHIC_FONT, HORIZ_DIR, 5);
+outtextxy(65,140,"Library Management System");
+setlinestyle(1,1,2);
+line(61,195,190,195);
+line(61,197,190,197);
+line(210,195,423,195);
+line(210,197,423,197);
+line(443,195,570,195);
+line(443,197,570,197);
+
+setcolor(9);
+settextstyle(7, HORIZ_DIR, 2);
+outtextxy(40,220,"Submitted By:");
+setcolor(12);
+settextstyle(7, HORIZ_DIR, 1);
+outtextxy(40,250,"Shubhit Jani");
+outtextxy(40,275,"Jitendra Kumar");
+outtextxy(40,300,"Sandeep Chhadwani");
+outtextxy(40,325,"BCA 2Sem (B)");
+setcolor(9);
+settextstyle(7, HORIZ_DIR, 2);
+outtextxy(420,220,"Submitted To:");
+setcolor(12);
+settextstyle(7, HORIZ_DIR, 1);
+outtextxy(420,275,"Veena Madam");
+outtextxy(420,250,"Amit Sir");
+setcolor(9);
+settextstyle(7, HORIZ_DIR, 2);
+outtextxy(420,325,"Guided By:");
+setcolor(12);
+settextstyle(7, HORIZ_DIR, 1);
+outtextxy(420,355,"Naveen Sir");
+
+  setcolor(4);
+  settextstyle(GOTHIC_FONT, HORIZ_DIR, 8);
+  outtextxy(140,8, "Aishwarya");
+
+  setcolor(9);
+  settextstyle(3, HORIZ_DIR, 2);
+  outtextxy(100,390,"Wait for Loading. . . ");
+
+  setcolor(BROWN);
+  for(k=1;k<=2;k++)
+  rectangle(130+k,425+k,475-k,445-k);
+  setcolor(10);
+  for(k=1;k<=330;k=k+10)
+  { outtextxy(138+k,424,"*");
+    delay(200);
+  }
+
+delay(500);
+mainm();
+getch();
+closegraph();
+}
+
+/**************************MAIN MENU*************************/
+void mainm(void)
+{
+int c,i=111111;
+aa:
+cleardevice();
+//Outside Border
+setlinestyle(4,i,1);
+i++;
+setcolor(12);
+rectangle(5,5,632,474);
+setcolor(15);
+rectangle(8,8,629,471);
+setcolor(2);
+rectangle(11,11,626,468);
+setcolor(12);
+rectangle(5,5,632,474);
+setcolor(15);
+rectangle(8,8,629,471);
+setcolor(2);
+rectangle(11,11,626,468);
+setlinestyle(2,0,2);
+setcolor(2);
+rectangle(160,130,490,330);
+rectangle(162,132,488,328);
+setcolor(9);
+settextstyle(1,0,2);
+outtextxy(190,140,"1. Book Information");
+outtextxy(190,170,"2. Member Information");
+outtextxy(190,200,"3. Transactions");
+outtextxy(190,230,"4. Records");
+outtextxy(190,260,"5. Fine Calculation");
+outtextxy(190,290,"6. Exit");
+setcolor(5);
+settextstyle(4,0,4);
+outtextxy(145,350,"Enter Your Choice");
+
+for(;!kbhit();)
+{  setcolor(random(15));
+   settextstyle(4, HORIZ_DIR,7);
+   outtextxy(170,40, "Main Menu");
+   circle(435,375,12);
+   delay(150);
+}
+gotoxy(55,24);
+flushall();
+scanf("%d",&c);
+if(c!=1 && c!=2 && c!=3 && c!=4 && c!=5 && c!=6)
+{  setcolor(12);
+   settextstyle(4,0,4);
+   outtextxy(145,390,"Enter the Valid Choice");
+   getch();
+   goto aa;
+}
+
+switch(c)
+{
+case 1:  bkinf(); break;
+case 2:  meminf(); break;
+case 3:  trans(); break;
+case 4:  records(); break;
+case 5:  calfine(); break;
+case 6:  exit(0);
+}
+cleardevice();
+flushall();
+mainm();
+getch();
+}
+
+/**********************BOOK INFORMATION************************/
+void bkinf()
+{
+int c;
+bb:
+border();
+setlinestyle(2,0,2);
+setcolor(2);
+rectangle(160,130,490,297);
+rectangle(162,132,488,295);
+setcolor(9);
+settextstyle(1,0,2);
+outtextxy(190,145,"1. Add a New Book");
+outtextxy(190,195,"2. Delete the Old Book");
+outtextxy(190,245,"3. Return to Main Menu");
+setcolor(5);
+settextstyle(4,0,4);
+outtextxy(145,318,"Enter Your Choice");
+
+for(;!kbhit();)
+{  setcolor(random(15));
+   settextstyle(4, HORIZ_DIR,6);
+   outtextxy(120,40, "Book Information");
+   circle(435,343,12);
+   delay(150);
+}
+gotoxy(55,22);
+flushall();
+scanf("%d",&c);
+if(c!=1 && c!=2 && c!=3)
+{  setcolor(12);
+   settextstyle(4,0,4);
+   outtextxy(145,390,"Enter the Valid Choice");
+   getch();
+   goto bb;
+}
+
+switch(c)
+{ case 1: bkentry(); break;
+  case 2: bkdel(); break;
+  case 3: mainm();
+}
+}
+
+/*************************MEMBER INFORMATION************************/
+void meminf()
+{
+int c;
+cc:
+border();
+setlinestyle(2,0,2);
+setcolor(2);
+rectangle(160,130,490,297);
+rectangle(162,132,488,295);
+setcolor(9);
+settextstyle(1,0,2);
+outtextxy(190,145,"1. Add a New Member");
+outtextxy(190,195,"2. Delete the Old Member");
+outtextxy(190,245,"3. Return to Main Menu");
+setcolor(5);
+settextstyle(4,0,4);
+outtextxy(145,318,"Enter Your Choice");
+
+for(;!kbhit();)
+{  setcolor(random(15));
+   settextstyle(4, HORIZ_DIR,6);
+   outtextxy(90,40, "Member Information");
+   circle(435,343,12);
+   delay(150);
+}
+gotoxy(55,22);
+flushall();
+scanf("%d",&c);
+if(c!=1 && c!=2 && c!=3)
+{  setcolor(12);
+   settextstyle(4, 0,4);
+   outtextxy(145,390,"Enter the Valid Choice");
+   getch();
+   goto cc;
+}
+
+switch(c)
+{  case 1: newmem(); break;
+   case 2: memdel(); break;
+   case 3: mainm();
+}
+}
+
+/**************************TRANSACTIONS*****************************/
+void trans()
+{
+int c;
+dd:
+border();
+setlinestyle(2,0,2);
+setcolor(2);
+rectangle(160,130,490,297);
+rectangle(162,132,488,295);
+setcolor(9);
+settextstyle(1,0,2);
+outtextxy(190,145,"1. Issue a Book");
+outtextxy(190,195,"2. Deposit the Book");
+outtextxy(190,245,"3. Return to Main Menu");
+setcolor(5);
+settextstyle(4,0,4);
+outtextxy(145,318,"Enter Your Choice");
+
+for(;!kbhit();)
+{  setcolor(random(15));
+   settextstyle(4, HORIZ_DIR,6);
+   outtextxy(200,40, "Transaction");
+   circle(435,343,12);
+   delay(150);
+}
+
+gotoxy(55,22);
+flushall();
+scanf("%d",&c);
+if(c!=1 && c!=2 && c!=3)
+{  setcolor(12);
+   settextstyle(4,0,4);
+   outtextxy(145,390,"Enter the Valid Choice");
+   getch();
+   goto dd;
+}
+
+switch(c)
+{  case 1: bkissue(); break;
+   case 2: bkdep(); break;
+   case 3: mainm();
+}
+}
+
+/********************************RECORDS*****************************/
+void records()
+{
+int c;
+ee:
+border();
+setlinestyle(2,0,2);
+setcolor(2);
+rectangle(160,130,490,297);
+rectangle(162,132,488,295);
+setcolor(9);
+settextstyle(1,0,2);
+outtextxy(190,145,"1. Total Books in Library");
+outtextxy(190,180,"2. Record of Issued Books");
+outtextxy(190,217,"3. Total Members");
+outtextxy(190,250,"4. Return to Main Menu");
+setcolor(5);
+settextstyle(4,0,4);
+outtextxy(145,318,"Enter Your Choice");
+
+for(;!kbhit();)
+{  setcolor(random(15));
+   settextstyle(4, HORIZ_DIR,6);
+   outtextxy(240,40, "Records");
+   circle(435,343,12);
+   delay(150);
+}
+gotoxy(55,22);
+flushall();
+scanf("%d",&c);
+if(c!=1 && c!=2 && c!=3 && c!=4)
+{  setcolor(12);
+   settextstyle(4,0,4);
+   outtextxy(145,390,"Enter the Valid Choice");
+   getch();
+   goto ee;
+}
+
+switch(c)
+{  case 1: rectotbk(); break;
+   case 2: recissbk(); break;
+   case 3: recmem(); break;
+   case 4: mainm();
+}
+}
+
+
+/*************************CALCULATE FINE******************************/
+void calfine()
+{
+int num,stcode,x,fine,val1=0;
+char bkname[30],bkauth[30],stname[30];
+char choice;
+int dais,mois,yeis;
+int dare,more,yere;
+struct date d;
+do
+{
+border();
+setcolor(2);
+settextstyle(4,0,5);
+outtextxy(170,30,"Fine Calculation");
+setcolor(9);
+settextstyle(1,0,3);
+outtextxy(160,212,"Enter Book's Code no.");
+setlinestyle(2,0,1);
+rectangle(150,205,468,250);
+rectangle(148,203,470,252);
+gotoxy(55,15); flushall();
+scanf("%d",&num);
+flushall();
+getdate(&d);
+f1=fopen("sjsiss.txt","r");
+while(fread(&s,sizeof(s),1,f1)==1)
+{  if(s.cno==num)
+   {  stcode=s.stcd;
+      strcpy(bkname,s.namebook);
+      strcpy(bkauth,s.author);
+      strcpy(stname,s.namestu);
+      dare=s.ddre; more=s.mmre; yere=s.yyre;
+      val1=1;
+   }
+}
+fclose(f1);
+if(val1==0)
+{   border();
+    setcolor(2);
+    settextstyle(4,0,5);
+    outtextxy(160,30,"Fine Calculation");
+    setcolor(9);
+    settextstyle(1,0,3);
+    outtextxy(170,200,"This book is not issued");
+}
+else
+{	border();
+	setcolor(2);
+	settextstyle(4,0,5);
+	outtextxy(160,30,"Fine Calculation");
+	setcolor(9);
+	settextstyle(1,0,2);
+	outtextxy(150,118,"Book Name");
+	gotoxy(45,9);
+	printf("%s",bkname);
+	outtextxy(150,150,"Author Name");
+	gotoxy(45,11);
+	printf("%s",bkauth);
+	outtextxy(150,182,"Student Code");
+	gotoxy(45,13);
+	printf("%d",stcode);
+	outtextxy(150,214,"Student Name");
+	gotoxy(45,15);
+	printf("%s",stname);
+	outtextxy(150,246,"Return Date");
+	gotoxy(45,17);
+	printf("%d-%d-%d",dare,more,yere);
+	outtextxy(150,278,"Today's Date");
+	gotoxy(45,19);
+	printf("%d-%d-%d",d.da_day,d.da_mon,d.da_year);
+
+if(d.da_year==yere)
+{
+if(d.da_mon==more)
+{
+if(d.da_day>dare)
+  x=d.da_day-dare;
+else
+  x=0;
+}
+}
+
+if(d.da_year==yere)
+{  if(d.da_mon>more)
+{
+switch (more)
+{
+case 1: x=d.da_day+120-dare; break;
+case 2: x=d.da_day+90-dare; break;
+case 3: x=d.da_day+61-dare; break;
+case 4: x=d.da_day+30-dare; break;
+case 5: x=d.da_day-dare; break;
+//case 6: x=d.da_day+183-dare; break;
+//case 7: x=d.da_day+153-dare; break;
+//case 8: x=d.da_day+122-dare; break;
+//case 9: x=d.da_day+91-dare; break;
+//case 10: x=d.da_day+61-dare; break;
+//case 11: x=d.da_day+30-dare; break;
+//case 12: x=d.da_day-dare; break;
+}
+}
+}
+
+if(d.da_year==yere)
+{  if(d.da_mon<more)
+     x=0;
+}
+
+fine=2*x;
+
+	outtextxy(150,310,"Extra Days");
+	gotoxy(45,21);
+	printf("%d",x);
+	setcolor(12);
+	settextstyle(1,0,4);
+	outtextxy(240,366,"Fine");
+	gotoxy(45,25);
+	printf("Rs %d",fine);
+	getch();
+	border();
+	setcolor(2);
+	settextstyle(4,0,5);
+	outtextxy(160,30,"Fine Calculation");
+	setcolor(9);
+	settextstyle(1,0,3);
+	outtextxy(80,212,"Do you want to Calculate Fine again");
+	gotoxy(67,15);
+	flushall();
+	scanf("%c",&choice);
+}
+}while(choice=='y');
+}
+
+/*************************BOOK ENTRY**************************/
+void bkentry()
+{
+int i;
+f1=fopen("sjslib.txt","r+");
+if(f1==NULL)
+  f1=fopen("sjslib.txt","w+");
+fseek(f1,0,SEEK_SET);
+while(fread(&e,sizeof(e),1,f1)==1)
+  number=e.cno;
+if(number==0)
+  number=101;
+else
+  number=number+1;
+fclose(f1);
+f1=fopen("sjslib.txt","a+");
+
+do
+{
+border();
+e.cno=number;
+setcolor(2);
+settextstyle(4,0,5);
+outtextxy(120,60,"Entry of a New Book");
+setcolor(9);
+settextstyle(1,0,2);
+outtextxy(125,151,"Code Number");
+setlinestyle(0,0,0);
+gotoxy(38,11);
+printf("%d",e.cno);
+outtextxy(125,200,"Book Name");
+rectangle(280,201,550,226);
+gotoxy(38,14);
+flushall();
+gets(e.name);
+setcolor(0);
+rectangle(280,201,550,226);
+setcolor(9);
+outtextxy(125,249,"Author Name");
+rectangle(280,250,550,275);
+gotoxy(38,17);
+flushall();
+gets(e.author);
+setcolor(0);
+rectangle(280,250,550,275);
+setcolor(9);
+outtextxy(125,298,"Edition");
+rectangle(280,299,550,324);
+gotoxy(38,20);
+flushall();
+gets(e.edition);
+fwrite(&e,sizeof(e),1,f1);
+
+setcolor(0);
+rectangle(280,299,550,324);
+setcolor(5);
+settextstyle(3,0,3);
+outtextxy(120,354,"Enter another record (Y/N)");
+gotoxy(57,24);
+fflush(stdin);
+scanf("%c",&ans1);
+i++;
+number++;
+fflush(stdin);
+} while(ans1=='y');
+fclose(f1);
+cleardevice();
+bkinf();
+}
+
+/************************BOOK DELETE FROM LIBRARY******************/
+void bkdel()         getpass
+{
+int num,flag4=0,bkcode;
+char name[30],auth[30],edit[10],ch,choice;
+do
+{
+border();
+setcolor(2);
+settextstyle(4,0,5);
+outtextxy(75,30,"Delete Books from Library");
+setcolor(9);
+settextstyle(1,0,3);
+outtextxy(160,212,"Enter Book's Code no.");
+setlinestyle(2,0,1);
+rectangle(150,205,468,250);
+rectangle(148,203,470,252);
+gotoxy(55,15);
+fflush(stdin);
+scanf("%d",&num);
+f1=fopen("sjslib.txt","r+");
+while(fread(&e,sizeof(e),1,f1)==1)
+{ if(num==e.cno)
+  {  bkcode=e.cno;
+     strcpy(name,e.name);
+     strcpy(auth,e.author);
+     strcpy(edit,e.edition);
+     flag4=1;
+     break;
+  }
+}
+fclose(f1);
+
+if(flag4==0)
+{   border();
+    setcolor(2);
+    settextstyle(4,0,5);
+    outtextxy(75,30,"Delete Books from Library");
+    setcolor(9);
+    settextstyle(1,0,3);
+    outtextxy(165,212,"No Record Exist....");
+    getch();
+}
+
+if(flag4==1)
+{	border();
+	setcolor(2);
+	settextstyle(4,0,5);
+	outtextxy(75,30,"Delete Books from Library");
+	setcolor(9);
+	settextstyle(1,0,2);
+	outtextxy(130,150,"Book Code");
+	gotoxy(40,11);
+	printf("%d",bkcode);
+	outtextxy(130,198,"Book Name");
+	gotoxy(40,14);
+	printf("%s",name);
+	outtextxy(130,246,"Author Name");
+	gotoxy(40,17);
+	printf("%s",auth);
+	outtextxy(130,294,"Edition");
+	gotoxy(40,20);
+	printf("%s",edit);
+	setcolor(5);
+	settextstyle(3,0,3);
+	outtextxy(60,354,"Do you want to Delete this Record (Y/N)");
+	gotoxy(70,24);
+	flushall();
+	scanf("%c",&choice);
+	if(choice=='y')
+	{       f3=fopen("sjsiss.txt","r");
+		while(fread(&s,sizeof(s),1,f3)==1)
+		{  if(s.cno==num)
+		   { setcolor(12);
+		     settextstyle(4,0,4);
+		     outtextxy(170,390,"This Book is Issued");
+		     outtextxy(110,420,"You can not Delete this Book");
+		     getch();
+		     goto xx;
+		   }
+		}
+		fclose(f3);
+
+		f1=fopen("temp.txt","w+");
+		f2=fopen("sjslib.txt","r");
+		while(fread(&e,sizeof(e),1,f2)==1)
+		{  if(e.cno!=num)
+		    fwrite(&e,sizeof(e),1,f1);
+		}
+		fclose(f1);
+		fclose(f2);
+		remove("sjslib.txt");
+		rename("temp.txt","sjslib.txt");
+	}
+}
+xx:
+border();
+setcolor(2);
+settextstyle(4,0,5);
+outtextxy(75,30,"Delete Books from Library");
+setcolor(9);
+settextstyle(1,0,3);
+outtextxy(40,200,"Do you want to delete another book (y/n)");
+gotoxy(70,14);
+flushall();
+scanf("%c",&ch);
+}while(ch=='y');
+bkinf();
+}
+
+/*****************************NEW MEMBERSHIP**************************/
+void newmem()
+{
+char ans1;
+int code;
+do
+{
+border();
+setcolor(2);
+settextstyle(4,0,5);
+outtextxy(100,60,"Entry of a New Member");
+setcolor(9);
+settextstyle(1,0,2);
+outtextxy(125,151,"Student Code");
+setlinestyle(0,0,0);
+rectangle(290,153,550,178);
+gotoxy(40,11);  flushall();
+scanf("%d",&code);
+f2=fopen("member.txt","r");
+while(fread(&m,sizeof(m),1,f2)==1)
+{  if(m.stcode==code)
+   {    border();
+	setcolor(2);
+	settextstyle(4,0,5);
+	outtextxy(100,60,"Entry of a New Member");
+	setcolor(5);
+	settextstyle(3,0,3);
+	outtextxy(120,200,"This member already exist");
+	goto ss;
+    }
+}
+fclose(f2);
+m.stcode=code;
+setcolor(0);
+rectangle(290,153,550,178);
+setcolor(9);
+outtextxy(125,200,"Student Name");
+rectangle(290,201,550,226);
+gotoxy(40,14); flushall();
+gets(m.stname);
+setcolor(0);
+rectangle(290,201,550,226);
+setcolor(9);
+outtextxy(125,249,"Student Course");
+rectangle(290,250,550,275);
+gotoxy(40,17);  flushall();
+gets(m.stcourse);
+setcolor(0);
+rectangle(290,250,550,275);
+setcolor(9);
+f1=fopen("member.txt","a+");
+fwrite(&m,sizeof(m),1,f1);
+fclose(f1);
+ss:
+setcolor(5);
+settextstyle(3,0,3);
+outtextxy(120,354,"Enter another record (Y/N)");
+gotoxy(57,24);
+fflush(stdin);
+scanf("%c",&ans1);
+} while(ans1=='y');
+meminf();
+}
+
+/***********************MEMBER DELETE******************************/
+void memdel()
+{
+int num,flag4=0;
+char choice,ch;
+char studname[30],couname[10];
+do
+{
+border();
+setlinestyle(2,0,1);
+setcolor(12);
+rectangle(5,5,632,474);
+setcolor(15);
+rectangle(8,8,629,471);
+setcolor(2);
+rectangle(11,11,626,468);
+setcolor(2);
+settextstyle(4,0,5);
+outtextxy(75,30,"Delete Membership");
+setcolor(9);
+settextstyle(1,0,3);
+outtextxy(160,212,"Enter Member's Code no.");
+setlinestyle(2,0,1);
+rectangle(150,205,468,250);
+rectangle(148,203,470,252);
+gotoxy(55,15);
+fflush(stdin);
+scanf("%d",&num);
+f1=fopen("member.txt","r");
+while(fread(&e,sizeof(e),1,f1)==1)
+{ if(m.stcode==num)
+  {  strcpy(studname,m.stname);
+     strcpy(couname,m.stcourse);
+     flag4=1;
+     break;
+  }
+}
+fclose(f1);
+
+if(flag4==0)
+{   border();
+    setcolor(2);
+    settextstyle(4,0,5);
+    outtextxy(75,30,"Delete Membership");
+    setcolor(9);
+    settextstyle(1,0,3);
+    outtextxy(165,212,"No Record Exist....");
+    getch();
+}
+
+if(flag4==1)
+{	border();
+	setcolor(2);
+	settextstyle(4,0,5);
+	outtextxy(75,30,"Delete Membership");
+	setcolor(9);
+	settextstyle(1,0,2);
+	outtextxy(130,150,"Student Code");
+	gotoxy(40,11);
+	printf("%d",num);
+	outtextxy(130,198,"Student Name");
+	gotoxy(40,14);
+	printf("%s",studname);
+	outtextxy(130,246,"Student Course");
+	gotoxy(40,17);
+	printf("%s",couname);
+	setcolor(5);
+	settextstyle(3,0,3);
+	outtextxy(60,354,"Do you want to Delete this Member (Y/N)");
+	gotoxy(70,24);
+	flushall();
+	scanf("%c",&choice);
+	if(choice=='y')
+	{       f3=fopen("sjsiss.txt","r");
+		while(fread(&s,sizeof(s),1,f3)==1)
+		{  if(s.stcd==num)
+		   { setcolor(12);
+		     settextstyle(4,0,4);
+		     outtextxy(160,390,"He/She Issued a Book");
+		     outtextxy(100,420,"You can not Delete this Member");
+		     getch();
+		     goto mm;
+		   }
+		}
+		fclose(f3);
+
+		f1=fopen("temp.txt","w+");
+		f2=fopen("member.txt","r");
+		while(fread(&e,sizeof(e),1,f2)==1)
+		{  if(m.stcode!=num)
+		    fwrite(&e,sizeof(e),1,f1);
+		}
+		fclose(f1);
+		fclose(f2);
+		remove("member.txt");
+		rename("temp.txt","member.txt");
+	}
+}
+mm:
+border();
+setcolor(2);
+settextstyle(4,0,5);
+outtextxy(75,30,"Delete Membership");
+setcolor(9);
+settextstyle(1,0,3);
+outtextxy(40,200,"Do you want to delete another member (y/n)");
+gotoxy(70,14);
+flushall();
+scanf("%c",&ch);
+}while(ch=='y');
+meminf();
+
+
+
+}
+
+
+/***************************BOOK ISSUE***************************/
+void bkissue()
+{
+int num,flag1=0,flag2=0;
+int a,b,c,d,f,g,h,i;
+char ch;
+char bkname[30],bkauth[30],bkedit[10];
+int stcode;
+char stname[30];
+do
+{
+border();
+setcolor(2);
+settextstyle(4,0,5);
+outtextxy(180,60,"Issued a Book");
+
+setcolor(9);
+settextstyle(1,0,3);
+outtextxy(160,212,"Enter Book's Code no.");
+setlinestyle(2,0,1);
+rectangle(150,205,468,250);
+rectangle(148,203,470,252);
+
+gotoxy(55,15);
+fflush(stdin);
+scanf("%d",&num);
+
+f1=fopen("sjslib.txt","r");
+while(fread(&e,sizeof(e),1,f1)==1)
+{  if(num==e.cno)
+   {  strcpy(bkname,e.name);
+      strcpy(bkauth,e.author);
+      strcpy(bkedit,e.edition);
+      flag1=1;
+      break;
+   }
+}
+fclose(f1);
+
+if(flag1==1)
+{  f2=fopen("sjsiss.txt","r");
+   while(fread(&s,sizeof(s),1,f2)==1)
+   {
+     if(num==s.cno)
+     {  flag2=1;
+	break;
+     }
+   }
+   fclose(f2);
+   if(flag2==1)
+   {
+     border();
+     setcolor(2);
+     settextstyle(4,0,5);
+     outtextxy(180,60,"Issued a Book");
+     setcolor(9);
+     settextstyle(1,0,3);
+     outtextxy(160,212,"This book is already issued...");
+     getch();
+     flag2=0;
+   }
+   else
+   {
+    //issue the book
+	 border();
+	 setcolor(2);
+	 settextstyle(4,0,5);
+	 outtextxy(180,40,"Issued a Book");
+	 setcolor(9);
+	 settextstyle(1,0,2);
+	 outtextxy(100,135,"Name of the Book");
+	 gotoxy(40,10);
+	 printf("%s",bkname);
+	 s.cno=num;
+	 flushall();
+	 strcpy(s.namebook,bkname);
+	 outtextxy(100,167,"Author of the Book");
+	 gotoxy(40,12);
+	 printf("%s",bkauth);
+	 flushall();
+	 strcpy(s.author,bkauth);
+	 outtextxy(100,200,"Edition");
+	 gotoxy(25,14);
+	 printf("%s",bkedit);
+	 outtextxy(100,230,"Student Code");
+	 gotoxy(34,16);
+	 fflush(stdin);
+	 scanf("%d",&s.stcd);
+	 f4=fopen("member.txt","r");
+	 while(fread(&m,sizeof(m),1,f4)==1)
+	 { if(m.stcode==s.stcd)
+	     { strcpy(s.namestu,m.stname);
+	       goto gg;
+	     }
+	   else
+	   {  setcolor(12);
+	      settextstyle(4,0,4);
+	      outtextxy(100,300,"He/She is not the Member");
+	      getch();
+	      goto ff;
+	   }
+	 }
+	 gg:
+	 fclose(f4);
+	 outtextxy(100,262,"Name of the Student");
+	 gotoxy(43,18);
+	 flushall();
+	 printf("%s",s.namestu);
+	 outtextxy(100,295,"Issued date in dd-mm-yy");
+	 gotoxy(51,20);
+	 flushall();
+	 scanf("%d-%d-%d",&s.ddis,&s.mmis,&s.yyis);
+	 outtextxy(100,327,"Return date in dd-mm-yy");
+	 gotoxy(51,22);
+	 flushall();
+	 scanf("%d-%d-%d",&s.ddre,&s.mmre,&s.yyre);
+	 f3=fopen("sjsiss.txt","a");
+	 fwrite(&s,sizeof(s),1,f3);
+	 fflush(stdin);
+	 flag1=0;
+   }
+}
+else
+{   border();
+    setcolor(2);
+    settextstyle(4,0,5);
+    outtextxy(180,60,"Issued a Book");
+    setcolor(9);
+    settextstyle(1,0,3);
+    outtextxy(165,212,"No Record Exist....");
+    getch();
+}
+ff:
+border();
+setcolor(2);
+settextstyle(4,0,5);
+outtextxy(180,60,"Issued a Book");
+setcolor(9);
+settextstyle(1,0,3);
+outtextxy(40,200,"Do you want to issue another book (y/n)");
+gotoxy(70,14);
+flushall();
+scanf("%c",&ch);
+}while(ch=='y');
+fclose(f3);
+trans();
+}
+
+/************************BOOK DEPOSIT************************/
+void bkdep()
+{
+int num,isscode,stcd,flag5=0;
+char stname[30],bkname[30],authname[30],choice,ch;
+int ddis1,mmis1,yyis1;
+int ddre1,mmre1,yyre1;
+do
+{
+struct date d;
+getdate(&d);
+border();
+setcolor(2);
+settextstyle(4,0,5);
+outtextxy(160,30,"Deposit the Book");
+setcolor(9);
+settextstyle(1,0,3);
+outtextxy(160,212,"Enter Book's Code no.");
+setlinestyle(2,0,1);
+rectangle(150,205,468,250);
+rectangle(148,203,470,252);
+gotoxy(55,15);
+fflush(stdin);
+scanf("%d",&num);
+f1=fopen("sjsiss.txt","r");
+while(fread(&s,sizeof(s),1,f1)==1)
+{ if(num==s.cno)
+  { stcd=s.stcd;
+    strcpy(stname,s.namestu);
+    strcpy(bkname,s.namebook);
+    strcpy(authname,s.author);
+    ddis1=s.ddis;    mmis1=s.mmis;    yyis1=s.yyis;
+    ddre1=s.ddre;    mmre1=s.mmre;    yyre1=s.yyre;
+    flag5=1;
+    break;
+  }
+}
+fclose(f1);
+
+if(flag5==0)
+{   border();
+    setcolor(2);
+    settextstyle(4,0,5);
+    outtextxy(160,30,"Deposit the Book");
+    setcolor(9);
+    settextstyle(1,0,3);
+    outtextxy(165,212,"This Book is not Issued");
+    getch();
+}
+
+if(flag5==1)
+{   border();
+    setcolor(2);
+    settextstyle(4,0,5);
+    outtextxy(160,30,"Deposit the Book");
+    setcolor(9);
+    settextstyle(1,0,2);
+    outtextxy(130,134,"Student Code");
+    gotoxy(42,10);
+    printf("%d",stcd);
+    outtextxy(130,167,"Student Name");
+    gotoxy(42,12);
+    printf("%s",stname);
+    outtextxy(130,199,"Book Name");
+    gotoxy(42,14);
+    printf("%s",bkname);
+    outtextxy(130,230,"Author Name");
+    gotoxy(42,16);
+    printf("%s",authname);
+    outtextxy(130,263,"Issue Date");
+    gotoxy(42,18);
+    printf("%d-%d-%d",ddis1,mmis1,yyis1);
+    outtextxy(130,295,"Return Date");
+    gotoxy(42,20);
+    printf("%d-%d-%d",ddre1,mmre1,yyre1);
+    if(yyre1<=d.da_year)
+    {  if(mmre1<=d.da_mon)
+       {  if(ddre1<=d.da_day)
+	  {  for(;!kbhit();)
+	     { setcolor(12);
+	       settextstyle(4,0,3);
+	       outtextxy(60,356,"Late Entry");
+	       delay(100);
+	       setcolor(0);
+	       outtextxy(60,356,"Late Entry");
+    }  }  }  }
+    border();
+    setcolor(2);
+    settextstyle(4,0,5);
+    outtextxy(160,30,"Deposit the Book");
+    setcolor(5);
+    settextstyle(3,0,3);
+    outtextxy(40,196,"Do you want to deposit this Book (y/n)");
+    gotoxy(67,24);
+    fflush(stdin);
+    scanf("%c",&choice);
+    if(choice=='y')
+    {   f2=fopen("temp.txt","w+");
+	f3=fopen("sjsiss.txt","r");
+	while(fread(&s,sizeof(s),1,f3)==1)
+	{	if(s.cno!=num)
+		 fwrite(&s,sizeof(s),1,f2);
+	}
+	fclose(f2);
+	fclose(f3);
+	remove("sjsiss.txt");
+	rename("temp.txt","sjsiss.txt");
+    }
+}
+
+border();
+setcolor(2);
+settextstyle(4,0,5);
+outtextxy(160,30,"Deposit the Book");
+setcolor(9);
+settextstyle(1,0,3);
+outtextxy(40,196,"Do you want to deposit another book (y/n)");
+gotoxy(72,14);
+flushall();
+scanf("%c",&ch);
+}while(ch=='y');
+trans();
+}
+
+/**************RECORDS OF LIBRARY BOOKS**************************/
+void rectotbk()
+{
+int sno,n,m,a;
+f2=fopen("sjslib.txt","r");
+border();
+setcolor(2);
+settextstyle(4,0,5);
+outtextxy(110,30,"Total Books in Library");
+setcolor(9);
+settextstyle(1,0,1);
+outtextxy(14,100,"S.no");
+outtextxy(70,100,"Code no");
+outtextxy(165,100,"Book Name");
+outtextxy(370,100,"Author");
+outtextxy(550,100,"Edition");
+t=9;
+a=1;
+while(fread(&e,sizeof(e),1,f2)==1)
+ {
+ if(t==24)
+ { gotoxy(8,25);
+   printf("Press any key to continue...");
+   getch();
+   border();
+   setcolor(2);
+   settextstyle(4,0,5);
+   outtextxy(110,30,"Total Books in Library");
+   setcolor(9);
+   settextstyle(1,0,1);
+   outtextxy(14,100,"S.no");
+   outtextxy(70,100,"Code no");
+   outtextxy(165,100,"Book Name");
+   outtextxy(370,100,"Author");
+   outtextxy(550,100,"Edition");
+   t=9;
+ }
+
+ gotoxy(5,t);
+ printf("%d",a);
+ gotoxy(12,t);
+ printf("%d",e.cno);
+ gotoxy(21,t);
+ printf("%s",e.name);
+ gotoxy(46,t);
+ printf("%s",e.author);
+ gotoxy(71,t);
+ printf("%s",e.edition);
+ t++;
+ a++;
+ }
+fclose(f2);
+getch();
+records();
+}
+
+
+/********************RECORD OF ISSUED BOOKS**************************/
+void recissbk()
+{
+int sno,n;
+border();
+setcolor(2);
+settextstyle(4,0,5);
+outtextxy(140,30,"Total Issued Books");
+setcolor(9);
+settextstyle(1,0,1);
+outtextxy(14,100,"Bk Cd");
+outtextxy(90,100,"St Cd");
+outtextxy(170,100,"St Name");
+outtextxy(340,100,"Book Name");
+outtextxy(540,100,"Ret Date");
+
+f3=fopen("sjsiss.txt","r+");
+gotoxy(1,9);
+if(f3==NULL)
+{  setcolor(5);
+   settextstyle(1,0,3);
+   outtextxy(180,250,"There is no books issued");
+}
+else
+{       n=9;
+	rewind(f3);
+	while(fread(&s,sizeof(s),1,f3)==1)
+	{  if(n==24)
+	   {	gotoxy(8,25);
+		printf("Press any key to continue...");
+		getch();
+		border();
+		setcolor(2);
+		settextstyle(4,0,5);
+		outtextxy(140,30,"Total Issued Books");
+		setcolor(9);
+		settextstyle(1,0,1);
+		outtextxy(14,100,"Bk Cd");
+		outtextxy(90,100,"St Cd");
+		outtextxy(170,100,"St Name");
+		outtextxy(340,100,"Book Name");
+		outtextxy(540,100,"Ret Date");
+		n=9;
+	   }
+
+	gotoxy(4,n);
+	printf("%3d",s.cno);
+	gotoxy(13,n);
+	printf("%4d",s.stcd);
+	gotoxy(21,n);
+	printf("%s",s.namestu);
+	gotoxy(43,n);
+	printf("%s",s.namebook);
+	gotoxy(68,n);
+	printf("%d-%d-%d",s.ddre,s.mmre,s.yyre);
+	n++;
+	}
+}
+fclose(f3);
+getch();
+records();
+}
+
+
+/************************RECORD OF MEMBERS**********************/
+void recmem()
+{
+int sno=1,n;
+border();
+f1=fopen("member.txt","r");
+setcolor(2);
+settextstyle(4,0,5);
+outtextxy(180,30,"Total Members");
+setcolor(9);
+settextstyle(1,0,1);
+outtextxy(20,100,"S.No");
+outtextxy(100,100,"St Code");
+outtextxy(240,100,"St Name");
+outtextxy(500,100,"St Course");
+n=9;
+	while(fread(&m,sizeof(m),1,f1)==1)
+	{  if(n==24)
+	   { gotoxy(8,25);
+	     printf("Press any key to continue...");
+	     getch();
+	     border();
+	     setcolor(2);
+	     settextstyle(4,0,5);
+	     outtextxy(180,30,"Total Members");
+	     setcolor(9);
+	     settextstyle(1,0,1);
+	     outtextxy(20,100,"S.No");
+	     outtextxy(100,100,"St Code");
+	     outtextxy(240,100,"St Name");
+	     outtextxy(500,100,"St Course");
+	     n=9;
+	   }
+
+	gotoxy(5,n);
+	printf("%d",sno);
+	gotoxy(16,n);
+	printf("%d",m.stcode);
+	gotoxy(31,n);
+	printf("%s",m.stname);
+	gotoxy(66,n);
+	printf("%s",m.stcourse);
+	n++; sno++;
+	}
+fclose(f1);
+getch();
+records();
+}
+
+void border()
+{
+cleardevice();
+setlinestyle(2,0,1);
+setcolor(12);
+rectangle(5,5,632,474);
+setcolor(15);
+rectangle(8,8,629,471);
+setcolor(2);
+rectangle(11,11,626,468);
+}
+

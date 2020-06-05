@@ -1,0 +1,349 @@
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Problems</h2></center>
+
+<pre>
+<font size="2">
+ Output of following:<br>
+             #include<string.h><br>
+              main()<br>
+              {<br>
+               char s[]="Rendezvous!";<br>
+               printf("\n%d",*(s+strlen(s)));<br>
+              }<br>
+<strong><strong>o/p</strong>:</strong>   0<br>
+
+
+<strong><strong>Explanation</strong>:</strong> 
+     We are trying to print out the contents of 12th 
+address from the base address of the string. At this
+address there is a '\0', which is automatically stored
+to mark the end of the string. The ASCII value of '\0'
+is 0,which is what being printed by printf().
+
+
+(2)&nbsp;&nbsp;main()<br>
+{<br>
+printf(5+"Fascimile");<br>
+}<br>
+
+   <strong><strong>o/p</strong>:</strong>   mile<br>
+
+<strong><strong>Explanation</strong>:</strong> 
+    when we are passing a string to a function,what 
+gets passed is the base address <br>of string. In 
+this case what is being passed to printf() is the 
+base address plus 5,i.e address of 'm' in "Fascimile".
+printf() prints a string from the address it receives,
+up to the end of the string.
+
+
+(3)main()<br>
+{<br>
+char ch[20];<br>
+int i;<br>
+for(i=0;i<19;i++)<br>
+*(ch+i)=67;                                              <br>
+*(ch+i)='\0';<br>
+printf("\n%s",ch);<br>
+}<br>
+
+    <strong>o/p</strong>:   CCCCCCCCCCCCCCCCCCC<br>
+
+<strong>Explanation</strong>: 
+    19th location from base address we store a'\0'
+to mark the end of string .This is essential, as 
+the compiler has n other way of knowing where the
+string is terminated.
+
+
+(4)main()<br>
+{<br>
+char str[]={48,48,48,48,48,48,48,48,48,48};<br>
+char *s;<br>
+int i;<br>
+s=str;<br>
+for(i=0;i<=9;i++)<br>
+{<br>
+if(*s)<br>
+printf("%c",*s);<br>
+s++;<br>
+}<br>
+}<br>
+
+
+     <strong>o/p</strong>: 0000000000
+
+
+<strong>Explanation</strong>: 
+    In all 10 elements of str[], an integer 48 is
+stored. Wondering whether a char string can hold 
+int's? The answer is yes, as 48 doesn't get stored
+literally in the elements.48 is interpreted as the
+ASCII value of the character to be stored in the 
+string.The character corresponding to ASCII 48  
+happens to be 0,which is assigned to all the 
+locations of the string.s, a character pointer ,is
+assigned to the base address of the string str[].
+Next,in the if condition,the value at address 
+contained in s is checked for truth/falsity. As 0 
+represents ASCII 48,the condition evaluates to true
+every time.Irrespective of whether the  condition is
+satisfied or not, s is incremented so that each time
+it points to the subsequent array element.The entire
+logic is repeated in for loop, printing out 10 zero's
+in the process.
+
+
+(5)main()<br>
+{<br>
+char str1[]="hello";<br>
+char str2="hello";<br>
+if(str1==str2)<br>
+printf("\n equal");<br>
+else<br>
+printf("\n unequal");<br>
+}<br>
+
+    <strong>o/p</strong>: unequal<br>
+  
+
+<strong>Explanation</strong>: 
+    base address of str1 & str2 are different. If we 
+are to compare the contents of two char arrays, we 
+should comapre them on a character by character basis
+or use strcmp().
+
+
+(6)
+       main()<br>
+       {<br>
+        int arr[12];<br>
+        printf("\n %d"sizeof(arr));<br>
+        }
+
+         <strong>o/p</strong>: 24
+ <strong>Explanation</strong>: 
+    The sizeof() operator gives the size of its 
+argument.As arr[] is an integer array of 12 
+elements , saying sizeof(arr) gives us the size of
+this array. Each int is 2 bytes long.Hence the 
+array arr[] engages twice the number of elements i.e
+24 bytes.
+
+
+(7)main()<br>
+{<br>
+static char *s[]={"ice",<br>
+                           "green",<br>
+                           "cone",<br>
+                           "please"<br>
+                          };<br>
+static char **ptr[]={s+3,s+2,s+1,s};<br>
+char **p=ptr;<br>
+printf("\n%s",**++p);<br>
+printf("\n%s",*--*++p+3);<br>
+printf("\n%s",*p[-2]+3);<br>
+printf("\n%s",p[-1][-1]+1);<br>
+}<br>
+
+      <strong>o/p</strong>:<br>
+               cone<br>
+               ase<br>
+               reen<br>
+     
+     <strong>Explanation</strong>: 
+    s[] has been declared and initialized as an array
+of pointers.s gives us the base address of this array.
+
+
+
+ice\0    green\0   cone\0         please\0<br>
+1000     1004&nbsp;  &nbsp;    1010  &nbsp;&nbsp;       1015
+
+  s[0] &nbsp;    s[1]&nbsp;&nbsp;      s[2]  &nbsp;&nbsp;s[3]<br>
+
+1000  1004  1010 1015 ---values of s[0],s[1]....<br>
+4006  4008  4010 4012----address<br><br>
+
+ptr[0]  ptr[1]   ptr[2]   ptr[3]
+
+4012    4010     4008     4006---values at ptr[0],ptr[1]..
+
+6020    6022     6024     6026---address values
+
+               p
+
+              6020
+    ptr[] stores the addresses of the locations where
+the base addresses of strings comprising s[] have been
+stored, starting with the last string. ptr[0] stores
+the address 4012,which is the address at which base 
+address of string "please" is stored.Similarly,ptr[1]
+stores the address 4101 which is where the base address
+of the string "cone" is stored ,and so on.Since ptr[]
+esssentially stores addresses of addresses,each element
+of it is a pointer to a pointer and has been declared 
+as such using **.
+    Finally the base address of ptr[] is assigneed to a
+pointer to a pointer p.
+
+1.**++p: p is pointed to 6022
+
+++p=6022
+
+*6022=4010
+
+*4010=1010<br>
+*1010=cone<br><br>
+
+2.*--*++p+3<br>
+p=6022<br>
+++p=6024<br>
+*6024=4008<br>
+--4008=4006<br>
+*4006=1000<br>
+1000+3=1003<br>
+*1003='\0'<br>
+
+3.*p[-2]+3<br>
+    p=6024<br>
+*p[-2]=*(*(p-2))<br>
+          =*(*(6024-2))<br>
+          =*(*(6020))<br>
+          =*(4012)<br>
+          =*(1015)<br>
+          ="please"<br>
+p+3=*1018='ase'<br><br>
+
+4.p[-1][-1]+1<br>
+    =*(p[-1]-1)+1<br>
+    =*(*(p-1)-1)+1<br>
+p=6024<br>
+*(6024-1)=*(6022)=4010<br>
+=*(4010-1)+1<br>
+=*(4008)+1<br>
+="reen"
+
+
+
+8.<pre>main()
+  {
+    printf("%c",7["sundaram"]);
+  }</pre>
+  
+<strong>o/p</strong>: 'm' of "s u n d a r a m"<br>             0 1 2 3 4 5 6 7
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="pointer2.html" target="_self"><strong>Back</strong></a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

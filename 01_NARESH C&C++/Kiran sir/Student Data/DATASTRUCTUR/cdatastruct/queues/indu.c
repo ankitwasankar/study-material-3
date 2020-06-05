@@ -1,0 +1,90 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#define max 10
+void push();
+int pop();
+void display();
+int stack[max];
+int top=1;
+
+void main()
+{
+int choice;
+char ch;
+clrscr();
+do
+{
+printf("1. push\n\n");
+printf("2. pop\n\n");
+printf("3. display\n\n");
+printf("4. exit\n\n");
+printf("enter your option");
+scanf("%d",&choice);
+switch(choice)
+{
+case 1:push();
+		break;
+case 2:printf("deleted element is=%d\n\n",pop());
+		break;
+case 3:display();
+		break;
+case 4:exit(0);
+		break;
+default:printf("you enterted wrong choice");
+}
+printf("\n\n do you wish to continue");
+fflush(stdin);
+scanf("%c",&ch);
+}
+while(ch=='y' || ch=='Y');
+}
+
+
+int pop()
+{
+int item;
+int i;
+if(top==-1)
+{
+printf("stack is empty");
+getch();
+exit(0);
+}
+else
+{
+item=stack[top];
+top=top-1;
+}
+return(item);
+}
+
+
+void push()
+{
+int item;
+if(top>=max)
+{
+printf("stack is full");
+getch();
+exit(0);
+}
+else
+{
+printf("element to insert\t");
+scanf("%d",&item);
+top=top+1;
+stack[top]=item;
+printf("\n\n insert is susess\n\n");
+}
+}
+void display()
+{
+int i;
+printf("stack elements");
+for(i=top;i>=0;i--)
+{
+printf("%d\t",stack[i]);
+}
+}
+

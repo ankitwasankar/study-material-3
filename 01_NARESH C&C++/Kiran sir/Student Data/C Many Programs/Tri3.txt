@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+int n,s,i,j,k;
+clrscr();
+printf("Enter the no.:-");
+scanf("%d",&n);
+for(i=1;i<=n;i++)
+{
+for(j=n;j>=i;j--)
+printf(" ");
+for(k=1;k<=i;k++)
+printf("%d",k);
+for(s=i-1;s>=1;s--)
+printf("%d",s);
+printf("\n");
+}
+getch();
+}

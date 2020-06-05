@@ -1,0 +1,123 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left">
+
+
+<pre>
+	<strong><u>QUESTIONS ON POINTERS THROUGH STRUCTURES</u></strong>
+1.Can a structure contain a pointer to itself ?
+Ans:Certainly such structures are known as self referential structures	
+
+2.What would be the output of the following program ?
+  main( )
+   {
+     struct emp
+     {
+      char *n;
+      int age;
+      }
+      
+      struct emp e1={"dravid",123};
+      struct emp e2=e1;
+      strupr(e2.n);
+      prntf("\n%s",e1n);
+      }
+Ans: DRAVID
+3.If the following structure is written to a file usng fwrite( ) ,can fread( )<br> read it back successfully ?
+Ans: No,Since the structure contains a char pointer while writting the structure to 
+the disk using fwrite( ) only the value stored in the pointer would get written.<br>When  this structure is read back the address would be rea back but it is<br> quite unlikely   that the desired string would be present at this adress in memory.
+4.What is the output of the following program:
+  main()
+  {
+    struct a
+    {
+     char ch[7];
+     char *str;
+     };
+     static struct a s1={"Nagpur","Bombay"};
+     printf("%c%c\n",s1.ch[0],*s1.str);
+     printf("%s%s\n",s1.ch,s1.str);
+     }
+Output: N B
+	Nagpur Bombay	
+5.what is the output of the following program?
+  main()
+  {
+    struct s1
+    {
+      char *z;
+      int i;
+      struct s1 *p;
+    };
+    static struct s1 a[]={
+                           {"Nagpur",1,a+1};
+			   {"Raipur",2,a+2};
+			   {Kanpur",3,a}
+			 };
+    struct s1 *ptr=a;
+    printf("%s%s%s\n",a[0].z,ptr->z,a[2]p-z);
+   }
+ 6.What is the output of the following program?
+ main( )
+ {
+   struct node
+   {
+      int data;
+      struct node *link;
+   };
+   struct node *p,*q;
+   p=malloc(sizeof(struct node));
+   q=malloc(sizeof(struct node));
+   printf("%d%d",sizeof(p),sizeof(q));
+ }
+ <strong>Output: </strong> 22 
+ <a href="pointer.html" target="_self"><strong>Back</strong></a>   
+</pre></TD>
+</TR>
+
+</table>
+
+
+
+</pre></html>

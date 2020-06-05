@@ -1,0 +1,278 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+<strong>Solved Problems:</strong><br>
+<strong>1)</strong><br>
+                 main()<br>
+	     {<br>
+		static char str[]="Academy";<br>
+		printf("%s /n %s", str,"Academy");<br>
+	     }<br>
+<strong><strong> OUTPUT</strong>:</strong> Academy<br>
+                  Academy<br>
+		  
+<strong> Explanation:</strong><br>Name of the string(str) yields the base address of the string. When this base
+ address is passed to printf() it prints out each character in the string till it encounters ‘/0’ sitting at the end
+ of the string.A string written in double quotes also gives the base address of the string.</p><br>
+
+2)<br>
+           main()<br>
+	{<br>
+		float a=3.14;<br>
+		printf("/n a=%f",a);<br>
+		printf("/n a=%6.2f",a);<br>
+		printf("/n a=%-6.2f",a);<br>
+		printf("/n a=%6.1f",a);<br>
+		printf("/n a=%6.0f",a);<br>
+	}<br>
+
+<strong> OUTPUT</strong>:<br>
+                         a=3.140000   //default a float is printed with 6 decimals.<br>
+                         a=  3.14<br>
+                         a=3.14<br>
+                         a=     3.1<br>
+                         a=        3<br>
+ <strong> Explanation:</strong><br>
+     The number that preceeds the f is an optional specifier , which governs how exactly the variable is to be
+ printed . 6.2 specifies that the field width i.e., total number of columns that the value occupies on the screen ,
+ should be 6 , and that the value should have two digits after decimal point.</p><br>
+
+
+3)<br>
+       main()<br>
+       {<br>
+       	printf("%20s \n", "short leg");<br>
+       	printf("%20s \n", "long leg");<br>
+       	printf("%20s \n", "deep fine leg");<br>
+       	printf("%20s \n", "backward short leg");<br>
+       	printf("%20s \n",legs all the same!");<br>
+  }<br>
+
+<strong> OUTPUT</strong>:<br>
+                 short leg<br>
+                  long leg<br>
+          deep fine leg  <br>            
+backward short leg<br>
+  legs all the same!<br>
+
+<strong> Explanation:</strong><br>
+<p>    The output is right justified , as the field width specified with each %s in plus 20.For each string , 20
+ columns are set aside, and the strings are printed with blanks filling up remaining columns on the left.</p><br>
+
+4)<br>
+          main()<br>
+          {<br>
+ 		printf("Hello\nHi \n");<br>
+                        printf("Hello\rHi");<br>
+         }<br>
+<strong> OUTPUT</strong>:<br>
+                  Hello<br>
+                  Hello<br>
+                  Hi<br>
+                  Hillo<br>
+          
+<strong>Explanation:</strong><br>
+ <p>     The escape sequence ‘\n’ called newline , takes the cursor to the beginning of the newline. A ‘\r’ on the
+ other hand , takes the cursor to the beginning of the same line in which the cursor is currently present.The first
+ letters of the Hello are replaced by Hi and we get the output as "Hillo".</p><br>
+
+5)<br>
+         main()<br>
+           {
+              <br> printf(" Hello\b\b\b\b\b");<br>
+               printf("Hi!\b\b\bBye");<br>
+	}<br>
+ <strong> OUTPUT</strong>:<br>
+                 Byelo<br>
+
+<strong> Explanation:</strong><br>
+<p>The escape sequence '\b' stands for backspace , which takes the cursor to the previous character.In the first
+ printf(), "Hello" is printed, Following which the cursor is positioned after 'o' .Now the 5 backapaces take the
+ cursor to the letter 'H' of  "Hello".
+  In the way finally the output becomes Byelo.</p><br>
+
+6)<br>
+          main()<br>
+	{<br>
+		printf("I \t am \t a \t boy");<br>
+	}<br>
+
+<strong> OUTPUT</strong>:<br>
+                 The message is printed with spaces inserted whenever the escape sequence '\t' occurred.<br><br>
+
+7)<br>
+          #include "stdio.h "<br>
+          main()<br>
+           {<br>
+                 static char str[]="\n In the country of snake charmers......";<br>
+                 char *s;<br>
+                 s=str;<br>
+                 while(*s)<br>
+                 {<br>
+                       putch(*s);<br>
+                       s++;<br>
+                 }<br>
+                 printf("\n");<br>
+                 s=str;<br>
+	     while(*s)<br>
+                 {<br>
+                     putchar(*s);<br>
+	         s++;<br>
+                 }<br>
+   }<br>
+
+
+
+<strong> OUTPUT</strong>:<br>
+                  
+                            In the country of snake charmers......<br>
+                            In the country of snake charmers......<br>
+
+<strong> Explanation:</strong><br> 
+                      putch() is an unformatted console I/O function , whereas putchar() is a macro.However 
+,their working is same.<br>
+
+8)<br>
+            #include "stdio.h"<br>
+             main()<br>
+	{<br>
+ 		char ch;<br>
+                        int i;<br>
+                        printf("Enter any number......");<br>
+		scanf("%d",&i);<br>
+                        fflush(stdin);<br>
+                        printf("Enter any character......");<br>
+                        scanf("%c",&ch);<br>
+                        printf("/n %d %c", i,ch);<br>
+	}<br>
+ 
+<strong> OUTPUT</strong>:<br>
+                    Enter any number......2<br>
+	        Enter any character......a<br>
+                    2a.<br>
+<strong> Explanation:</strong><br>
+                       fflush(stdin) --> this statement empties the buffer before prompting us to enter a character.<br>
+
+9)<br>
+              #include "stdio.h"<br>
+              main()<br>
+              {<br>
+ 		char str1[30],str2[30];<br>
+		printf("Enter a Sentence\n ");<br>
+                        scanf("%s",str1);<br>
+                        printf("%s",str1);<br>
+		fflush(stdin);<br>
+		printf("Enter a Sentence\n");<br>
+                        gets(str2);<br>
+                        printf("%s",str2);<br>
+             }<br>
+
+<strong> OUTPUT</strong>:<br>
+                Enter a Sentence:<br>
+                Nothing  Succeeds like success<br>
+                Nothing<br>
+                Enter a Sentence:<br>
+                Nothing  Succeeds like success<br>
+	    Nothing  Succeeds like success	<br>
+         
+10)<br>
+        main()<br>
+	{<br>
+ 		char name[20],sname[20] ;<br>
+                        puts("Enter your name and surname\n");<br>
+ 		gets(name,sname);<br>
+		puts(name,sname);<br>
+		printf("%s%s",name,sname);<br>
+            }<br>
+
+<strong> OUTPUT</strong>:<br>
+                Enter your name and surname:<br>
+ 		  Jaspal Bhatti<br>
+                        Jaspal Bhatti<br>
+     		  Jaspal Bhatti f5$@#$fdfg<br>
+<strong> Explanation:</strong><br>
+        gets() and puts() cannot take more than one argument at a time. Though no error message is displayed , whet
+ ever is typed before hitting enter is accepted by the first argument name[] , and the second argument is simply
+ ignored.<br>
+ 
+11)<br>
+        main()<br>
+  	{<br>
+ 		FILE *fp;<br>
+ 		fp=fopen("TRAIL.c","r");<br>
+		fclose(fp );<br>
+	}<br>
+
+
+<strong> OUTPUT</strong>:<br>
+                  Error:Undefined symbol FILE in the function main.<br>
+             
+<strong> Explanation:</strong><br>
+         FILE is a structure that is defined in the header file "stdio.h".Hence , for using this stucture ,
+ including "stdio.h" is a must.<br>
+           
+
+12)<br>
+       #include"stdio.h"<br>
+       main()<br>
+	{<br>
+		char str[20];<br>
+		FILE *fp;<br>
+		fp=fopen(strcpy(str,"ENGINE.c"),"w");<br>
+		fclose(fp);<br>
+	}<br>
+
+<strong> OUTPUT</strong>:<br>
+             No Output<br>
+    
+<strong> Explanation:</strong><br>
+                     We must open the file in the proper mode like<br> fopen("ENGINE.c","w");<br>
+
+
+
+<a href="filemgt.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

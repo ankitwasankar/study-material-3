@@ -1,0 +1,139 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<tr>
+<TR><a href="files.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left"><pre>
+
+                              <strong>DECISION MAKING AND BRANCHING </strong>
+<strong>USE of LOGICAL operators:</strong> 
+      C allows usage of three logical operators, namely && , || and ! 
+These are to be read as 'AND' ,' OR' and 'NOT' respectively.
+ 
+&&, || allows two or more conditions to be combined  in an IF statement.
+ Let us see how they are used in a program. 
+<strong>Example:21 </strong>
+ 
+         main() 
+         { 
+              int m1,m2,m3,m4,m5,per; 
+              printf("Enter marks n five subjects"); 
+              scanf("%d%d%d%d%d",&ma,&m2,&m3,&m4,&m5); 
+              per=(m1+m2+m3+m4+m5)/5; 
+              if(per>=60) 
+                   printf("First Division"); 
+              if((per>=50)&&(per<60)) 
+                   printf("Second Division"); 
+              if((per>=40)&&(per<50)) 
+                   printf("Third Division); 
+              if(per<40) 
+                   printf("fail"); 
+        } 
+
+<strong>Advantages of this operators: </strong>  
+1. The matching of the IF's with their corresponding ELSES gets avoided, 
+since there are no ELSES in this program. 
+2.In spite of using several conditions, the program doesn't creep to the right. 
+
+<strong>The else if Clause: </strong>
+           In this case every ELSE is associated with its previous If. The last 
+ELSE goes to work only if all the conditions fail. Even in else if ladder the 
+last ELSE is optional.
+ 
+Note That  the ELSE IF cause is nothing different. It is just a way of rearranging 
+the else with if that follows it. This would be evident if you look at the
+ following code:  
+ 
+if(i==2)                                     |     if(i==2) 
+  printf("With you!.........");              |                 
+  printf("With you.............");           |
+else                                         |     else if(j==2)    
+{                                            |   printf("..............All the time ");                                              |
+   if(j==2)                                  | 
+     printf(".......... All the time");      | 
+}                                            |   
+ 
+
+
+<strong>Example:22 </strong>            /* Else if ladder demo*/ 
+        main() 
+        { 
+            int m1,m2,m3,m4,m5,per; 
+            printf("Enter marks n five subjects"); 
+            scanf("%d%d%d%d%d",&ma,&m2,&m3,&m4,&m5); 
+            per(m1+m2+m3+m4+m5)/5; 
+            if(per>=60) 
+                printf("First Division"); 
+            else if(per>=50) 
+                printf("Second Division"); 
+            else if(per>=40) 
+                printf("Third Division"); 
+            else 
+                printf("Fail"); 
+        }  
+
+Example:23 
+        main() 
+        { 
+            char gender,ms; 
+            int age; 
+            printf("Enter age,gender,Marital Status"); 
+            scanf("%d%c%c",&age,&gender,&ms); 
+            if((ms=='M')||(ms=='U'&&gndeer=='M'&&age>30) 
+                           ||(ms=='U'&&gender=='F'&&age>25)) 
+                  printf("driver is insured"); 
+            else  
+                  printf("driver is not insured"); 
+        } 
+
+Explanation: 
+
+1. The driver will be insured only if one of the conditions enclosed 
+in parenthesis evaluates to TRUE. 
+2. For the second pair of parenthesis to evaluate to TRUE, each 
+condition in the parenthesis separated by '&&' must evaluate to TRUE. 
+3.Even if one of the conditions in the second parenthesis evaluates to FALSE,
+ then the whole of the second parenthesis evaluates to FALSE. 
+ 
+<a href="branching.html">Back</a>
+</pre><td></tr></table>
+</html>

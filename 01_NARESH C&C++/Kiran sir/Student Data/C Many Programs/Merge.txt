@@ -1,0 +1,38 @@
+#include<stdio.h>
+void main(int argc,char *argv[])
+{
+  FILE *fp1,*fp2,*fp3;
+  char x;
+  int count=0;
+  if(argc<4)
+    printf("Too few parameters");
+  else if(argc>4)
+    printf("Too many parameters");
+  else
+  {
+    fp1=fopen(argv[1],"r");
+    fp2=fopen(argv[2],"r");
+    if(fp1==NULL && fp2==NULL)
+      printf("Files not found");
+    else
+    {
+      fp3=fopen(argv[3],"w");
+      if(fp1!=NULL)
+      {
+      count++;
+      while((x=getc(fp1))!=EOF)
+	putc(x,fp3);
+      }
+      if(fp2!=NULL)
+      {
+      count++;
+      while((x=getc(fp2))!=EOF)
+	putc(x,fp3);
+      }
+      fclose(fp1);
+      fclose(fp2);
+      fclose(fp3);
+      printf("%d file(s) copied",count);
+    }
+  }
+}

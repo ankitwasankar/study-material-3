@@ -1,0 +1,16 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+ int x=10,y=90,z=3,s=4,c;
+clrscr();
+printf("x value is=%d\n",x);
+printf("y value is =%d\n",y);
+printf("z value is =%d\n",z);
+printf("s value is =%d\n",s);
+c=x+y+z+s;
+printf("c value is =%d\n ", c);
+
+getch();
+}
+

@@ -1,0 +1,34 @@
+//To read the file contents and display in uppercase
+#include <iostream.h>
+#include <fstream.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <dos.h>
+#include <ctype.h>
+void main(void)
+{
+	clrscr();
+	ifstream in;
+	char fname[10];
+	char ch,uch;
+	cout << "\nEnter any file name:  ";
+	cin >> fname;
+	in.open(fname);
+	if(in.fail())
+	{
+		cerr << "\nNo such file exists....!\n";
+		//delay(100);
+		getch();
+		exit(1);
+	}
+
+	while(!in.eof())
+	{
+		ch=(char)in.get();
+		uch=toupper(ch);
+		cout << uch;
+		//delay(1);
+	}
+	in.close();
+	getch();
+}

@@ -1,0 +1,235 @@
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="650" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Hashing Techniques</h2></center>
+
+<pre>
+<font size="2">
+<strong>Hashing:</strong> 
+ 
+     Hashing is another important search technique that available for 
+searching which is virtually independent of the size of the space
+being searched.frequently,an application will need to search a key 
+item for a collection of items(or records).
+     Mainly This hashing techniques transforms the search key item
+into an address of that item in a table called LOOK_UP_TABLE or 
+HASHTABLE or DIRECTADDRESSTABLE.The transformation is generally carried
+out by Hashfunction.The maintainance of hashfunction is called HASHTABLE.
+
+<b>Hash Table:</b>
+
+      This is also called as Direct address table.If we have a collection
+of n elements,whose Keys are Unique integers in the range 1 to m.Where
+m>=n,then we can store the items in a DAT,T where Ti is either empty or
+contains one of the elements of our collection.
+ 
+      The range of the key determines ,the size of hash table.Acutually
+in addition to the Key,may also contain other information.Whenever an 
+elemnt is placed in the Dat,that key is used to determine its position.
+Whenever a search for a given element is performed.
+
+      To,search for a key,say K in ahash table.We can access it directly 
+as the Kth element (tk). If hashtable contains this element ,it returns
+it,otherwise it return NULL Value.
+
+      Clearly,it can be viewed that searching a direct address table is 
+an 0(1) operation.The two requirements of a Direct address table are;
+	(a) The Keys must be Unique and,
+	(b) The range of key must be severly bounded.
+
+      Direct addressing can be generalized to a situation where a 
+function H(k) maps to K to a value in the range 10 to m. That is , 
+H(K)==>[1,m] we place the elements in T[H[k]] rather than T[K] and we
+can search in 0(1) time as before .This indicates that keys need not in 
+the range 1 to m. 
+
+<b>Hashing Techniques</b>
+
+Hashing functions:
+                  
+     The direct address approach requires that the function ,H(K) is a
+one-one mapping from each K to integers in (1,m).Sucha function is 
+known as PERFECT HASHING FUNCTION.
+   
+     It maps each key to a distinct integer with in same manageable
+range and enables us to trivially build on O(1) search time table.
+
+     Hashfunction produces a neraly randomly distributed integer code
+for every element to be searched.
+
+KEY-------------->HASHFUNCTION------------>ADDRESS
+
+     There are many different hashing functions which can be devised.
+The following some methods are used for hashing functions.
+
+<font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="hashing.html"><b>Top</b></a></font>
+<b>DIVISION-REMINDER METHOD :</b>
+
+     Mainly this method is used for the founding the key value of or 
+the location of the hash function. For this we remember the some 
+formula i.e; ==> HASH(KEY)=KEY mod P 
+
+    Where Hash(key) is the hash function.'KEY' is the target element 
+to be searched and 'P' is some integer preferably a PRIME NUMBER.
+    
+    The Operator mod gives the remainder value after division.This gives
+the address of the elements in the look-up-table in the range 0 to p-1. 
+And that size of hash table is atleast 'P'.
+
+For Example: If P=11 and key =4536 then HAS(4536)=4536 mod 11=4
+Thus the element with the key 4536 is mapped to the table,location 
+address(index) is '4'. In this division -Reminder method ,we find the 
+index value (or) key of Hash table by using the range of Prime factors.
+That gives the index or key value of hashfunction. 
+
+<b>MIDDLE SQUARE METHOD:</b>
+
+      In this middle square method,the address is computrized by 
+squaring the key element and selecting an appropriate number of bits 
+from the middle of squared number.
+                 
+     The number of bits selected to obtain the address depends on the 
+table size.For all elements the same bit positions must be used.
+
+Example:-
+       Suppose the key is 352,And squaring it we get 123904.
+
+     The meaning of Hash is independent of the size of the space being 
+searched.Frequently , an application will need to seach a key item for 
+a Collection of items or records.hashing techniques transform the search 
+key item into address of that item in the table.
+     If the hash table requires four digits address then select bits
+from 2nd digits to 5th digits resulting 2390. In this method ,we find 
+the key element 'x' then squaring it and left the places one digit from
+left end and other digit from right end.This gives the resulting of the
+kth element of hashing. This method takes the lot of computations and 
+time taking process.This is the disadvantage of Middle square method.
+So,we will go for another method.
+
+<b>FOLDING METHOD:</b>
+
+     This,method divides the given key into parts based on the number 
+of bits required for the address. Summing allthe parts,omitting the 
+carry,if any will result the address.
+
+     Suppose,the key element is 5647832 and the number of address 
+digits required is '3'.The '3' digit parts of the key namely 564,783,
+and 2 are added. Then ,give the result is ;Which results the address 
+is 344.
+
+      One,of the main problems ,in Hasning is that for many keys the 
+hash function may produce same address.Finding a PERFECT HASH
+FUNCTION is always is not correct.
+
+For Example:-
+
+      Suppose,we can find a hash function H(K),which maps most of the
+Keys onto unique integers,but's maps a small number of keys as same
+integer.This situation is said to be COLLISION.
+
+             
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="contents.html">Back</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="hashing.html">Top</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+

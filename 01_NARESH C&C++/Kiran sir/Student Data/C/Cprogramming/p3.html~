@@ -1,0 +1,79 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+
+</table></TD>
+<TD align="left"><pre>
+
+
+
+<strong>DIFFERENCES BETWEEN THE MACROS AND FUNCTIONS:</strong>
+
+  Macros are like functions but there is difference between those two .
+
+1. In macro call the preprocessor replaces the macro template with its macro expansion. 
+ Where as in function call the control is passed to a function along with certain arguments, 
+ some functions are performed in the function and a useful value is returned back from the function.
+ 
+2. Macros make the program run faster but increases the program size, where as functions make 
+ the program smaller and compact. i.e if the macro is used hundred times in the program , 
+ the macro expansion goes into source code for hundred times which increases the program size. 
+ otherwise if the  function is used hundred times in the program from different places it takes
+ same amount of space.
+
+3. In the functions  while passing the arguments to a function and getting back the returned value 
+ does take time and slow down the program. where as in macros this problem wont occurs since they
+ have already been expanded and placed in the source code before compilation.
+     
+         At the conclusion it is came to know that if the macro is simple it makes a nice shorthand
+ and avoids the overheads associated with function calls. On the other hand if the program consists
+ of large macro it can be replaced by the function.
+
+
+<a href="preprocessor.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</TR>
+
+</table>
+
+
+</html>

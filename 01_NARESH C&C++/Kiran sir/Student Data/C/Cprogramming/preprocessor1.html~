@@ -1,0 +1,728 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+
+</table></TD>
+<TD align="left"><pre>
+                           <strong>C Preprocessor</strong>
+<u>INTRODUCTION:</u>
+    The C preprocessor is a program that processes our source program before it is passed to the compiler.
+This is a capability that does not exist in many other higher level languages.
+
+ <u>FEATURES OF C PREPROCESSOR:</u>
+     The C program involves so many stages from the stage of writing C program 
+ to the stage of getting it executed.  
+ 
+  The processors used in the execution of C program are  
+        1.Text Editor
+        2.Preprocessor
+        3.Compiler
+        4.Linker
+
+ There  are four types of preprocessor directives,these are shown below.
+
+Preprocessor directives are:
+1. Macro expansion
+2. File inclusion
+3. Conditional Compilation
+4. Miscellaneous directives
+
+EXPLANATION FOR PREPROCESSOR DIRECTIVES:
+                                               
+1.MACRO EXPANSION:
+                     consider the example given below
+        #define UPPER 25
+       main()
+       {
+         int i;
+         for(i=1;i<=UPPER;i++)
+            printf("\n%d",i);
+      }
+  from the above example it is known that instead of writing 25 in the for loop we are writing it in the form of
+ UPPER, which is already defined before main() through the statement,
+              #define UPPER 25
+  The above statement is called ‘macro definition' or ‘macro'. The purpose of this macro in the program is it
+ replaces every occurrence of UPPER in the program with 25 during the time of preprocessing.
+        Example for macro definition:
+                  #define PI 3.1415
+                  main()
+                 {
+                   float r=6.25;
+                  float area;
+                 area=PI*r*r;
+                printf("\n Area of Circle=%f",area);
+              }
+         from the above program  UPPER and PI are called ‘macro templates', and the 25 and 3.1415 
+are called their corresponding ‘macro expansions'.
+       Explanation:
+    At the time of compilation of program, before the source code passes to the compiler  is examined by the C
+ preprocessor for any macro definitions. When it sees the #define directive, it goes through the entire program in
+ search of the macro templates. Where ever it finds one, it replaces the macro template with the appropriate macro
+ expansion. Only after the completion of this procedure the program handed over to the compiler.
+
+        Note:
+   it needs space between macro template and its macro expansion that is separated by blanks or tabs. A space
+ between # and define is optional. A macro definition never terminated by semicolon.
+
+        Use:
+     use of  #define in the program makes easy to read. That is it makes easy to recognize constants. For example
+ substituting PI for 3.1415 makes the program to read easier. Here it is easy to recognize the constant 3.1415. but
+ there are many instances where a constant doesn't reveal its purpose. For example the phrase "\x1B[2J" causes the
+ screen to clear. But it is easier to understand this in the middle of program when we use "CLEARSCREEN" as the
+ macro template & "\x1B[2J" as the macro expansion. therefore the macro definition for this is
+
+                     #define CLEARSCREEN "\x1B[2J"
+
+  it shows that where ever  CLEARSCREEN appears in the program it would automatically be replaced by "\x1B[2J"
+ before compilation begins.
+   In short, it is nice to know that it is able to change values of a constant at all places in the program by just
+ making a change in the #define directive.
+
+       Conclusion:
+     thus using #define can produce more efficient and more easily understandable programs. It is used extensively
+ by C programmers.
+
+             
+                    
+                        Some examples of using #define directive.
+1.A #define directive is mainly a times used to define operators as shown below.
+            #define AND &&
+           #define OR ||
+           main()
+         {
+             int f=1,x=4,y=90;
+              if((f<5) AND (x<=20 OR y<=45))
+              printf("\n Your PC will always work fine");
+             else
+             printf("\n In front of the maintenance man");
+        }
+2. A #define directive could be used even to replace a condition, as shown below.
+        #define AND &&
+        #define ARANGE(a>25 AND a<50)
+       main()
+      {
+        int a=30;
+       if(ARANGE)
+              printf("within range");
+       else
+             printf("out of range");
+        }
+3. A #define directive could be used to replace even an entire C statement. This is as shown below.
+        #define  FOUND printf("The Yankee diode virus");
+        main()
+        {
+             char signature;
+               if(signature=='Y')
+                   FOUND
+               else
+                    printf("safe");
+       }
+
+                         Macros also consists of arguments.
+  
+ MACROS WITH ARGUMENTS:
+    macros can have arguments same as functions. example below shows how the arguments are used within macros.
+
+                #define AREA(x) (3.14*x*x)
+                main()
+               {
+                    float r1=6.25, r2=2.5,a;
+                    a=AREA(r1);
+                     printf("\n area of circle is=%f",a);
+                   a=AREA(r2);
+                   printf("\n area of circle=%f",a);
+               }
+   In this program wherever the preprocessor finds phrase AREA(x) it expands it into the  statement (3.14*x*x).
+ here the x in the macro template AREA(x) is an argument this one matches the x in the macro expansion (3.14*x*x).
+ The statement AREA(r1) in the program causes the variable r1 to be substituted for x. Thus the statement AREA(r1)
+ is equivalent to 
+                    (3.14*r1*r1)
+                     After the passing of source code through the preprocessor,compiler  works on
+                   main()
+                   {  
+                 float r1=6.25,r2=2.5,a;
+                 a=3.14*6.25*6.25;
+                 printf("Area of circle=%f\n",a);
+                a=3.14*2.5*2.5;
+               printf("Area of circle=%f",a);
+             }
+          The output of this  program after the completion of whole process is as shown below.. 
+     Area of circle is=122.656250
+    Area of circle=19.625000
+
+    example 2:
+                     #define ISDIGIT(y) (y>=48 && y<=57)
+                     main()
+                    {
+                     char ch;
+                     printf("Enter any digit");
+                     scanf("%c",&ch);
+                     if(ISDIGIT(ch))
+                           printf("\n digit is entered");
+                   else
+                         printf("\n illegal input");
+                  }
+                                 macros with arguments should consider the following conditions.
+1.At the time of defining the macro there should not be blank between macro template and its argument. for example in the above program there  should not be blank between AREA and (x) in the definition.
+            i.e #define AREA(x) (3.14*x*x)
+  if  AREA  (x)  is written instead of AREA(x) it causes to some problems. i.e (x) becomes the part of macro
+ expansion this leads to expand macro as shown below. This statement won't run.
+        (6.25) (3.14*6.25*6.25)
+2. The entire macro expansion should enclosed within parentheses. Here is an example for enclosing the macro within parentheses.  This shows the problems occurred if  macro is not enclosed within the parentheses.
+           #define SQUARE(n) (n*n)
+           main()
+         {
+            int j;
+           j=64/SQUARE(4);
+           printf("j=%d",j);
+        {
+             The output for this program we will get as
+       j=64  instead of j=4 because in the above program as the macro is not enclosed within the parentheses it is expanded as 
+                j=64/4*4;
+       which gives output as 64.
+
+DIFFERENCES BETWEEN THE MACROS AND FUNCTIONS:
+
+    Macros are like functions but there is difference between the two .
+In macro call the preprocessor replaces the macro template with its macro expansion. 
+Where as in function call the control is passed to a function along with certain arguments, 
+some functions are performed in the function and a useful value is returned back from the function.
+     Macros make the program run faster but increases the program size, where as functions make 
+the program smaller and compact. i.e if the macro is used hundred times in the program , 
+the macro expansion goes into source code for hundred times which increases the program size. otherwise if the  function is used hundred times in the program from different places it takes same amount of space.
+
+3. In the functions  while passing the arguments to a function and getting back the returned value 
+does take time and slow down the program. where as in macros this problem wont occurs since they
+ have already been expanded and placed in the source code before compilation.
+     At the conclusion it is came to know that if the macro is simple it makes a nice shorthand
+ and avoids the overheads associated with function calls. On the other hand if the program consists
+ of large macro it can be replaced by the function.
+              
+  The second preprocessor directive is File Inclusion    .
+
+2. FILE INCLUSION:
+
+   This directive causes one file to be included in another. The preprocessor command
+ for File Inclusion is
+                #include "filename"
+     
+ this command inserts the entire contents of filename into the source code at that
+ point in the program. This File Inclusion preprocessor is used in two cases they are
+
+1. If the program is very large the code is divided into several different files,each 
+containing a set of related functions these File Inclusion preprocessor is used. 
+These files are included at the beginning of  main program file.
+ 
+
+2.functions or macro definitions are needed in many programs commonly. 
+In such situations these commonly used functions and macro definitions are stored in a file, 
+and that file can be included in every program. This will add all the statements in this file 
+to program which is written.
+                   
+    In programs generally files are included with the extension .h, this extension stands for 
+ 'header file'. It contains statements which when included go to the head of program.
+
+                    There are two ways to write #include statement. They are:
+
+          #include "filename"
+        #include <filename>
+               
+                    The difference between these two statements is as shown below.
+
+#include "goto.c" :
+        This command look for the file goto.c in the current directory as well as the specified list 
+of directories as mentioned in the include search path which have been setup.
+
+#include <goto.c>:
+        This command would look for the file goto.c in the specified list of directories only.
+
+       The third type of preprocessor directive is  Conditional Compilation.
+
+3.CONDITIONAL COMPILATION:
+                                
+    This Conditional Compilation is used when the compiler skip over part of a source code by 
+inserting the processing commands. These processing commands are  #ifdef and #endif.
+ The general form of these processing commands is as shown below.
+
+       #ifdef macro name
+              statement 1;
+             statement 2;
+            statement 3;
+      #endif
+                          
+    If the macro name has been #defined, the block of code will be processed as usual otherwise the 
+block of code will not processed as usual.
+
+ ifdef processing command can be used in two cases. They are:
+
+1.To "comment out" obsolete lines of code. This often occurs that a program is changed at the 
+last minute to satisfy a client. This involves rewriting some part of source code to the client's
+ satisfaction and delete the old code. But if the client again needs the old code it is difficult 
+to rewrite the old code in the place of new code.
+                       
+        To overcome this problem the old code can be kept in comments i.e /*        */
+combination. But if we have already written a comment in the code that about to "comment out".
+This would mean to end up with nested comments. i.e in C we can't nest comments. Therefore solution 
+for this is to use conditional compilation as shown below.
+ 
+   main()
+  {
+   #ifdef OKAY
+         statement 1;
+         statement 2;             /* detects virus*/
+        statement 3;
+       statement 4;            /* specific to stone virus */
+  #endif
+            statement 5;
+            statement 6;
+           statement 7;
+       }
+                  
+  In the above program the statements 1,2,3&4 can be compiled only if the macro OKAY has been defined. 
+If all these statements have to get compiled it needs to delete the #ifdef and #endif statements.
+
+2.#ifdef can be used mostly to make the programs portable. i.e. to make work on two totally different
+ computers so that it needs to write a program that works on both machines. For this it needs to 
+isolate the lines of code that must be different for each machine by marking them off with #ifdef.
+                  Example for this is
+        main()
+       {
+         #ifdef PCAT
+               code suitable for a PC/AT
+        #else
+              code suitable for a PC/XT
+       #endif
+      code common to both the computers
+    }
+            
+ After the compilation of this program it would compile only the code suitable for a PC?XT
+  and the common code. This occurs because the macro PCAT has not been defined. Working of  
+#ifdef - #else - #endif is similar to the ordinary if-else control instruction of C.
+               
+  In this program if the program wants to run on PC/AT, it is needed to add the statement    
+             #define PCAT   in the program.
+            
+                #ifndef directive can be used in the place of #ifdef in some situations.
+ The #ifndef  i.e
+'if not defined'  works exactly opposite to #ifdef.
+              Example for this is as shown below.
+      
+       main()
+      {
+            #ifndef PCAT
+                code suitable for a PC/XT
+           #else
+               code suitable for a PC/AT
+          #endif
+              code common to both computers
+   }
+
+   After compilation of this program it gives the output as code suitable for a PC/AT and
+ the common code. i.e exactly opposite to the #ifdef statement.
+         
+#if  and #elif  Directives:
+                           
+    The #if directive can be used to test whether an expression evaluates to a nonzero value or not. 
+If the result of the expression is nonzero, then subsequent lines upto a #else, #elif or #endif
+ are compiled, otherwise they are skipped.
+         A simple example of #if directive is as shown below.
+                   Main()
+                 {
+                   #if TEST<=5
+                          statement 1;
+                         statement 2;
+                        statement 3;
+                  #else
+                      statement 4;
+                     statement 5;
+                     statement 6;
+               #endif
+            }
+                   
+ In the above program if the expression, TEST<=5 evaluates to true then statements 1,2,and 2 are
+ compiled otherwise statements 4,5 and 6 are compiled. In place of the  expression TEST<=5 other
+ expression like (LEVEL==HIGH || LEVEL==LOW) or ADAPTER==CGA can also be used.
+  
+    Nested conditional compilation is also possible. The example below shows such directives.
+              #if ADAPTER==MA
+                   code for monochrome adapter
+             #else
+                   #if ADAPTER==CGA
+                     code for colour graphics adapter
+           #else
+                  #if ADAPTER==EGA
+                    code for enhanced graphics adapter
+                #else
+                #if ADAPTER=VGA
+                     code for video graphics array
+               #else
+                     code for super graphics array
+              #endif
+             #endif
+           #endif
+        #endif
+
+    This program also can be made more compact by using another conditional compilation directive 
+called #elif. The same program using this directive can be written as shown below. 
+Use of #elif in this program reduces the no of end ifs.
+                #if ADAPTER==MA
+                       code for monochrome adapter
+              #elif ADAPTER==CGA
+                      code for colour graphics adapter
+             #elif ADAPTER==EGA
+                     code for enhanced graphics adapter
+           #elif ADAPTER==VGA
+               code for video graphics array
+          #else
+                   code for super video graphics array
+         #endif
+
+                         The fourth one preprocessor Directives is Miscellaneous Directives.
+
+Miscellaneous Directives:
+                      
+                          There are two more preprocessor directives are used . They are 
+1.#undef
+2.#pragma
+#undef Directive:
+    This directive is used to undefine the directive if it is already defined. i.e if the
+ statement is already used the directive #define to define the directive to undefine this 
+#undef is used.
+
+                           The #undef command id
+          #undef macro template
+                          statement for this is
+        #undef PCAT
+  this statement causes the definition of PCAT to be removed from the system.
+ All subsequent #ifdef PCAT statements would evaluate to false.
+
+#pragma Directive:
+    This directive is one special directive that is used to turn on or off certain features.
+ programs vary from one compiler to another. There are certain programs available with Microsoft
+ C compiler which deal with formatting source listings and placing comments in the object file 
+generated by the compiler. Turbo C compiler has the pragma which allows to write assembly language 
+statements in C program.
+
+SOLUTIONS FOR SOME EXAMPLE PROGRAMS USING PREPROCESSOR DIRECTIVES:
+
+1.#define DEF
+main()
+{
+    int i=2;
+   #ifdef DEF
+       printf("square of i=%d", i*i);
+  #else
+        printf(i=%d",i);
+#endif
+}
+Output:
+                 out put of this program is square of i=4
+Explanation:
+
+ Since DEF has been defined, #ifdef DEF evaluates to true, hence square of i is calculated
+ and printed  through printf(). Is it not necessary while defining DEF to use a macro expansion
+ following DEF? No, since it is not intend to use the value of the macro expansion anywhere in 
+the program. All that we want is to conditionally compile the program subject to the condition 
+whether DEF has been defined or not.
+
+2.#define NO
+#define YES
+main()
+{
+   int i=5,j;
+  if(i>5)
+    j=YES;
+ else
+  j=NO;
+printf("%d",j);
+         }
+Output:
+ The compiler gives Error Message to the above program. Error message is Expression syntax in 
+function main.
+
+Explanation:
+In the program the values of YES and NO is assigned to the j in the if-else, but what are the 
+values of YES and NO? They have only been defined as macros without being given any expansions.
+ Hence the error message.
+
+3.#define MESS(m) printf("m")
+main()
+{
+    MESS("But somewhere in my wicked miserable past..");
+   MESS("there must have been a moment of truth!");
+}
+Output:
+              Output for this program is mm.
+Explanation:
+   In this program During processing MESS("But...past..") gets replaced by printf("m").
+ Naturally, on execution this printf() prints out m. The same thing happens to the 
+next statement, which also prints out an m.
+
+4.#define GOTONEXTLINE printf("\n")
+main()
+{
+       printf("it's better to keep your mouth shut..");
+      GOTONEXTLINE;
+      printf("..and have people think you are a fool..");
+     GOTONEXTLINE;
+     printf("..than to open it and remove all doubt!");
+}
+Output:
+                   The output of this program is 
+              it's better to keep your mouth shut..
+             ..and have people think you are a fool..
+            .. than to open it and remove all doubt!
+Explanation:
+  During the processing of this program the processor replaces all occurrences of GOTONEXTLINE in
+ main() with printf("\n"). Hence during execution, the three messages are output on different lines.
+
+5.#define MESS(m) printf("m")
+#define GOTONEXTLINE printf("\n");
+main()
+{
+  MESS("A galaxy of persons were born on this day..");
+ GOTONEXTLINE;
+ MESS("But somehow you seem to be the best!!");
+}
+  Output:
+                   output of this program is
+              m
+             m
+Explanation:
+  The preprocessor replaces both the occurrences of MESS with printf("m"). Similarly, GOTONEXTLINE is
+ replaced by printf("\n"). Thus, when the program is sent for execution, it has been converted to the
+ following form:
+                  main()
+              {
+                   printf("m");
+                  printf("\n");
+                 printf("m");
+             }
+                       This would output two ms on different lines.
+
+6.#define ISUPPER(x) (x>=65 && x<=90)
+#define ISLOWER(x) (x>=97 && x<=122)
+#define ISALPHA(x) (ISUPPER(x)|| ISLOWER(x))
+main()
+{
+      char ch='+';
+     if(ISALPHA(ch))
+             printf("ch contains an alphabet");
+   else
+            printf("ch doesn't contain an alphabet");
+}
+  Output:
+                      The output of this program is  ch doesn't contain an alphabet
+Explanation:
+  The first and second macros have the criteria for checking whether their argument x is 
+an upper or a lower case alphabet. These two criteria have been combined in the third macro,
+ ISALPHA. Thus when the program goes for compilation, the if statement has been converted 
+to the form :
+
+           if(ch>=65 && ch<=90 || ch>=97 && ch<=122)
+  As ch has been initialized to character +, the conditions in the if fail and the control 
+rightly passes to the else block, from where the output is obtained.
+
+    7.#define THIS
+      #define THAT
+     main()
+    {
+      #ifdef THIS
+        #ifdef THAT
+        printf("Definitions are hard to digest");
+
+  #else
+        printf("But once mugged up,hard to forget");
+  #endif
+}
+
+Output:  
+                   It gives as Unexpected end of file in conditional
+Explanation:
+ The macros THIS and THAT have been correctly defined. The error lies in the imbalance 
+of #ifdef and #endif statements in the program. Inserting another #endif would guarantee
+the output "Definitions are hard to digest". This also goes to show that the #ifdefs can
+ be nested the same way the ordinary if statements can be.
+
+8.#define THIS
+#define THAT
+main()
+{
+  #ifdef THIS && THAT
+     printf("Definitions are hard to digest");
+ #else
+     printf("But once mugged up, hard to forget");
+ #endif
+}
+Output:
+               output of this program is Definitions are hard to digest
+Explanation:
+  Logical operators are perfectly acceptable in #ifdef statements. Since both THIS and THAT
+ are defined, the preprocessor allows only the first printf() to go for compilation, which 
+gets executed and we get our output.
+
+9.#define MEAN(a,b,c,d,e)(a+bcd+e)/5
+main()
+{
+  int a,b,c,d,e,m;
+ a=1;
+b=2;
+c=3;
+d=4;
+e=5;
+m=MEAN(a,b,c,d,e);
+printf("Mean of the five numbers is=%d");
+}
+Output:
+                   The output of this program is The mean of the five numbers is=3
+Explanation:
+                  The preprocessor substitutes the macro MEAN with its explanation. This expansion is the formula to calculate the average of 5 numbers. With the values of 5 numbers in the program, the result turns out to be 3, Which then gets printed out through printf().
+
+10.#define CUBE(x) (x*x*x)
+main()
+{
+ int a;
+a=27/CUBE(3);
+printf("%d",a);
+}
+Output:
+             The output of this program is 1.
+Explanation:
+  The macro CUBE(x) is defined to give the cube of its argument. In the program, 
+the preprocessor replaces CUBE(3) by (3*3*3) and then sends the program for compilation.
+ The calculations  process is as shown below.
+                  a=27/(3*3*3)
+                 a=27/27
+                 a=1
+
+11.#define CUBE(x) (x*x*x)
+main()
+{
+  int a,b;
+ b=3;
+a=CUBE(b++)/b++;
+printf("a=%d b=%d",a,b);
+}
+
+  Output: 
+         The output of this program is a=9 b=7
+Explanation:
+   In this program the argument of the macro CUBE(x) is made to be b++. The preprocessor puts the
+ macro expansions in place of the macro templates used in the program, so that the compiler reaches to 
+              a=(b++ *b++ *b++)/b++
+   As ++ succeeds b, first the value of a is derived using the initial value of b(i.e. 3),after 
+which, the ++does its job on b. Hence (3*3*3)/3, i.e. 9 gets stored in a. Since the b++ is encountered
+ four times in the program, b is incremented four times, results the final value of b as 7. 
+hus a stores 9 and b as 7.
+
+12.#define CUBE(x) (x*x*x)
+main()
+{
+  int a,b=3;
+a=CUBE(++b)/++b;
+printf("a=%d b=%d",a,b);
+}
+Output:
+                 the output for this program is a=49 b=7
+
+Explanation:
+           
+ In this program  the macro CUBE(x) is expanded to give the cube of its argument. 
+In the program, the argument is taken to be (++b), having initialized b to 3 at the outset.
+ The preprocessor, before sending the program for compilation, converts the statement containing
+ the macro to:
+                     a=(++b*++b*++b)/++b
+ The unary operator ++ has higher priority than that of the binary operator * and /.
+ Therefore at first the multiple incrementation  of b take place. As ++b occurs four times in the
+ statement, b is incremented four times. Thus, b will has the value 7. This is used to calculate
+ the result as:
+                       a=(7*7*7)/7
+                       a=343/7
+                       a=49
+
+
+
+13.#define COND(a>=65 && a<=90)
+main()
+{
+   char a='R';
+              if(COND)
+                   printf("UPPER CASE");
+              else
+                 printf("LOWER CASE");
+           }
+Output:
+               This program gives the output as UPPERCASE
+Explanation:
+  When ‘R' is stored in the variable a, the ASCCI value of R is stored in a as 82. So a contains 
+the value 82 in it. The criteria for the character in a being an upper case alphabet is defined 
+in the macro COND. During preprocessing, in the if statement, the COND is replaced by
+(a>=65 && a<=90). Since a contains 82 the condition is satisfied and gives the output as 
+UPPER CASE
+   from this example it is known that this macro is without any argument. Hence it will work only 
+for a variable called a. If this variable a is replaced by the another variable b in the declaration
+ statement, the error message it gives as ‘variable a not defined'.
+
+14.#define COND(a) a>=65 && a<=90
+main()
+{
+  char ch='R';
+  if(COND(ch))
+             printf("ch is in upper case");
+            else
+           printf("ch is in lower case");
+         }
+  Output:
+               ch is in upper case
+  Explanation:
+ In the program an argument to the macro COND(a) is provided. So, during processing the if 
+statement becomes:
+             if(ch>=65 && ch<=90)
+  Since ch is stated to be capital ‘R' in the program, the output comes as ‘ch is in upper case'.
+</pre></TD>
+</TR>
+
+</table>
+
+
+</html>

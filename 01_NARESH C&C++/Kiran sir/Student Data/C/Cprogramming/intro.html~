@@ -1,0 +1,126 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+<u>INTRODUCTION: </u> An array is a group of related data items that share a common name.
+For instance,  we can define an array name Salary to represent a set of salaries of a 
+group of employees. 
+A particular value is indicated by writing a number called index number or subscript in
+brackets after the array name.
+ 
+For example,  Salary [10] 
+           represents the salary of the 10th employee while the complete set of values is
+referred to as an array,the individual values are called elements. Arrays can be of any
+variable type.
+
+<u>One -Dimensional Arrays :</u>
+A list of items can be given one variable name using only one subscript and such a variable
+is called Single-subscripted variable or a One-Dimensional array. In mathematics we often
+deal with variables that are single-subscripted.
+For instance, we use the equation
+                                                          A = Xi
+                                                                 n
+to calculate the average of n values of x. the subscripted variable Xi refers to the ith
+element of X.
+In C, single-subscripted variable Xi can be expressed as
+                          X[1], X[2], X[3],...........................X[n]
+The subscript can begin with number 0.that is allowed.
+Foe example, if we  want to represent a set of five numbers, say(35,40,20,57,19) by an array
+variable number,
+then we may declare the variable number as follows
+                                       int  number [5];
+and the computer reserves five storage locations as shown below.
+                                         
+                    Number[0]
+
+                    Number[1]
+
+                    Number[2]
+
+                    Number[3]
+
+                     Number[4]
+
+values to the array elements can be assigned as follows:
+               number[0]=35;
+               number[1]=40;
+               number[2]=20;
+               number[3]=57;
+               number[4]=19;
+ this would cause the array number to store the values as shown below:
+ 
+        number[0]       35 
+        number[1]       40                                       
+        number[2]       20
+        number[3]       57                     
+        number[4]       19
+                          
+these elements may be used in programs just like any other C variable. For example, the
+ following are valid statements:
+                      a= number[0] +10;
+              number[4]= number[0] + number[2];
+              number[2]= X[5] + Y[10];
+               value[6]= number[i]* 3;
+subscript of an array can be integer constant, integer variables like i , or expressions
+that yield integer.
+ C performs no bounds checking and therefore, 
+care should be exercised to ensure that the array indices are within the declared limits.
+<a href="arrays.html" target="_self">BACK</a>
+</pre>
+</TD>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</table>
+</TD>
+</TR>
+</table>
+</html>   

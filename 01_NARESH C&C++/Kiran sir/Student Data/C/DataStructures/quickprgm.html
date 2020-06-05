@@ -1,0 +1,52 @@
+<html>
+<body>
+Quick Sort Program :<br>
+&#035; include &#060; stdio.h ><br>
+main()<br>
+{<br>
+ int a[20],n,i;<br>
+printf("\n How many numbers",n);<br>
+scanf("%d",&#038;n);<br>
+printf("%d",n);<br>
+for(i=0;i&#060;n;i++)<br>
+scanf("5d",&#038;a[i]);<br>
+printf("NUmbers before sort");<br>
+for(i=0;i&#060;n;++i)<br>
+printf("%d",a[i]);<br>
+qsort(a,0,n-1);<br>
+printf("Numbers after sort");<br>
+for(i=0;i&#060;n;++i)<br>
+printf("%d",a[i]);<br>
+}<br>
+qsort(int a[],int lb,int ub)<br>
+{<br>
+int i,j,pivot;<br>
+if(lb&#060;ub)<br>
+{<br>
+i=lb;<br>
+j=ub;<br>
+pivot=lb;<br>
+while(i&#060;j)<br>
+{<br>
+while((a[i]&#060;=a[pivot])&#038;&#038;(i&#060;ub))<br>
+i++;<br>
+while((a[j]>a[pivot])<br>
+j--;<br>
+if(i&#060;j)<br>
+swap(&#038;a[i],&#038;a[j]);<br>
+}<br>
+swap(a[pivot],&#038;a[i]);<br>
+qsort(a,lb,a[j-1]);<br>
+qsort(a,j+1,ub);<br>
+}<br>
+}<br>
+swap(int *a,int *b)<br>
+{<br>
+int t;<br>
+t=*a;<br>
+*a=*b;<br>
+*b=t;<br>
+}
+
+
+</body></html>

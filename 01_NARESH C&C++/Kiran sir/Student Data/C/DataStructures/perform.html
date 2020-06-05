@@ -1,0 +1,241 @@
+﻿<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="660" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Performance Analysis:</h2></center>
+
+<pre>
+<font size="2">
+<strong>Performance Analysis:</strong> 
+ 
+Criteria upon which can judge an algorithm includes.
+1.Does it do what we want it to do
+2.Does it work correctly according to the original specifications
+of the task?
+3.Is there documentation that describes how to use it and how it 
+works?
+4.Are procedures created in such a way that they perform logical 
+sub functions?
+5.Is the code readable?
+     These are other criteria for judging algorithms that have a
+more direct relationship to performance. These have to do with their
+computing times and storage requirements.
+<b>Space Complexity:</b>
+
+     The space complexity of an algorithm is the amount of memory 
+it needs to run to completion.
+<code><font size=2>
+1)Example: Algorithm abc(a,b,c)
+{
+return a+b+b*c+(a+b-c)/(a+b)+4.0;
+}
+
+Algorithm abc computes a+b+b*c+(a+b-c)/(a+b)+4.0;
+
+2)Example: Algorithm sum(a,n)
+[ s:=0.0;
+for i:=1 to n do
+s:=s+a[i];
+return s;
+}
+			  n
+Algorithm sum computes ∑a[i] iteratively where the a[i] s 
+are real numbers.
+			I=1
+3)Example: Algorithm Rsum(a,n)
+{
+if(n<=0) then return 0.0;
+else return Rsum(a,n-1)+a[n];
+} 
+							n
+Algorithm Rsum is a recursive algorithm that computes ∑a[i];
+							i=1
+</font></code>
+     The space needed by each of these algorithms is seen to be the
+sum of the following components
+1.A fixed part that is independent of the characteristics of the
+input and outputs this part typically includes the instruction space 
+(that is space for the code) space for simple variables and fixed
+size component variables (also called aggregate) space for constants 
+and so on.
+2.A variable part that consists of the space needed by component
+variables whose size is dependent on the particular problem instance 
+being solved,the space needed by referenced variables and recursion 
+stack space.
+* the space required s(p) of any algorithm p may therefore be written
+as s(p)=c+sp(instance characteristics) where c is a constant.
+When analyzing the space complexity of an algorithm,we concentrate 
+solely on estimating sp.
+<font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="perform.html"><b>Top</b></a></font>
+
+<b>Time Complexity:-</b>
+
+      The time complexity of an algorithm is the amount of computer 
+time it needs to run to completion. The time T(p) taken by a program P 
+is the sum of compile time and the run time. The compile time does not
+depend on instance characteristic consequently we concern ourselves with 
+just the runtime of the program.
+This runtime is denoted by (instance characteristics) tp.
+tp(n)=CaADD(n)+Cm MUL(n)+cd DIV(n)+------------
+where n denotes the instance characteristics,and Ca,Cs,Cm,Cd and so on
+respectively,denote the time needed for an addition subtraction,
+multiplication, division and so on and ADD,SUB,MUL,DIV and so on are
+functions whose values are the number of additions,subtractions,
+multiplications,divisions and so on that are performed when the code
+for p is used on an instance with characteristic n.
+Obtaining such an exact formula is in itself an impossible task since 
+the time needed for an addition,subtraction and depends on the numbers 
+being added, subtracted and so on. 
+The value of tp(n) for any given n can be obtained experimentally . The
+execution time is physically clocked and tp(n) obtained. We can go one
+step further and count only the number of program steps.
+A program step is loosely defined as a syntactically or semantically 
+meaningful segment of a program that has an execution time that is 
+independent of the instance characteristics.
+The number of steps any program statement is assigned depends on the 
+kind of statement. For example ,comments count as zero steps,in an
+iterative statement such as the for ,while and repeat until statements,
+we consider the step count only for the control part of the statement.
+The control parts for ‘for’ and ‘while’ statements have the 
+following forms:
+for i:=[expr] to [expr1] do
+while[(expr)] do
+Each execution of the control part of a ‘while’ statement given a 
+step count equal to the number of step counts assignable (expr).
+The step count for each execution of the control part of a for statement
+is one, unless the counts attributable to and are functions of the 
+instance characteristics. In this latter case, the first execution of 
+the control part of the for has a step count equal to the sum of the 
+counts for and .
+
+<b>Methods to determine the step count:-</b>
+
+1.We introduce a new variable,count into the program. This is a global 
+variable with initial value 0. when the statement s to increment count 
+are introduced into Algorithm sum,the result is
+1.Algorithm sum(a,n)
+2.{
+3.s:=0.0;
+4.count:=count+1://count is global; it is initially zero
+5.for i:=1 to n do
+6.{
+7.count:count+1;//for for
+8.s:=s+a[i];count:=count+1;//for assignment
+9.}
+10.count:=count+1;//for last time of for
+11.count:=count+1;//for the return
+12.return s;
+13.}
+A simplified version of the above algorithm is
+1.Algorithm Sum(a,n)
+2.{
+3.for i:=1 to n do count:=count+2;
+4.count:=count+3;
+5.}
+Both the algorithms compute the same final value for count. In the for 
+loop,the value of count will increase by a total of 2n. If count is zero
+to start with,then it will be 2n+3 steps.
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="analysis.html">Back</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="perform.html">Top</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+

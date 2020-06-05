@@ -1,0 +1,19 @@
+<ProjectType name="Static Library#77032" icon="projecttype.bmp?4" type="LIB" ext="lib" tab="General#77001" desc="Create Static Library.#77033" version="1.0">
+	<Pages count="0">
+	</Pages>
+
+	<Outputs>
+		<Directory name="\">
+		<File folder="Source Files" name="" external="" enabled="1"></File>
+		<File folder="Header Files" name="" external="" enabled="1"></File>
+		<File folder="Other Files" name="" external="" enabled="1"></File>
+		</Directory>
+	</Outputs>
+	
+	<Options>
+		<TargetExt bldr="MinGW">a</TargetExt>
+		<TargetExt bldr="CYGWIN">a</TargetExt>
+		<TargetName bldr="MinGW">lib$(ProjectName)</TargetName>
+		<TargetName bldr="CYGWIN">lib$(ProjectName)</TargetName>
+	</Options>
+</ProjectType>

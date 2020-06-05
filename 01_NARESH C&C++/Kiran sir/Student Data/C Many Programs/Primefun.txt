@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+void prime(int);
+int n;
+clrscr();
+printf("Enter the no.:-");
+scanf("%d",&n);
+prime(n);
+getch();
+}
+void prime(int n)
+{
+int i=2;
+while(i<=n)
+{
+if(n%i==0)
+break;
+i++;
+}
+if(n==i)
+printf("prime no.");
+else
+printf("not prime");
+}

@@ -1,0 +1,80 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+<font size="4">
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left"><pre>
+
+Reading mixed data types: It is possible to use one scanf statement to input a data line containing mixed mode data. 
+  In such cases,core should be exercised to ensure that the input data items match the control specifications in
+ order and type.
+                The statement         
+                      scanf("%d%c%f%s",&count,&code,&ratio,&name);
+            will read the data
+                            14    s      14.345    john
+   
+  Detection of errors in input: When a scanf function completes reading its list,it returns the value 
+of items that are successfully read. 
+                              This value can be used to test whether any errors occurred in reading the input
+                      Example: scanf("%d%f%s",&a,&b,&name);
+          will return the value 3 if the following data is typed in: 
+                                  20    150.35   cycle
+                    will return the value 1 if the following line is typed in: 
+                                  20      cycle      150.35 
+   This is because the function would encounter a string when it was expecting a floating point value and would
+ therefore terminates its scan after reading the first value.
+  Some versions of scanf support the following conversion specifications for strings.
+                         %[characters] and %[^characters]
+   The specification %[character] means that only the characters specified within brackets are permissible 
+in the input string.If the input string contains only other character,the string will be terminated at the
+ first encounter of such a character. The specification of%[^characters] does exactly the reverse. The character
+  specified after the circumflex(^) are not permitted in the input string. The reading of the string will be
+ terminated at the encounter of one of these character %s specifier cannot be used to read string with blank
+ spaces. But,this can be done with the help of %[] specification. 
+Blank spaces may be included within the brackets,this enabling the scanf to strings with spaces
+
+<a href="managing.html" target="_self">BACK</a></font.
+</pre></TD>
+</pre>
+
+</table>
+</html>

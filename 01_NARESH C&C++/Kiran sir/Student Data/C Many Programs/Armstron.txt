@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+int n,s=0,r,k;
+clrscr();
+printf("Enter the no.:-");
+scanf("%d",&n);
+k=n;
+while(n!=0)
+{
+r=n%10;
+s=s+r*r*r;
+n=n/10;
+}
+if(s==k)
+printf("The no is armstrong");
+else
+printf("The no is not armstrong");
+getch();
+}

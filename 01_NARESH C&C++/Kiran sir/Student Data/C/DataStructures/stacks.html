@@ -1,0 +1,214 @@
+
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="620" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Stacks</h2></center>
+
+<pre>
+<font size="2">
+<strong>Introduction:</strong> 
+
+       A stack is an ordered collection of items into which new 
+items may be inserted and from which items may be deleted at one 
+end,called the top of the stack.. 
+
+       Unlike that of the array ,the definition of the stack
+provides 4 the insertion and deletion of items So that a stack is
+a dynamic,constantly changing object. The object definition
+specifies the single end of link list new items may be put on the 
+top of the stack or items.
+
+<b>Example:</b>
+<ul><ul><uL>
+TOP
+<table border=2>
+<tr><td>F</td></tr>
+<tr><td>E</td></tr>
+<tr><td>D</td></tr>
+<tr><td>C</td></tr>
+<tr><td>B</td></tr>
+<tr><td>A</td></tr>
+</table>
+</uL></uL></uL>
+       The F is physically higher on the page than all the other
+items in the stack. We simply that F is current top element in
+the stack .If any new items are added to that stack,they r placed 
+at the top of F.
+              
+       If any item is deleted that is placed at the F is deleted,
+The last element insert into a stack. So its called as LIFO last-in 
+-first-out. In fact we have actually taken an extended view of 
+what is really observed in a stack.
+
+<b>Primitive Operations:</b>
+    
+       The two changes which can be made to a stack to the given
+special case When an item is added to the stack that is " push" 
+And if any item ids deleted from the stack that is pop of stack.
+That is adding gives PUSH and Deletion gives the "POP" of stack
+operations.
+              I=pop(s).
+       Since PUSH operation which adds element to a stack is called 
+"push down list" There is no upper limit on the numberitems that 
+may be kept in stack. Since the definition does not specify how many
+onto stack merely produces a larger. However if a stack merely 
+produces a collection of more items .However it contains the single 
+item of a stack is popped. The resulting stack is called the 
+"EMPTY STACK". 
+<font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ss&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="stacks.html"><b>Top</b></a></font>
+<b>Paranthisis Checking:</b>
+<code><font size=2>
+{x+(y-[a+b])*c-[(d+e)]}/(h-(j-(k-[l-n])))
+valid=true
+s=empty stack
+while(we have not read the entire string)
+{
+read the nest symbol(symb) of the string;
+if(symb=='9'||symb=='['||symb=='{')
+push(s,symb);
+if(symb==')'||symb==']'||symb=='}')
+if(empty(s))
+valid=fase;
+else
+{
+i=pop(s);
+if(i is not the matching opener)
+valid=false;
+if(valid)
+printf("%s",string is valid);
+else
+printf("%s",the string is invalid);
+}
+</font></code>
+
+<b>Why use ADT's?</b>
+     
+    Precisely specify the nature of the data and the operations
+ADT's are independent of representation (indeed, of programming
+language). No matter what language we will be using a complex 
+number data type means the same thing. Provide solutions to common
+problems, giving us a toolkit we can use to solve problems 
+("building blocks"). Many ADT's are concerned with how values of 
+some other type can be stored and accessed. Classes which implement
+such storage types are called "container classes" in C++ programming.
+    
+    If we assume these definitions then we could provide an
+implementation for the push operation as a function. The function 
+will need at least three parameters: 
+i.  The stack storage (the array) 
+ii. The index of the first available stack location 
+iii.The item to be added C++allows us to pass in arrays to functions
+without having to list their size (it's assumed that the programmer
+some how knows the size by looking at other parameters,and will use
+the array safely).
+<code><font size=2>
+void push(int contents[], int top, int item)
+{
+contents[top++] = item;
+
+</font></code>
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="contents.html">Back</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="stacks.html">Top</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+

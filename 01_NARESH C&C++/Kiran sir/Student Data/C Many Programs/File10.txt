@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+  FILE *fp;
+  struct address
+  {
+  int num;
+  char name[20],add[30];
+  }a;
+  clrscr();
+  fp=fopen("add.dat","r");
+  do
+  {
+    fscanf(fp,"%d \t %s \t %s\n",&a.num,a.name,a.add);
+    printf("\n %d %s %s",a.num,a.name,a.add);
+  }while(!feof(fp));
+  fclose(fp);
+  getch();
+}

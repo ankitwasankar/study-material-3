@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+void main()
+{
+int *p,*table,size;
+clrscr();
+printf("what is the size of table:-");
+scanf("%d",&size);
+table=(int*)malloc(size*sizeof(int));
+if(table==NULL)
+{
+printf("No space is available");
+exit(1);
+}
+else
+printf("Address of the I bytes is :-%u",table);
+for(p=table;p<table+size;p++)
+{
+printf("\nenter the no:-");
+scanf("%d",p);
+}
+for(p=table+size-1;p>=table;p--)
+printf("\n%d is stored at add:- %u",*p,p);
+getch();
+}

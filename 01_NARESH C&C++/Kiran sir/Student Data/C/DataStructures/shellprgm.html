@@ -1,0 +1,61 @@
+<html>
+<body>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Let us assume that an array named elements[] will hold the array to be sorted.We will also assume that the sorting order is ascending in nature.<br>
+<strong>C Program:-</strong><br>
+&nbsp;&nbsp;&nbsp;&#035;include&#060;stdio.h&#062;<br>
+&nbsp;&nbsp;&nbsp;&#035;define MAXSIZE 500<br>
+&nbsp;&nbsp;&nbsp;void shellsort(int elements[],int maxsize);<br>
+&nbsp;&nbsp;&nbsp;int main()<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;int i<br>
+&nbsp;&nbsp;&nbsp;printf(&#034;How many elements you want to sort&#034;);<br>
+&nbsp;&nbsp;&nbsp;scanf(&#034;&#037;d&#034;,&#038;maxsize);<br>
+&nbsp;&nbsp;&nbsp;printf(&#034;Enter the values one by one&#034;);<br>
+&nbsp;&nbsp;&nbsp;for(i=0;i&#060;maxsize;i++)<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;printf(&#034;Enter element &#037; i&#034;,i);<br>
+&nbsp;&nbsp;&nbsp;scanf(&#034;&#037;&#034;,&#038;elements[i]);<br>
+&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;printf(&#034;Array before sorting&#034;);<br>
+&nbsp;&nbsp;&nbsp;for(i=0;i&#060;maxsize;i++)<br>
+&nbsp;&nbsp;&nbsp;printf(&#034;&#037;i&#034;,elements[i]);<br>
+&nbsp;&nbsp;&nbsp;shellsort(elements,maxsize);<br>
+&nbsp;&nbsp;&nbsp;printf(&#034;Array After sorting&#034;);<br>
+&nbsp;&nbsp;&nbsp;for(i=0;i&#060;maxsize;i++)<br>
+&nbsp;&nbsp;&nbsp;printf(&#034;&#037;i&#034;,elements[i]);<br>
+&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;void shellsort(int elements[], int maxsize)<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;int i,j,increment,temp;<br>
+&nbsp;&nbsp;&nbsp;increment=7;<br>
+&nbsp;&nbsp;&nbsp;while(increment &#062; 0)<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;for(i=0;i&#060;maxsize;i++)<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;j=i;<br>
+&nbsp;&nbsp;&nbsp;temp=elements[i];<br>
+&nbsp;&nbsp;&nbsp;while((j&#062;=increment)&#038;&#038;(elements[j-increment]&#062;temp))<br>
+&nbsp;&nbsp;&nbsp;elements[j]=elements[j-increment];<br>
+&nbsp;&nbsp;&nbsp;j=j-increment;<br>
+&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;elements[j]=temp;<br>
+&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;if(increment&#047;3&#033;=0)<br>
+&nbsp;&nbsp;&nbsp;increment=increment&#047;3;<br>
+&nbsp;&nbsp;&nbsp;else if(increment==1)<br>
+&nbsp;&nbsp;&nbsp;increment=0;<br>
+&nbsp;&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;increment=1;<br>
+&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;}<br>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

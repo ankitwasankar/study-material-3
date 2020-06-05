@@ -1,0 +1,752 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+      
+      <a href="sintroduction.html" target="_self" >Introduction to Strings</a>  
+      <a href="standard.html" target="_self">Standard Library String Functions</a> 
+      <a href="pointer1.html" target="_self">Pointers and Strings</a>
+      <a href="twodimension.html" target="_self" >Two Dimensional Array of Characters</a>    
+      <a href="solved.html" target="_self">Solved Problems</a><br>
+      <center><a href="pointer.html" target="_self">Back</a>               </center> <!--<strong>POINTERS AND STRINGS</strong>
+Strings: A group of characters can be stored in a character array.Character arrays are many a times also known as 'strings'.Strings are the data types used by programming languages to manipulate text such as words and sentences.
+                           A string constant is a one-dimensional array of characters terminated by a null('\0').
+For example:char name[]={'S','R','U','J','A','N','A','\0'};
+S
+R
+U
+J
+A
+N
+A
+\0
+2001          2002          2003          2004          2005          2006          2007          2008
+
+Here '\0' is actually an escape sequence like '\n'. It is called a null character.
+
+NOTE:'\0' and '0' are not same. ASCII value of '\0' is 0 and ASCII value of '0' is 48. The terminating null('\0') is important because it is the only way the functions that work with strings can know where a string ends. A String not terminated by a '\0' is not really a string,but merely a collection of characters.
+
+       The string initialized above can also be initialized as,
+       char name[]=”SRUJANA”;
+       Here C inserts the null automatically.
+
+                                           Now we will look at pointer assignment to string values,with an example:
+/*program to print string elements using pointer notation*/
+            main()
+            {
+               char name[]=”srujana”;
+               char *ptr;
+               ptr=name;
+               while(*ptr!='\0')
+               {
+                   printf(“%c”,*ptr);
+                   ptr++;
+               }
+            }
+ptr is incremented to point to the next character in the string. This derives from two facts:
+      Array elements are stored in contiguous memory locations an don incrementing a pointer it points to the immediately next locations of its type.
+NOTE: printf() doesn't print the '\0'.
+ The %s is a format specification for printing out a string.
+
+
+              STANDARD LIBRARY STRING FUNCTIONS
+                      Most commonly used functions are strlen(),strcpy(),strcat() and strcmp().
+
+strlen(): For example:
+                                char str1[20]=”chowdary”;
+                                l=strlen(str1);
+                                printf(“\n length=%d”,l);
+In the call to the function strlen(),we are passing the base address of the string,and the function inturn returns the length of the string.While calculating the length it doesnot count '\0'.  Output would be length=8.
+
+strcpy():For example:
+                                  char str1[20]=”chowdary”;
+                                  char str3[20];
+                                  strcpy(str3,str1);
+                                 printf(“\n after copying str3=%s,str3);
+
+On supplying the base address, strcpy() goes on copying the source string into the target string till it doesn't encounter the end of source string. Thus a string gets copied into another,character by character.
+
+strcat(): compares two strings to find out whether they are same or different.The two strings are compared letter by letter until there is a mismatch or end of one of the strings is reached,whichever occurs first.If the two strings are identical,strcmp() returns a value 0.If they are not ,it returns the numeric difference between the ASCII values of the first non-matching pair of characters.
+
+
+POINTERS AND STRINGS:
+
+                           We cannot assign a string to another ,whereas we can assign a char pointer to another char pointer. This is shown with an example:
+
+
+
+               main()
+              {
+                char str1[]=”hello”;
+                char str2[10];
+                char *s=”good morning”;
+                char *q;
+                str2=str1;/*error*/
+                q=s;/*works*/
+              }
+
+Also,once a string has been defined it cannot be initialized to another set of characters. Unlike strings, such an operation is perfectly valid with char pointers.
+
+Example:        main()
+                       {
+                         char str1[]=”hello”;
+                         char *=”hello”;
+                         str1=”bye”;/*error*/
+                         p=”bye”;/*works*/
+                       }
+
+
+THE const QUALIFIER:
+                        The keyword const, if present, precedes the data type of a variable. It specifies that the value of the variable will not change throughout the program. Any attempt to vary the value of variable will result into an error message from compiler.
+const is usually used to replace # define d constants.
+
+Example:                   main()
+                                {
+                                  float r,a;
+                                  const float,PI=3.14;
+		          printf(“\n Enter radius:”);
+                                 scanf(“%f”,&r);
+		          a=PI*r*r;
+           		         printf(“Area=%f”,a);
+                              }          
+If a const is placed inside a function its effect would be localised to that function,whereas if it is placed outside all functions then its effect would be global.
+
+RETURNING const VALUES:
+                         A function can return a pointer to a constant string as shown
+Example:
+                      main()
+		{
+		const char *fun();
+		const char *p;
+		p=fun();
+		p='A';/error*/
+		printf(“\n%s”,p);
+		}
+		const char * fun()
+		   {	
+			return “Rain()”;
+		  }
+
+Since the function fun() is returning a constant string we cannot use the pointer p to modify it. The following operations too would be invalid:
+(a)main() cannot assign the return value to a pointer to a non-const string.
+(b)main() cannot pass the return value to a function that is expecting a pointer to a non-const string.
+
+
+TWO DIMENSIONAL ARRAY OF CHARACTERS:
+
+                       Our example program asks you to type your name.When you do so,it checks against a master list to see if you are worthy of entry to the palace.
+
+Example:     #include<string.h>
+#define FOUND 1
+#define NOTFOUND 0
+main()
+{
+char masterlist[6][10]={“srujana”,
+                                      “sneha”,
+
+                                    “swathi”,
+                                    “lavanya”,
+                                    “ramya”,
+                                    “kalyani”
+                               };
+                        int i,flag,a;
+		char yourname[10];
+		printf(“\n Enter your name:”);
+		scanf(“%s”,yourname);
+		flag=NOTFOUND;
+		for(i=0;i<=5;i++)
+		    {
+		       a=strcmp(&masterlist[i][0],yourname);
+   		      if(a==0)
+  			{
+			printf(“welcome,u can enter the palace”);
+			flag=FOUND;
+			break;
+			}
+		   }
+    			if(flag==NOTFOUND)
+			printf(“sorry,u r a trespasser”);
+		}
+
+OUTPUT:
+Enter your name:keerthi
+sorry,u r a trespasser
+ 
+Enter your name:srujana
+welcome,u can enter the palace.
+
+Names can be supplied from keyboard as:
+                          for(i=0;i<=5;i++)
+                          scanf(“%s”,&masterlist[i][0]);
+              while comapring the strings through strcmp() note that the addresses of strings are being passed to strcmp().       
+
+srujana\0
+sneha\0
+swathi\0
+lavanya\0
+ramya\0
+kalyani\0
+1001                1011                1021                1031                1041                1051
+
+   Here 1001,1011,....are the base adresses of successive names. For example, even though 10 bytes are reserved for storing the name “ramya”, it occupies only 5 bytes. Thus 5 bytes go waste.
+
+ARRAY OF POINTERS TO STRINGS :
+
+                        Pointer variable always contains an address. Therefore, if we construct an array of pointers it would contain a number of addresses. Array of pointers can be stored as            
+                  char *names[]={
+                                                   “srujana”,
+                                                    “sneha”,
+                                                    “swathi”,
+                                                    “lavanya”,
+				     “ramya”,
+                                                    “kalyani”
+                                           };
+One reason to store strings in an array of pointers is to make more efficient use of available memory.
+
+
+LIMITATIONS OF ARRAY OF POINTERS TO STRINGS:
+
+              When  we are using a 2-D array of characters we are at liberty to either initialize the strings where we are  declaring the array or receive the strings using scanf() function.
+Example:        main()
+		{
+		char *names[6];
+		int i;
+		for(i=0;i<=5;i++)
+		  {
+		     printf(“\n enter name”);
+		     scanf(“%s”,names[i]);             /*doesnot work*/
+                          }
+                        }
+The program doesn't work because when we are declaring the  array it is containing garbage values. And it would be definitely wrong to send these garbage values to scanf() as the addresses where it should keep the strings received from the keyboard.
+
+
+PROBLEMS:
+
+(1)Output of following:
+             #include<string.h>
+              main()
+              {
+               char s[]=”Rendezvous!”;
+               printf(“\n%d”,*(s+strlen(s)));
+              }
+o/p:   0
+
+Explanation: We are trying to print out the contents of 12th address from the base address of the string. At this address there is a '\0', which is automatically stored to mark the end of the string. The ASCII value of '\0' is 0,which is what being printed by printf().
+
+
+(2)main()
+{
+printf(5+”Fascimile”);
+}
+
+   o/p:   mile
+
+    Explanation: when we are passing a string to a function,what gets passed is the base address of string. In this case what is being passed to printf() is the base address plus 5,i.e address of 'm' in “Fascimile”. printf() prints a string from the address it receives, up to the end of the string.
+
+
+
+
+
+(3)main()
+{
+char ch[20];
+int i;
+for(i=0;i<19;i++)
+*(ch+i)=67;
+*(ch+i)='\0';
+printf(“\n%s”,ch);
+}
+
+    o/p:   CCCCCCCCCCCCCCCCCCC
+
+    Explanation: 19th location from base address we store a'\0' to mark the end of string . This is essential, as the compiler has n other way of knowing where the string is terminated.
+
+
+(4)main()
+{
+char str[]={48,48,48,48,48,48,48,48,48,48};
+char *s;
+int i;
+s=str;
+for(i=0;i<=9;i++)
+{
+if(*s)
+printf(“%c”,*s);
+s++;
+}
+}
+
+
+     o/p: 0000000000
+
+      Explanation: In all 10 elements of str[], an integer 48 is stored. Wondering whether a char string can hold int's? The answer is yes, as 48 doesn't get stored literally in the elements.48 is interpreted as the ASCII value of the character to be stored in the string.The character corresponding to ASCII 48  happens to be 0,which is assigned to all the locations of the string.
+                        s, a character pointer , is assigned to the base address of the string str[].Next,in the if condition,the value at address contained in s is checked for truth/falsity. As 0 represents ASCII 48,the condition evaluates to true every time.Irrespective of whether the condition is satisfied or not, s is incremented so that each time it points to the subsequent array element.The entire logic is repeated in for loop, printing out 10 zero's in the process.
+
+
+(5)main()
+{
+char str1[]=”hello”;
+char str2=”hello”;
+if(str1==str2)
+printf(“\n equal”);
+else
+printf(“\n unequal”);
+}
+
+    o/p: unequal
+    Explanation:  base address of str1 & str2 are different. If we are to compare the contents of two char arrays, we should comapre them on a character by character basis or use strcmp().
+
+
+(6)
+       main()
+       {
+        int arr[12];
+        printf(“\n %d”sizeof(arr));
+        }
+
+         o/p: 24
+       Explanation:  The sizeof() operator gives the size of its argument.As arr[] is an integer array of 12 elements , saying sizeof(arr) gives us the size of this array. Each int is 2 bytes long.Hence the array arr[] engages twice the number of elements i.e 24 bytes.
+
+
+(7)main()
+{
+static char *s[]={“ice”,
+                           “green”,
+                           “cone”,
+                           “please”
+                          };
+static char **ptr[]={s+3,s+2,s+1,s};
+char **p=ptr;
+printf(“\n%s”,**++p);
+printf(“\n%s”,*--*++p+3);
+printf(“\n%s”,*p[-2]+3);
+printf(“\n%s”,p[-1][-1]+1);
+}
+
+      o/p:
+               cone
+               ase
+               reen
+     
+     Explanation: s[] has been declared and initialized as an array of pointers.s gives us the base address of this array.
+
+
+i
+c
+e
+\0
+g
+r
+e
+e
+n
+\0
+ c
+o
+n
+e
+\0
+p
+l
+e
+a
+s
+e
+\0
+1000                  1004                               1010                         1015
+
+                              s[0]                          s[1]                     s[2]                             s[3]
+1000
+1004
+1010
+1015
+4006                            4008                            4010                             4012
+
+              ptr[0]                      ptr[1]                          ptr[2]                          ptr[3]
+4012
+4010
+4008
+4006
+6020                            6022                             6024                           6026
+ 
+                        p
+                   6020
+        ptr[] stores the addresses of the locations where the base addresses of strings comprising s[] have been stored, starting with the last string. ptr[0] stores the address 4012, which is the address at which base address of string “please” is stored.Similarly,ptr[1] stores the address 4101 which is where the base address of the string “cone” is stored ,and so on.Since ptr[] esssentially stores addresses of addresses , each element of it is a pointer to a pointer and has been declared as such using **.
+
+                Finally the base address of ptr[] is assigneed to a pointer to a pointer p.
+
+
+1.**++p: p is pointed to 6022
+++p=6022
+*6022=4010
+*4010=1010
+*1010=cone
+
+2.*--*++p+3
+p=6022
+++p=6024
+*6024=4008
+--4008=4006
+*4006=1000
+1000+3=1003
+*1003='\0'
+
+3.*p[-2]+3
+    p=6024
+*p[-2]=*(*(p-2))
+          =*(*(6024-2))
+          =*(*(6020))
+          =*(4012)
+          =*(1015)
+          =”please”
+p+3=*1018='ase'
+
+4.p[-1][-1]+1
+    =*(p[-1]-1)+1
+    =*(*(p-1)-1)+1
+p=6024
+*(6024-1)=*(6022)=4010
+=*(4010-1)+1
+=*(4008)+1
+=”reen”
+
+
+
+8.main()
+{
+printf(“%c”,7[“sundaram”]);
+}
+  
+o/p: 'm' of “s u n d a r a m”
+                     0 1 2 3 4 5 6 7
+              
+
+
+
+</center><b>OBJECTIVE TYPE QUESTIONS ON POINTERS</b></center>
+
+1.  What would be the output of the following program?
+      #include “stdio.h”
+      main( )
+     {
+             printf( “%d %d”, sizeof(NULL),sizeof(“ ” ) );
+     }
+(a)   1   1
+(b)   1   2
+(c)   2   1
+(d)   2   2
+Ans:  c
+
+2.How many bytes are occupied by near,far and huge pointers?
+(a) 2,2,4
+(b) 2,4,4
+(c) 2,4,2
+(d) 2,2,2 
+Ans:  b
+
+4.Can anything else generate a Null Pointer Assignment error?
+(a) Yes
+(b) No
+(c) Can't say
+(d) None
+Ans:  a
+5. Are the three declarations char **apple, char *orange[ ], and char cherry [ ] [ ] same?
+(a) Yes
+(b) No
+(c) Can't say
+(d) None
+Ans:  b
+
+6.Can two different  near pointers contain two different addresses but refer to the same location in memory?
+(a) Yes
+(b) No
+(c) Can't say
+(d) None 
+Ans:  b
+
+7.  Can two different  far pointers contain two different addresses but refer to the same location in memory?
+(a) Yes
+(b) No
+(c) Can't say
+(d) None 
+Ans:  a
+
+8.  Can two different  huge pointers contain two different addresses but refer to the same location in memory?
+(a) Yes
+(b) No
+(c) Can't say
+(d) None 
+Ans:  b
+
+9.Would the following program give any warning on compilation?
+#include “stdio.h”
+main( )
+{
+    int *p1,i=25;
+  void *p2;
+   p1=&i;
+   p2=&i;
+   p1=p2;
+   p2=p1;
+} 
+(a) Yes
+(b) No
+(c) Can't say
+(d) None
+Ans:  b
+
+10.Would the following program give any warning on compilation?
+#include “stdioh”
+main( )
+{
+       float *p1,i=25.50;
+       char *p2;
+       p1=&i;
+       p2=&i;
+} 
+(a) Yes. Suspicious pointer conversion in function main
+(b) No
+(c) Can't say
+(d) None
+Ans:  a
+
+11.What warning would be generated on compiling the following program?
+main( )
+{
+     char far *scr;
+     scr=0*B8000000;
+    *scr = 'A';
+}
+(a)  Suspicious pointer conversion in function main
+(b)  Non-portable pointer assignment in function main
+(c)  Can't say
+(d)  None
+Ans:  b
+
+12.How would you eliminate the warning generated on compiling the following program?
+main( )
+{
+     char far *scr;
+     scr=0*B8000000;
+    *scr = 'A';
+}
+(a)  Use the typecast scr= (char *far ) 0*B8000000;
+(b)  Use the typecast scr= (char far * ) 0*B8000000;
+(c)  Use the typecast scr= (char **far ) 0*B8000000;
+(d)  Use the typecast scr= (char far ** ) 0*B8000000;
+Ans: b
+
+13.  In a large data model (compact, large, huge) all pointers to data are 32 bits long, whereas in a small data model (tiny, small,medium) all pointers are 16 bits long
+(a) True
+(b) False
+(c) Can't say
+(d) None
+Ans:  a
+
+14.  A near pointer uses the contents of CS register (if the pointer is pointing to code) or contents of DS register (if the pointer is pointing to data) for the  segment part,whereas the offset part is stored in the 16-bit near pointer
+(a) True
+(b) False
+(c) Can't say
+(d) None
+Ans:  a
+
+15.  What would be the output of the following program?
+  main( )
+ {
+       char far *a=0*00000120;
+       char far *b=0*00100020;
+       char far *c=0*00120000;
+           if(a==b)
+                 printf(“\nHello”);
+           if(a==c)
+                 printf(“\nHi”);
+           if(b==c)
+                 printf(“\nHello Hi”);
+           if(a>b && a>c &&b>c)
+                 printf(“\nBye”);
+    }
+(a) Hello
+(b) Hi
+(c) Hello Hi
+(d) Bye
+Ans:  d
+
+16.  What would be the output of the following program?
+   main( )
+{
+       char huge *a=0*00000120;
+       char huge *b=0*00100020;
+       char huge *c=0*00120000;
+           if(a==b)
+                 printf(“\nHello”);
+           if(a==c)
+                 printf(“\nHi”);
+           if(b==c)
+                 printf(“\nHello Hi”);
+           if(a>b && a>c &&b>c)
+                 printf(“\nBye”);
+    }
+    (a) Hello
+    (b) Hi
+(c) Hello Hi
+(d) all
+ans:   d
+
+17.  Are the expressions *ptr++ and ++*ptr same?
+(a) Yes
+(b) No
+(c) Can't Say
+(d) None
+Ans: b
+
+18.Can you write another expression which does the same job as ++*ptr?
+(a) (ptr*)++
+(b) *ptr++
+(c) ptr*++
+(d) (*ptr)++
+Ans: d
+19.  What would be the equivalent pointer expression for referring the same element as a[i][j][k][l]?
+(a) *(*(*(*(a+i)+j)+k)+l)
+(b) *(*(*(*a[i])[j])[k])[l])
+(c) both
+(d) None
+Ans: a
+
+20. What would be the output of the following program ?
+   main( )
+  {
+         int arr[ ]={12,13,14,15,16};
+         printf(“\n%d %d %d”, sizeof(arr) , sizeof(*arr), sizeof(arr[0]));
+       }
+      (a) 10   4   4
+      (b) 10   4   2
+      (c) 10   2   2
+  (d) 10   2   4
+Ans: c
+
+21.What would be the output of the following program assuming that the array begins at location 1002?
+main( )
+{
+     int a[3][4]={
+                               1,2,3,4,
+                               5,6,7,8,
+                               9,10,11,12
+                        };
+      printf( “\n%u %u %u”,a[0]+1,*(a[0]+1),*(*(a+0)+1));
+}
+(a) 1004   2   2
+(b) 1004  4   4
+(c) 1002  2   2
+(d) 1002  4   4
+Ans: a
+
+22.  What would be the output of the following program assuming that the                                                array begins at location 1002?
+main( )
+{
+     int a[2][3][4]={
+                                      {
+                                                   1,2,3,4,
+                                                    5,6,7,8,
+                                                    9,1,1,2
+                                           },                        
+                                           {
+                                                        2,1,4,7,
+                                                        6,7,8,9,
+                                                        0,0,0,0
+                                           }
+                                 };
+    printf(“\n%u %u %u %d”,a,*a,**a,***a);
+}
+(a) 1002  1002 1002  2
+(b) 1002 1002  1002  1
+(c) 1004 1004  1004  1
+(d) 1004 1004  1004  2
+Ans: b
+
+23.  In the following program how would you print 50 using p?
+   main( )
+  {
+          int a[ ]={10,20,30,40,50};
+        char *p;
+        p = (char *) a;
+  }
+(a) printf(“\n%d”,*( (int *)p+4) );
+(b) printf(“\n%d”,( (int *)p+4) );
+(c) printf(“\n%d”,*( (int )p+4) );
+(d) printf(“\n%d”,*( (int **)p+4) );
+Ans:  a
+
+24.In the following program add a statement in the function fun( ) such that address of a gets stored in j
+main( )
+{
+          int *j;
+          void fun(int **);
+          fun(&j);
+}
+void fun(int **k)
+{
+          int a=10;
+} 
+(a) *k=&a;
+(b)  &a=*k;
+(c) &k=*a;
+(d) *a=&k;
+Ans: a
+
+25.How would you declare an array of three function pointers where each function receives two ints and returns a float?
+(a) float (arr[3])(int,int);
+(b) int (arr[3])(float,float);
+(c) int (*arr[3])(float,float);
+(d) float(*arr[3])(int,int);
+Ans: d
+
+
+-->
+
+</pre></TD>
+</TR>
+
+</table>
+
+
+</html>

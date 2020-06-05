@@ -1,0 +1,275 @@
+﻿<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="635" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Bubble Sort</h2></center>
+
+<pre>
+<font size="2">
+<strong> Explanation</strong> 
+
+      The Bubble sort is the simplest but not very efficient
+of the sorts.
+      It compares adjacent elements in a list of data elements,
+and swaps them if they are not in order. Each pair of adjacent 
+elements is compared and swapped until the smallest element bubbles
+up to the top thus the name bubble sort. Repeat this process till
+all the elements are in sorting order. This technique is often
+called Exchange sort, Adjacent sort or Sinking sort.
+The step by step procedure to sort in ascending order is given below:
+Compare two numbers at a time, starting with the first two numbers.
+If the top number is larger than the second number, then exchange
+the two numbers. Go down one number and compare that number to the 
+number that follows it. These two form a new pair. Continue this 
+process until no exchanges had been made in an entire pass through the 
+list.
+     For example, sort the following numbers from smallest to largest
+
+pass1
+2 2 2 2 2 2 2
+6 6 5 5 5 5 5
+5 5 6 4 4 4 4
+4 4 4 6 1 1 1
+1 1 1 1 6 6 6
+7 7 7 7 7 7 7
+3 3 3 3 3 3 3
+
+pass 2
+2 2 2 2 2 2
+5 5 4 4 4 4
+4 4 5 1 1 1
+1 1 1 5 5 5
+6 6 6 6 6 3
+7 3 3 3 3 6
+3 7 7 7 7 7
+
+pass 3
+2 2 2 2 2
+4 4 1 1 1
+1 1 4 4 4
+5 5 5 5 3
+3 3 3 3 5
+6 6 6 6 6
+7 7 7 7 7
+
+pass 4
+2 1 1 1
+1 2 2 2
+4 4 4 3
+3 3 3 4
+5 5 5 5
+6 6 6 6
+7 7 7 7
+
+pass 5
+1 1 1
+2 2 2
+3 3 3
+4 4 4
+5 5 5
+6 6 6
+7 7 7
+
+pass 6
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+
+   Note that after the first pass the largest element is in the last
+position of the array. In the ith pass, ith largest element bubbles 
+up to the ith position from the top of the array. Since each pass 
+places a new element into its proper position, it requires N-1 passes 
+for N elements . 
+
+<b>Pseudo code for Bubble Sort: </b>
+  Repeat
+  Initialize NoExchanges to true
+  For each array of adjacent elements do
+  begin
+     If the values of the pair are out of order then 
+    begin
+      Exchange the values
+      Set NoExchanges to False
+    end
+  end
+ until the array is sorted
+
+<b>Algorithm :</b>
+<code><font size=2>
+Procedure bubblesort(A,N)
+1.For pass=1 to N-1 do
+begin
+2.NoExchange <- true
+3.For j=1 to (N-pass) do
+begin
+4.If a[j]>a[j+1] then
+begin
+5.swap(a[j],a[j+1])
+6.NoExchange <- False
+end
+end
+7.If(NoExchange is true) then
+return
+end
+8.Return.
+</font></code>
+<font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="bubblesort.html"><b>Top</b></a></font>
+<b>Analysis</b>
+     The algorithm requires N-1 passes ,each pass places one item
+in its correct place. Obviously the Nth element would also be in
+correct place. The ith pass makes N-i comparisons. So the time 
+T(N)= (N-1)+(N-2)+.................+2+1
+                          N-1
+ 	= âˆ‘i=N/2(N-1)=O(N2)
+                         i=1
+     The Bubble sort is simple but least efficient. If the data
+set contains N elements,the maximum number of passes is N-1.
+Similarly the number of passes is N-1. Similarly the number of 
+tests per pass ranges between N-1 and 1 with an average value of 
+N/2. Thus the upper bound on the total number of tests is roughly 
+(N-1)*N/2 that is proportional to N2
+
+
+<b>Program to implement Bubble sort :</b>
+<code><font size=2>
+# include 
+# define swp(x,y)(int t;t=x;x=y;y=t)
+main()
+{
+int a[20],n,i;
+printf("How many numbers");
+scanf("%d",&n);
+printf("Enter %d numbers",n);
+for(i=0;i scanf("%d",&a[i]);
+printf("\n Numbers before sort:\n");
+for(i=0;i printf("%d",a[i]);
+bubblesort(a,n);
+printf("\n Numbers after sort:\n");
+for(i=0;i printf("%d",a[i]);
+}
+bubblesort(int a[],int n)
+{
+int pass,j,noexchange;
+for(pass=0;pass {
+noexchange=1;
+for(j=0;j {
+if(a[j] > a[j+1]
+{
+swap(a[j],a[j+1])
+noexchange=0;
+}
+}
+if(noexchange)
+return;
+}
+}
+</font></code>
+
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="sorting.html">Back</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="bubblesort.html">Top</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+

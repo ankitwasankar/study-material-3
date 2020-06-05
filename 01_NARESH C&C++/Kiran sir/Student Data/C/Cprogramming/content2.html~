@@ -1,0 +1,138 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left"><pre>
+
+Reading A Character: The simplest of all input and output operations is reading a character from the standard input unit 
+                     and writing it to the  output unit. Reading a character can be done by the function 'getchar'.
+                     The getchar take the form:
+                                        variable_name=getchar();
+                            variable_name a valid c name that has been declared as char type.
+ When encountered,the computer waits until a key is pressed and then assign this character as a value 
+                    to getchar function.
+                
+                 Example:    char name;
+                             name=getchar();
+Program:
+                      /* Reading a character from terminal*/
+                             #include'stdio.h'
+                             main()
+                          {
+                             char answer;
+                             printf(" would u like to know my name?\n ");
+                             printf(" type y for yes and n for no: ");
+                             answer=get char();
+                             if(answer=='y' || answer=='Y')
+                                printf("\n\n my name is busy bee \n ");
+                             else
+                               printf(" \n\n u are good for nothing \n ");
+                           }
+Output:         would u like to know my name?
+                type y for yes and n for no:y
+                my name is buy bee
+                        
+Along with the getchar() function,there are two functions which receive a character typed from the keyboard 
+            and tests whether it is a letter or digit and print out a message accordingly. 
+            They are:
+                             isalpha(character)
+                             isdigit(character)
+The function isalpha a value non-zero(true)if the argument character contains an alphabet otherwise
+            it assumes zero(false)similar is the case with the function isdigit.
+
+Program:                    /*Testing character type*/
+                                 
+                                     #include'stdio.h'
+                                     #include'ctype.h'
+                                     main()
+                                {
+                                  char character;
+                                  printf("press any key\n");
+                                  character=getchar();
+                                  if(isalpha(character)>0)
+                                     printf("the character is a letter");
+                                else
+                                     if(isdigit(character)>0)
+                                        printf("the character is a digit");
+                                    else
+                                   printf("the character is not alphanumeric");
+                                    }
+output:           press any key
+                         f  
+                 the character is a letter
+
+                 press any key
+                        3
+                 the character is a digit
+    
+                 press any key
+                          * 
+                the character is not alphanumeric
+
+        The function in character test include:
+                                   
+            function                        test
+
+          1.isalpha(c)              is c an alphabetic character?
+
+          2.isalphanum(c)           is c an alphanumeric character?
+
+          3.sdigit(c)               is c a digit?
+
+         4.islower(c)               is c a lower case letter?
+
+         5.isprint(c)               is c a printable character?
+
+         6.ispunct(c)               is c a punctuation mark?
+
+         7.isspace(c)               is c a white pace character?
+
+         8.isupper(c)               is c a uppercase  letter? 
+<a href="managing.html" target="_self">BACK</a>
+</pre></TD>
+</pre>
+
+</table>
+
+
+</html>

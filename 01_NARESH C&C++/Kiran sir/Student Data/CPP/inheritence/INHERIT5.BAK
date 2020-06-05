@@ -1,0 +1,91 @@
+//EXAMPLE PROGRAM FOR HYBRID INHERITANCE
+//THE COMBINATION OF ANY TWO INHERITANCES IS CALLED
+//HYBRID INHERITANCE
+# include <iostream.h>
+# include <conio.h>
+# include <string.h>
+class student
+{
+ protected:
+ int sno;
+ char name[20],add[20];
+ public:
+ void input()
+ {
+  cout<<"ENTER STUDENT NUMBER, NAME, AND ADDRESS  ";
+  cin>>sno>>name>>add;
+ }
+};
+class test : public student
+{
+ protected:
+ int mp,mm,mc;
+ public:
+ void mentry()
+ {
+	cout<<"ENTER MARKS IN MATHS, PHYSICS AND CHEMISTRY  ";
+	cin>>mm>>mp>>mc;
+ }
+};
+class sports
+{
+  protected:
+  int sm;
+  public:
+  void sentry()
+  {
+	cout<<"ENTER SPORTS MARKS  "<<endl;
+	cin>>sm;
+  }
+};
+class result : public test, public sports
+{
+ int tot,av;
+ char res[20];
+ public:
+ void findres()
+ {
+	tot=mm+mp+mc;
+	av=tot/3;
+	if(sm>50)
+	av=av+5;
+	if(av>=75)
+	strcpy(res,"DISTINCTION");
+	else if(av>=60)
+	strcpy(res,"FIRST CLASS");
+	else if(av>=50)
+	strcpy(res,"SECOND CLASS");
+	else if(av>=40)
+	strcpy(res,"THIRD CLASS");
+	else
+	strcpy(res,"FAILED");
+ }
+ void display()
+ {
+	cout<<"STUDENT NUMBER   "<<sno<<endl;
+	cout<<"STUDENT NAME  "<<name<<endl;
+	cout<<"STUDENT ADDRESS  "<<add<<endl;
+
+	cout<<"MARKS IN MATHS  "<<mm<<endl;
+	cout<<"MARKS IN PHYSICS  "<<mp<<endl;
+	cout<<"MARKS IN CHEMISTRY  "<<mc<<endl;
+
+	cout<<"SPORTS MARKS  "<<sm<<endl;
+
+	cout<<"TOTAL MARKS  "<<tot<<endl;
+	cout<<"AVERAGE MARKS  "<<av<<endl;
+	cout<<"RESULT OBTAINED "<<res<<endl;
+ }
+};
+void main()
+{
+ result R;
+ clrscr();
+ R.input(); 		//MEMBER FUNCTION OF STUDENT CLASS
+ R.mentry();		//MEMBER FUNCTION OF TEST CLASS
+ R.sentry();		//MEMBER FUNCTION OF SPORTS CLASS
+ R.findres();		//MEMBER FUNCTION OF RESULT CLASS
+ clrscr();
+ R.display();
+ getch();
+}

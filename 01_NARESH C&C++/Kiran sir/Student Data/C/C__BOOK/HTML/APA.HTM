@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+<!-- This document was created from RTF source by rtftohtml version 3.0.1 -->
+
+	<META NAME="GENERATOR" Content="Symantec Visual Page 1.0">
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+	<TITLE>Teach Yourself C++ in 21 Days</TITLE>
+</HEAD>
+
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF">
+
+<H1></H1>
+<H2 ALIGN="CENTER"><A HREF="ch21rv3.htm"><IMG SRC="../buttons/BLANPREV.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="apb.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><BR>
+<BR>
+<BR>
+<A NAME="Heading1"></A><FONT COLOR="#000077">Appendix A <BR>
+<BR>
+Operator Precedence</FONT></H2>
+<P>
+<H2 ALIGN="CENTER"><FONT COLOR="#000077"></FONT></H2>
+<P>It is important to understand that operators have a precedence, but it is not
+essential to memorize the precedence.</P>
+
+<DL>
+	<DD>
+<HR>
+<FONT COLOR="#000077"><B>New Term:</B></FONT><I><B> </B>Precedence</I> is the order
+	in which a program performs the operations in a formula. If one operator has precedence
+	over another operator, it is evaluated first. 
+<HR>
+
+</DL>
+
+<P>Higher precedence operators &quot;bind tighter&quot; than lower precedence operators;
+thus, higher precedence operators are evaluated first. The lower the rank in the
+following chart, the higher the precedence. <BR>
+<BR>
+<FONT SIZE="4"><B>Table A.1. Operator Precedence</B></FONT>. 
+<TABLE BORDER="0">
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT"><B><I>Rank</I></B></TD>
+		<TD ALIGN="LEFT"><B><I>Name</I></B></TD>
+		<TD ALIGN="LEFT"><B><I>Operator</I></B></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">1</TD>
+		<TD ALIGN="LEFT">scope resolution</TD>
+		<TD ALIGN="LEFT"><TT>::</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">2</TD>
+		<TD ALIGN="LEFT">member selection, subscripting,</TD>
+		<TD ALIGN="LEFT"><TT>. -&gt;</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT"></TD>
+		<TD ALIGN="LEFT">function calls, postfix increment</TD>
+		<TD ALIGN="LEFT"><TT>()</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT"></TD>
+		<TD ALIGN="LEFT">and decrement</TD>
+		<TD ALIGN="LEFT"><TT>++</TT> <TT>--</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">3</TD>
+		<TD ALIGN="LEFT"><TT>sizeof</TT>, prefix increment and decrement,</TD>
+		<TD ALIGN="LEFT"><TT>++</TT> <TT>--</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT"></TD>
+		<TD ALIGN="LEFT">complement, and, not, unary minus and plus,</TD>
+		<TD ALIGN="LEFT"><TT>^ !</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT"></TD>
+		<TD ALIGN="LEFT">address of and dereference, new, new[], delete,</TD>
+		<TD ALIGN="LEFT"><TT>-</TT> <TT>+</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT"></TD>
+		<TD ALIGN="LEFT">delete[], casting, <TT>sizeof(),</TT></TD>
+		<TD ALIGN="LEFT"><TT>&amp;</TT> <TT>*</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT"></TD>
+		<TD ALIGN="LEFT"></TD>
+		<TD ALIGN="LEFT"><TT>()</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">4</TD>
+		<TD ALIGN="LEFT">member selection for pointer</TD>
+		<TD ALIGN="LEFT"><TT>.*</TT> <TT>-&gt;*</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">5</TD>
+		<TD ALIGN="LEFT">multiply, divide, modulo</TD>
+		<TD ALIGN="LEFT"><TT>*</TT> <TT>/</TT> <TT>%</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">6</TD>
+		<TD ALIGN="LEFT">add, subtract</TD>
+		<TD ALIGN="LEFT"><TT>+</TT> <TT>-</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">7</TD>
+		<TD ALIGN="LEFT">shift</TD>
+		<TD ALIGN="LEFT"><TT>&lt;&lt;</TT> <TT>&gt;&gt;</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">8</TD>
+		<TD ALIGN="LEFT">inequality relational</TD>
+		<TD ALIGN="LEFT"><TT>&lt; &lt;= &gt; &gt;=</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">9</TD>
+		<TD ALIGN="LEFT">equality, inequality</TD>
+		<TD ALIGN="LEFT"><TT>== !=</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">10</TD>
+		<TD ALIGN="LEFT">bitwise <TT>AND</TT></TD>
+		<TD ALIGN="LEFT"><TT>&amp;</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">11</TD>
+		<TD ALIGN="LEFT">bitwise exclusive <TT>OR</TT></TD>
+		<TD ALIGN="LEFT"><TT>^</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">12</TD>
+		<TD ALIGN="LEFT">bitwise <TT>OR</TT></TD>
+		<TD ALIGN="LEFT"><TT>|</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">13</TD>
+		<TD ALIGN="LEFT">logical <TT>AND</TT></TD>
+		<TD ALIGN="LEFT"><TT>&amp;&amp;</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">14</TD>
+		<TD ALIGN="LEFT">logical <TT>OR</TT></TD>
+		<TD ALIGN="LEFT"><TT>||</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">15</TD>
+		<TD ALIGN="LEFT">conditional</TD>
+		<TD ALIGN="LEFT"><TT>?:</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">16</TD>
+		<TD ALIGN="LEFT">assignment operators</TD>
+		<TD ALIGN="LEFT"><TT>= *= /= %=</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT"></TD>
+		<TD ALIGN="LEFT"></TD>
+		<TD ALIGN="LEFT"><TT>+= -= &lt;&lt;= &gt;&gt;=</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT"></TD>
+		<TD ALIGN="LEFT"></TD>
+		<TD ALIGN="LEFT"><TT>&amp;= |= ^=</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">17</TD>
+		<TD ALIGN="LEFT">throw operator</TD>
+		<TD ALIGN="LEFT"><TT>throw</TT></TD>
+	</TR>
+	<TR ALIGN="LEFT" rowspan="1">
+		<TD ALIGN="LEFT">18</TD>
+		<TD ALIGN="LEFT">comma</TD>
+		<TD ALIGN="LEFT"><TT>,</TT></TD>
+	</TR>
+</TABLE>
+</P>
+<CENTER>
+<P><A HREF="ch21rv3.htm"><IMG SRC="../buttons/BLANPREV.GIF" WIDTH="37"
+HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="apb.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="#heading1"><IMG SRC="../buttons/BLANTOP.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A>
+</CENTER>
+
+
+</BODY>
+
+</HTML>

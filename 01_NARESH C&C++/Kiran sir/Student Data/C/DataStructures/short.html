@@ -1,0 +1,253 @@
+﻿<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="720" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Shortest-Path Algorithm</h2></center>
+
+<pre>
+<font size="2">
+The input is a weight graph. Associated with each edge (v<sub>i</sub>,v<sub>j</sub>) is a	   
+ cost C<sub>i,j</sub> to traverse the arc. 
+The cost of a path v<sub>1</sub>,v<sub>2</sub>..........v<sub>n</sub> is
+               ∑C<sub>i,i+1</sub>.
+This is referred to as the “weighted path lenght”.The unweighted path 
+length is merely the number of edges on the path,namely n-1.
+
+<strong>Unweighted Shortest Paths:-</strong>
+
+	In unweighted graph g using some vertex s.Which is an input 
+parameter, we would like to find the shortest path from s to all other 
+vertices.We are only interested in the number of edges contained on the 
+path,so there are no weights on the edges.
+
+<img src="Di.jpg">
+
+Suppose we choose 's' to be v<sub>3</sub>.Immediately,we can tell that 
+the shortest path from s to v<sub>3</sub> is then a path of length 0.We 
+can mark this information,obtaining the graph vertices v<sub>2</sub> and 
+v<sub>4</sub> having shortest path 2 from s. and finally vertices 
+v<sub>5</sub> and v<sub>7</sub> having shortest path 3 from s.
+
+<img align="middle" src="finalshortestpath.jpg"> 
+
+This strategy for searching a graph is known as breadth-first search.It 
+operates by processing vertices in layers:the vertices closest to the start
+are evaluated first,and the most distant vertices are evaluated last.This 
+is much the same as a level-order traversal for trees.
+
+For each vertex,we will keep track of 3 pieces of information.First,we 
+will keep its distance from 's' in the entry dv.Initially al vertices are 
+unreachable except for s,whose path lenght is 0.The entry in pv is the 
+bookkeeping variable,which will allow us to print the actual paths. The 
+entry 'known' is set to 1 after a vertex is processed.Initially,all entries 
+are unknown,includingthe start vertex.when a vertex is known,we have a 
+guarantee that no cheper path will ever be found,so processing for that 
+vertex is essentially complete.
+
+<strong>Dijkstra'as Algorithm:-</strong>
+
+This is for finding the shortest path between two nodes in a weighted 
+graph represented by a weight matrix.That implementation was
+O(n<SUP>2</SUP>) ,where n is the number of nodes in the graph.
+<BLOCKQUOTE>for (all nodes i)
+{
+distance[i]=INFINITY;
+perm[i]=NONMEMBER;
+}
+perm[s]=MEMBER;
+distance[s]=0;
+current=s;
+while(current!=t)
+{
+dc=distance[current];
+for(all nodes i that are successors of current)
+{
+newdist=dc+weight[current][i];
+if(newdist&#060distance[i])
+{
+distance[i]=newdist;precede[i]=current;
+}
+}
+k=the node k such that perm[k]==NONMEMBER and such that distance[k]is 
+smallest;
+current=k;
+perm[k]=MEMBER;
+}
+*p<sub>d</sub>=distance[t];
+</BLOCKQUOTE>
+
+At each stage Dijkstra's algorithm selects a vertex v,which has the 
+smallest d<sub>v</sub> among all the  unknown vertices,and declares that 
+the shortest path from s to v is known. The remainder of a stage consists 
+of updating the values of d<sub>w</sub>.d<sub>w</sub> = d<sub>v</sub>+c<sub>v,w</sub>.<br>
+
+<img align="middle" src="digraph.jpg">
+
+ In the above graph G the initial configuration,assuming that the start 
+node s is v<sub>1</sub>.The selected is v<sub>1</sub> wiht path length 0. 
+This vertex is marked known.Now that v<sub>1</sub> is known,some entries 
+need to be adjusted.The verteces adjacent to v<sub>1</sub> and 
+v<sub>4</sub>.
+
+Next v<sub>4</sub> is selcted and marked known.Vertices 
+v<sub>6</sub>,v<sub>7</sub> are adjacent,and it turns out that all require 
+adjusting.<br><table align="center" border="2" cellspacing="0"><TR><TH 
+width="4"  height="8"  align="center" valign="center">v</th><th> Known</th><th> dv</th><th> pv</TH></TR>
+<tr><TD>v1</TD><td align="center">1</td><td>0</td><td>0</td></tr>
+<tr><TD>v2</TD><td align="center">0</td><td>2</td><td>v1</td></tr>
+<tr><TD>v3</TD><td align="center">0</td><td>3</td><td>v4</td></tr>
+<tr><TD>v4</TD><td align="center">1</td><td>1</td><td>v1</td></tr>
+<tr><TD>v5</TD><td align="center">0</td><td>3</td><td>v4</td></tr>
+<tr><TD>v6</TD><td align="center">0</td><td>9</td><td>v4</td></tr>
+<tr><TD>v7</TD><td align="center">0</td><td>5</td><td>v4</td></tr>
+</table>
+		<center>After v4 is declared known</center><br><br>
+		<table align="center"  cellspacing="0" border="2"><TR><TH width="4"  height="8"  align="center" valign="center">v</th><th> Known</th><th> dv</th><th> pv</TH></TR>
+<tr><TD>v1</TD><td align="center">1</td><td>0</td><td>0</td></tr>
+<tr><TD>v2</TD><td align="center">1</td><td>2</td><td>v1</td></tr>
+<tr><TD>v3</TD><td align="center">0</td><td>3</td><td>v4</td></tr>
+<tr><TD>v4</TD><td align="center">1</td><td>1</td><td>v1</td></tr>
+<tr><TD>v5</TD><td align="center">0</td><td>3</td><td>v4</td></tr>
+<tr><TD>v6</TD><td align="center">0</td><td>9</td><td>v4</td></tr>
+<tr><TD>v7</TD><td align="center">0</td><td>5</td><td>v4</td></tr>
+</table>
+		<center>After v2 is declared known</center><br><table align="center" border="2" cellspacing="0"><TR><TH width="4"  height="8"  align="center" valign="center">v</th><th> Known</th><th> dv</th><th> pv</TH></TR>
+<tr><TD>v1</TD><td align="center">1</td><td>0</td><td>0</td></tr>
+<tr><TD>v2</TD><td align="center">1</td><td>2</td><td>v1</td></tr>
+<tr><TD>v3</TD><td align="center">1</td><td>3</td><td>v4</td></tr>
+<tr><TD>v4</TD><td align="center">1</td><td>1</td><td>v1</td></tr>
+<tr><TD>v5</TD><td align="center">1</td><td>3</td><td>v4</td></tr>
+<tr><TD>v6</TD><td align="center">0</td><td>8</td><td>v3</td></tr>
+<tr><TD>v7</TD><td align="center">0</td><td>5</td><td>v4</td></tr>
+</table>
+		<center>After v5 is declared known</center>	<br>
+		<table align="center" border="2" cellspacing="0"><TR><TH width="4"  height="8"  align="center" valign="center">v</th><th> Known</th><th> dv</th><th> pv</TH></TR>
+<tr><TD>v1</TD><td align="center">1</td><td>0</td><td>0</td></tr>
+<tr><TD>v2</TD><td align="center">1</td><td>2</td><td>v1</td></tr>
+<tr><TD>v3</TD><td align="center">1</td><td>3</td><td>v4</td></tr>
+<tr><TD>v4</TD><td align="center">1</td><td>1</td><td>v1</td></tr>
+<tr><TD>v5</TD><td align="center">1</td><td>3</td><td>v4</td></tr>
+<tr><TD>v6</TD><td align="center">0</td><td>6</td><td>v7</td></tr>
+<tr><TD>v7</TD><td align="center">1</td><td>5</td><td>v4</td></tr>
+</table>
+		<center>After v7 is declared known</center>	<br>
+		<table align="center" border="2" cellspacing="0"><TR><TH width="4"  height="8"  align="center" valign="center">v</th><th> Known</th><th> dv</th><th> pv</TH></TR>
+<tr><TD>v1</TD><td align="center">1</td><td>0</td><td>0</td></tr>
+<tr><TD>v2</TD><td align="center">1</td><td>2</td><td>v1</td></tr>
+<tr><TD>v3</TD><td align="center">1</td><td>3</td><td>v4</td></tr>
+<tr><TD>v4</TD><td align="center">1</td><td>1</td><td>v1</td></tr>
+<tr><TD>v5</TD><td align="center">1</td><td>3</td><td>v4</td></tr>
+<tr><TD>v6</TD><td align="center">1</td><td>6</td><td>v7</td></tr>
+<tr><TD>v7</TD><td align="center">1</td><td>5</td><td>v4</td></tr>
+</table>
+		<center>After v6 is declared known and algorithm terminates</center>
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="graphs1.html">Back</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+
+
+
+
+
+

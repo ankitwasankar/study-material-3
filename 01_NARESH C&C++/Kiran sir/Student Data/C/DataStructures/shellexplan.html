@@ -1,0 +1,10 @@
+<html><body>
+<center><b>Shell sort</b></center>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Is based on the insertion sort The given list of elements is broken down in few smallest elements lists.After this the insertions sort is applied on such smallest lists.These smaller lists are again recombined .Another partition is made on the procedure is repeated.The breaking down of the list into smaller list by selecting elements of specific location.This is determined by factor is called increment.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consider the list&nbsp;&nbsp;&nbsp;23&nbsp;&nbsp;&nbsp;12&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;34&nbsp;&nbsp;&nbsp;13&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;44.<br>
+We may initially take the increment as 3.This would break the list as 23,34,44; 12,13,and 6,7.The first list is done using elements[0],elements[3] and elements[6] where the increment is 3.This list is sorted using insertion sort.The next list is elements[1] and elements[4] where the increment is the same 3.The final list is elements[2] and elements[5] with the same increment of 3.After sorting them,the sublists are recombined.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As the next stage,the increment is changed (reduced by a suitable amount) and the process is repeated.The process continues till the increment is 1.The choice of increment is left to our choice.We can increment such as 7,5,3 and 1 or 6,4,1 etc.
+<br>
+
+
+</body></html>

@@ -1,0 +1,294 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+<!-- This document was created from RTF source by rtftohtml version 3.0.1 -->
+
+	<META NAME="GENERATOR" Content="Symantec Visual Page 1.0">
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+	<TITLE>Teach Yourself C++ in 21 Days</TITLE>
+</HEAD>
+
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF">
+
+<H1></H1>
+<P ALIGN="CENTER"><A HREF="ch07.htm"><IMG SRC="../buttons/BLANPREV.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch08.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A>
+<H2 ALIGN="CENTER"><BR>
+<A NAME="Heading1"></A><FONT COLOR="#000077">In Review</FONT></H2>
+<P><A NAME="Heading2"></A><FONT SIZE="4" COLOR="#000077"><B>Listing R1.1. Week 1
+in Review listing.</B></FONT><FONT COLOR="#0066FF"></FONT>
+<PRE><FONT COLOR="#0066FF">1:  #include &lt;iostream.h&gt;
+2:
+3:  typedef unsigned short int USHORT;
+4:  typedef unsigned long int ULONG;
+5:  enum BOOL { FALSE, TRUE};
+6:  enum CHOICE { DrawRect = 1, GetArea, 
+7:     GetPerim, ChangeDimensions, Quit};
+8:  // Rectangle class declaration
+9:  class Rectangle
+10: {
+11:    public:
+12:      // constructors
+13:      Rectangle(USHORT width, USHORT height);
+14:      ~Rectangle();
+15:
+16:      // accessors
+17:      USHORT GetHeight() const { return itsHeight; }
+18:      USHORT GetWidth() const { return itsWidth; }
+19:      ULONG GetArea() const { return itsHeight * itsWidth; }
+20:      ULONG GetPerim() const { return 2*itsHeight + 2*itsWidth; }
+21:      void SetSize(USHORT newWidth, USHORT newHeight);
+22:
+23:      // Misc. methods
+24:      void DrawShape() const;
+25:
+26:    private:
+27:      USHORT itsWidth;
+28:      USHORT itsHeight;
+29: };
+30:
+31: // Class method implementations
+32: void Rectangle::SetSize(USHORT newWidth, USHORT newHeight)
+33: {
+34:    itsWidth = newWidth;
+35:    itsHeight = newHeight;
+36: }
+37:
+38:
+39: Rectangle::Rectangle(USHORT width, USHORT height)
+40: {
+41:    itsWidth = width;
+42:    itsHeight = height;
+43: }
+44:
+45: Rectangle::~Rectangle() {}
+46:
+47: USHORT DoMenu();
+48: void DoDrawRect(Rectangle);
+49: void DoGetArea(Rectangle);
+50: void DoGetPerim(Rectangle);
+51:
+52: void main ()
+53: {
+54:    // initialize a rectangle to 10,20
+55:    Rectangle theRect(30,5);
+56:
+57:    USHORT choice = DrawRect;
+58:    USHORT fQuit = FALSE;
+59:
+60:    while (!fQuit)
+61:    {
+62:      choice = DoMenu();
+63:      if (choice &lt; DrawRect || choice &gt;  Quit)
+64:      {
+65:        cout &lt;&lt; &quot;\nInvalid Choice, please try again.\n\n&quot;;
+66:        continue;
+67:      }
+68:      switch (choice)
+69:      {
+70:      case  DrawRect:
+71:        DoDrawRect(theRect);
+72:        break;
+73:      case GetArea:
+74:        DoGetArea(theRect);
+75:        break;
+76:      case GetPerim:
+77:        DoGetPerim(theRect);
+78:        break;
+79:      case ChangeDimensions:
+80:        USHORT newLength, newWidth;
+81:        cout &lt;&lt; &quot;\nNew width: &quot;;
+82:        cin &gt;&gt; newWidth;
+83:        cout &lt;&lt; &quot;New height: &quot;;
+84:        cin &gt;&gt; newLength;
+85:        theRect.SetSize(newWidth, newLength);
+86:        DoDrawRect(theRect);
+87:        break;
+88:      case Quit:
+89:        fQuit = TRUE;
+90:        cout &lt;&lt; &quot;\nExiting...\n\n&quot;;
+91:        break;
+92:      default:
+93:        cout &lt;&lt; &quot;Error in choice!\n&quot;;
+94:        fQuit = TRUE;
+95:        break;
+96:      }   // end switch
+97:    }     // end while
+98: }       // end main
+99:
+100:
+101: USHORT DoMenu()
+102: {
+103:   USHORT choice;
+104:    cout &lt;&lt; &quot;\n\n   *** Menu *** \n&quot;;
+105:    cout &lt;&lt; &quot;(1) Draw Rectangle\n&quot;;
+106:    cout &lt;&lt; &quot;(2) Area\n&quot;;
+107:    cout &lt;&lt; &quot;(3) Perimeter\n&quot;;
+108:    cout &lt;&lt; &quot;(4) Resize\n&quot;;
+109:    cout &lt;&lt; &quot;(5) Quit\n&quot;;
+110:
+111:  cin &gt;&gt; choice;
+112:  return choice;
+113: }
+114:
+115: void DoDrawRect(Rectangle theRect)
+116: {
+117:   USHORT height = theRect.GetHeight();
+118:   USHORT width = theRect.GetWidth();
+119:
+120:   for (USHORT i = 0; i&lt;height; i++)
+121:   {
+122:     for (USHORT j = 0; j&lt; width; j++)
+123:       cout &lt;&lt; &quot;*&quot;;
+124:     cout &lt;&lt; &quot;\n&quot;;
+125:   }
+126: }
+127:
+128:
+129: void DoGetArea(Rectangle theRect)
+130: {
+131:   cout &lt;&lt; &quot;Area: &quot; &lt;&lt;  theRect.GetArea() &lt;&lt; endl;
+132: }
+133:
+134: void DoGetPerim(Rectangle theRect)
+135: {
+136:   cout &lt;&lt; &quot;Perimeter: &quot; &lt;&lt;  theRect.GetPerim() &lt;&lt; endl;
+<TT>137: }</TT>
+Output: *** Menu ***
+(1) Draw Rectangle
+(2) Area
+(3) Perimeter
+(4) Resize
+(5) Quit
+1
+******************************
+******************************
+******************************
+******************************
+******************************
+
+    *** Menu ***
+(1) Draw Rectangle
+(2) Area
+(3) Perimeter
+(4) Resize
+(5) Quit
+2
+Area: 150
+
+    *** Menu ***
+(1) Draw Rectangle
+(2) Area
+(3) Perimeter
+(4) Resize
+(5) Quit
+3
+Perimeter: 70
+
+    *** Menu ***
+(1) Draw Rectangle
+(2) Area
+(3) Perimeter
+(4) Resize
+(5) Quit
+4
+
+New Width: 10
+New height: 8
+**********
+**********
+**********
+**********
+**********
+**********
+**********
+**********
+
+    *** Menu ***
+(1) Draw Rectangle
+(2) Area
+(3) Perimeter
+(4) Resize
+(5) Quit
+2
+Area: 80
+
+    *** Menu ***
+(1) Draw Rectangle
+(2) Area
+(3) Perimeter
+(4) Resize
+(5) Quit
+3
+Perimeter: 36
+
+    *** Menu ***
+(1) Draw Rectangle
+(2) Area
+(3) Perimeter
+(4) Resize
+(5) Quit
+5
+
+Exiting...
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis: </B></FONT>This program utilizes most of the
+skills you learned this week. You should not only be able to enter, compile, link,
+and run this program, but also understand what it does and how it works, based on
+the work you've done this week.<BR>
+The first six lines set up the new types and definitions that will be used throughout
+the program.</P>
+<P>Lines 9-29 declare the <TT>Rectangle</TT> class. There are public accessor methods
+for obtaining and setting the width and height of the rectangle, as well as for computing
+the area and perimeter. Lines 32-43 contain the class function definitions that were
+not declared inline.</P>
+<P>The function prototypes, for the non-class member functions, are on lines 47-50,
+and the program begins on line 52. The essence of this program is to generate a rectangle,
+and then to print out a menu offering five options: Draw the rectangle, determine
+its area, determine its perimeter, resize the rectangle, or quit.</P>
+<P>A flag is set on line 58, and when that flag is not set to <TT>TRUE</TT> the menu
+loop continues. The flag is only set to <TT>TRUE</TT> if the user picks Quit from
+the menu.</P>
+<P>Each of the other choices, with the exception of <TT>ChangeDimensions</TT>, calls
+out to a function. This makes the <TT>switch</TT> statement cleaner. <TT>ChangeDimensions</TT>
+cannot call out to a function because it must change the dimensions of the rectangle.
+If the rectangle were passed (by value) to a function such as <TT>DoChangeDimensions()</TT>,
+the dimensions would be changed on the local copy of the rectangle in <TT>DoChangeDimensions()</TT>
+and not on the rectangle in <TT>main()</TT>. On Day 8, &quot;Pointers,&quot; and
+Day 10, &quot;Advanced Functions,&quot; you'll learn how to overcome this restriction,
+but for now the change is made in the <TT>main()</TT> function.</P>
+<P>Note how the use of an enumeration makes the <TT>switch</TT> statement much cleaner
+and easier to understand. Had the <TT>switch</TT> depended on the numeric choices
+(1-5) of the user, you would have to constantly refer to the description of the menu
+to see which pick was which.</P>
+<P>On line 63, the user's choice is checked to make sure it is in range. If not,
+an error message is printed and the menu is reprinted. Note that the <TT>switch</TT>
+statement includes an &quot;impossible&quot; default condition. This is an aid in
+debugging. If the program is working, that statement can never be reached.
+<H3 ALIGN="CENTER"><A NAME="Heading3"></A><FONT COLOR="#000077">Week in Review</FONT></H3>
+<P>Congratulations! You've completed the first week! Now you can create and understand
+sophisticated C++ programs. Of course, there's much more to do, and next week starts
+with one of the most difficult concepts in C++: pointers. Don't give up now, you're
+about to delve deeply into the meaning and use of object-oriented programming, virtual
+functions, and many of the advanced features of this powerful language.</P>
+<P>Take a break, bask in the glory of your accomplishment, and then turn the page
+to start Week 2.</P>
+<P ALIGN="CENTER"><BR>
+<BR>
+<A HREF="ch07.htm"><IMG SRC="../buttons/BLANPREV.GIF" WIDTH="37"
+HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch08.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="#heading1"><IMG SRC="../buttons/BLANTOP.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A>
+
+
+</BODY>
+
+</HTML>

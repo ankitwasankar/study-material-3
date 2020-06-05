@@ -1,0 +1,111 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+  
+<strong>Function Declaration and prototype:- </strong>
+
+              It is one of the most important feature of ANSI C. A function prototype tells the compiler the type
+ of data returned by the function, the number of arguments the function expects to receive, the types of arguments,
+ and the order in which these arguments are expected. The compiler uses function prototype to validate function
+ calls.
+         The function prototype is written as follows:
+                             Data-type function-name(type1,type2 ..........typen);
+         Where data-type is the data-type returned by the function
+                   type1,type2,.......typen are the type of data fed as arguments.             
+          Any C function by default returns an int value. More specifically whenever a call is made to a function,
+ the compiler assumes that this function would return a value of the type int. If we desire that a function should
+ return a value other than an int, the it is necessary to explicitly mention so in the calling function as well as
+ in the called function. Suppose we want to find out square of a number using a function,
+
+1)  main()
+    {
+       float a,b;
+       printf("\n Enter any number");
+       scanf("%f",&a);
+       b=square(a);
+       printf("\n square of %f is %f", a,b);
+    }
+    square(float x)
+     {
+       float y;
+       y=x*x;
+       return(y);
+     }
+
+   And here are the sample runs of this program
+
+  Enter any number 3
+     square of 3 is 9.000000
+    Enter any number 1.5
+     square of 1.5 is 2.000000
+    Enter any number 2.5
+     square of 2.5 is 6.000000
+
+       The first of these answers is correct. But square of 1.5 is definitely not 2. This is happened because any C
+ function, by default always returns an integer value. Therefore, even though the function square() calculates the
+ square of 1.5 as 2.25, it is not capable of returning a float value. To overcome this problem, the function
+ square() must be declared as float in main() as well. The statement float square() means that it is a function
+ which will return a float value.
+
+<strong>Return Statement:</strong>
+
+The return statement has two important uses:
+1) It causes an important exit from the function it is in. That is, it causes program execution to return to the
+   calling code.
+2) It can be used to return the value.
+
+    The syntax of the return statement is: 
+                                      return;
+                                      return(var);
+                                      return(expression);
+       Where var is any variable and expression is any arithmetic or logical expression.
+       When the return statement is encountered in the called function, control is passed on to the calling
+ function and a variable var or the value obtained by the arithmetic or logical expression is returned by the
+ called function to the calling function.
+
+
+<a href="functions.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

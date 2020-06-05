@@ -1,0 +1,111 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><html>
+<h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+
+16.main()
+      {
+          int  n[25];
+         n[0]=100;
+        n[24]=200;
+       print f(%d %d,*n, *(n+24) + *(n+0));
+      }
+output: 100 300
+explanation: n[] has been declared as an array capable of holding 25 elements numbered 0 to 24.
+then 100 and 200 are assigned to n[0] and n[24] respectively. Them comes the most important
+part the print f() statement. Whenever we mentionthe name of the array, we get its base address.
+ Thus, *n would give the value at this base address, which in this case is100.this is then 
+ printed out. Look at the next expression,
+                *(n+24) + *(n+0)
+n gives the address of the zeroth element, n+1 gives the address of the next element of the
+ array, and so on. Thus n+24 of the next element of the array, and so on. Thus n+24 gives the 
+ address of the last element of the array, and therefore *(n+24) would give the value at this 
+ address, which is 200 in this case. Similarly, *(n+0) would give 100 and the additionof the
+ two would result into 300, which is outputted next.
+17.main()
+   {
+    static int a[5] = {2,3,4,5,6};
+    int i;
+    change (a);
+    for(i=4;i=0;i--)
+printf(%d, a[i]);
+}
+change (b)
+int *b;
+{
+int i;
+for(i=0;i<=4;i++)
+{
+ *b = *b+1;
+  b++;
+}
+}
+output: 7 6 5 4 3
+explanation: while calling change() we are passing the base addresses of the array, which as
+per fig is 4002. this address is collected in b in function change(). Then the control
+enters the for loop, where we meet the expression b=b+1. This means replace the value at the
+address contained in b, with value at the address contained in b plus 1.
+every time b++ is executed, the address of the next integer gets stored in b. thus, using the 
+address stored in b, we get an access to array elements which are now changed to 3,4,5,6,7. 
+once the control comes back from chance() the current array contents are then printed out from
+end to beginning through the for loop.
+
+          2                                                                      
+                         
+4
+5
+6
+<a href="arrays.html" target="_self">BACK</a>
+</pre>
+</TD>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</table>

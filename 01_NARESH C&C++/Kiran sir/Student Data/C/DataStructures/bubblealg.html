@@ -1,0 +1,33 @@
+<html>
+<head><TITLE>Bubble Sort</TITLE></head>
+<body>
+<strong>Algorithm :</strong><br><br>
+
+	Procedure bubblesort(A,N)<br>
+	1.For pass=1 to N-1 do<br>
+	begin<br>
+	2.NoExchange &#060;- true<br>
+	3.For j=1 to (N-pass) do<br>
+	begin<br>
+	4.If a[j]>a[j+1] then<br>
+	begin<br>
+	5.swap(a[j],a[j+1])<br>
+	6.NoExchange &#060;- False<br>
+	  end<br>
+	end<br>
+	7.If(NoExchange is true) then<br>
+	 return<br>
+	end<br>
+	8.Return.<br>
+	<strong>Analysis</strong><br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The algorithm requires N-1 passes ,each pass places one item in its correct place. 
+	Obviously the Nth element would also be in correct place. The ith pass makes N-i comparisons. So the time
+		<div align="center">T(N)= (N-1)+(N-2)+.................+2+1</div>
+		    <pre>
+                          N-1
+		 	= ∑i=N/2(N-1)=O(N<sup>2</sup>)
+                         i=1</pre>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Bubble sort is simple but least efficient. If the data set contains N elements,the maximum number of passes is N-1. Similarly the number of passes is N-1. Similarly the number of tests per pass ranges between N-1 and 1 with an average value of N/2. Thus the upper bound on the total number of tests is roughly (N-1)*N/2 that is proportional to N<sup>2</sup>.
+</body>
+
+</html>

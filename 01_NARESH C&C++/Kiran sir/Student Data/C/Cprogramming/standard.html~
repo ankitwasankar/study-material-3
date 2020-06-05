@@ -1,0 +1,63 @@
+<html><table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR>
+
+
+</table></TD>
+<td align="left"><pre>
+<div align="center"></div>
+<B>STANDARD LIBRARY STRING FUNCTIONS</B><br>
+       Most commonly used functions are strlen(),strcpy(),strcat() and strcmp().
+
+<b>strlen():</b> For example:
+                               &nbsp;&nbsp; char str1[20]="chowdary";<br>
+                              &nbsp;&nbsp;  l=strlen(str1);<br>
+                               &nbsp;&nbsp; printf("\n length=%d",l);<br>
+In the call to the function strlen(),we are passing the base address of the string,and the <br>function inturn returns the length of the string.While calculating the length it doesnot <br>count '\0'.  <br>Output would be length=8.
+
+<b>strcpy():</b>For example:
+                                 &nbsp;&nbsp; char str1[20]="chowdary";<br>
+                                &nbsp;&nbsp;  char str3[20];<br>
+                              &nbsp;&nbsp;    strcpy(str3,str1);<br>
+                            &nbsp;&nbsp;     printf("\n after copying str3=%s",str3);<br>
+
+On supplying the base address, strcpy() goes on copying the source string into the target <br>string till it doesn't encounter the end of source string. Thus a string gets copied into<br> another,character by character.
+
+<b>strcmp():</b> compares two strings to find out whether they are same or different.<br>The two strings are compared letter by letter until there is a mismatch or end of one of the<br> strings is reached,whichever occurs first.If the two strings are identical,strcmp()<br> returns a value 0.If they are not ,it returns the numeric difference between the ASCII values <br>of the first non-matching pair of characters.<br><br><a href="pointer2.html">back</a></td>
+</html>

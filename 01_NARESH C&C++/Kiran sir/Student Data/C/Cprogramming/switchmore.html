@@ -1,0 +1,288 @@
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h3>Tips And Traps</h3></center>
+
+<pre>
+<font size="3">
+<pre>
+        A few useful tips about usage of switch and a few
+pitfalls to be avoided.
+(a) The earlier program that used switch  may give you the
+ wrong impression
+that you can use only cases arranged in 
+ asending order 1,2,3 and default.You can n fact put the 
+ cases in any order you please.
+
+<strong>Example:49</strong>
+
+           main()
+           {
+            int i=2;
+            switch(i)
+            {
+             case 121:
+                      printf("Iam in case121");
+                      break;
+             case 7:
+                      printf("This is seventh case");
+                      break;
+             case 22:
+                      printf("This is 22 nd case");
+                      break;
+             default :
+                      printf("your are in default");
+            }
+          }   
+
+OUTPUT: This is 22 nd case
+
+(b) You are also allowed to use char values in case
+ and switch as follows:
+
+<strong>Example:50</strong>
+
+    main()
+    {
+     char c='x';
+     switch(i)
+     {
+      case 'v':printf("Iam in case v");
+               break;
+      case 'a':printf("This is case a");
+               break;
+      case 'x':printf("This is x case");
+               break;
+      default :printf("your are in default");
+     }
+    }
+
+OUTPUT: This is x case
+
+	In fact here when we use 'v','x','a' they are 
+actually replaced by AscII values(118,120,97) of these 
+character constants.
+
+(c)At times we may want to execute a common  set is 
+statements for multiple cases. 
+How  this can be done   is shown below:           
+
+<strong>Example:51</strong>
+
+ main()
+ {
+  char ch;
+  printf("Enter any of the alphabet a,b,c");
+  scanf("%c",&ch);
+  switch(i)
+  {
+   case 'a':
+   case 'A':
+            printf("a is in ashar");
+            break;  
+   case 'b':
+   case 'B':
+            printf("b is in brain");
+            break;
+   case 'c':
+   case 'C':
+            printf("c is in cookie");
+            break;      
+   default:  
+            printf("With  you knew what are habet");
+  }
+ }
+       Here we make use of the fact, that once a case 
+is satisfied the control falls through the case till it 
+doesn't encounter break.Even if there are multiple 
+statements to be executed in each case there is no need
+to enclose them within a pair of braces(Unlike if, 
+and else).
+
+(e)Every statement in a switch must belong to some case 
+or the other, if it doesn't belongs to nay case it never
+ going to execute.
+
+<strong>Example:52</strong>
+
+           main()
+           {
+            int i,j;
+            printf("Enter value of i");
+            scanf("%d",&i);
+            switch(i)
+           {
+             printf("Hello");
+             case 1: 
+                     j=10;
+                     break;
+             case 2:
+                     j=20;
+                     break;
+            }
+           }
+
+(f)If we have no default case, then the program simply falls 
+through the entire switch and continues with the next instruct
+ions (if any) that follows the closing brace of switch.
+
+(g) Is switch a replacement for if? Yes and No.
+
+Yes, because it offers a better way of writing programs as 
+compared to IF, and No, Because in certain situations we are 
+left with no choices but to use if.
+   The disadvantage of switch is that one can not have a case
+in a switch which looks like:
+
+       case i<=20;
+   All that we can have after the case is an int  constant or
+a char constant or an expression that evaluates to one of 
+these constants. Even a float is not allowed.
+The advantage  of switch over if is that it leads to a more
+structured program and the level of indentation is manageable
+more if so there are multiple statements  within each case of
+a switch.
+
+(h) We can check the value of any expression in a switch. 
+Thus the following switch statements are legal.
+                switch(i+j*k) 
+                switch(23+45%4*k)
+                switch(a<font>7)
+      Expressions can be also be used in cases provided ey 
+are constant expressions. Thus case 3+7 is correct, However
+case a+b is incorrect.
+(i)The break statement when used in a switch takes the control 
+outside the switch, However use of continue will not take the 
+control to the  beginning of the switch as one is likely to 
+believe.
+
+(j)In principle , a switch  may occur within another,but in 
+practice it is rarely done. Such statements would be called 
+nested switch  statements.
+
+(k)The switch statements in very useful while writing menu 
+driven programs. This aspect  of switch is discussed.
+
+<strong>SWITCH versus IF-ELSE ladder</strong>
+          There are some things that you simply can not do 
+with a switch. They are:
+
+1.A float expression can not be tested using a switch.
+2.Cases can never have variable expressions(For example it s
+ wrong to say case a+3:)
+3.Multiple cases can not use same expressions.
+
+     For example below form is illegal: 
+               switch(a)
+               {
+                case 3:
+                        - - - - - - - 
+                case 1+2:
+                        - - - - - - - 
+               }
+
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="branching.html">Back</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<conio.h>
+struct emp
+{
+  int empno;
+  char name[20];
+  int salary;
+};
+void main()
+{
+  FILE *fp;
+  struct emp e;
+  char ch;
+  clrscr();
+  fp=fopen("emp.dat","r");
+  while(fread(&e,sizeof(e),1,fp))
+  {
+    printf("\nEmployee No. - %d",e.empno);
+    printf("\nEmployee name - %s",e.name);
+    printf("\nsalary - %d",e.salary);
+  }
+  fclose(fp);
+  getch();
+}

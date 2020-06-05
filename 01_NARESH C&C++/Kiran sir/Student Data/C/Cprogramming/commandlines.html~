@@ -1,0 +1,72 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table>
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<td align=left><pre><strong><u>Command Line arguments:</u></strong><br><br>
+
+<strong><u>Definition</u>:</strong> It is a parameter supplied to a program when the 
+program is invoked.<br>These are the arguments passed to the main at command prompt.<br><br>
+<strong><u>Explanation</u>:<br><br></strong><br>main() function in 'c' takes two 
+arguments called argc ,argv .The information contained in the command arguments ,
+when main is called up by the stream.
+<u>argc:</u> The variable argc is an argument counter that coumts the number of arguments
+ on the command line.
+<u>argv:</u>  The argv is an argument vector and represents an array of character pointers 
+
+ that point to the command line arguments.The size of array will be equal to argc.
+   Ex: c:\> program x-file y-file
+      here argc=3.
+           argv[0]= program.
+	   argv[1]=x-file.
+	   argv[2]=y-file.	
+i.e.., here argv[0] contains the base address of string  "program"
+	argv[1]  contains the base address of string "x-file"
+	argv[2]   contains the base address of string "y-file"
+  Therefore arguments that we pass to main at command prompt are command line arguments.
+
+<strong><u>Advantages of command line arguments:</u></strong>
+1.There is no need to recompile the program everytime we want to use this utillity.
+It can be executed at command prompt.
+2.Once executable file is created nobody with malicious intention can tamper with your 
+source code program.
+3.We can pass source file name and target file name to main(), and utillise them in  main().
+ <a href="files1.html" target="_self"><strong>Back</strong></a></pre></td></table>

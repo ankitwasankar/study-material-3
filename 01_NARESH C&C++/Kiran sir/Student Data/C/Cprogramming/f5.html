@@ -1,0 +1,673 @@
+﻿<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h3>Multiple Choice Questions And Programs</h3></center>
+
+<pre>
+<font size="2">
+ 
+1) There is a mistake in the following code, add a statement
+   in it to remove it.
+   main()
+   {
+    int a;
+    a=f(10,3.14)
+    printf("%d",a);
+   }
+  f(int aa,float bb)
+  {
+   return((float)aa+bb);
+  }
+
+ Ans: Add the function prototype in main()
+      float f(int,float);
+
+2) What error would the following function give on 
+   compilation?
+   f(int a, int b)
+   {
+    int a;
+    a=20;
+    return a;
+   }
+ A. Missing parentheses in return statement
+ B. The function should be defined as int 
+    f(int a, int b)
+ C.Redeclaration of a
+ D.None of the above 
+
+ Ans: C
+
+3) In a function two return statements should never 
+   occur successfully.
+    TRUE or FALSE
+ 
+ Ans: TRUE
+
+4) In C all functions except main() can be called 
+   recursively. TRUE / FALSE
+
+   Ans: FALSE
+
+5) Point out the error in the following code.
+   main()
+   {
+    int a=10;
+    void f();
+    a=f();
+    printf("\n %d",a);
+   }
+   void f()
+   {
+    printf("\n Hi");
+   }
+
+ Ans: Inspite of defining the function f() as returning
+ void, the program is trying to collect the value returned
+ by f() in variable a.
+
+6) Point out the error, if any in the following program.
+   main()
+   {
+    int b;
+    b=f(20);
+    printf("%d",b);
+   }
+   int f(int a)
+   {
+    a>20 ? return(10) : return(20);
+   }
+
+ Ans: Return statement cannot be used as shown with the 
+conditional operators. Instead the following statement
+may be used.
+        return(a>20 ? 10 : 20)
+
+7) A function cannot be defined inside another function. 
+   TRUE / FALSE
+
+ Ans: TRUE
+
+8) Will the following function  work?   YES/NO
+    f1(int a, int b)
+    {
+      return(f2(20));
+      f2(int a)
+      {
+        return(a*a);
+      }
+ Ans: YES
+
+9) In a function two return statements should never occur.
+  TRUE / FALSE
+
+ Ans: FALSE
+
+10) Usually recursion works slower than loops.
+  TRUE / FALSE
+
+   Ans: TRUE
+
+11) Is it true that too many recursive calls may result 
+    into stack overflow? YES / NO
+    
+   Ans: YES
+
+12) What will be the output of the following program.
+
+	main()
+	{
+	C()
+	{
+	c()
+	{
+	printf(" C is a C......\n");
+	}
+	printf(".......... is a c..\n");
+	}
+        printf(".......... is a sea afterall!");
+	}
+
+Output: Error message: Statement missing ; in function 
+main The compiler reports an error saying there is a 
+missing semicolon. But where is it missing? After C().
+But suppose we only want to define the function C(),
+logically we shouldn't be required to give a semi-colon
+after C().That's the point. At the most you can call a 
+function from within the body of another function. you 
+are not allowed to define another function within the 
+body of another function. And that is what the above 
+program is attempting to do. It is trying to define C()
+and c() in main(), which ia not acceptable,hence the error
+message.
+
+13) 
+	main()
+	{
+	int z=4;
+	printf("%d",printf("%d%d",z,z);
+	}
+
+Output: 4 4 3 
+     Here the inner printf() is executed first, and it
+prints out a 4, a space and another 4. Thus it totally 
+prints out 3 characters. Whenever the printf() function 
+is called it returns the number of characters it has
+successfully managed to print.
+
+14)
+	main()
+	{
+	int i;
+        printf("In the year of lord \n");
+	for(i=1;i<font
+	main();
+	}
+Output:  In the year of lord
+         In the year of lord
+         In the year of lord  
+      ............................
+      ............................
+      ............................
+
+15)
+	      main()
+      {	
+       char a=65, ch='C';
+       printit(a,ch);
+      }
+	printit(a,ch)
+	{
+         printf("a=%d ch=%c", a, ch);
+	}
+
+Output: a=65 ch=C
+
+16)	main()
+	{
+	int i;
+	for(i=1;i<=10;i++)
+	main();
+	printf("IEG");
+	}
+
+Output: No output First time the control reaches the for
+loop main() gets called once again. This continues until 
+the stack becomes full or until the user aborts the 
+program through ctrl scroll-lock.
+
+17)
+	main()
+	{
+         void message();
+         int c;
+         printf("c before call=%d \n",c);
+         c=message();
+         printf("c after call=%d",c);
+        }
+	void message()
+	{
+         printf("Only he will survive who is c-fit");
+	}
+
+Output: Error message: Not an allowed type in function 
+main Here the function message() will not return any 
+value. And then we are trying to collect in the variable
+c, the value returned by message().
+
+18)
+      main()
+      {
+	int c;
+        printf("c before call=%d \n", c);
+	c=message();
+	printf("c after call=%d \n",c);
+      }
+      message()
+      {
+	printf("Live and Let live \n");
+      }
+
+Output: c before call=34
+        Live and Let live
+        c after call=457
+     Since c has not been initialized in main() it contains
+a garbage value.
+
+19)
+     main()
+     {
+       int k=35, z;
+       k=func1(k=func1(k)));
+       printf("k=%d",k);
+     }
+     func1(k)
+     int k;
+     {	
+      k++;
+      return(k);
+     }
+
+Output: k=38
+
+20)
+    main()
+    {
+     int i=10, j=20, k;
+     k=addsub(i, j);
+     printf("k=%d", k);
+    }
+    addsub(c,d)
+    int c, d;
+    {
+     int x, y;
+     x=c-d;
+     y=c+d;
+     return(x,y);
+    }
+
+Output: k=30
+
+21)
+    main()
+    {
+     int k=35, z;
+     z=check(k);
+     printf("z=%d", z);
+    }
+   check(m)
+   {
+     int m;
+     if(m>40)
+     return(!m++);
+     else
+     return(!++m);
+   }
+
+output: Error message: Redeclaration of 'm'in function
+check The variable m used in check() has not been 
+defined before the opening brace. Therefore it is 
+assumed to be an integer variable.
+
+22)   main()
+      {
+	int i=45;
+	float c;
+	c=check(i);
+	printf("c=%f", c);
+      }
+	check(ch)
+	int ch;
+	{
+     	ch>=45 ? return(3.14) : return(6.28);
+        }
+
+Output: c=3.000000
+ 
+    Here, the condition ch>=45 is satisfied hence 3.14 
+gets returned. Does it really? No, because by default 
+any function is capable of returning only an int. Hence
+3.14 gets truncated to 3 while returning the value.
+
+23)C supports modular programming.
+
+24)A function is a self contained program which is meant
+ to do some specific well defined task.
+
+25)Return statement is used to exit from the function.
+
+26)A function can receive many values, but it can return 
+only one value.
+
+27)A function prototype tells the compiler the type of data 
+arguments and their order,the type of data function returns,
+number of arguments.
+
+28)Parameters are used to communicate data between the 
+calling and called function.
+
+29)The four storage classes in c are automatic, static, 
+external and register.
+
+30)Recursion is a process of calling a function within the 
+same function.
+
+31)
+	main()
+	{	
+	int i=3, k , l;
+	k=add(++i);
+	l=add(i++);
+	printf("i=%d k=%d l=%d", i, k, l);
+        }
+	add(ii)
+	{
+	++ii;
+	return(ii);
+	}
+
+Output: i=5 k=5 l=5
+           Whenever the ++ operator proceeds the variable, 
+first the variable's value is incremented and then used. As
+against this whenever the ++ operator succeeds the variable,
+its value is first used and then incremented. According to 
+this rule the first call add(++i) would first increment i to
+4 and then pass its value to function add(). In add() 4 is 
+collected in ii,incremented to 5, returned to main() and 
+finally stored in k.Hence k's value is printed as 5. In the 
+next call, add(i++), the current value of i(i.e., 4) is first
+sent to add() and then
+ i's value is incremented to 5. In 
+add() ii is incremented to 5, which is returned and collected
+in l.
+
+32)
+    main()
+    {
+     int i=135, a=135, k;
+     k=function(!++i,!a++)
+     printf("i=%d a=%d k=%d",i,a,k);
+    }
+    function(j,b)
+    int j,b;
+    {
+     int c;
+     c=j+b;
+     return(c);
+    }
+
+Output: i=136 a=136 k=0
+    Since ++ preceeds i its value is incremented to 136, 
+and then the ! operator negates its to give 0. This 0 is 
+however not stored in i but is passed to function(). As 
+against this while evaluating the expression !a++ , 
+since ++ follows a, firstly a is negated to 0, this 0 is
+passed to function() and a is incremented to 136.Thus 
+what get passed to function() are 0 and 0,which are 
+collected in j and b, added to give another o and finally
+returned to main(), where it is collected in k and then 
+printed out.
+
+33)
+    main()
+    {
+     int p=23, f=24;
+     packman(p,f);
+     printf("p=%d f=%d",p,f);
+    }
+     packman(q,h)
+     int q, h;
+     {
+      q=q+q;
+      h=h+h;
+      return(q);
+      return(h);
+     }
+
+Output: p=23 f=24
+
+   In packman() q and h are doubled and then the return(q) 
+is executed, which sends the control back to main() along
+with the value q. But since this value is not collected in 
+any variable in main() it just gets ignored. As a result p
+and f stand unchanged at 23 and 24 respectively. The 
+statement return(h) never gets executed, since the previous
+return statement will not allow the control to reach there.
+
+34)
+	main()
+	{
+	int i=3,j;
+	j=add(++i++);
+        printf("i=%d j=%d \n", i, j);
+	}	
+	add(ii)
+	int ii;
+	{
+         ii++;
+         printf("ii=%d \n", ii);
+	}
+
+Output: Error message: Lvalue required in function main()
+
+   'Lvalue' means a variable whose value can change or in 
+other words,a variable which can occur on the Left hand side
+of the assignment operator. Now look at the expression ++i++.
+Here firstly i would be incremented to 4(due to the ++ 
+operator before i) and the expression would become 4++. As a
+result 4 would passed to add() and then would attempt to get
+incremented owing to the operator that occurs after i.But 4 
+cannot be incremented because it is not a variable. On L/H 
+side of assignment operator a variable (lvalue) should occur.
+This attempt would be made to evaluate 4++ as 4=4+1. Hence 
+the error message.
+
+35)
+	main()
+	{
+	int k=35, *z, *y;
+ 	z=&k;   /* Suppose address of k is 1008 */
+	y=z;
+	*z++ = *y++;
+        k++;
+	printf("k=%d z=%d y=%d",k,z,y);
+	}
+
+Output: k=36 z=1010 y=1010
+ 
+       In main() the address of k is stored in z and the
+same address is then assigned to y. since y and z contain
+address of an integer,they have been quite appropriately 
+declared as integer pointer.Here the z and y pointers are
+incremented to point to the next location. But before the
+incrementation what is done is assignment.This is because 
+++ is occuring after the variable names y and z. During 
+assignment,value at the address contained in y(i.e.,35). 
+After that the value of k is incremented to 36 and then 
+printed out.
+
+36)
+    main()
+    {
+     int a=100, *b, **c ***d;
+     b=&a;
+     c=&b;
+     d=&c;
+     printf("%d%d%d%d", a, *b, **c, ***d);
+    }
+
+Output: 100 100 100 100
+       Here b is an integer pointer, c is a pointer to an
+integer pointer and d is called a pointer to a pointer to
+an integer pointer.In printf() a would printout the value
+100 which is straight forward.*b would print the value at
+theaddresscontained n b. Since the address contained in b
+is 4002, and the value at this address s 100,once again 
+100 would get printed. C would give value at address 4002,
+i.e., 100.The similar logic is applied to the output of 
+***d,which would also be 100.
+
+37)
+     main()
+     {
+      float a=7999999;
+      float *b, *c;
+      b=&a;
+      c=b;
+      printf("%d%d%d",&a,b,c);
+      printf(%d%d%d%d \n", a ,*(&a), *b, *c);
+     }
+
+Output: 4200    4200      4200
+
+        0          24576    -3          16415
+
+             The first printf() the address of a in three
+different ways. In the second printf() we are attempting 
+to print 7.999999 by applying pointer operator on a,b and
+c. a, *(&a), *c all yield 7.999999 but when they are 
+printed using %d, printf() blows it up as the output above
+would justify. Don’t rely on printf() to truncate a float 
+value to an integerwhile printing by using a %d.Vicevers 
+also its true. These statements would not print 7.000000 .
+Don’t be surprised if you get some odd value. In that sense 
+%d & %f are a little unreliable.
+
+38)
+    main()
+    {
+      int i=-5, j=-2;
+      junk(i, &j);
+      printf("i=%d j=%d", i, j);
+    }
+    junk(i, j)
+    int i, *j;
+    {
+      i=i * i;
+     *j= *j * *j;
+    }
+
+Output: i= -5  j= 4
+
+      Even though the value of i is changed to 25 in junk(),
+this change will not be reflected back in main(). As against
+this since j’s address is being passed to junk(),any change 
+in junk() gets reflected back in main(). Hence  *j * *j which
+evaluates to 4 is reflected bac in main().
+
+39)
+    main()
+    {
+     int  *c;
+     c=heck(10,20);
+     printf("c= %d", c);
+    }
+    check(i,j)
+    int i,j;
+    {
+      int *p, *q;
+      p=&i;
+      q=&j;
+      i=45 ? Return(p) : return(q);
+    }
+
+Output: Error message: Non portable pointer assignment in main
+
+     Here, the conditional operators test the value of i 
+against 45, and return either the address stored in q. It 
+appears that this address would be collected in c in main(),
+and then would be printed out. And there lies the error. 
+The function check() is not capable of returning an integer 
+pointer. All that it can return is an ordinary integer.Thus 
+just declaring c as an integer pointer is not sufficient.
+        int check();
+    we must make the above modification in the program to 
+make it work properly
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="functions.html" target="_self">BACK</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+
+
+

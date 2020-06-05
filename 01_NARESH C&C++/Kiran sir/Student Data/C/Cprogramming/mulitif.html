@@ -1,0 +1,300 @@
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h3>Multiple Statments With In If</h3></center>
+
+<pre>
+<font size="3">
+<pre>
+  It may so happen that in program we want more than
+one statement to be execute if the expression following
+IF is satisfied.If such multiple statements are to be 
+execute then they must be placed within a pair of 
+braces as illustrated in the following example.
+<strong>Example:3</strong>   /* calculation of Bonus*/ 
+                    
+main() 
+{ 
+ int bonus, cy, yoi,yr_of_ser; 
+ printf("Enter current Year and Year  of joining"); 
+ scanf(%d%d",&cy,&yoi); 
+ yr_of_ser=cy-yoi; 
+ if(yr_of_ser>3) 
+ { 
+  bonus=2500; 
+  printf("Bomus=Rs. %d",binus); 
+ } 
+} 
+   Observe that here the two statements to be executed
+on satisfaction of the condition have been enclosed 
+within a pair of braces. If a pair of braces is not 
+used then the C compiler assumes that the programmer 
+wants only the immediately next statement after the if
+to be execute on satisfaction of the condition. In the 
+other words we can say that the default scope of the IF
+statement is the immediately next statement after it. 
+
+<strong>The IF-ELSE Statement:</strong>
+
+if. . .else statement is an extension of the simple 
+IF statement. 
+
+<strong> The general form is:</strong>
+
+               if(test condition) 
+
+               { 
+
+                 True-Block statement(s) 
+
+               } 
+
+               else 
+
+               { 
+
+                 False-Block statement(s)   
+
+               } 
+
+               statement -x; 
+
+<strong>Points to be remembered:</strong>
+
+1. The group of statements after the IF up to and not
+ including the ELSE is called an "IF BLOCK". Similarly,
+ the statements after the ELSE form the "ELSE BLOCK".
+2. Notice that the ELSE is written exactly below the IF.
+ The statements in the IF block and those in the ELSE 
+ block have been indented to the right.
+3. Had there been only one statement to be executed in
+ the IF block and only one statement in the ELSE block 
+ we would have dropped the pair of Braces.
+4. As with the If statement, the default scope of ELSE 
+is also the statement immediately after the ELSE. to 
+override this default scope a pair of braces must be 
+used. 
+
+ Let us consider an example of counting the number of 
+boys and girls in a class. We can use  code 1 for boys 
+and 2 for girls.  
+            
+              - - - - - - - - - -  -  - - - - 
+
+              - - - - - - - - - - - - - - - - 
+
+                         if(code==1)
+
+                         boy=boy+1; 
+
+                         if(code==2) 
+
+                         girl=girl+1; 
+
+              - - - - - - - - - -  -  - - - - 
+
+              - - - - - - - - - - - - - - - -
+
+ <strong>Example:4 </strong>
+
+                    main() 
+
+                    { 
+                      int a=300,b=10,c=20; 
+
+                      if(!(a>=400)) 
+
+                       b=300; 
+
+                       c=200; 
+
+                       printf("b=%d c=%d",b,c); 
+
+                    } 
+
+OUTPUT:   b=300   c=200 
+
+Explanation:  The condition (a>=400) evaluates to 
+FALSE since a is neither equal to nor greater than 
+400. The condition is therefore replaced by '0'.But
+the NOT operator (!) negates the result of this 
+condition. This means it reverses the  result 
+of the condition (0) to 1. Thus the If gets reduced 
+to, 
+
+               if(1) 
+              
+                b=300; 
+
+   obviously, b=300 would get executed, followed by c=200, 
+hence the output. 
+
+
+<strong>Example:5</strong>
+
+             main() 
+
+             { 
+
+               if(!3.14) 
+
+               printf("rama is a good boy");
+
+               else             
+
+               printf("Rama and Krishna are friends"); 
+
+             } 
+
+OUTPUT: 
+        Rama and Krishna  are friends 
+
+Explanation: 3.14 being a positive number, is a truth 
+value, and on negating it using the ! operator it results
+into a '0'.thus the result of the condition is FALSE, 
+hence the second printf() is executed. 
+
+<strong>Example:6 </strong>
+
+                main()        
+
+                { 
+
+                 float a=12.25, b=13.65; 
+
+                 if(a=b) 
+
+                 printf("a and b are equal"); 
+
+                 else  
+
+                 printf("a and b are not equal"); 
+
+                } 
+
+OUTPUT: 
+        a and b are equal 
+
+Explanation:  To begin with a and b are not equal. The
+catch here is the assignment operator used in the if 
+statement. it simply assigns the value of b to a, and 
+hence the condition becomes,  
+
+                     if(13.65) 
+       The  condition evaluates since the value is a 
+non-zero value,so the printf() may evaluate, Hence the
+result. 
+
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="branching.html">Back</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+
+
+
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+
+
+
+
+

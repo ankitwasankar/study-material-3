@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+<!-- This document was created from RTF source by rtftohtml version 3.0.1 -->
+
+	<META NAME="GENERATOR" Content="Symantec Visual Page 1.0">
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+	<TITLE>Teach Yourself C++ in 21 Days</TITLE>
+</HEAD>
+
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF">
+
+<H1></H1>
+<P ALIGN="CENTER"><A HREF="http://www.mcp.com/sams"><IMG SRC="../buttons/BLANHOME.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch01.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A>
+<H1 ALIGN="CENTER"><BR>
+<A NAME="Heading1"></A><FONT COLOR="#000077">Teach Yourself</FONT></H1>
+
+<H1 ALIGN="CENTER"><FONT COLOR="#000077">C++ in 21 Days,</FONT></H1>
+<H1 ALIGN="CENTER"><FONT COLOR="#000077">Second Edition</FONT></H1>
+<H2 ALIGN="CENTER"><FONT COLOR="#000077"><BR>
+<BR>
+<A NAME="Heading5"></A>Dedication</FONT></H2>
+<P>This book is dedicated to the living memory of David Levine.
+<H2 ALIGN="CENTER"><A NAME="Heading6"></A><FONT COLOR="#000077">Acknowledgments</FONT></H2>
+<P>A second edition is a second chance to acknowledge and to thank those folks without
+whose support and help this book literally would have been impossible. First among
+them are Stacey, Robin, and Rachel Liberty.</P>
+<P>I must also thank everyone associated with my books, both at Sams and at Wrox
+press, for being professionals of the highest quality. The editors at Sams did a
+fantastic job, and I must especially acknowledge and thank Fran Hatton, Mary Ann
+Abramson, Greg Guntle, and Chris Denny.</P>
+<P>I have taught an online course based on this book for a couple years, and many
+folks there contributed to finding and eradicating bugs and errors. A very large
+debt is owed to these folks, and I must especially thank Greg Newman, Corrinne Thompson,
+and also Katherine Prouty and Jennifer Goldman.</P>
+<P>I would also like to acknowledge the folks who taught me how to program: Skip
+Gilbrech and David McCune, and those who taught me C++, including Steve Rogers and
+Stephen Zagieboylo. I want particularly to thank Mike Kraley, Ed Belove, Patrick
+Johnson, Mike Rothman, and Sangam Pant, all of whom taught me how to manage a project
+and ship a product.</P>
+<P>Others who contributed directly or indirectly to this book include: Scott Boag,
+David Bogartz, Gene Broadway, Drew and Al Carlson, Frank Childs, Jim Culbert, Thomas
+Dobbing, James Efstratiou, David Heath, Eric Helliwell, Gisele and Ed Herlihy, Mushtaq
+Khalique, Matt Kingman, Steve Leland, Michael Smith, Frank Tino, Donovan White, Mark
+Woodbury, Wayne Wylupski, and Alan Zeitchek.</P>
+<P>Programming is as much a business and creative experience as it is a technical
+one, and I must therefore acknowledge Tom Hottenstein, Jay Leve, David Rollert, David
+Shnaider, and Robert Spielvogel.</P>
+<P>Finally, I'd like to thank Mrs. Kalish, who taught my sixth-grade class how to
+do binary arithmetic in 1965, when neither she nor we knew why.
+<H3 ALIGN="CENTER"><A NAME="Heading7"></A><FONT COLOR="#000077">Tell Us What You
+Think!</FONT></H3>
+<P>As a reader, you are the most important critic and commentator of our books. We
+value your opinion and want to know what we're doing right, what we could do better,
+what areas you'd like to see us publish in, and any other words of wisdom you're
+willing to pass our way. You can help us make strong books that meet your needs and
+give you the computer guidance you require.</P>
+<P>Do you have access to CompuServe or the World Wide Web? Then check out our CompuServe
+forum by typing <TT>GO SAMS</TT> at any prompt. If you prefer the World Wide Web,
+check out our site at <A HREF="http://www.mcp.com.
+"><TT><BR>
+http://www.mcp.com</TT></A>
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>If you have a technical question
+	about this book, call the technical support line at 317-581-3833. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P>As the publishing manager of the group that created this book, I welcome your
+comments. You can fax, e-mail, or write me directly to let me know what you did or
+didn't like about this book--as well as what we can do to make our books stronger.
+Here's the information:</P>
+<P ALIGN="CENTER">Fax: 317-581-4669<BR>
+<BR>
+E-mail: <A HREF="mailto:programming_mgr@sams.mcp.com"><TT>programming_mgr@sams.mcp.com</TT></A><TT><BR>
+</TT><BR>
+Mail: Greg Wiegand Sams Publishing 201 W. 103rd Street Indianapolis, IN 46290
+<H2 ALIGN="CENTER"><A NAME="Heading8"></A><FONT COLOR="#000077">Introduction</FONT></H2>
+<P>This book is designed to help you teach yourself how to program with C++. In just
+21 days, you'll learn about such fundamentals as managing I/O, loops and arrays,
+object-oriented programming, templates, and creating C++ applications--all in well-structured
+and easy-to-follow lessons. Lessons provide sample listings--complete with sample
+output and an analysis of the code--to illustrate the topics of the day. Syntax examples
+are clearly marked for handy reference.</P>
+<P>To help you become more proficient, each lesson ends with a set of common questions
+and answers, exercises, and a quiz. You can check your progress by examining the
+quiz and exercise answers provided in the book's appendix.
+<H4 ALIGN="CENTER"><A NAME="Heading9"></A><FONT COLOR="#000077">Who Should Read This
+Book</FONT></H4>
+<P>You don't need any previous experience in programming to learn C++ with this book.
+This book starts you from the beginning and teaches you both the language and the
+concepts involved with programming C++. You'll find the numerous examples of syntax
+and detailed analysis of code an excellent guide as you begin your journey into this
+rewarding environment. Whether you are just beginning or already have some experience
+programming, you will find that this book's clear organization makes learning C++
+fast and easy.
+<H4 ALIGN="CENTER"><A NAME="Heading10"></A><FONT COLOR="#000077">Conventions</FONT></H4>
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>These boxes highlight information
+	that can make your C++ programming more efficient and effective. 
+<HR>
+</P>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>WARNING:</B></FONT><B> </B>These focus your attention on
+	problems or side effects that can occur in specific situations.
+<HR>
+</P>
+	<P>These boxes provide clear definitions of essential terms.</P>
+	<P>
+<HR>
+<B>DO</B> use the &quot;<B>Do/Don't</B>&quot; boxes to find a quick summary of a
+	fundamental principle in a lesson. <B>DON'T</B> overlook the useful information offered
+	in these boxes. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P>This book uses various typefaces to help you distinguish C++ code from regular
+English. Actual C++ code is typeset in a special <TT>monospace</TT> font. Placeholders--words
+or characters temporarily used to represent the real words or characters you would
+type in code--are typeset in italic monospace. New or important terms are typeset
+in italic.</P>
+<P>In the listings in this book, each real code line is numbered. If you see an unnumbered
+line in a listing, you'll know that the unnumbered line is really a continuation
+of the preceding numbered code line (some code lines are too long for the width of
+the book). In this case, you should type the two lines as one; do not divide them.<BR>
+</P>
+<P ALIGN="CENTER"><A HREF="http://www.mcp.com/sams"><IMG SRC="../buttons/BLANHOME.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch01.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="#heading1"><IMG SRC="../buttons/BLANTOP.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A>
+
+
+</BODY>
+
+</HTML>

@@ -1,0 +1,276 @@
+#include<stdio.h>
+#include<conio.h>
+#include<alloc.h>
+#include<stdlib.h>
+void create();
+void insertbefore();
+void insertafter();
+void deletee();
+void print();
+struct dlinks
+{
+int no;
+struct dlinks *next;
+struct dlinks *previous;
+};
+typedef struct dlinks dl;
+dl *temp,*prev,*curr,*first,*last;
+void main()
+{
+ int ch=0;
+ first=NULL;
+ last=NULL;
+ clrscr();
+ printf("\n Linked List creation \n");
+ create();
+ clrscr();
+ while(ch!=5)
+ {
+	clrscr();
+	printf("\n 1.Insert Before");
+	printf("\n 2.Insert After");
+	printf("\n 3.Delete ");
+	printf("\n 4.Print ");
+	printf("\n 5.Exit ");
+	printf("\n Enter your choice ");
+	scanf("%d",&ch);
+	switch(ch)
+	{
+	case 1:
+		insertbefore();
+		print();
+		break;
+	case 2:
+		insertafter();
+		print();
+		break;
+	case 3:
+		delete1();
+		print();
+		break;
+	case 4:
+		print();
+		break;
+	case 5:
+		print();
+		exit(1);
+	}
+ }
+ getch();
+}
+void create()
+{
+printf("enter 99 to stop\n");
+temp=(dl*)malloc(sizeof(dl));
+scanf("%d",&temp->no);
+while(temp->no!=99)
+{
+temp->next=NULL;
+temp->previous=NULL;
+if(first==NULL)
+{
+first=last=temp;
+prev=first;
+}
+else
+{
+temp->previous=prev;
+prev->next=temp;
+last=temp;
+}
+temp=(dl*)malloc(sizeof(dl));
+printf("enter the no(not 99)to insert\n");
+scanf("%d",&temp->no);
+}
+}
+void insertbefore()
+{
+int nu;
+printf("enter the no for b4 inserting\n");
+scanf("%d",&nu);
+temp=(dl*)malloc(sizeof(dl));
+printf("ent the no to insert\n");
+scanf("%d",&temp->no);
+temp->next=NULL;
+temp->previous=NULL;
+curr=first;
+prev=first;
+if(first==NULL)
+{
+first=last=temp;
+prev=first;
+return;
+}
+if(first->no==nu)
+{
+temp->next=first;
+first->previous=temp;
+first=temp;
+return;
+}
+else
+{
+prev=first;
+curr=curr->next;
+while(curr->next!=NULL)
+{
+if(curr->no==nu)
+{
+temp->next=curr;
+curr->previous=temp;
+temp->previous=prev;
+prev->next=temp;
+return;
+}
+prev=curr;
+curr=curr->next;
+}
+}
+if(curr->no==nu)
+{
+temp->next=curr;
+curr->previous=temp;
+temp->previous=prev;
+prev->next=temp;
+return;
+}
+printf("no such no exists\n");
+}
+void insertafter()
+{
+int nu;
+printf("enter the no after which to exist\n");
+scanf("%d",&nu);
+printf("enter the no to insert\n");
+scanf("%d",&temp->no);
+temp->next=NULL;
+temp->previous=NULL;
+if(first==NULL)
+{
+first=last=temp;
+return;
+}
+prev=first;
+curr=first;
+if(curr->no==nu)
+{
+if(first==last)
+{
+first->next=temp;
+temp->previous=first;
+last=temp;
+}
+else
+{
+first->next->previous=temp;
+temp->next=first->next;
+temp->previous=first;
+first->next=temp;
+return;
+}
+}
+else
+{
+prev=first;
+curr=first->next;
+while(curr->next!=NULL)
+{
+if(curr->no==nu)
+{
+temp->next=curr->next;
+temp->previous=prev;
+curr->next->previous=temp;
+curr->next=temp;
+return;
+}
+prev=curr;
+curr=curr->next;
+}
+}
+if(curr->no==nu)
+{
+temp->previous=curr;
+curr->next=temp;
+last=temp;
+return;
+}
+printf("no such no exists\n");
+}
+void deletee()
+{
+int nu;
+printf("enter the no to delete\n");
+scanf("%d",&nu);
+if(first==NULL)
+{
+printf("list is empty\n");
+return;
+}
+if(first->no==nu)
+{
+if(first==last)
+{
+first=last=NULL;
+}
+else
+{
+first->next->previous=NULL;
+first=first->next;
+
+}
+return;
+}
+else
+{
+prev=first;
+curr=first->next;
+while(curr->next!=NULL)
+{
+if(curr->no==nu)
+{
+prev->next=curr->next;
+curr->next->previous=prev;
+return;
+}
+prev=curr;
+curr=curr->next;
+}
+}
+if(curr->no==nu)
+{
+prev->next=NULL;
+last=prev;
+return;
+}
+printf("no such no exists\n");
+}
+void print()
+{
+printf("list is\n");
+temp=first;
+while(temp!=NULL)
+{
+printf("%d\t",temp->no);
+temp=temp->next;
+}
+printf("no more\n");
+printf("list in rev order\n");
+temp=last;
+while(temp!=NULL)
+{
+printf("%d\t",temp->no);
+temp=temp->previous;
+}
+printf("no more\n");
+}
+
+
+
+
+
+
+
+
+
+
+

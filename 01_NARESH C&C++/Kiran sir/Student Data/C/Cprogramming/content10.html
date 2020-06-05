@@ -1,0 +1,328 @@
+﻿<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Output Of Real Numbers</h2></center>
+
+<pre>
+<font size="2">
+    The output of a real number may be displayed in decimal
+notation the following  format 
+specification:      %w.pf
+    The integer w indicates the minimum number of positions
+that are to be used for the display of the value and integer
+‘p’ indicates the number of digits to be displayed after the
+decimal point. The value when displayed is rounded to ‘p’ 
+decimal places and printed right justified in the field of w
+columns. The default precision is 6 decimal places. we can 
+also display a real number in exponential notation by using
+%w.pe           
+   The display takes the form 
+        [-]m.nnnne[+ or -]xx
+ where the length of the string of n’s is specified by the
+precision p. The default precision is 6.The field width w 
+should satisfy the condition        
+              w>=p+7.
+   The value will be of the rounded off and printed right 
+justified in the field of w columns.Padding the leading 
+blanks with zeros and printing with left justification is
+also possible by introducing 0 or – before the field
+width
+specifier w.
+  The following example illustrate the output of the number
+y=98.7654 under different format specifications:
+
+1.   FORMAT
+     printf("%7.4f",y);
+     OUTPUT:
+     <table border="1"><TR><TD>9</TD>
+<td>8</td>
+<td>.</td>
+<td>7</td>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+</TR></table>
+
+                           2.   FORMAT
+                               printf("%7.2f",y);
+OUTPUT:
+<table border="1"><TR><TD>9</TD>
+<td></td>
+<td></td>
+<td>9</td>
+<td>8</td>
+<td>.</td>
+<td>7</td>
+<td>7</td>
+</TR></table>
+
+
+                           3. FORMAT
+                               printf("%-7.2f",y)  
+OUTPUT:
+<table border="1"><TR><TD>9</TD>
+<td>9</td>
+<td>8</td>
+<td>.</td>
+<td>7</td>
+<td>7</td>
+<td></td>
+<td></td>
+</TR></table>
+
+
+ 
+                            4.  FORMAT
+                               printf("%f",y)  
+OUTPUT:
+<table border="1"><TR><TD>9</TD>
+<td>9</td>
+<td>8</td>
+<td>.</td>
+<td>7</td>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+</TR></table>
+
+
+                              5.   FORMAT
+                               printf("%10.2e",y)  
+OUTPUT:
+<table border="1"><d><TD>9</TD>
+<td></td>
+<td></td>
+<td>9</td>
+<td>.</td>
+<td>8</td>
+<td>8</td>
+<td>e</td>
+<td>+</td>
+<td>0</td>
+<td>1</td>
+</TR></table>
+
+
+                               6.  FORMAT
+                               printf("%11.4e",-y)  
+OUTPUT:
+<table border="1"><TR><TD>9</TD>
+<td>-</td>
+<td>9</td>
+<td>.</td>
+<td>8</td>
+<td>7</td>
+<td>6</td>
+<td>5</td>
+<td>e</td>
+<td>+</td>
+<td>0</td>
+<td>1</td>
+</TR></table>
+
+ 
+                               7. FORMAT
+                               printf("%-10.e",y)  
+OUTPUT:
+<table border="1"><TR><TD>9</TD>
+<td>9</td>
+<td></td>
+<td>8</td>
+<td>8</td>
+<td>e</td>
+<td>+</td>
+<td>0</td>
+<td>1</td>
+<td></td>
+<td></td>
+</TR></table>
+
+
+
+                            8. FORMAT
+                               printf("%e",y)  
+OUTPUT:
+<table border="1"><font><TD>9</TD>
+<td>9</td>
+<td></td>
+<td>8</td>
+<td>7</td>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+<td>0</td>
+<td>e</td>
+<td>+</td>
+<td>0</td>
+<td>1</td>
+</TR></table>
+
+
+  
+ <font size=2>     Some systems also supports a special field at run-time.
+This takes the following form :
+         printf("%*.*f",width,precision,number);
+    In this case both the field width and the precision are 
+given as arguments which will supply the values for w and p.
+for example
+        printf("%7.2f",number);
+   The advantage of this format is that the values for width
+and precision may be supplied at runtime ,thus making the 
+format a dynamic one.
+For example the above statement can be used as follows:
+
+     int width=7;
+     int precision=2;           
+    ----------------
+    ---------------
+    printf("%*.*f",width,precision,number);
+
+Program: All the options of printing a real number
+           /* printing of real numbers*/
+           main()
+           {
+            float y=98.7654;
+            printf("% 7.4f\n",y);
+            printf("%f\n",y);
+            printf("%7.2f\n",y);
+            printf("%-7.2f\n",y);
+            printf("%0. 72Ff\n",y);
+            printf("%*.*f",7,2,y);
+            printf("\n");
+            printf("%10.2e\n",y);
+
+            printf("%12.4e\n",-y);
+            printf("%-10.2e\n",y);
+            printf("%e\n",y);
+           }
+
+Output:   98.7654
+                98.765404
+                     98.77
+               98.77
+               0098.77
+               98.77
+
+          9.88e+001
+         -9.8765e+001
+           9.876540e+001
+
+Printing of single  characters:   
+          A single character can be displayed in a desired
+position using the format
+      %wc     
+       The character will be displayed right-justified in 
+the field of w columns. We can make the display left-
+justified by placing a minus sign before the integer w.The
+default value for w is 1.
+</font>
+      
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="managing.html" target="_self">BACK</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+
+
+           
+

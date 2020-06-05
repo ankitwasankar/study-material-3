@@ -1,0 +1,1398 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+<!-- This document was created from RTF source by rtftohtml version 3.0.1 -->
+
+	<META NAME="GENERATOR" Content="Symantec Visual Page 1.0">
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+	<TITLE>Teach Yourself C++ in 21 Days</TITLE>
+</HEAD>
+
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF">
+
+<H1 ALIGN="CENTER"><A HREF="ch16.htm"><IMG SRC="../buttons/BLANPREV.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch18.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A></H1>
+<H1></H1>
+
+<UL>
+	<LI><A HREF="#Heading1">Day 17</A>
+	<UL>
+		<LI><A HREF="#Heading2">The Preprocessor</A>
+		<UL>
+			<LI><A HREF="#Heading3">The Preprocessor and the Compiler</A>
+			<LI><A HREF="#Heading4">Seeing the Intermediate Form</A>
+			<LI><A HREF="#Heading5">Using #define</A>
+			<UL>
+				<LI><A HREF="#Heading6">Using #define for Constants</A>
+				<LI><A HREF="#Heading7">Using #define for Tests</A>
+				<LI><A HREF="#Heading8">The #else Precompiler Command</A>
+			</UL>
+			<LI><A HREF="#Heading9">Listing 17.1. Using #define.</A>
+			<LI><A HREF="#Heading10">Inclusion and Inclusion Guards</A>
+			<UL>
+				<LI><A HREF="#Heading11">Defining on the Command Line</A>
+				<LI><A HREF="#Heading12">Undefining</A>
+			</UL>
+			<LI><A HREF="#Heading13">Listing 17.2. Using #undef</A><A HREF="#Heading14">.</A>
+			<UL>
+				<LI><A HREF="#Heading15">Conditional Compilation</A>
+			</UL>
+			<LI><A HREF="#Heading16">Macro Functions</A>
+			<UL>
+				<LI><A HREF="#Heading17">Why All the Parentheses?</A>
+			</UL>
+			<LI><A HREF="#Heading18">Listing 17.3. Using parentheses in macros</A><A HREF="#Heading19">.</A>
+			<UL>
+				<LI><A HREF="#Heading20">Macros Versus Functions and Templates</A>
+			</UL>
+			<LI><A HREF="#Heading21">Inline Functions</A>
+			<LI><A HREF="#Heading22">Listing 17.4. Using</A>
+			<LI><A HREF="#Heading23">inline rather than a macro.</A>
+			<LI><A HREF="#Heading24">String Manipulation</A>
+			<UL>
+				<LI><A HREF="#Heading25">Stringizing</A>
+				<LI><A HREF="#Heading26">Concatenation</A>
+			</UL>
+			<LI><A HREF="#Heading27">Predefined Macros</A>
+			<LI><A HREF="#Heading28">assert()</A>
+			<LI><A HREF="#Heading29">Listing 17.5. A simple assert() macro</A><A HREF="#Heading30">.</A>
+			<UL>
+				<LI><A HREF="#Heading31">Debugging with assert()</A>
+				<LI><A HREF="#Heading32">assert() Versus Exceptions</A>
+				<LI><A HREF="#Heading33">Side Effects</A>
+				<LI><A HREF="#Heading34">Class Invariants</A>
+			</UL>
+			<LI><A HREF="#Heading35">Listing 17.6. Using Invariants().</A>
+			<UL>
+				<LI><A HREF="#Heading36">Printing Interim Values</A>
+			</UL>
+			<LI><A HREF="#Heading37">Listing 17.7. Printing values in DEBUG mode</A><A HREF="#Heading38">.</A>
+			<UL>
+				<LI><A HREF="#Heading39">Debugging Levels</A>
+			</UL>
+			<LI><A HREF="#Heading40">Listing 17.8. Levels of debugging</A><A HREF="#Heading41">.</A>
+			<LI><A HREF="#Heading42">Summary</A>
+			<LI><A HREF="#Heading43">Q&amp;A</A>
+			<LI><A HREF="#Heading44">Workshop</A>
+			<UL>
+				<LI><A HREF="#Heading45">Quiz</A>
+				<LI><A HREF="#Heading46">Exercises</A>
+			</UL>
+		</UL>
+	</UL>
+</UL>
+
+<P>
+<HR SIZE="4">
+
+<H2 ALIGN="CENTER"><A NAME="Heading1"></A><FONT COLOR="#000077">Day 17</FONT></H2>
+<H2 ALIGN="CENTER"><A NAME="Heading2"></A><FONT COLOR="#000077">The Preprocessor</FONT></H2>
+<P>Most of what you write in your source code files is C++. These are interpreted
+by the compiler and turned into your program. Before the compiler runs, however,
+the preprocessor runs, and this provides an opportunity for conditional compilation.
+Today you will learn
+
+<UL>
+	<LI>What conditional compilation is and how to manage it.
+	<P>
+	<LI>How to write macros using the preprocessor.
+	<P>
+	<LI>How to use the preprocessor in finding bugs.
+</UL>
+
+<H3 ALIGN="CENTER"><A NAME="Heading3"></A><FONT COLOR="#000077">The Preprocessor
+and the Compiler</FONT></H3>
+<P>Every time you run your compiler, your preprocessor runs first. The preprocessor
+looks for preprocessor instructions, each of which begins with a pound symbol (<TT>#</TT>).
+The effect of each of these instructions is a change to the text of the source code.
+The result is a new source code file, a temporary file that you normally don't see,
+but that you can instruct the compiler to save so that you can examine it if you
+want to.</P>
+<P>The compiler does not read your original source code file; it reads the output
+of the preprocessor and compiles that file. You've seen the effect of this already
+with the <TT>#include</TT> directive. This instructs the preprocessor to find the
+file whose name follows the <TT>#include</TT> directive, and to write it into the
+intermediate file at that location. It is as if you had typed that entire file right
+into your source code, and by the time the compiler sees the source code, the included
+file is there.
+<H3 ALIGN="CENTER"><A NAME="Heading4"></A><FONT COLOR="#000077">Seeing the Intermediate
+Form</FONT></H3>
+<P>Just about every compiler has a switch that you can set either in the integrated
+development environment (IDE) or at the command line, and that instructs the compiler
+to save the intermediate file. Check your compiler manual for the right switches
+to set for your compiler, if you'd like to examine this file.
+<H3 ALIGN="CENTER"><A NAME="Heading5"></A><FONT COLOR="#000077">Using #define</FONT></H3>
+<P>The <TT>#define</TT> command defines a string substitution. If you write</P>
+<PRE><FONT COLOR="#0066FF">#define BIG 512
+</FONT></PRE>
+<P>you have instructed the precompiler to substitute the string <TT>512</TT> wherever
+it sees the string <TT>BIG</TT>. This is not a string in the C++ sense. The characters
+<TT>512</TT> are substituted in your source code wherever the token <TT>BIG</TT>
+is seen. A token is a string of characters that can be used wherever a string or
+constant or other set of letters might be used. Thus, if you write</P>
+<PRE><FONT COLOR="#0066FF">#define BIG 512
+int myArray[BIG];
+</FONT></PRE>
+<P>The intermediate file produced by the precompiler will look like this:</P>
+<PRE><FONT COLOR="#0066FF">int myArray[512];
+</FONT></PRE>
+<P>Note that the <TT>#define</TT> statement is gone. Precompiler statements are all
+removed from the intermediate file; they do not appear in the final source code at
+all.
+<H4 ALIGN="CENTER"><A NAME="Heading6"></A><FONT COLOR="#000077">Using #define for
+Constants</FONT></H4>
+<P>One way to use <TT>#define</TT> is as a substitute for constants. This is almost
+never a good idea, however, as <TT>#define</TT> merely makes a string substitution
+and does no type checking. As explained in the section on constants, there are tremendous
+advantages to using the <TT>const</TT> keyword rather than <TT>#define</TT>.
+<H4 ALIGN="CENTER"><A NAME="Heading7"></A><FONT COLOR="#000077">Using #define for
+Tests</FONT></H4>
+<P>A second way to use <TT>#define,</TT> however, is simply to declare that a particular
+character string is defined. Therefore, you could write</P>
+<PRE><FONT COLOR="#0066FF">#define BIG
+</FONT></PRE>
+<P>Later, you can test whether <TT>BIG</TT> has been defined and take action accordingly.
+The precompiler commands to test whether a string has been defined are <TT>#ifdef</TT>
+and <TT>#ifndef</TT>. Both of these must be followed by the command <TT>#endif</TT>
+before the block ends (before the next closing brace).</P>
+<P><TT>#ifdef</TT> evaluates to <TT>TRUE</TT> if the string it tests has been defined
+already. So, you can write</P>
+<PRE><FONT COLOR="#0066FF">#ifdef DEBUG
+cout &lt;&lt; &quot;Debug defined&quot;;
+#endif
+</FONT></PRE>
+<P>When the precompiler reads the <TT>#ifdef</TT>, it checks a table it has built
+to see if you've defined <TT>DEBUG</TT>. If you have, the <TT>#ifdef</TT> evaluates
+to <TT>TRUE</TT>, and everything to the next <TT>#else</TT> or <TT>#endif</TT> is
+written into the intermediate file for compiling. If it evaluates to <TT>FALSE</TT>,
+nothing between <TT>#ifdef DEBUG</TT> and <TT>#endif</TT> will be written into the
+intermediate file; it will be as if it were never in the source code in the first
+place.</P>
+<P>Note that <TT>#ifndef</TT> is the logical reverse of <TT>#ifdef</TT>. <TT>#ifndef</TT>
+evaluates to <TT>TRUE</TT> if the string has not been defined up to that point in
+the file.
+<H4 ALIGN="CENTER"><A NAME="Heading8"></A><FONT COLOR="#000077">The #else Precompiler
+Command</FONT></H4>
+<P>As you might imagine, the term <TT>#else</TT> can be inserted between either <TT>#ifdef</TT>
+or <TT>#ifndef</TT> and the closing <TT>#endif</TT>. Listing 17.1 illustrates how
+these terms are used.</P>
+<P><A NAME="Heading9"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 17.1. Using #define.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     #define DemoVersion
+2:     #define DOS_VERSION 5
+3:     #include &lt;iostream.h&gt;
+4:
+5:
+6:     int main()
+7:     {
+8:
+9:     cout &lt;&lt; &quot;Checking on the definitions of DemoVersion, DOS_VERSION  &#194;                _and WINDOWS_VERSION...\n&quot;;
+10:
+11:    #ifdef DemoVersion
+12:       cout &lt;&lt; &quot;DemoVersion defined.\n&quot;;
+13:    #else
+14:       cout &lt;&lt; &quot;DemoVersion not defined.\n&quot;;
+15:    #endif
+16:
+17:    #ifndef DOS_VERSION
+18:       cout &lt;&lt; &quot;DOS_VERSION not defined!\n&quot;;
+19:    #else
+20:       cout &lt;&lt; &quot;DOS_VERSION defined as: &quot; &lt;&lt; DOS_VERSION &lt;&lt; endl;
+21:    #endif
+22:
+23:    #ifdef WINDOWS_VERSION
+24:       cout &lt;&lt; &quot;WINDOWS_VERSION defined!\n&quot;;
+25:    #else
+26:       cout &lt;&lt; &quot;WINDOWS_VERSION was not defined.\n&quot;;
+27:    #endif
+28:
+29:     cout &lt;&lt; &quot;Done.\n&quot;;
+30:     return 0;
+<TT>31: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: Checking on the definitions of DemoVersion, DOS_VERSION 
+&#194;                _and WINDOWS_VERSION...\n&quot;;
+DemoVersion defined.
+DOS_VERSION defined as: 5
+WINDOWS_VERSION was not defined.
+Done.
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On lines 1 and 2, <TT>DemoVersion</TT>
+and <TT>DOS_VERSION</TT> are defined, with <TT>DOS_VERSION</TT> defined with the
+string <TT>5</TT>. On line 11, the definition of <TT>DemoVersion</TT> is tested,
+and because <TT>DemoVersion</TT> is defined (albeit with no value), the test is true
+and the string on line 12 is printed.<BR>
+On line 17 is the test that <TT>DOS_VERSION</TT> is not defined. Because <TT>DOS_VERSION</TT>
+is defined, this test fails and execution jumps to line 20. Here the string <TT>5</TT>
+is substituted for the word <TT>DOS_VERSION</TT>; this is seen by the compiler as</P>
+<PRE><FONT COLOR="#0066FF">cout &lt;&lt; &quot;DOS_VERSION defined as: &quot; &lt;&lt; 5 &lt;&lt; endl;</FONT></PRE>
+<P>Note that the first word <TT>DOS_VERSION</TT> is not substituted because it is
+in a quoted string. The second <TT>DOS_VERSION</TT> is substituted, however, and
+thus the compiler sees <TT>5</TT> as if you had typed <TT>5</TT> there.</P>
+<P>Finally, on line 23, the program tests for <TT>WINDOWS_VERSION</TT>. Because you
+did not define <TT>WINDOWS_VERSION</TT>, the test fails and the message on line 24
+is printed.
+<H3 ALIGN="CENTER"><A NAME="Heading10"></A><FONT COLOR="#000077">Inclusion and Inclusion
+Guards</FONT></H3>
+<P>You will create projects with many different files. You will probably organize
+your directories so that each class has its own header file (HPP) with the class
+declaration, and its own implementation file (CPP) with the source code for the class
+methods.</P>
+<P>Your <TT>main()</TT> function will be in its own CPP file, and all the CPP files
+will be compiled into OBJ files, which will then be linked together into a single
+program by the linker.</P>
+<P>Because your programs will use methods from many classes, many header files will
+be included in each file. Also, header files often need to include one another. For
+example, the header file for a derived class's declaration must include the header
+file for its base class.</P>
+<P>Imagine that the <TT>Animal</TT> class is declared in the file <TT>ANIMAL.HPP</TT>.
+The <TT>Dog</TT> class (which derives from <TT>Animal</TT>) must include the file
+<TT>ANIMAL.HPP</TT> in <TT>DOG.HPP</TT>, or <TT>Dog</TT> will not be able to derive
+from <TT>Animal</TT>. The <TT>Cat</TT> header also includes <TT>ANIMAL.HPP</TT> for
+the same reason.</P>
+<P>If you create a method that uses both a <TT>Cat</TT> and a <TT>Dog</TT>, you will
+be in danger of including <TT>ANIMAL.HPP</TT> twice. This will generate a compile-time
+error, because it is not legal to declare a class (<TT>Animal</TT>) twice, even though
+the declarations are identical. You can solve this problem with inclusion guards.
+At the top of your <TT>ANIMAL</TT> header file, you write these lines:</P>
+<PRE><FONT COLOR="#0066FF">#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
+...                     // the whole file goes here
+#endif
+</FONT></PRE>
+<P>This says, if you haven't defined the term <TT>ANIMAL_HPP</TT>, go ahead and define
+it now. Between the <TT>#define</TT> statement and the closing <TT>#endif</TT> are
+the entire contents of the file.</P>
+<P>The first time your program includes this file, it reads the first line and the
+test evaluates to <TT>TRUE</TT>; that is, you have not yet defined <TT>ANIMAL_HPP</TT>.
+So, it goes ahead and defines it and then includes the entire file.</P>
+<P>The second time your program includes the <TT>ANIMAL.HPP</TT> file, it reads the
+first line and the test evaluates to <TT>FALSE</TT>; <TT>ANIMAL.HPP</TT> has been
+defined. It therefore skips to the next <TT>#else</TT> (there isn't one) or the next
+<TT>#endif</TT> (at the end of the file). Thus, it skips the entire contents of the
+file, and the class is not declared twice.</P>
+<P>The actual name of the defined symbol (<TT>ANIMAL_HPP</TT>) is not important,
+although it is customary to use the filename in all uppercase with the dot (<TT>.</TT>)
+changed to an underscore. This is purely convention, however.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>It never hurts to use inclusion
+	guards. Often they will save you hours of debugging time. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H4 ALIGN="CENTER"><A NAME="Heading11"></A><FONT COLOR="#000077">Defining on the
+Command Line</FONT></H4>
+<P>Almost all C++ compilers will let you <TT>#define</TT> values either from the
+command line or from the integrated development environment (and usually both). Thus
+you can leave out lines 1 and 2 from Listing 17.1, and define <TT>DemoVersion</TT>
+and <TT>BetaTestVersion</TT> from the command line for some compilations, and not
+for others.</P>
+<P>It is common to put in special debugging code surrounded by <TT>#ifdef DEBUG</TT>
+and <TT>#endif</TT>. This allows all the debugging code to be easily removed from
+the source code when you compile the final version; just don't define the term <TT>DEBUG</TT>.
+<H4 ALIGN="CENTER"><A NAME="Heading12"></A><FONT COLOR="#000077">Undefining</FONT></H4>
+<P>If you have a name defined and you'd like to turn it off from within your code,
+you can use <TT>#undef</TT>. This works as the antidote to <TT>#define</TT>. Listing
+17.2 provides an illustration of its use.</P>
+<P><A NAME="Heading13"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 17.2. Using
+#undef.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     #define DemoVersion
+2:     #define DOS_VERSION 5
+3:     #include &lt;iostream.h&gt;
+4:
+5:
+6:     int main()
+7:     {
+8:
+9:     cout &lt;&lt; &quot;Checking on the definitions of DemoVersion, DOS_VERSION  &#194;                _and WINDOWS_VERSION...\n&quot;;
+10:
+11:    #ifdef DemoVersion
+12:       cout &lt;&lt; &quot;DemoVersion defined.\n&quot;;
+13:    #else
+14:       cout &lt;&lt; &quot;DemoVersion not defined.\n&quot;;
+15:    #endif
+16:
+17:    #ifndef DOS_VERSION
+18:       cout &lt;&lt; &quot;DOS_VERSION not defined!\n&quot;;
+19:    #else
+20:       cout &lt;&lt; &quot;DOS_VERSION defined as: &quot; &lt;&lt; DOS_VERSION &lt;&lt; endl;
+21:    #endif
+22:
+23:    #ifdef WINDOWS_VERSION
+24:       cout &lt;&lt; &quot;WINDOWS_VERSION defined!\n&quot;;
+25:    #else
+26:       cout &lt;&lt; &quot;WINDOWS_VERSION was not defined.\n&quot;;
+27:    #endif
+28:
+29:    #undef DOS_VERSION
+30:
+31:     #ifdef DemoVersion
+32:       cout &lt;&lt; &quot;DemoVersion defined.\n&quot;;
+33:    #else
+34:       cout &lt;&lt; &quot;DemoVersion not defined.\n&quot;;
+35:    #endif
+36:
+37:    #ifndef DOS_VERSION
+38:       cout &lt;&lt; &quot;DOS_VERSION not defined!\n&quot;;
+39:    #else
+40:       cout &lt;&lt; &quot;DOS_VERSION defined as: &quot; &lt;&lt; DOS_VERSION &lt;&lt; endl;
+41:    #endif
+42:
+43:    #if_Tz'WINDOWS_VERSION
+44:       cout &lt;&lt; &quot;WINDOWS_VERSION defined!\n&quot;;
+45:    #else
+46:       cout &lt;&lt; &quot;WINDOWS_VERSION was not defined.\n&quot;;
+47:    #endif
+48:
+49:     cout &lt;&lt; &quot;Done.\n&quot;;
+50:     return 0;
+<TT>51: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: Checking on the definitions of DemoVersion, DOS_VERSION 
+&#194;                _and WINDOWS_VERSION...\n&quot;;
+DemoVersion defined.
+DOS_VERSION defined as: 5
+WINDOWS_VERSION was not defined.
+DemoVersion defined.
+DOS_VERSION not defined!
+WINDOWS_VERSION was not defined.
+Done.</FONT></PRE>
+
+<DL>
+	<DD><FONT COLOR="#0066FF"></FONT>
+</DL>
+
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>Listing 17.2 is the same
+as Listing 17.1 until line 29, when <TT>#undef DOS_VERSION</TT> is called. This removes
+the definition of the term <TT>DOS_VERSION</TT> without changing the other defined
+terms (in this case, <TT>DemoVersion</TT>). The rest of the listing just repeats
+the printouts. The tests for <TT>DemoVersion</TT> and <TT>WINDOWS_VERSION</TT> act
+as they did the first time, but the test for <TT>DOS_VERSION</TT> now evaluates <TT>TRUE</TT>.
+In this second case <TT>DOS_VERSION</TT> does not exist as a defined term.
+<H4 ALIGN="CENTER"><A NAME="Heading15"></A><FONT COLOR="#000077">Conditional Compilation</FONT></H4>
+<P>By combining <TT>#define</TT> or command-line definitions with <TT>#ifdef</TT>,
+<TT>#else</TT>, and <TT>#ifndef</TT>, you can write one program that compiles different
+code, depending on what is already <TT>#define</TT>d. This can be used to create
+one set of source code to compile on two different platforms, such as DOS and Windows.</P>
+<P>Another common use of this technique is to conditionally compile in some code
+based on whether <TT>debug</TT> has been defined, as you'll see in a few moments.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<B>DO</B> use conditional compilation when you need to create more than one version
+	of your code at the same time. <B>DON'T</B> let your conditions get too complex to
+	manage. <B>DO</B> use <TT>#undef</TT> as often as possible to avoid leaving stray
+	definitions in your code. <B>DO</B> use inclusion guards! 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H3 ALIGN="CENTER"><A NAME="Heading16"></A><FONT COLOR="#000077">Macro Functions</FONT></H3>
+<P>The <TT>#define</TT> directive can also be used to create macro functions. A macro
+function is a symbol created using <TT>#define</TT> and that takes an argument, much
+like a function does. The preprocessor will substitute the substitution string for
+whatever argument it is given. For example, you can define the macro <TT>TWICE</TT>
+as</P>
+<PRE><FONT COLOR="#0066FF">#define TWICE(x) ( (x) * 2 )
+</FONT></PRE>
+<P>and then in your code you write</P>
+<PRE><FONT COLOR="#0066FF">TWICE(4)
+</FONT></PRE>
+<P>The entire string <TT>TWICE(4)</TT> will be removed, and the value <TT>8</TT>
+will be substituted! When the precompiler sees the <TT>4</TT>, it will substitute
+<TT>( (4) * 2 )</TT>, which will then evaluate to <TT>4 * 2</TT> or <TT>8</TT>.</P>
+<P>A macro can have more than one parameter, and each parameter can be used repeatedly
+in the replacement text. Two common macros are <TT>MAX</TT> and <TT>MIN</TT>:</P>
+<PRE><FONT COLOR="#0066FF">#define MAX(x,y) ( (x) &gt; (y) ? (x) : (y) )
+#define MIN(x,y) ( (x) &lt; (y) ? (x) : (y) )
+</FONT></PRE>
+<P>Note that in a macro function definition, the opening parenthesis for the parameter
+list must immediately follow the macro name, with no spaces. The preprocessor is
+not as forgiving of white space as is the compiler.</P>
+<P>If you were to write</P>
+<PRE><FONT COLOR="#0066FF">#define MAX (x,y) ( (x) &gt; (y) ? (x) : (y) )
+</FONT></PRE>
+<P>and then tried to use <TT>MAX</TT> like this,</P>
+<PRE><FONT COLOR="#0066FF">
+int x = 5, y = 7, z;
+z = MAX(x,y);
+</FONT></PRE>
+<P>the intermediate code would be</P>
+<PRE><FONT COLOR="#0066FF">int x = 5, y = 7, z;
+z = (x,y) ( (x) &gt; (y) ? (x) : (y) ) (x,y)
+</FONT></PRE>
+<P>A simple text substitution would be done, rather than invoking the macro function.
+Thus the token <TT>MAX</TT> would have substituted for it <TT>(x,y) ( (x) &gt; (y)
+? (x) : (y) )</TT>, and then that would be followed by the <TT>(x,y)</TT> which followed
+<TT>Max</TT>.</P>
+<P>By removing the space between <TT>MAX</TT> and <TT>(x,y)</TT>, however, the intermediate
+code becomes:</P>
+<PRE><FONT COLOR="#0066FF">int x = 5, y = 7, z;
+z =7;
+</FONT></PRE>
+<H4 ALIGN="CENTER"><A NAME="Heading17"></A><FONT COLOR="#000077">Why All the Parentheses?</FONT></H4>
+<P>You may be wondering why there are so many parentheses in many of the macros presented
+so far. The preprocessor does not demand that parentheses be placed around the arguments
+in the substitution string, but the parentheses help you to avoid unwanted side effects
+when you pass complicated values to a macro. For example, if you define <TT>MAX</TT>
+as</P>
+<PRE><FONT COLOR="#0066FF">#define MAX(x,y) x &gt; y ? x : y
+</FONT></PRE>
+<P>and pass in the values <TT>5</TT> and <TT>7</TT>, the macro works as intended.
+But if you pass in a more complicated expression, you'll get unintended results,
+as shown in Listing 17.3.</P>
+<P><A NAME="Heading18"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 17.3. Using
+parentheses in macros.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     // Listing 17.3 Macro Expansion
+2:     #include &lt;iostream.h&gt;
+3:
+4:     #define CUBE(a) ( (a) * (a) * (a) )
+5:     #define THREE(a) a * a * a
+6:
+7:     int main()
+8:     {
+9:        long x = 5;
+10:       long y = CUBE(x);
+11:       long z = THREE(x);
+12:
+13:       cout &lt;&lt; &quot;y: &quot; &lt;&lt; y &lt;&lt; endl;
+14:       cout &lt;&lt; &quot;z: &quot; &lt;&lt; z &lt;&lt; endl;
+15:
+16:       long a = 5, b = 7;
+17:       y = CUBE(a+b);
+18:       z = THREE(a+b);
+19:
+20:       cout &lt;&lt; &quot;y: &quot; &lt;&lt; y &lt;&lt; endl;
+21:       cout &lt;&lt; &quot;z: &quot; &lt;&lt; z &lt;&lt; endl;
+22:     return 0;
+<TT>23: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: y: 125
+z: 125
+y: 1728
+z: 82
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On line 4, the macro <TT>CUBE</TT>
+is defined, with the argument <TT>x</TT> put into parentheses each time it is used.
+On line 5, the macro <TT>THREE</TT> is defined, without the parentheses.<BR>
+In the first use of these macros, the value <TT>5</TT> is given as the parameter,
+and both macros work fine. <TT>CUBE(5)</TT> expands to <TT>( (5) * (5) * (5) )</TT>,
+which evaluates to <TT>125</TT>, and <TT>THREE(5)</TT> expands to <TT>5 * 5 * 5</TT>,
+which also evaluates to <TT>125</TT>.</P>
+<P>In the second use, on lines 16-18, the parameter is <TT>5 + 7</TT>. In this case,
+<TT>CUBE(5+7)</TT> evaluates to</P>
+<PRE><FONT COLOR="#0066FF">( (5+7) * (5+7) * (5+7) )</FONT></PRE>
+<P>which evaluates to</P>
+<PRE><FONT COLOR="#0066FF">( (12) * (12) * (12) )</FONT></PRE>
+<P>which in turn evaluates to <TT>1728</TT>. <TT>THREE(5+7)</TT>, however, evaluates
+to</P>
+<PRE><FONT COLOR="#0066FF">5 + 7 * 5 + 7 * 5 + 7</FONT></PRE>
+<P>Because multiplication has a higher precedence than addition, this becomes</P>
+<PRE><FONT COLOR="#0066FF">5 + (7 * 5) + (7 * 5) + 7</FONT></PRE>
+<P>which evaluates to</P>
+<PRE><FONT COLOR="#0066FF">5 + (35) + (35) + 7</FONT></PRE>
+<P>which finally evaluates to <TT>82</TT>.
+<H4 ALIGN="CENTER"><A NAME="Heading20"></A><FONT COLOR="#000077">Macros Versus Functions
+and Templates</FONT></H4>
+<P>Macros suffer from four problems in C++. The first is that they can be confusing
+if they get large, because all macros must be defined on one line. You can extend
+that line by using the backslash character (<TT>\</TT>), but large macros quickly
+become difficult to manage.</P>
+<P>The second problem is that macros are expanded inline each time they are used.
+This means that if a macro is used a dozen times, the substitution will appear 12
+times in your program, rather than appear once as a function call will. On the other
+hand, they are usually quicker than a function call because the overhead of a function
+call is avoided.</P>
+<P>The fact that they are expanded inline leads to the third problem, which is that
+the macro does not appear in the intermediate source code used by the compiler, and
+therefore is unavailable in most debuggers. This makes debugging macros tricky.</P>
+<P>The final problem, however, is the biggest: macros are not type-safe. While it
+is convenient that absolutely any argument may be used with a macro, this completely
+undermines the strong typing of C++ and so is anathema to C++ programmers. However,
+there is a way to overcome this problem, as you'll see on Day 19, &quot;Templates.&quot;
+<H3 ALIGN="CENTER"><A NAME="Heading21"></A><FONT COLOR="#000077">Inline Functions</FONT></H3>
+<P>It is often possible to declare an inline function rather than a macro. For example,
+Listing 17.4 creates a <TT>CUBE</TT> function, which accomplishes the same thing
+as the <TT>CUBE</TT> macro in Listing 17.3, but does so in a type-safe way.</P>
+<P><A NAME="Heading22"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 17.4. Using
+inline rather than a macro.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     #include &lt;iostream.h&gt;
+2:
+3:     inline unsigned long Square(unsigned long a) { return a * a; }
+4:     inline unsigned long Cube(unsigned long a) 
+5:         { return a * a * a; }
+6:     int main()
+7:     {
+8:        unsigned long x=1 ;
+9:        for (;;)
+10:       {
+11:          cout &lt;&lt; &quot;Enter a number (0 to quit): &quot;;
+12:          cin &gt;&gt; x;
+13:          if (x == 0)
+14:             break;
+15:          cout &lt;&lt; &quot;You entered: &quot; &lt;&lt; x;
+16:          cout &lt;&lt; &quot;.  Square(&quot; &lt;&lt; x &lt;&lt; &quot;): &quot;;
+17:          cout  &lt;&lt; Square(x);
+18:          cout&lt;&lt; &quot;. Cube(&quot; _&lt;&lt; x &lt;&lt; &quot;): &quot;;
+19:          cout &lt;&lt; Cube(x) &lt;&lt; &quot;.&quot; &lt;&lt; endl;
+20:       }
+21:     return 0;
+<TT>22: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: Enter a number (0 to quit): 1
+You entered: 1.  Square(1): 1. Cube(1): 1.
+Enter a number (0 to quit): 2
+You entered: 2.  Square(2): 4. Cube(2): 8.
+Enter a number (0 to quit): 3
+You entered: 3.  Square(3): 9. Cube(3): 27.
+Enter a number (0 to quit): 4
+You entered: 4.  Square(4): 16. Cube(4): 64.
+Enter a number (0 to quit): 5
+You entered: 5.  Square(5): 25. Cube(5): 125.
+Enter a number (0 to quit): 6
+You entered: 6.  Square(6): 36. Cube(6): 216.
+Enter a number (0 to quit): 0
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On lines 3 and 4, two inline
+functions are declared: <TT>Square()</TT> and <TT>Cube()</TT>. Each is declared to
+be inline, so like a macro function these will be expanded in place for each call,
+and there will be no function call overhead.<BR>
+As a reminder, expanded inline means that the content of the function will be placed
+into the code wherever the function call is made (for example, on line 16). Because
+the function call is never made, there is no overhead of putting the return address
+and the parameters on the stack.</P>
+<P>On line 16, the function <TT>Square</TT> is called, as is the function <TT>Cube</TT>.
+Again, because these are inline functions, it is exactly as if this line had been
+written like this:</P>
+<PRE><FONT COLOR="#0066FF">16:          cout &lt;&lt; &quot;.  Square(&quot; &lt;&lt; x &lt;&lt; &quot;): &quot;  &lt;&lt; x * x &lt;&lt; &quot;. 
+	Cube(&quot; &lt;&lt; x &lt;&lt; &#194;&quot;): &quot; &lt;&lt; x * x * x &lt;&lt;
+&quot;.&quot; &lt;&lt; endl;</FONT></PRE>
+<P>
+<PRE><FONT COLOR="#0066FF"></FONT></PRE>
+<H3 ALIGN="CENTER"><A NAME="Heading24"></A><FONT COLOR="#000077">String Manipulation</FONT></H3>
+<P>The preprocessor provides two special operators for manipulating strings in macros.
+The stringizing operator (<TT>#</TT>) substitutes a quoted string for whatever follows
+the stringizing operator. The concatenation operator bonds two strings together into
+one.
+<H4 ALIGN="CENTER"><A NAME="Heading25"></A><FONT COLOR="#000077">Stringizing</FONT></H4>
+<P>The stringizing operator puts quotes around any characters following the operator,
+up to the next white space. Thus, if you write</P>
+<PRE><FONT COLOR="#0066FF">#define WRITESTRING(x) cout &lt;&lt; #x
+</FONT></PRE>
+<P>and then call</P>
+<PRE><FONT COLOR="#0066FF">WRITESTRING(This is a string);
+</FONT></PRE>
+<P>the precompiler will turn it into</P>
+<PRE><FONT COLOR="#0066FF">cout &lt;&lt; &quot;This is a string&quot;;
+</FONT></PRE>
+<P>Note that the string <TT>This is a string</TT> is put into quotes, as required
+by <TT>cout</TT>.
+<H4 ALIGN="CENTER"><A NAME="Heading26"></A><FONT COLOR="#000077">Concatenation</FONT></H4>
+<P>The concatenation operator allows you to bond together more than one term into
+a new word. The new word is actually a token that can be used as a class name, a
+variable name, an offset into an array, or anywhere else a series of letters might
+appear.</P>
+<P>Assume for a moment that you have five functions, named <TT>fOnePrint</TT>, <TT>fTwoPrint</TT>,
+<TT>fThreePrint</TT>, <TT>fFourPrint</TT>, and <TT>fFivePrint</TT>. You can then
+declare:</P>
+<PRE><FONT COLOR="#0066FF">#define fPRINT(x) f ## x ## Print
+</FONT></PRE>
+<P>and then use it with <TT>fPRINT(Two)</TT> to generate <TT>fTwoPrint</TT> and with
+<TT>fPRINT(Three)</TT> to generate <TT>fThreePrint.</TT></P>
+<P>At the conclusion of Week 2, a <TT>PartsList</TT> class was developed. This list
+could only handle objects of type <TT>List</TT>. Let's say that this list works well,
+and you'd like to be able to make lists of animals, cars, computers, and so forth.</P>
+<P>One approach would be to create <TT>AnimalList</TT>, <TT>CarList</TT>, <TT>ComputerList</TT>,
+and so on, cutting and pasting the code in place. This will quickly become a nightmare,
+as every change to one list must be written to all the others.</P>
+<P>An alternative is to use macros and the concatenation operator. For example, you
+could define</P>
+<PRE><FONT COLOR="#0066FF">#define Listof(Type)  class Type##List \
+{ \
+public: \
+Type##List(){} \
+private:          \
+int itsLength; \
+};
+</FONT></PRE>
+<P>This example is overly sparse, but the idea would be to put in all the necessary
+methods and data. When you were ready to create an <TT>AnimalList</TT>, you would
+write</P>
+<PRE><FONT COLOR="#0066FF">Listof(Animal)
+</FONT></PRE>
+<P>and this would be turned into the declaration of the <TT>AnimalList</TT> class.
+There are some problems with this approach, all of which are discussed in detail
+on Day 19, when templates are discussed.
+<H3 ALIGN="CENTER"><A NAME="Heading27"></A><FONT COLOR="#000077">Predefined Macros</FONT></H3>
+<P>Many compilers predefine a number of useful macros, including <TT>__DATE__</TT>,
+<TT>__TIME__</TT>, <TT>__LINE__</TT>, and <TT>__FILE__</TT>. Each of these names
+is surrounded by two underscore characters to reduce the likelihood that the names
+will conflict with names you've used in your program.</P>
+<P>When the precompiler sees one of these macros, it makes the appropriate substitutes.
+For <TT>__DATE__</TT>, the current date is substituted. For <TT>__TIME__</TT>, the
+current time is substituted. <TT>__LINE__</TT> and <TT>__FILE__</TT> are replaced
+with the source code line number and filename, respectively. You should note that
+this substitution is made when the source is precompiled, not when the program is
+run. If you ask the program to print <TT>__DATE__</TT>, you will not get the current
+date; instead, you will get the date the program was compiled. These defined macros
+are very useful in debugging.
+<H3 ALIGN="CENTER"><A NAME="Heading28"></A><FONT COLOR="#000077">assert()</FONT></H3>
+<P>Many compilers offer an <TT>assert()</TT> macro. The <TT>assert()</TT> macro returns
+<TT>TRUE</TT> if its parameter evaluates <TT>TRUE</TT> and takes some kind of action
+if it evaluates <TT>FALSE</TT>. Many compilers will abort the program on an <TT>assert()</TT>
+that fails; others will throw an exception (see Day 20, &quot;Exceptions and Error
+Handling&quot;).</P>
+<P>One powerful feature of the <TT>assert()</TT> macro is that the preprocessor collapses
+it into no code at all if <TT>DEBUG</TT> is not defined. It is a great help during
+development, and when the final product ships there is no performance penalty nor
+increase in the size of the executable version of the program.</P>
+<P>Rather than depending on the compiler-provided <TT>assert()</TT>, you are free
+to write your own <TT>assert()</TT> macro. Listing 17.5 provides a simple <TT>assert()</TT>
+macro and shows its use.</P>
+<P><A NAME="Heading29"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 17.5. A simple
+assert() macro.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     // Listing 17.5 ASSERTS
+2:     #define DEBUG
+3:     #include &lt;iostream.h&gt;
+4:
+5:     #ifndef DEBUG
+6:        #define ASSERT(x)
+7:     #else
+8:        #define ASSERT(x) \
+9:                 if (! (x)) \
+10:                { \
+11:                   cout &lt;&lt; &quot;ERROR!! Assert &quot; &lt;&lt; #x &lt;&lt; &quot; failed\n&quot;; \
+12:                   cout &lt;&lt; &quot; on line &quot; &lt;&lt; __LINE__  &lt;&lt; &quot;\n&quot;; \
+13:                   cout &lt;&lt; &quot; in file &quot; &lt;&lt; __FILE__ &lt;&lt; &quot;\n&quot;;  \
+14:                }
+15:    #endif
+16:
+17:
+18:    int main()
+19:    {
+20:       int x = 5;
+21:       cout &lt;&lt; &quot;First assert: \n&quot;;
+22:       ASSERT(x==5);
+23:       cout &lt;&lt; &quot;\nSecond assert: \n&quot;;
+24:       ASSERT(x != 5);
+25:       cout &lt;&lt; &quot;\nDone.\n&quot;;
+26:     return 0;
+<TT>27: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: First assert:
+
+Second assert:
+ERROR!! Assert x !=5 failed
+ on line 24
+ in file test1704.cpp
+Done.
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On line 2, the term <TT>DEBUG</TT>
+is defined. Typically, this would be done from the command line (or the IDE) at compile
+time, so you can turn this on and off at will. On lines 8-14, the <TT>assert()</TT>
+macro is defined. Typically, this would be done in a header file, and that header
+(<TT>ASSERT.HPP</TT>) would be included in all your implementation files.<BR>
+<BR>
+On line 5, the term <TT>DEBUG</TT> is tested. If it is not defined, <TT>assert()</TT>
+is defined to create no code at all. If <TT>DEBUG</TT> is defined, the functionality
+defined on lines 8-14 is applied.</P>
+<P>The <TT>assert()</TT> itself is one long statement, split across seven source
+code lines, as far as the precompiler is concerned. On line 9, the value passed in
+as a parameter is tested; if it evaluates <TT>FALSE</TT>, the statements on lines
+11-13 are invoked, printing an error message. If the value passed in evaluates <TT>TRUE</TT>,
+no action is taken.
+<H4 ALIGN="CENTER"><A NAME="Heading31"></A><FONT COLOR="#000077">Debugging with assert()</FONT></H4>
+<P>When writing your program, you will often know deep down in your soul that something
+is true: a function has a certain value, a pointer is valid, and so forth. It is
+the nature of bugs that what you know to be true might not be so under some conditions.
+For example, you know that a pointer is valid, yet the program crashes. <TT>assert()</TT>
+can help you find this type of bug, but only if you make it a regular practice to
+use <TT>assert()</TT> liberally in your code. Every time you assign or are passed
+a pointer as a parameter or function return value, be sure to assert that the pointer
+is valid. Any time your code depends on a particular value being in a variable, <TT>assert()</TT>
+that that is true.</P>
+<P>There is no penalty for frequent use of <TT>assert()</TT>; it is removed from
+the code when you undefine debugging. It also provides good internal documentation,
+reminding the reader of what you believe is true at any given moment in the flow
+of the code.
+<H4 ALIGN="CENTER"><A NAME="Heading32"></A><FONT COLOR="#000077">assert() Versus
+Exceptions</FONT></H4>
+<P>On Day 20, you will learn how to work with exceptions to handle error conditions.
+It is important to note that <TT>assert()</TT> is not intended to handle runtime
+error conditions such as bad data, out-of-memory conditions, unable to open file,
+and so forth. <TT>assert()</TT> is created to catch programming errors only. That
+is, if an <TT>assert()</TT> &quot;fires,&quot; you know you have a bug in your code.</P>
+<P>This is critical, because when you ship your code to your customers, instances
+of <TT>assert()</TT> will be removed. You can't depend on an <TT>assert()</TT> to
+handle a runtime problem, because the <TT>assert()</TT> won't be there.</P>
+<P>It is a common mistake to use <TT>assert()</TT> to test the return value from
+a memory assignment:</P>
+<PRE><FONT COLOR="#0066FF">Animal *pCat = new Cat;
+Assert(pCat);   // bad use of assert
+pCat-&gt;SomeFunction();
+</FONT></PRE>
+<P>This is a classic programming error; every time the programmer runs the program,
+there is enough memory and the <TT>assert()</TT> never fires. After all, the programmer
+is running with lots of extra RAM to speed up the compiler, debugger, and so forth.
+The programmer then ships the executable, and the poor user, who has less memory,
+reaches this part of the program and the call to <TT>new</TT> fails and returns <TT>NULL</TT>.
+The <TT>assert()</TT>, however, is no longer in the code and there is nothing to
+indicate that the pointer points to <TT>NULL</TT>. As soon as the statement <TT>pCat-&gt;SomeFunction()</TT>
+is reached, the program crashes.</P>
+<P>Getting <TT>NULL</TT> back from a memory assignment is not a programming error,
+although it is an exceptional situation. Your program must be able to recover from
+this condition, if only by throwing an exception. Remember: The entire <TT>assert()</TT>
+statement is gone when <TT>DEBUG</TT> is undefined. Exceptions are covered in detail
+on Day 20.
+<H4 ALIGN="CENTER"><A NAME="Heading33"></A><FONT COLOR="#000077">Side Effects</FONT></H4>
+<P>It is not uncommon to find that a bug appears only after the instances of <TT>assert()</TT>
+are removed. This is almost always due to the program unintentionally depending on
+side effects of things done in <TT>assert()</TT> and other debug-only code. For example,
+if you write</P>
+<PRE><FONT COLOR="#0066FF">ASSERT (x = 5)
+</FONT></PRE>
+<P>when you mean to test whether <TT>x == 5</TT>, you will create a particularly
+nasty bug.</P>
+<P>Let's say that just prior to this <TT>assert()</TT> you called a function that
+set <TT>x</TT> equal to 0. With this <TT>assert()</TT> you think you are testing
+whether <TT>x</TT> is equal to 5; in fact, you are setting <TT>x</TT> equal to 5.
+The test returns <TT>TRUE</TT>, because <TT>x = 5</TT> not only sets <TT>x</TT> to
+5, but returns the value <TT>5</TT>, and because 5 is non-zero it evaluates as <TT>TRUE</TT>.</P>
+<P>Once you pass the <TT>assert()</TT> statement, <TT>x</TT> really is equal to 5
+(you just set it!). Your program runs just fine. You're ready to ship it, so you
+turn off debugging. Now the <TT>assert()</TT> disappears, and you are no longer setting
+<TT>x</TT> to 5. Because <TT>x</TT> was set to 0 just before this, it remains at
+0 and your program breaks.</P>
+<P>In frustration, you turn debugging back on, but hey! Presto! The bug is gone.
+Once again, this is rather funny to watch, but not to live through, so be very careful
+about side effects in debugging code. If you see a bug that only appears when debugging
+is turned off, take a look at your debugging code with an eye out for nasty side
+effects.
+<H4 ALIGN="CENTER"><A NAME="Heading34"></A><FONT COLOR="#000077">Class Invariants</FONT></H4>
+<P>Most classes have some conditions that should always be true whenever you are
+finished with a class member function. These class invariants are the sine qua non
+of your class. For example, it may be true that your <TT>CIRCLE</TT> object should
+never have a radius of zero, or that your <TT>ANIMAL</TT> should always have an age
+greater than zero and less than 100.</P>
+<P>It can be very helpful to declare an <TT>Invariants()</TT> method that returns
+<TT>TRUE</TT> only if each of these conditions is still true. You can then <TT>ASSERT(Invariants())</TT>
+at the start and completion of every class method. The exception would be that your
+<TT>Invariants()</TT> would not expect to return <TT>TRUE</TT> before your constructor
+runs or after your destructor ends. Listing 17.6 demonstrates the use of the <TT>Invariants()</TT>
+method in a trivial class.</P>
+<P><A NAME="Heading35"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 17.6. Using
+Invariants().</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">0:    #define DEBUG
+1:    #define SHOW_INVARIANTS
+2:    #include &lt;iostream.h&gt;
+3:    #include &lt;string.h&gt;
+4:    
+5:    #ifndef DEBUG
+6:    #define ASSERT(x)
+7:    #else
+8:    #define ASSERT(x) \
+9:                if (! (x)) \
+10:                { \
+11:                   cout &lt;&lt; &quot;ERROR!! Assert &quot; &lt;&lt; #x &lt;&lt; &quot; failed\n&quot;; \
+12:                   cout &lt;&lt; &quot; on line &quot; &lt;&lt; __LINE__  &lt;&lt; &quot;\n&quot;; \
+13:                   cout &lt;&lt; &quot; in file &quot; &lt;&lt; __FILE__ &lt;&lt; &quot;\n&quot;;  \
+14:                }
+15:    #endif
+16:    
+17:    
+18:    const int FALSE = 0;
+19:    const int TRUE = 1;
+20:    typedef int BOOL;
+21: 
+22:    
+23:    class String
+24:    {
+25:       public:
+26:          // constructors
+27:          String();
+28:          String(const char *const);
+29:          String(const String &amp;);
+30:          ~String();
+31:    
+32:          char &amp; operator[](int offset);
+33:          char operator[](int offset) const;
+34:    
+35:          String &amp; operator= (const String &amp;);
+36:          int GetLen()const { return itsLen; }
+37:          const char * GetString() const { return itsString; }
+38:          BOOL Invariants() const;
+39:    
+40:       private:
+41:          String (int);         // private constructor
+42:          char * itsString;
+43:         // unsigned short itsLen;
+44:          int itsLen;
+45:    };
+46:    
+47:    // default constructor creates string of 0 bytes
+48:    String::String()
+49:    {
+50:       itsString = new char[1];
+51:       itsString[0] = `\0';
+52:       itsLen=0;
+53:       ASSERT(Invariants());
+54:    }
+55:    
+56:    // private (helper) constructor, used only by
+57:    // class methods for creating a new string of
+58:    // required size.  Null filled.
+59:    String::String(int len)
+60:    {
+61:       itsString = new char[len+1];
+62:       for (int i = 0; i&lt;=len; i++)
+63:          itsString[i] = `\0';
+64:       itsLen=len;
+65:       ASSERT(Invariants());
+66:    }
+67:    
+68:    // Converts a character array to a String
+69:    String::String(const char * const cString)
+70:    {
+71:       itsLen = strlen(cString);
+72:       itsString = new char[itsLen+1];
+73:       for (int i = 0; i&lt;itsLen; i++)
+74:          itsString[i] = cString[i];
+75:       itsString[itsLen]='\0';
+76:       ASSERT(Invariants());
+77:    }
+78:    
+79:    // copy constructor
+80:    String::String (const String &amp; rhs)
+81:    {
+82:       itsLen=rhs.GetLen();
+83:       itsString = new char[itsLen+1];
+84:       for (int i = 0; i&lt;itsLen;i++)
+85:          itsString[i] = rhs[i];
+86:       itsString[itsLen] = `\0';
+87:       ASSERT(Invariants());
+88:    }
+89:    
+90:    // destructor, frees allocated memory
+91:    String::~String ()
+92:    {
+93:       ASSERT(Invariants());
+94:       delete [] itsString;
+95:       itsLen = 0;
+96:    }
+97:    
+98:    // operator equals, frees existing memory
+99:    // then copies string and size
+100:    String&amp; String::operator=(const String &amp; rhs)
+101:    {
+102:       ASSERT(Invariants());
+103:       if (this == &amp;rhs)
+104:          return *this;
+105:       delete [] itsString;
+106:       itsLen=rhs.GetLen();
+107:       itsString = new char[itsLen+1];
+108:       for (int i = 0; i&lt;itsLen;i++)
+109:          itsString[i] = rhs[i];
+110:       itsString[itsLen] = `\0';
+111:       ASSERT(Invariants());
+112:       return *this;
+113:    }
+114:    
+115:    //non constant offset operator, returns
+116:    // reference to character so it can be
+117:    // changed!
+118:    char &amp; String::operator[](int offset)
+119:    {
+120:       ASSERT(Invariants());
+121:       if (offset &gt; itsLen)
+122:          return itsString[itsLen-1];
+123:       else
+124:          return itsString[offset];
+125:       ASSERT(Invariants());
+126:    }
+127:    
+128:    // constant offset operator for use
+129:    // on const objects (see copy constructor!)
+130:    char String::operator[](int offset) const
+131:    {
+132:       ASSERT(Invariants());
+133:       if (offset &gt; itsLen)
+134:          return itsString[itsLen-1];
+135:       else
+136:          return itsString[offset];
+137:       ASSERT(Invariants());
+138:    }
+139:    
+140:    
+141:    BOOL String::Invariants() const
+142:    {
+143:    #ifdef SHOW_INVARIANTS
+144:       cout &lt;&lt; &quot; String OK &quot;;
+145:    #endif
+146:        return ( (itsLen &amp;&amp; itsString) || 
+147:          (!itsLen &amp;&amp; !itsString) );
+148:     }
+149:    
+150:     class Animal
+151:     {
+152:     public:
+153:        Animal():itsAge(1),itsName(&quot;John Q. Animal&quot;)
+154:           {ASSERT(Invariants());}
+155:         Animal(int, const String&amp;);
+156:        ~Animal(){}
+157:        int GetAge() {  ASSERT(Invariants()); return itsAge;}
+158:        void SetAge(int Age) 
+159:        { 
+160:             ASSERT(Invariants()); 
+161:             itsAge = Age;              
+162:             ASSERT(Invariants()); 
+163:        }
+164:         String&amp; GetName() 
+165:         { 
+166:               ASSERT(Invariants()); 
+167:               return itsName;  
+168:         }
+169:         void SetName(const String&amp; name)
+170:               { 
+171:               ASSERT(Invariants()); 
+172:               itsName = name; 
+173:               ASSERT(Invariants());
+174:         }
+175:         BOOL Invariants();
+176:      private:
+177:         int itsAge;
+178:         String itsName;
+179:      };
+180:    
+181:      Animal::Animal(int age, const String&amp; name):
+182:      itsAge(age),
+183:      itsName(name)
+184:      {
+185:         ASSERT(Invariants());
+186:      }
+187:    
+188:      BOOL Animal::Invariants()
+189:      {
+190:      #ifdef SHOW_INVARIANTS
+191:         cout &lt;&lt; &quot; Animal OK &quot;;
+192:      #endif
+193:         return (itsAge &gt; 0 &amp;&amp; itsName.GetLen());
+194:      }
+195:    
+196:      int main()
+197:      {
+198:         Animal sparky(5,&quot;Sparky&quot;);
+199:         cout &lt;&lt; &quot;\n&quot; &lt;&lt; sparky.GetName().GetString() &lt;&lt; &quot; is &quot;;
+200:         cout &lt;&lt; sparky.GetAge() &lt;&lt; &quot; years old.&quot;;
+201:         sparky.SetAge(8);
+202:         cout &lt;&lt; &quot;\n&quot; &lt;&lt; sparky.GetName().GetString() &lt;&lt; &quot; is &quot;;
+203:         cout &lt;&lt; sparky.GetAge() &lt;&lt; &quot; years old.&quot;;
+204:         return 0;
+<TT>205: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: String OK  String OK  String OK  String OK  String OK  
+String OK  String OK  Animal OK  String OK  Animal OK
+Sparky is  Animal OK 5 years old. Animal OK  Animal OK  
+Animal OK  Sparky is  Animal OK 8 years old. String OK 
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On lines 6-16, the <TT>assert()</TT>
+macro is defined. If <TT>DEBUG</TT> is defined, this will write out an error message
+when the <TT>assert()</TT> macro evaluates <TT>FALSE</TT>.<BR>
+On line 38, the <TT>String</TT> class member function <TT>Invariants()</TT> is declared;
+it is defined on lines 141-148. The constructor is declared on lines 48-54, and on
+line 53, after the object is fully constructed, <TT>Invariants()</TT> is called to
+confirm proper construction.</P>
+<P>This pattern is repeated for the other constructors, and the destructor calls
+<TT>Invariants()</TT> only before it sets out to destroy the object. The remaining
+class functions call <TT>Invariants()</TT> both before taking any action and then
+again before returning. This both affirms and validates a fundamental principal of
+C++: Member functions other than constructors and destructors should work on valid
+objects and should leave them in a valid state.</P>
+<P>On line 175, class <TT>Animal</TT> declares its own <TT>Invariants()</TT> method,
+implemented on lines 188-194. Note on lines 154, 157, 160, and 162 that inline functions
+can call the <TT>Invariants()</TT> method.
+<H4 ALIGN="CENTER"><A NAME="Heading36"></A><FONT COLOR="#000077">Printing Interim
+Values</FONT></H4>
+<P>In addition to asserting that something is true using the <TT>assert()</TT> macro,
+you may want to print the current value of pointers, variables, and strings. This
+can be very helpful in checking your assumptions about the progress of your program,
+and in locating off-by-one bugs in loops. Listing 17.7 illustrates this idea.</P>
+<P><A NAME="Heading37"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 17.7. Printing
+values in DEBUG mode.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">1:     // Listing 17.7 - Printing values in DEBUG mode
+2:     #include &lt;iostream.h&gt;
+3:     #define DEBUG
+4:
+5:     #ifndef DEBUG
+6:     #define PRINT(x)
+7:     #else
+8:     #define PRINT(x) \
+9:        cout &lt;&lt; #x &lt;&lt; &quot;:\t&quot; &lt;&lt; x &lt;&lt; endl;
+10:    #endif
+11:
+12:    enum BOOL { FALSE, TRUE } ;
+13:
+14:    int main()
+15:    {
+16:       int x = 5;
+17:       long y = 73898l;
+18:       PRINT(x);
+19:       for (int i = 0; i &lt; x; i++)
+20:       {
+21:          PRINT(i);
+22:       }
+23:
+24:       PRINT (y);
+25:       PRINT(&quot;Hi.&quot;);
+26:       int *px = &amp;x;
+27:       PRINT(px);
+28:       PRINT (*px);
+29:     return 0;
+<TT>30: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: x:      5
+i:      0
+i:      1
+i:      2
+i:      3
+i:      4
+y:      73898
+&quot;Hi.&quot;:  Hi.
+px:       0x2100 (You may receive a value other than 0x2100)
+*px:    5
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>The macro on lines 5-10 provides
+printing of the current value of the supplied parameter. Note that the first thing
+fed to <TT>cout</TT> is the stringized version of the parameter; that is, if you
+pass in <TT>x</TT>, <TT>cout</TT> receives <TT>&quot;x&quot;</TT>.<BR>
+<BR>
+Next, <TT>cout</TT> receives the quoted string <TT>&quot;:\t&quot;</TT>, which prints
+a colon and then a tab. Third, <TT>cout</TT> receives the value of the parameter
+(<TT>x</TT>), and then finally, <TT>endl</TT>, which writes a new line and flushes
+the buffer.
+<H4 ALIGN="CENTER"><A NAME="Heading39"></A><FONT COLOR="#000077">Debugging Levels</FONT></H4>
+<P>In large, complex projects, you may want more control than simply turning <TT>DEBUG</TT>
+on and off. You can define debug levels and test for these levels when deciding which
+macros to use and which to strip out.</P>
+<P>To define a level, simply follow the <TT>#define DEBUG</TT> statement with a number.
+While you can have any number of levels, a common system is to have four levels:
+<TT>HIGH</TT>, <TT>MEDIUM</TT>, <TT>LOW</TT>, and <TT>NONE</TT>. Listing 17.8 illustrates
+how this might be done, using the <TT>String</TT> and <TT>Animal</TT> classes from
+Listing 17.6. The definitions of the class methods other than <TT>Invariants()</TT>
+have been left out to save space because they are unchanged from Listing 17.6.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<FONT COLOR="#000077"><B>NOTE:</B></FONT><B> </B>To compile this code, copy lines
+	43-136 of Listing 17.6 between lines 64 and 65 of this listing. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<P><A NAME="Heading40"></A><FONT SIZE="4" COLOR="#000077"><B>Listing 17.8. Levels
+of debugging.</B></FONT></P>
+<PRE><FONT COLOR="#0066FF">0:    enum LEVEL { NONE, LOW, MEDIUM, HIGH };
+1:    const int FALSE = 0;
+2:    const int TRUE = 1;
+3:    typedef int BOOL;
+4:    
+5:     #define DEBUGLEVEL HIGH
+6:    
+7:     #include &lt;iostream.h&gt;
+8:     #include &lt;string.h&gt;
+9:    
+10:     #if DEBUGLEVEL &lt; LOW  // must be medium or high
+11:     #define ASSERT(x)
+12:     #else
+13:     #define ASSERT(x) \
+14:         if (! (x)) \
+15:         { \
+16:            cout &lt;&lt; &quot;ERROR!! Assert &quot; &lt;&lt; #x &lt;&lt; &quot; failed\n&quot;; \
+17:            cout &lt;&lt; &quot; on line &quot; &lt;&lt; __LINE__  &lt;&lt; &quot;\n&quot;; \
+18:            cout &lt;&lt; &quot; in file &quot; &lt;&lt; __FILE__ &lt;&lt; &quot;\n&quot;;  \
+19:         }
+20:     #endif
+21:    
+22:     #if DEBUGLEVEL &lt; MEDIUM
+23:     #define EVAL(x)
+24:     #else
+25:     #define EVAL(x) \
+26:       cout &lt;&lt; #x &lt;&lt; &quot;:\t&quot; &lt;&lt; x &lt;&lt; endl;
+27:     #endif
+28:    
+29:    #if DEBUGLEVEL &lt; HIGH
+30:     #define PRINT(x)
+31:     #else
+32:     #define PRINT(x) \
+33:       cout &lt;&lt; x &lt;&lt; endl;
+34:     #endif
+35:    
+36:    
+37:     class String
+38:     {
+39:        public:
+40:           // constructors
+41:           String();
+42:           String(const char *const);
+43:           String(const String &amp;);
+44:           ~String();
+45:    
+46:           char &amp; operator[](int offset);
+47:           char operator[](int offset) const;
+48:    
+49:           String &amp; operator= (const String &amp;);
+50:           int GetLen()const { return itsLen; }
+51:           const char * GetString() const 
+52:            { return itsString; }
+53:           BOOL Invariants() const;
+54: 
+55:        private:
+56:           String (int);         // private constructor
+57:           char * itsString;
+58:           unsigned short itsLen;
+59:     };
+60:    
+61:     BOOL String::Invariants() const
+62:     {
+63:         PRINT(&quot;(String Invariants Checked)&quot;);
+64:         return ( (BOOL) (itsLen &amp;&amp; itsString) || 
+65:             (!itsLen &amp;&amp; !itsString) );
+66:     }
+67:    
+68:     class Animal
+69:     {
+70:     public:
+71:        Animal():itsAge(1),itsName(&quot;John Q. Animal&quot;)
+72:            {ASSERT(Invariants());}
+73:    
+74:        Animal(int, const String&amp;);
+75:        ~Animal(){}
+76:    
+77:        int GetAge() 
+78:            {  
+79:                ASSERT(Invariants()); 
+80:                return itsAge;
+81:            }
+82:    
+83:        void SetAge(int Age) 
+84:            { 
+85:                ASSERT(Invariants()); 
+86:                itsAge = Age; 
+87:                ASSERT(Invariants());
+88:            }
+89:        String&amp; GetName() 
+90:            { 
+91:                ASSERT(Invariants()); 
+92:                return itsName;  
+93:            }
+94:    
+95:        void SetName(const String&amp; name)
+96:            { 
+97:                ASSERT(Invariants()); 
+98:                itsName = name; 
+99:                ASSERT(Invariants());
+100:            }
+101:    
+102:        BOOL Invariants();
+103:     private:
+104:        int itsAge;
+105:        String itsName;
+106:     };
+107:    
+108:     BOOL Animal::Invariants()
+109:     {
+110:        PRINT(&quot;(Animal Invariants Checked)&quot;);
+111:        return (itsAge &gt; 0 &amp;&amp; itsName.GetLen());
+112:     }
+113:    
+114:     int main()
+115:     {
+116:        const int AGE = 5;
+117:        EVAL(AGE);
+118:        Animal sparky(AGE,&quot;Sparky&quot;);
+119:        cout &lt;&lt; &quot;\n&quot; &lt;&lt; sparky.GetName().GetString();
+120:        cout &lt;&lt; &quot; is &quot;;
+121:        cout &lt;&lt; sparky.GetAge() &lt;&lt; &quot; years old.&quot;;
+122:        sparky.SetAge(8);
+123:        cout &lt;&lt; &quot;\n&quot; &lt;&lt; sparky.GetName().GetString();
+124:        cout &lt;&lt; &quot; is &quot;;
+125:        cout &lt;&lt; sparky.GetAge() &lt;&lt; &quot; years old.&quot;;
+126:        return 0;
+<TT>127: }</TT></FONT>
+<FONT COLOR="#0066FF">
+Output: AGE:     5
+ (String Invariants Checked)
+ (String Invariants Checked)
+ (String Invariants Checked)
+ (String Invariants Checked)
+ (String Invariants Checked)
+ (String Invariants Checked)
+ (String Invariants Checked)
+ (String Invariants Checked)
+ (String Invariants Checked)
+ (String Invariants Checked)
+
+Sparky is (Animal Invariants Checked)
+5 Years old. (Animal Invariants Checked)
+ (Animal Invariants Checked)
+ (Animal Invariants Checked)
+
+Sparky is (Animal Invariants Checked)
+8 years old. (String Invariants Checked)
+ (String Invariants Checked)
+
+// run again with DEBUG = MEDIUM
+
+AGE:     5
+Sparky is 5 years old.
+Sparky is 8 years old.
+</FONT></PRE>
+<P><FONT COLOR="#000077"><B>Analysis:</B></FONT><B> </B>On lines 10 to 20, the <TT>assert()</TT>
+macro is defined to be stripped if <TT>DEBUGLEVEL</TT> is less than <TT>LOW</TT>
+(that is, <TT>DEBUGLEVEL</TT> is <TT>NONE</TT>). If any debugging is enabled, the
+<TT>assert()</TT> macro will work. On line 23, <TT>EVAL</TT> is declared to be stripped
+if <TT>DEBUG</TT> is less than <TT>MEDIUM</TT>; if <TT>DEBUGLEVEL</TT> is <TT>NONE</TT>
+or <TT>LOW</TT>, <TT>EVAL</TT> is stripped.<BR>
+Finally, on lines 29-34, the <TT>PRINT</TT> macro is declared to be stripped if <TT>DEBUGLEVEL</TT>
+is less than <TT>HIGH</TT>. <TT>PRINT</TT> is used only when <TT>DEBUGLEVEL</TT>
+is <TT>HIGH</TT>; you can eliminate this macro by setting <TT>DEBUGLEVEL</TT> to
+<TT>MEDIUM</TT> and still maintain your use of <TT>EVAL</TT> and <TT>assert()</TT>.</P>
+<P><TT>PRINT</TT> is used within the <TT>Invariants()</TT> methods to print an informative
+message. <TT>EVAL</TT> is used on line 117 to evaluate the current value of the constant
+integer <TT>AGE</TT>.
+
+
+<BLOCKQUOTE>
+	<P>
+<HR>
+<B>DO</B> use CAPITALS for your macro names. This is a pervasive convention, and
+	other programmers will be confused if you don't. <B>DON'T</B> allow your macros to
+	have side effects. Don't increment variables or assign values from within a macro.
+	<B>DO</B> surround all arguments with parentheses in macro functions. 
+<HR>
+
+
+</BLOCKQUOTE>
+
+<H3 ALIGN="CENTER"><A NAME="Heading42"></A><FONT COLOR="#000077">Summary</FONT></H3>
+<P>Today you learned more details about working with the preprocessor. Each time
+you run the compiler, the preprocessor runs first and translates your preprocessor
+directives such as <TT>#define</TT> and <TT>#ifdef</TT>.</P>
+<P>The preprocessor does text substitution, although with the use of macros these
+can be somewhat complex. By using <TT>#ifdef</TT>,<TT> #else</TT>, and <TT>#ifndef</TT>,
+you can accomplish conditional compilation, compiling in some statements under one
+set of conditions and in another set of statements under other conditions. This can
+assist in writing programs for more than one platform and is often used to conditionally
+include debugging information.</P>
+<P>Macro functions provide complex text substitution based on arguments passed at
+compile time to the macro. It is important to put parentheses around every argument
+in the macro to ensure the correct substitution takes place.</P>
+<P>Macro functions, and the preprocessor in general, are less important in C++ than
+they were in C. C++ provides a number of language features, such as <TT>const</TT>
+variables and templates, that offer superior alternatives to use of the preprocessor.
+<H3 ALIGN="CENTER"><A NAME="Heading43"></A><FONT COLOR="#000077">Q&amp;A</FONT></H3>
+
+<DL>
+	<DD><B>Q. If C++ offers better alternatives than the preprocessor, why is this option
+	still available?<BR>
+	</B><BR>
+	<B>A.</B> First, C++ is backward-compatible with C, and all significant parts of
+	C must be supported in C++. Second, there are some uses of the preprocessor that
+	are still used frequently in C++, such as inclusion guards.<BR>
+	<BR>
+	<B>Q. Why use macro functions when you can use a regular function?<BR>
+	</B><BR>
+	<B>A.</B> Macro functions are expanded inline and are used as a substitute for repeatedly
+	typing the same commands with minor variations. Again, though, templates offer a
+	better alternative.<BR>
+	<BR>
+	<B>Q. How do you know when to use a macro versus an inline function?<BR>
+	</B><BR>
+	<B>A.</B> Often it doesn't matter much; use whichever is simpler. However, macros
+	offer character substitution, stringizing, and concatenation. None of these is available
+	with functions.<BR>
+	<BR>
+	<B>Q. What is the alternative to using the preprocessor to print interim values during
+	debugging?</B><BR>
+	<B><BR>
+	A.</B> The best alternative is to use <TT>watch</TT> statements within a debugger.
+	For information on <TT>watch</TT> statements, consult your compiler or debugger documentation.<BR>
+	<BR>
+	<B>Q. How do you decide when to use an assert() and when to throw an exception?<BR>
+	</B><BR>
+	<B>A.</B> If the situation you're testing can be true without your having committed
+	a programming error, use an exception. If the only reason for this situation to ever
+	be true is a bug in your program, use an <TT>assert()</TT>.
+</DL>
+
+<H3 ALIGN="CENTER"><A NAME="Heading44"></A><FONT COLOR="#000077">Workshop</FONT></H3>
+<P>The Workshop provides quiz questions to help you solidify your understanding of
+the material covered and exercises to provide you with experience in using what you've
+learned. Try to answer the quiz and exercise questions before checking the answers
+in Appendix D, and make sure you understand the answers before continuing to the
+next chapter.
+<H4 ALIGN="CENTER"><A NAME="Heading45"></A><FONT COLOR="#000077">Quiz</FONT></H4>
+
+<DL>
+	<DD><B>1.</B> What is an inclusion guard?<BR>
+	<B><BR>
+	2. </B>How do you instruct your compiler to print the contents of the intermediate
+	file showing the effects of the preprocessor?<BR>
+	<B><BR>
+	3.</B> What is the difference between <TT>#define debug 0</TT> and <TT>#undef debug</TT>?<BR>
+	<B><BR>
+	4.</B> Name four predefined macros.<BR>
+	<B><BR>
+	5.</B> Why can't you call <TT>Invariants()</TT> as the first line of your constructor?
+</DL>
+
+<H4 ALIGN="CENTER"><A NAME="Heading46"></A><FONT COLOR="#000077">Exercises</FONT></H4>
+
+<DL>
+	<DD><B>1.</B> Write the inclusion guard statements for the header file <TT>STRING.H</TT>.<BR>
+	<B><BR>
+	2.</B> Write an <TT>assert()</TT> macro that prints an error message and the file
+	and line number if debug level is 2, just a message (without file and line number)
+	if the level is 1, and does nothing if the level is 0.<BR>
+	<B><BR>
+	3.</B> Write a macro <TT>DPrint</TT> that tests if <TT>DEBUG</TT> is defined and,
+	if it is, prints the value passed in as a parameter.<BR>
+	<B><BR>
+	4.</B> Write a function that prints an error message. The function should print the
+	line number and filename where the error occurred. Note that the line number and
+	filename are passed in to this function.<BR>
+	<B><BR>
+	5.</B> How would you call the preceding error function?<BR>
+	<B><BR>
+	6.</B> Write an <TT>assert()</TT> macro that uses the error function from Exercise
+	4, and write a driver program that calls this <TT>assert()</TT> macro.
+</DL>
+
+<P ALIGN="CENTER"><BR>
+<A HREF="ch16.htm"><IMG SRC="../buttons/BLANPREV.GIF" WIDTH="37"
+HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="http://www.mcp.com/sams"><IMG
+SRC="../buttons/BLANHOME.GIF" WIDTH="37" HEIGHT="37" ALIGN="BOTTOM"
+BORDER="0"></A><A HREF="../index.htm"><IMG SRC="../buttons/BLANTOC.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="ch18.htm"><IMG SRC="../buttons/BLANNEXT.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A><A HREF="#heading1"><IMG SRC="../buttons/BLANTOP.GIF"
+WIDTH="37" HEIGHT="37" ALIGN="BOTTOM" BORDER="0"></A>
+
+
+</BODY>
+
+</HTML>

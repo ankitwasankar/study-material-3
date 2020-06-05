@@ -1,0 +1,121 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left"><pre>
+
+<strong>Limitation of array of pointers to strings:</strong>
+
+When we are using a two-dimensional array of characters we are at liberty to either initialize 
+the strings where we are declaring the array, or receive the stringsusing scanf() function. However,
+when we are using an array of pointers to stringswe can initialize the strings at the place where 
+we are declaring the array,but we cannot receive the strings from keyboard using scanf().
+Thus the following program would never work out.
+
+main()
+{
+char *names[6];
+int i;
+for(i =0; i<= 5; i++)
+{
+printf("\n enter name");
+scanf("%s",names[i]);
+}
+}
+The program doesn't work because; when ae are declaring the array it is containing the garbage values.
+ And it would be definitely wrong to send these garbage values to scanf() as the address where 
+it should keep the strings received from the keyboard.
+
+Write a function xstrstr() that will return the position where one string is present
+within another string. If the second string doesn't occur in the first string xstrstr() 
+should return a 0.
+
+For example, in the string "somewhere over the rainbow", "over" is present at location 11.
+
+main()
+{
+static char str1[] = "somewhere over the rainbow";
+static char str2[] = "over";
+printf("string found at %d", xstrstr(str1, str2));
+}
+xstrstr(s1, s2)
+char *s1, *s2;
+{
+int i, a, len1, len2;
+len1 = strlen(s1);
+len2 = strlen(s2);
+for(i = 0; i<=(len-1); i++)
+{
+a = strncmp((s1+i) , s2, len2);
+if(a == 0)
+return (i+1);
+}
+return (0);
+}
+
+output:
+string found at 11
+
+Explanation:  The two strings have been declared as str1[] and str2[] in main from where the base addresses
+ are sent to the function xstrstr() for searching the second string in the first one. In xstrstr(), len1 
+and len2 store the lengths of the 2 strings withbase addresses s1 and s2 respectively . In the for loop, 
+i is incremented len1 number of times. As many times, the standard library function strncmp(t,s, n) gets 
+called.This function compares the first n elements of strings starting from t and s and returns 0 if they 
+are equal.The first time through the for loop, i is 0. Hence strncmp() compares the first len2 (here len2 
+is equal to 4) elements of strings starting from (s1+0) i.e s1and s2 a collects a non-zero value, as the 
+first four elements of the two strings are found to be different.The control therefore reverts back to the
+ for where i is incremented to 1.So the second time through the loop strncmp() compares first len2 elements 
+of strings starting from s1 and s2. Literally first 4 elements of "somewhere over the rainbow" and "over" are compared . Once again a collects a non-zero value and i is incremented a second time.this goes on similarly 
+till i is 10, when s1+10 denotes the base address of the string "over the rainbow".This time a is assigned a 
+0, as both the strings have o, v, e  and r as the first four elements, and control returns to main() with 
+i+1, i.e 11.This is the position of the second string in the first one.Suppose the second string is not
+ present in the first string at all, then at no time a would contain 0. Thus the return statement after the 
+loop would return 0,signifying that the second string was not found in the first one.
+
+<a href="strings.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</TR>
+
+</table>
+
+
+</html>

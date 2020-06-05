@@ -1,0 +1,6 @@
+#define sw(x,y) #x #y
+	main()
+	{
+printf("%s",sw(god,good));
+	}
+

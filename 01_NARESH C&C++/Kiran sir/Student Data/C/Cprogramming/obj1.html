@@ -1,0 +1,184 @@
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Objective Type Questions</h2></center>
+
+<pre>
+<font size="2">
+        
+1.what will be the output of the following program
+ main()
+ {
+   int a[5], i;
+   static int b[5];
+   for(i=0 ; i<5 ;i++)
+   print f(%d %d %d , i, a[i], b[i]);
+ }
+
+output: 0 100 0
+        1 -75  0
+        2 123  0
+        3 1245 0
+        4  347 0
+
+Explanation :since the storage class of the array a[] has
+not been mentioned, the default storage class auto is 
+assigned for it. As against this, the storage class of b[]
+has been explicitly mentioned as static. The default value
+of auto storage class variable is any garbage value and the
+default value of static storage variable is 0. therefore all
+zeros are printed out for b[], where as garbage values are 
+printed out for a[].
+
+2.
+  main()
+  {
+   static int sub[5] = {10,20,30,40,50};
+   int i;
+   for (i=0;i<=4;i++)
+   {
+    if(i<=4)
+    {
+     sub[i]=i*i;
+     print f( %d, sub[i]);
+    }
+   }
+  }
+
+output: no output
+
+Explanation:there is a semicolon at the end of the for loop, 
+thus the loop is reduced to the form:
+    for(i=0;i<=4;i++)
+this loop repeats the null statement (;)5times and then the
+control comes out of the loop. At this time the value of i 
+has become 5 and hence the if condition fails and the 
+control reaches the closing brace of main(). The execution
+is therefore terminated without any output to the screen.
+
+3.
+  int b[5];
+  main()
+  {
+    static int a[5];
+    int i;
+    for(i=0;i<=4;i++)
+    print f(%d %d, b[i], a[i]);
+  }
+
+output :  0  0
+          0  0
+          0  0
+          0  0
+          0  0
+
+Explanation: default initial value of a static or extern 
+storage class variable is 0. thus ,though the array b[] and
+ a[] have not been initialized, the fact that their storage
+class is extern and static respectively causes their values to
+ be 0.
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="arrays.html" target="_self">BACK</a>     
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+

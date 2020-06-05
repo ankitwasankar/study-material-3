@@ -1,0 +1,208 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left"><pre>
+
+<strong>Programs in string handling functions:</strong>
+  
+1.Is the folowing program correct or not?   yes/no
+
+main()
+{
+  char *str1 = "United";
+  char * str2 = "Front";
+  char  *str3;
+  str3 = strcat(str1, str2);
+  printf("\n %s", str3);
+}
+Ans: No, since what is present in memory beyond "united" is not known and we are 
+attaching "Front" at the end of "United" , thereby overwriting something, which is
+ unsafe thing to do.
+
+2.How would you improve the code in the above program?
+
+ Ans: main()
+          {
+            char str1[15] = "United";
+            char *str2 = "Front";
+            char *str3;
+            str3 = strcat(str1,str2);
+            printf("\n%s", str3);
+          }
+
+3. Write  a program to enter the two strings and compare them without using any 
+standard function. Determine whether the strings are identical or not.
+ Also display the number of position where the characters are different.
+
+main()
+{
+static char sr[10], tr[10];
+int diff = 0,i;
+clrscr();
+printf("\n enter the string");
+gets(sr);
+printf("enter the second string");
+gets(tr);
+for(i =0; i<10;i++)
+{
+if(sr[i] ==tr[i]);
+continue;
+else
+{
+printf("%c %c\n", sr[i],tr[i]);
+diff++;
+}
+}
+if(strlen(sr) == strlen(tr)&&diff == 0)
+puts("\n The two strings are identical");
+else
+printf("\n The two strings are different at %d places", diff);
+getch();
+}
+
+output:
+enter the string: BEST LUCK
+enter the second string: GOOD LUCK
+G B
+O E
+O S
+D T
+
+
+4.Write a program to concatenate two strings without the use of standard library functions
+
+main()
+{
+char name[50], fname[15], sname[15], lname[15];
+int i,j,k;
+printf("first name");
+grts(fname);
+printf("second name");
+grts(sname);
+printf("last name");
+grts(lname);
+for(i =0; fname[i]!='\0'; i++)
+name[i]=fname[i];
+name[i]=' ';
+for(j =0; sname[j]!='\0'; j++)
+name[i+j+1]=sname[i];
+name[i+j+1]=' ';
+for(k =0; lname[k]!='\0'; k++)
+name[i+j+k+2]=lname[k];
+name[i+j+k+2]='\0 ';
+printf("\n\n");
+printf("complete name after concatenation\n");
+printf("%s", name);
+getch();
+}
+output:
+first name: MOHAN
+second name:KARAMCHAND
+last name: GANDHI
+complete name after concatenation
+MOHAN KARAMCHAND GANDHI
+
+
+5.Write a program to display reverse of a string without using standard library functions.
+
+main()
+{
+char text[15];
+int i = 0;
+printf("enter the string");
+gets(text);
+while(text[i[!='\0')
+{
+printf("\n 5c is stored at location %u", text[i],&text[i])
+i++;
+}
+strrev(text);
+printf("reverse string");
+printf("%s",text);
+i =0;
+while(text[i]!='\0')
+{
+printf("\n %c is stored at location %u",text[i], &text[i]);
+i++;
+}
+}
+output:
+enter string:ABC
+A is stored at location 4054
+B is stored at location 4055
+C is stored at location 4056
+reverse string:CBA
+C is stored at location 4054
+B is stored at location 4055
+A is stored at location 4056
+
+
+6.Write a program to find the number of words in a given statement . Exclude spaces between them.
+
+main()
+{
+char text[30];
+int count = 0,i = 0;
+printf("enter the line of text");
+printf("give one space after each word");
+gets(text);
+while(text[i++]!='\0')
+if(text[i]==32 || text[i]=='\0')
+cout++;
+printf("The number of words in line = %d\n", count);
+}
+
+output:
+enter the line of text
+give one space after each words
+read books
+The number of words in line = 2
+
+<a href="strings.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</TR>
+
+</table>
+
+
+</html>

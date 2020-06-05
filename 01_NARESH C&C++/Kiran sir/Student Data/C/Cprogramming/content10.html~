@@ -1,0 +1,251 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left"><pre>
+
+
+
+Output of real numbers:The output of a real number may be displayed in decimal notation the following  format 
+                              specification:      %w.pf
+
+ The integer w indicates the minimum number of positions that are to be used for the display of the value and
+ integer ‘p’ indicates the number of digits to be displayed after the decimal point. The value when displayed is
+ rounded to ‘p’ decimal places and printed right justified in the field of w columns. The default precision is 6
+ decimal places. we can also display a real number in exponential notation by using          %w.pe           
+        The display takes the form 
+                                 [-]m.nnnne[+ or -]xx
+ where the length of the string of n’s is specified by the precision p. The default precision is 6.The field width
+ w should satisfy the condition                      w>=p+7.
+        The value will be of the rounded off and printed right justified in the field of w columns.
+ Padding the leading blanks with zeros and printing with left justification is also possible by introducing
+ 0 or – before the field
+width specifier w.
+        The following example illustrate the output of the number
+ y=98.7654 under different format specifications:
+
+                            1.   FORMAT
+                               printf("%7.4f",y);
+OUTPUT:
+<table border="1"><TR><TD>9</TD>
+<td>8</td>
+<td>.</td>
+<td>7</td>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+</TR></table>
+
+                           2.   FORMAT
+                               printf("%7.2f",y);
+OUTPUT:
+<table border="1"><TR><TD>9</TD>
+<td></td>
+<td></td>
+<td>9</td>
+<td>8</td>
+<td>.</td>
+<td>7</td>
+<td>7</td>
+</TR></table>
+
+
+                           3. FORMAT
+                               printf("%-7.2f",y)  
+OUTPUT:
+<table border="1"><TR><TD>9</TD>
+<td>9</td>
+<td>8</td>
+<td>.</td>
+<td>7</td>
+<td>7</td>
+<td></td>
+<td></td>
+</TR></table>
+
+
+ 
+                            4.  FORMAT
+                               printf("%f",y)  
+OUTPUT:
+<table border="1"><TR><TD>9</TD>
+<td>9</td>
+<td>8</td>
+<td>.</td>
+<td>7</td>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+</TR></table>
+
+
+                              5.   FORMAT
+                               printf("%10.2e",y)  
+OUTPUT:
+<table border="1"><d><TD>9</TD>
+<td></td>
+<td></td>
+<td>9</td>
+<td>.</td>
+<td>8</td>
+<td>8</td>
+<td>e</td>
+<td>+</td>
+<td>0</td>
+<td>1</td>
+</TR></table>
+
+
+                               6.  FORMAT
+                               printf("%11.4e",-y)  
+OUTPUT:
+<table border="1"><TR><TD>9</TD>
+<td>-</td>
+<td>9</td>
+<td>.</td>
+<td>8</td>
+<td>7</td>
+<td>6</td>
+<td>5</td>
+<td>e</td>
+<td>+</td>
+<td>0</td>
+<td>1</td>
+</TR></table>
+
+ 
+                               7. FORMAT
+                               printf("%-10.e",y)  
+OUTPUT:
+<table border="1"><TR><TD>9</TD>
+<td>9</td>
+<td></td>
+<td>8</td>
+<td>8</td>
+<td>e</td>
+<td>+</td>
+<td>0</td>
+<td>1</td>
+<td></td>
+<td></td>
+</TR></table>
+
+
+
+                            8. FORMAT
+                               printf("%e",y)  
+OUTPUT:
+<table border="1"><d><TD>9</TD>
+<td>9</td>
+<td></td>
+<td>8</td>
+<td>7</td>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+<td>0</td>
+<td>e</td>
+<td>+</td>
+<td>0</td>
+<td>1</td>
+</TR></table>
+
+
+                       Some systems also supports a special field at run-time. This takes the following form :
+         printf("%*.*f",width,precision,number);
+    In this case both the field width and the precision are given as arguments which will supply the values 
+for w and p.
+   for example
+                          printf("%7.2f",number);
+           The advantage of this format is that the values for width and precision may be supplied at runtime ,thus
+ making the format a dynamic one.
+    For example the above statement can be used as follows:
+                          int width=7;
+                          int precision=2;           
+                            ----------------
+                             ---------------
+                        printf("%*.*f",width,precision,number);
+
+Program: All the options of printing a real number
+                  /* printing of real numbers*/
+                                    main()
+                                 {
+                                   float y=98.7654;
+                                   printf("% 7.4f\n",y);
+                                   printf("%f\n",y);
+                                   printf("%7.2f\n",y);
+                                   printf("%-7.2f\n",y);
+                                   printf("%0. 72Ff\n",y);
+                                   printf("%*.*f",7,2,y);
+                                   printf("\n");
+                                   printf("%10.2e\n",y);
+                                   printf("%12.4e\n",-y);
+
+              printf("%-10.2e\n",y);
+                             printf("%e\n",y);
+
+Output:                 98.7654
+                               98.765404
+                                    98.77
+                              98.77
+                              0098.77
+                              98.77
+
+                         9.88e+001
+                        -9.8765e+001
+                          9.876540e+001
+
+Printing of single  characters:   A single character can be displayed in a desired position using the format
+                                  %wc                   
+             The character will be displayed right-justified in the field of w columns. We can make the display
+              left-justified by placing a minus sign before the integer w.The default value for w is 1.
+
+<a href="managing.html" target="_self">BACK</a>
+</pre></TD>
+</pre>
+
+</table>
+
+
+</html>

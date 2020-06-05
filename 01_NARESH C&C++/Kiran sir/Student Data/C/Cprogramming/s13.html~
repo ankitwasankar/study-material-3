@@ -1,0 +1,75 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+</table></TD>
+<TD align="left"><pre>
+
+<strong>Arithmetic operations on characters:</strong>
+
+'C' allows us to manipulate characters in the sane way we do with numbers.
+Whenever a character constant or character variable is used in an expression , it is 
+automatically converted to integer value by the system .Integer value depends on local 
+character set of the system .
+          If the machine uses the ASCII representation then
+                     x = 'a';
+                     printf("%d", x);
+ will display the number 97 on the screen.
+<strong>ex:</strong> x = 'z'-1; is a valid statement
+In ASCII , the value of 'z' is 122 , therefore the value 121 is assigned to x.
+The 'c' library supports a function that converts a string of digits into their integer values .
+         The function takes the form 
+           x = atoi(string);
+x is an integer variable and string is a character array containing a string of digits.
+ex:            ------------------
+                 number = "1988";
+                 year = atoi(number);
+The function converts the string "1988" to its numeric equivalent 1988 and assigns it to the
+ integer variable year.
+
+
+
+<a href="s1.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</TR>
+file:///root/Desktop/sushma/s12.html
+</table>
+
+
+</html>

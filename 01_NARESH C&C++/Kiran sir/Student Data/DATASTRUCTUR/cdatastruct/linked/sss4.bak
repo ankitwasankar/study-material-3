@@ -1,0 +1,18 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+char ch;
+clrscr();
+printf("Enter your character");
+scanf("%c",&ch);
+if ((ch=='Y') || (ch=='y'))
+{
+printf("Entered character is : Y");
+}
+else
+{
+printf("Entered character is : N");
+}
+getch();
+}

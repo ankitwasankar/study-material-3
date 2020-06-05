@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+int n,a=0,b=1;
+void fibo(int,int,int);
+clrscr();
+printf("Enter the no.:-");
+scanf("%d",&n);
+printf("\n%d\n%d",a,b);
+fibo(n-2,a,b);
+getch();
+}
+void fibo(int n,int a,int b)
+{
+int c;
+if(n==0)
+return;
+else
+{
+c=a+b;
+printf("\n%d",c);
+a=b;
+b=c;
+fibo(n-1,a,b);
+}
+}

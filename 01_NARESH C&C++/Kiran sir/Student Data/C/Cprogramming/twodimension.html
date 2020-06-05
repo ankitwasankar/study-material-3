@@ -1,0 +1,210 @@
+<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Two Dimensional Array Of Characters</h2></center>
+
+<pre>
+<font size="2">
+  Our example program asks you to type your name.When you
+do so,it checks against a master<br> list to see if you
+are worthy of entry to the palace.
+
+Example:    
+
+  #include "string.h"
+  #define FOUND 1
+  #define NOTFOUND 0
+  main()
+  {
+   char masterlist[6][10]={"srujana",
+                           "sneha",
+                           "swathi",
+                           "lavanya",
+                           "ramya",
+                           "kalyani"
+                          };
+   int i,flag,a;
+   char yourname[10];
+   printf("\n Enter your name:");
+   scanf("%s",yourname);
+   flag=NOTFOUND;
+   for(i=0;i<=5;i++)
+   {
+     a=strcmp(&masterlist[i][0],yourname);
+     if(a==0)
+     {
+      printf("welcome,u can enter the palace");
+      flag=FOUND;
+      break;
+     }
+   }
+   if(flag==NOTFOUND)
+   printf("sorry,u r a trespasser");
+  }
+
+OUTPUT:
+Enter your name:keerthi
+sorry,u r a trespasser
+
+Enter your name:srujana
+welcome,u can enter the palace.
+
+Names can be supplied from keyboard as:
+       for(i=0;i<=5;i++)
+       scanf("%s",&masterlist[i][0]);
+     while comapring the strings through strcmp() note that
+the addresses of strings are being passed to strcmp().
+srujana\0  sneha\0  swathi\0 lavanya\0  ramya\0  kalyani\0
+1001&nbsp;&nbsp;       1011 &nbsp;&nbsp;    1021 &nbsp;&nbsp;    1031  &nbsp;  &nbsp;  1041 &nbsp;&nbsp;  1051
+      Here 1001,1011,....are the base adresses of successive
+names. For example, even though 10 bytes are reserved for 
+storing the name "ramya", it occupies only 5 bytes. Thus 5 
+bytes go waste.
+
+<b>ARRAY OF POINTERS TO STRINGS :</b>
+
+    pointer variable always contains an address. Therefore, 
+if we construct an array of pointers it would contain a 
+number of addresses. Array of pointers can be stored as 
+            char *names[]={
+                           "srujana",
+                           "sneha",
+                           "swathi",
+                           "lavanya",
+                           "ramya",
+                           "kalyani"
+                          };
+    One reason to store strings in an array of pointers is
+to make more efficient use of available memory.
+
+<strong>LIMITATIONS OF ARRAY OF POINTERS TO STRINGS:</strong>
+    When  we are using a 2-D array of characters we are at 
+liberty to either initialize the strings where we are declaring
+the array or receive the strings using scanf() function.
+
+Example:        main()
+		{
+		char *names[6];
+		int i;
+		for(i=0;i<=5;i++)
+	        {
+                  printf("\n enter name");
+                  scanf("%s",names[i]);   /*doesnot work*/
+                }
+                }
+     The program doesn't work because when we are declaring 
+the  array it is containing garbage values. And it would be
+definitely wrong to send these garbage values to scanf() as
+the addresses where it should keep the strings received from
+the keyboard.
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="pointer2.html" target="_self"><strong>Back</strong></a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+
+
+
+
+
+

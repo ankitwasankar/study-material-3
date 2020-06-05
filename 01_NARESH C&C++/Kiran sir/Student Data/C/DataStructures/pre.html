@@ -1,0 +1,56 @@
+<html>
+<body>
+<strong>PRE-ORDER:</strong><br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pre-order is traversing a tree n the order: root  left  right<br>
+The following is the procedure for pre-order:<br>
+1.Visit the root.<br>
+2.Traverse the left sub-tree In pre-order.<br>
+3.Traverse the right sub-tree n pre-order.<br>
+The following diagram represents the procedure of pre-order.<br>
+
+<!--Let us consider with an example<br>
+
+This is the tree on which pre-order s to be implemented. The following is the figure of pre-order traversal.<br>
+
+The pre-order traversal is  A B D E H C F G I K J<br>
+
+This tree traversals are also used In traversing a binary tree which represents an arithmetic expression.<!---->
+<pre>
+<strong>ALGORITHM : Pre-order Traversal (Recursive):
+<strong></strong></strong>
+Procedure Pre-order(T)
+1.If T=NULL then 
+begin
+         Print &#039;Tree is empty&#039;
+         Return
+end
+2.Print info(T)
+3.If leftptr(T) != NULL then 
+   Call Pre-oredr(leftptr(T))
+4.If rightptr(T) != NULL then
+   Call Pre-order(rightptr(T))
+5.Return
+<strong>ALGORTHM: PRE-ORDER TRAVERSAL (ITERATIVE):<strong></strong></strong>
+
+Procedure IterPre-order(T)
+1.If T = NULL then
+begin
+         Print &#039;Tree is empty&#039;
+         Return
+end
+2.P&#060;-T
+Top&#060;-0
+3.while P!=NULL do
+begin
+         Print info(P)
+         if rptr(P)!=NULL then
+            Call PUSH(S,Top,rptr(P))
+            P&#060;-Iptr(P)
+         if (P=NULL) &#038;&#038; (top>0) then
+           P&#060;-POP(S,Top)
+end
+4.Return
+
+</pre>
+
+</body></html>

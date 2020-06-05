@@ -1,0 +1,60 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+     void bubble_sort(int [],int);
+   //void bubble_sort1(int *,int);
+   int a[20],n,i;
+   clrscr();
+   printf("How many elements - ");
+   scanf("%d",&n);
+   for(i=0;i<n;i++)
+   {
+     printf("Enter the value - ");
+     scanf("%d",&a[i]);
+   }
+   bubble_sort(a,n);   // call by value
+   //bubble_sort1(a,n);   // call by reference
+   printf("\n Sort the array by pointer");
+   for(i=0;i<n;i++)
+    printf("\n %d",a[i]);
+   getch();
+}
+
+void bubble_sort(int x[],int n)
+{
+  int i,j,t;
+  for(i=0;i<n;i++)
+  {
+    for(j=0;j<n-1;j++)
+    {
+      if(x[j]>x[j+1])
+      {
+	 t=x[j];
+	 x[j]=x[j+1];
+	 x[j+1]=t;
+      }
+    }
+  }
+}
+/*  printf("Sort the array by value");
+  for(i=0;i<n;i++)
+    printf("\n %d",x[i]);
+} */
+
+/*void bubble_sort1(int *p,int n)
+{
+  int i,j,t;
+  for(i=0;i<n;i++)
+  {
+    for(j=0;j<n-1;j++)
+    {
+      if(*(p+j)>*(p+j+1))
+      {
+	 t=*(p+j);
+	 *(p+j)=*(p+j+1);
+	 *(p+j+1)=t;
+      }
+    }
+  }
+} */

@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+  char  *cname;
+  int ic;
+  float p;
+  FILE *fp;
+  clrscr();
+  {
+  fp=fopen("stud2.txt","w");
+  printf("Enter the customer name - ");
+  gets(cname);
+  printf("\nEnter the ic:- ");
+  scanf("%d",&ic);
+  printf("\nEnter the price - ");
+  scanf("%f",&p);
+  fprintf(fp,"\n%s ",cname);
+  fprintf(fp,"\n%d ",ic);
+  fprintf(fp,"\n%f ",p);
+  fclose(fp);
+  }
+  getch();
+}

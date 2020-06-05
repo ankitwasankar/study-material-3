@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<graphics.h>
+#include<dos.h>
+void main()
+{
+int gd=0,gm,d;
+char x,*str;
+initgraph(&gd,&gm,"c:\\tc\\bgi");
+setcolor(10);
+do
+{
+x=getch();
+d=x-'0';
+if(d>=0 && d<=9)
+{
+itoa(d,str,10);
+outtextxy(300,430,str);
+break;
+}
+else
+{
+sound(2200);
+delay(100);
+nosound();
+}
+}while(1);
+getch();
+}

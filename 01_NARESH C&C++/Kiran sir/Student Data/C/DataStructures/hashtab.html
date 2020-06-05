@@ -1,0 +1,31 @@
+<html>
+<head><TITLE>Hashing</TITLE></head>
+<body>
+
+ <strong> HASHING</strong> <br><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hashing is another important   search technique that available for
+searching  which is virtually independent of the size of the space being
+searched.frequently,an application will need to search  a key item for a collection of items(or records).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mainly This hashing techniques transforms the search key item into an address of that item in a table called LOOK_UP_TABLE   or HASHTABLE
+or  DIRECTADDRESSTABLE.The transformation is generally carried out by Hashfunction.The maintainance of hashfunction is called HASHTABLE.<br><br>
+
+<strong>HASH TABLE</strong><br><br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This is also called as Direct address table.If we have a collection of n elements,whose Keys are Unique integers in the range 1 to m.Where m>=n,then we can store the items in a DAT,T where Ti  is either empty or contains one of the elements of our collection.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The range of the key determines ,the size of hash table.Acutually in addition to the Key,may also contain other information.Whenever an elemnt is placed in the Dat,that key is used to determine its position.Whenever a search for a  given element is performed.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To,search for a key,say K in ahash table.We can access it directly as the Kth element (tk). If hashtable contains this element ,it returns it,otherwise it return NULL 
+Value.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clearly,it can be viewed that searching a direct address table is an 0(1) operation.The two requirements of a Direct address table are;<br>
+            
+           (a) The Keys must be Unique and,<br>
+           (b)  The range of key must be severly bounded.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Direct addressing can be generalized to a situation where a function H(k) maps to K to a value in the range 10 to m.
+       That is ,
+      <div align="center">         H(K)==>[1,m]</div>
+WE place the elements in T[H[k]] rather than T[K] and we can search in 0(1) time as before .This indicates that keys need not in the range 1 to m.
+
+
+
+
+</body>
+</html>

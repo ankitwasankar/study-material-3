@@ -1,0 +1,147 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+
+<strong><u>External:</u></strong>
+
+External type of variable is also stored in memory.
+Its default initial value is Zero.
+Scope of the variable is global.
+Lifetime: As long as the program's execution doesnt come to an end.
+   External variables are declared outside all functions, hence available to all functions.
+
+ variables that are both alive and active throughout program are known as external variables. They are 
+also known as global variables.
+
+Ex:
+
+int x;
+main()
+{
+x=10;
+printf("%d", x);
+printf("x=%d \n" fun1());
+printf("x=%d \n" fun2());
+printf("x=%d \n" fun3());
+}
+fun1()
+{
+x=x+10;
+return(x);
+}
+fun2()
+{
+int x;
+x=1;
+return(x);
+}
+fun3()
+{
+x=x+10;
+return(x);
+
+Output:
+10
+x=20
+x=1
+x=30
+ 
+    Once a variable has been declared as global, any function can use it and change its value. Then ,
+ subseqent functions can reference only that new value. Because of this property, we should try to use 
+global variables only for tables or for variables shared between functions when it is inconvenient to 
+pass them as variables.
+
+  Other aspect of global variable is that is only visible from the point of declaration to the end of 
+the program.
+
+Ex:
+
+main()
+{
+y=5;
+printf("%d", y);
+fun1();
+}
+int y;
+fun1()
+{
+y=y+1;
+printf("%d", y);
+}
+
+   In main function, y is not defined. So the compiler will issue an error message. As global 
+variable are initialized to zero in fun1(), y=0 hence output is 1.
+  In this above program, the main cannot access the variable y as it declared after  main. 
+This problem can be ssolved by declaring the variable with the storage class extern.
+Take above example  again it can be modified as
+
+main()
+{
+extern int y=5;        /* declaration */
+printf("%d", y);
+fun1();
+}
+int y;
+fun()
+{
+y=y+1;
+printf("%d",y);
+}
+
+   Now, no compiler time error coccur as y is declared as extern in main function. The external 
+declaration of y inside the functions informs the compiler that y is declared somewhere else in the 
+program. Note that, the external declaration does not allocate storage space for variables. In case of 
+arrays, the definition should include their size as well.
+
+   Functions are extern by default, we declare them without the qualifier extern. For functions also 
+memory is allocated when it is defined with its parameters and function body.
+
+     Void print(); is eqivalent to extern void print();
+
+
+<a href="sto1.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

@@ -1,0 +1,114 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+
+<strong>ADDITIONAL FEATURES OF STUCTURES:</strong>
+
+             The values of structure variables can be assigned to another structure variable 
+of the same type using the assignment operators. It is not necessary to copy the structure 
+elements piecemeal. 
+ 
+1.
+main()
+{
+    struct employee
+     {
+         char name[10];
+         int age; 
+         float sal;
+     };
+     struct employee e1={"sanjay",30,1000.00};
+     struct employee e2,e3;
+     /* piecemeal copying*/
+    strcpy(e2.name,e1.name);
+    e2.age=e1.age;
+    e2.sal=e1.sal;
+    /*copying all elements at one time */
+    e3=e2;
+    printf("\n %s %d %f",e1.name,e1.age,e1.sal);
+    printf("\n%s %d %f",e2.name,e2.age,e2.sal);
+    printf("\n%s %d %f",e3.name,e3.age,e3.sal);
+}
+
+OUTPUT:
+                    sanjay 30 1000.0000
+                    sanjay 30 1000.0000
+                    sanjay 30 1000.0000
+ 
+
+ For copying arrays we have to copy the contents of the array element by element.
+This copying of all structure elements at one time has been possible only because
+ the structure elements are stored in contiguous memory locations.
+
+2.One structure can be nested within another structure . Using this facility complex data types can be       
+   created.
+
+
+
+         Main()
+           {
+		struct address
+		{
+       			char phoneno[15];
+ 			char city[30];
+                                   int pin;
+		};
+		struct emp
+		{
+			char name[];
+			struct address a;
+		};
+		struct emp e={"sneha","531046","Texas",507};
+		printf("\n name=%s phone=%s",e.name,e.a.phoneno);
+     		printf("\n city=%spin=%d" ,e.a.city,e.a.pin);
+        }
+OUTPUT:
+                name=sneha phone=531046
+                city=Texas     pin=507
+
+
+<a href="structures.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

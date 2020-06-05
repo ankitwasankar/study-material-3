@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<graphics.h>
+void main()
+{
+   int gd=0,gm;
+   int x=200,y=200,r=90,x1=0,x2=600;
+   clrscr();
+   initgraph(&gd,&gm,"c:\\tc\\bgi");
+   settextstyle(GOTHIC_FONT,HORIZ_DIR,3);
+   randomize();
+   for(;!kbhit();)
+   {
+     setcolor(random(15));
+     outtextxy(x1,10,"Sandeep");
+     outtextxy(x2,10,"Chhadwani");
+     circle(x,y,r);
+     delay(100);
+     setcolor(0);
+     outtextxy(x1,10,"Sandeep");
+     outtextxy(x2,10,"Chhadwani");
+     x=x+1;
+     y=y+1;
+     r=r-1;
+     if(x1==630 || x2==0)
+     {
+      x1=0;
+      x2=630;
+     }
+     x1=x1+5;
+     x2=x2-5;
+     sound(random(4200));
+   }
+   nosound();
+   getch();
+}

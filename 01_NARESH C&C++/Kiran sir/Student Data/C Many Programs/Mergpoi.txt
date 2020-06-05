@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+  char *merge(char *,char *);
+  char *s,*s1;
+  clrscr();
+  printf("Enter the two string - ");
+  scanf("%s%s",s,s1);
+  s=merge(s,s1);
+  printf("%s",s);
+  getch();
+}
+char *merge(char *x,char *y)
+{
+  int i,j;
+  for(i=0;*(x+i)!=NULL;i++);
+  *(x+i)=' ';
+  i++;
+  for(j=0;*(y+j)!=NULL;j++,i++)
+    *(x+i)=*(y+j);
+  *(x+i)='\0';
+  return x;
+}

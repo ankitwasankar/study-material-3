@@ -1,0 +1,114 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+
+</table></TD>
+<TD align="left"><pre>
+
+
+Program1:          /*illustration of %[ ] specifications*/
+                                            main()
+                                       {
+                                           char address[20];
+                                           printf("enter the address \n");
+                                           scanf("%[a-z]",address);
+                                           printf("%-80s \n\n",address);
+                                        }
+
+  Output:         enter the address
+                     new delhi 110 002
+                     new delhi
+
+    Program2: /*illustration of %[^ ] specifications  */
+                                    main()
+                               {
+                                   char address[20];
+                                    printf("enter address \n");
+                                    scanf("%[^ \n]",address);
+                               printf("% -80s \n\n",address);
+                           }                      
+                      
+Output:             enter address
+                           New Delhi 110 002
+                           New Delhi 110 002
+
+Program:   /* Testing for correctness of input data*/
+                                        main()
+                                 {
+                                     int a;
+                                     float b;
+                                     char c;
+                               printf("enter values of a,b,c \n");
+                              if(scanf("%d%f%c",&a,&b,&c)==3)
+                                  printf("a=%d b=%f c=%c \n",a,b,c);
+                             else
+                                printf("error in input \n");
+                               }
+Output:           enter values of a,b,c
+                            12   3.45    A
+                       a=12   b=3.450000 c=A
+                       enter values of a,b,c
+                            23    78   9
+                       a=23   b=78.000000  c=9               
+                       enter values of a,b,c
+                              8      A    5.25
+                           error in input
+                       enter values of a,b,c
+                             3523     23         x
+                       a=15     b=0.35000000   c=2
+      The function scanf  in the program is expected to read three items of data and therefore ,when the 
+values for all the three variables are read correctly the program prints out their values.During the third 
+run ,the second item does not match with the type of variable and therefore the reading is terminated and the error
+message is printed. The same case with the fourth run.
+  In the last run, although data items do not match the variables,no error message has been printed.
+ When we attempt to read a real number for an int variable,the integer part is assigned to the variable
+ and truncated decimal part is assigned to the next variable .Note that the character 2 is assigned to 
+the character variable c.
+
+<a href="managing.html" target="_self">BACK</a>
+</pre></TD>
+</pre>
+
+</table>
+
+
+</html>	 

@@ -1,0 +1,134 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+  
+<strong>Parameter passing Techniques:</strong>
+
+          The parameter passing mechanism refers to the actions taken regarding the parameters when a    function
+ is invoked. There are two parameter passing techniques available in C. They are:
+
+1) Call By Value<br><br>
+2) Call By Refernce
+
+<strong>Call by value:--</strong>
+
+       Whenever a portion of the program invokes a function with formal arguments, control will be transferred from
+ the main to the calling function and the value of the actual argument is copied to the function. within the
+ function, the actual value copied from the calling portion of the program may be altered or changed. when the
+ control is transferred back from the function to the calling portion of the program, the alterd values are not
+ transferred back. This type of passing formal arguments to a function is technically known as "Call by value".
+
+Ex: A program to exchange the contents of two variables using a call by value.
+
+   #include<stdio.h>
+   main()
+    {
+      int x,y;
+      void swap(int,int)
+      x=10;
+      y=20;
+      printf("values before swap()\n");
+      printf("x=%d and y=%d",x,y);
+      swap(x,y);          /*call by value*/
+      printf("values after swap()\n");
+      printf("x=%d and y=%d ",x,y);
+    }
+   void swap(int x ,int y)     /*values will not be swapped */
+    {
+       int temp;
+       temp=x; 
+       x=y;
+       y=temp;
+   }
+
+Output of the above program:
+ 
+     values before swap()
+          x=10 and y=20
+     values after swap()
+          x=10 and y=20
+
+
+<strong>Call by Reference:--</strong>
+
+        When a function is called by a portion of program, the address of the actual arguments are copied onto the
+ formal arguments, though they may be referred by different variable names.
+ The content of the variables that are altered with in the function block are returned to the calling portion of a
+ program in the altered form itself, as the formal and actual arguments are referring the same memory location or
+ address. This is technically known as call by reference or call by address.
+
+Ex: A program to exchange the contents of two variables using a call by reference.
+
+   #include <stdio.h>
+   main()
+   {
+     int x, y;
+     void swap(int *x, int *y);
+     x=10; y=20;
+     printf("values before swap() \n");
+     printf("x=%d and y=%d \n",x,y);
+     swap(&x,&y);         /* call by reference */
+     printf("values after swap() \n");
+     printf("x=%d and y=%d \n",x,y);
+   }
+  void swap(int *x ,int *y)     /*values will  be swapped */
+    {
+       int temp;
+       temp=*x; 
+       *x=*y;
+       *y=temp;
+   }
+
+Output of the above program:
+ 
+     values before swap()
+          x=10 and y=20
+     values after swap()
+          x=20 and y=10
+
+
+<a href="functions.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

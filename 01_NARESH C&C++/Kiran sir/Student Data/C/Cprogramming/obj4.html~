@@ -1,0 +1,119 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><html>
+<h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+10.main()
+{
+  int i, j=10, arrsize;
+  int arr[arrsize];
+  if(j==10)
+     arrsize=20;
+    else 
+   arrsize=40;
+   for(i=0;i<arrsize;i++)
+}
+output: error message: constant expression required in function main.
+Explanation: depending upon the value of j, we are attempting to determine the value of arrsize, and 
+then expecting this value to be used in the array declaration. this is too ambitious, because when
+the array declaration statement is executed,C has to know how much space is to reserved for the array.
+So if we expect that the size of the array can be determined in if,and then this size should be used
+to declare the array, then by the time control reaches the if it has already lost the opportunity 
+to declare the array. So, only positive integer is acceptable in the array declaration.
+
+11.main()
+    {
+        static int a[]={2,3,4,5,6};
+        int i;
+       for(i=5;i>0;)
+       print f(%d, a[--i]);
+          }
+output: In the for loop, print f() uses the expression a[--i]. can  operator be used with an array
+subscript ? By all means. Here, since  precedes i, firstly i is decremented and then its value is 
+used in accessing the array elements. Thus,first time through the foor loop, when control reaches
+a[--i] with i equal to 5, firstly i is reduced to 4 and then this 4 is used to access the array
+element a[4]. This is done repeatedly through the for loop till the array elements have been printed.
+
+12.main()
+    {
+      static int a[5]={5,10,15,20,25};
+      int i,j,m,n;
+     i=++a[1];
+    j=a[1]++;
+   print f(i=%d j=%d a[1]%d\n,i,j,a[1]);
+i=1;
+m=a[i++];
+print f(i=%d m=%d \n, i,m);
+i=2;
+n=a[++i];
+print f(i=%d n=%d i, n);
+}
+output: i=11 j=11 a[1]=12
+            i=2 m=12
+           i=3 n=20
+explanation: in i=++a[1], since ++ precedes a[1] , firstly the value of a[1] i.e, 10 would be
+incremented to 11, and then assigned to the variable i. As against this, in the next statement,
+firstly the element a[1](i.e, 11) would be assigned to j and then the value of a[1] would be
+incremented to 12. the value of i,j & a[1] are then printed out.Next,i is reset to 1.
+in m=a[i++], since ++ succeeds i, firstly a[i], i.e, 12 is assigned to variable m,and then the
+ value of i, i.e, 1, is incremented to 2. the values of i and m are then printed out.
+ <a href="arrays.html" target="_self">BACK</a>
+ 
+</pre>
+</TD>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</pre>
+</table>
+</TD>
+</TR>
+</table>
+</html>     

@@ -1,0 +1,86 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+<strong>POINTER AND STRUCTURES	 </strong>
+
+       We know that the name of an array stands for the address of its zeroth element.The samething 
+is true of the names of arrays of structure variables.Suppose product is an array variable of structtype.
+The name product represents the address of its zeroth element consider the following declaration.
+ 
+  struct inventory
+  {
+     char name[30];
+     int number;
+     float price;
+  } product[2],*ptr;
+  This statement declares product s an array of two elements,each of the 
+  type struct inventory and ptr as a pointer to data objects of the type 
+  struct inventory.
+
+  The assignment
+	ptr=product;
+  would assign the address of the zeroth element of product to ptr.This is,
+  the pointer ptr will now point to product[0].Its members can be accessed 
+  using the following notation.
+        ptr --> name
+	ptr--> number
+	ptr --> price
+  The symbol -->is called the arrow operator and is made up of a minus sign 
+  and a greater than sign.Note that ptr --> is simply another way f wrting 
+  product[0].When the pointer ptr is incremented by one,it is made to point
+  to the next record. i.e,product[1].
+  We could use the notation
+	(*ptr).number
+  to access the member number.The parantheses around *ptr are necessary because 
+  the member operator "." has a higher precedence than the operator *
+  
+  A program to illustrate the use of a structure pointer to manipulate the
+  elements of an array of structuresthe program highlights all the features 
+  discussed above.Note that the pointer ptr(of type struct invert) is also
+  used as the loop control index in for loops.
+
+<a href="structures.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

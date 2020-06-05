@@ -1,0 +1,18 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+  FILE *fp;
+  char a;
+  int i;
+  clrscr();
+  fp=fopen("r.txt","w");
+  for(i=1;i<=5;i++)
+  {
+  flushall();
+  scanf("%c",&a);
+  fputc(a,fp);
+  fputc('\n',fp);
+  }
+  fclose(fp);
+}

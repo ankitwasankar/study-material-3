@@ -1,0 +1,105 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<td align="left"><pre>
+<div align="center"></div>
+<b>POINTERS AND STRINGS:</b></caption>
+
+   We cannot assign a string to another ,whereas we can assign a char pointer to another <br>char pointer. This is
+ shown with an example:
+
+               main()<br>
+              {<br>
+                char str1[]="hello";<br>
+                char str2[10];<br>
+                char *s="good morning";<br>
+                char *q;<br>
+                str2=str1;/*error*/<br>
+                q=s;/*works*/<br>
+              }<br>
+
+Also,once a string has been defined it cannot be initialized to another set of characters. <br>Unlike strings, such an operation is perfectly valid with char pointers.
+
+Example:        main()<br>
+                       {<br>
+                         char str1[]="hello";<br>
+                         char *="hello";<br>
+                         str1="bye";/*error*/<br>
+                         p="bye";/*works*/<br>
+                       }<br>
+
+<b>THE const QUALIFIER:</b><br>
+  The keyword const, if present, precedes the data type of a variable. It specifies that <br>the value of the variable will not change throughout the program. Any attempt to vary the  <br>value of variable will result into an error message from compiler.const is usually used to <br>replace # define d constants.
+
+Example:                   main()<br>
+                                {<br>
+                                  float r,a;<br>
+                                  const float,PI=3.14;<br>
+		          printf("\n Enter radius:");<br>
+                                 scanf("%f",&r);<br>
+		          a=PI*r*r;<br>
+           		         printf("Area=%f",a);<br>
+                              }          <br>
+If a const is placed inside a function its effect would be localised to that function,whereas <br>if it is placed outside all functions then its effect would be global.
+
+<b>RETURNING const VALUES:</b>
+                         
+	A function can return a pointer to a constant string as shown
+Example:
+                      main()<br>
+		{<br>
+		const char *fun();<br>
+		const char *p;<br>
+		p=fun();<br>
+		p='A';/error*/<br>
+		printf("\n%s",p);<br>
+		}<br>
+		const char * fun()<br>
+		   {	<br>
+			return "Rain()";<br>
+		  }<br>
+
+Since the function fun() is returning a constant string we cannot use the pointer p to modify <br>it. The following operations too would be invalid:<br>
+(a)main() cannot assign the return value to a pointer to a non-const string.<br>
+(b)main() cannot pass the return value to a function that is expecting a pointer to a <br>non-const string.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="pointer2.html">back</a></td>
+</html>

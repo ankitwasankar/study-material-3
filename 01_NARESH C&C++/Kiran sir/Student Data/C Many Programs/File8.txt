@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+FILE *fp;
+char *sfname,*str;
+int i;
+clrscr();
+printf("Enter the file name:-");
+gets(sfname);
+fp=fopen(sfname,"w");
+for(i=1;i<=5;i++)
+{
+flushall();
+printf("Enter the string - ");
+gets(str);
+fputs(str,fp);
+fputs("\n",fp);
+}
+fclose(fp);
+fp=fopen(sfname,"r");
+do
+{
+flushall();
+fgets(str,79,fp);
+if(feof(fp))
+  break;
+printf("%s",str);
+}while(1);
+fclose(fp);
+getch();
+}

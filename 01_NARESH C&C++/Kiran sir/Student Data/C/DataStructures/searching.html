@@ -1,0 +1,285 @@
+﻿<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="650" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Searching Technique</h2></center>
+
+<pre>
+<font size="2">
+<strong>Linear Search:</strong> 
+
+      Terms to be known before considering specific search 
+techniques are:
+(1)A table or file:-Is a group of elements each of which a record.
+(2)Associated with each record is a key which is used to 
+differentiate among different records.For every file there is
+atleast one set of keys that is unique such akey is called a 
+Primary key.
+EX:- if the file is stored in an array the index within the array of
+an element is a unique such a key is called a primary key.
+
+      Keys need not always be unique. for example,in a file of names
+and addresses if the state is used as akey for a particular search
+it will probably not be unique,since there may be two records with
+the som e state in the file .Such a key is called a Secondary key.
+
+      A search algorithm is an algorithm that depends upon argument
+‘a’ and tries to find a record whose key is ‘a’ .It may 
+return the entire record or more commonly it may be return a pointer
+to that record.If there is no record in the table with that argument
+the algorithm may return a special nullrecord. Or a Null pointer.
+Very often ,if a search is a Unsuccessful it may be desirable to add 
+a new record with the argument as its key.An algorithm that does this
+is called a search and insertion algorithm.
+       
+     A Successful search is often called a retrival a table of records
+in which a key is used for retrival is often called a searchtable or
+Dictionary searcher in which the entire tble in constantly in main 
+memory are called internal searches,where as those in the which most
+of the table is kept as a auxilary storage are called external 
+searches. Notations:-K(i) denotes the ith key . Key of the record to
+be pointed by p as K(p). Similarly the corresponding record is r(i)
+or r(p). Two of the widely used search methods are Linear or 
+sequential search and Binary search. SEQUENTIAL SEARCH The simplest
+form of a seach is the sequential search.This search is applicable 
+to a table organized either as an array or as a linked list.Let us 
+assume that K is an array of n keys .K(0) through ,k(n-1) and r an 
+array of records ,r(0)through r(n-1) such that the key is a search 
+argument .We wish to return the smallest integer i such that K(i) 
+equals to the key .If such an i exists and -1 otherwise.
+
+<font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="searching.html"><b>Top</b></a></font>
+<b>The algorithm for doing this is as follows.</b>
+<code><font size=2>
+For(i=0;i<n;i++)
+if(key==k(i))
+return(i);
+return(-1);
+The algorithm examines each key in turn ,upon finding one that mathes
+the search argument ,its index is returned .If no match is found -1 
+is returned.
+This algorithm can be modified easily to add a record with key to the
+t able if key is not already there .The last statement is modified 
+that record.
+K(N)=key
+r(n)=rec;
+n++;
+return(n-1);
+When the above algorithm is implement in C,we must ensure that 
+incrementing n does not make its value go beyond the upper bound of
+the array .To use a sequential insertion search on an array,
+sufficent storage must hve been previously allocated for the array. 
+An even more efficient search method involvs inserting the argument 
+key at the end of the array sufficient storage must have been
+previously allocated for the array.
+K(n)=key
+for(i=0;key!=k(i);i++)
+if(i<n)
+return(i);
+else
+return(-1);
+for a search and insertion the entire ,if statement is replaced by
+if(i==n)
+r(n++)=rec;
+return(i);
+The extra key inserted at the end of the array is called a sentinel.
+Storing a table as a Linked list has the advantage that the size
+of the table can be the increased dynamically as needed ,Let us 
+assume that the table linked by a pointer field next.Then assuming 
+K,r,key and rec as before ,the sequential insertion search for a 
+linked list may be written as follows: q=NULL;
+for(p=table;p!=NULL&&0(p)!=Key;p=next(p)) q=p;
+if(p!=NULL)
+return(p);
+/* insert a new node */
+S=getnode();
+K(s)=key;
+r(s)=rec;
+Next(s)=NULL;
+If(q==Null)
+table=s;
+else
+next(q)=s;
+return(s);
+    
+     The efficiency of searching a list can be improved by adding a
+sentinel node containing the argument key to the end of the list
+before beginning the search so that the condition in the for loop 
+is the simple condition K(p)1=key. Deleting a record from a table
+stored as an unordered array is implemented by replacing the record
+to be deleted. With the last record in the array and reducing the 
+table size by 1.If the array is ordered in some way ,this method can 
+not be used and half the elements in the array must be moved on the
+average. If thre table is stored in a linked list ,it is quite
+efficient to delete an element regardless of the ordering. 
+EFFICIENCY OF LIEAR EARCH:- To find the number of key comparisions 
+for a successful match ,we can add the number required for 
+eachcomparision and divide by the total number of elements in the 
+list.This would give:
+1+2+3+...........+n/n =n(n+1)/2n -(n+1)/2
+
+      In any case the number of comparisions is O(n). It would be 
+helpful to have an algorithm that continually recorders. The table 
+sothat more frequently accessed records drift to the back. There 
+are two search methods that accomplish this .One of this is known 
+as the move-to-front method and is efficient only for a table 
+organized as a list .In this method ,Whenever a search is successful,
+the retrived record is removed from its current location in the list 
+and is placed at the head of the list. The other method is the
+transportation method . In which a successfully retrived record is 
+interchanged with the record that is interchanged with the record 
+that immediately preceeds it.An algorithm to implement the 
+transposition method on a table stored as a linked list as below.
+The algorithm returns a pointer to the retrived record,or the NULL
+pointer if the record is not the found.As before ,key is the 
+search argument K and r are the tables of keys and records tabl is
+a pointer to the first node of the list.
+Q=s=NULL; /* q is the step behind p;*/
+/*s is two steps behind p*/
+for(p=table;P!+null&&k(p)!=key;p=next(p))
+{
+s=q;
+q=p;
+if(p==NULL)
+return(p);
+/*we have to found the record at position p*/
+if(q==NULL)
+/*No transposition is necessary */
+return(p);
+next(q)=next(p)
+next(p)=q;
+(s=null)?table=p:next(s)=p;
+return(p);
+     However the move-to-front method yields better results for a small
+to medium number of requires and responds more quickly to a change in 
+probability distribution .It also has better worst case behaviour 
+than does transposition.
+     For this reason ,Move-to-front is prefered in most practical 
+situations involving sequential search. One advantage of the 
+transposition method over the move-to-front method is that it can
+be applied efficiently to tables are stored in array form as well 
+as to list structure tables.
+
+<b>SEARCHING AN ORDERED TABLE:- </b>
+
+      If the table is stored in aparticular order of the record keys,
+there are several techniques that can be used to improve the efficiency 
+of searching.One obvious advantage in searching a sorted file over the
+unsorted fileis in the case that the argument key is absent from the
+file .In unsorted file n,comparisions where assorted as n/2 comparisions.
+Morever in an ordred file table,each request willonly few lookup or
+perhaps only a single comparision.Because of the simplicity and
+efficiently of sequential search on sorted files.
+
+<b>Indexed Sequential seaarch:</b>
+       Is a technique to improve search efficiency for a sorted file,
+but it involvs an increase in the amount of he space required.An 
+auxillary table called an index is set aside in addition to the stored
+file itself.
+Each element in the index consists of a key kindex and pointer to the 
+record in the file.must be stored on the key.If the index is one eight
+the size of the file,every eight record of the file is shows a index. 
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+<a href="contents.html">Back</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="searching.html">Top</a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+

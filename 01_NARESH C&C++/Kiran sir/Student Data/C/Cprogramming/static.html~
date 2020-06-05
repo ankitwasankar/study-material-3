@@ -1,0 +1,87 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre>
+
+
+<strong><u>Static:</u></strong>
+
+The static variables are stored in memory.
+Its  default initial value is Zero.
+Scope of this variable is local to the variable in which it is defined.
+Lifetime: value of the variable persists between different function calls.
+   Once the variable is declared as static, if the control comes back to the same function again the 
+static variables have the same values they had last time around.
+
+Ex:
+      main()
+      {
+	increment();
+	increment();
+	increment();
+	}
+	increment()
+	{
+	static int i=1;
+	printf("%d \n", i);
+	i=i+1;
+      }
+
+Output:
+  1
+  2
+  3
+      Once  the variableis declared as static, that variable is initialized only oncew though for many 
+function calls. In the above exampl, for the first function call of increment(), i=1then i=1 is printed 
+then i value incremented to 2. Then for second functioncall, the first statement initialization of i is 
+not executed, o/p is 2 then i is incremented to 1 becomes 3, for third function call, again 3 gets printed 
+on screen. The advantage of defining the variable as stati is the value of variable can persist for 
+different function calls.
+
+   The  different between a static external variable and a simple external variable is that the static 
+external variable is available only within the file where it is defined while the simple external variable 
+can be accessed by other files.
+
+<a href="sto1.html" target="_self"><strong>BACK</strong></a><br><br>
+</pre></TD>
+</table>
+</html>

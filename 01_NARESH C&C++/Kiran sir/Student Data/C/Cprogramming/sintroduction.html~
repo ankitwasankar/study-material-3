@@ -1,0 +1,81 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table><pre><font size="4">
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+</table></td>
+<td align="left"><pre>
+<div align="center"></div>
+<dl><b>Strings:</B><BR>    
+    A group of characters can be stored in a character array.Character arrays are many a<br> times also known as
+ 'strings'.Strings are the data types used by programming languages to <br>manipulate text such as words and
+ sentences.
+        A string constant is a one-dimensional array of characters terminated by a null('\0').
+    For example:char name[]={'S','R','U','J','A','N','A','\0'};
+ 
+S  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; R &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;U&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; J&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\0
+<br>2001   2002   2003    2004    2005    2006     2007    2008
+
+Here '\0' is actually an escape sequence like '\n'. It is called a null character.
+
+<b>NOTE:</b>'\0' and '0' are not same. ASCII value of '\0' is 0 and ASCII value of '0' is 48.<br> The terminating null('\0') is important because it is the only way the functions that work <br>with  strings can know where a string ends.A String not terminated by a '\0' is not really <br>a string,but merely a collection of characters.
+
+       The string initialized above can also be initialized as,
+       char name[]="SRUJANA" ;
+       Here C inserts the null automatically.
+
+   Now we will look at pointer assignment to string values,with an example:
+               <div align="justify">   /*program to print string elements using pointer notation*/<br>
+            &nbsp;&nbsp;&nbsp;main()<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+               &nbsp;&nbsp;&nbsp;char name[]="srujana";<br>
+               &nbsp;&nbsp;&nbsp;char *ptr;<br>
+               &nbsp;&nbsp;&nbsp;ptr=name;<br>
+               &nbsp;&nbsp;&nbsp;while(*ptr!='\0')<br>
+               &nbsp;&nbsp;&nbsp;{<br>
+                   &nbsp;&nbsp;&nbsp;printf("%c",*ptr);<br>
+                   &nbsp;&nbsp;&nbsp;ptr++;<br>
+               &nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;}<br></div>
+ptr is incremented to point to the next character in the string. This derives from two facts: 
+     Array elements are stored in contiguous memory locations and on incrementing a <br>pointer it points to the
+ immediately next locations of its type.
+       
+<b>NOTE:</b> printf() doesn't print the '\0'.
+ The %s is a format specification for printing out a string.<br></dl><a href="pointer2.html">back</a></font></td></html>

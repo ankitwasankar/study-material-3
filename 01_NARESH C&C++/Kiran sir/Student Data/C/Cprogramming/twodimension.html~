@@ -1,0 +1,130 @@
+<html>
+<table height="500" width="1000" border="1"><TR   height="5" width="1000"><strong><h2><center>C</center></h2></strong></TR>
+<TR  valign="top"><TD align="left" width="100"><table><pre>
+
+<pre>
+<TR><a href="branching.html" target="_self"><strong>Decision making and branching</strong></a></TR><br>
+<pre>
+<TR><a href="loops.html" target="_self"><strong>Loops</strong></a></TR><br>
+
+
+
+<pre>
+<TR><a href="managing.html" target="_self"><strong>Managing input output functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="functions.html" target="_self"><strong>Functions</strong></a></TR><br>
+
+<pre>
+<TR><a href="arrays.html" target="_self"><strong>Arrays</strong></a></TR><br>
+
+<pre>
+<TR><a href="strings.html" target="_self"><strong>Strings</strong></a></TR><br>
+
+<pre>
+<TR><a href="pointer.html" target="_self"><strong>pointers</strong></a></TR><br>
+
+<pre>
+<TR><a href="structures.html" target="_self"><strong>structures</strong></a></TR><br>
+
+<pre>
+<TR><a href="storageclasses.html" target="_self"><strong>Storage Classes</strong></a></TR><br>
+
+<pre>
+<TR><a href="preprocessor.html" target="_self"><strong>preprossesor</strong></a></TR><br>
+
+
+<pre>
+<TR><a href="filemgt.html" target="_self"><strong>File Management</strong></a></TR><br>
+
+<pre>
+<TR><a href="files1.html" target="_self"><strong>Random Access Files</strong></a></TR><br>
+
+</table></TD>
+<TD align="left"><pre><b>TWO DIMENSIONAL ARRAY OF CHARACTERS:</b>
+
+  Our example program asks you to type your name.When you do so,it checks against a master<br> list to see if you
+ are worthy of entry to the palace.<br>
+
+Example:    <br> 
+       #include "string.h"<br>
+       #define FOUND 1<br>
+       #define NOTFOUND 0<br>
+       main()<br>
+       {<br>
+         char masterlist[6][10]={"srujana",<br>
+                                      "sneha",<br>
+
+                                    "swathi",<br>
+                                    "lavanya",<br>
+                                    "ramya",<br>
+                                    "kalyani"<br>
+                               };<br>
+                        int i,flag,a;<br>
+		char yourname[10];<br>
+		printf("\n Enter your name:");<br>
+		scanf("%s",yourname);<br>
+		flag=NOTFOUND;<br>
+		for(i=0;i<=5;i++)<br>
+		    {<br>
+		       a=strcmp(&masterlist[i][0],yourname);<br>
+   		      if(a==0)<br>
+  			{<br>
+			printf("welcome,u can enter the palace");<br>
+			flag=FOUND;<br>
+			break;<br>
+			}<br>
+		   }<br>
+    			if(flag==NOTFOUND)<br>
+			printf("sorry,u r a trespasser");<br>
+		}<br>
+
+OUTPUT:<br>
+Enter your name:keerthi<br>
+sorry,u r a trespasser<br>
+ 
+Enter your name:srujana<br>
+welcome,u can enter the palace.<br>
+
+Names can be supplied from keyboard as:<br>
+                          for(i=0;i<=5;i++)<br>
+                          scanf("%s",&masterlist[i][0]);<br>
+  while comapring the strings through strcmp() note that the addresses of strings are being<br> passed to strcmp().
+
+srujana\0  sneha\0  swathi\0 lavanya\0  ramya\0  kalyani\0<br>
+1001&nbsp;&nbsp;&nbsp;&nbsp;       1011 &nbsp;&nbsp; &nbsp;&nbsp;   1021 &nbsp;&nbsp;&nbsp;&nbsp;    1031 &nbsp; &nbsp; &nbsp;  &nbsp;  1041 &nbsp;&nbsp; &nbsp; &nbsp;  1051<br>
+
+ Here 1001,1011,....are the base adresses of successive names. For example, even though <br>10 bytes are reserved
+ for storing the name "ramya", it occupies only 5 bytes. Thus 5 bytes<br> go waste.
+
+<b>ARRAY OF POINTERS TO STRINGS :</b>
+
+ pointer variable always contains an address. Therefore, if we construct an array of pointers <br>it would contain
+ a number of addresses. Array of pointers can be stored as  <br>          
+                  char *names[]={<br>
+                                                   "srujana",<br>
+                                                    "sneha",<br>
+                                                    "swathi",<br>
+                                                    "lavanya",<br>
+				                    "ramya",
+                                                    "kalyani"<br>
+                                           };<br>
+One reason to store strings in an array of pointers is to make more efficient use<br> of available memory.
+
+<strong>LIMITATIONS OF ARRAY OF POINTERS TO STRINGS:</strong>
+  When  we are using a 2-D array of characters we are at liberty to either initialize the <br> strings where we are
+ declaring the array or receive the strings using scanf() function.<br>
+Example:        main()<br>
+		{<br>
+		char *names[6];<br>
+		int i;<br>
+		for(i=0;i<=5;i++)<br>
+		  {<br>
+		     printf("\n enter name");<br>
+		     scanf("%s",names[i]);             /*doesnot work*/<br>
+                          }<br>
+                        }<br>
+The program doesn't work because when we are declaring the  array it is containing garbage<br> values. And it would be definitely wrong to send these garbage values to scanf() as <br>the addresses where it should keep the strings received from the keyboard.<br>
+<br><a href="pointer2.html">back</a></td>
+</html>
+</html>

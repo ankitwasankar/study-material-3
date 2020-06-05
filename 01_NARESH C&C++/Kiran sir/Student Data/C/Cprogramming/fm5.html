@@ -1,0 +1,393 @@
+﻿<html>
+<body bgcolor="#000000" text="#000000" link="#396699" alink="#9E0121" vlink="#396699">
+
+<table border="0" width="700" align="center" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../left.gif" width="66" height="60"> </td>
+<td valign="top" bgcolor=white  width="570" align="center">
+
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr> 
+<td width="15%" valign="top" align="left" bgcolor="#396699"> &nbsp
+<tr>
+<td>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td bgcolor="white" width=100 align="center" width="10%"> 
+	  
+	 <img src="../logo.jpg" width="570" height="60">
+	  </td> 
+	  
+    </tr>
+  </tbody>
+</table>
+</td>
+<tr>
+<td bgcolor="#396699">&nbsp
+</tr>
+</table>
+
+
+
+
+</td>
+<td width="66" valign="top"  bgcolor="#396699" align="left">
+<img src="../right.gif" width="66" height="60"> </td>
+</tr>
+<tr> 
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+
+<td valign="top"  bgcolor="#919EB4" width="570" align="center"> 
+<div align="left">
+       
+		
+		
+		<table border="0" width="570" cellpadding="6">
+        <tr> 
+        <td width="1%"  valign="top" height=330  bgcolor="#919EB4" align="center">&nbsp;</td>
+        <td width="96%"  bgcolor="#D8EFFE" valign="top" align="center"> 
+
+				 
+			 <table border="1" width="100%" cellspacing="5">
+                <tr> 
+                <td height="2" valign="top" align="left" >
+				<font size="4" face="Century Schoolbook"> 
+              
+				</font>
+<!--start text  data			-->
+<body bgcolor="aqua"><center><h2>Inroduction </h2></center>
+
+<pre>
+<font size="2">
+
+13)
+   #include"stdio.h"
+   main()
+   {
+    FILE *fp;
+    char str[80];
+/* TRIAL.c contains only one line Its a round a round ,
+ round , round world!*/
+   fp=fopen("TRIAL.C " ,"r");
+   while(fgets(str,80,fp)!=EOF)
+   puts(str);
+  }
+
+<strong> OUTPUT</strong>:
+Its a round a round , round , round world!
+Its a round a round , round , round world!
+...  .  ......... . ..........   .........    
+...  .  ......... . ..........   .........    
+...  .  ......... . ..........   .........   
+
+<strong>Explanation:</strong>
+       In the while loop , fgets() reads a string of 80 
+characters from the file indicated by fp , and returns a
+pointer to the string it read. If it fails to read astring,
+as would be the case when the end of file is reached, it
+returns a NULL , not EOF. Hence , we must compare the 
+returning gets() with NULL and not EOF aa the letter never
+going to be returned. Thus the loop is an infinite loop.
+
+14)
+
+#include"stdio.h"
+main()
+{
+	FILE *fp;
+        char c;
+	fp=fopen("TRY.c","r");
+        if(fp=NULL)
+ 	{
+	puts("cannot open the file");
+	exit(1);
+	}
+	while((c=getc(fp))!=EOF)
+        putch(c);
+        fclose(fp);
+}
+a)Normal Execution
+b) Error message, NULL pointer assignment.
+c)Cannot open the file.
+d)None
+
+<strong> OUTPUT</strong>:   b
+Error message : Null pointer assignment.
+
+<strong> Explanation:</strong>
+     In the above program the if condition ,instead of 
+comparing fp and NULL , what the single = does is assign
+NULL to fp.Replacing = with the comparision operatoe = =
+would eliminate the bug.
+
+15)
+   #include"stdio.h"
+   main()
+   {
+     FILE *fp,*fs,*ft;
+     fp=fopen("A.c","r");
+     fs=fopen("B.c","r");
+     ft=fopen("C.c","r");
+     fclose(fp,ft,fs);
+   }
+
+a)Error
+b)No Output
+c) Filename is printed
+d)None
+
+<strong> OUTPUT</strong>:   b
+
+  No Output.
+
+<strong> Explanation:</strong>
+     The fclose function can close only one file at a time.
+So after taking fs, the first argument in line it pain no
+attention to the remaining two. The "A.c" gets closed while
+files "B.c" , "C.c" remain open. For closing these three 
+files , we have to call fclose for 3 times. If we want to 
+close all files in one call then fcloseall() function is 
+called.This function closes all the files open , except the
+standerd files like stdin,stdout etc.
+
+16)
+#include"stdio.h"
+main()
+{
+char name[20],name1[20];
+int age,age1;
+printf("Enter name and Age\n");
+scanf("%s %d",name,&age);
+printf(" Enter name and age\n");
+fscanf(stdin,"%s  %d",name,&age1);
+fprintf(stdout,"%s %d", name1, age1);
+}
+
+<strong> OUTPUT</strong>:
+          Enter name and age:
+                          Raj 18
+		          Raj 18 
+         Enter name and age:
+                        sonia 21
+         		sonia 21
+
+<strong> Explanation:</strong>
+
+          fscanf() , like scanf() is used for formatted 
+reading of data . The only difference is that the former
+takes additional argument that of a file pointer . This 
+pointer indicates to the fscanf() from where the dat6a 
+is to be read , whereas scanf() is capable of reading 
+data only from the keyboard . Stdin stands for standerd 
+input device i.e from the keyboard . Stdin stands for 
+standerd input device i.e., from the
+ keyboard . 
+Similerly fprintf() which takes argument stdout standerd
+output device which is VDU.
+
+17)
+#include"stdio.h"
+main()
+{
+ char name[20]="sandeep";
+int salary=1500;
+printf("%s%d\n",name,salary);
+fprintf(stdout,"%s%d",name,salary);
+}
+
+<strong>OUTPUT</strong> sandeep 1500
+                        sandeep 1500
+
+18)
+
+#include"stdio.h"
+main()
+{
+static char str[]="triplet";
+char *s;
+s=str;
+while(*s)
+{
+putc(*s,stdout);
+fputchar(*s)
+printf("%c\n",*s);
+s++;
+}
+}
+
+<strong>OUTPUT:</strong>
+ttt
+rrr
+iii
+ppp
+lll
+eee
+ttt
+
+19)/*this program is stored as a file called prob.c*/
+ main(arg,argv)
+ int argc;
+char *argv[];
+{
+printf("%d\n",argc);
+printf("%s",argv[0]);
+}
+
+<strong>OUTPUT:</strong>
+
+        1 c:\prob.exe
+argc->number of arguments.Since the only program name.
+argv[]->vector of arguments.Since argv[0]] prints filename.
+
+20)
+main()
+{
+char ch=’z’;
+static char,str[]="zebra";
+putc(ch,stdprn);
+fprintf(stdprn,"%s",str);
+fwrite(str,5,1,stdprn);
+fputs(str,stdprn);
+}
+(a)zzzzz (b)zzzz (c)zZebraZebraZebra (d)none.
+
+<strong>OUTPUT:</strong>z ZebraZebraZebra (appears on the printer)
+      this program assumes to have printer attached to it.
+stdprn() is standard printer device.
+
+21)
+#include"stdio.h"
+main()
+{
+struct a
+{
+char city[10];
+int pin;
+};
+static struct a b={"udaipur",20};
+static char c[]="banglore";
+FILE *fp;
+fp=fopen("trail","wb");
+fwrite(&b,sizeof(b),1,fp);
+fwrite(c,9,1,fp);
+}
+
+<strong>OUTPUT:</strong> no output on the screen
+     this highlights the fact that fwrite() is not only
+capable of writing structures,but strings as well.All u have 
+to provide to it is base address of data to be written ,the
+number of bytes to be written ,number of timesit is to be 
+written and file to which it is written.
+
+22)
+The requirement is that the program should receive a key
+ from keyboard.however the key that is hit should not appear
+ on the screen.which of the following functions would u use?
+(a)getch()
+(b)getche()
+(c)getchar()
+(d)fgetchar()
+
+<strong>OUTPUT:</strong>
+(a)
+     *getch() is the only function that doesnot echo the
+typed character.*getche() and fgetchar() as well as the
+ macro getchar() will print the typed character.*getchar
+ and fgetchar() suffer from one more restriction while
+ using them,having entered a character,it has to be 
+followed by hitting enter key.
+
+23)
+which of the following function is most appropriate for
+storing numbers in a file2.
+(a)putc()
+(b)fprintf()
+(c)fwrite()
+
+<strong>OUTPUT:</strong>( c ) 
+       putc(),fprintf() are text mode functions .In text 
+mode numbers are stored as strings.Onthe other hand fwrite()
+is a binary mode function.
+
+24)
+which of the following functions is more versatile for 
+positioning the file pointer in a file?
+(a)rewind()
+(b)fseek()
+(c)ftell()
+
+<strong>OUTPUT:</strong><br>fseek()<br>
+       fseek() allows us to position the file pointer at 
+the beginning of the file,at the end of the file or at
+anyother intermediate position which we specify.
+
+25)<br>which of the following functions are ideally suitable
+ for reading the contents of file record by record?
+(a)getc()
+(b)gets()
+(c)fread()
+(d)fgets()
+
+<strong>OUTPUT:</strong><br>( c )<br>
+ *getc() can read only one character at a time from a file.
+Gets() accepts a string from the keyboard and not from the 
+file. Fgets()would certainly allow us to read as amny bytes
+as we specify.
+
+</font>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="3" style="URL Chancery">
+
+<a href="filemgt.html" target="_self"><strong>BACK</strong></a>
+<a href="../Index.html">Back To Main</a>
+</font>
+</pre>
+<!--End data                   -->				
+				</font>
+                </td>
+                </tr>
+                </table>
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Arial,Helvetica,sans-serif"><font size="2" color="#FFFFFF"><a href="http://www.WorldBest.com/" target="_top">
+                </a></font></font></font></font> 
+     
+<!-- #EndLibraryItem --></div>        
+                </div>
+        </td>
+        <td width="3%"  bgcolor="#919EB4" valign="top"> 
+        </td>
+        </tr>
+        </table>
+        
+</div>
+</td>
+<td width="66" bgcolor="#396699"  valign="top" align="center"> 
+</td>
+</tr>
+<tr bgcolor="#396699"> 
+<td width="66" height="2" align="left" valign="bottom">
+<img src="../leftb.gif" width="60" height="66" ></td>
+<td valign="top" bgcolor="#396699" height="2" width="570" align="center"> 
+<font face="helvetic" size="3"  color="ffff66">
+<div align=right>				       Contact:  040-23000700 </div>
+</td>
+<td   align="right" bgcolor="#396699" valign="bottom">
+<img src="../rightb.gif" width="66" height="60" ></td>
+</tr>
+</table>
+
+				
+				
+</body>
+</html>
+
+
+
+
+
+
+
+

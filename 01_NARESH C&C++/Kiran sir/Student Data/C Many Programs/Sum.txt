@@ -1,0 +1,14 @@
+#include<stdio.h>
+void main(int argc,char *argv[])
+{
+int s=0,i;
+if(argc<2)
+printf("can't sum the number");
+else
+{
+for(i=1;i<argc;i++)
+s=s+(*argv[i]-48);
+printf("sum is - %d",s);
+}
+getch();
+}

@@ -1,0 +1,34 @@
+<Tools version="1.0">
+	<Tool name="Command#79001">
+		<Program>cmd.exe</Program>
+		<Parameters></Parameters>
+		<WorkingDir>$(Path)</WorkingDir>
+		<Shortcut>0</Shortcut>
+		<CaptureOutput enabled="0">0</CaptureOutput>
+		<ControlOption>8</ControlOption>
+	</Tool>
+	<Tool name="Dialog Edit#79002">
+		<Program>$(CFRoot)\dlgedit.exe</Program>
+		<Parameters>&quot;$(PrjDir)\dialogs.DRES&quot;</Parameters>
+		<WorkingDir></WorkingDir>
+		<Shortcut>0</Shortcut>
+		<CaptureOutput enabled="0">0</CaptureOutput>
+		<ControlOption>8</ControlOption>
+	</Tool>
+	<Tool name="Message Cracker#79003">
+		<Program>$(CFRoot)\ezapi.exe</Program>
+		<Parameters></Parameters>
+		<WorkingDir></WorkingDir>
+		<Shortcut>0</Shortcut>
+		<CaptureOutput enabled="0">0</CaptureOutput>
+		<ControlOption>8</ControlOption>
+	</Tool>
+	<Tool name="Code Formatter (AStyle)#79004">
+		<Program>$(CFRoot)\GNU\astyle\bin\AStyle.exe</Program>
+		<Parameters>--style=ansi &quot;$(FileName)&quot;</Parameters>
+		<WorkingDir>$(Path)</WorkingDir>
+		<Shortcut>0</Shortcut>
+		<CaptureOutput enabled="0">0</CaptureOutput>
+		<ControlOption>10</ControlOption>
+	</Tool>
+</Tools>

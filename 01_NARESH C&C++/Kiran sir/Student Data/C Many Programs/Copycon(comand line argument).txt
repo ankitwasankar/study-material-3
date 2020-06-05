@@ -1,0 +1,15 @@
+#include<stdio.h>
+void main(int argc,char *argv[])
+{
+FILE *fs;
+int i;
+fs=fopen(argv[1],"w");
+if(fs==NULL)
+{
+printf("unable to open source file");
+exit(1);
+}
+for(i=2;i<argc;i++)
+fprintf(fs,"%s",argv[i]);
+fclose(fs);
+}
